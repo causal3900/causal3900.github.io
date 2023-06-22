@@ -1,5 +1,5 @@
 --- 
-title: "Causal Inference"
+title: "Causal Inference Course"
 author: "Ian Lundberg and Sam Wang"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -17,7 +17,7 @@ csl: chicago-fullnote-bibliography.csl
 
 Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA23/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900). Causal Inference. Fall 2023.
 
-Together, we will learn to make causal claims by combining data with arguments.
+Welcome! Together, we will learn to make causal claims by combining data with arguments.
 
 > **Be warned---this site is under construction!** This is a new course and we are looking forward to its launch in the fall.
 
