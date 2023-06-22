@@ -1,11 +1,11 @@
-# Hello bookdown 
+# First module 
 
-All chapters start with a first-level heading followed by your chapter title, like the line above. There should be only one first-level heading (`#`) per .Rmd file.
+This page contains our first module. It can have level-2 and level-3 headers.
 
-## A section
+## A level-2 header
 
-All chapter sections start with a second-level (`##`) or higher heading followed by your section title, like the sections above and below here. You can have as many as you want within a chapter.
+We could use this level for individual lecture materials.
 
-### An unnumbered section {-}
+### A level-3 header
 
-Chapters and sections are numbered by default. To un-number a heading, add a `{.unnumbered}` or the shorter `{-}` at the end of the heading, like in this section.
+We could use this level for sub-points within individual lecture materials.

@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "John Doe"
+title: "Causal Inference"
+author: "Ian Lundberg and Sam Wang"
 date: "2023-06-21"
 site: bookdown::bookdown_site
 documentclass: book
@@ -8,50 +8,35 @@ bibliography: [book.bib, packages.bib]
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
 description: |
-  This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::bs4_book,
-  set in the _output.yml file.
+  An undergraduate course on causal inference
 biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# About
+# Welcome {.unnumbered}
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports; for example, a math equation $a^2 + b^2 = c^2$.
+Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA23/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900). Causal Inference. Fall 2023.
 
-## Usage 
+Together, we will learn to make causal claims by combining data with arguments.
 
-Each **bookdown** chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter *must* start with a first-level heading: `# A good chapter`, and can contain one (and only one) first-level heading.
+## Learning objectives {.unnumbered}
 
-Use second-level and higher headings within chapters like: `## A short section` or `### An even shorter section`.
+As a result of participating in this course, students will be able to
 
-The `index.Rmd` file is required, and is also your first book chapter. It will be the homepage when you render the book.
+* define counterfactuals as the outcomes of hypothetical interventions
+* identify counterfactuals by causal assumptions presented in graphs
+* estimate counterfactual outcomes by pairing those assumptions with statistical evidence
 
-## Render book
+## Is this course for me? {.unnumbered}
 
-You can render the HTML version of this example book without changing anything:
+The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses.
 
-1. Find the **Build** pane in the RStudio IDE, and
+Not a Cornell student? You are welcome to follow along on this site.
 
-1. Click on **Build Book**, then select your output format, or select "All formats" if you'd like to use multiple formats from the same book source files.
+## Organization of the site {.unnumbered}
 
-Or build the book from the R console:
+Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go.
 
-
-```r
-bookdown::render_book()
-```
-
-To render this example to PDF as a `bookdown::pdf_book`, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>.
-
-## Preview book
-
-As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in "Preview book", or from the R console:
-
-
-```r
-bookdown::serve_book()
-```
-
-
+- [Who we are]() tells you a bit about the teaching team
+- [Weekly schedule]() tells when you can find us in office hours
 

@@ -2,4 +2,5 @@ bookdown::bs4_book:
   css: style.css
   theme:
     primary: "#096B72"
-  repo: https://github.com/rstudio/bookdown-demo
+  template: bs4_book_custom.html
+  repo: https://github.com/causal3900/causal3900.github.io
