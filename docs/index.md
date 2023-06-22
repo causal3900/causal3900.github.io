@@ -19,6 +19,8 @@ Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900)
 
 Together, we will learn to make causal claims by combining data with arguments.
 
+> **Be warned---this site is under construction!** This is a new course and we are looking forward to its launch in the fall.
+
 ## Learning objectives {.unnumbered}
 
 As a result of participating in this course, students will be able to
@@ -37,6 +39,5 @@ Not a Cornell student? You are welcome to follow along on this site.
 
 Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go.
 
-- [Who we are]() tells you a bit about the teaching team
-- [Weekly schedule]() tells when you can find us in office hours
+- [Who we are](Who we are) tells you a bit about the teaching team
 
