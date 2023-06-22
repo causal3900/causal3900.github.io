@@ -13,7 +13,7 @@ biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Welcome {.unnumbered}
+# Welcome {-}
 
 Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA23/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900). Causal Inference. Fall 2023.
 

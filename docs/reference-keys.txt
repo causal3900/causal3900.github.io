@@ -1,3 +1,12 @@
+part-why-causal-inference
 first-module
 a-level-2-header
 a-level-3-header
+lab-causal-claims
+second-module
+a-level-2-header-1
+a-level-3-header-1
+problem-set-1
+part-directed-acyclic-graphs
+third-module
+part-course-information

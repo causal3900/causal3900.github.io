@@ -1,3 +1,6 @@
+
+# (PART) Course information
+
 # Who we are {.unnumbered}
 
 <head>
@@ -12,7 +15,7 @@ img {
 
 <div class="row">
   <div class="column"><img src="assets/Sam.jpeg" style="width:75px"></div>
-  <div class="col-md-5">[**Y. Samuel Wang**](https://ysamuelwang.com/)<br>
+  <div class="col-md-5">[**Y. Samuel Wang**](https://ysamuelwang.com/)<br>Assistant Professor<br>Statistics and Data Science<br>
 [ysw7@cornell.edu](mailto:ysw7@cornell.edu)</div>
 </div>
 
@@ -20,7 +23,7 @@ img {
 
 <div class="row">
   <div class="column"><img src="assets/Ian.jpg" style="width:75px"></div>
-  <div class="col-md-5">[**Ian Lundberg**](https://www.ianlundberg.org/) (he / him)<br>[ilundberg@cornell.edu](mailto:ilundberg@cornell.edu)</div>
+  <div class="col-md-5">[**Ian Lundberg**](https://www.ianlundberg.org/) (he / him)<br>Assistant Professor<br>Information Science<br>[ilundberg@cornell.edu](mailto:ilundberg@cornell.edu)</div>
 </div>
 
 >I study causal questions related to inequality: why some people have more money than others, why disparities exist across social groups, and how we could intervene to promote equality. Beyond causal inference, other joys of mine include hiking, surfing, and oatmeal with blueberries.

@@ -1,7 +1,7 @@
 
-# (PART) Why causal inference? {-}
+# (PART) Why causal inference?
 
-# First module 
+# First module
 
 This page contains our first module. It can have level-2 and level-3 headers.
 

@@ -1,9 +1,6 @@
+# Second module 
 
-# (PART) Why causal inference? {-}
-
-# First module 
-
-This page contains our first module. It can have level-2 and level-3 headers.
+This page contains our second module. It can have level-2 and level-3 headers.
 
 ## A level-2 header
 
