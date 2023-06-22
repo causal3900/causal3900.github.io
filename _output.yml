@@ -3,4 +3,3 @@ bookdown::bs4_book:
   theme:
     primary: "#096B72"
   template: bs4_book_custom.html
-  repo: https://github.com/causal3900/causal3900.github.io

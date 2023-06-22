@@ -1,7 +1,7 @@
 
-# (PART) Course information
+# (PART) Course information {-}
 
-# Who we are {.unnumbered}
+# Who we are {-}
 
 <head>
 <style>
