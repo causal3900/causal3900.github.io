@@ -3,6 +3,10 @@
         {
             "columnIndex": 2,
             "ascending": true
+        },
+        {
+            "columnIndex": 1,
+            "ascending": true
         }
     ],
     "path": "~/Dropbox/causal3900.github.io"

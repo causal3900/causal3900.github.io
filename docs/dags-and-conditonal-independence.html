@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>18 DAGs and conditonal independence | Causal Inference Course</title>
+<meta name="author" content="Ian Lundberg and Sam Wang">
+<meta name="description" content="Sep 28 Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error. Reading:...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="18 DAGs and conditonal independence | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Sep 28 Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error. Reading:...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="18 DAGs and conditonal independence | Causal Inference Course">
+<meta name="twitter:description" content="Sep 28 Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error. Reading:...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li class="book-part">Causal inference without models</li>
+<li><a class="" href="observing-versus-intervening.html"><span class="header-section-number">1</span> Observing versus intervening</a></li>
+<li><a class="" href="lab-designing-a-study.html"><span class="header-section-number">2</span> Lab: Designing a study</a></li>
+<li><a class="" href="defining-causal-effects.html"><span class="header-section-number">3</span> Defining causal effects</a></li>
+<li><a class="" href="randomized-experiments.html"><span class="header-section-number">4</span> Randomized experiments</a></li>
+<li><a class="" href="lab-tbd.html"><span class="header-section-number">5</span> Lab: TBD</a></li>
+<li><a class="" href="conditional-randomization.html"><span class="header-section-number">6</span> Conditional randomization</a></li>
+<li><a class="" href="standardization.html"><span class="header-section-number">7</span> Standardization</a></li>
+<li><a class="" href="lab-standardization.html"><span class="header-section-number">8</span> Lab: Standardization</a></li>
+<li><a class="" href="exchangeability.html"><span class="header-section-number">9</span> Exchangeability</a></li>
+<li><a class="" href="positivity-and-consistency.html"><span class="header-section-number">10</span> Positivity and consistency</a></li>
+<li><a class="" href="lab-interference.html"><span class="header-section-number">11</span> Lab: Interference</a></li>
+<li><a class="" href="the-target-trial.html"><span class="header-section-number">12</span> The target trial</a></li>
+<li><a class="" href="effect-modification.html"><span class="header-section-number">13</span> Effect modification</a></li>
+<li><a class="" href="lab-reading-a-causal-study.html"><span class="header-section-number">14</span> Lab: Reading a causal study</a></li>
+<li><a class="" href="interaction.html"><span class="header-section-number">15</span> Interaction</a></li>
+<li><a class="" href="dags-and-marginal-independence.html"><span class="header-section-number">16</span> DAGs and marginal independence</a></li>
+<li><a class="" href="lab-dags-and-marginal-independence.html"><span class="header-section-number">17</span> Lab: DAGs and marginal independence</a></li>
+<li><a class="active" href="dags-and-conditonal-independence.html"><span class="header-section-number">18</span> DAGs and conditonal independence</a></li>
+<li><a class="" href="faithfulness.html"><span class="header-section-number">19</span> Faithfulness</a></li>
+<li><a class="" href="lab-sufficient-adjustment-sets.html"><span class="header-section-number">20</span> Lab: Sufficient adjustment sets</a></li>
+<li><a class="" href="discovery-of-causal-structure.html"><span class="header-section-number">21</span> Discovery of causal structure</a></li>
+<li><a class="" href="lab-causal-discovery.html"><span class="header-section-number">22</span> Lab: Causal discovery</a></li>
+<li><a class="" href="confounding.html"><span class="header-section-number">23</span> Confounding</a></li>
+<li><a class="" href="single-world-intervention-graphs.html"><span class="header-section-number">24</span> Single World Intervention Graphs</a></li>
+<li><a class="" href="lab-swigs.html"><span class="header-section-number">25</span> Lab: SWIGs</a></li>
+<li><a class="" href="front-door-criterion.html"><span class="header-section-number">26</span> Front door criterion</a></li>
+<li><a class="" href="selection-bias.html"><span class="header-section-number">27</span> Selection bias</a></li>
+<li><a class="" href="lab-selection-bias.html"><span class="header-section-number">28</span> Lab: Selection bias</a></li>
+<li><a class="" href="measurement-bias.html"><span class="header-section-number">29</span> Measurement bias</a></li>
+<li><a class="" href="random-variability.html"><span class="header-section-number">30</span> Random variability</a></li>
+<li><a class="" href="lab-escaping-the-curse-of-dimensionality.html"><span class="header-section-number">31</span> Lab: Escaping the curse of dimensionality</a></li>
+<li class="book-part">Causal inference with models</li>
+<li><a class="" href="why-model.html"><span class="header-section-number">32</span> Why model</a></li>
+<li><a class="" href="inverse-probability-weighting.html"><span class="header-section-number">33</span> Inverse probability weighting</a></li>
+<li><a class="" href="lab-marginal-structural-models.html"><span class="header-section-number">34</span> Lab: Marginal structural models</a></li>
+<li><a class="" href="outcome-modeling.html"><span class="header-section-number">35</span> Outcome modeling</a></li>
+<li><a class="" href="propensity-scores.html"><span class="header-section-number">36</span> Propensity scores</a></li>
+<li><a class="" href="lab-presentations.html"><span class="header-section-number">37</span> Lab: Presentations</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">38</span> Instrumental variables</a></li>
+<li><a class="" href="instrumental-variables-in-practice.html"><span class="header-section-number">39</span> Instrumental variables in practice</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">40</span> Course recap</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="course-calendar.html"><span class="header-section-number">41</span> Course calendar</a></li>
+<li><a class="" href="references.html">References</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">42</span> Defining counterfactuals</a></li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">43</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">44</span> Consistency and positivity</a></li>
+<li class="book-part">Problem Sets</li>
+<li><a class="" href="problem-set-1.html"><span class="header-section-number">45</span> Problem Set 1</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dags-and-conditonal-independence" class="section level1" number="18">
+<h1>
+<span class="header-section-number">18</span> DAGs and conditonal independence<a class="anchor" aria-label="anchor" href="#dags-and-conditonal-independence"><i class="fas fa-link"></i></a>
+</h1>
+<p><strong>Sep 28</strong></p>
+<p><strong>Warning.</strong> As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error.</p>
+<blockquote>
+<p>Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.</p>
+</blockquote>
+<p>Often, we want to condition on some set of variables <span class="math inline">\(\vec{L}\)</span> so that conditional exchangeability holds. In a DAG, we want to block all backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>This class introduces four rules related to blocking a path</p>
+<ol style="list-style-type: decimal">
+<li>A path is blocked if it contains an unadjusted collider</li>
+<li>A path is blocked if it contains an adjusted non-collider</li>
+<li>If a collider is adjusted, the collider no longer blocks the path</li>
+<li>If a descendant of a collider is adjusted, the collider no longer blocks the path</li>
+</ol>
+<p><strong>D-separation</strong> is a concept that encompasses the above rules. Any pair or set of variables are d-separated (and thus independent) if the paths between them are blocked.</p>
+
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="lab-dags-and-marginal-independence.html"><span class="header-section-number">17</span> Lab: DAGs and marginal independence</a></div>
+<div class="next"><a href="faithfulness.html"><span class="header-section-number">19</span> Faithfulness</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#dags-and-conditonal-independence"><span class="header-section-number">18</span> DAGs and conditonal independence</a></li></ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/57329">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/40928">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Causal Inference Course</strong>" was written by Ian Lundberg and Sam Wang. It was last built on 2023-07-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
