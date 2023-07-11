@@ -7,7 +7,7 @@ Welcome to the problem set! This homework will practice conceptual and notation 
 
 To complete the problem set
 
-* [**Download the .Rmd**](assets/psets/pset1.Rmd)
+* [**Download the .Rmd**](assets/psets/pset1_download.Rmd)
 * Complete the homework
 * Omit your name so we can have anonymous peer feedback
 * Compile to a PDF
