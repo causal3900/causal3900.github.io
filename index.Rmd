@@ -35,6 +35,14 @@ The course is designed for upper-division undergraduate students. We will assume
 
 Not a Cornell student? You are welcome to follow along on this site.
 
+## Readings {-}
+
+Especially in the beginning, this course draws heavily on
+
+> Hernán, M.A., and J.M. Robins. 2020. [**Causal Inference: What If?**](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Boca Raton: Chapman \& Hall / CRC.
+
+We are grateful to the authors for this excellent text.
+
 ## Organization of the site {-}
 
 Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go. [Who we are](Who we are) tells you a bit about the teaching team.
