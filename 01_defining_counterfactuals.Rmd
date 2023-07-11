@@ -29,7 +29,7 @@ There is no expectation to have clear answers now. Over the course of the semest
 
 ## Defining causal effects
 
-> Aug 24. After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) and begin Homework 1.
+> Aug 24. [**Slides.**](assets/slides/lecture_1.3_defining_causal_effects.pdf) After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) and begin Homework 1.
 
 Today we will define average causal effects in the potential outcomes framework.
 
