@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>7 Instrumental variables | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="7.1 IV in the ideal case  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab: IV in practice  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion of...">
+<meta name="description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="7 Instrumental variables | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 IV in the ideal case  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab: IV in practice  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion of...">
+<meta property="og:description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="7 Instrumental variables | Causal Inference Course">
-<meta name="twitter:description" content="7.1 IV in the ideal case  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab: IV in practice  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion of...">
+<meta name="twitter:description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -84,25 +84,25 @@
 <h1>
 <span class="header-section-number">7</span> Instrumental variables<a class="anchor" aria-label="anchor" href="#instrumental-variables"><i class="fas fa-link"></i></a>
 </h1>
-<div id="iv-in-the-ideal-case" class="section level2" number="7.1">
+<div id="introduction" class="section level2" number="7.1">
 <h2>
-<span class="header-section-number">7.1</span> IV in the ideal case<a class="anchor" aria-label="anchor" href="#iv-in-the-ideal-case"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 17. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
 </blockquote>
 </div>
-<div id="lab-iv-in-practice" class="section level2" number="7.2">
+<div id="lab" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">7.2</span> Lab: IV in practice<a class="anchor" aria-label="anchor" href="#lab-iv-in-practice"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Lab<a class="anchor" aria-label="anchor" href="#lab"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 18. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
 </blockquote>
 </div>
-<div id="discussion-of-iv" class="section level2" number="7.3">
+<div id="discussion" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.3</span> Discussion of IV<a class="anchor" aria-label="anchor" href="#discussion-of-iv"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 19</p>
@@ -117,9 +117,9 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#instrumental-variables"><span class="header-section-number">7</span> Instrumental variables</a></li>
-<li><a class="nav-link" href="#iv-in-the-ideal-case"><span class="header-section-number">7.1</span> IV in the ideal case</a></li>
-<li><a class="nav-link" href="#lab-iv-in-practice"><span class="header-section-number">7.2</span> Lab: IV in practice</a></li>
-<li><a class="nav-link" href="#discussion-of-iv"><span class="header-section-number">7.3</span> Discussion of IV</a></li>
+<li><a class="nav-link" href="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#lab"><span class="header-section-number">7.2</span> Lab</a></li>
+<li><a class="nav-link" href="#discussion"><span class="header-section-number">7.3</span> Discussion</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">

@@ -1,8 +1,14 @@
 
 # Regression discontinuity
 
-## Introduction (Oct 24)
+## Introduction
 
-## Lab (Oct 25)
+> Oct 24
 
-## Discussion (Oct 26)
+## Lab
+
+> Oct 25
+
+## Discussion
+
+> Oct 26
