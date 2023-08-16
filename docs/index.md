@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Ian Lundberg and Sam Wang"
-date: "2023-07-11"
+date: "2023-08-15"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

@@ -23,11 +23,24 @@ img {
 
 <div class="row">
   <div class="column"><img src="assets/Ian.jpg" style="width:75px"></div>
-  <div class="col-md-5">[**Ian Lundberg**](https://www.ianlundberg.org/) (he / him)<br>Assistant Professor<br>Information Science<br>[ilundberg@cornell.edu](mailto:ilundberg@cornell.edu)</div>
+  <div class="col-md-5">[**Ian Lundberg**](https://www.ianlundberg.org/)<br>(he / him)<br>Assistant Professor<br>Information Science<br>[ilundberg@cornell.edu](mailto:ilundberg@cornell.edu)</div>
 </div>
 
 >I study causal questions related to inequality: why some people have more money than others, why disparities exist across social groups, and how we could intervene to promote equality. Beyond causal inference, other joys of mine include hiking, surfing, and oatmeal with blueberries.
 
 ## Teaching assistants {.unnumbered}
 
-Coming soon!
+<div class="row">
+  <div class="column"><img src="assets/Mayleen.jpeg" style="width:75px"></div>
+  <div class="col-md-5">[**Mayleen Cortez-Rodriguez**](https://www.mayleencortez.com/)<br>(she / her)<br>PhD Student<br>Applied Mathematics<br>
+[mec383@cornell.edu](mailto:mec383@cornell.edu)</div>
+</div>
+
+> I'm currently working on problems in causal inference under network interference. I think causal inference is really cool because it has applications across so many different fields. I'm generally interested in applications to public health, social welfare, and social good. In my free time, I enjoy singing, dancing, cooking, watching movies, and traveling to various theme parks. 
+
+<div class="row">
+  <div class="column"><img src="" style="width:75px"></div>
+  <div class="col-md-5">[**Daniel Molitor**](https://www.dmolitor.com/)<br>PhD Student<br>Information Science<br>
+[djm484@cornell.edu](mailto:djm484@cornell.edu)</div>
+</div>
+

@@ -85,7 +85,7 @@ sessionInfo()
 ```
 ## R version 4.3.1 (2023-06-16)
 ## Platform: x86_64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.2.1
+## Running under: macOS Ventura 13.4.1
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
