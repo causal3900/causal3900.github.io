@@ -94,7 +94,7 @@ sessionInfo()
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
-## time zone: America/Los_Angeles
+## time zone: America/New_York
 ## tzcode source: internal
 ## 
 ## attached base packages:

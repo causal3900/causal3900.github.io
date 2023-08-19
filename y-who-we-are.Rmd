@@ -39,8 +39,10 @@ img {
 > I'm currently working on problems in causal inference under network interference. I think causal inference is really cool because it has applications across so many different fields. I'm generally interested in applications to public health, social welfare, and social good. In my free time, I enjoy singing, dancing, cooking, watching movies, and traveling to various theme parks. 
 
 <div class="row">
-  <div class="column"><img src="" style="width:75px"></div>
+  <div class="column"><img src="assets/Daniel.png" style="width:75px"></div>
   <div class="col-md-5">[**Daniel Molitor**](https://www.dmolitor.com/)<br>PhD Student<br>Information Science<br>
 [djm484@cornell.edu](mailto:djm484@cornell.edu)</div>
 </div>
+
+> I’m fascinated by causal relationships and enjoy exploring how they shape our world. My interests are broadly centered in the area of Computational Social Science, and are specifically focused on how we can apply computational and Machine Learning methods to uncover and estimate causal relationships. In my free time I enjoy doing pretty much anything that's active and outdoors and I particularly enjoy playing tennis, kayaking, and fishing (if you have any pro tips, let me know).
 
