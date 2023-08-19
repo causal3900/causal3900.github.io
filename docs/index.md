@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Ian Lundberg and Sam Wang"
-date: "2023-08-18"
+date: "2023-08-19"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -19,7 +19,7 @@ Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900)
 
 Welcome! Together, we will learn to make causal claims by combining data with arguments.
 
-> **Be warned---this site is under construction!** This is a new course and we are looking forward to its launch in the fall.
+Taught by [Ian Lundberg](https://www.ianlundberg.org/), [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), and [Daniel Molitor](https://www.dmolitor.com/). Read about us [here](who-we-are)!
 
 ## Learning objectives {-}
 
