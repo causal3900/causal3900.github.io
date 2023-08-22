@@ -40,7 +40,7 @@ Using conditional expectations or probabilities, write the following in math: th
 
 ### 1.5 (7 points)
 
-Give one reason why the average causal effect of attending Cornell versus NYU (from 1.2) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
+Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
 
 **Answer.** Your answer here
 

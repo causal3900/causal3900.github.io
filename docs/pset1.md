@@ -11,8 +11,6 @@ To complete the problem set, [**Download the .Rmd**](assets/psets/pset1_download
 
 Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.
 
-**Answer.** Your answer here
-
 ### 1.1 (7 points) {-}
 
 In Jose's claim, what is the treatment?
@@ -39,15 +37,13 @@ Using conditional expectations or probabilities, write the following in math: th
 
 ### 1.5 (7 points) {-}
 
-Give one reason why the average causal effect of attending Cornell versus NYU (from 1.2) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
+Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
 
 **Answer.** Your answer here
 
 ## 2. A sailing class {-}
 
 You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.
-
-**Answer.** Your answer here
 
 ### 2.1 (5 points) {-}
 

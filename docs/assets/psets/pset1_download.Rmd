@@ -4,23 +4,15 @@ output: pdf_document
 
 # Problem Set 1. Definitions 
 
-**Warning: This is a draft!** The problem set is likely to change before the course begins.
+Relevant material will be covered by **Aug 24**. Problem set is due **Aug 31**.
 
 Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.
 
-To complete the problem set
-
-* [**Download the .Rmd**](assets/psets/pset1.Rmd)
-* Complete the homework
-* Omit your name so we can have anonymous peer feedback
-* Compile to a PDF
-* Submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329)
+To complete the problem set, [**Download the .Rmd**](assets/psets/pset1_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
 
 ## 1. Practice with potential outcomes 
 
 Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.
-
-**Answer.** Your answer here
 
 ### 1.1 (7 points)
 
@@ -48,15 +40,13 @@ Using conditional expectations or probabilities, write the following in math: th
 
 ### 1.5 (7 points)
 
-Give one reason why the average causal effect of attending Cornell versus NYU (from 1.2) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
+Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
 
 **Answer.** Your answer here
 
 ## 2. A sailing class 
 
 You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.
-
-**Answer.** Your answer here
 
 ### 2.1 (5 points)
 
