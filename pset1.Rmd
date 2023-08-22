@@ -1,17 +1,11 @@
 
 # Problem Set 1. Definitions {-}
 
-**Warning: This is a draft!** The problem set is likely to change before the course begins.
+Relevant material will be covered by **Aug 24**. Problem set is due **Aug 31**.
 
 Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.
 
-To complete the problem set
-
-* [**Download the .Rmd**](assets/psets/pset1_download.Rmd)
-* Complete the homework
-* Omit your name so we can have anonymous peer feedback
-* Compile to a PDF
-* Submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329)
+To complete the problem set, [**Download the .Rmd**](assets/psets/pset1_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
 
 ## 1. Practice with potential outcomes {-}
 
