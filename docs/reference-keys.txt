@@ -4,10 +4,10 @@ lab-designing-a-study
 defining-causal-effects
 exchangeability-and-experiments
 randomized-experiments
-lab-using-r-to-analyze-an-experiment
+lab-statistics-review-with-math-and-simulations
 exchangeability-and-conditional-randomization
 standardization
-lab-standardization-with-group_by-and-summarize
+lab-analyze-a-randomized-experiment
 exchangeability
 consistency-and-positivity
 two-key-assumptions

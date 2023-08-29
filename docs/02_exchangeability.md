@@ -9,11 +9,11 @@
 
 Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.
 
-## Lab: Using R to analyze an experiment
+## Lab: Statistics review with math and simulations
 
 > Aug 30
 
-Coming soon.
+The course will use several ideas from your previous coursework in statistics, including random variables, expected values, and independence. This lab will review these concepts in math and using simulations in R.
 
 ## Exchangeability and conditional randomization
 
@@ -37,11 +37,11 @@ By the end of class, you will be able to
 * understand the idea of standardization
 * recognize equality between standardization and inverse probability of treatment weighting
 
-## Lab: Standardization with `group_by()` and `summarize()`
+## Lab: Analyze a randomized experiment
 
 > Sep 6
 
-This lab will practice standardization, using the `group_by()` and `summarize()` functions that are available as part of the [`tidyverse`](https://www.tidyverse.org/).
+This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)).
 
 ## Exchangeability
 
