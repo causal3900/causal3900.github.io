@@ -5,7 +5,7 @@
 
 ## Randomized experiments
 
-> Aug 29. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
+> Aug 29. [**Slides**](assets/slides/2-1_random_experiments.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
 
 Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.
 
@@ -15,14 +15,11 @@ Much of this course will address observational studies with non-randomized treat
 
 Coming soon.
 
-## Conditional randomization
+## Exchangeability and conditional randomization
 
-> Aug 31. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.2.
+> Aug 31. [**Slides**](assets/slides/2-2_exchangeability.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.2.
 
-In a conditionally randomized experiment, treatment $A$ is assigned to units randomly with assignment probabilities that differ as a function of pre-existing characteristics $\vec{L}$. Conditional randomization is useful for two reasons.
-
-1. **Improved precision.** If the potential outcome $Y^1$ has higher variance than the outcome $Y^0$ in some population subgroup with $\vec{L} = \vec\ell$, then assigning more units to $A = 1$ in this subgroup will improve precision
-2. **Analogy to observational studies.** For our purposes, conditional randomization is the notion that makes observational studies possible: when treatment is not actually randomized, we often hope that it is approximately random within population subgroups. We discuss conditional randomization to set the stage for coming classes that will make use of this analogy.
+We will talk about why experiments are good: they help us ask precise causal questions, and they are a setting in which a key assumption (exchangeability) holds by design. We will discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.
 
 ## Standardization
 

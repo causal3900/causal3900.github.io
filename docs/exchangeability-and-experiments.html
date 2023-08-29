@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Exchangeability and experiments | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="2.1 Randomized experiments  Aug 29. After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
+<meta name="description" content="2.1 Randomized experiments  Aug 29. Slides After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="2 Exchangeability and experiments | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="2.1 Randomized experiments  Aug 29. After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
+<meta property="og:description" content="2.1 Randomized experiments  Aug 29. Slides After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Exchangeability and experiments | Causal Inference Course">
-<meta name="twitter:description" content="2.1 Randomized experiments  Aug 29. After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
+<meta name="twitter:description" content="2.1 Randomized experiments  Aug 29. Slides After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -89,7 +89,7 @@
 <span class="header-section-number">2.1</span> Randomized experiments<a class="anchor" aria-label="anchor" href="#randomized-experiments"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Aug 29. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 2 through the end of 2.1.</p>
+<p>Aug 29. <a href="assets/slides/2-1_random_experiments.pdf"><strong>Slides</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 2 through the end of 2.1.</p>
 </blockquote>
 <p>Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.</p>
 </div>
@@ -102,20 +102,14 @@
 </blockquote>
 <p>Coming soon.</p>
 </div>
-<div id="conditional-randomization" class="section level2" number="2.3">
+<div id="exchangeability-and-conditional-randomization" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">2.3</span> Conditional randomization<a class="anchor" aria-label="anchor" href="#conditional-randomization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Exchangeability and conditional randomization<a class="anchor" aria-label="anchor" href="#exchangeability-and-conditional-randomization"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Aug 31. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 2.2.</p>
+<p>Aug 31. <a href="assets/slides/2-2_exchangeability.pdf"><strong>Slides</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 2.2.</p>
 </blockquote>
-<p>In a conditionally randomized experiment, treatment <span class="math inline">\(A\)</span> is assigned to units randomly with assignment probabilities that differ as a function of pre-existing characteristics <span class="math inline">\(\vec{L}\)</span>. Conditional randomization is useful for two reasons.</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>Improved precision.</strong> If the potential outcome <span class="math inline">\(Y^1\)</span> has higher variance than the outcome <span class="math inline">\(Y^0\)</span> in some population subgroup with <span class="math inline">\(\vec{L} = \vec\ell\)</span>, then assigning more units to <span class="math inline">\(A = 1\)</span> in this subgroup will improve precision</li>
-<li>
-<strong>Analogy to observational studies.</strong> For our purposes, conditional randomization is the notion that makes observational studies possible: when treatment is not actually randomized, we often hope that it is approximately random within population subgroups. We discuss conditional randomization to set the stage for coming classes that will make use of this analogy.</li>
-</ol>
+<p>We will talk about why experiments are good: they help us ask precise causal questions, and they are a setting in which a key assumption (exchangeability) holds by design. We will discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.</p>
 </div>
 <div id="standardization" class="section level2" number="2.4">
 <h2>
@@ -171,7 +165,7 @@
 <li><a class="nav-link" href="#exchangeability-and-experiments"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
 <li><a class="nav-link" href="#randomized-experiments"><span class="header-section-number">2.1</span> Randomized experiments</a></li>
 <li><a class="nav-link" href="#lab-using-r-to-analyze-an-experiment"><span class="header-section-number">2.2</span> Lab: Using R to analyze an experiment</a></li>
-<li><a class="nav-link" href="#conditional-randomization"><span class="header-section-number">2.3</span> Conditional randomization</a></li>
+<li><a class="nav-link" href="#exchangeability-and-conditional-randomization"><span class="header-section-number">2.3</span> Exchangeability and conditional randomization</a></li>
 <li><a class="nav-link" href="#standardization"><span class="header-section-number">2.4</span> Standardization</a></li>
 <li><a class="nav-link" href="#lab-standardization-with-group_by-and-summarize"><span class="header-section-number">2.5</span> Lab: Standardization with group_by() and summarize()</a></li>
 <li><a class="nav-link" href="#exchangeability"><span class="header-section-number">2.6</span> Exchangeability</a></li>
@@ -194,7 +188,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-08-22</p>
+    <p>Last built on 2023-08-28</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
