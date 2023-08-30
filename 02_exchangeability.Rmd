@@ -11,7 +11,7 @@ Much of this course will address observational studies with non-randomized treat
 
 ## Lab: Statistics review with math and simulations
 
-> Aug 30
+> Aug 30. [**Slides**](assets/discussions/discussion2-slides.pdf)
 
 The course will use several ideas from your previous coursework in statistics, including random variables, expected values, and independence. This lab will review these concepts in math and using simulations in R.
 
