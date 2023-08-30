@@ -1,6 +1,6 @@
 # (PART) Discussions {-}
 
-# Discussion 2. Simulations {-}
+# Discussion 2. Stats review {-}
 
 To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion2_download.Rmd)
 
