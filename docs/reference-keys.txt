@@ -50,3 +50,6 @@ research-discussion-sam
 research-discussion-ian
 lab-group-presentations
 course-recap
+sample-expectations-converge-to-population
+simulate-conditional-expectations
+show-independence-of-variables---example-of-two-dice-rolling
