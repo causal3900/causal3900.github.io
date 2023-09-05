@@ -1,7 +1,8 @@
 ---
-title: "Analyzing an Experiment in R"
 output: html_document
 ---
+
+# Discussion 3. Analyzing an Experiment in R {-}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
