@@ -56,5 +56,9 @@ show-independence-of-variables---example-of-two-dice-rolling
 get-out-and-vote-experiment
 experimental-design
 download-the-data
-introduction-4
-analyze
+analyze-experiment
+necessary-packages
+import-data
+clean-data
+balance-table
+results
