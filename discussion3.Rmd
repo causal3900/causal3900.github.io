@@ -5,7 +5,7 @@ output: html_document
 # Discussion 3. Analyzing an Experiment in R {-}
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ## Get out and Vote Experiment
@@ -39,7 +39,66 @@ would be revealed to their household *and* to their neighbors.
 
 The first step is to download the data [here](assets/data/social_pressure.dta).
 
-### Introduction
+## Analyze Experiment
 
+### Necessary packages
+```{r}
+library(dplyr)
+library(haven)
+```
 
-### Analyze
+### Import data
+```{r}
+gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
+```
+
+### Clean data
+
+You'll need to construct `age` from the `yob` variable.
+```{r}
+gotv <- gotv |>
+  mutate(
+    age = floor(2006 - yob),
+    hh_size = as.numeric(hh_size),
+    treatment = case_when(
+      treatment == 0 ~ "Control",
+      treatment == 1 ~ "Hawthorne",
+      treatment == 2 ~ "Civic Duty",
+      treatment == 3 ~ "Neighbors",
+      treatment == 4 ~ "Self"
+    )
+  ) |>
+  zap_labels()
+```
+
+### Balance table
+
+```{r}
+covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
+
+gotv |>
+  summarise(
+    across(.cols = all_of(covariates), .fns = mean), .by = treatment
+  )
+
+# gotv |>
+#   tbl_summary(
+#     include = all_of(covariates),
+#     type = list(everything() ~ "continuous"),
+#     by = treatment,
+#     statistic = list(all_continuous() ~ "{mean}"),
+#     label = list(
+#       sex ~ "Female",
+#       age ~ "Age (in years)"
+#     ),
+#     digits = list(age ~ 3)
+#   )
+```
+
+### Results
+
+```{r}
+gotv |>
+  summarise(`Percentage Voting` = mean(voted), `N of Individuals` = n(), .by = treatment)
+```
+
