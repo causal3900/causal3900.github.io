@@ -21,9 +21,9 @@ The course will use several ideas from your previous coursework in statistics, i
 
 We will talk about why experiments are good: they help us ask precise causal questions, and they are a setting in which a key assumption (exchangeability) holds by design. We will discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.
 
-## Standardization
+## Standardization and effect measures
 
-> Sep 5. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.3.
+> Sep 5. [**Slides**](assets/slides/2-3_standardization.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 1.3 and 2.3.
 
 Standardization is an important statistical procedure with two steps:
 
@@ -34,8 +34,8 @@ In conditionally randomized experiments, standardization is essential to yield u
 
 By the end of class, you will be able to
 
-* understand the idea of standardization
-* recognize equality between standardization and inverse probability of treatment weighting
+* describe different ways to quantitatively measure a causal effect
+* estimate the average causal effect using data from a conditionally randomized experiment
 
 ## Lab: Analyze a randomized experiment
 

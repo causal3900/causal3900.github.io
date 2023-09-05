@@ -6,7 +6,7 @@ exchangeability-and-experiments
 randomized-experiments
 lab-statistics-review-with-math-and-simulations
 exchangeability-and-conditional-randomization
-standardization
+standardization-and-effect-measures
 lab-analyze-a-randomized-experiment
 exchangeability
 consistency-and-positivity

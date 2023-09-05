@@ -1,0 +1,107 @@
+---
+output: pdf_document
+---
+
+# Problem Set 2. Experiments
+
+Relevant material will be covered by **Sep 7**. Problem set is due **Sep 14**.
+
+To complete the problem set, [**Download the .Rmd**](assets/psets/pset2_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
+
+This problem set is based on:
+
+Bertrand, M \& Mullainathan, S. 2004. "[Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination](https://www-jstor-org.proxy.library.cornell.edu/stable/3592802)." American Economic Review 94(4):991--1013.
+
+Here's a heads-up about what will be hard in this problem set
+
+- for some, reading a social science paper will be hard
+- for some, mathematical statistics will be hard
+- for some, R coding will be hard
+
+We have a lot of support so that you will succeed at all three. Look at this assignment on the course website for many helpful hints that are only in the web version!
+
+## 1. Conceptual questions about the study design
+
+Read the first 10 pages of the paper (through the end of section 2).
+
+### 1.1. (5 points) Fundamental Problem
+
+One submitted resume had the name "Emily Baker." It yielded a callback. The same resume could have had the name "Lakisha Washington." Explain how the Fundamental Problem of Causal Inference applies to this case (1--2 sentences).
+
+### 1.2. (5 points) Exchangeability
+
+In a sentence, state what exchangeability means in this study. For concreteness, for this question you may suppose that the only names in the study were "Emily Baker" and "Lakisha Washington."
+
+### 1.3. (10 points) Something you liked
+
+State something concrete that you appreciate about the study design, other than randomization.
+
+## 2. Analyzing the experimental data
+
+Load packages that our code will use.
+```{r, comment = F, message = F}
+library(tidyverse)
+library(haven)
+```
+
+Download the study's data from OpenICPSR: [https://www.openicpsr.org/openicpsr/project/116023/version/V1/view](https://www.openicpsr.org/openicpsr/project/116023/version/V1/view).
+
+```{r}
+d <- read_dta("lakisha_aer.dta")
+```
+
+We will use two variables:
+
+- `call` (outcome) indicates whether the submitted resume yielded a callback
+- `race` (treatment) is the race signaled by the name on the resume: `b` for Black, `w` for white
+
+Restrict to these variables, using `select()`, a function in the `tidyverse`.
+
+```{r}
+d_selected <- d %>%
+  select(call, race)
+```
+
+### 2.1. (5 points) Point estimates of expected potential outcomes
+
+The top of Table 1 reports callback rates: 9.65\% for white names and 6.45\% for Black names.
+
+Reproduce those numbers. To do so, add a `group_by()` action between `d_selected` and `summarize` below.
+
+```{r}
+d_sufficient_statistics <- d_selected %>%
+  summarize(callback_rate = mean(call),
+            number_cases = n()) %>%
+  print()
+```
+
+### 2.2. (5 points) Standard errors for expected potential outcomes
+
+Use `mutate()` to create a new column containing the standard error of each estimate, calculated by an analytical formula you know from statistics.
+
+### 2.3. (5 points) Confidence intervals for expected potential outcomes
+
+Create a 95\% confidence interval for $\pi^a$, using your point estimate and standard error and asymptotic normality of the sampling distribution.
+
+### 2.4. (5 points) Visualize expected potential outcomes
+
+Using `ggplot()`, visualize the estimated callback rate by race. Use `geom_point()` for point estimates and `geom_errorbar()` for confidence intervals, with race on the `x` axis and estimates on the `y` axis. Label the axes using full words.
+
+### 2.5. (5 points) Causal effect estimates
+
+Above, you estimated the mean outcomes with a name signaling Black and with a name signaling white. Now, estimate the average causal effect: the difference between these two. Report your estimate with a 95\% confidence interval.
+
+### 2.6. (5 points) Check: Linear model estimates
+
+As a point of comparison, we now will estimate a linear model of callbacks on the racial signal. Because there is just one binary predictor, this is identical to taking mean outcomes in each subgroup and examining the difference.
+
+```{r}
+fit <- lm(call ~ race, data = d)
+```
+
+Use `coef(fit)` and `confint(fit)` to see the point estimate and confidence interval for the coefficient on race. They should be nearly identical to what you produced in 2.5!
+
+
+```{r}
+sessionInfo()
+```
