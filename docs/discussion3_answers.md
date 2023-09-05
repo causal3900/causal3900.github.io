@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Discussion 3. Analyzing an Experiment in R {-}
+# Discussion 3. Analyzing an Experiment in R
 
 
 
@@ -58,56 +58,54 @@ Alternatively (if you really want), you could download the data
 
 ### Clean data
 
-First, we need to construct an age variable describing how old (in number of years)
-each person was in the year 2006. The `yob` variable says which year each person
-was born in
+You'll need to construct `age` from the `yob` variable.
 
 ```r
 gotv <- gotv |>
-  mutate(age = )
-```
-
-Now, convert the `treatment` variable from it's numeric representation to the
-corresponding labels which are
-- 0: "Control"
-- 1: "Hawthorne" (this is the 'researchers viewing records via public data' treatment arm)
-- 2: "Civic Duty" (this is the 'voting is your civic duty' treatment arm)
-- 3: "Neighbors" (this is the 'voting turnout revealed to neighbors' treatment arm)
-- 4: "Self" (this is the 'voting turnout revealed to household' treatment arm)
-
-```r
-gotv <- gotv |>
-  mutate(treatment = )
+  mutate(
+    age = floor(2006 - yob),
+    hh_size = as.numeric(hh_size),
+    treatment = case_when(
+      treatment == 0 ~ "Control",
+      treatment == 1 ~ "Hawthorne",
+      treatment == 2 ~ "Civic Duty",
+      treatment == 3 ~ "Neighbors",
+      treatment == 4 ~ "Self"
+    )
+  ) |>
+  zap_labels()
 ```
 
 ### Balance table
-
-Next, we're going to confirm that our control and treatment groups look pretty
-much the same across a set of covariates. Specifically this means we're going to
-calculate the mean value of a set of covariates across each of the treatment/control
-arms, and we expect them to be pretty much equal if our randomization worked.
-
-__Hint__: The [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
-and [`summarize`](https://dplyr.tidyverse.org/reference/summarise.html) functions
-from dplyr are your friend here!
 
 
 ```r
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
 gotv_results <- gotv |>
-  group_by(...) |>
-  summarise(...)
+  summarise(
+    across(.cols = all_of(covariates), .fns = mean), .by = treatment
+  )
+
+# gotv |>
+#   tbl_summary(
+#     include = all_of(covariates),
+#     type = list(everything() ~ "continuous"),
+#     by = treatment,
+#     statistic = list(all_continuous() ~ "{mean}"),
+#     label = list(
+#       sex ~ "Female",
+#       age ~ "Age (in years)"
+#     ),
+#     digits = list(age ~ 3)
+#   )
 ```
 
 ### Results
 
-Finally, let's replicate the final results. Simply, for each treatment/control
-subgroup, we calculate the percentage of individuals who got out and voted!
-
 
 ```r
 gotv |>
-  ...
+  summarise(`Percentage Voting` = mean(voted), `N of Individuals` = n(), .by = treatment)
 ```
 

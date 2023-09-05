@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>14 Discussion 3. Analyzing an Experiment in R | Causal Inference Course</title>
+<title>Discussion 3. Analyzing an Experiment in R | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="14.1 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
+<meta name="description" content="14.3 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="14 Discussion 3. Analyzing an Experiment in R | Causal Inference Course">
+<meta property="og:title" content="Discussion 3. Analyzing an Experiment in R | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="14.1 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
+<meta property="og:description" content="14.3 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="14 Discussion 3. Analyzing an Experiment in R | Causal Inference Course">
-<meta name="twitter:description" content="14.1 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
+<meta name="twitter:title" content="Discussion 3. Analyzing an Experiment in R | Causal Inference Course">
+<meta name="twitter:description" content="14.3 Get out and Vote Experiment In this lab we are going to explore an experiment that digs into the mechanisms underlying why people vote. A long-standing theory as to why many people vote is...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -64,8 +64,8 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="active" href="discussion-3.-analyzing-an-experiment-in-r.html"><span class="header-section-number">14</span> Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r-1.html">Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html"><span class="header-section-number">14</span> Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="active" href="discussion-3.-analyzing-an-experiment-in-r-1.html">Discussion 3. Analyzing an Experiment in R</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -84,13 +84,12 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-3.-analyzing-an-experiment-in-r" class="section level1" number="14">
-<h1>
-<span class="header-section-number">14</span> Discussion 3. Analyzing an Experiment in R<a class="anchor" aria-label="anchor" href="#discussion-3.-analyzing-an-experiment-in-r"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-3.-analyzing-an-experiment-in-r-1" class="section level1 unnumbered">
+<h1>Discussion 3. Analyzing an Experiment in R<a class="anchor" aria-label="anchor" href="#discussion-3.-analyzing-an-experiment-in-r-1"><i class="fas fa-link"></i></a>
 </h1>
-<div id="get-out-and-vote-experiment" class="section level2" number="14.1">
+<div id="get-out-and-vote-experiment-1" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">14.1</span> Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this lab we are going to explore an experiment that digs into the mechanisms
 underlying <strong>why people vote</strong>. A long-standing theory as to why many people
@@ -99,9 +98,9 @@ is their civic duty). This theory, while being a dominant theoretical
 explanation, had very little empirical backing for a long time. This experiment
 examines this very theory by asking the question:
 <strong>to what extent do social norms cause voter turnout</strong>?</p>
-<div id="experimental-design" class="section level3" number="14.1.1">
+<div id="experimental-design-1" class="section level3" number="14.3.1">
 <h3>
-<span class="header-section-number">14.1.1</span> Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3.1</span> Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>In order to answer this question, approximately 80,000 Michigan households
 were randomly assigned to treatment and control groups, where the treatment
@@ -120,102 +119,100 @@ would be revealed to their household <em>and</em> to their neighbors.</li>
 </ul>
 </div>
 </div>
-<div id="analyze-experiment" class="section level2" number="14.2">
+<div id="analyze-experiment-1" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">14.2</span> Analyze Experiment<a class="anchor" aria-label="anchor" href="#analyze-experiment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Analyze Experiment<a class="anchor" aria-label="anchor" href="#analyze-experiment-1"><i class="fas fa-link"></i></a>
 </h2>
-<div id="necessary-packages" class="section level3" number="14.2.1">
+<div id="necessary-packages-1" class="section level3" number="14.4.1">
 <h3>
-<span class="header-section-number">14.2.1</span> Necessary packages<a class="anchor" aria-label="anchor" href="#necessary-packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.1</span> Necessary packages<a class="anchor" aria-label="anchor" href="#necessary-packages-1"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Note:</strong> If this errors you probably either don’t have <code>dplyr</code> or <code>haven</code>
 installed.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="import-data" class="section level3" number="14.2.2">
+<div id="import-data-1" class="section level3" number="14.4.2">
 <h3>
-<span class="header-section-number">14.2.2</span> Import data<a class="anchor" aria-label="anchor" href="#import-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.2</span> Import data<a class="anchor" aria-label="anchor" href="#import-data-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively (if you really want), you could download the data
 <a href="assets/data/social_pressure.dta">here</a> and load it directly from your computer.</p>
 </div>
-<div id="clean-data" class="section level3" number="14.2.3">
+<div id="clean-data-1" class="section level3" number="14.4.3">
 <h3>
-<span class="header-section-number">14.2.3</span> Clean data<a class="anchor" aria-label="anchor" href="#clean-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.3</span> Clean data<a class="anchor" aria-label="anchor" href="#clean-data-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>You’ll need to construct <code>age</code> from the <code>yob</code> variable.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<p>First, we need to construct an age variable describing how old (in number of years)
+each person was in the year 2006. The <code>yob</code> variable says which year each person
+was born in</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="fl">2006</span> <span class="op">-</span> <span class="va">yob</span><span class="op">)</span>,</span>
-<span>    hh_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">hh_size</span><span class="op">)</span>,</span>
-<span>    treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
-<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"Control"</span>,</span>
-<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Hawthorne"</span>,</span>
-<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Civic Duty"</span>,</span>
-<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"Neighbors"</span>,</span>
-<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Self"</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://haven.tidyverse.org/reference/zap_labels.html">zap_labels</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="op">)</span></span></code></pre></div>
+<p>Now, convert the <code>treatment</code> variable from it’s numeric representation to the
+corresponding labels which are
+- 0: “Control”
+- 1: “Hawthorne” (this is the ‘researchers viewing records via public data’ treatment arm)
+- 2: “Civic Duty” (this is the ‘voting is your civic duty’ treatment arm)
+- 3: “Neighbors” (this is the ‘voting turnout revealed to neighbors’ treatment arm)
+- 4: “Self” (this is the ‘voting turnout revealed to household’ treatment arm)</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="op">)</span></span></code></pre></div>
 </div>
-<div id="balance-table" class="section level3" number="14.2.4">
+<div id="balance-table-1" class="section level3" number="14.4.4">
 <h3>
-<span class="header-section-number">14.2.4</span> Balance table<a class="anchor" aria-label="anchor" href="#balance-table"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.4</span> Balance table<a class="anchor" aria-label="anchor" href="#balance-table-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<p>Next, we’re going to confirm that our control and treatment groups look pretty
+much the same across a set of covariates. Specifically this means we’re going to
+calculate the mean value of a set of covariates across each of the treatment/control
+arms, and we expect them to be pretty much equal if our randomization worked.</p>
+<p><strong>Hint</strong>: The <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a>
+and <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarize</code></a> functions
+from dplyr are your friend here!</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"g2000"</span>, <span class="st">"g2002"</span>, <span class="st">"p2000"</span>, <span class="st">"p2002"</span>, <span class="st">"p2004"</span>, <span class="st">"hh_size"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span>.cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">covariates</span><span class="op">)</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span>, .by <span class="op">=</span> <span class="va">treatment</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># gotv |&gt;</span></span>
-<span><span class="co">#   tbl_summary(</span></span>
-<span><span class="co">#     include = all_of(covariates),</span></span>
-<span><span class="co">#     type = list(everything() ~ "continuous"),</span></span>
-<span><span class="co">#     by = treatment,</span></span>
-<span><span class="co">#     statistic = list(all_continuous() ~ "{mean}"),</span></span>
-<span><span class="co">#     label = list(</span></span>
-<span><span class="co">#       sex ~ "Female",</span></span>
-<span><span class="co">#       age ~ "Age (in years)"</span></span>
-<span><span class="co">#     ),</span></span>
-<span><span class="co">#     digits = list(age ~ 3)</span></span>
-<span><span class="co">#   )</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="results" class="section level3" number="14.2.5">
+<div id="results-1" class="section level3" number="14.4.5">
 <h3>
-<span class="header-section-number">14.2.5</span> Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4.5</span> Results<a class="anchor" aria-label="anchor" href="#results-1"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>`Percentage Voting` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>, `N of Individuals` <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .by <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span></span></code></pre></div>
+<p>Finally, let’s replicate the final results. Simply, for each treatment/control
+subgroup, we calculate the percentage of individuals who got out and voted!</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="discussion-3.-analyzing-an-experiment-in-r-1.html#cb16-1" tabindex="-1"></a>gotv <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="discussion-3.-analyzing-an-experiment-in-r-1.html#cb16-2" tabindex="-1"></a>  ...</span></code></pre></div>
 
 </div>
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></div>
-<div class="next"><a href="discussion-3.-analyzing-an-experiment-in-r-1.html">Discussion 3. Analyzing an Experiment in R</a></div>
+<div class="prev"><a href="discussion-3.-analyzing-an-experiment-in-r.html"><span class="header-section-number">14</span> Discussion 3. Analyzing an Experiment in R</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#discussion-3.-analyzing-an-experiment-in-r"><span class="header-section-number">14</span> Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="nav-link" href="#discussion-3.-analyzing-an-experiment-in-r-1">Discussion 3. Analyzing an Experiment in R</a></li>
 <li>
-<a class="nav-link" href="#get-out-and-vote-experiment"><span class="header-section-number">14.1</span> Get out and Vote Experiment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#experimental-design"><span class="header-section-number">14.1.1</span> Experimental Design</a></li></ul>
+<a class="nav-link" href="#get-out-and-vote-experiment-1"><span class="header-section-number">14.3</span> Get out and Vote Experiment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#experimental-design-1"><span class="header-section-number">14.3.1</span> Experimental Design</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#analyze-experiment"><span class="header-section-number">14.2</span> Analyze Experiment</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#necessary-packages"><span class="header-section-number">14.2.1</span> Necessary packages</a></li>
-<li><a class="nav-link" href="#import-data"><span class="header-section-number">14.2.2</span> Import data</a></li>
-<li><a class="nav-link" href="#clean-data"><span class="header-section-number">14.2.3</span> Clean data</a></li>
-<li><a class="nav-link" href="#balance-table"><span class="header-section-number">14.2.4</span> Balance table</a></li>
-<li><a class="nav-link" href="#results"><span class="header-section-number">14.2.5</span> Results</a></li>
+<a class="nav-link" href="#analyze-experiment-1"><span class="header-section-number">14.4</span> Analyze Experiment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#necessary-packages-1"><span class="header-section-number">14.4.1</span> Necessary packages</a></li>
+<li><a class="nav-link" href="#import-data-1"><span class="header-section-number">14.4.2</span> Import data</a></li>
+<li><a class="nav-link" href="#clean-data-1"><span class="header-section-number">14.4.3</span> Clean data</a></li>
+<li><a class="nav-link" href="#balance-table-1"><span class="header-section-number">14.4.4</span> Balance table</a></li>
+<li><a class="nav-link" href="#results-1"><span class="header-section-number">14.4.5</span> Results</a></li>
 </ul>
 </li>
 </ul>
