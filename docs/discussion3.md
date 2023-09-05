@@ -131,22 +131,30 @@ We have started some code for you below. What you need to do is:
 ```r
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
+gotv_balance <- gotv |>
+  group_by(...) |>
+  summarise(...) |>
+
+print(gotv_balance)
+```
+
+Note that your numbers will not match up exactly with Table 1. What you want to notice is that the values in each column are similar across the rows.
+
+### Results
+
+Finally, let's replicate the final results (Table 2). For each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! We started the code for you below. You need to 
+
+- Pass an argument to `group_by()` so that we are working with each treatment arm seperately (this should be the same as before!)
+- Pass two arguments to `summarise()` to do the following:
+  - Create a column titled `Percentage_Voting` that contains the percent of each group that voted
+  - Create a column titled `num_of_individuals` that contains the total number of people in that group
+
+
+```r
 gotv_results <- gotv |>
   group_by(...) |>
   summarise(...) |>
 
 print(gotv_results)
-```
-
-Note that your numbers will not match up exactly with Table 1. What you want to notice is that the values in each column are similar across the rows.
-### Results
-
-Finally, let's replicate the final results (Table. Simply, for each treatment/control
-subgroup, we calculate the percentage of individuals who got out and voted!
-
-
-```r
-gotv |>
-  ...
 ```
 
