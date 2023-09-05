@@ -1,0 +1,22 @@
+---
+title: "Analyzing an Experiment in R"
+author: "Mayleen and Daniel"
+date: "2023-09-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Analyzing an Experiment in R
+In this lab...
+
+## Introduction
+...
+
+## Download the dataset
+...
+
+## Other task
+...
