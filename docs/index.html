@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="An undergraduate course on causal inference">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -64,6 +64,7 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
+<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -76,21 +77,20 @@
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
-<div class="book-extra">
+
+        <div class="book-extra">
           
         </div>
       </nav>
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="welcome" class="section level1 unnumbered">
 <h1>Welcome<a class="anchor" aria-label="anchor" href="#welcome"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#welcome"><i class="fas fa-link"></i></a>
 </h1>
 <p>Cornell <a href="https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900">STSCI</a> / <a href="https://classes.cornell.edu/browse/roster/FA23/class/INFO3900">INFO</a> / <a href="https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900">ILRST 3900</a>. Causal Inference. Fall 2023.</p>
 <p>Welcome! Together, we will learn to make causal claims by combining data with arguments.</p>
 <p>Taught by <a href="https://www.ianlundberg.org/">Ian Lundberg</a>, <a href="https://ysamuelwang.com/">Y. Samuel Wang</a>, <a href="https://www.mayleencortez.com/">Mayleen Cortez-Rodriguez</a>, and <a href="https://www.dmolitor.com/">Daniel Molitor</a>. Read about us <a href="who-we-are">here</a>!</p>
 <div id="learning-objectives" class="section level2 unnumbered">
 <h2>Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#learning-objectives"><i class="fas fa-link"></i></a>
 </h2>
 <p>As a result of participating in this course, students will be able to</p>
 <ul>
@@ -101,14 +101,12 @@
 </div>
 <div id="is-this-course-for-me" class="section level2 unnumbered">
 <h2>Is this course for me?<a class="anchor" aria-label="anchor" href="#is-this-course-for-me"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#is-this-course-for-me"><i class="fas fa-link"></i></a>
 </h2>
 <p>The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses.</p>
 <p>Not a Cornell student? You are welcome to follow along on this site.</p>
 </div>
 <div id="readings" class="section level2 unnumbered">
 <h2>Readings<a class="anchor" aria-label="anchor" href="#readings"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#readings"><i class="fas fa-link"></i></a>
 </h2>
 <p>Especially in the beginning, this course draws heavily on</p>
 <blockquote>
@@ -118,13 +116,11 @@
 </div>
 <div id="organization-of-the-site" class="section level2 unnumbered">
 <h2>Organization of the site<a class="anchor" aria-label="anchor" href="#organization-of-the-site"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#organization-of-the-site"><i class="fas fa-link"></i></a>
 </h2>
 <p>Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go. <a href="Who%20we%20are">Who we are</a> tells you a bit about the teaching team.</p>
 </div>
 <div id="land-acknowledgment" class="section level2 unnumbered">
 <h2>Land acknowledgment<a class="anchor" aria-label="anchor" href="#land-acknowledgment"><i class="fas fa-link"></i></a>
-<a class="anchor" aria-label="anchor" href="#land-acknowledgment"><i class="fas fa-link"></i></a>
 </h2>
 <p>We recognize the university land acknowledgment, as well as an additional emphasis from the <a href="https://cals.cornell.edu/american-indian-indigenous-studies">Cornell American Indian and Indigenous Studies Program</a>.</p>
 <blockquote>
@@ -142,10 +138,6 @@
   <div class="chapter-nav">
 <div class="empty"></div>
 <div class="next"><a href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></div>
-</div>
-<div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -156,7 +148,7 @@
 <li><a class="nav-link" href="#organization-of-the-site">Organization of the site</a></li>
 <li><a class="nav-link" href="#land-acknowledgment">Land acknowledgment</a></li>
 </ul>
-<div class="book-extra">
+      <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
           <li><a id="canvas" href="https://canvas.cornell.edu/courses/57329">Canvas </a></li>

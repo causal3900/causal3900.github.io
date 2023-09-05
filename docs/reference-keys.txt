@@ -53,4 +53,8 @@ course-recap
 sample-expectations-converge-to-population
 simulate-conditional-expectations
 show-independence-of-variables---example-of-two-dice-rolling
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
+get-out-and-vote-experiment
+experimental-design
+download-the-data
+introduction-4
+analyze
