@@ -34,6 +34,7 @@ would be revealed to all other members of their household.
 would be revealed to their household *and* to their neighbors.
 
 ## Analyze Experiment
+Download this RMarkdown file [here]()
 
 ### Necessary packages
 
@@ -52,9 +53,16 @@ library(haven)
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 ```
 
-Alternatively (if you really want), you could download the data
-[here](assets/data/social_pressure.dta) and load it directly from your computer.
+> Alternatively (if you really want), you could download the data [here](assets/data/social_pressure.dta) and load it directly from your computer. Make sure to save the data into the same directory that your RMarkdown file is in. 
+> Then you can you can import the data as:
+>
+> `gotv <- read_dta("social_pressure.dta")`
 
+Run the following code to get a quick peek at the dataset using the [function `glimpse`](https://dplyr.tidyverse.org/reference/glimpse.html). This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about year of birth `yob` but not explicitly age. Also notice that the treatments are labeled with the numbers 0 through 4.
+
+```r
+glimpse(gotv)
+```
 
 ### Clean data
 
