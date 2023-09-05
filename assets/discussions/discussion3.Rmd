@@ -10,7 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Analyzing an Experiment in R
-In this lab...
+In this lab we are going to explore an experiment that digs into the mechanisms
+underlying __why people vote__. A long-standing theory as to why many people
+vote is that it is driven by social norms (e.g. the understanding that voting
+is their civic duty). This theory, while being a dominant theoretical 
+explanation, had very little empirical backing for a long time. This experiment
+examines this very theory by asking the question:
+__to what extent do social norms cause voter turnout__?
 
 ## Introduction
 ...
