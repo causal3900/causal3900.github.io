@@ -80,7 +80,7 @@ gotv <- gotv |>
 ```{r}
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
-gotv |>
+gotv_results <- gotv |>
   summarise(
     across(.cols = all_of(covariates), .fns = mean), .by = treatment
   )

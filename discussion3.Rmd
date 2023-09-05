@@ -92,7 +92,7 @@ from dplyr are your friend here!
 ```{r}
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
-gotv |>
+gotv_results <- gotv |>
   group_by(...) |>
   summarise(...)
 ```
