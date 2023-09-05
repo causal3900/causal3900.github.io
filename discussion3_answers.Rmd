@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Discussion 3. Analyzing an Experiment in R
+# Discussion 3. Analyzing an Experiment in R - Solutions
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
