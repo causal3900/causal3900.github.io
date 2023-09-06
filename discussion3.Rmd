@@ -4,9 +4,16 @@ output: html_document
 
 # Discussion 3. Analyzing an Experiment in R {-}
 
+[**Slides**](assets/discussions/discussion3-slides.pdf)
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
 ```
+
+## Download .Rmd Document
+
+Download today's [**.Rmd document here**](assets/discussions/discussion3.Rmd).
+
 
 ## Get out and Vote Experiment
 

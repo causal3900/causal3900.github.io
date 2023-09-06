@@ -53,7 +53,7 @@ course-recap
 sample-expectations-converge-to-population
 simulate-conditional-expectations
 show-independence-of-variables---example-of-two-dice-rolling
-discussion-3.-analyzing-an-experiment-in-r
+download-.rmd-document
 get-out-and-vote-experiment
 experimental-design
 analyze-experiment
@@ -62,11 +62,3 @@ import-data
 clean-data
 balance-table
 results
-get-out-and-vote-experiment-1
-experimental-design-1
-analyze-experiment-1
-necessary-packages-1
-import-data-1
-clean-data-1
-balance-table-1
-results-1

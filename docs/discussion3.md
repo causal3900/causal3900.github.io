@@ -4,6 +4,13 @@ output: html_document
 
 # Discussion 3. Analyzing an Experiment in R {-}
 
+[**Slides**](assets/discussions/discussion3-slides.pdf)
+
+
+
+## Download .Rmd Document
+
+Download today's [**.Rmd document here**](assets/discussions/discussion3.Rmd).
 
 
 ## Get out and Vote Experiment
@@ -83,7 +90,7 @@ We have the code started for you below. Fill in the appropriate expression after
 
 ```r
 gotv <- gotv |>
-  mutate(age = ) |>
+  mutate(age = )
 ```
 
 Now, convert the `treatment` variable from it's numeric representation to the
@@ -106,7 +113,7 @@ We have started the code for you below. Decide what argument(s) to pass inside t
 
 ```r
 gotv <- gotv |>
-  mutate(treatment = case_when()) |> 
+  mutate(treatment = case_when()) 
 ```
 
 Now, when we use `glimpse` we see there is an added `age` variable and that the treatments have word instead of number labels.
@@ -137,7 +144,7 @@ covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_s
 
 gotv_balance <- gotv |>
   group_by(...) |>
-  summarise(...) |>
+  summarise(...)
 
 print(gotv_balance)
 ```
@@ -157,7 +164,7 @@ Finally, let's replicate the final results (Table 2). For each treatment group, 
 ```r
 gotv_results <- gotv |>
   group_by(...) |>
-  summarise(...) |>
+  summarise(...)
 
 print(gotv_results)
 ```
