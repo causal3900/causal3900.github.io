@@ -5,25 +5,25 @@
 
 ## Randomized experiments
 
-> Aug 29. [**Slides**](assets/slides/2-1_random_experiments.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
+> Aug 29. [**Slides.**](assets/slides/2-1_random_experiments.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
 
 Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.
 
 ## Lab: Statistics review with math and simulations
 
-> Aug 30. [**Slides**](assets/discussions/discussion2-slides.pdf)
+> Aug 30. [**Slides.**](assets/discussions/discussion2-slides.pdf)
 
 The course will use several ideas from your previous coursework in statistics, including random variables, expected values, and independence. This lab will review these concepts in math and using simulations in R.
 
 ## Exchangeability and conditional randomization
 
-> Aug 31. [**Slides**](assets/slides/2-2_exchangeability.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.2.
+> Aug 31. [**Slides.**](assets/slides/2-2_exchangeability.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.2.
 
 We will talk about why experiments are good: they help us ask precise causal questions, and they are a setting in which a key assumption (exchangeability) holds by design. We will discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.
 
 ## Standardization and effect measures
 
-> Sep 5. [**Slides**](assets/slides/2-3_standardization.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 1.3 and 2.3.
+> Sep 5. [**Slides.**](assets/slides/2-3_standardization.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 1.3 and 2.3.
 
 Standardization is an important statistical procedure with two steps:
 
@@ -43,11 +43,8 @@ By the end of class, you will be able to
 
 This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)).
 
-## Exchangeability
+## Inverse probability weighting
 
-> Sep 7. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.1 and 3.2.
+> Sep 7. [**Slides.**](assets/slides/2-4_exchangeability.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.4, 3.1, and 3.2.
 
-This class will introduce three key ideas:
-
-1. **Exchangeability.** The assumption that treated and untreated units are **exchangeable** in the sense that the observed potential outcome for one set is informative about the unobserved potential outcome for the other set.
-2. **Conditional exchangeability.** The assumption that exchangeability holds within subpopulations where a vector of pre-treatment variables $\vec{L}$ takes a constant value $\vec\ell$
+This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds.
