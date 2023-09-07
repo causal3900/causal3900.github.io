@@ -12,7 +12,7 @@ urlcolor: blue
 
 Relevant material will be covered by **Sep 7**. Problem set is due **Sep 14**.
 
-To complete the problem set, [**Download the .Rmd**](assets/psets/pset2_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
+To complete the problem set, [**Download the .Rmd**](https://raw.githubusercontent.com/causal3900/causal3900.github.io/main/assets/psets/pset2_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
 
 This problem set is based on:
 
