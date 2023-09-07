@@ -8,7 +8,7 @@ lab-statistics-review-with-math-and-simulations
 exchangeability-and-conditional-randomization
 standardization-and-effect-measures
 lab-analyze-a-randomized-experiment
-exchangeability
+inverse-probability-weighting
 consistency-and-positivity
 two-key-assumptions
 lab-interference
