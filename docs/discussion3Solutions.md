@@ -160,10 +160,10 @@ print(gotv_balance)
 ##   treatment    sex   age g2000 g2002 p2000 p2002 p2004
 ##   <chr>      <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 ## 1 Civic Duty 0.500  49.7 0.842 0.811 0.254 0.389 0.399
-## 2 Control    0.499  50.2 0.843 0.811 0.252 0.389 0.400
+## 2 Control    0.499  49.8 0.843 0.811 0.252 0.389 0.400
 ## 3 Hawthorne  0.499  49.7 0.844 0.813 0.250 0.394 0.403
 ## 4 Neighbors  0.500  49.9 0.842 0.811 0.251 0.387 0.407
-## 5 Self       0.500  49.8 0.840 0.811 0.251 0.392 0.403
+## 5 Self       0.500  49.8 0.840 0.811 0.251 0.392 0.402
 ## # ℹ 1 more variable: hh_size <dbl>
 ```
 
@@ -195,11 +195,11 @@ print(gotv_results)
 ## # A tibble: 5 × 3
 ##   treatment  Percentage_Voting num_of_individuals
 ##   <chr>                  <dbl>              <int>
-## 1 Civic Duty             0.315              38217
-## 2 Control                0.297             191253
-## 3 Hawthorne              0.322              38202
-## 4 Neighbors              0.378              38196
-## 5 Self                   0.345              38216
+## 1 Civic Duty             0.315              38218
+## 2 Control                0.297             191243
+## 3 Hawthorne              0.322              38204
+## 4 Neighbors              0.378              38201
+## 5 Self                   0.345              38218
 ```
 
 Alternatively, you could write this without using `group_by` explicitly: 

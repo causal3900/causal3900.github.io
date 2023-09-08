@@ -10,7 +10,7 @@ standardization-and-effect-measures
 lab-analyze-a-randomized-experiment
 inverse-probability-weighting
 consistency-and-positivity
-two-key-assumptions
+asking-good-causal-questions
 lab-interference
 directed-acyclic-graphs
 marginal-independence
