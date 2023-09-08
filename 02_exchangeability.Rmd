@@ -41,7 +41,7 @@ By the end of class, you will be able to
 
 > Sep 6. [**Link to Materials**](discussion-3.-analyzing-an-experiment-in-r.html).
 >
-> [**Link to Solutions**](assets/discussions/discussion3-solutions.Rmd)
+> [**Link to Solutions**](discussion-3.-analyzing-an-experiment-in-r-solutions.html)
 
 This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)).
 
