@@ -14,6 +14,6 @@ After class, you will be ready for a discussion in lab related to a common viola
 
 ## Lab: Interference
 
-> Sep 13
+> Sep 13 [**Slides.**](assets/discussions/discussion4-interference.pdf)
 
-When defining causal effects, we often discuss the outcome $Y^a$ that a person would realize if they were exposed to treatment value $a$. But definitions become harder if there exists **interference**: the outcome of unit $i$ depends on the treatment assigned to unit $j$. This discussion will address how to ask and answer causal questions in the presence of interference.
+When defining causal effects, we often discuss the outcome $Y^a$ that a person would realize if they were exposed to treatment value $a$. But definitions become harder if there exists **interference**: the outcome of unit $i$ depends on the treatment assigned to unit $j$. This discussion will focus on understanding interference and why we need to update our potential outcomes notation if interference is present.
