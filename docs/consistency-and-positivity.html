@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 Consistency and positivity | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="3.1 Two key assumptions  Sep 12. After class, read Hernán and Robins 2020 Chapter 3.3–3.5. This class will introduce two key assumptions: positivity and consistency. Positivity. Every population...">
+<meta name="description" content="3.1 Asking good causal questions  Sep 12. Slides. After class, read Hernán and Robins 2020 Chapter 3. Optionally, read Hernán 2016. Good causal questions are structured so that credibility is...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="3 Consistency and positivity | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="3.1 Two key assumptions  Sep 12. After class, read Hernán and Robins 2020 Chapter 3.3–3.5. This class will introduce two key assumptions: positivity and consistency. Positivity. Every population...">
+<meta property="og:description" content="3.1 Asking good causal questions  Sep 12. Slides. After class, read Hernán and Robins 2020 Chapter 3. Optionally, read Hernán 2016. Good causal questions are structured so that credibility is...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 Consistency and positivity | Causal Inference Course">
-<meta name="twitter:description" content="3.1 Two key assumptions  Sep 12. After class, read Hernán and Robins 2020 Chapter 3.3–3.5. This class will introduce two key assumptions: positivity and consistency. Positivity. Every population...">
+<meta name="twitter:description" content="3.1 Asking good causal questions  Sep 12. Slides. After class, read Hernán and Robins 2020 Chapter 3. Optionally, read Hernán 2016. Good causal questions are structured so that credibility is...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -65,6 +65,7 @@
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r-solutions.html">Discussion 3. Analyzing an Experiment in R SOLUTIONS</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -87,31 +88,30 @@
 <h1>
 <span class="header-section-number">3</span> Consistency and positivity<a class="anchor" aria-label="anchor" href="#consistency-and-positivity"><i class="fas fa-link"></i></a>
 </h1>
-<div id="two-key-assumptions" class="section level2" number="3.1">
+<div id="asking-good-causal-questions" class="section level2" number="3.1">
 <h2>
-<span class="header-section-number">3.1</span> Two key assumptions<a class="anchor" aria-label="anchor" href="#two-key-assumptions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1</span> Asking good causal questions<a class="anchor" aria-label="anchor" href="#asking-good-causal-questions"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 12. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 3.3–3.5.</p>
+<p>Sep 12. <a href="assets/slides/3-1_consistency_positivity.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 3. Optionally, read <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5207342/">Hernán 2016</a>.</p>
 </blockquote>
-<p>This class will introduce two key assumptions: positivity and consistency.</p>
+<p>Good causal questions are structured so that credibility is strong for two key assumptions: positivity and consistency.</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Positivity.</strong> Every population subgroup receives every treatment value with non-zero probability</li>
 <li>
 <strong>Consistency.</strong> Potential outcomes <span class="math inline">\(Y^A\)</span> are well-defined and linked to observable data</li>
 </ol>
-<p>After class, you will be ready for a discussion in lab related to the consistency assumption.</p>
+<p>After class, you will be ready for a discussion in lab related to a common violation of the consistency assumption when one unit’s treatment affects another unit’s outcome.</p>
 </div>
 <div id="lab-interference" class="section level2" number="3.2">
 <h2>
 <span class="header-section-number">3.2</span> Lab: Interference<a class="anchor" aria-label="anchor" href="#lab-interference"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 13</p>
+<p>Sep 13 <a href="assets/discussions/discussion4-interference.pdf"><strong>Slides.</strong></a></p>
 </blockquote>
-<p>When defining causal effects, we often discuss the outcome <span class="math inline">\(Y^a\)</span> that a person would realize if they were exposed to treatment value <span class="math inline">\(a\)</span>. But definitions become harder if there exists <strong>interference</strong>: the outcome of unit <span class="math inline">\(i\)</span> depends on the treatment assigned to unit <span class="math inline">\(j\)</span>. If improperly addressed, interference can violate the consistency assumtion.</p>
-<p>In this lab, the TA will present an example study where interference is likely to be present and we will discuss how to expand our potential outcome notation to accomodate interference.</p>
+<p>When defining causal effects, we often discuss the outcome <span class="math inline">\(Y^a\)</span> that a person would realize if they were exposed to treatment value <span class="math inline">\(a\)</span>. But definitions become harder if there exists <strong>interference</strong>: the outcome of unit <span class="math inline">\(i\)</span> depends on the treatment assigned to unit <span class="math inline">\(j\)</span>. This discussion will focus on understanding interference and why we need to update our potential outcomes notation if interference is present.</p>
 
 </div>
 </div>
@@ -122,7 +122,7 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#consistency-and-positivity"><span class="header-section-number">3</span> Consistency and positivity</a></li>
-<li><a class="nav-link" href="#two-key-assumptions"><span class="header-section-number">3.1</span> Two key assumptions</a></li>
+<li><a class="nav-link" href="#asking-good-causal-questions"><span class="header-section-number">3.1</span> Asking good causal questions</a></li>
 <li><a class="nav-link" href="#lab-interference"><span class="header-section-number">3.2</span> Lab: Interference</a></li>
 </ul>
       <div class="book-extra">
@@ -143,7 +143,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-09-07</p>
+    <p>Last built on 2023-09-12</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

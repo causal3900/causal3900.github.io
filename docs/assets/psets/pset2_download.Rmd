@@ -65,11 +65,8 @@ library(haven)
 
 Download the study's data from OpenICPSR: [https://www.openicpsr.org/openicpsr/project/116023/version/V1/view](https://www.openicpsr.org/openicpsr/project/116023/version/V1/view). This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using `read_dta`. 
 
-```{r, eval = F}
+```{r}
 d <- read_dta("lakisha_aer.dta")
-```
-```{r, include = F}
-d <- read_dta("assets/data/lakisha_aer_aggregated.dta")
 ```
 
 > If you have an error, you might need to set your working directory first. This tells R where to look for data files. At the top of RStudio, click Session -> Set Working Directory -> To Source File Location.

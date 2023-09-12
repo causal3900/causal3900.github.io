@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 3. Analyzing an Experiment in R SOLUTIONS | Causal Inference Course</title>
+<meta name="author" content="Ian Lundberg and Sam Wang">
+<meta name="description" content="These are possible solutions to the exercises from discussion. Your code may look different from ours, but as long as your output is the same that is all that matters! You can download this file...">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta property="og:title" content="Discussion 3. Analyzing an Experiment in R SOLUTIONS | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="These are possible solutions to the exercises from discussion. Your code may look different from ours, but as long as your output is the same that is all that matters! You can download this file...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 3. Analyzing an Experiment in R SOLUTIONS | Causal Inference Course">
+<meta name="twitter:description" content="These are possible solutions to the exercises from discussion. Your code may look different from ours, but as long as your output is the same that is all that matters! You can download this file...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="front-door.html"><span class="header-section-number">6</span> Front door</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">7</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-difference.html"><span class="header-section-number">9</span> Difference in difference</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
+<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="active" href="discussion-3.-analyzing-an-experiment-in-r-solutions.html">Discussion 3. Analyzing an Experiment in R SOLUTIONS</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags.html">Problem Set 3. DAGs</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
+<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li><a class="" href="problem-set-6.-did-synthetic-control.html">Problem Set 6. DID + synthetic control</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-3.-analyzing-an-experiment-in-r-solutions" class="section level1 unnumbered">
+<h1>Discussion 3. Analyzing an Experiment in R SOLUTIONS<a class="anchor" aria-label="anchor" href="#discussion-3.-analyzing-an-experiment-in-r-solutions"><i class="fas fa-link"></i></a>
+</h1>
+<p>These are <em>possible</em> solutions to the exercises from discussion. Your code may look different from ours, but as long as your output is the same that is all that matters!</p>
+<p>You can download this file <a href="assets/discussions/discussion3-solutions.Rmd">here</a>.</p>
+<div id="necessary-packages-1" class="section level2" number="13.7">
+<h2>
+<span class="header-section-number">13.7</span> Necessary packages<a class="anchor" aria-label="anchor" href="#necessary-packages-1"><i class="fas fa-link"></i></a>
+</h2>
+<p><strong>Note:</strong> If this errors you probably either don’t have <code>dplyr</code> or <code>haven</code> installed.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
+<div id="import-data-1" class="section level3" number="13.7.1">
+<h3>
+<span class="header-section-number">13.7.1</span> Import data<a class="anchor" aria-label="anchor" href="#import-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Rows: 344,084
+## Columns: 16
+## $ sex           &lt;dbl+lbl&gt; 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ yob           &lt;dbl&gt; 1941, 1947, 1951, 1950, 1982, 1981, …
+## $ g2000         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2004         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ p2000         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ p2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ p2004         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ treatment     &lt;dbl+lbl&gt; 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0,…
+## $ cluster       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ voted         &lt;dbl+lbl&gt; 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
+## $ hh_id         &lt;dbl&gt; 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
+## $ hh_size       &lt;dbl&gt; 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
+## $ numberofnames &lt;dbl&gt; 21, 21, 21, 21, 21, 21, 21, 21, 21, …
+## $ p2004_mean    &lt;dbl&gt; 0.09523810, 0.09523810, 0.04761905, …
+## $ g2004_mean    &lt;dbl&gt; 0.8571429, 0.8571429, 0.8571429, 0.8…</code></pre>
+</div>
+<div id="clean-data-1" class="section level3" number="13.7.2">
+<h3>
+<span class="header-section-number">13.7.2</span> Clean data<a class="anchor" aria-label="anchor" href="#clean-data-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>First, we construct an age variable describing how old (in number of years) each person was in the year 2006. The <code>yob</code> variable says which year each person was born in. &gt; For this, we use the <code>mutate</code> function, which you can read about <a href="https://dplyr.tidyverse.org/reference/mutate.html">here</a>.</p>
+<p>Fill in the appropriate expression after <code>age =</code> to add a column to <code>gotv</code> labeled <code>age</code> that contains how old each person was in 2006.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">2006</span> <span class="op">-</span> <span class="va">yob</span><span class="op">)</span></span></code></pre></div>
+<p>Now, we convert the <code>treatment</code> variable from it’s numeric representation to the corresponding labels which are</p>
+<ul>
+<li>0: “Control”</li>
+<li>1: “Hawthorne” (this is the ‘researchers viewing records via public data’ treatment arm)</li>
+<li>2: “Civic Duty” (this is the ‘voting is your civic duty’ treatment arm)</li>
+<li>3: “Neighbors” (this is the ‘voting turnout revealed to neighbors’ treatment arm)</li>
+<li>4: “Self” (this is the ‘voting turnout revealed to household’ treatment arm)</li>
+</ul>
+<blockquote>
+<p>One solution uses the function <code>case_when</code> which is described <a href="https://www.sharpsightlabs.com/blog/case-when-r/">here</a>.</p>
+</blockquote>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"Control"</span>,</span>
+<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Hawthorne"</span>,</span>
+<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Civic Duty"</span>,</span>
+<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"Neighbors"</span>,</span>
+<span>      <span class="va">treatment</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Self"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<blockquote>
+<p>We could have done this differently. For the exercise, we split up the task into two pieces: create a new column <code>age</code> in <code>gotv</code> that contains the ages of each individual in 2006, and then replace the numeric treatment labels in the column <code>treatment</code> with alphabetic/word labels. You can actually do this all in one block of code as follows:</p>
+</blockquote>
+<pre><code>gotv &lt;- gotv |&gt;
+  mutate(
+    age = floor(2006 - yob),
+    treatment = case_when(
+      treatment == 0 ~ "Control",
+      treatment == 1 ~ "Hawthorne",
+      treatment == 2 ~ "Civic Duty",
+      treatment == 3 ~ "Neighbors",
+      treatment == 4 ~ "Self")
+    ) </code></pre>
+<p>Another alternative solution
+Now, when we use <code>glimpse</code> we see there is an added <code>age</code> variable and that the treatments have word instead of number labels.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Rows: 344,084
+## Columns: 17
+## $ sex           &lt;dbl+lbl&gt; 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ yob           &lt;dbl&gt; 1941, 1947, 1951, 1950, 1982, 1981, …
+## $ g2000         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2004         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ p2000         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ p2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ p2004         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ treatment     &lt;chr&gt; "Civic Duty", "Civic Duty", "Hawthor…
+## $ cluster       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ voted         &lt;dbl+lbl&gt; 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
+## $ hh_id         &lt;dbl&gt; 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
+## $ hh_size       &lt;dbl&gt; 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
+## $ numberofnames &lt;dbl&gt; 21, 21, 21, 21, 21, 21, 21, 21, 21, …
+## $ p2004_mean    &lt;dbl&gt; 0.09523810, 0.09523810, 0.04761905, …
+## $ g2004_mean    &lt;dbl&gt; 0.8571429, 0.8571429, 0.8571429, 0.8…
+## $ age           &lt;dbl&gt; 65, 59, 55, 56, 24, 25, 47, 50, 38, …</code></pre>
+<p>Note, there are other ways you could have arrived here and that’s totally fine as long as the results are the same!</p>
+</div>
+<div id="balance-table-1" class="section level3" number="13.7.3">
+<h3>
+<span class="header-section-number">13.7.3</span> Balance table<a class="anchor" aria-label="anchor" href="#balance-table-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Next, we confirm that our control and treatment groups look pretty much the same across a set of covariates, i.e. that the two groups are <em>balanced on covariates</em>. Specifically this means we calculate the mean value of a set of covariates across each of the treatment/control arms, and we expect them to be pretty much equal if our randomization worked. This is related to the idea of exchangeability.</p>
+<blockquote>
+<p>The solution below uses the functions <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by</code></a>, <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise</code></a>, and <a href="https://dplyr.tidyverse.org/reference/across.html"><code>across</code></a>.</p>
+<p>You may have done something different. If the output is the same (or very similar), then that should be fine!</p>
+</blockquote>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"g2000"</span>, <span class="st">"g2002"</span>, <span class="st">"p2000"</span>, <span class="st">"p2002"</span>, <span class="st">"p2004"</span>, <span class="st">"hh_size"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gotv_balance</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span>.cols <span class="op">=</span> <span class="va">covariates</span>, .fns <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_balance</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 5 × 9
+##   treatment    sex   age g2000 g2002 p2000 p2002 p2004
+##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 Civic Duty 0.500  49.7 0.842 0.811 0.254 0.389 0.399
+## 2 Control    0.499  49.8 0.843 0.811 0.252 0.389 0.400
+## 3 Hawthorne  0.499  49.7 0.844 0.813 0.250 0.394 0.403
+## 4 Neighbors  0.500  49.9 0.842 0.811 0.251 0.387 0.407
+## 5 Self       0.500  49.8 0.840 0.811 0.251 0.392 0.402
+## # ℹ 1 more variable: hh_size &lt;dbl&gt;</code></pre>
+<p>An alternative solution that does not explicitly use <code>group_by</code>:</p>
+<pre><code>covariates &lt;- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
+
+gotv_results &lt;- gotv |&gt;
+  summarise(
+    across(.cols = all_of(covariates), .fns = mean),
+    .by = treatment
+    )
+print(gotv_results)</code></pre>
+</div>
+<div id="results-1" class="section level3" number="13.7.4">
+<h3>
+<span class="header-section-number">13.7.4</span> Results<a class="anchor" aria-label="anchor" href="#results-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, for each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! The solutions below use the function <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/n"><code>n</code></a> which counts the number of observations in the current group for you.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Percentage_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>, num_of_individuals <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   treatment  Percentage_Voting num_of_individuals
+##   &lt;chr&gt;                  &lt;dbl&gt;              &lt;int&gt;
+## 1 Civic Duty             0.315              38218
+## 2 Control                0.297             191243
+## 3 Hawthorne              0.322              38204
+## 4 Neighbors              0.378              38201
+## 5 Self                   0.345              38218</code></pre>
+<p>Alternatively, you could write this without using <code>group_by</code> explicitly:</p>
+<pre><code>gotv |&gt;
+  summarise(Percentage_Voting = mean(voted), num_of_individuals = n(), .by = treatment)</code></pre>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-3.-analyzing-an-experiment-in-r-solutions">Discussion 3. Analyzing an Experiment in R SOLUTIONS</a></li>
+<li>
+<a class="nav-link" href="#necessary-packages-1"><span class="header-section-number">13.7</span> Necessary packages</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#import-data-1"><span class="header-section-number">13.7.1</span> Import data</a></li>
+<li><a class="nav-link" href="#clean-data-1"><span class="header-section-number">13.7.2</span> Clean data</a></li>
+<li><a class="nav-link" href="#balance-table-1"><span class="header-section-number">13.7.3</span> Balance table</a></li>
+<li><a class="nav-link" href="#results-1"><span class="header-section-number">13.7.4</span> Results</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/57329">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/40928">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2023-09-12</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
