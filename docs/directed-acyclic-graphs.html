@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Directed Acyclic Graphs | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error.  4.1 Marginal...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="description" content="4.1 Marginal independence  Sep 14. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error.  4.1 Marginal...">
+<meta property="og:description" content="4.1 Marginal independence  Sep 14. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
-<meta name="twitter:description" content="Warning. As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error.  4.1 Marginal...">
+<meta name="twitter:description" content="4.1 Marginal independence  Sep 14. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -88,34 +88,28 @@
 <h1>
 <span class="header-section-number">4</span> Directed Acyclic Graphs<a class="anchor" aria-label="anchor" href="#directed-acyclic-graphs"><i class="fas fa-link"></i></a>
 </h1>
-<p><strong>Warning.</strong> As we develop this website, the material below is a draft at teaching these concepts and until we finalize the page it is possible that a definition has a technical error.</p>
 <div id="marginal-independence" class="section level2" number="4.1">
 <h2>
 <span class="header-section-number">4.1</span> Marginal independence<a class="anchor" aria-label="anchor" href="#marginal-independence"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 14. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
+<p>Sep 14. <a href="assets/slides/4-1_dags_marginal.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
 </blockquote>
 <p>This class will introduce key ideas about DAGs.</p>
 <ol style="list-style-type: decimal">
 <li>
+<strong>Directed Acyclic Graph.</strong> A series of nodes representing variables, connected by directed edges representing direct causal effects. Any node with an edge to at least two other nodes must be drawn on the graph.</li>
+<li>
 <strong>Path.</strong> A path is a sequence of edges connecting two nodes</li>
 <li>
-<strong>Causal path.</strong> A path is causal if all arrows point forward: <span class="math inline">\(A\rightarrow B\rightarrow C\)</span>
-</li>
-<li>
-<strong>Backdoor path.</strong> A backdoor path contains edges that do not point the same direction: <span class="math inline">\(A\leftarrow B \rightarrow C\)</span>
-</li>
-<li>
-<strong>Collider along a path.</strong> A node such as <span class="math inline">\(B\)</span> where to directed edges collide: <span class="math inline">\(A\rightarrow B \leftarrow C\)</span>
-</li>
+<strong>Collider along a path.</strong> A node such as <span class="math inline">\(B\)</span> where to directed edges collide: <span class="math inline">\(A\rightarrow B \leftarrow C\)</span>. A collider blocks the path.</li>
 </ol>
 <p>DAGs help us know if variables <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are statistically related</p>
 <ul>
 <li>
-<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>marginally dependent</em> if and only if there exists a path connecting them that does not contain a collider</li>
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>marginally dependent</em> if and only if there exists an unblocked path connecting them</li>
 <li>
-<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>marginally independent</em> if and only if any paths connecting them contain a collider</li>
+<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>marginally independent</em> if and only if any paths connecting them are blocked</li>
 </ul>
 <script type="text/tikz">
   \begin{tikzpicture}
