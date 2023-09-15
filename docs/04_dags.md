@@ -30,18 +30,15 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 
 ## Conditional independence
 
-> Sep 19. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 19. [**Slides.**](assets/slides/4-2_conditional_indep_dag.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
-Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. In a DAG, we want to block all backdoor paths between $A$ and $Y$.
+Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 
-This class introduces four rules related to blocking a path
+A path is blocked if any node on the path is blocked. If every node on a path is open, then the entire path is open
 
-1. A path is blocked if it contains an unadjusted collider
-2. A path is blocked if it contains an adjusted non-collider
-3. If a collider is adjusted, the collider no longer blocks the path
-4. If a descendant of a collider is adjusted, the collider no longer blocks the path
+1. A non-collider is blocked if is conditioned on, otherwise it is open
+2. A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked
 
-**D-separation** is a concept that encompasses the above rules. Any pair or set of variables are d-separated (and thus independent) if the paths between them are blocked.
 
 ## Lab: Causal discovery
 
@@ -51,4 +48,9 @@ This lab will practice applying causal discovery algorithms. More coming soon.
 
 ## Sufficient adjustment sets
 
-> Sep 21. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
+> Sep 21. [**Slides.**](assets/slides/4-3_sufficient_adj.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
+
+When marginal exchangeability does not hold, we may be able to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between $A$ and $Y$. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:
+
+1. The set $L$ blocks all backdoor paths
+2. The set $L$ does not contain any descendants of $A$
