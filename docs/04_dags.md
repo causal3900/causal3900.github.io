@@ -30,7 +30,7 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 
 ## Conditional independence
 
-> Sep 19. [**Slides.**](assets/slides/4-2_conditional_indep_dag.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 19. [**Slides.**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
 Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 
@@ -48,7 +48,7 @@ This lab will practice applying causal discovery algorithms. More coming soon.
 
 ## Sufficient adjustment sets
 
-> Sep 21. [**Slides.**](assets/slides/4-3_sufficient_adj.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
+> Sep 21. [**Slides.**](assets/slides/4-3_adjustment_sets.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
 
 When marginal exchangeability does not hold, we may be able to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between $A$ and $Y$. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:
 
