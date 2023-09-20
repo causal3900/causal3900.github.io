@@ -40,11 +40,11 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 2. A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked
 
 
-## Lab: Causal discovery
+## Lab: DAGs Review and Causal discovery
 
-> Sep 20. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Fine Point 6.3.
+> Sep 20. [**Slides.**](assets/discussions/discussion5-dags.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Fine Point 6.3.
 
-This lab will practice applying causal discovery algorithms. More coming soon.
+In this lab, we're reviewing some DAG basics such as identifying paths and determining whether a path is open or closed. We'll also talk a bit about causal discovery and practice creating DAGs from data.
 
 ## Sufficient adjustment sets
 
