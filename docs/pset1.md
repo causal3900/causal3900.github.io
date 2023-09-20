@@ -74,17 +74,17 @@ sessionInfo()
 
 ```
 ## R version 4.3.1 (2023-06-16)
-## Platform: x86_64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.4.1
+## Platform: aarch64-apple-darwin20 (64-bit)
+## Running under: macOS Ventura 13.3.1
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRblas.0.dylib 
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-x86_64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 ## 
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
-## time zone: America/Los_Angeles
+## time zone: America/New_York
 ## tzcode source: internal
 ## 
 ## attached base packages:
@@ -92,11 +92,11 @@ sessionInfo()
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.31   R6_2.5.1        bookdown_0.34  
+##  [1] digest_0.6.31   R6_2.5.1        bookdown_0.35  
 ##  [4] fastmap_1.1.1   xfun_0.39       cachem_1.0.8   
 ##  [7] knitr_1.43      memoise_2.0.1   htmltools_0.5.5
 ## [10] rmarkdown_2.22  xml2_1.3.4      cli_3.6.1      
-## [13] downlit_0.4.2   sass_0.4.6      withr_2.5.0    
+## [13] downlit_0.4.3   sass_0.4.6      withr_2.5.0    
 ## [16] jquerylib_0.1.4 compiler_4.3.1  rstudioapi_0.14
 ## [19] tools_4.3.1     evaluate_0.21   bslib_0.5.0    
 ## [22] yaml_2.3.7      fs_1.6.2        jsonlite_1.8.5 

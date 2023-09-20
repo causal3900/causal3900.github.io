@@ -15,7 +15,7 @@ lab-interference
 directed-acyclic-graphs
 marginal-independence
 conditional-independence
-lab-causal-discovery
+lab-dags-review-and-causal-discovery
 sufficient-adjustment-sets
 statistical-modeling
 why-model
