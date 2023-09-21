@@ -74,18 +74,23 @@ sessionInfo()
 
 ```
 ## R version 4.3.1 (2023-06-16)
-## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.3.1
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 22.04.3 LTS
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## time zone: America/New_York
-## tzcode source: internal
+## tzcode source: system (glibc)
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
@@ -94,11 +99,11 @@ sessionInfo()
 ## loaded via a namespace (and not attached):
 ##  [1] digest_0.6.31   R6_2.5.1        bookdown_0.35  
 ##  [4] fastmap_1.1.1   xfun_0.39       cachem_1.0.8   
-##  [7] knitr_1.43      memoise_2.0.1   htmltools_0.5.5
-## [10] rmarkdown_2.22  xml2_1.3.4      cli_3.6.1      
-## [13] downlit_0.4.3   sass_0.4.6      withr_2.5.0    
+##  [7] knitr_1.42      memoise_2.0.1   htmltools_0.5.5
+## [10] rmarkdown_2.21  xml2_1.3.4      cli_3.6.1      
+## [13] downlit_0.4.2   sass_0.4.6      withr_2.5.0    
 ## [16] jquerylib_0.1.4 compiler_4.3.1  rstudioapi_0.14
-## [19] tools_4.3.1     evaluate_0.21   bslib_0.5.0    
-## [22] yaml_2.3.7      fs_1.6.2        jsonlite_1.8.5 
+## [19] tools_4.3.1     evaluate_0.21   bslib_0.4.2    
+## [22] yaml_2.3.7      fs_1.6.2        jsonlite_1.8.4 
 ## [25] rlang_1.1.1
 ```
