@@ -6,7 +6,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval=F)
+knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
 ```
 
 # Discussion: Parametric g-formula
@@ -27,11 +27,11 @@ Note that this function takes several arguments. The first argument is a formula
 
 ```{r}
 # The following formula represents Y as a function of our treatment (A) and all our confounders
-f <- y ~ a + sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
 
 # Estimate the model with OLS
-fit <- lm(...)
+fit <- lm(formula = f, data = d)
 ```
 
 ## Predict conditional average potential outcomes for every unit
@@ -41,10 +41,10 @@ will set all the treatment values `= "no_college"` and the second copy will
 set all the treatment values `= "college"`.
 ```{r}
 d_all_control <- d %>%
-  mutate(...)
+  mutate(a = "no_college")
 
 d_all_treated <- d %>%
-  mutate(...)
+  mutate(a = "college")
 ```
 
 Next we will use our linear regression estimated above to predict both potential
@@ -55,12 +55,12 @@ To see more details on the `predict` function, see the
 
 ```{r}
 # Estimate potential outcomes using our model
-potential_outcomes_under_control <- predict(object = ..., newdata = ...)
-potential_outcomes_under_treatment <- predict(object = ..., newdata = ...)
+potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
+potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
 
 conditional_average_outcomes <- d %>%
-  mutate(yhat1 = ...,
-         yhat0 = ...)
+  mutate(yhat1 = potential_outcomes_under_treatment,
+         yhat0 = potential_outcomes_under_control)
 ```
 
 ## Difference to estimate conditional average effects
@@ -70,7 +70,7 @@ difference between their potential outcomes.
 
 ```{r}
 conditional_average_effects <- conditional_average_outcomes %>%
-  mutate(effect = ...)
+  mutate(effect = yhat1 - yhat0)
 ```
 
 ## Average over units
@@ -82,7 +82,7 @@ function to take the mean effect over the whole data.frame.
 ```{r}
 conditional_average_effects %>%
   select(yhat1, yhat0, effect) %>%
-  summarise(...)
+  summarise(across(.fns = mean))
 ```
 
 ## Extension 1: Conditional average effects
@@ -98,7 +98,9 @@ of your code above that takes the average for the whole data.frame.
 
 ```{r}
 conditional_average_effects %>%
-  ...
+  select(yhat1, yhat0, effect, sex) %>%
+  group_by(sex) %>%
+  summarise(across(.fns = mean))
 ```
 
 ## Extension 2: Logistic regression
@@ -116,10 +118,10 @@ $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 -
 Fit a model
 
 ```{r}
-f <- y ~ a + sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
 
-fit <- ...
+fit <- glm(formula = f, family = binomial, data = d)
 ```
 
 ## Extension: Logistic regression
@@ -129,13 +131,15 @@ Predict and summarize to estimate the average effect
 \footnotesize
 
 ```{r}
-potential_outcomes_under_control <- predict(object = ..., newdata = ...)
-potential_outcomes_under_treatment <- predict(object = ..., newdata = ...)
+potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control, type = "response")
+potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated, type = "response")
 
 conditional_average_outcomes <- d %>%
-  mutate(yhat1 = ...,
-         yhat0 = ...,
-         effect = ...) %>%
+  mutate(yhat1 = potential_outcomes_under_treatment,
+         yhat0 = potential_outcomes_under_control,
+         effect = yhat1 - yhat0) %>%
   select(yhat1, yhat0, effect) %>%
-  summarise(...)
+  summarise(across(.fns = mean))
+
+conditional_average_outcomes
 ```
