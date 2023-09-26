@@ -3,7 +3,14 @@
 
 ## Why model?
 
-> Sep 26. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+> Sep 26. [**Slides.**](assets/slides/5-1_why_model.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+
+To this point, we have not used any statistical models. Instead, we have
+
+- taken means within subgroups
+- then aggregated over subgroups
+
+Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.
 
 ## Lab: Parametric g-formula
 
