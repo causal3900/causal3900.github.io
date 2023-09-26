@@ -18,6 +18,8 @@ Follow the steps on Ed Discussion to download the data!
 After you download the data and save it into the variable name `d`, go up top to where it says `knitr::opts_chunk$set(echo = TRUE, eval=F)` at the top of the R Markdown file and change `eval` to true, i.e. set `eval=T` so that when you knit the file, your code runs.
 
 ## Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+You can learn more about the `lm` function [**here**](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm).
+Note that this function takes several arguments. The first argument is a formula, specifically a symbolic description of the model to be fitted. 
 
 ```{r}
 fit <- lm(y ~ a*(sex + race + mom_educ + dad_educ + 
@@ -26,6 +28,7 @@ fit <- lm(y ~ a*(sex + race + mom_educ + dad_educ +
                    test_percentile),
           data = d)
 ```
+
 
 ## Predict conditional average potential outcomes for every unit
 
