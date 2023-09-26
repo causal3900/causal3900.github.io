@@ -14,7 +14,11 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 ## Lab: Parametric g-formula
 
-> Sep 27. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
+> Sep 27. Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
+
+Before discussion, make sure to download the data we'll be using. See the Ed Discussion post for more detail. 
+
+After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
 ## Inverse probability of treatment weighting
 
