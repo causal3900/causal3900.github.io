@@ -59,8 +59,8 @@ potential_outcomes_under_control <- predict(object = fit, newdata = d_all_contro
 potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
 
 conditional_average_outcomes <- d %>%
-  mutate(yhat1 = potential_outcomes_under_treatment,
-         yhat0 = potential_outcomes_under_control)
+  mutate(yhat0 = potential_outcomes_under_control,
+         yhat1 = potential_outcomes_under_treatment)
 ```
 
 ## Difference to estimate conditional average effects
@@ -109,8 +109,8 @@ In groups: Repeat the steps above with logistic regression
 
 $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
 
--   This should be a simple extension of the code above that uses `lm()`.
--   read about using `glm()` to estimate logistic regression
+-   This should be a simple extension of all the code above that uses `lm()`.
+-   Read about using `glm()` to estimate logistic regression
 -   when using `predict()`, search to find out how to predict probabilities
 
 ## Extension: Logistic regression
