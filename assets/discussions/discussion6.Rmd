@@ -24,8 +24,7 @@ fit <- lm(y ~ a*(sex + race + mom_educ + dad_educ +
                    log_parent_income + 
                    log_parent_wealth + 
                    test_percentile),
-          data = d,
-          family = binomial)
+          data = d)
 ```
 
 ## Predict conditional average potential outcomes for every unit
