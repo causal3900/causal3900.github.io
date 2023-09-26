@@ -1,0 +1,120 @@
+---
+title: "Discussion5-gformula"
+author: "Mayleen and Daniel"
+date: "2023-09-26"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=F)
+```
+
+# Discussion: Parametric g-formula
+
+## Download the Data
+
+Follow the steps on Ed Discussion to download the data!
+
+After you download the data and save it into the variable name `d`, go up top to where it says `knitr::opts_chunk$set(echo = TRUE, eval=F)` at the top of the R Markdown file and change `eval` to true, i.e. set `eval=T` so that when you knit the file, your code runs.
+
+## Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+
+```{r}
+fit <- lm(y ~ a*(sex + race + mom_educ + dad_educ + 
+                   log_parent_income + 
+                   log_parent_wealth + 
+                   test_percentile),
+          data = d,
+          family = binomial)
+```
+
+## Predict conditional average potential outcomes for every unit
+
+```{r}
+conditional_average_outcomes <- d %>%
+  mutate(yhat1 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "college")),
+         yhat0 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "no_college")))
+```
+
+## Difference to estimate conditional average effects
+
+```{r}
+conditional_average_effects <- 
+  conditional_average_outcomes %>%
+  mutate(effect = yhat1 - yhat0)
+```
+
+## Average over units
+
+```{r}
+conditional_average_effects %>%
+  select(yhat1, yhat0, effect) %>%
+  summarize_all(.funs = mean)
+```
+
+## Extension 1: Conditional average effects
+
+Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
+
+1.  those with `sex == Male`
+2.  those with `sex == Female`
+
+If you finish, choose a subgroup of interest to you and summarize.
+
+. . .
+
+One way to code it:
+
+```{r}
+conditional_average_effects %>%
+  group_by(sex) %>%
+  select(sex, yhat0,yhat1,effect) %>%
+  summarize_all(.funs = mean)
+```
+
+## Extension 2: Logistic regression
+
+In groups: Repeat the steps above with logistic regression
+
+$$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
+
+-   read about using `glm()` to estimate logistic regression
+-   when using `predict()`, search to find out how to predict probabilities
+
+## Extension: Logistic regression
+
+Fit a model
+
+```{r}
+fit <- glm(y ~ a*(sex + race + mom_educ + dad_educ + 
+                    log_parent_income + 
+                    log_parent_wealth + 
+                    test_percentile),
+           data = d,
+           family = binomial)
+```
+
+## Extension: Logistic regression
+
+Predict and summarize to estimate the average effect
+
+\footnotesize
+
+```{r}
+d %>%
+  mutate(yhat1 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "college"), 
+                         type = "response"),
+         yhat0 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "no_college"), 
+                         type = "response"),
+         effect = yhat1 - yhat0) %>%
+  select(yhat1,yhat0,effect) %>%
+  summarize_all(.funs = mean)
+```
