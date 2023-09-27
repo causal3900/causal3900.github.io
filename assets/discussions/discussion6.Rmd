@@ -28,8 +28,8 @@ YOUR TASK: Pass two arguments to `lm` below that fit a regression model using ou
 
 ```{r}
 # The following formula represents Y as a function of our treatment (A) and all our confounders
-f <- y ~ a + sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
 
 # Estimate the model with OLS
 fit <- lm(...)
@@ -136,8 +136,8 @@ $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 -
 Fit a model
 
 ```{r}
-f <- y ~ a + sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
 
 fit <- glm(...)
 ```
