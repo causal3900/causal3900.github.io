@@ -85,6 +85,12 @@ conditional_average_effects %>%
   summarise(across(.fns = mean))
 ```
 
+Alternative:
+```
+conditional_average_effects %>%
+  select(yhat1, yhat0, effect) %>%
+  summarise_all(.funs = mean)
+```
 ## Extension 1: Conditional average effects
 
 Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
