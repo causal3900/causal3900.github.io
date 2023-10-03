@@ -30,7 +30,9 @@ Today will introduce how to estimate causal effects by modeling the probability 
 
 ## Matching
 
-> Oct 3. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 3. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+
+Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 
 ## Lab: Matching in R
 
