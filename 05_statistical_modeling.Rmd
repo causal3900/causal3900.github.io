@@ -36,7 +36,7 @@ Today will introduce the idea of matching and how it allows us to estimate the a
 
 ## Lab: Matching in R
 
-> Oct 4
+> Oct 4. [**Slides.**](assets/slides/discussion7.pdf) [**R Markdown.**](assets/matching_lab.Rmd)
 
 ## Discussion of matching
 
