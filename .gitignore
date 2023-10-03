@@ -3,6 +3,6 @@
 .RData
 .Ruserdata
 _bookdown_files
-.DS_Store
+*.DS_Store
 old_structure
 *.RDS
