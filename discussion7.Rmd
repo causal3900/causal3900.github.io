@@ -4,6 +4,9 @@ output: html_document
 
 # Discussion 7. Causal Effects with Matching {-}
 
+[**Slides**](assets/discussions/discussion7.pdf)
+Download today's [**.Rmd document here**](assets/discussions/matching_lab.Rmd).
+
 Some packages you may need to install first:
 
 - optmatch: `install.packages("optmatch")`
@@ -24,7 +27,7 @@ Learn to do matching with the "MatchIt" package
 First, we'll use the data set from last week to compare greedy vs optimal matching. We'll use the NLSY data since it is larger.
 ```{r}
 
-d <- readRDS(here::here("assets/discussions/d.RDS"))
+d <- readRDS("assets/discussions/d.RDS")
 
 # matchit function implements matching
 # Formula: Treatment ~ variables to match on
@@ -74,7 +77,7 @@ system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_we
                               data = d))
 ```
 
-# Matching with job training data from ``Evaluating the econometric evaluations of training programs with experimental data'' (LaLonde 1986)
+## Matching with job training data from "Evaluating the econometric evaluations of training programs with experimental data" (LaLonde 1986)
 For the remainder of the lab, we'll use a portion of the data from a job training program. In particular, the treatment is whether or not someone participated in a job training program. The outcome of interest is their salary in 1978 (re78).
 ```{r}
 # Load the data
@@ -131,7 +134,7 @@ m.out0 <- matchit(treat ~ re74 + re75 + age + race,
 
 ```
 
-# Assessing the matching
+## Assessing the matching
 We can check how well the balancing has been done
 ```{r}
 ?summary.matchit # Look in the Help tab (on the bottom right) for documentation on summary.matchit
@@ -155,7 +158,7 @@ plot(m.out0, type = "density", which.xs = ~age + re74 + race, interactive = F)
 ## Plots the empirical CDF of all variables in which.xs
 plot(m.out0, type = "ecdf", which.xs = ~age + re74, interactive = F)
 ```
-# Estimating the effect
+## Estimating the effect
 Given the matching (and assuming it is good enough), we can estimate the ATT. 
 ```{r}
 
@@ -190,7 +193,7 @@ avg_comparisons(fit1, variables = "treat",
 ```
 
 
-# Fit your own model
+## Fit your own model
 Now try for yourself. Note, you will need to do something very similar for the homework with this dataset.
 
 * Think about what an appropriate DAG might be and choose the variables you want to match on
