@@ -4,19 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 Statistical modeling | Causal Inference Course</title>
+<title>6 Statistical modeling | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="description" content="6.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="5 Statistical modeling | Causal Inference Course">
+<meta property="og:title" content="6 Statistical modeling | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta property="og:description" content="6.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5 Statistical modeling | Causal Inference Course">
-<meta name="twitter:description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="twitter:title" content="6 Statistical modeling | Causal Inference Course">
+<meta name="twitter:description" content="6.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -44,54 +44,20 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
-<li class="book-part">Identification by exchangeability</li>
-<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
-<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
-<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
-<li><a class="active" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
-<li class="book-part">Identification without exchangeability</li>
-<li><a class="" href="front-door.html"><span class="header-section-number">6</span> Front door</a></li>
-<li><a class="" href="instrumental-variables.html"><span class="header-section-number">7</span> Instrumental variables</a></li>
-<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
-<li><a class="" href="difference-in-difference.html"><span class="header-section-number">9</span> Difference in difference</a></li>
-<li><a class="" href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></li>
-<li class="book-part">Areas of active research</li>
-<li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
-<li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
-<li class="book-part">Discussions</li>
-<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r-solutions.html">Discussion 3. Analyzing an Experiment in R SOLUTIONS</a></li>
-<li><a class="" href="discussion-7.-causal-effects-with-matching.html">Discussion 7. Causal Effects with Matching</a></li>
-<li class="book-part">Assignments</li>
-<li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-did-synthetic-control.html">Problem Set 6. DID + synthetic control</a></li>
-<li class="book-part">Course information</li>
-<li><a class="" href="who-we-are.html">Who we are</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">6</span> Statistical modeling</a></li></ul>
 
         <div class="book-extra">
           
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="statistical-modeling" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="statistical-modeling" class="section level1" number="6">
 <h1>
-<span class="header-section-number">5</span> Statistical modeling<a class="anchor" aria-label="anchor" href="#statistical-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Statistical modeling<a class="anchor" aria-label="anchor" href="#statistical-modeling"><i class="fas fa-link"></i></a>
 </h1>
-<div id="why-model" class="section level2" number="5.1">
+<div id="why-model" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">5.1</span> Why model?<a class="anchor" aria-label="anchor" href="#why-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Why model?<a class="anchor" aria-label="anchor" href="#why-model"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Sep 26. <a href="assets/slides/5-1_why_model.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
@@ -103,9 +69,9 @@
 </ul>
 <p>Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.</p>
 </div>
-<div id="lab-parametric-g-formula" class="section level2" number="5.2">
+<div id="lab-parametric-g-formula" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">5.2</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Sep 27. Download the corresponding R Markdown file <a href="assets/discussions/discussion6.Rmd"><strong>here</strong></a>.</p>
@@ -114,44 +80,45 @@
 <p>After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 13 and 15.1.</p>
 <p><a href="assets/discussions/discussion6-solutions.html"><strong>Solutions</strong></a> for lab exercise and <a href="assets/discussions/discussion6-slides.pdf"><strong>slides</strong></a></p>
 </div>
-<div id="inverse-probability-of-treatment-weighting" class="section level2" number="5.3">
+<div id="inverse-probability-of-treatment-weighting" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">5.3</span> Inverse probability of treatment weighting<a class="anchor" aria-label="anchor" href="#inverse-probability-of-treatment-weighting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> Inverse probability of treatment weighting<a class="anchor" aria-label="anchor" href="#inverse-probability-of-treatment-weighting"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Sep 28. <a href="assets/slides/5_3_ipw.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
 </blockquote>
 <p>Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.</p>
 </div>
-<div id="matching" class="section level2" number="5.4">
+<div id="matching" class="section level2" number="6.4">
 <h2>
-<span class="header-section-number">5.4</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.4</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 3. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
-<div id="lab-matching-in-r" class="section level2" number="5.5">
+<div id="lab-matching-in-r" class="section level2" number="6.5">
 <h2>
-<span class="header-section-number">5.5</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 4. <a href="assets/discussions/discussion7.pdf"><strong>Slides.</strong></a> <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a></p>
 </blockquote>
 <p>In this lab, we’ll go over distance metrics when matching on multiple covariates. We’ll also go over examples of using R to do matching to estimate causal effects.</p>
 </div>
-<div id="discussion-of-matching" class="section level2" number="5.6">
+<div id="discussion-of-matching" class="section level2" number="6.6">
 <h2>
-<span class="header-section-number">5.6</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.6</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 5</p>
+<p>Oct 5 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides.</strong></a> <a href="assets/slides/matching_cont.Rmd"><strong>R Markdown.</strong></a></p>
 </blockquote>
+<p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
 </div>
-<div id="worked-example-of-statistical-modeling" class="section level2" number="5.7">
+<div id="worked-example-of-statistical-modeling" class="section level2" number="6.7">
 <h2>
-<span class="header-section-number">5.7</span> Worked example of statistical modeling<a class="anchor" aria-label="anchor" href="#worked-example-of-statistical-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7</span> Worked example of statistical modeling<a class="anchor" aria-label="anchor" href="#worked-example-of-statistical-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <p>This section presents math and code for a worked example of statistical
 modeling, including</p>
@@ -172,9 +139,9 @@ probability that someone lives with a high-earning partner. A college
 degree thus affects household incomes not only through its effect on
 individual earnings but also through its effect on how individuals pool
 into households.</p>
-<div id="data-access" class="section level3" number="5.7.1">
+<div id="data-access" class="section level3" number="6.7.1">
 <h3>
-<span class="header-section-number">5.7.1</span> Data access<a class="anchor" aria-label="anchor" href="#data-access"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7.1</span> Data access<a class="anchor" aria-label="anchor" href="#data-access"><i class="fas fa-link"></i></a>
 </h3>
 <p>We have prepared data for you to study this question. You will need to
 download these data directly from the data distributor for the <a href="https://www.bls.gov/nls/nlsy97.htm">National
@@ -222,9 +189,9 @@ the wide use of the data and is useful when securing funding for
 future surveys!</li>
 </ol>
 </div>
-<div id="worked-example-outcome-modeling" class="section level3" number="5.7.2">
+<div id="worked-example-outcome-modeling" class="section level3" number="6.7.2">
 <h3>
-<span class="header-section-number">5.7.2</span> Worked example: Outcome modeling<a class="anchor" aria-label="anchor" href="#worked-example-outcome-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7.2</span> Worked example: Outcome modeling<a class="anchor" aria-label="anchor" href="#worked-example-outcome-modeling"><i class="fas fa-link"></i></a>
 </h3>
 <p>Outcome modeling is based on the following identification result, which
 translates a causal quantity to a statistical estimand that does not
@@ -325,9 +292,9 @@ to no college degree themselves</li>
 having a spouse or partner with a college degree</li>
 </ol>
 </div>
-<div id="worked-example-treatment-modeling" class="section level3" number="5.7.3">
+<div id="worked-example-treatment-modeling" class="section level3" number="6.7.3">
 <h3>
-<span class="header-section-number">5.7.3</span> Worked example: Treatment modeling<a class="anchor" aria-label="anchor" href="#worked-example-treatment-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7.3</span> Worked example: Treatment modeling<a class="anchor" aria-label="anchor" href="#worked-example-treatment-modeling"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using a different identification result, we can also proceed by a
 parametric model for the treatment instead of the outcome. By this
@@ -427,9 +394,9 @@ to sum to 1</li>
 <p>While both are asymptotically valid, there are finite-sample reasons to
 prefer the second estimator (Hajek).</p>
 </div>
-<div id="worked-example-matching" class="section level3" number="5.7.4">
+<div id="worked-example-matching" class="section level3" number="6.7.4">
 <h3>
-<span class="header-section-number">5.7.4</span> Worked example: Matching<a class="anchor" aria-label="anchor" href="#worked-example-matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7.4</span> Worked example: Matching<a class="anchor" aria-label="anchor" href="#worked-example-matching"><i class="fas fa-link"></i></a>
 </h3>
 <p>We could also estimate by matching. Matching can be interpreted as an
 outcome modeling strategy where the conditional mean outcome
@@ -531,27 +498,11 @@ points.</p>
 
 
   <div class="chapter-nav">
-<div class="prev"><a href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></div>
-<div class="next"><a href="front-door.html"><span class="header-section-number">6</span> Front door</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#statistical-modeling"><span class="header-section-number">5</span> Statistical modeling</a></li>
-<li><a class="nav-link" href="#why-model"><span class="header-section-number">5.1</span> Why model?</a></li>
-<li><a class="nav-link" href="#lab-parametric-g-formula"><span class="header-section-number">5.2</span> Lab: Parametric g-formula</a></li>
-<li><a class="nav-link" href="#inverse-probability-of-treatment-weighting"><span class="header-section-number">5.3</span> Inverse probability of treatment weighting</a></li>
-<li><a class="nav-link" href="#matching"><span class="header-section-number">5.4</span> Matching</a></li>
-<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.5</span> Lab: Matching in R</a></li>
-<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.6</span> Discussion of matching</a></li>
-<li>
-<a class="nav-link" href="#worked-example-of-statistical-modeling"><span class="header-section-number">5.7</span> Worked example of statistical modeling</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-access"><span class="header-section-number">5.7.1</span> Data access</a></li>
-<li><a class="nav-link" href="#worked-example-outcome-modeling"><span class="header-section-number">5.7.2</span> Worked example: Outcome modeling</a></li>
-<li><a class="nav-link" href="#worked-example-treatment-modeling"><span class="header-section-number">5.7.3</span> Worked example: Treatment modeling</a></li>
-<li><a class="nav-link" href="#worked-example-matching"><span class="header-section-number">5.7.4</span> Worked example: Matching</a></li>
-</ul>
-</li>
-</ul>
+      <div id="book-on-this-page"></div>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>

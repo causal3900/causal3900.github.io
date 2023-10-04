@@ -42,7 +42,9 @@ In this lab, we'll go over distance metrics when matching on multiple covariates
 
 ## Discussion of matching
 
-> Oct 5
+> Oct 5 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
+
+We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
 ## Worked example of statistical modeling
 

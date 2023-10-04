@@ -1,3 +1,4 @@
+url-your-book-url-like-httpsbookdown.orgyihuibookdown
 defining-counterfactuals
 observing-versus-intervening
 lab-designing-a-study
@@ -75,4 +76,5 @@ results-1
 r-markdown
 matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986
 assessing-the-matching
+estimating-the-effect
 fit-your-own-model
