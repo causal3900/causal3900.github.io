@@ -134,7 +134,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.012   0.001   0.012</code></pre>
+##   0.008   0.000   0.009</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># method: optimal is optimal matching</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
@@ -142,7 +142,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.088   0.065   1.196</code></pre>
+##   0.622   0.023   0.672</code></pre>
 <p>On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># With full data set greedy matching takes ~ 0.5-1.5 seconds</span></span>
@@ -151,7 +151,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.628   0.067   0.703</code></pre>
+##   0.378   0.029   0.405</code></pre>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Meanwhile, optimal matching takes 60-130 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
@@ -159,7 +159,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-## 123.253  10.803 143.553</code></pre>
+##  63.853   1.521  65.748</code></pre>
 </div>
 <div id="matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986" class="section level2" number="13.9">
 <h2>
@@ -421,7 +421,7 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-03</p>
+    <p>Last built on 2023-10-10</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

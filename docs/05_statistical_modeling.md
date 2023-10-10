@@ -46,6 +46,12 @@ In this lab, we'll go over distance metrics when matching on multiple covariates
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
+## Lab: Final Project + HW4 Q&A
+
+> Oct 10 [**Slides**](assets/discussions/discussion8.pdf)
+
+We'll talk about the final project!
+
 ## Worked example of statistical modeling
 
 This section presents math and code for a worked example of statistical
