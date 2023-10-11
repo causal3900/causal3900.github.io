@@ -69,6 +69,7 @@
 <li><a class="active" href="discussion-7.-causal-effects-with-matching.html">Discussion 7. Causal Effects with Matching</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="final-project.html">Final Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
@@ -134,7 +135,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.017   0.000   0.017</code></pre>
+##   0.015   0.000   0.016</code></pre>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># method: optimal is optimal matching</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
@@ -142,7 +143,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   2.051   0.127   2.226</code></pre>
+##   1.915   0.115   2.099</code></pre>
 <p>On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># With full data set greedy matching takes ~ 0.5-1.5 seconds</span></span>
@@ -151,7 +152,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.553   0.082   0.642</code></pre>
+##   0.533   0.086   0.624</code></pre>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Meanwhile, optimal matching takes 60-130 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
@@ -159,7 +160,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-## 118.114   6.593 127.848</code></pre>
+## 117.829   5.963 125.964</code></pre>
 </div>
 <div id="matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986" class="section level2" number="13.9">
 <h2>
