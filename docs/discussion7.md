@@ -54,7 +54,7 @@ system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_we
 
 ```
 ##    user  system elapsed 
-##   0.016   0.000   0.017
+##   0.015   0.000   0.016
 ```
 
 ```r
@@ -67,7 +67,7 @@ system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_we
 
 ```
 ##    user  system elapsed 
-##   1.288   0.076   1.393
+##   1.106   0.077   1.205
 ```
 
 On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible 
@@ -82,7 +82,7 @@ system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_we
 
 ```
 ##    user  system elapsed 
-##   0.647   0.082   0.741
+##   0.558   0.083   0.644
 ```
 
 ```r
@@ -95,7 +95,7 @@ system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_we
 
 ```
 ##    user  system elapsed 
-## 115.726   5.890 123.576
+## 116.963   6.332 125.940
 ```
 
 ## Matching with job training data from "Evaluating the econometric evaluations of training programs with experimental data" (LaLonde 1986)
