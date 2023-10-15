@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>7 Instrumental variables | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
+<meta name="description" content="7.1 Experimental settings  Oct 17. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
 <meta property="og:title" content="7 Instrumental variables | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
+<meta property="og:description" content="7.1 Experimental settings  Oct 17. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="7 Instrumental variables | Causal Inference Course">
-<meta name="twitter:description" content="7.1 Introduction  Oct 17. After class, read Hernán and Robins 2020 Chapter 16.   7.2 Lab  Oct 18. After class, read Hernán and Robins 2020 Chapter 16.   7.3 Discussion  Oct 19">
+<meta name="twitter:description" content="7.1 Experimental settings  Oct 17. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -90,30 +90,82 @@
 <h1>
 <span class="header-section-number">7</span> Instrumental variables<a class="anchor" aria-label="anchor" href="#instrumental-variables"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introduction" class="section level2" number="7.1">
+<div id="experimental-settings" class="section level2" number="7.1">
 <h2>
-<span class="header-section-number">7.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.1</span> Experimental settings<a class="anchor" aria-label="anchor" href="#experimental-settings"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 17. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
+<p>Oct 17. <a href="assets/slides/7-1_iv_experimental.pdf"><strong>Slides.</strong></a></p>
 </blockquote>
+<p>An instrumental variable (IV) identification strategy applies when a treatment effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> is confounded by unobserved variables (<span class="math inline">\(U\)</span>), but an <strong>instrument</strong> <span class="math inline">\(Z\)</span> creates random unconfounded variation in <span class="math inline">\(A\)</span>.</p>
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \node (l) at (0,0) {$L$};
+    \node (a) at (1,0) {$A$};
+    \node (y) at (2,0) {$Y$};
+    \draw[->] (l) -- (a);
+    \draw[->] (a) -- (y);
+    \draw[->] (l) to[bend right] (y);
+  \end{tikzpicture}
+</script><p>A very clean setting for IV is randomized experiments with non-compliance: an experimenter randomizes the assigned treatment (<span class="math inline">\(Z\)</span>) but the actual treatment (<span class="math inline">\(A\)</span>) may be unequal to <span class="math inline">\(Z\)</span> because some units do not follow their assignment. Our first class will discuss this setting.</p>
 </div>
-<div id="lab" class="section level2" number="7.2">
+<div id="observational-settings" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">7.2</span> Lab<a class="anchor" aria-label="anchor" href="#lab"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Observational settings<a class="anchor" aria-label="anchor" href="#observational-settings"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 18. After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
+<p>Oct 19 <a href="assets/slides/7-2_iv_observational.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
 </blockquote>
+<p>On Thursday, we move on to IV analysis in observational settings. Here we focus on the casual assumptions required for IV. These assumptions often hold by design in experiments with non-compliance. In observational settings, they can be more doubtful.</p>
 </div>
-<div id="discussion" class="section level2" number="7.3">
+<div id="lab-estimation" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Lab: Estimation<a class="anchor" aria-label="anchor" href="#lab-estimation"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p>Oct 19</p>
-</blockquote>
+<p>In lab, between the two lectures, we will implement instrumental variables estimators in R. We will put instructions here for accessing a dataset, but for now the code below generates simulated data.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">iv_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Z <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fl">1e3</span>,<span class="fl">1</span>,<span class="fl">.5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>U <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>         p_A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Logistic.html">plogis</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.5</span> <span class="op">+</span> <span class="va">Z</span> <span class="op">+</span> <span class="va">U</span><span class="op">)</span>,</span>
+<span>         A <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span>, <span class="va">p_A</span><span class="op">)</span>,</span>
+<span>         Y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">U</span> <span class="op">+</span> <span class="va">A</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">p_A</span><span class="op">)</span></span></code></pre></div>
+<div id="wald-estimator" class="section level3" number="7.3.1">
+<h3>
+<span class="header-section-number">7.3.1</span> Wald estimator<a class="anchor" aria-label="anchor" href="#wald-estimator"><i class="fas fa-link"></i></a>
+</h3>
+<p>The Wald estimator proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
+<span class="math display">\[\begin{aligned}
+\hat{E}(Y^{a=1}-Y^{a=0}) &amp;= \frac{\hat{E}(Y^{z=1}-Y^{z=0})}{\hat{E}(A^{z=1}-A^{z=0})}\\
+&amp;= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
+\end{aligned}\]</span></p>
+<p>Implement the Wald estimator in code.</p>
+<ol style="list-style-type: decimal">
+<li>Estimate the mean difference in <span class="math inline">\(Y\)</span> over groups defined by <span class="math inline">\(Z\)</span>
+</li>
+<li>Estimate the mean difference in <span class="math inline">\(A\)</span> over groups defined by <span class="math inline">\(Z\)</span>
+</li>
+<li>Divide (1) / (2)</li>
+</ol>
+</div>
+<div id="two-stage-least-squares" class="section level3" number="7.3.2">
+<h3>
+<span class="header-section-number">7.3.2</span> Two-stage least squares<a class="anchor" aria-label="anchor" href="#two-stage-least-squares"><i class="fas fa-link"></i></a>
+</h3>
+<p>A second estimator for IV is two-stage least squares.</p>
+<ol style="list-style-type: decimal">
+<li>Use OLS to model <span class="math inline">\(A\)</span> as a function of <span class="math inline">\(Z\)</span>
+</li>
+<li>Store predicted values <span class="math inline">\(\hat{A}\)</span> without modifying <span class="math inline">\(Z\)</span>
+</li>
+<li>Use OLS to model <span class="math inline">\(Y\)</span> as a function of <span class="math inline">\(\hat{A}\)</span>
+</li>
+</ol>
+<p>The coefficient on <span class="math inline">\(\hat{A}\)</span> in (3) estimates the effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>.</p>
 
+</div>
 </div>
 </div>
   <div class="chapter-nav">
@@ -123,9 +175,14 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#instrumental-variables"><span class="header-section-number">7</span> Instrumental variables</a></li>
-<li><a class="nav-link" href="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#lab"><span class="header-section-number">7.2</span> Lab</a></li>
-<li><a class="nav-link" href="#discussion"><span class="header-section-number">7.3</span> Discussion</a></li>
+<li><a class="nav-link" href="#experimental-settings"><span class="header-section-number">7.1</span> Experimental settings</a></li>
+<li><a class="nav-link" href="#observational-settings"><span class="header-section-number">7.2</span> Observational settings</a></li>
+<li>
+<a class="nav-link" href="#lab-estimation"><span class="header-section-number">7.3</span> Lab: Estimation</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#wald-estimator"><span class="header-section-number">7.3.1</span> Wald estimator</a></li>
+<li><a class="nav-link" href="#two-stage-least-squares"><span class="header-section-number">7.3.2</span> Two-stage least squares</a></li>
+</ul>
+</li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -145,7 +202,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-11</p>
+    <p>Last built on 2023-10-15</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

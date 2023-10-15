@@ -1,14 +1,70 @@
 
 # Instrumental variables
 
-## Introduction
+## Experimental settings
 
-> Oct 17. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
+> Oct 17. [**Slides.**](assets/slides/7-1_iv_experimental.pdf)
 
-## Lab
+An instrumental variable (IV) identification strategy applies when a treatment effect of $A$ on $Y$ is confounded by unobserved variables ($U$), but an **instrument** $Z$ creates random unconfounded variation in $A$.
 
-> Oct 18. After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
+<script type="text/tikz">
+  \begin{tikzpicture}
+    \node (l) at (0,0) {$L$};
+    \node (a) at (1,0) {$A$};
+    \node (y) at (2,0) {$Y$};
+    \draw[->] (l) -- (a);
+    \draw[->] (a) -- (y);
+    \draw[->] (l) to[bend right] (y);
+  \end{tikzpicture}
+</script>
 
-## Discussion
+A very clean setting for IV is randomized experiments with non-compliance: an experimenter randomizes the assigned treatment ($Z$) but the actual treatment ($A$) may be unequal to $Z$ because some units do not follow their assignment. Our first class will discuss this setting.
 
-> Oct 19
+## Observational settings
+
+> Oct 19 [**Slides.**](assets/slides/7-2_iv_observational.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
+
+On Thursday, we move on to IV analysis in observational settings. Here we focus on the casual assumptions required for IV. These assumptions often hold by design in experiments with non-compliance. In observational settings, they can be more doubtful.
+
+## Lab: Estimation
+
+In lab, between the two lectures, we will implement instrumental variables estimators in R. We will put instructions here for accessing a dataset, but for now the code below generates simulated data.
+
+
+```r
+library(tidyverse)
+```
+
+
+```r
+iv_data <- data.frame(Z = rbinom(1e3,1,.5)) %>%
+  mutate(U = rnorm(n()),
+         p_A = plogis(-.5 + Z + U),
+         A = rbinom(n(), 1, p_A),
+         Y = rnorm(n(), U + A)) %>%
+  select(-p_A)
+```
+
+### Wald estimator
+
+The Wald estimator proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
+$$\begin{aligned}
+\hat{E}(Y^{a=1}-Y^{a=0}) &= \frac{\hat{E}(Y^{z=1}-Y^{z=0})}{\hat{E}(A^{z=1}-A^{z=0})}\\
+&= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
+\end{aligned}$$
+
+Implement the Wald estimator in code.
+
+1. Estimate the mean difference in $Y$ over groups defined by $Z$
+2. Estimate the mean difference in $A$ over groups defined by $Z$
+3. Divide (1) / (2)
+
+### Two-stage least squares
+
+A second estimator for IV is two-stage least squares.
+
+1. Use OLS to model $A$ as a function of $Z$
+2. Store predicted values $\hat{A}$ without modifying $Z$
+3. Use OLS to model $Y$ as a function of $\hat{A}$
+
+The coefficient on $\hat{A}$ in (3) estimates the effect of $A$ on $Y$.
