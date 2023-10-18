@@ -149,8 +149,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A     Y
 ##   &lt;int&gt; &lt;dbl&gt;
-## 1     0 0.593
-## 2     1 0.746</code></pre>
+## 1     0 0.608
+## 2     1 0.753</code></pre>
 <p>Estimate the probability of each <span class="math inline">\(M\)</span> given <span class="math inline">\(A\)</span>. Under the causal assumptions, this corresponds to the expected value of <span class="math inline">\(M\)</span> under assignment to each value of <span class="math inline">\(A\)</span> since <span class="math inline">\(M\rightarrow A\)</span> is unconfounded.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_M_given_A</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -166,10 +166,10 @@
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   &lt;int&gt; &lt;int&gt;       &lt;dbl&gt;
-## 1     0     0       0.892
-## 2     0     1       0.108
-## 3     1     0       0.103
-## 4     1     1       0.897</code></pre>
+## 1     0     0      0.901 
+## 2     0     1      0.0986
+## 3     1     0      0.0962
+## 4     1     1      0.904</code></pre>
 <p>Within the front-door identification formula, you need the marginal probability of each treatment value.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of each A</span></span>
@@ -185,8 +185,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A   p_A
 ##   &lt;int&gt; &lt;dbl&gt;
-## 1     0 0.498
-## 2     1 0.502</code></pre>
+## 1     0 0.504
+## 2     1 0.496</code></pre>
 <p>You also need the outcome distribution given <span class="math inline">\(M\)</span> and <span class="math inline">\(A\)</span>.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 given M and A</span></span>
@@ -198,10 +198,10 @@
 <pre><code>## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt;
-## 1     0     0         0.581
-## 2     0     1         0.686
-## 3     1     0         0.663
-## 4     1     1         0.756</code></pre>
+## 1     0     0         0.597
+## 2     0     1         0.710
+## 3     1     0         0.683
+## 4     1     1         0.761</code></pre>
 <p>Given the above, you can use backdoor adjustment to identify the outcome under intervention on <span class="math inline">\(M\)</span> by backdoor adjustment for <span class="math inline">\(A\)</span>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 under intervention on M</span></span>
@@ -213,8 +213,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       M p_Y_under_M
 ##   &lt;int&gt;       &lt;dbl&gt;
-## 1     0       0.622
-## 2     1       0.721</code></pre>
+## 1     0       0.640
+## 2     1       0.735</code></pre>
 <p>Bringing the above together, we have front-door identification.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 under intervention on A</span></span>
@@ -227,8 +227,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A estimate
 ##   &lt;int&gt;    &lt;dbl&gt;
-## 1     0    0.633
-## 2     1    0.711</code></pre>
+## 1     0    0.649
+## 2     1    0.726</code></pre>
 
 </div>
 </div>
@@ -260,7 +260,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-17</p>
+    <p>Last built on 2023-10-18</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
