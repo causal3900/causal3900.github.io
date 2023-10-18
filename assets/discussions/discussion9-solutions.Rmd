@@ -74,10 +74,51 @@ table(pension[, c(z, a)])
 ## Estimate the Local Average Treatment Effect
 
 Finally, we will estimate the Local Average Treatment Effect (average
-treatment effect on the compliers) of participating in a 401(k) using two-stage
-least squares. To do so, we will use the `ivreg` function from the AER package.
-To see the help file for this function, run `?ivreg` in your console and take a
-look at the documentation.
+treatment effect on the compliers) of participating in a 401(k) using the
+Wald Estimator and two-stage least squares. 
+
+### Wald Estimator
+The Wald estimator proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
+$$\begin{aligned}
+\hat{E}(Y^{a=1}-Y^{a=0}) &= \frac{\hat{E}(Y^{z=1}-Y^{z=0})}{\hat{E}(A^{z=1}-A^{z=0})}\\
+&= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
+\end{aligned}$$
+
+First let's calculate the effect of the instrument on the outcome:
+```{r}
+mean_outcome_by_instrument <- pension |>
+  group_by(e401) |>
+  summarise(net_tfa = mean(net_tfa), .groups = "drop")
+
+instrument_on_outcome <- (
+  mean_outcome_by_instrument$net_tfa[2] - mean_outcome_by_instrument$net_tfa[1]
+)
+```
+
+Now, calculate the effect of the instrument on the treatment:
+```{r}
+mean_treatment_by_instrument <- pension |>
+  group_by(e401) |>
+  summarise(p401 = mean(p401), .groups = "drop")
+
+instrument_on_treatment <- (
+  mean_treatment_by_instrument$p401[2] - mean_treatment_by_instrument$p401[1]
+)
+```
+
+Calculate the LATE by dividing these two:
+```{r}
+wald_late <- instrument_on_outcome/instrument_on_treatment
+
+wald_late
+```
+
+
+### Two stage least squeares
+
+To estimate the LATE with two stage least squares, we will use the `ivreg`
+function from the AER package. To see the help file for this function,
+run `?ivreg` in your console and take a look at the documentation.
 
 You will have to create a formula that tells `ivreg` what your outcome variable,
 treatment variable, and instrument variable are. **NOTE**: This formula should
