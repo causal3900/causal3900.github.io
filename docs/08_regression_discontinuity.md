@@ -3,7 +3,9 @@
 
 ## Introduction
 
-> Oct 24
+> Oct 24. [**Slides.**](assets/slides/8-1_rdd_intro.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20.
+
+In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs. 
 
 ## Lab
 
@@ -11,4 +13,6 @@
 
 ## Discussion
 
-> Oct 26
+> Oct 26. [**Slides.**](assets/slides/8-2_rdd_extensions.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20.
+
+We'll continue our discussion of regression discontinuity designs by discussing fuzzy RDD and validation checks for RDD.
