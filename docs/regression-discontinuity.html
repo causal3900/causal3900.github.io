@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>8 Regression discontinuity | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20. In some settings, a treatment is assigned based solely off the value of a continuous variable. In these...">
+<meta name="description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="8 Regression discontinuity | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20. In some settings, a treatment is assigned based solely off the value of a continuous variable. In these...">
+<meta property="og:description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="8 Regression discontinuity | Causal Inference Course">
-<meta name="twitter:description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20. In some settings, a treatment is assigned based solely off the value of a continuous variable. In these...">
+<meta name="twitter:description" content="8.1 Introduction  Oct 24. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -95,7 +95,7 @@
 <span class="header-section-number">8.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 24. <a href="assets/slides/8-1_rdd_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20.</p>
+<p>Oct 24. <a href="assets/slides/8-1_rdd_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.1 and 20.3.4.</p>
 </blockquote>
 <p>In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs.</p>
 </div>
@@ -104,15 +104,16 @@
 <span class="header-section-number">8.2</span> Lab<a class="anchor" aria-label="anchor" href="#lab"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 25</p>
+<p>Oct 25 After lab, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, section 20.2.1.</p>
 </blockquote>
+<p>We’ll discuss bandwidth selection and triangular weighting. We’ll also apply regression discontinuity to a concrete example and give you a chance to try it out for yourself.</p>
 </div>
 <div id="discussion" class="section level2" number="8.3">
 <h2>
 <span class="header-section-number">8.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 26. <a href="assets/slides/8-2_rdd_extensions.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20.</p>
+<p>Oct 26. <a href="assets/slides/8-2_rdd_extensions.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.2.2. through 20.3.1.</p>
 </blockquote>
 <p>We’ll continue our discussion of regression discontinuity designs by discussing fuzzy RDD and validation checks for RDD.</p>
 
@@ -147,7 +148,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-21</p>
+    <p>Last built on 2023-10-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
