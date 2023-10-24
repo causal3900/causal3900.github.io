@@ -16,7 +16,7 @@
 <meta name="twitter:description" content='Slides Download today’s .Rmd document here. Some packages you may need to install first: optmatch: install.packages("optmatch") sandwich: install.packages("sandwich") MatchIt:...'>
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -62,6 +62,7 @@
 <li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
 <li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
+<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -102,13 +103,13 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <li>marginaleffects: <code>install.packages("marginaleffects")</code>
 </li>
 </ul>
-<div id="r-markdown" class="section level2" number="13.8">
+<div id="r-markdown" class="section level2" number="13.11">
 <h2>
-<span class="header-section-number">13.8</span> R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.11</span> R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"><i class="fas fa-link"></i></a>
 </h2>
 <p>Learn to do matching with the “MatchIt” package</p>
 <p>First, we’ll use the data set from last week to compare greedy vs optimal matching. We’ll use the NLSY data since it is larger.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"assets/discussions/d.RDS"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># matchit function implements matching</span></span>
@@ -121,7 +122,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
 <p>First compare optimal vs greedy. Optimal matching is usually better than greedy matching, as long as your data isn’t too big</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Optimal vs greedy with NYLSR data</span></span>
 <span><span class="co"># With n = 1000; .01 sec vs .8 sec</span></span>
 <span><span class="co"># With n = 2000; .05 sec vs 8 sec</span></span>
@@ -136,7 +137,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
 ##   0.016   0.000   0.016</code></pre>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># method: optimal is optimal matching</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
@@ -145,7 +146,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <pre><code>##    user  system elapsed 
 ##   1.290   0.077   1.524</code></pre>
 <p>On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># With full data set greedy matching takes ~ 0.5-1.5 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
@@ -153,7 +154,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
 ##   0.605   0.077   0.684</code></pre>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Meanwhile, optimal matching takes 60-130 seconds</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
@@ -162,12 +163,12 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <pre><code>##    user  system elapsed 
 ## 117.511   5.250 124.215</code></pre>
 </div>
-<div id="matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986" class="section level2" number="13.9">
+<div id="matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986" class="section level2" number="13.12">
 <h2>
-<span class="header-section-number">13.9</span> Matching with job training data from “Evaluating the econometric evaluations of training programs with experimental data” (LaLonde 1986)<a class="anchor" aria-label="anchor" href="#matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12</span> Matching with job training data from “Evaluating the econometric evaluations of training programs with experimental data” (LaLonde 1986)<a class="anchor" aria-label="anchor" href="#matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986"><i class="fas fa-link"></i></a>
 </h2>
 <p>For the remainder of the lab, we’ll use a portion of the data from a job training program. In particular, the treatment is whether or not someone participated in a job training program. The outcome of interest is their salary in 1978 (re78).</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"lalonde"</span><span class="op">)</span></span>
 <span></span>
@@ -189,7 +190,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 ## NSW5   289.7899
 ## NSW6  4056.4940</code></pre>
 <p>We expect income in 1974 is highly correlated with income in 1975. It also has a much higher variability than age.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Suppose there are 3 individuals</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">5000</span>, <span class="fl">5500</span>,</span>
 <span>                <span class="fl">20</span>, <span class="fl">5100</span>, <span class="fl">5900</span>,</span>
@@ -211,14 +212,14 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 ## 1 0.000000 3.225953 1.098595
 ## 2 3.225953 0.000000 2.152528
 ## 3 1.098595 2.152528 0.000000</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># We can also compute the Euclidean distance</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html">dist</a></span><span class="op">(</span><span class="va">dat</span>, method <span class="op">=</span> <span class="st">"euclidean"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##          1        2
 ## 2 413.4005         
 ## 3 728.0797 316.8596</code></pre>
 <p>Now let’s try to run the matching procedure using the function.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># For now, let's start with Euclidean distance, even if may not be great</span></span>
 <span></span>
 <span><span class="co"># method: nearest (i.e. greedy 1:1)</span></span>
@@ -234,12 +235,12 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>                  data <span class="op">=</span> <span class="va">lalonde</span>, replace <span class="op">=</span> <span class="cn">F</span>, </span>
 <span>                  ratio <span class="op">=</span> <span class="fl">1</span>, caliper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>re74  <span class="op">=</span> <span class="fl">.2</span>, re75 <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="assessing-the-matching" class="section level2" number="13.10">
+<div id="assessing-the-matching" class="section level2" number="13.13">
 <h2>
-<span class="header-section-number">13.10</span> Assessing the matching<a class="anchor" aria-label="anchor" href="#assessing-the-matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.13</span> Assessing the matching<a class="anchor" aria-label="anchor" href="#assessing-the-matching"><i class="fas fa-link"></i></a>
 </h2>
 <p>We can check how well the balancing has been done</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">summary.matchit</span> <span class="co"># Look in the Help tab (on the bottom right) for documentation on summary.matchit</span></span>
 <span></span>
 <span></span>
@@ -274,28 +275,28 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 ## Matched       175     175
 ## Unmatched     254      10
 ## Discarded       0       0</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Std. Mean Diff (SMD): difference of means, standardized by sd of treatment group</span></span>
 <span><span class="co"># Var. Ratio: ratio of variances in treatment and control group. Compares spread of data</span></span>
 <span><span class="co"># Rubin (2001) presents rule of thumb that SMD should be less than .25 and variance ratio should be between .5 and 2</span></span>
 <span><span class="co"># Max eCDF: Kolmogorov-Smirnov statistic. Max difference across entire CDF</span></span></code></pre></div>
 <p>We can also visually asses the matches</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Produces QQ plots of all variables in which.xs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">m.out0</span>, type <span class="op">=</span> <span class="st">"qq"</span>, which.xs <span class="op">=</span> <span class="op">~</span><span class="va">age</span> <span class="op">+</span> <span class="va">re74</span>, interactive <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion7_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Plots the density of all variables in which.xs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">m.out0</span>, type <span class="op">=</span> <span class="st">"density"</span>, which.xs <span class="op">=</span> <span class="op">~</span><span class="va">age</span> <span class="op">+</span> <span class="va">re74</span> <span class="op">+</span> <span class="va">race</span>, interactive <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion7_files/figure-html/unnamed-chunk-8-2.png" width="672"></div>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Plots the empirical CDF of all variables in which.xs</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">m.out0</span>, type <span class="op">=</span> <span class="st">"ecdf"</span>, which.xs <span class="op">=</span> <span class="op">~</span><span class="va">age</span> <span class="op">+</span> <span class="va">re74</span>, interactive <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure">
 <img src="discussion7_files/figure-html/unnamed-chunk-8-3.png" width="672">
 ## Estimating the effect
 Given the matching (and assuming it is good enough), we can estimate the ATT.</div>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produces data frame same as input, but has two additional columns</span></span>
 <span><span class="co"># weights: the weight of the row in the paired data set. Can be greater than 1</span></span>
 <span><span class="co">#         if the data set was matched more than once</span></span>
@@ -317,24 +318,24 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 ## NSW4  7506.1460       1      110
 ## NSW5   289.7899       1      121
 ## NSW6  4056.4940       1      132</code></pre>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">m.out0.data</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] "treat"    "age"      "educ"     "race"     "married" 
 ##  [6] "nodegree" "re74"     "re75"     "re78"     "weights" 
 ## [11] "subclass"</code></pre>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Also produces matched data set, though will duplicate rows if matching with replacement</span></span>
 <span><span class="co"># and a control is matched more than once</span></span>
 <span><span class="va">m.out0.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">get_matches</a></span><span class="op">(</span><span class="va">m.out0</span><span class="op">)</span></span></code></pre></div>
 <p>As a first step, we could simply compare the means of the outcomes for both groups. Notice this is the first time we’ve looked at the outcomes!</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Take the mean of both groups</span></span>
 <span><span class="co"># this will only work if all weights are 1</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span><span class="va">re78</span><span class="op">~</span> <span class="va">treat</span>, FUN <span class="op">=</span> <span class="va">mean</span>, data <span class="op">=</span> <span class="va">m.out0.data</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   treat     re78
 ## 1     0 5422.184
 ## 2     1 6193.594</code></pre>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Fitting a linear model on the treatments will work</span></span>
 <span><span class="co"># even if all weights are not 1. We just need to feed them in</span></span>
 <span><span class="va">fit1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span><span class="op">~</span> <span class="va">treat</span>, data <span class="op">=</span> <span class="va">m.out0.data</span>, weights <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
@@ -360,9 +361,9 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 ## Columns: term, contrast, estimate, std.error, statistic, p.value, s.value, conf.low, conf.high 
 ## Type:  response</code></pre>
 </div>
-<div id="fit-your-own-model" class="section level2" number="13.11">
+<div id="fit-your-own-model" class="section level2" number="13.14">
 <h2>
-<span class="header-section-number">13.11</span> Fit your own model<a class="anchor" aria-label="anchor" href="#fit-your-own-model"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.14</span> Fit your own model<a class="anchor" aria-label="anchor" href="#fit-your-own-model"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now try for yourself. Note, you will need to do something very similar for the homework with this dataset.</p>
 <ul>
@@ -399,10 +400,10 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#discussion-7.-causal-effects-with-matching">Discussion 7. Causal Effects with Matching</a></li>
-<li><a class="nav-link" href="#r-markdown"><span class="header-section-number">13.8</span> R Markdown</a></li>
-<li><a class="nav-link" href="#matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986"><span class="header-section-number">13.9</span> Matching with job training data from “Evaluating the econometric evaluations of training programs with experimental data” (LaLonde 1986)</a></li>
-<li><a class="nav-link" href="#assessing-the-matching"><span class="header-section-number">13.10</span> Assessing the matching</a></li>
-<li><a class="nav-link" href="#fit-your-own-model"><span class="header-section-number">13.11</span> Fit your own model</a></li>
+<li><a class="nav-link" href="#r-markdown"><span class="header-section-number">13.11</span> R Markdown</a></li>
+<li><a class="nav-link" href="#matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986"><span class="header-section-number">13.12</span> Matching with job training data from “Evaluating the econometric evaluations of training programs with experimental data” (LaLonde 1986)</a></li>
+<li><a class="nav-link" href="#assessing-the-matching"><span class="header-section-number">13.13</span> Assessing the matching</a></li>
+<li><a class="nav-link" href="#fit-your-own-model"><span class="header-section-number">13.14</span> Fit your own model</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -422,7 +423,7 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-23</p>
+    <p>Last built on 2023-10-24</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -7,9 +7,10 @@
 
 In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs. 
 
-## Lab
+## Lab: Regression Discontinuity - Bandwidth and Examples
 
 > Oct 25 After lab, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, section 20.2.1.
+[**Slides**](assets/discussions/discussion10.pdf) Download today's [**.Rmd document here**](assets/discussions/discussion10.Rmd).
 
 We'll discuss bandwidth selection and triangular weighting. We'll also apply regression discontinuity to a concrete example and give you a chance to try it out for yourself.
 
