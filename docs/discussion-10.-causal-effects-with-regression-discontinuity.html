@@ -7,7 +7,7 @@
 <title>Discussion 10. Causal Effects with Regression Discontinuity | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
 <meta name="description" content="Slides Download today’s .Rmd document here.  13.1 Choosing a bandwidth One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
 <meta property="og:title" content="Discussion 10. Causal Effects with Regression Discontinuity | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Slides Download today’s .Rmd document here.  13.1 Choosing a bandwidth One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example...">
@@ -194,8 +194,8 @@ However, if we get more and more data, we don’t really improve much</div>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">rec</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1] 10.039721  4.895157  3.919913 12.800473  4.855567
-## [6]  4.706268  4.060869  1.708814</code></pre>
+<pre><code>## [1] 11.709810  5.023367  3.970073 13.699941  4.883889
+## [6]  4.619607  4.025803  1.616025</code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">rec</span><span class="op">[</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">5</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
@@ -531,7 +531,7 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-10-24</p>
+    <p>Last built on 2023-10-26</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
