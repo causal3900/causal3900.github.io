@@ -99,22 +99,32 @@ Notice how we see parallel trends in the pretreatment period for the outcome "Ed
 
 ### Basic Difference in Differences Analysis with One Pretreatment Period
 
+In the data our treatment indicator variable is called `treatment`, and our
+post-treatment time period indicator is called `post_treat`. You will need to
+create the interaction variable that is `treatment`*`post_treat`. Call this
+new variable `did`.
+
 ```{r}
 # remove the extra pretreatment periods from the dataset
 onePerMalesky <- malesky2014 %>%
   filter(year==2008 | year ==2010)
 
-# the column treatment I think captures whether you're in treatment vs control group
-# the column post_treat I think captures the time--whether you're in pre-treatment or post-treatment period
-
-# did is an interaction term between post_treat and treat
+# Now, create the interaction term between treatment and post_treat
 onePerMalesky <- onePerMalesky %>%
-  mutate(did = post_treat*treatment)
+  mutate(did = ...create your interaction variable here...)
+```
 
+Now that you have your `treatment`, `post_treat`, and `did` variables, you are
+ready to estimate the causal effect of de-centralizing government on whether or
+not people participate in an Educational and Cultural Program. Your outcome
+variable in this case is `pro4`. We will estimate the causal effect with an 
+OLS regression. Use the formula that we discussed in the slides to create 
+your model formula.
+```{r}
 # regression for Education and Cultural Program on treatment, time period, and interaction term
-didReg <- lm(pro4 ~ treatment + post_treat + did, data = onePerMalesky)
+didReg <- lm(...put your formula here..., data = onePerMalesky)
 
-summary(didReg)
+summary(...put your DiD model object here...)
 
 # estimate
 print(didReg$coefficients["did"])
