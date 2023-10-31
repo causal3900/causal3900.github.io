@@ -1,0 +1,123 @@
+---
+title: "DiscussionDID"
+date: "2023-10-30"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam
+
+Include some background on the experiment and a link to the paper
+
+### Download the data
+```{r}
+library(cowplot)
+library(dplyr)
+library(tidyverse)
+
+load(file = "malesky2014.rda")
+malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) # data cleaning
+```
+
+
+### About the data
+
+Variables in the data set:
+
+- `treatment`: 
+- `pro4`:
+- `tapwater`:
+- `agrext`:
+- `year`:
+- `post_treat`:
+
+```{r}
+head(malesky2014)
+```
+
+
+### Visualizing Trends in the Treatment and Control Groups
+
+In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at three possible outcomes: "Education and Cultural Program," "Tap Water," and "Agricultural Center."
+
+```{r}
+# Plot the outcome for `Education and Cultural Program`
+ed_and_culture <- malesky2014 %>%
+  mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
+  group_by(treatment, year) %>%
+  summarize(estimate = mean(pro4)) %>%
+  ggplot(aes(x = year, y = estimate, color = treatment)) + 
+  geom_point() + 
+  geom_line() + 
+  ggtitle("Ed. and Cultural Program") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        legend.background = element_rect(fill = "white", colour = "white"),
+        plot.title = element_text(hjust = 0.5))
+
+# Plot the outcome for `Tap Water`
+tap_water <- malesky2014 %>%
+  mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
+  group_by(treatment, year) %>%
+  summarize(estimate = mean(tapwater)) %>%
+  ggplot(aes(x = year, y = estimate, color = treatment)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Tap Water") +
+  theme_minimal() +
+  theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
+
+# Plot the outcome for `Agricultural Center`
+ag_center <- malesky2014 %>%
+  mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
+  group_by(treatment, year) %>%
+  summarize(estimate = mean(agrext)) %>%
+  ggplot(aes(x = year, y = estimate, color = treatment)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Agricultural Center") +
+  theme_minimal() + 
+  theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
+```
+
+Let's compare all three of these plots side-by-side!
+```{r}
+legend <- get_legend(
+  ed_and_culture + 
+    guides(color = guide_legend(nrow = 1)) +
+    theme(legend.position = "bottom")
+)
+pgrid <- cowplot::plot_grid(ed_and_culture, tap_water, ag_center, nrow = 1)
+plot_grid(pgrid, legend, ncol = 1, rel_heights = c(1, .1))
+```
+Notice how we see parallel trends in the pretreatment period for the outcome "Education and Cultural Program," but not for "Tap Water" or "Agricultural Center."
+
+### Basic Difference in Differences Analysis with One Pretreatment Period
+
+```{r}
+# remove the extra pretreatment periods from the dataset
+onePerMalesky <- malesky2014 %>%
+  filter(year==2008 | year ==2010)
+
+# the column treatment I think captures whether you're in treatment vs control group
+# the column post_treat I think captures the time--whether you're in pre-treatment or post-treatment period
+
+# did is an interaction term between post_treat and treat
+onePerMalesky <- onePerMalesky %>%
+  mutate(did = post_treat*treatment)
+
+# regression for Education and Cultural Program on treatment, time period, and interaction term
+didReg <- lm(pro4 ~ treatment + post_treat + did, data = onePerMalesky)
+
+summary(didReg)
+
+# estimate
+print(didReg$coefficients["did"])
+```
+
+
