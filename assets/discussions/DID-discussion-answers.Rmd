@@ -16,6 +16,7 @@ Include some background on the experiment and a link to the paper
 
 ### Download the data
 ```{r}
+library(cowplot)
 library(dplyr)
 library(tidyverse)
 
@@ -45,28 +46,54 @@ head(malesky2014)
 In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at three possible outcomes: "Education and Cultural Program," "Tap Water," and "Agricultural Center."
 
 ```{r}
-malesky2014 %>%
+# Plot the outcome for `Education and Cultural Program`
+ed_and_culture <- malesky2014 %>%
   mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
   group_by(treatment, year) %>%
   summarize(estimate = mean(pro4)) %>%
-  ggplot(aes(x = year, y = estimate, color = treatment)) + geom_point() + geom_line() + ggtitle("Education and Cultural Program")
-```
+  ggplot(aes(x = year, y = estimate, color = treatment)) + 
+  geom_point() + 
+  geom_line() + 
+  ggtitle("Ed. and Cultural Program") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        legend.background = element_rect(fill = "white", colour = "white"),
+        plot.title = element_text(hjust = 0.5))
 
-
-```{r}
-malesky2014 %>%
+# Plot the outcome for `Tap Water`
+tap_water <- malesky2014 %>%
   mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
   group_by(treatment, year) %>%
   summarize(estimate = mean(tapwater)) %>%
-  ggplot(aes(x = year, y = estimate, color = treatment)) + geom_point() + geom_line() + ggtitle("Tap Water")
-```
+  ggplot(aes(x = year, y = estimate, color = treatment)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Tap Water") +
+  theme_minimal() +
+  theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
 
-```{r}
-malesky2014 %>%
+# Plot the outcome for `Agricultural Center`
+ag_center <- malesky2014 %>%
   mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
   group_by(treatment, year) %>%
   summarize(estimate = mean(agrext)) %>%
-  ggplot(aes(x = year, y = estimate, color = treatment)) + geom_point() + geom_line() + ggtitle("Agricultural Center")
+  ggplot(aes(x = year, y = estimate, color = treatment)) +
+  geom_point() +
+  geom_line() +
+  ggtitle("Agricultural Center") +
+  theme_minimal() + 
+  theme(legend.position = "none", plot.title = element_text(hjust = 0.5))
+```
+
+Let's compare all three of these plots side-by-side!
+```{r}
+legend <- get_legend(
+  ed_and_culture + 
+    guides(color = guide_legend(nrow = 1)) +
+    theme(legend.position = "bottom")
+)
+pgrid <- cowplot::plot_grid(ed_and_culture, tap_water, ag_center, nrow = 1)
+plot_grid(pgrid, legend, ncol = 1, rel_heights = c(1, .1))
 ```
 Notice how we see parallel trends in the pretreatment period for the outcome "Education and Cultural Program," but not for "Tap Water" or "Agricultural Center."
 
