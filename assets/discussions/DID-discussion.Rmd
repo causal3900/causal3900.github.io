@@ -1,6 +1,5 @@
 ---
 title: "DiscussionDID"
-author: "Mayleen and Daniel"
 date: "2023-10-30"
 output:
   pdf_document: default
@@ -19,14 +18,22 @@ Include some background on the experiment and a link to the paper
 ```{r}
 library(dplyr)
 library(tidyverse)
+
 load(file = "malesky2014.rda")
-malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city)
+malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) # data cleaning
 ```
 
 
 ### About the data
 
-- explain the columns we use: treatment, pro4, tapwater, agrext, year, post_treat (any others?)
+Variables in the data set:
+
+- `treatment`: 
+- `pro4`:
+- `tapwater`:
+- `agrext`:
+- `year`:
+- `post_treat`:
 
 ```{r}
 head(malesky2014)
