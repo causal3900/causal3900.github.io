@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 ## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam
 
-Include some background on the experiment and a link to the paper
+Refer to Tuesday's lecture ([slides](causal3900.github.io/assets/slides/9-1_did.pdf) and recording) for some background on this experiment. Here's a [link](https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58) to the paper from the original experiment and a [link](https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7) to the paper that re-analyzed this experiment, which we're basing this lab on. 
 
 ### Download the data
 ```{r}
@@ -29,12 +29,12 @@ malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) # data cleaning
 
 Variables in the data set:
 
-- `treatment`: 
-- `pro4`:
-- `tapwater`:
-- `agrext`:
-- `year`:
-- `post_treat`:
+- `treatment`: binary variable indicating if the record is from the treatment group ($1$) or the control group ($0$)
+- `pro4`: educational and cultural program number 4 outcome variable (binary: $1$ if they participated in the program, $0$ if not)
+- `tapwater`: tap water outcome variable (binary: $1$ if they drink tap water, $0$ if not)
+- `agrext`: agricultural center outcome variable (binary: $1$ if they use the center, $0$ if not)
+- `year`: the year the record is from
+- `post_treat`: binary variable indicating if the record is from the pre-treatment period ($0$) or the post-treatment period ($0$)
 
 ```{r}
 head(malesky2014)
