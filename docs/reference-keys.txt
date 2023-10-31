@@ -42,11 +42,11 @@ discussion
 difference-in-difference
 introduction-1
 lab
-discussion-1
+extensions-of-did
 synthetic-control
 introduction-2
 lab-1
-discussion-2
+discussion-1
 data-driven-methods
 machine-learning-to-target-human-attention
 lab-2
