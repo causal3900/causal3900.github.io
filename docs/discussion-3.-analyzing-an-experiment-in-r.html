@@ -142,7 +142,7 @@ would be revealed to their household <em>and</em> to their neighbors.</li>
 </h3>
 <p><strong>Note:</strong> If this errors you probably either don’t have <code>dplyr</code> or <code>haven</code>
 installed.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -150,7 +150,7 @@ installed.</p>
 <h3>
 <span class="header-section-number">13.9.2</span> Import data<a class="anchor" aria-label="anchor" href="#import-data"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p>Alternatively (if you really want), you could download the data <a href="assets/data/social_pressure.dta">here</a> and load it directly from your computer. Make sure to save the data into the same directory that your RMarkdown file is in.
@@ -158,7 +158,7 @@ Then you can you can import the data as:</p>
 <p><code>gotv &lt;- read_dta("social_pressure.dta")</code></p>
 </blockquote>
 <p>Run the following code to get a quick peek at the dataset using the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">function <code>glimpse</code></a>. This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about year of birth <code>yob</code> but not explicitly age. Also notice that the treatments are labeled with the numbers 0 through 4.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="clean-data" class="section level3" number="13.9.3">
@@ -173,7 +173,7 @@ was born in. For this, we use the <code>mutate</code> function, which you can re
 <p><code>mutate(col_3 = col_1 + col_2)</code></p>
 </blockquote>
 <p>We have the code started for you below. Fill in the appropriate expression after <code>age =</code> to add a column to <code>gotv</code> labeled <code>age</code> that contains how old each person was in 2006.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="op">)</span></span></code></pre></div>
 <p>Now, convert the <code>treatment</code> variable from it’s numeric representation to the
@@ -191,11 +191,11 @@ The general syntax is <code>case_when(condition ~ output-value)</code></p>
 <p>For example, a condition would be <code>treatement == 0</code> and an output value would be <code>"Control"</code>. This would search for every value in the <code>treatment</code> column that equals <code>0</code> and replace that with the string <code>"Control"</code>.</p>
 </blockquote>
 <p>We have started the code for you below. Decide what argument(s) to pass inside the parantheses of <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <p>Now, when we use <code>glimpse</code> we see there is an added <code>age</code> variable and that the treatments have word instead of number labels.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="balance-table" class="section level3" number="13.9.4">
@@ -220,7 +220,7 @@ arms, and we expect them to be pretty much equal if our randomization worked. Th
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"g2000"</span>, <span class="st">"g2002"</span>, <span class="st">"p2000"</span>, <span class="st">"p2002"</span>, <span class="st">"p2004"</span>, <span class="st">"hh_size"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">gotv_balance</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
@@ -244,7 +244,7 @@ arms, and we expect them to be pretty much equal if our randomization worked. Th
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>

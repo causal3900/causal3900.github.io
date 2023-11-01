@@ -16,11 +16,18 @@ Refer to Tuesday's lecture ([slides](causal3900.github.io/assets/slides/9-1_did.
 
 ### Download the data
 ```{r}
-library(cowplot)
-library(dplyr)
-library(tidyverse)
+install <- function(package) {
+  if (!require(package, quietly = TRUE, character.only = TRUE)) {
+    install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
+    library(package, character.only = TRUE)
+  }
+}
 
-load(file = "malesky2014.rda")
+install("cowplot")
+install("dplyr")
+install("tidyverse")
+
+malesky2014 <- read_csv("https://github.com/causal3900/causal3900.github.io/raw/main/assets/data/malesky2014.csv")
 malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) # data cleaning
 ```
 
