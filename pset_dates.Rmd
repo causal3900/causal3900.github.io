@@ -19,7 +19,7 @@ Th 19 Oct, 5pm. Submit HW 4.
 
 Th 26 Oct, 5pm. Peer reviews for HW 4.
 
-Th 2 Nov, 5pm. Submit HW 5.
+Sun 5 Nov, 5pm. Submit HW 5.
 
 Th 9 Nov, 5pm. Peer reviews for HW 5.
 
