@@ -74,8 +74,8 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.585
-## 2     1 0.737
+## 1     0 0.589
+## 2     1 0.745
 ```
 
 Estimate the probability of each $M$ given $A$. Under the causal assumptions, this corresponds to the expected value of $M$ under assignment to each value of $A$ since $M\rightarrow A$ is unconfounded.
@@ -97,10 +97,10 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.909 
-## 2     0     1      0.0912
-## 3     1     0      0.105 
-## 4     1     1      0.895
+## 1     0     0      0.897 
+## 2     0     1      0.103 
+## 3     1     0      0.0970
+## 4     1     1      0.903
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
@@ -122,8 +122,8 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.495
-## 2     1 0.505
+## 1     0 0.507
+## 2     1 0.493
 ```
 
 You also need the outcome distribution given $M$ and $A$.
@@ -141,10 +141,10 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.574
-## 2     0     1         0.703
-## 3     1     0         0.643
-## 4     1     1         0.748
+## 1     0     0         0.578
+## 2     0     1         0.688
+## 3     1     0         0.642
+## 4     1     1         0.756
 ```
 
 Given the above, you can use backdoor adjustment to identify the outcome under intervention on $M$ by backdoor adjustment for $A$.
@@ -163,7 +163,7 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ##       M p_Y_under_M
 ##   <int>       <dbl>
 ## 1     0       0.609
-## 2     1       0.726
+## 2     1       0.722
 ```
 
 Bringing the above together, we have front-door identification.
@@ -182,6 +182,6 @@ p_Y_under_A <- p_M_given_A %>%
 ## # A tibble: 2 × 2
 ##       A estimate
 ##   <int>    <dbl>
-## 1     0    0.619
-## 2     1    0.713
+## 1     0    0.621
+## 2     1    0.711
 ```
