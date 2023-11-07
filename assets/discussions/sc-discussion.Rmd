@@ -8,16 +8,14 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 # Empirical Application: How the Onset of Violent Conflict Affects Economic Output
 
-We will demonstrate the synthetic control method using data from Abadie and 
-Gardeazabal (2003), which studied the economic effects of conflict, using the
+We will demonstrate the synthetic control method using data from [Abadie and 
+Gardeazabal (2003)](https://www.aeaweb.org/articles?id=10.1257/000282803321455188), which studied the economic effects of conflict, using the
 terrorist conflict in the Basque Country as a case study. This paper used a 
 combination of other Spanish regions to construct a synthetic Basque Country
 resembling many relevant economic characteristics of the Basque Country before
-the onset of political terrorism in the 1970s. The basque data contains
-information from 1955–1997 on 17 Spanish regions, including
-per-capita GDP (the outcome variable), as well as population density, sectoral
-production, investment, and human capital (the predictor variables).
+the onset of political terrorism in the 1970s.
 
+## Load the Data
 Let's go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don't worry, that's how it is meant to be!
 ```{r}
@@ -66,50 +64,74 @@ more than high school (`school.post.high`).
 
 - `invest`: 1964–1969 averages for gross total investment divided by total GDP.
 
-## Prepare the data for analysis
+Running the following line of code will show you some helpful information in the "Help" box on the bottom right of your R Studio Screen. We call this *documentation*. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.
 
-The first step is to reorganize the dataset into an appropriate format that is
+```{r}
+?basque
+```
+
+### Questions For You
+After running the code above and reading the documentation for the dataset, answer the following questions:
+
+1. What years are contained in the dataset?
+
+**Answer.**
+
+2. How many Spanish regions are contained in the dataset?
+
+**Answer.**
+
+3. What is the outcome variable and what is it called in the dataset?
+
+**Answer.**
+
+4. What are the possible predictor variables?
+
+**Answer.**
+
+## Prepare the data for analysis using `dataprep`
+
+The **first step** is to reorganize the dataset into an appropriate format that is
 suitable for the main estimator function `synth()`. To do this, we will use the
 `dataprep()` function. To see more examples and details on data extraction, run
-`?dataprep` in the console below.
+`?dataprep` in your console. This should pop up a helpful page in the "Help" tab on the bottom right of your R Studio screen.
 
-In the code below, we need to tell Synth what our predictor variables are, 
-as well as how we want to aggregate these variables
-(in this case we want to take the average value of them). We also need to tell
-synth what time-period we are looking at for these variables (e.g., 1964:1969).
-We also need to specify what our outcome variable is (e.g., `gdpcap`) and 
-what variable(s) identify the different regions (e.g., `regionname`) and/or 
-numbers (e.g., `regionno`).
+In the code below, we need to tell Synth the following:
 
-Finally, we will have to specify what variable is
-our time-period variable (e.g., `year`), what region is the treated region
-(e.g., region number 17 which is the Basque country), what regions are the
-control units (e.g., regions number c(2:16,18)), what is the time-period
-over which we want to train our model (e.g., the pre-treatment period
-1960:1969), and the time-period over which our outcome data should be plotted
-(usually before and after treatment, e.g., from 1955 to 1997).
+1. What our predictor variables are (split up into two groups)
+  - (a) `predictors`: variables that are non-missing for all years included in our analysis
+  - (b) `special.predictors`: for predictor variables with missing values or require a little extra handling
+2. How we want these predictor variables to be aggregated (in our case, the average)
+3. What time period we are considering (in our case, 1964 to 1969)
+4. What the outcome variable is (in our case, `gdpcap`)
+5. What variable(s) identify the different regions (`regionname`) and/or 
+numbers (`regionno`).
+6. What variable denotes the time period (`year`)
+7. Which region is the treated unit (region 17 AKA Basque Country) 
+8. Which regions are control units (`c(2:16,18)`)
+9. What time period we want to train out model in (pre-treatment period 1960:1969)
+10. The time-period over which our outcome data should be plotted
+(usually before and after treatment, e.g., 1955 to 1997)
 
-This is definitely a lot, so please ask us if you have any questions about what
-these different variables mean! Additionally, running `?basque` in your console
-will give you a pretty nice description of the data.
+Okay, now let's prepare what we've just described in code. 
+We've added comments in the code to explain exactly what's happening in each line.
+We are creating a "prepared" dataset `dataprep.out` by running our "unprepared" data through the `dataprep` function. 
+This is because the Synth package requires the data to be in a specific format to do synthetic control.
 
-Okay, now let's prepare what we've just described in code. Below, we've added
-comments alongside the lines of code to explain exactly what's happening in
-each.
 ```{r}
 dataprep.out <- dataprep(
-  foo = basque,          # Our analysis data
-  predictors = c(        # This is a list of variables that we want to use as predictors
-    "school.illit",      # -   These are the variables that are non-missing for all
-    "school.prim",       #     years included in our analysis
+  foo = basque,          # Our analysis data that needs to be prepared
+  predictors = c(        # 1(a). list the variables that we want to use as predictors
+    "school.illit",     
+    "school.prim",       
     "school.med",
     "school.high",
     "school.post.high",
     "invest"
   ),
-  predictors.op = "mean",               # Tells Synth to take the average of all variables in `predictors` above.
-  time.predictors.prior = 1964:1969,    # Takes the average of variables in `predictors` from 1964 to 1969.
-  special.predictors = list(            # Additional variables to include as predictors in our model:
+  predictors.op = "mean",               # 2. Tell Synth to take the average of all variables in `predictors` above.
+  time.predictors.prior = 1964:1969,    # 3. Take the average of variables in `predictors` from 1964 to 1969.
+  special.predictors = list(            # 1(b). Additional variables to include as predictors in our model:
     list("gdpcap", 1960:1969 , "mean"), # -    Take the average of `gdcap` from 1960 to 1969
                                         # -    Take the average of all others for every OTHER year from 1961 to 1969
     list("sec.agriculture", seq(1961, 1969, 2), "mean"),
@@ -120,14 +142,14 @@ dataprep.out <- dataprep(
     list("sec.services.nonventa", seq(1961, 1969, 2), "mean"),
     list("popdens", 1969, "mean")       # -    Take the average of `popdens` only in 1969
   ),
-  dependent = "gdpcap",                 # Specifies our outcome variable
-  unit.variable = "regionno",           # Specifies the numeric identifier of each region
-  unit.names.variable = "regionname",   # Specifies the name of each region
-  time.variable = "year",               # Specifies what variable is our time variable
-  treatment.identifier = 17,            # Specifies which region in `regionno` is our treated region
-  controls.identifier = c(2:16, 18),    # Specifies which regions in `regionno` should be in our donor pool
-  time.optimize.ssr = 1960:1969,        # What years should make up our pre-treatment time period?
-  time.plot = 1955:1997                 # What years to plot our outcome variable for?
+  dependent = "gdpcap",                 # 4. Specify our outcome variable
+  unit.variable = "regionno",           # 5(a). Specify the numeric identifier of each region
+  unit.names.variable = "regionname",   # 5(b). Specify the name of each region
+  time.variable = "year",               # 6. Specify what variable is our time variable
+  treatment.identifier = 17,            # 7. Specify which region in `regionno` is our treated region
+  controls.identifier = c(2:16, 18),    # 8. Specify which regions in `regionno` should be in our donor pool
+  time.optimize.ssr = 1960:1969,        # 9. Specify what years should make up our pre-treatment time period
+  time.plot = 1955:1997                 # 10. Specify what years to plot our outcome variable for
 )
 ```
 
