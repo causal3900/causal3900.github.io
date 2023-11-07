@@ -3,7 +3,8 @@
 
 ## Introduction
 
-> Nov 7
+> Nov 7 [**Slides.**](assets/slides/10-1_synth_control.pdf) 
+
 
 ## Lab
 
