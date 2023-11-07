@@ -166,7 +166,7 @@ shares (e.g. `sec.agriculture`) is only available on a biennial basis
 More details and examples on the use of the `special.predictors`
 can be seen by running `?dataprep` in the console.
 
-# Construct our Synthetic Control
+## Construct our Synthetic Control
 
 Now, we're ready to use the `synth()` function to create the synthetic control
 for the GDP of the Basque Country region of Spain. As described in discussion,
@@ -176,8 +176,7 @@ true GDP of the Basque Country region.
 ```{r}
 synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
 ```
-For now, we don't need to pay too much attention to the model output. We'll
-explore this more below!
+We'll explore the model output below. 
 
 ## Summarizing our Synthetic Control with Tables
 
