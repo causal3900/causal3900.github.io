@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Discussion 3. Analyzing an Experiment in R {-}
+# Discussion 03. Analyzing an Experiment in R {-}
 
 [**Slides**](assets/discussions/discussion3-slides.pdf)
 

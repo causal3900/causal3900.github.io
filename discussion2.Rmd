@@ -1,6 +1,6 @@
 # (PART) Discussions {-}
 
-# Discussion 2. Stats review {-}
+# Discussion 02. Stats review {-}
 
 [**Slides**](assets/discussions/discussion2-slides.pdf)
 

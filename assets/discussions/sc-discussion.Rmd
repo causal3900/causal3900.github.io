@@ -6,7 +6,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-# Empirical Application: How the Onset of Violent Conflict Affects Economic Output
+# Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output
 
 We will demonstrate the synthetic control method using data from [Abadie and 
 Gardeazabal (2003)](https://www.aeaweb.org/articles?id=10.1257/000282803321455188), which studied the economic effects of conflict, using the

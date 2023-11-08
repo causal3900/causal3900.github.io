@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Discussion 7. Causal Effects with Matching {-}
+# Discussion 07. Causal Effects with Matching {-}
 
 [**Slides**](assets/discussions/discussion7.pdf)
 Download today's [**.Rmd document here**](assets/discussions/matching_lab.Rmd).

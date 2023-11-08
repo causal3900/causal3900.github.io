@@ -65,6 +65,15 @@ estimating-the-causal-effect
 question-2
 using-rdrobust
 try-on-your-own
+discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output
+load-the-data
+data-definitions
+questions-for-you
+prepare-the-data-for-analysis-using-dataprep
+construct-our-synthetic-control
+summarizing-our-synthetic-control-with-tables
+summarizing-our-synthetic-control-with-plots
+summary
 sample-expectations-converge-to-population
 simulate-conditional-expectations
 show-independence-of-variables---example-of-two-dice-rolling

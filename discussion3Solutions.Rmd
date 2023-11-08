@@ -4,7 +4,7 @@ output:
   html_document: default
 ---
 
-# Discussion 3. Analyzing an Experiment in R SOLUTIONS {.unnumbered}
+# Discussion 03. Analyzing an Experiment in R SOLUTIONS {.unnumbered}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = TRUE, warning = FALSE, message = FALSE)

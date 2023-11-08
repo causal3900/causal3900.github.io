@@ -2,9 +2,7 @@
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+
 
 # Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output
 
@@ -18,7 +16,8 @@ the onset of political terrorism in the 1970s.
 ## Load the Data
 Let's go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don't worry, that's how it is meant to be!
-```{r}
+
+```r
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -33,6 +32,28 @@ install("Synth")
 # Load data
 data("basque")
 glimpse(basque)
+```
+
+```
+## Rows: 774
+## Columns: 17
+## $ regionno              <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+## $ regionname            <chr> "Spain (Espana)", "Spain (Es…
+## $ year                  <dbl> 1955, 1956, 1957, 1958, 1959…
+## $ gdpcap                <dbl> 2.354542, 2.480149, 2.603613…
+## $ sec.agriculture       <dbl> NA, NA, NA, NA, NA, NA, 19.5…
+## $ sec.energy            <dbl> NA, NA, NA, NA, NA, NA, 4.71…
+## $ sec.industry          <dbl> NA, NA, NA, NA, NA, NA, 26.4…
+## $ sec.construction      <dbl> NA, NA, NA, NA, NA, NA, 6.27…
+## $ sec.services.venta    <dbl> NA, NA, NA, NA, NA, NA, 36.6…
+## $ sec.services.nonventa <dbl> NA, NA, NA, NA, NA, NA, 6.44…
+## $ school.illit          <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ school.prim           <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ school.med            <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ school.high           <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ school.post.high      <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ popdens               <dbl> NA, NA, NA, NA, NA, NA, NA, …
+## $ invest                <dbl> NA, NA, NA, NA, NA, NA, NA, …
 ```
 
 ## Data definitions
@@ -66,7 +87,8 @@ more than high school (`school.post.high`).
 
 Running the following line of code will show you some helpful information in the "Help" box on the bottom right of your R Studio Screen. We call this *documentation*. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.
 
-```{r}
+
+```r
 ?basque
 ```
 
@@ -118,7 +140,8 @@ We've added comments in the code to explain exactly what's happening in each lin
 We are creating a "prepared" dataset `dataprep.out` by running our "unprepared" data through the `dataprep` function. 
 This is because the Synth package requires the data to be in a specific format to do synthetic control.
 
-```{r}
+
+```r
 dataprep.out <- dataprep(
   foo = basque,          # Our analysis data that needs to be prepared
   predictors = c(        # 1(a). list the variables that we want to use as predictors
@@ -173,8 +196,31 @@ for the GDP of the Basque Country region of Spain. As described in discussion,
 this means that `synth()` will create weights for each of the other regions
 so that the weighted average of the other regions' GDP will closely match the
 true GDP of the Basque Country region.
-```{r}
+
+```r
 synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
+```
+
+```
+## 
+## X1, X0, Z1, Z0 all come directly from dataprep object.
+## 
+## 
+## **************** 
+##  searching for synthetic control unit  
+##  
+## 
+## **************** 
+## **************** 
+## **************** 
+## 
+## MSPE (LOSS V): 0.008864605 
+## 
+## solution.v:
+##  0.03881798 0.001220442 4.26792e-05 0.0001235262 1.6599e-06 1.76355e-05 0.04072702 0.2396775 0.02234054 0.248494 0.005974697 0.01098894 0.04858995 0.3429834 
+## 
+## solution.w:
+##  1.67e-08 4.27e-08 7.43e-08 2.78e-08 2.97e-08 5.545e-07 3.66e-08 4.28e-08 0.8508029 9.23e-08 2.75e-08 4.94e-08 0.1491958 4.13e-08 9.75e-08 1.167e-07
 ```
 We'll explore the model output below. 
 
@@ -182,7 +228,8 @@ We'll explore the model output below.
 
 First, we can begin by creating some summary tables from our Synthetic Control
 model.
-```{r}
+
+```r
 synth.tables <- synth.tab(dataprep.res = dataprep.out, synth.res = synth.out)
 ```
 
@@ -191,8 +238,42 @@ our synthetic control. The first table looks at our pre-treatment period and
 compares the predictor values between the Basque Country (denoted `Treated` in
 the table) and our Synthetic Control. **Note** we want the values in the
 `Treated` and `Synthetic` columns to be really close together.
-```{r}
+
+```r
 synth.tables$tab.pred
+```
+
+```
+##                                          Treated Synthetic
+## school.illit                              39.888   256.335
+## school.prim                             1031.742  2730.092
+## school.med                                90.359   223.341
+## school.high                               25.728    63.437
+## school.post.high                          13.480    36.154
+## invest                                    24.647    21.583
+## special.gdpcap.1960.1969                   5.285     5.271
+## special.sec.agriculture.1961.1969          6.844     6.179
+## special.sec.energy.1961.1969               4.106     2.760
+## special.sec.industry.1961.1969            45.082    37.636
+## special.sec.construction.1961.1969         6.150     6.952
+## special.sec.services.venta.1961.1969      33.754    41.104
+## special.sec.services.nonventa.1961.1969    4.072     5.371
+## special.popdens.1969                     246.890   196.287
+##                                         Sample Mean
+## school.illit                                170.786
+## school.prim                                1127.186
+## school.med                                   76.260
+## school.high                                  24.235
+## school.post.high                             13.478
+## invest                                       21.424
+## special.gdpcap.1960.1969                      3.581
+## special.sec.agriculture.1961.1969            21.353
+## special.sec.energy.1961.1969                  5.310
+## special.sec.industry.1961.1969               22.425
+## special.sec.construction.1961.1969            7.276
+## special.sec.services.venta.1961.1969         36.528
+## special.sec.services.nonventa.1961.1969       7.111
+## special.popdens.1969                         99.414
 ```
 We can see that the values in the `Treated` and `Synthetic` columns are pretty
 different for some variables so this would indicate that perhaps our synthetic
@@ -201,8 +282,15 @@ control isn't as similar as we would like.
 Next, we can look at the weights that got assigned to each of the non-treatment
 regions. We can drop regions that have a weight of 0 since those regions don't
 contribute to our synthetic control at all!
-```{r}
+
+```r
 synth.tables$tab.w[synth.tables$tab.w$w.weights != 0, ]
+```
+
+```
+##    w.weights            unit.names unit.numbers
+## 10     0.851              Cataluna           10
+## 14     0.149 Madrid (Comunidad De)           14
 ```
 From the `w.weights` column we can see that only two regions contribute to our
 synthetic control. The Cataluna region makes up approximately 85% of our
@@ -213,8 +301,27 @@ our synthetic control!
 Finally we can look at the weights that got assigned to each of our predictor
 variables. This can be interpreted as the relative importance of each of our
 predictor variables.
-```{r}
+
+```r
 synth.tables$tab.v
+```
+
+```
+##                                         v.weights
+## school.illit                            0.039    
+## school.prim                             0.001    
+## school.med                              0        
+## school.high                             0        
+## school.post.high                        0        
+## invest                                  0        
+## special.gdpcap.1960.1969                0.041    
+## special.sec.agriculture.1961.1969       0.24     
+## special.sec.energy.1961.1969            0.022    
+## special.sec.industry.1961.1969          0.248    
+## special.sec.construction.1961.1969      0.006    
+## special.sec.services.venta.1961.1969    0.011    
+## special.sec.services.nonventa.1961.1969 0.049    
+## special.popdens.1969                    0.343
 ```
 
 We can see that the `school.med`, `school.high`, `school.post.high`, and
@@ -233,7 +340,8 @@ Control unit to be quite similar prior to the violent conflict and to diverge
 sharply when the violent conflict occurs.
 
 Let's create such a plot and see if it indicates a significant treatment effect.
-```{r}
+
+```r
 path.plot(
   synth.res = synth.out,
   dataprep.res = dataprep.out,
@@ -246,6 +354,8 @@ path.plot(
 abline(a = NULL, b = NULL, h = NULL, v = 1975, col = "red")
 ```
 
+<img src="discussion12_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
 We can see that the economic output of both units looks super similar until
 1975 which is when the violent conflict began in earnest. From that point on,
 the economic output of the Basque Country drops significantly. This would
@@ -256,7 +366,8 @@ Another way we can visualize this is by creating the same plot, but instead
 of showing two lines for the outcome of the Basque Country region and the
 outcome of the Synthetic Control Unit, we plot a single line that is the
 difference between the two lines in each time period.
-```{r}
+
+```r
 gaps.plot(
   synth.res = synth.out,
   dataprep.res = dataprep.out,
@@ -267,6 +378,8 @@ gaps.plot(
 )
 abline(a = NULL, b = NULL, h = NULL, v = 1975, col = "red")
 ```
+
+<img src="discussion12_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 This plot conveys the same information as before. That is, the economic output
 of the Basque Country region drops well below the economic output of the
