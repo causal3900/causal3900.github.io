@@ -14,4 +14,5 @@ We review the main idea behind synthetic control as well as compare and contrast
 
 ## Discussion
 
-> Nov 9
+> Nov 9 [**Slides.**](assets/slides/10-2_synth_control_example.pdf). 
+After class, read Chapter 10 of the Causal Inference Mixtape [Cunningham 2021](https://mixtape.scunning.com/10-synthetic_controls)
