@@ -7,7 +7,7 @@
 <title>14 Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
 <meta name="description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
-<meta name="generator" content="bookdown 0.36 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="14 Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -104,7 +104,7 @@ the onset of political terrorism in the 1970s.</p>
 </h2>
 <p>Let’s go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don’t worry, that’s how it is meant to be!</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -165,7 +165,7 @@ more than high school (<code>school.post.high</code>).</p></li>
 <li><p><code>invest</code>: 1964–1969 averages for gross total investment divided by total GDP.</p></li>
 </ul>
 <p>Running the following line of code will show you some helpful information in the “Help” box on the bottom right of your R Studio Screen. We call this <em>documentation</em>. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">basque</span></span></code></pre></div>
 <div id="questions-for-you" class="section level3" number="14.2.1">
 <h3>
@@ -229,7 +229,7 @@ numbers (<code>regionno</code>).</li>
 We’ve added comments in the code to explain exactly what’s happening in each line.
 We are creating a “prepared” dataset <code>dataprep.out</code> by running our “unprepared” data through the <code>dataprep</code> function.
 This is because the Synth package requires the data to be in a specific format to do synthetic control.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dataprep.out</span> <span class="op">&lt;-</span> <span class="fu">dataprep</span><span class="op">(</span></span>
 <span>  foo <span class="op">=</span> <span class="va">basque</span>,          <span class="co"># Our analysis data that needs to be prepared</span></span>
 <span>  predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>        <span class="co"># 1(a). list the variables that we want to use as predictors</span></span>
@@ -284,7 +284,7 @@ for the GDP of the Basque Country region of Spain. As described in discussion,
 this means that <code>synth()</code> will create weights for each of the other regions
 so that the weighted average of the other regions’ GDP will closely match the
 true GDP of the Basque Country region.</p>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.out</span> <span class="op">&lt;-</span> <span class="fu">synth</span><span class="op">(</span>data.prep.obj <span class="op">=</span> <span class="va">dataprep.out</span>, method <span class="op">=</span> <span class="st">"BFGS"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## X1, X0, Z1, Z0 all come directly from dataprep object.
@@ -298,13 +298,13 @@ true GDP of the Basque Country region.</p>
 ## **************** 
 ## **************** 
 ## 
-## MSPE (LOSS V): 0.008864605 
+## MSPE (LOSS V): 0.008864759 
 ## 
 ## solution.v:
-##  0.03881798 0.001220442 4.26792e-05 0.0001235262 1.6599e-06 1.76355e-05 0.04072702 0.2396775 0.02234054 0.248494 0.005974697 0.01098894 0.04858995 0.3429834 
+##  0.004142891 0.002062851 4.03499e-05 0.0004185587 3.47536e-05 0.01399078 0.2116219 0.09688208 0.05729768 0.08078878 0.005100267 0.006064015 0.1324064 0.3891487 
 ## 
 ## solution.w:
-##  1.67e-08 4.27e-08 7.43e-08 2.78e-08 2.97e-08 5.545e-07 3.66e-08 4.28e-08 0.8508029 9.23e-08 2.75e-08 4.94e-08 0.1491958 4.13e-08 9.75e-08 1.167e-07</code></pre>
+##  7.73e-08 8.96e-08 8.893e-07 6.15e-08 1.793e-07 1.1678e-06 8.59e-08 1.528e-07 0.8508228 7.121e-07 8.07e-08 2.163e-07 0.1491731 1.31e-07 1.182e-07 1.439e-07</code></pre>
 <p>We’ll explore the model output below.</p>
 </div>
 <div id="summarizing-our-synthetic-control-with-tables" class="section level2" number="14.5">
@@ -313,21 +313,21 @@ true GDP of the Basque Country region.</p>
 </h2>
 <p>First, we can begin by creating some summary tables from our Synthetic Control
 model.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span> <span class="op">&lt;-</span> <span class="fu">synth.tab</span><span class="op">(</span>dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>, synth.res <span class="op">=</span> <span class="va">synth.out</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>synth.tables</code> variable now contains four tables that will help us evaluate
 our synthetic control. The first table looks at our pre-treatment period and
 compares the predictor values between the Basque Country (denoted <code>Treated</code> in
 the table) and our Synthetic Control. <strong>Note</strong> we want the values in the
 <code>Treated</code> and <code>Synthetic</code> columns to be really close together.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.pred</span></span></code></pre></div>
 <pre><code>##                                          Treated Synthetic
-## school.illit                              39.888   256.335
-## school.prim                             1031.742  2730.092
-## school.med                                90.359   223.341
+## school.illit                              39.888   256.338
+## school.prim                             1031.742  2730.110
+## school.med                                90.359   223.339
 ## school.high                               25.728    63.437
-## school.post.high                          13.480    36.154
+## school.post.high                          13.480    36.153
 ## invest                                    24.647    21.583
 ## special.gdpcap.1960.1969                   5.285     5.271
 ## special.sec.agriculture.1961.1969          6.844     6.179
@@ -336,7 +336,7 @@ the table) and our Synthetic Control. <strong>Note</strong> we want the values i
 ## special.sec.construction.1961.1969         6.150     6.952
 ## special.sec.services.venta.1961.1969      33.754    41.104
 ## special.sec.services.nonventa.1961.1969    4.072     5.371
-## special.popdens.1969                     246.890   196.287
+## special.popdens.1969                     246.890   196.280
 ##                                         Sample Mean
 ## school.illit                                170.786
 ## school.prim                                1127.186
@@ -358,7 +358,7 @@ control isn’t as similar as we would like.</p>
 <p>Next, we can look at the weights that got assigned to each of the non-treatment
 regions. We can drop regions that have a weight of 0 since those regions don’t
 contribute to our synthetic control at all!</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">[</span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">$</span><span class="va">w.weights</span> <span class="op">!=</span> <span class="fl">0</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>##    w.weights            unit.names unit.numbers
 ## 10     0.851              Cataluna           10
@@ -371,23 +371,23 @@ our synthetic control!</p>
 <p>Finally we can look at the weights that got assigned to each of our predictor
 variables. This can be interpreted as the relative importance of each of our
 predictor variables.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.v</span></span></code></pre></div>
 <pre><code>##                                         v.weights
-## school.illit                            0.039    
-## school.prim                             0.001    
+## school.illit                            0.004    
+## school.prim                             0.002    
 ## school.med                              0        
 ## school.high                             0        
 ## school.post.high                        0        
-## invest                                  0        
-## special.gdpcap.1960.1969                0.041    
-## special.sec.agriculture.1961.1969       0.24     
-## special.sec.energy.1961.1969            0.022    
-## special.sec.industry.1961.1969          0.248    
-## special.sec.construction.1961.1969      0.006    
-## special.sec.services.venta.1961.1969    0.011    
-## special.sec.services.nonventa.1961.1969 0.049    
-## special.popdens.1969                    0.343</code></pre>
+## invest                                  0.014    
+## special.gdpcap.1960.1969                0.212    
+## special.sec.agriculture.1961.1969       0.097    
+## special.sec.energy.1961.1969            0.057    
+## special.sec.industry.1961.1969          0.081    
+## special.sec.construction.1961.1969      0.005    
+## special.sec.services.venta.1961.1969    0.006    
+## special.sec.services.nonventa.1961.1969 0.132    
+## special.popdens.1969                    0.389</code></pre>
 <p>We can see that the <code>school.med</code>, <code>school.high</code>, <code>school.post.high</code>, and
 <code>invest</code> variables had a weight of 0, which means that they are the least
 important and had no impact in the creation of our synthetic control. On the
@@ -405,7 +405,7 @@ trajectories of the outcome variable for the Basque Country and its Synthetic
 Control unit to be quite similar prior to the violent conflict and to diverge
 sharply when the violent conflict occurs.</p>
 <p>Let’s create such a plot and see if it indicates a significant treatment effect.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">path.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>
@@ -426,7 +426,7 @@ economic output in the Basque Country region.</p>
 of showing two lines for the outcome of the Basque Country region and the
 outcome of the Synthetic Control Unit, we plot a single line that is the
 difference between the two lines in each time period.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">gaps.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>
