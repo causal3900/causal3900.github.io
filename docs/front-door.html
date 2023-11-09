@@ -7,7 +7,7 @@
 <title>6 Front door | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
 <meta name="description" content="Oct 12. Slides. After class, read Hernán and Robins 2020 Technical Point 7.4. Optionally, see Glynn and Kashin 2018 This lecture is about how to engage with new methods for causal identification...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
 <meta property="og:title" content="6 Front door | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Oct 12. Slides. After class, read Hernán and Robins 2020 Technical Point 7.4. Optionally, see Glynn and Kashin 2018 This lecture is about how to engage with new methods for causal identification...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Oct 12. Slides. After class, read Hernán and Robins 2020 Technical Point 7.4. Optionally, see Glynn and Kashin 2018 This lecture is about how to engage with new methods for causal identification...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -151,8 +151,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A     Y
 ##   &lt;int&gt; &lt;dbl&gt;
-## 1     0 0.596
-## 2     1 0.743</code></pre>
+## 1     0 0.586
+## 2     1 0.748</code></pre>
 <p>Estimate the probability of each <span class="math inline">\(M\)</span> given <span class="math inline">\(A\)</span>. Under the causal assumptions, this corresponds to the expected value of <span class="math inline">\(M\)</span> under assignment to each value of <span class="math inline">\(A\)</span> since <span class="math inline">\(M\rightarrow A\)</span> is unconfounded.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p_M_given_A</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -168,10 +168,10 @@
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   &lt;int&gt; &lt;int&gt;       &lt;dbl&gt;
-## 1     0     0       0.894
-## 2     0     1       0.106
-## 3     1     0       0.104
-## 4     1     1       0.896</code></pre>
+## 1     0     0      0.901 
+## 2     0     1      0.0987
+## 3     1     0      0.0985
+## 4     1     1      0.902</code></pre>
 <p>Within the front-door identification formula, you need the marginal probability of each treatment value.</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of each A</span></span>
@@ -187,8 +187,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A   p_A
 ##   &lt;int&gt; &lt;dbl&gt;
-## 1     0 0.498
-## 2     1 0.502</code></pre>
+## 1     0 0.500
+## 2     1 0.500</code></pre>
 <p>You also need the outcome distribution given <span class="math inline">\(M\)</span> and <span class="math inline">\(A\)</span>.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 given M and A</span></span>
@@ -200,10 +200,10 @@
 <pre><code>## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   &lt;int&gt; &lt;int&gt;         &lt;dbl&gt;
-## 1     0     0         0.583
-## 2     0     1         0.703
-## 3     1     0         0.658
-## 4     1     1         0.753</code></pre>
+## 1     0     0         0.572
+## 2     0     1         0.706
+## 3     1     0         0.648
+## 4     1     1         0.759</code></pre>
 <p>Given the above, you can use backdoor adjustment to identify the outcome under intervention on <span class="math inline">\(M\)</span> by backdoor adjustment for <span class="math inline">\(A\)</span>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 under intervention on M</span></span>
@@ -215,8 +215,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       M p_Y_under_M
 ##   &lt;int&gt;       &lt;dbl&gt;
-## 1     0       0.621
-## 2     1       0.728</code></pre>
+## 1     0       0.610
+## 2     1       0.733</code></pre>
 <p>Bringing the above together, we have front-door identification.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Probability of Y = 1 under intervention on A</span></span>
@@ -229,8 +229,8 @@
 <pre><code>## # A tibble: 2 × 2
 ##       A estimate
 ##   &lt;int&gt;    &lt;dbl&gt;
-## 1     0    0.632
-## 2     1    0.717</code></pre>
+## 1     0    0.622
+## 2     1    0.721</code></pre>
 
 </div>
 </div>
@@ -262,7 +262,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-11-08</p>
+    <p>Last built on 2023-11-09</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

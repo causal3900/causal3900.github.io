@@ -214,13 +214,13 @@ synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
 ## **************** 
 ## **************** 
 ## 
-## MSPE (LOSS V): 0.008864759 
+## MSPE (LOSS V): 0.008864605 
 ## 
 ## solution.v:
-##  0.004142891 0.002062851 4.03499e-05 0.0004185587 3.47536e-05 0.01399078 0.2116219 0.09688208 0.05729768 0.08078878 0.005100267 0.006064015 0.1324064 0.3891487 
+##  0.03881798 0.001220442 4.26792e-05 0.0001235262 1.6599e-06 1.76355e-05 0.04072702 0.2396775 0.02234054 0.248494 0.005974697 0.01098894 0.04858995 0.3429834 
 ## 
 ## solution.w:
-##  7.73e-08 8.96e-08 8.893e-07 6.15e-08 1.793e-07 1.1678e-06 8.59e-08 1.528e-07 0.8508228 7.121e-07 8.07e-08 2.163e-07 0.1491731 1.31e-07 1.182e-07 1.439e-07
+##  1.67e-08 4.27e-08 7.43e-08 2.78e-08 2.97e-08 5.545e-07 3.66e-08 4.28e-08 0.8508029 9.23e-08 2.75e-08 4.94e-08 0.1491958 4.13e-08 9.75e-08 1.167e-07
 ```
 We'll explore the model output below. 
 
@@ -245,11 +245,11 @@ synth.tables$tab.pred
 
 ```
 ##                                          Treated Synthetic
-## school.illit                              39.888   256.338
-## school.prim                             1031.742  2730.110
-## school.med                                90.359   223.339
+## school.illit                              39.888   256.335
+## school.prim                             1031.742  2730.092
+## school.med                                90.359   223.341
 ## school.high                               25.728    63.437
-## school.post.high                          13.480    36.153
+## school.post.high                          13.480    36.154
 ## invest                                    24.647    21.583
 ## special.gdpcap.1960.1969                   5.285     5.271
 ## special.sec.agriculture.1961.1969          6.844     6.179
@@ -258,7 +258,7 @@ synth.tables$tab.pred
 ## special.sec.construction.1961.1969         6.150     6.952
 ## special.sec.services.venta.1961.1969      33.754    41.104
 ## special.sec.services.nonventa.1961.1969    4.072     5.371
-## special.popdens.1969                     246.890   196.280
+## special.popdens.1969                     246.890   196.287
 ##                                         Sample Mean
 ## school.illit                                170.786
 ## school.prim                                1127.186
@@ -308,20 +308,20 @@ synth.tables$tab.v
 
 ```
 ##                                         v.weights
-## school.illit                            0.004    
-## school.prim                             0.002    
+## school.illit                            0.039    
+## school.prim                             0.001    
 ## school.med                              0        
 ## school.high                             0        
 ## school.post.high                        0        
-## invest                                  0.014    
-## special.gdpcap.1960.1969                0.212    
-## special.sec.agriculture.1961.1969       0.097    
-## special.sec.energy.1961.1969            0.057    
-## special.sec.industry.1961.1969          0.081    
-## special.sec.construction.1961.1969      0.005    
-## special.sec.services.venta.1961.1969    0.006    
-## special.sec.services.nonventa.1961.1969 0.132    
-## special.popdens.1969                    0.389
+## invest                                  0        
+## special.gdpcap.1960.1969                0.041    
+## special.sec.agriculture.1961.1969       0.24     
+## special.sec.energy.1961.1969            0.022    
+## special.sec.industry.1961.1969          0.248    
+## special.sec.construction.1961.1969      0.006    
+## special.sec.services.venta.1961.1969    0.011    
+## special.sec.services.nonventa.1961.1969 0.049    
+## special.popdens.1969                    0.343
 ```
 
 We can see that the `school.med`, `school.high`, `school.post.high`, and

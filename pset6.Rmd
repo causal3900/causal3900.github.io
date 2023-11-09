@@ -1,5 +1,258 @@
 
 # Problem Set 6. DID + synthetic control {-}
 
-Coming soon!
+Relevant material will be covered by **Nov 9**. Problem set is due **Nov 16**.
+
+To complete the problem set, feel free to [**Download the .Rmd**](https://drive.google.com/file/d/1w2iKHzSCDVJYQKhVorZIuaIIkjHXgq8L/view?usp=sharing). Omit your name so we can have anonymous peer feedback. Submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
+
+The learning goals of completing this problem set are to engage with conceptual assumptions for difference in difference and synthetic control.
+
+```{r, message = F, warning = F}
+library(tidyverse)
+```
+     
+## 1. (25 points) Difference in Difference {-}
+
+In the figures below, the treated group becomes treated between time 1 and time 2. The control group never becomes treated. Figures are hypothetical scenarios that depict true potential outcomes even if those outcomes would not be observed in an actual study.
+
+```{r, echo = F, fig.width = 3.2, fig.height = 3}
+make_plot <- function(
+    yT = c(4,3,3),
+    yC = 2:0,
+    counterfactual = 2,
+    show_counterfactual = T
+) {
+  p <- data.frame(t = rep(0:2,2),
+                  a = rep(c(F,T), each = 3),
+                  y = c(yC,yT)) %>%
+    ggplot(aes(x = t, y = y, group = a)) +
+    annotate(geom = "rect", xmin = 1.5, xmax = Inf, ymin = -Inf, ymax = Inf,
+             fill = "gray", alpha = .3) +
+    annotate(geom = "text", x = .5, y = 5.5, label = "Pre-Treatment\nPeriods") +
+    annotate(geom = "text", x = 2.5, y = 5.5, label = "Treatment\nPeriod") +
+    geom_point() +
+    geom_line() +
+    annotate(geom = "text", x = -.2, y = c(yT[1],yC[1]),
+             label = c("Treated\nGroup", "Control\nGroup"),
+             hjust = 1) +
+    annotate(geom = "text", x = 2.2, y = c(yT[3],yC[3]), 
+             label = c("{Y^1}['Treated,2']","{Y^0}['Control,2']"),
+             hjust = 0, parse = T) +
+    theme_classic() +
+    scale_y_continuous(limits = c(-1,6), breaks = NULL, name = "Outcome") +
+    scale_x_continuous(limits = c(-1.2,3.5), breaks = 0:2,labels = function(x) paste("t =",x), name = "Time") +
+    theme(panel.grid = element_blank())
+  if (show_counterfactual) {
+    p <- p +
+    annotate(geom = "segment", linetype = "dashed",
+             x = 1, xend = 2, y = yT[2], yend = counterfactual) +
+    annotate(geom = "point",
+             x = 2, y = counterfactual) +
+    annotate(geom = "text", x = 2.2, y = counterfactual, 
+             label = "{Y^0}['Treated,2']",
+             hjust = 0, parse = T)
+  }
+  return(p)
+}
+
+make_plot(yT = c(4,3,3),
+          yC = 2:0,
+          counterfactual = 2) +
+  ggtitle("Setting A")
+make_plot(yT = c(4,3,3),
+          yC = 2:0,
+          counterfactual = 1) +
+  ggtitle("Setting B")
+```
+
+### 1.1 (5 points) {-}
+
+In which setting does the parallel trends assumption hold: A, B, neither, or both?
+
+ 
+
+### 1.2 (5 points) {-}
+
+In actual data analysis, can we ever know for certain whether we are in Setting A or Setting B? If the answer is no, then tell us which outcome cannot be observed.
+
+ 
+
+### 1.3 (5 points) {-}
+
+A researcher comes to you with the data below, which depict only observed outcomes. That researcher wants to run a difference in difference analysis. Here, we have not depicted the counterfactual outcome because the researcher would not know it.
+
+```{r, echo = F, fig.width = 3.2, fig.height = 3}
+make_plot(yT = c(4,3,3),
+          yC = c(0,.25,1),
+          counterfactual = NA,
+          show_counterfactual = F) +
+  ggtitle("Setting C")
+```
+
+Why is the parallel trends assumption doubtful in this setting?
+
+ 
+
+### 1.4 (5 points) {-}
+
+A researcher is interested in the causal effect of a minimum wage increase on employment. They plan to study only the U.S., and they are interested in a time when the minimum wage rose simultaneously at every place in the U.S. Why won't a difference in difference design work for the researcher's question?
+
+ 
+
+### 1.5 (5 points) {-}
+
+Propose another design that the researcher could use to answer the question in (1.4), which may involve data outside the U.S. Answer this question in no more than 3 sentences. Many answers are possible.
+
+ 
+
+## 2. (25 points) Synthetic Control {-}
+
+In discussion, we considered the paper by Abadie and Gardeazabal (2003) which estimates the effect of terrorist conflict in the Basque Country on GDP per capita. Using synthetic control, they construct a synthetic version of Basque Country. We show the selected weights and plot the gap between the observed and synthetic Basque Country below.
+
+```{r, echo = F, message=F, cache = T, results = 'hide'}
+library("Synth")
+library("tidyverse")
+data(basque)
+dataprep.out <- dataprep(
+  foo = basque,
+  predictors = c("school.illit", "school.prim", "school.med",
+               "school.high", "school.post.high", "invest"),
+  predictors.op = "mean",
+  time.predictors.prior = 1964:1969,
+special.predictors = list(
+  list("gdpcap", 1960:1969 , "mean"),
+  list("sec.agriculture",
+       seq(1961, 1969, 2), "mean"),
+  list("sec.energy", seq(1961, 1969, 2), "mean"),
+  list("sec.industry", seq(1961, 1969, 2), "mean"),
+  list("sec.construction", seq(1961, 1969, 2), "mean"),
+  list("sec.services.venta", seq(1961, 1969, 2), "mean"),
+  list("sec.services.nonventa", seq(1961, 1969, 2), "mean"),
+  list("popdens", 1969, "mean")),
+dependent = "gdpcap", unit.variable = "regionno", 
+unit.names.variable = "regionname", time.variable = "year",
+treatment.identifier = 17, controls.identifier = c(2:16, 18), time.optimize.ssr = 1960:1969,
+time.plot = 1955:1997)
+
+synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
+synth.tables <- synth.tab(dataprep.res = dataprep.out, synth.res = synth.out)
+```
+
+```{r, echo = F, message=F, cache = T,fig.width= 6, fig.height = 4, fig.align = 'center'}
+synth.tables$tab.w
+
+gaps.plot(synth.res = synth.out, dataprep.res = dataprep.out, 
+          Ylab = "gap in real per-capita GDP", Xlab = "year",
+          Ylim = c(-1.5, 1.5), Main = NA)
+abline(v = 1970)
+
+```
+
+### 2.1 (10 points) Motivation {-}
+
+Instead of selecting the weights using synthetic control, we could have instead estimated the potential outcome for Basque Country using a regression approach. Specifically, we consider the data prior 1970 and simply regress the GDP per capita in the Basque region onto the GDP per capita in other regions to find coefficients $\hat \beta$ so that
+\[\widehat{Y^{0}}_{t, Basque} = \sum_j \hat \beta_{j} Y^{0}_{t, j}.\]
+We then use the estimated $\hat \beta$ to predict $\widehat{Y^{0}}_{t, Basque}$ after treatment occurs. The weights and gap plot are shown below. We haven't included all the regions in the code below, but you don't need to worry about that.
+
+Looking at the estimated weights sand the gap plots, why might you prefer the synthetic control estimate over the regression based estimate? Why might you prefer the regression estimate over the synthetic control estimate?
+
+```{r, echo = F, message=F, cache = T,fig.width= 6, fig.height = 4, fig.align = 'center'}
+# GDP in Basque
+Y <- basque %>% filter(regionno == 17) %>% pull(gdpcap)
+# GDP in other regions
+X <- basque %>% filter(regionno != 17) %>% select(gdpcap, regionno, year) %>%
+  reshape(idvar = "year", timevar = "regionno", direction = "wide")
+
+# fit regression using data prior to 1970
+outOLS <- lm(Y[which(X$year < 1970)]~ as.matrix(X)[which(X$year < 1970),-(c(0, 12,9, 13, 2, 8, 15, 6, 1)+1)] - 1)
+
+# predict outcomes
+sytheticBasque <- as.matrix(X)[,-(c(0, 12,9, 13, 2, 8, 15, 6, 1)+1)] %*% matrix(outOLS$coefficients, ncol = 1)
+
+relevant_regno <- as.numeric(gsub("gdpcap.", "", colnames(as.matrix(X)[,-(c(0, 12,9, 13, 2, 8, 15, 6, 1)+1)])))
+# Weights
+tab <- data.frame(weights = unname(round(outOLS$coefficients,3)), name = basque$regionname[match(relevant_regno, basque$regionno)], id = relevant_regno)
+# print table
+tab
+
+# gap plot
+plot(X$year, Y - sytheticBasque, ylim = c(-1.5, 1.5), type = "l",
+     ylab = "gap in real per-capita GDP", xlab = "year", lwd = 3)
+abline(h = 0, lty = 2, lwd = 2)
+abline(v = 1970)
+```
+ 
+
+### 2.2 (5 points) Assessing fit {-}
+
+Using the same dataset, suppose we wanted to estimate the causal effect for some policy implemented in Extramadura (another region in Spain) in 1970. Running synthetic control gives an estimate of almost -1000 dollars in 1990. Looking at the plots below, why might you be skeptical of the resulting estimate?  
+
+```{r, echo = F, message=F, cache = T, results = 'hide',fig.width= 6, fig.height = 4, fig.align = 'center'}
+
+treatment <- 12
+controls <- setdiff(c(2:18), treatment)
+dataprep.out <- dataprep(
+  foo = basque,
+  predictors = c("school.illit", "school.prim", "school.med",
+               "school.high", "school.post.high", "invest"),
+  predictors.op = "mean",
+  time.predictors.prior = 1964:1969,
+special.predictors = list(
+  list("gdpcap", 1960:1969 , "mean"),
+  list("sec.agriculture",
+       seq(1961, 1969, 2), "mean"),
+  list("sec.energy", seq(1961, 1969, 2), "mean"),
+  list("sec.industry", seq(1961, 1969, 2), "mean"),
+  list("sec.construction", seq(1961, 1969, 2), "mean"),
+  list("sec.services.venta", seq(1961, 1969, 2), "mean"),
+  list("sec.services.nonventa", seq(1961, 1969, 2), "mean"),
+  list("popdens", 1969, "mean")),
+dependent = "gdpcap", unit.variable = "regionno", 
+unit.names.variable = "regionname", time.variable = "year",
+treatment.identifier = treatment, controls.identifier = controls, time.optimize.ssr = 1960:1969, time.plot = 1955:1997)
+
+synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
+synth.tables <- synth.tab(dataprep.res = dataprep.out, synth.res = synth.out)
+
+```
+
+```{r, echo = F, cache = T, fig.width= 6, fig.height = 4, fig.align = 'center'}
+gaps.plot(synth.res = synth.out, dataprep.res = dataprep.out, 
+          Ylab = "gap in real per-capita GDP", Xlab = "year",
+          Ylim = c(-3, 3), Main = NA)
+abline(v = 1970)
+path.plot(synth.res = synth.out, dataprep.res = dataprep.out, Ylab = "real per-capita GDP", Xlab = "year", Ylim = c(0, 12), Legend = c("Extramadura", "synthetic Extramadura"), Legend.position = "bottomright")
+abline(v = 1970)
+
+```
+
+ 
+
+### 2.3 (5 points) Hypothesis testing {-}
+
+Suppose we used synthetic control for each of the other regions in Spain as a placebo test. Below, we show a hypothetical plot for the gap between the observed and synthetic values for each region. The difference between observed and synthetic Basque country is shown in the dark black line and the others are shown in gray. Note this is made up data. However, if this were the real plot you saw, would you be confident that there was a non-zero causal effect for Basque Country? Explain why or why not.    
+
+```{r, echo = F, message=F, cache = T,fig.width= 6, fig.height = 4, fig.align = 'center'}
+set.seed(100)
+X <- rbind(matrix(rnorm(15 * 10, sd = .2), 15, 30),
+           matrix(rnorm(25 * 10, sd = .8), 25, 30))
+Z <- apply(X, MAR = 2, cumsum)
+
+plot(1955:1994, Z[,1], type = "l", ylim = c(-5, 5), col = "gray",
+     ylab = "gap in real per-capita GDP", xlab = "year")
+for(i in 2:30){
+  lines(1955:1994, Z[,i], type = "l", col = "gray")
+}
+lines(1955:1994, Z[,5], type = "l", ylim = c(-5, 5), col = "black", lwd = 2)
+abline(v = 1970)
+```
+
+  
+
+
+### 2.4 (5 points) Interference {-}
+
+It's reasonable to believe that the effect of the terrorist conflict might spillover onto neighboring regions as well. Suppose the economy of Basque country is very intertwined with the economy of neighboring regions, and when we estimate a synthetic Basque country, the weights for neighboring regions are large. If the terrorist conflict also has a negative effect on the neighboring regions but we don't account for it in our analysis, how would this effect the estimated causal effect?
+
+  
 
