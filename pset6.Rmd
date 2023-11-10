@@ -4,7 +4,7 @@ output:
 urlcolor: blue
 ---
 
-# Problem Set 6. Difference in Difference + Synthetic Control 
+# Problem Set 6. Difference in Difference + Synthetic Control {-}
 
 Relevant material will be covered by **Nov 9**. Problem set is due **Nov 16**.
 
@@ -16,7 +16,7 @@ The learning goals of completing this problem set are to engage with conceptual 
 library(tidyverse)
 ```
      
-## 1. (25 points) Difference in Difference 
+## 1. (25 points) Difference in Difference {-}
 
 In the figures below, the treated group becomes treated between time 1 and time 2. The control group never becomes treated. Figures are hypothetical scenarios that depict true potential outcomes even if those outcomes would not be observed in an actual study.
 
@@ -70,19 +70,19 @@ make_plot(yT = c(4,3,3),
   ggtitle("Setting B")
 ```
 
-### 1.1 (5 points)
+### 1.1 (5 points) {-}
 
 In which setting does the parallel trends assumption hold: A, B, neither, or both?
 
-**Answer.** 
+ 
 
-### 1.2 (5 points)
+### 1.2 (5 points) {-}
 
 In actual data analysis, can we ever know for certain whether we are in Setting A or Setting B? If the answer is no, then tell us which outcome cannot be observed.
 
-**Answer.** 
+ 
 
-### 1.3 (5 points)
+### 1.3 (5 points) {-}
 
 A researcher comes to you with the data below, which depict only observed outcomes. That researcher wants to run a difference in difference analysis. Here, we have not depicted the counterfactual outcome because the researcher would not know it.
 
@@ -96,23 +96,23 @@ make_plot(yT = c(4,3,3),
 
 Why is the parallel trends assumption doubtful in this setting?
 
-**Answer.** 
+ 
 
-### 1.4 (5 points)
+### 1.4 (5 points) {-}
 
 A researcher is interested in the causal effect of a minimum wage increase on employment. They plan to study only the U.S., and they are interested in a time when the minimum wage rose simultaneously at every place in the U.S. Why won't a difference in difference design work for the researcher's question?
 
-**Answer.** 
+ 
 
-### 1.5 (5 points)
+### 1.5 (5 points) {-}
 
 Propose another design that the researcher could use to answer the question in (1.4), which may involve data outside the U.S. Answer this question in no more than 3 sentences. Many answers are possible.
 
-**Answer.** 
+ 
 
 \newpage
 
-## 2. (20 points) Synthetic Control 
+## 2. (25 points) Synthetic Control {-}
 In discussion, we considered the paper by Abadie and Gardeazabal (2003) which estimates the effect of terrorist conflict in the Basque Country on GDP per capita. Using synthetic control, they construct a synthetic version of Basque Country. We show the selected weights and plot the gap between the observed and synthetic Basque Country below.
 
 ```{r, echo = F, message=F, cache = T, results = 'hide'}
@@ -154,7 +154,7 @@ abline(v = 1970)
 
 ```
 
-### 2.1 (10 points) Motivation
+### 2.1 (10 points) Motivation {-}
 
 Instead of selecting the weights using synthetic control, we could have instead estimated the potential outcome for Basque Country using a regression approach. Specifically, we consider the data prior 1970 and simply regress the GDP per capita in the Basque region onto the GDP per capita in other regions to find coefficients $\hat \beta$ so that
 \[\widehat{Y^{0}}_{t, Basque} = \sum_j \hat \beta_{j} Y^{0}_{t, j}.\]
@@ -189,10 +189,11 @@ abline(v = 1970)
 ```
 
 
-**Answer.** 
+ 
 
 
-### 2.2 (5 points) Assessing fit
+### 2.2 (7.5 points) Assessing fit {-}
+
 Using the same dataset, suppose we wanted to estimate the causal effect for some policy implemented in Extramadura (another region in Spain) in 1970. Running synthetic control gives an estimate of almost -1000 dollars in 1990. Looking at the plots below, why might you be skeptical of the resulting estimate?  
 
 ```{r, echo = F, message=F, cache = T, results = 'hide',fig.width= 6, fig.height = 4, fig.align = 'center'}
@@ -233,10 +234,10 @@ path.plot(synth.res = synth.out, dataprep.res = dataprep.out, Ylab = "real per-c
 abline(v = 1970)
 
 ```
-**Answer.** 
+ 
 
 
-### 2.3 (5 points) Hypothesis testing
+### 2.3 (7.5 points) Hypothesis testing {-}
 Suppose we used synthetic control for each of the other regions in Spain as a placebo test. Below, we show a hypothetical plot for the gap between the observed and synthetic values for each region. The difference between observed and synthetic Basque country is shown in the dark black line and the others are shown in gray. Note this is made up data. However, if this were the real plot you saw, would you be confident that there was a non-zero causal effect for Basque Country? Explain why or why not.    
 
 ```{r, echo = F, message=F, cache = T,fig.width= 6, fig.height = 4, fig.align = 'center'}
@@ -254,6 +255,6 @@ lines(1955:1994, Z[,5], type = "l", ylim = c(-5, 5), col = "black", lwd = 2)
 abline(v = 1970)
 ```
 
-**Answer.**  
+  
 
 

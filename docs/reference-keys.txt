@@ -95,14 +95,3 @@ r-markdown
 matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986
 assessing-the-matching
 fit-your-own-model
-problem-set-6.-difference-in-difference-synthetic-control
-points-difference-in-difference
-points-14
-points-15
-points-16
-points-17
-points-18
-points-synthetic-control
-points-motivation
-points-assessing-fit
-points-hypothesis-testing
