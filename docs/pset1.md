@@ -75,7 +75,7 @@ sessionInfo()
 ```
 ## R version 4.3.1 (2023-06-16)
 ## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Ventura 13.6
+## Running under: macOS Ventura 13.6.2
 ## 
 ## Matrix products: default
 ## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
@@ -84,7 +84,7 @@ sessionInfo()
 ## locale:
 ## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
-## time zone: America/Chicago
+## time zone: America/Detroit
 ## tzcode source: internal
 ## 
 ## attached base packages:

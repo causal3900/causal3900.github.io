@@ -48,9 +48,8 @@ introduction-2
 lab-1
 discussion-1
 data-driven-methods
-machine-learning-to-target-human-attention
-lab-2
-discussion-of-machine-learning
+introduction-3
+machine-learning-approaches
 current-research
 research-discussion-sam
 research-discussion-ian

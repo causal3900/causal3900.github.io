@@ -74,7 +74,7 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.586
+## 1     0 0.587
 ## 2     1 0.747
 ```
 
@@ -97,10 +97,10 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.906 
-## 2     0     1      0.0945
-## 3     1     0      0.0993
-## 4     1     1      0.901
+## 1     0     0      0.904 
+## 2     0     1      0.0959
+## 3     1     0      0.0973
+## 4     1     1      0.903
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
@@ -122,8 +122,8 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.500
-## 2     1 0.500
+## 1     0 0.492
+## 2     1 0.508
 ```
 
 You also need the outcome distribution given $M$ and $A$.
@@ -141,9 +141,9 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.577
-## 2     0     1         0.667
-## 3     1     0         0.654
+## 1     0     0         0.579
+## 2     0     1         0.659
+## 3     1     0         0.652
 ## 4     1     1         0.758
 ```
 
@@ -163,7 +163,7 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ##       M p_Y_under_M
 ##   <int>       <dbl>
 ## 1     0       0.616
-## 2     1       0.713
+## 2     1       0.709
 ```
 
 Bringing the above together, we have front-door identification.
@@ -183,5 +183,5 @@ p_Y_under_A <- p_M_given_A %>%
 ##       A estimate
 ##   <int>    <dbl>
 ## 1     0    0.625
-## 2     1    0.703
+## 2     1    0.700
 ```
