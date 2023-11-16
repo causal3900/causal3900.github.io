@@ -26,13 +26,13 @@ simulated <- simulate_sample()
 ```
 
 ```
-##   X         A        Y
-## 1 1 untreated 40.04234
-## 2 1   treated 53.53547
-## 3 1 untreated 84.70776
-## 4 1   treated 55.61560
-## 5 1 untreated 21.37207
-## 6 2   treated 74.67448
+##   X         A         Y
+## 1 1 untreated  53.06006
+## 2 1   treated  25.57394
+## 3 1 untreated 142.52893
+## 4 1   treated  37.45190
+## 5 1 untreated 106.15864
+## 6 2   treated 115.77952
 ```
 
 **Causal estimands.** In this example, we would like to estimate $$\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})$$
@@ -66,7 +66,7 @@ You can apply this estimator as follows.
 estimate <- estimator(simulated)
 ```
 
-**Task 1.** Using a sample simulated on your computer, estimate the average causal effect of $A$ on $Y$ within subgroups defined by $X$. Report two numbers to us.
+**Task.** Using a sample simulated on your computer, estimate the average causal effect of $A$ on $Y$ within subgroups defined by $X$. Report two numbers to us.
 
 - for which value of $X$ is the estimated effect of $A$ most positive?
 - what is that effect estimate?
@@ -77,4 +77,10 @@ If you are ready early, you could think about how you might evaluate performance
 
 ## Machine learning approaches
 
-> Nov 16
+> Nov 16 [**Slides.**](assets/slides/11-2_data_driven_ml.pdf)
+
+Today we generalize the ideas from Tuesday. We will discuss how sample splitting makes it easier to
+
+- choose among many estimands
+- choose among many estimators
+- develop new data science approaches

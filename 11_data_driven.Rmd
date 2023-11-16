@@ -55,7 +55,7 @@ You can apply this estimator as follows.
 estimate <- estimator(simulated)
 ```
 
-**Task 1.** Using a sample simulated on your computer, estimate the average causal effect of $A$ on $Y$ within subgroups defined by $X$. Report two numbers to us.
+**Task.** Using a sample simulated on your computer, estimate the average causal effect of $A$ on $Y$ within subgroups defined by $X$. Report two numbers to us.
 
 - for which value of $X$ is the estimated effect of $A$ most positive?
 - what is that effect estimate?
@@ -66,4 +66,10 @@ If you are ready early, you could think about how you might evaluate performance
 
 ## Machine learning approaches
 
-> Nov 16
+> Nov 16 [**Slides.**](assets/slides/11-2_data_driven_ml.pdf)
+
+Today we generalize the ideas from Tuesday. We will discuss how sample splitting makes it easier to
+
+- choose among many estimands
+- choose among many estimators
+- develop new data science approaches
