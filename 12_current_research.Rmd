@@ -3,7 +3,8 @@
 
 ## Research discussion: Sam
 
-> Nov 21
+> Nov 21 [**Slides**](assets/slides/research_sam.pdf)
+Today we will be discussing causal discovery: how we might learn DAGs from data
 
 ## Research discussion: Ian
 
