@@ -4,19 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>14 Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course</title>
+<title>Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
 <meta name="description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="14 Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
+<meta property="og:title" content="Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="14 Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course">
+<meta name="twitter:title" content="Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output | Causal Inference Course">
 <meta name="twitter:description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -62,13 +62,13 @@
 <li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
 <li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
-<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
-<li><a class="active" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html"><span class="header-section-number">14</span> Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-02.-stats-review.html">Discussion 02. Stats review</a></li>
 <li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
 <li><a class="" href="discussion-03.-analyzing-an-experiment-in-r-solutions.html">Discussion 03. Analyzing an Experiment in R SOLUTIONS</a></li>
 <li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
+<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
+<li><a class="active" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="final-project.html">Final Project</a></li>
@@ -88,9 +88,8 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output" class="section level1" number="14">
-<h1>
-<span class="header-section-number">14</span> Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output<a class="anchor" aria-label="anchor" href="#discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output" class="section level1 unnumbered">
+<h1>Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output<a class="anchor" aria-label="anchor" href="#discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output"><i class="fas fa-link"></i></a>
 </h1>
 <p>We will demonstrate the synthetic control method using data from <a href="https://www.aeaweb.org/articles?id=10.1257/000282803321455188">Abadie and
 Gardeazabal (2003)</a>, which studied the economic effects of conflict, using the
@@ -98,13 +97,13 @@ terrorist conflict in the Basque Country as a case study. This paper used a
 combination of other Spanish regions to construct a synthetic Basque Country
 resembling many relevant economic characteristics of the Basque Country before
 the onset of political terrorism in the 1970s.</p>
-<div id="load-the-data" class="section level2" number="14.1">
+<div id="load-the-data" class="section level2" number="13.15">
 <h2>
-<span class="header-section-number">14.1</span> Load the Data<a class="anchor" aria-label="anchor" href="#load-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.15</span> Load the Data<a class="anchor" aria-label="anchor" href="#load-the-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don’t worry, that’s how it is meant to be!</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -139,9 +138,9 @@ a lot of missing data, don’t worry, that’s how it is meant to be!</p>
 ## $ popdens               &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, …
 ## $ invest                &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, …</code></pre>
 </div>
-<div id="data-definitions" class="section level2" number="14.2">
+<div id="data-definitions" class="section level2" number="13.16">
 <h2>
-<span class="header-section-number">14.2</span> Data definitions<a class="anchor" aria-label="anchor" href="#data-definitions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.16</span> Data definitions<a class="anchor" aria-label="anchor" href="#data-definitions"><i class="fas fa-link"></i></a>
 </h2>
 <p>The following are definitions of all the variables you see above:</p>
 <ul>
@@ -165,11 +164,11 @@ more than high school (<code>school.post.high</code>).</p></li>
 <li><p><code>invest</code>: 1964–1969 averages for gross total investment divided by total GDP.</p></li>
 </ul>
 <p>Running the following line of code will show you some helpful information in the “Help” box on the bottom right of your R Studio Screen. We call this <em>documentation</em>. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">basque</span></span></code></pre></div>
-<div id="questions-for-you" class="section level3" number="14.2.1">
+<div id="questions-for-you" class="section level3" number="13.16.1">
 <h3>
-<span class="header-section-number">14.2.1</span> Questions For You<a class="anchor" aria-label="anchor" href="#questions-for-you"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.16.1</span> Questions For You<a class="anchor" aria-label="anchor" href="#questions-for-you"><i class="fas fa-link"></i></a>
 </h3>
 <p>After running the code above and reading the documentation for the dataset, answer the following questions:</p>
 <ol style="list-style-type: decimal">
@@ -190,9 +189,9 @@ more than high school (<code>school.post.high</code>).</p></li>
 <p><strong>Answer.</strong></p>
 </div>
 </div>
-<div id="prepare-the-data-for-analysis-using-dataprep" class="section level2" number="14.3">
+<div id="prepare-the-data-for-analysis-using-dataprep" class="section level2" number="13.17">
 <h2>
-<span class="header-section-number">14.3</span> Prepare the data for analysis using <code>dataprep</code><a class="anchor" aria-label="anchor" href="#prepare-the-data-for-analysis-using-dataprep"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.17</span> Prepare the data for analysis using <code>dataprep</code><a class="anchor" aria-label="anchor" href="#prepare-the-data-for-analysis-using-dataprep"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <strong>first step</strong> is to reorganize the dataset into an appropriate format that is
 suitable for the main estimator function <code>synth()</code>. To do this, we will use the
@@ -229,7 +228,7 @@ numbers (<code>regionno</code>).</li>
 We’ve added comments in the code to explain exactly what’s happening in each line.
 We are creating a “prepared” dataset <code>dataprep.out</code> by running our “unprepared” data through the <code>dataprep</code> function.
 This is because the Synth package requires the data to be in a specific format to do synthetic control.</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dataprep.out</span> <span class="op">&lt;-</span> <span class="fu">dataprep</span><span class="op">(</span></span>
 <span>  foo <span class="op">=</span> <span class="va">basque</span>,          <span class="co"># Our analysis data that needs to be prepared</span></span>
 <span>  predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>        <span class="co"># 1(a). list the variables that we want to use as predictors</span></span>
@@ -275,16 +274,16 @@ shares (e.g. <code>sec.agriculture</code>) is only available on a biennial basi
 More details and examples on the use of the <code>special.predictors</code>
 can be seen by running <code>?dataprep</code> in the console.</p>
 </div>
-<div id="construct-our-synthetic-control" class="section level2" number="14.4">
+<div id="construct-our-synthetic-control" class="section level2" number="13.18">
 <h2>
-<span class="header-section-number">14.4</span> Construct our Synthetic Control<a class="anchor" aria-label="anchor" href="#construct-our-synthetic-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.18</span> Construct our Synthetic Control<a class="anchor" aria-label="anchor" href="#construct-our-synthetic-control"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, we’re ready to use the <code>synth()</code> function to create the synthetic control
 for the GDP of the Basque Country region of Spain. As described in discussion,
 this means that <code>synth()</code> will create weights for each of the other regions
 so that the weighted average of the other regions’ GDP will closely match the
 true GDP of the Basque Country region.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.out</span> <span class="op">&lt;-</span> <span class="fu">synth</span><span class="op">(</span>data.prep.obj <span class="op">=</span> <span class="va">dataprep.out</span>, method <span class="op">=</span> <span class="st">"BFGS"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## X1, X0, Z1, Z0 all come directly from dataprep object.
@@ -298,36 +297,36 @@ true GDP of the Basque Country region.</p>
 ## **************** 
 ## **************** 
 ## 
-## MSPE (LOSS V): 0.008864649 
+## MSPE (LOSS V): 0.008864605 
 ## 
 ## solution.v:
-##  0.01362299 1.1816e-06 1.17692e-05 0.0002695623 3.9871e-06 6.7728e-06 0.06912319 0.2228821 0.02116312 0.1942574 0.0506171 8.776e-06 0.06653104 0.361501 
+##  0.03881798 0.001220442 4.26792e-05 0.0001235262 1.6599e-06 1.76355e-05 0.04072702 0.2396775 0.02234054 0.248494 0.005974697 0.01098894 0.04858995 0.3429834 
 ## 
 ## solution.w:
-##  4.52e-08 6.26e-08 7.86e-08 4.59e-08 5.36e-08 6.607e-07 6.32e-08 1.068e-07 0.8508159 3.109e-07 3.49e-08 1.098e-07 0.1491821 8.8e-08 1.315e-07 2.362e-07</code></pre>
+##  1.67e-08 4.27e-08 7.43e-08 2.78e-08 2.97e-08 5.545e-07 3.66e-08 4.28e-08 0.8508029 9.23e-08 2.75e-08 4.94e-08 0.1491958 4.13e-08 9.75e-08 1.167e-07</code></pre>
 <p>We’ll explore the model output below.</p>
 </div>
-<div id="summarizing-our-synthetic-control-with-tables" class="section level2" number="14.5">
+<div id="summarizing-our-synthetic-control-with-tables" class="section level2" number="13.19">
 <h2>
-<span class="header-section-number">14.5</span> Summarizing our Synthetic Control with Tables<a class="anchor" aria-label="anchor" href="#summarizing-our-synthetic-control-with-tables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.19</span> Summarizing our Synthetic Control with Tables<a class="anchor" aria-label="anchor" href="#summarizing-our-synthetic-control-with-tables"><i class="fas fa-link"></i></a>
 </h2>
 <p>First, we can begin by creating some summary tables from our Synthetic Control
 model.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span> <span class="op">&lt;-</span> <span class="fu">synth.tab</span><span class="op">(</span>dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>, synth.res <span class="op">=</span> <span class="va">synth.out</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>synth.tables</code> variable now contains four tables that will help us evaluate
 our synthetic control. The first table looks at our pre-treatment period and
 compares the predictor values between the Basque Country (denoted <code>Treated</code> in
 the table) and our Synthetic Control. <strong>Note</strong> we want the values in the
 <code>Treated</code> and <code>Synthetic</code> columns to be really close together.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.pred</span></span></code></pre></div>
 <pre><code>##                                          Treated Synthetic
-## school.illit                              39.888   256.337
-## school.prim                             1031.742  2730.105
-## school.med                                90.359   223.340
+## school.illit                              39.888   256.335
+## school.prim                             1031.742  2730.092
+## school.med                                90.359   223.341
 ## school.high                               25.728    63.437
-## school.post.high                          13.480    36.153
+## school.post.high                          13.480    36.154
 ## invest                                    24.647    21.583
 ## special.gdpcap.1960.1969                   5.285     5.271
 ## special.sec.agriculture.1961.1969          6.844     6.179
@@ -336,7 +335,7 @@ the table) and our Synthetic Control. <strong>Note</strong> we want the values i
 ## special.sec.construction.1961.1969         6.150     6.952
 ## special.sec.services.venta.1961.1969      33.754    41.104
 ## special.sec.services.nonventa.1961.1969    4.072     5.371
-## special.popdens.1969                     246.890   196.283
+## special.popdens.1969                     246.890   196.287
 ##                                         Sample Mean
 ## school.illit                                170.786
 ## school.prim                                1127.186
@@ -358,7 +357,7 @@ control isn’t as similar as we would like.</p>
 <p>Next, we can look at the weights that got assigned to each of the non-treatment
 regions. We can drop regions that have a weight of 0 since those regions don’t
 contribute to our synthetic control at all!</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">[</span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">$</span><span class="va">w.weights</span> <span class="op">!=</span> <span class="fl">0</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>##    w.weights            unit.names unit.numbers
 ## 10     0.851              Cataluna           10
@@ -371,32 +370,32 @@ our synthetic control!</p>
 <p>Finally we can look at the weights that got assigned to each of our predictor
 variables. This can be interpreted as the relative importance of each of our
 predictor variables.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.v</span></span></code></pre></div>
 <pre><code>##                                         v.weights
-## school.illit                            0.014    
-## school.prim                             0        
+## school.illit                            0.039    
+## school.prim                             0.001    
 ## school.med                              0        
 ## school.high                             0        
 ## school.post.high                        0        
 ## invest                                  0        
-## special.gdpcap.1960.1969                0.069    
-## special.sec.agriculture.1961.1969       0.223    
-## special.sec.energy.1961.1969            0.021    
-## special.sec.industry.1961.1969          0.194    
-## special.sec.construction.1961.1969      0.051    
-## special.sec.services.venta.1961.1969    0        
-## special.sec.services.nonventa.1961.1969 0.067    
-## special.popdens.1969                    0.362</code></pre>
+## special.gdpcap.1960.1969                0.041    
+## special.sec.agriculture.1961.1969       0.24     
+## special.sec.energy.1961.1969            0.022    
+## special.sec.industry.1961.1969          0.248    
+## special.sec.construction.1961.1969      0.006    
+## special.sec.services.venta.1961.1969    0.011    
+## special.sec.services.nonventa.1961.1969 0.049    
+## special.popdens.1969                    0.343</code></pre>
 <p>We can see that the <code>school.med</code>, <code>school.high</code>, <code>school.post.high</code>, and
 <code>invest</code> variables had a weight of 0, which means that they are the least
 important and had no impact in the creation of our synthetic control. On the
 other hand, the population density in 1969 (<code>special.popdens.1969</code>) was the
 most important variable.</p>
 </div>
-<div id="summarizing-our-synthetic-control-with-plots" class="section level2" number="14.6">
+<div id="summarizing-our-synthetic-control-with-plots" class="section level2" number="13.20">
 <h2>
-<span class="header-section-number">14.6</span> Summarizing our Synthetic Control with Plots<a class="anchor" aria-label="anchor" href="#summarizing-our-synthetic-control-with-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.20</span> Summarizing our Synthetic Control with Plots<a class="anchor" aria-label="anchor" href="#summarizing-our-synthetic-control-with-plots"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finally, we can plot the economic output for the Basque Contry region and
 compare it to the economic output for our Synthetic Control. To make a
@@ -405,7 +404,7 @@ trajectories of the outcome variable for the Basque Country and its Synthetic
 Control unit to be quite similar prior to the violent conflict and to diverge
 sharply when the violent conflict occurs.</p>
 <p>Let’s create such a plot and see if it indicates a significant treatment effect.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">path.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>
@@ -426,7 +425,7 @@ economic output in the Basque Country region.</p>
 of showing two lines for the outcome of the Basque Country region and the
 outcome of the Synthetic Control Unit, we plot a single line that is the
 difference between the two lines in each time period.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">gaps.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>
@@ -442,9 +441,9 @@ of the Basque Country region drops well below the economic output of the
 Synthetic Control unit once the violent conflict begins in 1975. In other words
 the violent conflict lowers economic output.</p>
 </div>
-<div id="summary" class="section level2" number="14.7">
+<div id="summary" class="section level2" number="13.21">
 <h2>
-<span class="header-section-number">14.7</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.21</span> Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this tutorial, we’ve walked through how to prepare data for the Synthetic
 Control method with the following steps:</p>
@@ -462,20 +461,20 @@ Control method with the following steps:</p>
 
   <div class="chapter-nav">
 <div class="prev"><a href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></div>
-<div class="next"><a href="discussion-02.-stats-review.html">Discussion 02. Stats review</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output"><span class="header-section-number">14</span> Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
-<li><a class="nav-link" href="#load-the-data"><span class="header-section-number">14.1</span> Load the Data</a></li>
+<li><a class="nav-link" href="#discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
+<li><a class="nav-link" href="#load-the-data"><span class="header-section-number">13.15</span> Load the Data</a></li>
 <li>
-<a class="nav-link" href="#data-definitions"><span class="header-section-number">14.2</span> Data definitions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions-for-you"><span class="header-section-number">14.2.1</span> Questions For You</a></li></ul>
+<a class="nav-link" href="#data-definitions"><span class="header-section-number">13.16</span> Data definitions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#questions-for-you"><span class="header-section-number">13.16.1</span> Questions For You</a></li></ul>
 </li>
-<li><a class="nav-link" href="#prepare-the-data-for-analysis-using-dataprep"><span class="header-section-number">14.3</span> Prepare the data for analysis using dataprep</a></li>
-<li><a class="nav-link" href="#construct-our-synthetic-control"><span class="header-section-number">14.4</span> Construct our Synthetic Control</a></li>
-<li><a class="nav-link" href="#summarizing-our-synthetic-control-with-tables"><span class="header-section-number">14.5</span> Summarizing our Synthetic Control with Tables</a></li>
-<li><a class="nav-link" href="#summarizing-our-synthetic-control-with-plots"><span class="header-section-number">14.6</span> Summarizing our Synthetic Control with Plots</a></li>
-<li><a class="nav-link" href="#summary"><span class="header-section-number">14.7</span> Summary</a></li>
+<li><a class="nav-link" href="#prepare-the-data-for-analysis-using-dataprep"><span class="header-section-number">13.17</span> Prepare the data for analysis using dataprep</a></li>
+<li><a class="nav-link" href="#construct-our-synthetic-control"><span class="header-section-number">13.18</span> Construct our Synthetic Control</a></li>
+<li><a class="nav-link" href="#summarizing-our-synthetic-control-with-tables"><span class="header-section-number">13.19</span> Summarizing our Synthetic Control with Tables</a></li>
+<li><a class="nav-link" href="#summarizing-our-synthetic-control-with-plots"><span class="header-section-number">13.20</span> Summarizing our Synthetic Control with Plots</a></li>
+<li><a class="nav-link" href="#summary"><span class="header-section-number">13.21</span> Summary</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -495,7 +494,7 @@ Control method with the following steps:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-11-21</p>
+    <p>Last built on 2023-11-28</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
