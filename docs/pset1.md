@@ -93,7 +93,7 @@ sessionInfo()
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.35    
-##  [4] fastmap_1.2.0     xfun_0.39         cachem_1.1.0     
+##  [4] fastmap_1.2.0     xfun_0.47         cachem_1.1.0     
 ##  [7] knitr_1.43        memoise_2.0.1     htmltools_0.5.8.1
 ## [10] rmarkdown_2.22    lifecycle_1.0.3   xml2_1.3.4       
 ## [13] cli_3.6.1         downlit_0.4.4     sass_0.4.9       

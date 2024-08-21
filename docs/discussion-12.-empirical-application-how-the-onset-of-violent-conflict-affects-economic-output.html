@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="We will demonstrate the synthetic control method using data from Abadie and Gardeazabal (2003), which studied the economic effects of conflict, using the terrorist conflict in the Basque Country...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -297,13 +297,13 @@ true GDP of the Basque Country region.</p>
 ## **************** 
 ## **************** 
 ## 
-## MSPE (LOSS V): 0.008864649 
+## MSPE (LOSS V): 0.008864605 
 ## 
 ## solution.v:
-##  0.01362299 1.1816e-06 1.17692e-05 0.0002695623 3.9871e-06 6.7728e-06 0.06912319 0.2228821 0.02116312 0.1942574 0.0506171 8.776e-06 0.06653104 0.361501 
+##  0.03881798 0.001220442 4.26792e-05 0.0001235262 1.6599e-06 1.76355e-05 0.04072702 0.2396775 0.02234054 0.248494 0.005974697 0.01098894 0.04858995 0.3429834 
 ## 
 ## solution.w:
-##  4.52e-08 6.26e-08 7.86e-08 4.59e-08 5.36e-08 6.607e-07 6.32e-08 1.068e-07 0.8508159 3.109e-07 3.49e-08 1.098e-07 0.1491821 8.8e-08 1.315e-07 2.362e-07</code></pre>
+##  1.67e-08 4.27e-08 7.43e-08 2.78e-08 2.97e-08 5.545e-07 3.66e-08 4.28e-08 0.8508029 9.23e-08 2.75e-08 4.94e-08 0.1491958 4.13e-08 9.75e-08 1.167e-07</code></pre>
 <p>We’ll explore the model output below.</p>
 </div>
 <div id="summarizing-our-synthetic-control-with-tables" class="section level2" number="13.19">
@@ -322,11 +322,11 @@ the table) and our Synthetic Control. <strong>Note</strong> we want the values i
 <div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.pred</span></span></code></pre></div>
 <pre><code>##                                          Treated Synthetic
-## school.illit                              39.888   256.337
-## school.prim                             1031.742  2730.105
-## school.med                                90.359   223.340
+## school.illit                              39.888   256.335
+## school.prim                             1031.742  2730.092
+## school.med                                90.359   223.341
 ## school.high                               25.728    63.437
-## school.post.high                          13.480    36.153
+## school.post.high                          13.480    36.154
 ## invest                                    24.647    21.583
 ## special.gdpcap.1960.1969                   5.285     5.271
 ## special.sec.agriculture.1961.1969          6.844     6.179
@@ -335,7 +335,7 @@ the table) and our Synthetic Control. <strong>Note</strong> we want the values i
 ## special.sec.construction.1961.1969         6.150     6.952
 ## special.sec.services.venta.1961.1969      33.754    41.104
 ## special.sec.services.nonventa.1961.1969    4.072     5.371
-## special.popdens.1969                     246.890   196.283
+## special.popdens.1969                     246.890   196.287
 ##                                         Sample Mean
 ## school.illit                                170.786
 ## school.prim                                1127.186
@@ -373,20 +373,20 @@ predictor variables.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.v</span></span></code></pre></div>
 <pre><code>##                                         v.weights
-## school.illit                            0.014    
-## school.prim                             0        
+## school.illit                            0.039    
+## school.prim                             0.001    
 ## school.med                              0        
 ## school.high                             0        
 ## school.post.high                        0        
 ## invest                                  0        
-## special.gdpcap.1960.1969                0.069    
-## special.sec.agriculture.1961.1969       0.223    
-## special.sec.energy.1961.1969            0.021    
-## special.sec.industry.1961.1969          0.194    
-## special.sec.construction.1961.1969      0.051    
-## special.sec.services.venta.1961.1969    0        
-## special.sec.services.nonventa.1961.1969 0.067    
-## special.popdens.1969                    0.362</code></pre>
+## special.gdpcap.1960.1969                0.041    
+## special.sec.agriculture.1961.1969       0.24     
+## special.sec.energy.1961.1969            0.022    
+## special.sec.industry.1961.1969          0.248    
+## special.sec.construction.1961.1969      0.006    
+## special.sec.services.venta.1961.1969    0.011    
+## special.sec.services.nonventa.1961.1969 0.049    
+## special.popdens.1969                    0.343</code></pre>
 <p>We can see that the <code>school.med</code>, <code>school.high</code>, <code>school.post.high</code>, and
 <code>invest</code> variables had a weight of 0, which means that they are the least
 important and had no impact in the creation of our synthetic control. On the
@@ -494,7 +494,7 @@ Control method with the following steps:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-11-29</p>
+    <p>Last built on 2024-08-21</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
