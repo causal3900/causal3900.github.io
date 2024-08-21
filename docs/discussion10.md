@@ -124,13 +124,25 @@ for(i in 1:sim.size){
   rec[i, 8] <- predict(fit.mod.bandwidth4, newdata = data.frame(X = 0))
 
 }
+```
 
+```
+## Warning in predict.lm(fit.mod.bandwidth1, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases
+
+## Warning in predict.lm(fit.mod.bandwidth1, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases
+```
+
+```r
 colMeans(rec)
 ```
 
 ```
-## [1]  9.210338  4.914758  3.714027 12.542235  4.900830
-## [6]  4.716216  4.053650  1.748692
+## [1] 11.017238  5.433852  3.815900 12.390484  4.870329
+## [6]  4.772089  4.179710  1.788163
 ```
 
 ```r
