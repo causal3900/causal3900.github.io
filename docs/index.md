@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Ian Lundberg and Sam Wang"
-date: "2024-08-21"
+date: "2024-08-22"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,11 +15,11 @@ csl: chicago-fullnote-bibliography.csl
 
 # Welcome {-}
 
-Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA23/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900). Causal Inference. Fall 2023.
+Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA23/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900). Causal Inference. Fall 2024.
 
 Welcome! Together, we will learn to make causal claims by combining data with arguments.
 
-Taught by [Ian Lundberg](https://www.ianlundberg.org/), [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), and [Daniel Molitor](https://www.dmolitor.com/). Read about us [here](who-we-are)!
+Taught by [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), [Filippo Fiocchi](https://stat.cornell.edu/people/phds/filippo-fiocchi), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
 
 ## Learning objectives {-}
 
