@@ -19,7 +19,7 @@ Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA23/class/STSCI/3900)
 
 Welcome! Together, we will learn to make causal claims by combining data with arguments.
 
-Taught by [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), [Filippbooo Fiocchi](https://stat.cornell.edu/people/phds/filippo-fiocchi), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
+Taught by [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), [Filippo Fiocchi](https://stat.cornell.edu/people/phds/filippo-fiocchi), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
 
 ## Learning objectives {-}
 
