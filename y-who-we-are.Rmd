@@ -40,3 +40,11 @@ img {
 
 > I am currently working on problem related to Causality, particularly on Causal and Graph discovery for Functional data. I am interested in how to learn interpretable structures from data with hidden confounders. In my free time I enjoy playing basketball, running and hanging out with friends.
 
+<div class="row">
+  <div class="column"><img src="assets/Shira.jpg" style="width:75px"></div>
+  <div class="col-md-5">[**Shira Mingelgrin**](https://stat.cornell.edu/people/phds/shira-mingelgrin)<br>PhD Student<br>Statistics and Data Science<br>
+[sm2267@cornell.edu](mailto:sm2267@cornell.edu)<br> OH TBD </div>
+</div>
+
+> I am currently working on graphical models with noisy measurements. I am interested in causal discovery and its applications in social science and biology. In my free time I like doing puzzles, playing pool, and baking.  
+

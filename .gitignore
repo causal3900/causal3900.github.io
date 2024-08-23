@@ -7,3 +7,4 @@ _bookdown_files
 old_structure
 *.RDS
 assets/discussions/d.RDS
+.DS_Store

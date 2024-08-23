@@ -134,11 +134,11 @@
 <h2>2. Analyzing the experimental data<a class="anchor" aria-label="anchor" href="#analyzing-the-experimental-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Load packages that our code will use.</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 <p>Download the study’s data from OpenICPSR: <a href="https://www.openicpsr.org/openicpsr/project/116023/version/V1/view">https://www.openicpsr.org/openicpsr/project/116023/version/V1/view</a>. This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using <code>read_dta</code>.</p>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"lakisha_aer.dta"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p>If you have an error, you might need to set your working directory first. This tells R where to look for data files. At the top of RStudio, click Session -&gt; Set Working Directory -&gt; To Source File Location.</p>
@@ -195,7 +195,7 @@
 </table></div>
 <p>For 2.1–2.4, we will think of <code>race</code> as the treatment. For 2.5–2.6, we will think of <code>firstname</code> as the treatment.</p>
 <p>Restrict to these variables using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>.</p>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_selected</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">call</span>, <span class="va">firstname</span>, <span class="va">race</span>, <span class="va">sex</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
@@ -218,7 +218,7 @@
 <blockquote>
 <p>Here’s a <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">reference</a> that introduces <code>group_by</code> and <code>summarize</code>.</p>
 </blockquote>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_summarized</span> <span class="op">&lt;-</span> <span class="va">d_selected</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
 <span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -242,7 +242,7 @@
 <p><strong>Standard error in code.</strong> We translated the standard error formula into code for you below. This function accepts an estimated probability <code>p</code> and sample size <code>n</code> and returns the estimated standard error. You can use this <code>se_binary()</code> function in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
 </blockquote>
 <blockquote>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">se_binary</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span> <span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
@@ -262,7 +262,7 @@
 </blockquote>
 <blockquote>
 <p><strong>Confidence interval in code.</strong> We translated the confidence interval formula into code for you below. These functions accept an estimate and standard error and return the lower and upper bounds (respectively) of a 95% confidence interval that assumes a Normal sampling distribution. You can use these functions in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_lower</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">estimate</span>, <span class="va">standard_error</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">estimate</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.975</span><span class="op">)</span> <span class="op">*</span> <span class="va">standard_error</span></span>
 <span><span class="op">}</span></span>
@@ -291,7 +291,7 @@
 <blockquote>
 <p>One way to visualize is by placing first names on the <span class="math inline">\(x\)</span>-axis and using a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> layer to facet over race and sex.</p>
 </blockquote>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">your_ggplot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">sex</span>,</span>
 <span>             scales <span class="op">=</span> <span class="st">"free_x"</span>, </span>
@@ -351,7 +351,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-08-22</p>
+    <p>Last built on 2024-08-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
