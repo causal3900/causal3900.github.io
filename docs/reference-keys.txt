@@ -87,3 +87,5 @@ construct-our-synthetic-control
 summarizing-our-synthetic-control-with-tables
 summarizing-our-synthetic-control-with-plots
 summary
+estimating-the-effect
+weighted-least-squares
