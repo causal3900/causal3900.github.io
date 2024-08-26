@@ -1,9 +1,11 @@
 
 # Defining counterfactuals
 
+To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/defining-counterfactuals.html). Updated slides will be linked below as soon as they are available.
+
 ## Observing versus intervening
 
-> Aug 22. [**Slides**](assets/slides/lecture_1.1_observing_intervening.pdf)
+> Aug 27. [**Slides**]()
 
 Statistical inference is about observing: if I observe a sample from a population, what can I infer about that population? Causal inference is about intervening: if I take a sample from a population and intervene to change some exposure, what average outcome would result?
 
@@ -11,7 +13,7 @@ Today we will discuss observing, intervening, and why the difference is so impor
 
 ## Lab: Designing a study
 
-> Aug 23
+> Aug 28
 
 In this lab, we will start by getting to know one another. Then, we will discuss a hypothetical scenario.
 
@@ -29,7 +31,7 @@ There is no expectation to have clear answers now. Over the course of the semest
 
 ## Defining causal effects
 
-> Aug 24. [**Slides.**](assets/slides/lecture_1.3_defining_causal_effects.pdf) After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) and begin Homework 1.
+> Aug 29. [**Slides.**]() After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) and begin Homework 1.
 
 Today we will define average causal effects in the potential outcomes framework.
 
