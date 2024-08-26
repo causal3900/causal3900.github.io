@@ -66,11 +66,6 @@ import-data
 clean-data
 balance-table
 results
-necessary-packages-1
-import-data-1
-clean-data-1
-balance-table-1
-results-1
 r-markdown
 matching-with-job-training-data-from-evaluating-the-econometric-evaluations-of-training-programs-with-experimental-data-lalonde-1986
 assessing-the-matching

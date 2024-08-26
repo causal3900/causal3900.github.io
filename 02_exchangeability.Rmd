@@ -1,9 +1,9 @@
 
 # (PART) Identification by exchangeability {-}
 
-To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/exchangeability-and-experiments.html). Updated slides will be linked below as soon as they are available.
-
 # Exchangeability and experiments
+
+To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/exchangeability-and-experiments.html). Updated slides will be linked below as soon as they are available.
 
 ## Randomized experiments
 
@@ -41,7 +41,7 @@ By the end of class, you will be able to
 
 ## Lab: Analyze a randomized experiment
 
-> Sep 11. [**Slides.**]() [**RMarkdown Activity File.**]() 
+> Sep 11. [**Slides.**]()
 
 This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)).
 

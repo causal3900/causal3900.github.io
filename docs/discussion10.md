@@ -4,6 +4,8 @@ output: html_document
 
 # Discussion 10. Causal Effects with Regression Discontinuity {-}
 
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+
 [**Slides**](assets/discussions/discussion10.pdf)
 Download today's [**.Rmd document here**](assets/discussions/discussion10.Rmd).
 
@@ -129,8 +131,8 @@ colMeans(rec)
 ```
 
 ```
-## [1]  9.574985  5.296370  4.203252 13.618365  4.767994
-## [6]  4.607396  4.121327  1.635082
+## [1]  8.782364  5.176238  3.714100 11.822487  4.829031
+## [6]  4.654669  4.233329  1.875591
 ```
 
 ``` r

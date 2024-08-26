@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 10. Causal Effects with Regression Discontinuity | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Slides Download today’s .Rmd document here.  13.12 Choosing a bandwidth One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example...">
+<meta name="description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here.  13.11 Choosing a bandwidth One of the main difficulties of a...">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Discussion 10. Causal Effects with Regression Discontinuity | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Slides Download today’s .Rmd document here.  13.12 Choosing a bandwidth One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example...">
+<meta property="og:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here.  13.11 Choosing a bandwidth One of the main difficulties of a...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 10. Causal Effects with Regression Discontinuity | Causal Inference Course">
-<meta name="twitter:description" content="Slides Download today’s .Rmd document here.  13.12 Choosing a bandwidth One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example...">
+<meta name="twitter:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here.  13.11 Choosing a bandwidth One of the main difficulties of a...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -63,9 +63,8 @@
 <li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
-<li><a class="" href="discussion-02.-stats-review.html">Discussion 02. Stats review</a></li>
+<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-03.-analyzing-an-experiment-in-r-solutions.html">Discussion 03. Analyzing an Experiment in R SOLUTIONS</a></li>
 <li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
 <li><a class="active" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
 <li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
@@ -91,15 +90,16 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-10.-causal-effects-with-regression-discontinuity" class="section level1 unnumbered">
 <h1>Discussion 10. Causal Effects with Regression Discontinuity<a class="anchor" aria-label="anchor" href="#discussion-10.-causal-effects-with-regression-discontinuity"><i class="fas fa-link"></i></a>
 </h1>
+<p><strong>NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.</strong></p>
 <p><a href="assets/discussions/discussion10.pdf"><strong>Slides</strong></a>
 Download today’s <a href="assets/discussions/discussion10.Rmd"><strong>.Rmd document here</strong></a>.</p>
-<div id="choosing-a-bandwidth" class="section level2" number="13.12">
+<div id="choosing-a-bandwidth" class="section level2" number="13.11">
 <h2>
-<span class="header-section-number">13.12</span> Choosing a bandwidth<a class="anchor" aria-label="anchor" href="#choosing-a-bandwidth"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.11</span> Choosing a bandwidth<a class="anchor" aria-label="anchor" href="#choosing-a-bandwidth"><i class="fas fa-link"></i></a>
 </h2>
 <p>One of the main difficulties of a regression discontinuity analysis is choosing a ``good’’ bandwidth. This is a good example of the bias variance trade-off which appears all the time in statistics. In general, we will let the software choose this for us, but it will be helpful to run through a small example to better understand the subtleties involved.</p>
 <p>Suppose <span class="math inline">\(Y\)</span> is a very non-linear function of <span class="math inline">\(X\)</span>, and we want to extrapolate and predict <span class="math inline">\(Y\)</span> at <span class="math inline">\(X=0\)</span>.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">### Y is a very non-linear function of X + some noise</span></span>
@@ -113,7 +113,7 @@ Download today’s <a href="assets/discussions/discussion10.Rmd"><strong>.Rmd do
 <p>If we blindly fit a line to all our observations, the predicted value for <span class="math inline">\(X=0\)</span> is off by quite a bit.
 <img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 <p>If we instead restrict ourselves to a smaller region around 0, we can do a bit better</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Only consider points h away from 0</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span></span>
@@ -129,7 +129,7 @@ Download today’s <a href="assets/discussions/discussion10.Rmd"><strong>.Rmd do
 <div class="inline-figure">
 <img src="discussion10_files/figure-html/unnamed-chunk-3-1.png" width="672">
 However, if we get more and more data, we don’t really improve much</div>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span><span class="op">*</span><span class="va">X</span> <span class="op">+</span> <span class="fl">.6</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">.3</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">15</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
@@ -146,7 +146,7 @@ However, if we get more and more data, we don’t really improve much</div>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html">points</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span>, pch <span class="op">=</span> <span class="fl">18</span>, col <span class="op">=</span> <span class="st">"orange"</span>, cex <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>Ideally, we would decrease the bandwidth to reduce this bias, but this also means we are working with less data. Since each data point is noisy, if we were to get a new sample, the estimate could change quite a bit. Try running this a few times and see how much the estimate moves. Compare this which how much the estimate moves if the bandwidth is 2.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">.3</span> <span class="co"># bandwidth</span></span>
 <span><span class="co"># h &lt;- 2 </span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
@@ -167,7 +167,7 @@ However, if we get more and more data, we don’t really improve much</div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>Knowing the best bandwidth is a hard problem, but generally speaking a good choice of bandwidth will get smaller as the sample size increases.</p>
 <p>If we measure accuracy in terms of average squared error, we can see when <span class="math inline">\(n = 100\)</span>, a bandwidth of 1.2 seems to be best. However, test and see if how that changes for larger values of <span class="math inline">\(n\)</span></p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.8</span>, <span class="fl">1.2</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">sim.size</span> <span class="op">&lt;-</span> <span class="fl">500</span></span>
@@ -195,9 +195,9 @@ However, if we get more and more data, we don’t really improve much</div>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">rec</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## [1]  9.574985  5.296370  4.203252 13.618365  4.767994
-## [6]  4.607396  4.121327  1.635082</code></pre>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<pre><code>## [1]  8.782364  5.176238  3.714100 11.822487  4.829031
+## [6]  4.654669  4.233329  1.875591</code></pre>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">rec</span><span class="op">[</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">5</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure">
@@ -208,20 +208,20 @@ However, if we get more and more data, we don’t really improve much</div>
 and the squared error for each observation count are considered equally. But if a good fit around some points is more important than other points, we can also use weighted least squares where <span class="math inline">\(w_i\)</span> is a weight.
 <span class="math display">\[\min_b \sum_i w_i(Y_i - X_i b)^2\]</span>
 When <span class="math inline">\(w_i\)</span> is larger, the squared error for observation <span class="math inline">\(i\)</span> will cost more so the selected linear coefficient will prioritize minimizing errors where <span class="math inline">\(w_i\)</span> is large. In our particular setting, we want to prioritize fitting the data well around <span class="math inline">\(0\)</span>, so we can use weights which are ``triangular’’ which prioritize points near <span class="math inline">\(0\)</span>.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span><span class="op">*</span><span class="va">X</span> <span class="op">+</span> <span class="fl">.6</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">.3</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">15</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
 <span><span class="va">weight</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">weight</span>, type <span class="op">=</span> <span class="st">"p"</span>, main <span class="op">=</span> <span class="st">"Triangular Weights"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
-<div id="question" class="section level4" number="13.12.0.1">
+<div id="question" class="section level4" number="13.11.0.1">
 <h4>
-<span class="header-section-number">13.12.0.1</span> Question<a class="anchor" aria-label="anchor" href="#question"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.11.0.1</span> Question<a class="anchor" aria-label="anchor" href="#question"><i class="fas fa-link"></i></a>
 </h4>
 <p>If we use a bandwidth of <span class="math inline">\(h\)</span> (i.e., only include observations within <span class="math inline">\(h\)</span> of the cut-off), what does this mean the the weights would be?</p>
 <p>When using triangular weights, we can see that this does better than using all the points.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
@@ -258,7 +258,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <div class="inline-figure">
 <img src="discussion10_files/figure-html/unnamed-chunk-8-1.png" width="672">
 In practice, we can combine both a hard thresholding bandwidth as well as triangular weights (within the bandwidth)</div>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># bandwidth</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
@@ -272,29 +272,29 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 </div>
 </div>
-<div id="rdd-analysis" class="section level2" number="13.13">
+<div id="rdd-analysis" class="section level2" number="13.12">
 <h2>
-<span class="header-section-number">13.13</span> RDD Analysis<a class="anchor" aria-label="anchor" href="#rdd-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12</span> RDD Analysis<a class="anchor" aria-label="anchor" href="#rdd-analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now let’s apply a regression discontinuity analysis to data. This example follows the analysis ``Randomization Inference in the Regression Discontinuity Design: An Application to Party Advantages in the U.S. Senate’’ by Cattaneo, Frandsen, and Titiunik (2015) and their replication file.</p>
 <p>Political scientists are interested in the effect of being an incumbent (the currently elected politician) on the share of votes in an election. Being the current public official means increased name recognition, fundraising opportunities, etc. On the other hand, being an incumbent means you can get blamed for all the bad things that have happened during your term.</p>
 <p>The data we analyze considers US senators. Each state in the US has two senators with 6 year terms, and the election for each of the two senators alternates every 3 years. So for instance, there are two senate seats: A and B. In 2000 senate seat A undergoes an election, in 2003 senate seat B undergoes an election but senate seat A continues, in 2006 senate seat A undergoes an election but senate seat B continues on, etc.</p>
 <p>We will look at the causal effect on being an incumbent in senate races in two different ways.First, does being an incumbent effect your vote share the next time you run for office? Second, if the other sitting senator is from your same party, what is the effect on your election share?</p>
-<div id="question-1" class="section level4" number="13.13.0.1">
+<div id="question-1" class="section level4" number="13.12.0.1">
 <h4>
-<span class="header-section-number">13.13.0.1</span> Question<a class="anchor" aria-label="anchor" href="#question-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12.0.1</span> Question<a class="anchor" aria-label="anchor" href="#question-1"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Consider the first question and draw out a causal diagram where the treatment is being an incumbent and the outcome of interest is vote share in an election.</li>
 <li>How might we use regression discontinuity to provide an answer to this question?</li>
 </ul>
 </div>
-<div id="data" class="section level3" number="13.13.1">
+<div id="data" class="section level3" number="13.12.1">
 <h3>
-<span class="header-section-number">13.13.1</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12.1</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h3>
 <p>We’ll examine data from US Senate races from 1914 to 2010 to try and answer these questions.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -304,22 +304,22 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <span></span>
 <span><span class="fu">install</span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install</span><span class="op">(</span><span class="st">"lpdensity"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: package 'lpdensity' was built under R version
 ## 4.3.3</code></pre>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install</span><span class="op">(</span><span class="st">"rddensity"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: package 'rddensity' was built under R version
 ## 4.3.3</code></pre>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install</span><span class="op">(</span><span class="st">"rdrobust"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: package 'rdrobust' was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install</span><span class="op">(</span><span class="st">"rdlocrand"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: package 'rdlocrand' was built under R version
 ## 4.3.3</code></pre>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
@@ -344,14 +344,14 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 ## 4      48.47606          0          0        1        0
 ## 5      51.74687          0          0        0        0
 ## 6      39.80264          0          0        0        0</code></pre>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># presdemvoteshlag1 is democratic vote share in the previous presidential election</span></span>
 <span><span class="co"># demmv is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)</span></span>
 <span><span class="co">#   so a value just above 0 indicates a very close victory, a value just below 0 indicates a very close loss</span></span>
 <span><span class="co"># demovoteshlag1 and 2 indicates the vote share 1 and 2 election cycles ago</span></span>
 <span><span class="co"># demovoteshfor1 and 2 indicates the vote share 1 and 2 elections cycles in the future</span></span></code></pre></div>
 <p>For the first analysis, we will consider whether being the incumbent effects vote share in the next election. Thus, the outcome of interest is because the next time the same seat goes up for election is 2 cycles in the future.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dem_vote_t2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor2</span></span>
 <span><span class="va">dem_margin_t0</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
@@ -360,16 +360,16 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <span><span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdplot.html">rdplot</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">dem_vote_t2</span>, x <span class="op">=</span>  <span class="va">dem_margin_t0</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
 <p>Let’s zoom in a bit to the closer races and use non-linear regression. There appears to still be a slight discontinuity.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdplot.html">rdplot</a></span><span class="op">(</span><span class="va">dem_vote_t2</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">dem_margin_t0</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">25</span><span class="op">]</span>, <span class="va">dem_margin_t0</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">dem_margin_t0</span><span class="op">)</span> <span class="op">&lt;=</span> <span class="fl">25</span><span class="op">]</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500</span>, <span class="fl">500</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">4</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, title <span class="op">=</span> <span class="st">""</span>,  y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 </div>
-<div id="estimating-the-causal-effect" class="section level3" number="13.13.2">
+<div id="estimating-the-causal-effect" class="section level3" number="13.12.2">
 <h3>
-<span class="header-section-number">13.13.2</span> Estimating the causal effect<a class="anchor" aria-label="anchor" href="#estimating-the-causal-effect"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12.2</span> Estimating the causal effect<a class="anchor" aria-label="anchor" href="#estimating-the-causal-effect"><i class="fas fa-link"></i></a>
 </h3>
 <p>As an example, we’ll manually set the bandwidth to 10, and then estimate a linear regression on both sides of the cut-off. The estimated intercept is the prediction at <span class="math inline">\(0\)</span>, so to get the estimate, we just take the difference.</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set bandwidth to 10</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="co"># Fit regression to left and right of cut-off</span></span>
@@ -381,7 +381,7 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <pre><code>## (Intercept) 
 ##    6.898794</code></pre>
 <p>We can try the same with the triangular weights.</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">weight</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">dem_margin_t0</span><span class="op">)</span> <span class="op">&lt;</span> <span class="va">h</span>, <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">dem_margin_t0</span><span class="op">)</span> <span class="op">/</span> <span class="va">h</span>, <span class="fl">0</span><span class="op">)</span> </span>
 <span></span>
@@ -394,9 +394,9 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 <span><span class="va">lm_right</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">-</span> <span class="va">lm_left</span><span class="op">$</span><span class="va">coefficients</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> </span></code></pre></div>
 <pre><code>## (Intercept) 
 ##    7.984687</code></pre>
-<div id="question-2" class="section level4" number="13.13.2.1">
+<div id="question-2" class="section level4" number="13.12.2.1">
 <h4>
-<span class="header-section-number">13.13.2.1</span> Question<a class="anchor" aria-label="anchor" href="#question-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.12.2.1</span> Question<a class="anchor" aria-label="anchor" href="#question-2"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li>Describe in both mathematical notation, and in plain language what causal effect is being estimated.</li>
@@ -404,12 +404,12 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 </div>
 </div>
 </div>
-<div id="using-rdrobust" class="section level2" number="13.14">
+<div id="using-rdrobust" class="section level2" number="13.13">
 <h2>
-<span class="header-section-number">13.14</span> Using rdrobust<a class="anchor" aria-label="anchor" href="#using-rdrobust"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.13</span> Using rdrobust<a class="anchor" aria-label="anchor" href="#using-rdrobust"><i class="fas fa-link"></i></a>
 </h2>
 <p>As you can see, getting the estimates aren’t so difficult once we’ve selected a bandwidth. But selecting a good bandwidth can be tricky and getting standard errors on the estimate are also difficult. We can use the R package to select the bandwidth, estimate the causal effect quantities, and give standard errors.</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># uniform kernel with bandwidth 10</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdrobust.html">rdrobust</a></span><span class="op">(</span><span class="va">dem_vote_t2</span>, <span class="va">dem_margin_t0</span>, kernel <span class="op">=</span> <span class="st">'uniform'</span>,  p <span class="op">=</span> <span class="fl">1</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></code></pre></div>
@@ -435,7 +435,7 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 ##   Conventional     6.899     1.722     4.007     0.000     [3.525 , 10.273]    
 ##         Robust         -         -     3.891     0.000     [5.156 , 15.624]    
 ## =============================================================================</code></pre>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># triangular kernel with bandwidth 10</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdrobust.html">rdrobust</a></span><span class="op">(</span><span class="va">dem_vote_t2</span>, <span class="va">dem_margin_t0</span>,  kernel <span class="op">=</span> <span class="st">'triangular'</span>,  p <span class="op">=</span> <span class="fl">1</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></code></pre></div>
@@ -462,7 +462,7 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 ##         Robust         -         -     4.387     0.000     [6.595 , 17.249]    
 ## =============================================================================</code></pre>
 <p>If we don’t specify a bandwidth directly, the software will choose for us</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># uniform kernel with software selected bandwidth</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdrobust.html">rdrobust</a></span><span class="op">(</span><span class="va">dem_vote_t2</span>, <span class="va">dem_margin_t0</span>, kernel <span class="op">=</span> <span class="st">'triangular'</span>,  p <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></code></pre></div>
@@ -488,12 +488,12 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
 ##   Conventional     7.414     1.459     5.083     0.000     [4.555 , 10.273]    
 ##         Robust         -         -     4.311     0.000     [4.094 , 10.919]    
 ## =============================================================================</code></pre>
-<div id="try-on-your-own" class="section level3" number="13.14.1">
+<div id="try-on-your-own" class="section level3" number="13.13.1">
 <h3>
-<span class="header-section-number">13.14.1</span> Try on your own<a class="anchor" aria-label="anchor" href="#try-on-your-own"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.13.1</span> Try on your own<a class="anchor" aria-label="anchor" href="#try-on-your-own"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is demvoteshfor1 since we are interested in the immediately following election.</p>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dem_vote_t1</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
 <span><span class="va">dem_margin_t0</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
@@ -512,15 +512,15 @@ In practice, we can combine both a hard thresholding bandwidth as well as triang
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#discussion-10.-causal-effects-with-regression-discontinuity">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
-<li><a class="nav-link" href="#choosing-a-bandwidth"><span class="header-section-number">13.12</span> Choosing a bandwidth</a></li>
+<li><a class="nav-link" href="#choosing-a-bandwidth"><span class="header-section-number">13.11</span> Choosing a bandwidth</a></li>
 <li>
-<a class="nav-link" href="#rdd-analysis"><span class="header-section-number">13.13</span> RDD Analysis</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data"><span class="header-section-number">13.13.1</span> Data</a></li>
-<li><a class="nav-link" href="#estimating-the-causal-effect"><span class="header-section-number">13.13.2</span> Estimating the causal effect</a></li>
+<a class="nav-link" href="#rdd-analysis"><span class="header-section-number">13.12</span> RDD Analysis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data"><span class="header-section-number">13.12.1</span> Data</a></li>
+<li><a class="nav-link" href="#estimating-the-causal-effect"><span class="header-section-number">13.12.2</span> Estimating the causal effect</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#using-rdrobust"><span class="header-section-number">13.14</span> Using rdrobust</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#try-on-your-own"><span class="header-section-number">13.14.1</span> Try on your own</a></li></ul>
+<a class="nav-link" href="#using-rdrobust"><span class="header-section-number">13.13</span> Using rdrobust</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#try-on-your-own"><span class="header-section-number">13.13.1</span> Try on your own</a></li></ul>
 </li>
 </ul>
       <div class="book-extra">

@@ -6,6 +6,8 @@ output: html_document
 
 # Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output {-}
 
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+
 We will demonstrate the synthetic control method using data from [Abadie and 
 Gardeazabal (2003)](https://www.aeaweb.org/articles?id=10.1257/000282803321455188), which studied the economic effects of conflict, using the
 terrorist conflict in the Basque Country as a case study. This paper used a 

@@ -1,8 +1,8 @@
 # (PART) Discussions {-}
 
-# Discussion 02. Stats review {-}
+# Discussion 2. Stats review {-}
 
-[**Slides**](assets/discussions/discussion2-slides.pdf)
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
 
 To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion2_download.Rmd)
 

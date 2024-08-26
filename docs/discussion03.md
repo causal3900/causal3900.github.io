@@ -4,6 +4,8 @@ output: html_document
 
 # Discussion 03. Analyzing an Experiment in R {-}
 
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+
 [**Slides**](assets/discussions/discussion3-slides.pdf)
 
 

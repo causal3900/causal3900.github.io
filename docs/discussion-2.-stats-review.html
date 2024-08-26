@@ -6,17 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 2. Stats review | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Slides To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble)  14.8 Sample expectations converge to population We can generate simulations...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) ## Warning: package 'ggplot2' was...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Discussion 2. Stats review | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Slides To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble)  14.8 Sample expectations converge to population We can generate simulations...">
+<meta property="og:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) ## Warning: package 'ggplot2' was...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 2. Stats review | Causal Inference Course">
-<meta name="twitter:description" content="Slides To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble)  14.8 Sample expectations converge to population We can generate simulations...">
+<meta name="twitter:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) ## Warning: package 'ggplot2' was...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -62,13 +62,12 @@
 <li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
 <li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
-<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
-<li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html"><span class="header-section-number">14</span> Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="active" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r-solutions.html">Discussion 3. Analyzing an Experiment in R SOLUTIONS</a></li>
-<li><a class="" href="discussion-7.-causal-effects-with-matching.html">Discussion 7. Causal Effects with Matching</a></li>
+<li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
+<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
+<li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="final-project.html">Final Project</a></li>
@@ -77,7 +76,7 @@
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
 <li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
 <li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-did-synthetic-control.html">Problem Set 6. DID + synthetic control</a></li>
+<li><a class="" href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -91,19 +90,23 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-2.-stats-review" class="section level1 unnumbered">
 <h1>Discussion 2. Stats review<a class="anchor" aria-label="anchor" href="#discussion-2.-stats-review"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="assets/discussions/discussion2-slides.pdf"><strong>Slides</strong></a></p>
+<p><strong>NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.</strong></p>
 <p>To execute these simulations locally, <a href="assets/discussions/discussion2_download.Rmd"><strong>download the .Rmd here</strong></a></p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/haleyjeppson/ggmosaic">ggmosaic</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span></code></pre></div>
-<div id="sample-expectations-converge-to-population" class="section level2" number="14.8">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/haleyjeppson/ggmosaic">ggmosaic</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'ggmosaic' was built under R version 4.3.3</code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span></code></pre></div>
+<div id="sample-expectations-converge-to-population" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">14.8</span> Sample expectations converge to population<a class="anchor" aria-label="anchor" href="#sample-expectations-converge-to-population"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Sample expectations converge to population<a class="anchor" aria-label="anchor" href="#sample-expectations-converge-to-population"><i class="fas fa-link"></i></a>
 </h2>
 <p>We can generate simulations to show that sample mean and variance converge to
 population values.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">true_mean</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
 <span><span class="va">true_var</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span></span>
@@ -132,21 +135,21 @@ population values.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_mean</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="discussion2_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">vars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Sample Variance`</span>, x <span class="op">=</span> <span class="va">N</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_var</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="discussion2_files/figure-html/unnamed-chunk-2-2.png" width="672"></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-2-2.png" width="672"></div>
 </div>
-<div id="simulate-conditional-expectations" class="section level2" number="14.9">
+<div id="simulate-conditional-expectations" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">14.9</span> Simulate conditional expectations<a class="anchor" aria-label="anchor" href="#simulate-conditional-expectations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> Simulate conditional expectations<a class="anchor" aria-label="anchor" href="#simulate-conditional-expectations"><i class="fas fa-link"></i></a>
 </h2>
 <p>Simulate conditional expectations within groups that differ from the sample
 mean.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">group1_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">20</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">group2_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">30</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="va">group_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
@@ -175,13 +178,13 @@ mean.</p>
 <span>    color <span class="op">=</span> <span class="st">"#00BFC4"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="discussion2_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 </div>
-<div id="show-independence-of-variables---example-of-two-dice-rolling" class="section level2" number="14.10">
+<div id="show-independence-of-variables---example-of-two-dice-rolling" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">14.10</span> Show independence of variables - example of two dice rolling<a class="anchor" aria-label="anchor" href="#show-independence-of-variables---example-of-two-dice-rolling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> Show independence of variables - example of two dice rolling<a class="anchor" aria-label="anchor" href="#show-independence-of-variables---example-of-two-dice-rolling"><i class="fas fa-link"></i></a>
 </h2>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dice_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">dice_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">dice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
@@ -194,20 +197,20 @@ mean.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y<span class="op">=</span><span class="st">""</span>, x<span class="op">=</span><span class="st">"Value Rolled"</span>, title <span class="op">=</span> <span class="st">"Independence of dice roll"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="discussion2_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html"><span class="header-section-number">14</span> Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></div>
-<div class="next"><a href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></div>
+<div class="prev"><a href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></div>
+<div class="next"><a href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#discussion-2.-stats-review">Discussion 2. Stats review</a></li>
-<li><a class="nav-link" href="#sample-expectations-converge-to-population"><span class="header-section-number">14.8</span> Sample expectations converge to population</a></li>
-<li><a class="nav-link" href="#simulate-conditional-expectations"><span class="header-section-number">14.9</span> Simulate conditional expectations</a></li>
-<li><a class="nav-link" href="#show-independence-of-variables---example-of-two-dice-rolling"><span class="header-section-number">14.10</span> Show independence of variables - example of two dice rolling</a></li>
+<li><a class="nav-link" href="#sample-expectations-converge-to-population"><span class="header-section-number">13.1</span> Sample expectations converge to population</a></li>
+<li><a class="nav-link" href="#simulate-conditional-expectations"><span class="header-section-number">13.2</span> Simulate conditional expectations</a></li>
+<li><a class="nav-link" href="#show-independence-of-variables---example-of-two-dice-rolling"><span class="header-section-number">13.3</span> Show independence of variables - example of two dice rolling</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -227,7 +230,7 @@ mean.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2023-11-07</p>
+    <p>Last built on 2024-08-26</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

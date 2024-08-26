@@ -4,6 +4,8 @@ output: html_document
 
 # Discussion 07. Causal Effects with Matching {-}
 
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+
 [**Slides**](assets/discussions/discussion7.pdf)
 Download today's [**.Rmd document here**](assets/discussions/matching_lab.Rmd).
 

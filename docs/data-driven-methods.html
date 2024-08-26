@@ -63,9 +63,8 @@
 <li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
-<li><a class="" href="discussion-02.-stats-review.html">Discussion 02. Stats review</a></li>
+<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-03.-analyzing-an-experiment-in-r-solutions.html">Discussion 03. Analyzing an Experiment in R SOLUTIONS</a></li>
 <li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
 <li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
 <li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
@@ -108,13 +107,13 @@
 <p>Here is an example of the code to simulate data:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A         Y
-## 1 1 untreated  57.60808
-## 2 1   treated  82.95986
-## 3 1 untreated  47.19993
-## 4 1   treated 132.66162
-## 5 1 untreated 153.56898
-## 6 2   treated 102.63748</code></pre>
+<pre><code>##   X         A        Y
+## 1 1 untreated 47.66865
+## 2 1   treated 95.68627
+## 3 1 untreated 31.41969
+## 4 1   treated 29.10246
+## 5 1 untreated 94.33674
+## 6 2   treated 45.98635</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>

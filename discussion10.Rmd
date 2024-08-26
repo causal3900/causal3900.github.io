@@ -4,6 +4,8 @@ output: html_document
 
 # Discussion 10. Causal Effects with Regression Discontinuity {-}
 
+**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+
 [**Slides**](assets/discussions/discussion10.pdf)
 Download today's [**.Rmd document here**](assets/discussions/discussion10.Rmd).
 
