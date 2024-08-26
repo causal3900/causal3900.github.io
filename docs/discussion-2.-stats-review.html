@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 2. Stats review | Causal Inference Course</title>
+<meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
+<meta name="description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble) ...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="Discussion 2. Stats review | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble) ...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 2. Stats review | Causal Inference Course">
+<meta name="twitter:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. To execute these simulations locally, download the .Rmd here library(ggplot2) library(ggmosaic) library(tibble) ...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="front-door.html"><span class="header-section-number">6</span> Front door</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">7</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-difference.html"><span class="header-section-number">9</span> Difference in difference</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="active" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
+<li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
+<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
+<li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="final-project.html">Final Project</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
+<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li><a class="" href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-2.-stats-review" class="section level1 unnumbered">
+<h1>Discussion 2. Stats review<a class="anchor" aria-label="anchor" href="#discussion-2.-stats-review"><i class="fas fa-link"></i></a>
+</h1>
+<p><strong>NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.</strong></p>
+<p>To execute these simulations locally, <a href="assets/discussions/discussion2_download.Rmd"><strong>download the .Rmd here</strong></a></p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/haleyjeppson/ggmosaic">ggmosaic</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span></span></code></pre></div>
+<div id="sample-expectations-converge-to-population" class="section level2" number="13.1">
+<h2>
+<span class="header-section-number">13.1</span> Sample expectations converge to population<a class="anchor" aria-label="anchor" href="#sample-expectations-converge-to-population"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can generate simulations to show that sample mean and variance converge to
+population values.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">true_mean</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">true_var</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">sample_mean_seq</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3000</span></span>
+<span><span class="va">sample_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span></span>
+<span>  <span class="va">sample_mean_seq</span>,</span>
+<span>  \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">x</span>, mean <span class="op">=</span> <span class="va">true_mean</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">true_var</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sample_variances</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">vapply</a></span><span class="op">(</span></span>
+<span>  <span class="va">sample_mean_seq</span>,</span>
+<span>  \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">x</span>, mean <span class="op">=</span> <span class="va">true_mean</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">true_var</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">sample_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">data</span> <span class="op">-</span> <span class="va">sample_mean</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span>  <span class="op">}</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"N"</span> <span class="op">=</span> <span class="va">sample_mean_seq</span>, <span class="st">"Sample Mean"</span> <span class="op">=</span> <span class="va">sample_means</span><span class="op">)</span></span>
+<span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"N"</span> <span class="op">=</span> <span class="va">sample_mean_seq</span>, <span class="st">"Sample Variance"</span> <span class="op">=</span> <span class="va">sample_variances</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sample Mean"</span> <span class="op">=</span> <span class="st">"lightblue"</span>, <span class="st">"Population Mean"</span> <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">means</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Sample Mean`</span>, x <span class="op">=</span> <span class="va">N</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_mean</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">vars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Sample Variance`</span>, x <span class="op">=</span> <span class="va">N</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_var</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-2-2.png" width="672"></div>
+</div>
+<div id="simulate-conditional-expectations" class="section level2" number="13.2">
+<h2>
+<span class="header-section-number">13.2</span> Simulate conditional expectations<a class="anchor" aria-label="anchor" href="#simulate-conditional-expectations"><i class="fas fa-link"></i></a>
+</h2>
+<p>Simulate conditional expectations within groups that differ from the sample
+mean.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">group1_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">20</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">group2_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100</span>, mean <span class="op">=</span> <span class="fl">30</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">group_means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Group"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Group 1"</span>, <span class="fl">100</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Group 2"</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="st">"Values"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">group1_means</span>, <span class="va">group2_means</span><span class="op">)</span>,</span>
+<span>  <span class="st">"x"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">5</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">group_means</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">Values</span>, color <span class="op">=</span> <span class="va">Group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span></span>
+<span>    slope <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>    intercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">group_means</span><span class="op">$</span><span class="va">Values</span><span class="op">)</span>,</span>
+<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"gray30"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span></span>
+<span>    slope <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>    intercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">group_means</span><span class="op">[</span><span class="va">group_means</span><span class="op">$</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Group 1"</span>, <span class="op">]</span><span class="op">$</span><span class="va">Values</span><span class="op">)</span>,</span>
+<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"#F8766D"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span></span>
+<span>    slope <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>    intercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">group_means</span><span class="op">[</span><span class="va">group_means</span><span class="op">$</span><span class="va">Group</span> <span class="op">==</span> <span class="st">"Group 2"</span>, <span class="op">]</span><span class="op">$</span><span class="va">Values</span><span class="op">)</span>,</span>
+<span>    show.legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"#00BFC4"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+</div>
+<div id="show-independence-of-variables---example-of-two-dice-rolling" class="section level2" number="13.3">
+<h2>
+<span class="header-section-number">13.3</span> Show independence of variables - example of two dice rolling<a class="anchor" aria-label="anchor" href="#show-independence-of-variables---example-of-two-dice-rolling"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dice_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">dice_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">100000</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">dice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  <span class="st">"dice"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Die 1"</span>, <span class="fl">100000</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Die 2"</span>, <span class="fl">100000</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="st">"value"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">dice_1</span>, <span class="va">dice_2</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dice</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggmosaic/man/geom_mosaic.html">geom_mosaic</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/ggmosaic/man/product.html">product</a></span><span class="op">(</span><span class="va">dice</span>, <span class="va">value</span><span class="op">)</span>, fill <span class="op">=</span> <span class="va">dice</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>   </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y<span class="op">=</span><span class="st">""</span>, x<span class="op">=</span><span class="st">"Value Rolled"</span>, title <span class="op">=</span> <span class="st">"Independence of dice roll"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion02_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></div>
+<div class="next"><a href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-2.-stats-review">Discussion 2. Stats review</a></li>
+<li><a class="nav-link" href="#sample-expectations-converge-to-population"><span class="header-section-number">13.1</span> Sample expectations converge to population</a></li>
+<li><a class="nav-link" href="#simulate-conditional-expectations"><span class="header-section-number">13.2</span> Simulate conditional expectations</a></li>
+<li><a class="nav-link" href="#show-independence-of-variables---example-of-two-dice-rolling"><span class="header-section-number">13.3</span> Show independence of variables - example of two dice rolling</a></li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2024-08-26</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

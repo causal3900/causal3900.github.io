@@ -1,0 +1,6 @@
+
+# Final Project {-}
+
+The final project is an opportunity to engage with the course content via a real-world example. This will be a group project, but there will be components throughout the semester that you might submit and work on by yourself. _More details to come_. 
+
+You are welcome to look at the final project details from [Fall 2023](https://causal3900.github.io/fa23/final-project.html), but note that **there will be some significant changes**. 

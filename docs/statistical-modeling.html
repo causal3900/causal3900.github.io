@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>5 Statistical modeling | Causal Inference Course</title>
+<meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
+<meta name="description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="5 Statistical modeling | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 Statistical modeling | Causal Inference Course">
+<meta name="twitter:description" content="5.1 Why model?  Sep 26. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="active" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="front-door.html"><span class="header-section-number">6</span> Front door</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">7</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-difference.html"><span class="header-section-number">9</span> Difference in difference</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
+<li><a class="" href="discussion-03.-analyzing-an-experiment-in-r.html">Discussion 03. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
+<li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
+<li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="final-project.html">Final Project</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
+<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li><a class="" href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="statistical-modeling" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Statistical modeling<a class="anchor" aria-label="anchor" href="#statistical-modeling"><i class="fas fa-link"></i></a>
+</h1>
+<div id="why-model" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Why model?<a class="anchor" aria-label="anchor" href="#why-model"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Sep 26. <a href="assets/slides/5-1_why_model.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
+</blockquote>
+<p>To this point, we have not used any statistical models. Instead, we have</p>
+<ul>
+<li>taken means within subgroups</li>
+<li>then aggregated over subgroups</li>
+</ul>
+<p>Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.</p>
+</div>
+<div id="lab-parametric-g-formula" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Sep 27. Download the corresponding R Markdown file <a href="assets/discussions/discussion6.Rmd"><strong>here</strong></a>.</p>
+</blockquote>
+<p>Before discussion, make sure to download the data we’ll be using. See the Ed Discussion post for more detail.</p>
+<p>After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 13 and 15.1.</p>
+<p><a href="assets/discussions/discussion6-solutions.html"><strong>Solutions</strong></a> for lab exercise and <a href="assets/discussions/discussion6-slides.pdf"><strong>slides</strong></a></p>
+</div>
+<div id="inverse-probability-of-treatment-weighting" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Inverse probability of treatment weighting<a class="anchor" aria-label="anchor" href="#inverse-probability-of-treatment-weighting"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Sep 28. <a href="assets/slides/5_3_ipw.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
+</blockquote>
+<p>Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.</p>
+</div>
+<div id="matching" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 3. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
+</blockquote>
+<p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
+</div>
+<div id="lab-matching-in-r" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 4. <a href="assets/discussions/discussion7.pdf"><strong>Slides.</strong></a> <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a></p>
+</blockquote>
+<p>In this lab, we’ll go over distance metrics when matching on multiple covariates. We’ll also go over examples of using R to do matching to estimate causal effects.</p>
+</div>
+<div id="discussion-of-matching" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 5 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides.</strong></a> <a href="assets/slides/matching_cont.Rmd"><strong>R Markdown.</strong></a></p>
+</blockquote>
+<p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
+</div>
+<div id="lab-final-project-hw4-qa" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Lab: Final Project + HW4 Q&amp;A<a class="anchor" aria-label="anchor" href="#lab-final-project-hw4-qa"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 10 <a href="assets/discussions/discussion8.pdf"><strong>Slides</strong></a></p>
+</blockquote>
+<p>We’ll talk about the final project!</p>
+</div>
+<div id="worked-example-of-statistical-modeling" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Worked example of statistical modeling<a class="anchor" aria-label="anchor" href="#worked-example-of-statistical-modeling"><i class="fas fa-link"></i></a>
+</h2>
+<p>This section presents math and code for a worked example of statistical
+modeling, including</p>
+<ul>
+<li>outcome modeling</li>
+<li>inverse probability of treatment weighting</li>
+<li>matching</li>
+</ul>
+<p>We use these methods to answer a causal question:</p>
+<blockquote>
+<p>To what degree does completing a 4-year college degree by age 25
+increase the probability of having a college-educated spouse or
+residential partner at age 35?</p>
+</blockquote>
+<p>The theory that motivates this question is as follows. College causes
+people to personally have higher earnings. But it also affects the
+probability that someone lives with a high-earning partner. A college
+degree thus affects household incomes not only through its effect on
+individual earnings but also through its effect on how individuals pool
+into households.</p>
+<div id="data-access" class="section level3" number="5.8.1">
+<h3>
+<span class="header-section-number">5.8.1</span> Data access<a class="anchor" aria-label="anchor" href="#data-access"><i class="fas fa-link"></i></a>
+</h3>
+<p>We have prepared data for you to study this question. You will need to
+download these data directly from the data distributor for the <a href="https://www.bls.gov/nls/nlsy97.htm">National
+Longitudinal Survey of Youth 1997</a>
+cohort. Here is how to do that.</p>
+<p>First, download two supporting files from us:</p>
+<ul>
+<li>
+<a href="https://drive.google.com/file/d/1YcyaC1R5u9_d0-AX4ivqDiU0bRnEsAsJ/view?usp=sharing">nlsy97.NLSY97</a>
+is a tagset file containing the variable names</li>
+<li>
+<a href="https://drive.google.com/file/d/1fUdlhEsGGC0shREvu4znPPmJjtNi--Ko/view?usp=sharing">prepare_nlsy97.R</a>
+is an R script to prepare the data</li>
+</ul>
+<p>put those files in a directory where you will work</p>
+<p>Next, download data from the NLSY97.</p>
+<ul>
+<li>register with the survey</li>
+<li>log in to the NLS Investigator</li>
+<li>choose the NLSY97 study</li>
+<li>upload the tagset you downloaded from us</li>
+<li>download the data. When you do so, change the file name from <code>default</code>
+to <code>nlsy97</code>
+</li>
+<li>unzip the file. Find nlsy97.dat in the unzipped folder</li>
+<li>drag that file into the folder where you will work</li>
+</ul>
+<p>In your R console, run the line of code below</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span> <span class="co"># if you do not have it yet</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"Amelia"</span><span class="op">)</span>    <span class="co"># if you do not have it yet</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"prepare_nlsy97.R"</span><span class="op">)</span></span></code></pre></div>
+<p>After following these steps, the data are in your working directory! You
+can load the data quickly in the future by typing</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"d.RDS"</span><span class="op">)</span></span></code></pre></div>
+<p>Why can’t we just send you the data? Two reasons!</p>
+<ol style="list-style-type: decimal">
+<li>The NLSY97 created a procedure to register users to encourage
+ethical use of the data for research</li>
+<li>By registering, you help the Bureau of Labor Statistics to know how
+many people are using the data, which is helpful for demonstrating
+the wide use of the data and is useful when securing funding for
+future surveys!</li>
+</ol>
+</div>
+<div id="worked-example-outcome-modeling" class="section level3" number="5.8.2">
+<h3>
+<span class="header-section-number">5.8.2</span> Worked example: Outcome modeling<a class="anchor" aria-label="anchor" href="#worked-example-outcome-modeling"><i class="fas fa-link"></i></a>
+</h3>
+<p>Outcome modeling is based on the following identification result, which
+translates a causal quantity to a statistical estimand that does not
+involve counterfactual outcomes.</p>
+<p><span class="math display">\[\begin{aligned}
+&amp;E(Y^a) \\
+&amp;\text{by law of iterated expectation,}\\
+&amp;= E(E(Y^a\mid \vec{L})) \\
+&amp;\text{by exchangeability,}\\
+&amp;= E(E(Y^a\mid \vec{L}, A = a)) \\
+&amp;\text{by consistency,}\\
+&amp;= E(E(Y\mid \vec{L}, A = a))
+\end{aligned}\]</span></p>
+<p>We use the sample mean as our estimator for the outer expectation, and
+we will discuss several estimators for the inner conditional
+expectation. <span class="math display">\[\begin{aligned}
+\hat{E}(Y^a) &amp;= \frac{1}{n}\sum_{i=1}^n \hat{E}(Y\mid \vec{L} = \vec\ell_i, A = a)
+\end{aligned}\]</span></p>
+<p>Now for intuition: that estimator tells to</p>
+<ol style="list-style-type: decimal">
+<li>for each unit <span class="math inline">\(i\)</span> in our sample, estimate the expected outcome among
+people who look like this unit (<span class="math inline">\(\vec{L} = \vec\ell_i\)</span>) but who got
+the treatment value of interest <span class="math inline">\(A = a\)</span>.</li>
+<li>take the average of that estimate over all units</li>
+</ol>
+<p>A <strong>nonparametric</strong> strategy in step (1) is to literally estimate the
+expected outcome by taking the sample average among units who are
+identical to unit <span class="math inline">\(i\)</span> along the confounders <span class="math inline">\(\vec{L}\)</span>. But if there are
+many confounding variables and few units, that might be few or zero
+cases! A <strong>parametric</strong> strategy is to assume a model for the outcome,
+such as</p>
+<p><span class="math display">\[E(Y\mid \vec{L} = \vec\ell, A = a) = \alpha + a\beta + \vec\ell'\vec\gamma\]</span>
+where the parameters <span class="math inline">\(\{\alpha,\beta,\vec\gamma\}\)</span> could be estimated by
+Ordinary Least Squares regression.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">outcome_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">a</span> <span class="op">+</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> </span>
+<span>                      <span class="va">mom_educ</span> <span class="op">+</span> <span class="va">dad_educ</span> <span class="op">+</span> </span>
+<span>                      <span class="va">log_parent_income</span> <span class="op">+</span></span>
+<span>                      <span class="va">log_parent_wealth</span> <span class="op">+</span></span>
+<span>                      <span class="va">test_percentile</span>,</span>
+<span>                    data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
+<p>Note: This could be any model you like! For example, you could add
+interactions or use logistic regression instead.</p>
+<p>With our model, we then want to predict the expected outcome under
+treatment value <span class="math inline">\(a\)</span> for every unit with that unit’s observed confounder
+values.</p>
+<p><span class="math display">\[\hat{E}(Y\mid \vec{L} = \vec\ell_i, A = a) = \hat\alpha + a\hat\beta + \vec\ell'_i\hat{\vec\gamma}\]</span>
+In code, we would</p>
+<ol style="list-style-type: decimal">
+<li>modify every unit’s treatment to the value <span class="math inline">\(a\)</span>
+<ul>
+<li>intuition: if we actually intervened on this treatment in the
+world, the value of the treatment would change but the values of
+<span class="math inline">\(\vec{L}\)</span> would remain unchanged</li>
+</ul>
+</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Make data where all are treated</span></span>
+<span><span class="va">d_if_treated</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"college"</span><span class="op">)</span></span>
+<span><span class="co"># Make data where all are untreated</span></span>
+<span><span class="va">d_if_untreated</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"no_college"</span><span class="op">)</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>predict the outcome for every unit</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_outcome</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>yhat1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">outcome_model</span>,</span>
+<span>                         newdata <span class="op">=</span> <span class="va">d_if_treated</span><span class="op">)</span>,</span>
+<span>         yhat0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">outcome_model</span>,</span>
+<span>                         newdata <span class="op">=</span> <span class="va">d_if_untreated</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>average over the sample</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_outcome</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>average_yhat1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yhat1</span><span class="op">)</span>,</span>
+<span>            average_yhat0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yhat0</span><span class="op">)</span>,</span>
+<span>            average_effect <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yhat1</span> <span class="op">-</span> <span class="va">yhat0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   average_yhat1 average_yhat0 average_effect
+##           &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
+## 1         0.427         0.164          0.263</code></pre>
+<p>In the code above, we estimated three causal quantities</p>
+<ol style="list-style-type: decimal">
+<li>
+<span class="math inline">\(E(Y^1)\)</span>, the probability that a respondent would have a
+college-educated spouse or partner if we intervened to assign them
+to a college degree themselves</li>
+<li>
+<span class="math inline">\(E(Y^0)\)</span>, the probability that a respondent would have a
+college-educated spouse or partner if we intervened to assign them
+to no college degree themselves</li>
+<li>
+<span class="math inline">\(E(Y^1-Y^0)\)</span>, the average causal effect of a college degree on
+having a spouse or partner with a college degree</li>
+</ol>
+</div>
+<div id="worked-example-treatment-modeling" class="section level3" number="5.8.3">
+<h3>
+<span class="header-section-number">5.8.3</span> Worked example: Treatment modeling<a class="anchor" aria-label="anchor" href="#worked-example-treatment-modeling"><i class="fas fa-link"></i></a>
+</h3>
+<p>Using a different identification result, we can also proceed by a
+parametric model for the treatment instead of the outcome. By this
+strategy, the population mean outcome <span class="math inline">\(E(Y^a)\)</span> under treatment <span class="math inline">\(a\)</span>
+equals the weighted average over all units at their observed treatment,
+weighted by a weight that equals</p>
+<ul>
+<li>when <span class="math inline">\(A = a\)</span>, the inverse probability of treatment</li>
+<li>when <span class="math inline">\(A\neq a\)</span>, zero</li>
+</ul>
+<p>Below is an identification proof for inverse probability of treatment
+weighting.</p>
+<p>The math above is complicated, but the intuition is simpler: by
+weighting, we create a pseudo-population in which treatment <span class="math inline">\(A\)</span> is
+independent of the confounders <span class="math inline">\(\vec{L}\)</span>. To do that, we need to know
+the propensity score: the probability of the observed treatment value
+given the confounders.</p>
+<p>The identification result points toward an inverse probability of
+treatment weighting estimator known as the Horvitz-Thompson estimator,
+<span class="math display">\[\hat{E}(Y^a) = \frac{1}{n}\sum_{i=1}^n \frac{Y_i\mathbb{I}(A_i=a)}{\hat{P}(A = a\mid\vec{L} = \vec\ell_i)}\]</span>
+A related estimator that is often used is the Hajek estimator, which
+normalizes the weights to sum to 1.
+<span class="math display">\[\hat{E}(Y^a) = \frac{1}{\sum_{i=1}^n\frac{\mathbb{I}(A_i=a)}{\hat{P}(A = a \mid \vec{L} = \vec\ell_i)}}\sum_{i=1}^n \frac{Y_i\mathbb{I}(A_i=a)}{\hat{P}(A = a\mid\vec{L} = \vec\ell_i)}\]</span></p>
+<p>In code, we would</p>
+<ol style="list-style-type: decimal">
+<li>estimate a model for the probability of treatment given confounders,
+for example by logistic regression</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">treatment_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span><span class="op">)</span> <span class="op">~</span> </span>
+<span>                         <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> </span>
+<span>                         <span class="va">mom_educ</span> <span class="op">+</span> <span class="va">dad_educ</span> <span class="op">+</span> </span>
+<span>                         <span class="va">log_parent_income</span> <span class="op">+</span></span>
+<span>                         <span class="va">log_parent_wealth</span> <span class="op">+</span></span>
+<span>                         <span class="va">test_percentile</span>,</span>
+<span>                       data <span class="op">=</span> <span class="va">d</span>,</span>
+<span>                       family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>for every unit, predict the probability that <span class="math inline">\(A = \text{College}\)</span>
+</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_p_college</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p_college <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">treatment_model</span>,</span>
+<span>                             <span class="co"># the line below tells R</span></span>
+<span>                             <span class="co"># to predict a probability</span></span>
+<span>                             <span class="co"># rather than log odds</span></span>
+<span>                             type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>estimate the probability of the treatment observed</li>
+</ol>
+<ul>
+<li>for those who went to college, this equals <code>p_college</code>
+</li>
+<li>for those who did not, this equals <code>1 - p_college</code>
+</li>
+</ul>
+<p>This quantity is often called the <em>propensity score</em>. It encapsulates
+all information contained in confounders about the probability of
+treatment.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_p_scores</span> <span class="op">&lt;-</span> <span class="va">predicted_p_college</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>propensity_score <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>    <span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">p_college</span>,</span>
+<span>    <span class="va">a</span> <span class="op">==</span> <span class="st">"no_college"</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">p_college</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<ol start="4" style="list-style-type: decimal">
+<li>estimate mean outcomes among those with each treatment, weighted by
+the inverse propensity score. There are actually two ways to do
+this.</li>
+</ol>
+<ul>
+<li>the Horvitz-Thompson estimator relies on the fact that the true
+propensity scores sum to the number of observations</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_p_scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>y1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span><span class="op">)</span> <span class="op">/</span> <span class="va">propensity_score</span><span class="op">)</span>,</span>
+<span>            y0 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"no_college"</span><span class="op">)</span> <span class="op">/</span> <span class="va">propensity_score</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##      y1    y0
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1 0.374 0.164</code></pre>
+<ul>
+<li>the Hajek estimator uses the weighted mean, thus normalizing weights
+to sum to 1</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">predicted_p_scores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>estimate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">y</span>, w <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="va">propensity_score</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   a          estimate
+##   &lt;chr&gt;         &lt;dbl&gt;
+## 1 college       0.401
+## 2 no_college    0.163</code></pre>
+<p>While both are asymptotically valid, there are finite-sample reasons to
+prefer the second estimator (Hajek).</p>
+</div>
+<div id="worked-example-matching" class="section level3" number="5.8.4">
+<h3>
+<span class="header-section-number">5.8.4</span> Worked example: Matching<a class="anchor" aria-label="anchor" href="#worked-example-matching"><i class="fas fa-link"></i></a>
+</h3>
+<p>We could also estimate by matching. Matching can be interpreted as an
+outcome modeling strategy where the conditional mean outcome
+<span class="math inline">\(E(Y\mid\vec{A} = a, \vec{L} = \vec\ell_i)\)</span> is estimated by the mean
+outcome among a set of units whose confounder values are similar to
+those of unit <span class="math inline">\(i\)</span> but who received the treatment value <span class="math inline">\(a\)</span> of interest.</p>
+<p>One way of defining ``similar’’ is by propensity score matching: find
+units whose probability of treatment given confounders was close to the
+probability for unit <span class="math inline">\(i\)</span>. For example, the code below,</p>
+<ul>
+<li>estimates the probability of college completion using logistic
+regression</li>
+<li>for each person who finished college, matches them to a non-college
+graduate whose probability of completing college was similar</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
+<span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
+<span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
+<span>                   distance <span class="op">=</span> <span class="st">"glm"</span>,</span>
+<span>                   estimand <span class="op">=</span> <span class="st">"ATT"</span>,</span>
+<span>                   data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
+<p>The variable <code>matched$weights</code> has one element for each person in the
+dataset. It indicates how many times that person appears in the matched
+sample. There are</p>
+<ul>
+<li>1,533 college graduates with weight 1</li>
+<li>1,533 matched non-graduates with weight 1</li>
+<li>4,705 non-matched non-graudates with weight 0</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">d</span><span class="op">$</span><span class="va">a</span>,<span class="va">matched</span><span class="op">$</span><span class="va">weights</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##             
+##                 0    1
+##   college       0 1533
+##   no_college 4705 1533</code></pre>
+<p>Within the matched data, the non-graduates and graduates are similar
+along confounding variables. We could then estimate</p>
+<ul>
+<li>the probability of having a college educated spouse among college
+graduates by its mean among these people</li>
+<li>the probability that would have persisted for them if they had not
+finished college, by its mean among their matched counterparts</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>weight <span class="op">=</span> <span class="va">matched</span><span class="op">$</span><span class="va">weights</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>p_spouse_college <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span><span class="va">y</span>, w <span class="op">=</span> <span class="va">weight</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   a          p_spouse_college
+##   &lt;chr&gt;                 &lt;dbl&gt;
+## 1 college               0.528
+## 2 no_college            0.232</code></pre>
+<p>An even better estimator might use linear regression to adjust for
+differences within the matched pairs that exist because matches are not
+identical.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">matched_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="op">(</span><span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span>                           <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
+<span>                           <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span><span class="op">)</span>, </span>
+<span>                  data <span class="op">=</span> <span class="va">d</span>, </span>
+<span>                  weights <span class="op">=</span> <span class="va">matched</span><span class="op">$</span><span class="va">weights</span><span class="op">)</span></span></code></pre></div>
+<p>Then, predict potential outcoems from that matched fit and report the
+expected outcome among college graduates under their factual treatment
+and under</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create data frames for prediction</span></span>
+<span><span class="va">college_grads_factual</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span><span class="op">)</span></span>
+<span><span class="va">college_grads_counterfactual</span> <span class="op">&lt;-</span> <span class="va">college_grads_factual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"no_college"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Predict outcomes from the model</span></span>
+<span><span class="va">college_grads_factual</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>yhat_college <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">matched_fit</span>, </span>
+<span>                                newdata <span class="op">=</span> <span class="va">college_grads_factual</span><span class="op">)</span>,</span>
+<span>         yhat_no_college <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">matched_fit</span>,</span>
+<span>                                   newdata <span class="op">=</span> <span class="va">college_grads_counterfactual</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Report estimated average outcomes</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"yhat"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarize_all</a></span><span class="op">(</span>.funs <span class="op">=</span> <span class="va">mean</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="co"># Estimate the causal effect</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>effect <span class="op">=</span> <span class="va">yhat_college</span> <span class="op">-</span> <span class="va">yhat_no_college</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 3
+##   yhat_college yhat_no_college effect
+##          &lt;dbl&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+## 1        0.528           0.259  0.269</code></pre>
+<p>These results suggest that completing college increases the probability
+of having a college-educated spouse or partner by about 27 percentage
+points.</p>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></div>
+<div class="next"><a href="front-door.html"><span class="header-section-number">6</span> Front door</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#statistical-modeling"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li><a class="nav-link" href="#why-model"><span class="header-section-number">5.1</span> Why model?</a></li>
+<li><a class="nav-link" href="#lab-parametric-g-formula"><span class="header-section-number">5.2</span> Lab: Parametric g-formula</a></li>
+<li><a class="nav-link" href="#inverse-probability-of-treatment-weighting"><span class="header-section-number">5.3</span> Inverse probability of treatment weighting</a></li>
+<li><a class="nav-link" href="#matching"><span class="header-section-number">5.4</span> Matching</a></li>
+<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.5</span> Lab: Matching in R</a></li>
+<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.6</span> Discussion of matching</a></li>
+<li><a class="nav-link" href="#lab-final-project-hw4-qa"><span class="header-section-number">5.7</span> Lab: Final Project + HW4 Q&amp;A</a></li>
+<li>
+<a class="nav-link" href="#worked-example-of-statistical-modeling"><span class="header-section-number">5.8</span> Worked example of statistical modeling</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-access"><span class="header-section-number">5.8.1</span> Data access</a></li>
+<li><a class="nav-link" href="#worked-example-outcome-modeling"><span class="header-section-number">5.8.2</span> Worked example: Outcome modeling</a></li>
+<li><a class="nav-link" href="#worked-example-treatment-modeling"><span class="header-section-number">5.8.3</span> Worked example: Treatment modeling</a></li>
+<li><a class="nav-link" href="#worked-example-matching"><span class="header-section-number">5.8.4</span> Worked example: Matching</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2024-08-26</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

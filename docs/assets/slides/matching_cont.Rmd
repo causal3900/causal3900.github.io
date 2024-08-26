@@ -1,0 +1,172 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+Some packages you may need to install first:
+
+- optmatch: `install.packages("optmatch")`
+- sandwich: `install.packages("sandwich")`
+- MatchIt: `install.packages("MatchIt")`
+- marginaleffects: `install.packages("marginaleffects")`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("MatchIt")
+library("marginaleffects")
+```
+
+# Matching with job training data from ``Evaluating the econometric evaluations of training programs with experimental data'' (LaLonde 1986)
+We'll use a portion of the data from a job training program. In particular, the treatment is whether or not someone participated in a job training program. The outcome of interest is their salary in 1978 (re78).
+```{r}
+# Load the data
+data("lalonde")
+
+# See what's in the data
+?lalonde # this opens up the "Help" tab with the documentation! 
+head(lalonde)
+
+```
+
+Now let's try to run the matching procedure using the \texttt{matchit} function. 
+```{r}
+# method: nearest (i.e. greedy 1:1)
+# distance: glm specifies propensity score matching using the propensity score estimated
+  # using logistic regression 
+# data: lalonde (the data set we're working with)
+# replace: True (T) or False (F) - whether to sample with or without replacement. 
+    # Note, if allowing for replacement, greedy and optimal are the same
+    # So for the function, you only need to specify if using method = "nearest"
+# ratio: how many control matches for each treated unit
+m.out0 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "nearest", distance = "glm",
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+
+```
+
+# Assessing the matching
+We can check how well the balancing has been done
+```{r}
+?summary.matchit # Look in the Help tab (on the bottom right) for documentation on summary.matchit
+
+
+# interactions: check interaction terms too? (T or F)
+# un: show statistics for unmatched data as well (T or F)
+summary(m.out0, interactions = F, un = F)
+# Std. Mean Diff (SMD): difference of means, standardized by sd of treatment group
+# Var. Ratio: ratio of variances in treatment and control group. Compares spread of data
+# Rubin (2001) presents rule of thumb that SMD should be less than .25 and variance ratio should be between .5 and 2
+# Max eCDF: Kolmogorov-Smirnov statistic. Max difference across entire CDF
+```
+
+We can also visually asses the matches
+```{r}
+## Produces QQ plots of all variables in which.xs
+plot(m.out0, type = "qq", interactive = F)
+## Plots the density of all variables in which.xs
+plot(m.out0, type = "density", interactive = F)
+## Plots the empirical CDF of all variables in which.xs
+plot(m.out0, type = "ecdf", which.xs = ~age + re74, interactive = F)
+## Plots propensity scores of matched vs unmatched
+plot(m.out0, type = "jitter")
+```
+Let's try using calipers
+```{r}
+
+m.out0 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "nearest", distance = "glm",
+                  data = lalonde, replace = F, caliper = .05, std.caliper = F,
+                  ratio = 1)
+summary(m.out0, interactions = F, un = F)
+
+```
+
+As an alternative, let's try with coarsened exact matching
+```{r}
+# method: nearest (i.e. greedy 1:1)
+# distance: glm specifies propensity score matching using the propensity score estimated
+  # using logistic regression 
+# data: lalonde (the data set we're working with)
+# replace: True (T) or False (F) - whether to sample with or without replacement. 
+    # Note, if allowing for replacement, greedy and optimal are the same
+    # So for the function, you only need to specify if using method = "nearest"
+# ratio: how many control matches for each treated unit
+m.out1 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "cem",
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+
+# We only match 65 of the original 185 treated units
+summary(m.out1, interactions = F, un = F)
+
+m.out2 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "cem", 
+                  grouping = list(race = list(c("black"), c("hispan", "white"))),
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+
+# We only match 65 of the original 185 treated units
+summary(m.out2, interactions = F, un = F)
+
+# We could group hispanic/white together for the purposes of matching
+# and not enforce matching on married, educ, nodegree
+m.out2 <- matchit(treat ~ re74 + re75 + age + race,
+                  method = "cem", 
+                  grouping = list(race = list(c("black"), c("hispan", "white"))),
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+summary(m.out2, interactions = F, un = F, addlvariables = ~ married + nodegree + educ)
+
+match.data(m.out2) %>%
+  arrange(subclass)
+
+
+```
+
+
+# Estimating the effect
+Given the matching (and assuming it is good enough), we can estimate the ATT. But we can do even better by combining regression + matching.
+```{r}
+
+# propensity score matched
+m.out0.data <- match.data(m.out0)
+# CEM matched
+m.out2.data <- match.data(m.out2)
+
+# Fitting a linear model on the treatments will work
+# even if all weights are not 1. We just need to feed them in
+fit1 <- lm(re78 ~ treat, data = m.out2.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit1, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out2.data, treat == 1),
+                wts = "weights")
+
+
+# Fitting a linear model on the treatments will work
+# even if all weights are not 1. We just need to feed them in
+fit2 <- lm(re78 ~ treat + re74 + re75 + age + race + married + nodegree + educ,
+           data =m.out2.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit2, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out2.data, treat == 1),
+                wts = "weights")
+
+
+fit3 <- lm(re78 ~ treat + re74 + re75 + age + race + married + nodegree + educ,
+           data =m.out0.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit3, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out0.data, treat == 1),
+                wts = "weights")
+
+```
+
+
