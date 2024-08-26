@@ -52,15 +52,47 @@ State something concrete that you appreciate about the study design, other than 
 
 Load packages that our code will use.
 
-```r
+``` r
 library(tidyverse)
+```
+
+```
+FALSE Warning: package 'ggplot2' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'tidyr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'readr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'dplyr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'stringr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'lubridate' was built under R version
+FALSE 4.3.3
+```
+
+``` r
 library(haven)
+```
+
+```
+FALSE Warning: package 'haven' was built under R version 4.3.3
 ```
 
 Download the study's data from OpenICPSR: [https://www.openicpsr.org/openicpsr/project/116023/version/V1/view](https://www.openicpsr.org/openicpsr/project/116023/version/V1/view). This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using `read_dta`. 
 
 
-```r
+``` r
 d <- read_dta("lakisha_aer.dta")
 ```
 
@@ -86,7 +118,7 @@ For 2.1--2.4, we will think of `race` as the treatment. For 2.5--2.6, we will th
 Restrict to these variables using `select()`.
 
 
-```r
+``` r
 d_selected <- d %>%
   select(call, firstname, race, sex)
 ```
@@ -108,7 +140,7 @@ The top of Table 1 reports callback rates: 9.65\% for white names and 6.45\% for
 > Here's a [reference](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) that introduces `group_by` and `summarize`.
 
 
-```r
+``` r
 d_summarized <- d_selected %>%
   summarize(callback_rate = mean(call),
             number_cases = n()) %>%
@@ -133,7 +165,7 @@ Use `mutate()` (see [reference page](https://dplyr.tidyverse.org/reference/mutat
 > **Standard error in code.** We translated the standard error formula into code for you below. This function accepts an estimated probability `p` and sample size `n` and returns the estimated standard error. You can use this `se_binary()` function in your code within `mutate()` just like how `mean()` was used within `summarize()` at the start of the problem set.
 
 > 
-> ```r
+> ``` r
 > se_binary <- function(p, n) {
 >   se <- sqrt( p * (1 - p) / n )
 >   return(se)
@@ -150,7 +182,7 @@ Use `mutate()` (see [reference page](https://dplyr.tidyverse.org/reference/mutat
 
 > **Confidence interval in code.** We translated the confidence interval formula into code for you below. These functions accept an estimate and standard error and return the lower and upper bounds (respectively) of a 95% confidence interval that assumes a Normal sampling distribution. You can use these functions in your code within `mutate()` just like how `mean()` was used within `summarize()` at the start of the problem set.
 > 
-> ```r
+> ``` r
 > ci_lower <- function(estimate, standard_error) {
 >   estimate - qnorm(.975) * standard_error
 > }
@@ -175,7 +207,7 @@ Do distinct first names yield distinct effects? Repeat 2.2--2.4, but now create 
 
 > One way to visualize is by placing first names on the $x$-axis and using a `facet_wrap()` layer to facet over race and sex.
 
-```r
+``` r
 your_ggplot +
   facet_wrap(~ race + sex,
              scales = "free_x", 

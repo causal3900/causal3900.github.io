@@ -13,7 +13,7 @@ To complete the problem set, feel free to [**Download the .Rmd**](https://drive.
 The learning goals of completing this problem set are to engage with conceptual assumptions for difference in difference and synthetic control.
 
 
-```r
+``` r
 library(tidyverse)
 ```
      
@@ -63,6 +63,9 @@ Propose another design that the researcher could use to answer the question in (
 In discussion, we considered the paper by Abadie and Gardeazabal (2003) which estimates the effect of terrorist conflict in the Basque Country on GDP per capita. Using synthetic control, they construct a synthetic version of Basque Country. We show the selected weights and plot the gap between the observed and synthetic Basque Country below.
 
 
+```
+## Warning: package 'Synth' was built under R version 4.3.3
+```
 
 
 ```

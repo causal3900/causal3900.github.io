@@ -27,9 +27,44 @@ The paper compares methods for observational causal inference to recover an aver
 The following lines will load these data into R.
 
 
-```r
+``` r
 library(tidyverse)
+```
+
+```
+FALSE Warning: package 'ggplot2' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'tidyr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'readr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'dplyr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'stringr' was built under R version 4.3.3
+```
+
+```
+FALSE Warning: package 'lubridate' was built under R version
+FALSE 4.3.3
+```
+
+``` r
 library(MatchIt)
+```
+
+```
+FALSE Warning: package 'MatchIt' was built under R version 4.3.3
+```
+
+``` r
 data("lalonde")
 ```
 
@@ -101,7 +136,7 @@ Briefly interpret the result from 2.4: what is the drawback of using exact match
 In the code below, we use `lm()` to estimate an Ordinary Least Squares regression of future earnings `re78` on treatment `treat`, interacted with confounders: `race`, `married`, `nodegree`, and `re74`.
 
 
-```r
+``` r
 outcome_model <- lm(re78 ~ treat * (race + married + nodegree + re74),
                     data = lalonde)
 ```
@@ -125,7 +160,7 @@ To do this, you should
 Using the `glm()` below, we estimate the probability of treatment given confounders.
 
 
-```r
+``` r
 treatment_model <- glm(treat ~ race + married + nodegree + re74,
                        data = lalonde,
                        family = binomial)
@@ -142,7 +177,7 @@ $$w_i = \frac{P(A = 1\mid \vec{L} = \vec\ell_i)}{P(A = a_i\mid \vec{L} = \vec\el
 > Note: For treated units, this weight is 1. For untreated units, the value varies.
 
 
-```r
+``` r
 with_weight <- lalonde %>%
   # Create the propensity score
   mutate(p_a_1 = predict(treatment_model, type = "response"),

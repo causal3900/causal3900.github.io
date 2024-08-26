@@ -17,7 +17,7 @@ You can download this file [here](assets/discussions/discussion3-solutions.Rmd).
 **Note:** If this errors you probably either don't have `dplyr` or `haven` installed.
 
 
-```r
+``` r
 library(dplyr)
 library(haven)
 ```
@@ -25,12 +25,12 @@ library(haven)
 ### Import data
 
 
-```r
+``` r
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 ```
 
 
-```r
+``` r
 glimpse(gotv)
 ```
 
@@ -62,7 +62,7 @@ First, we construct an age variable describing how old (in number of years) each
 Fill in the appropriate expression after `age =` to add a column to `gotv` labeled `age` that contains how old each person was in 2006.
 
 
-```r
+``` r
 gotv <- gotv |>
   mutate(age = 2006 - yob)
 ```
@@ -78,7 +78,7 @@ Now, we convert the `treatment` variable from it's numeric representation to the
 > One solution uses the function `case_when` which is described [here](https://www.sharpsightlabs.com/blog/case-when-r/).
 
 
-```r
+``` r
 gotv <- gotv |>
   mutate(treatment = case_when(
       treatment == 0 ~ "Control",
@@ -107,7 +107,7 @@ Another alternative solution
 Now, when we use `glimpse` we see there is an added `age` variable and that the treatments have word instead of number labels.
 
 
-```r
+``` r
 glimpse(gotv)
 ```
 
@@ -145,7 +145,7 @@ Next, we confirm that our control and treatment groups look pretty much the same
 > You may have done something different. If the output is the same (or very similar), then that should be fine!
 
 
-```r
+``` r
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
 gotv_balance <- gotv |>
@@ -183,7 +183,7 @@ print(gotv_results)
 Finally, for each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! The solutions below use the function [`n`](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/n) which counts the number of observations in the current group for you.
 
 
-```r
+``` r
 gotv_results <- gotv |>
   group_by(treatment) |>
   summarise(Percentage_Voting = mean(voted), num_of_individuals = n())

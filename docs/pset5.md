@@ -98,14 +98,43 @@ In the discussion section, we considered two causal effects. First, we estimated
 Using the \texttt{rdrobust} package, give an estimate for the second causal effect. Also, explain the results by clearly stating the quantity we are estimating in plain language and also explaining whether you conclude that the causal effect is non-zero or not.
 
 
-```r
+``` r
 ### Code from Discussion section to get you started
 
 library(ggplot2)
-library(rddensity)
-library(rdrobust)
-library(rdlocrand)
+```
 
+```
+## Warning: package 'ggplot2' was built under R version 4.3.3
+```
+
+``` r
+library(rddensity)
+```
+
+```
+## Warning: package 'rddensity' was built under R version
+## 4.3.3
+```
+
+``` r
+library(rdrobust)
+```
+
+```
+## Warning: package 'rdrobust' was built under R version 4.3.3
+```
+
+``` r
+library(rdlocrand)
+```
+
+```
+## Warning: package 'rdlocrand' was built under R version
+## 4.3.3
+```
+
+``` r
 data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv")
 
 dem_vote_t1 <- data$demvoteshfor1

@@ -68,21 +68,24 @@ On average, the students in this class emerged more prepared to sail than they w
 The chunk below will record information about your R session, which is useful for debugging issues in homework assignments that contain code.
 
 
-```r
+``` r
 sessionInfo()
 ```
 
 ```
-## R version 4.3.1 (2023-06-16)
-## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Sonoma 14.5
+## R version 4.3.1 (2023-06-16 ucrt)
+## Platform: x86_64-w64-mingw32/x64 (64-bit)
+## Running under: Windows 10 x64 (build 19045)
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+## 
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## [1] LC_COLLATE=English_United States.utf8 
+## [2] LC_CTYPE=English_United States.utf8   
+## [3] LC_MONETARY=English_United States.utf8
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.utf8    
 ## 
 ## time zone: America/New_York
 ## tzcode source: internal
@@ -92,13 +95,13 @@ sessionInfo()
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.35    
+##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.40    
 ##  [4] fastmap_1.2.0     xfun_0.47         cachem_1.1.0     
-##  [7] knitr_1.43        memoise_2.0.1     htmltools_0.5.8.1
-## [10] rmarkdown_2.22    lifecycle_1.0.3   xml2_1.3.4       
+##  [7] knitr_1.48        memoise_2.0.1     htmltools_0.5.8.1
+## [10] rmarkdown_2.28    lifecycle_1.0.4   xml2_1.3.6       
 ## [13] cli_3.6.1         downlit_0.4.4     sass_0.4.9       
-## [16] withr_2.5.0       jquerylib_0.1.4   compiler_4.3.1   
-## [19] rstudioapi_0.14   tools_4.3.1       evaluate_0.21    
-## [22] bslib_0.8.0       yaml_2.3.7        fs_1.6.2         
-## [25] jsonlite_1.8.7    rlang_1.1.1
+## [16] withr_3.0.1       jquerylib_0.1.4   compiler_4.3.1   
+## [19] rstudioapi_0.16.0 tools_4.3.1       evaluate_0.24.0  
+## [22] bslib_0.8.0       yaml_2.3.7        fs_1.6.4         
+## [25] jsonlite_1.8.8    rlang_1.1.1
 ```
