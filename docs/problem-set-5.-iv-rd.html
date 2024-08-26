@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 5. IV + RD | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Relevant material will be covered by Oct 26. Problem set is due Nov 2. To complete the problem set, feel free to Download the .Rmd. Omit your name so we can have anonymous peer feedback. Submit...">
+<meta name="description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 5 from Fall 2023, but please note there may be significant changes.">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Problem Set 5. IV + RD | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Oct 26. Problem set is due Nov 2. To complete the problem set, feel free to Download the .Rmd. Omit your name so we can have anonymous peer feedback. Submit...">
+<meta property="og:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 5 from Fall 2023, but please note there may be significant changes.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 5. IV + RD | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Oct 26. Problem set is due Nov 2. To complete the problem set, feel free to Download the .Rmd. Omit your name so we can have anonymous peer feedback. Submit...">
+<meta name="twitter:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 5 from Fall 2023, but please note there may be significant changes.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,147 +91,16 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-5.-iv-rd" class="section level1 unnumbered">
 <h1>Problem Set 5. IV + RD<a class="anchor" aria-label="anchor" href="#problem-set-5.-iv-rd"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Oct 26</strong>. Problem set is due <strong>Nov 2</strong>.</p>
-<p>To complete the problem set, feel free to <a href="https://drive.google.com/file/d/1eonqcl5X1_ksnXHnDBI7FDifV-Hi9lAJ/view?usp=sharing"><strong>Download the .Rmd</strong></a>. Omit your name so we can have anonymous peer feedback. Submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
-<p>The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity.</p>
-<div id="points-instrumental-variables-in-experiments" class="section level2 unnumbered">
-<h2>1. (20 points) Instrumental variables in experiments<a class="anchor" aria-label="anchor" href="#points-instrumental-variables-in-experiments"><i class="fas fa-link"></i></a>
-</h2>
-<p>Suppose you are an elementary school principal. You randomize some students to a new program to receive extra tutoring at an off-site location in the evenings. You randomize other students to a no-tutoring condition.</p>
-<script type="text/tikz">
-\begin{tikzpicture}[x = .3in, y = .15in]
-    \node (z) at (-6,0) {$Z$};
-    \node (a) at (-2,0) {$A$};
-    \node (y) at  (2,0) {$Y$};
-    \node[font = \footnotesize, align = right, anchor = east] at (z.west) {Randomized to\\extra tutoring};
-    \node (u) at  (-2,-2) {$U$};
-    \node[font = \footnotesize, align = center, anchor = south] at (a.north) {Attends\\extra tutoring};
-    \node[font = \footnotesize, align = left, anchor = west] at  (y.east) {Rated proficient in reading\\at end of the term};
-    \node[font = \footnotesize, align = right, anchor = east] at (u.west) {Parent actions};
-    \draw[->, >=stealth, thick] (z) -- (a);
-    \draw[->, >=stealth, thick] (a) --  (y);
-    \draw[->, >=stealth, thick] (u) --  (a);
-    \draw[->, >=stealth, thick] (u) --  (y);
-  \end{tikzpicture}
-</script><p>In many cases, students’ treatment assignments <span class="math inline">\(Z\)</span> determines their actual treatments <span class="math inline">\(A\)</span> (when <span class="math inline">\(Z = 1\)</span> then <span class="math inline">\(A = 1\)</span>, and when <span class="math inline">\(Z = 0\)</span> then <span class="math inline">\(A = 0\)</span>). But there are some difficulties:</p>
-<ol style="list-style-type: lower-alpha">
-<li>The parents of some students work evenings and can’t drive their children to the tutoring (<span class="math inline">\(U\)</span>). No matter the value of <span class="math inline">\(Z\)</span>, these children do not receive tutoring (<span class="math inline">\(A = 0\)</span>).</li>
-<li>The parents of some students make a huge fuss (<span class="math inline">\(U\)</span>) so that regardless of the value of <span class="math inline">\(Z\)</span>, these parents ensure that their children receive tutoring (<span class="math inline">\(A = 1\)</span>).</li>
-</ol>
-<p>Answer the following in a sentence each.</p>
-<ol style="list-style-type: decimal">
-<li>(3 points) What is the intent to treat effect?</li>
-<li>(3 points) Who are the always-takers?</li>
-<li>(3 points) Who are the never-takers?</li>
-<li>(3 points) Who are the compliers?</li>
-<li>(3 points) Although they are not discussed above, describe how someone could be a defier.</li>
-<li>(5 points) What assumption was made credible by randomization of <span class="math inline">\(Z\)</span>?</li>
-</ol>
-</div>
-<div id="points-iv-in-observational-studies" class="section level2 unnumbered">
-<h2>2. (10 points) IV in observational studies<a class="anchor" aria-label="anchor" href="#points-iv-in-observational-studies"><i class="fas fa-link"></i></a>
-</h2>
-<p>Much of the water supply for the state of California comes from snowmelt in the Sierra Nevada Mountains. Two economists are very excited to notice that some years have much larger snowpacks than others—this could be an instrument!</p>
-<p><strong>Economist 1</strong></p>
-<script type="text/tikz">
-  \begin{tikzpicture}[x = .3in, y = .2in]
-    \node[font = \footnotesize, align = center] (z) at (-6,0) {Sierra\\snowpack};
-    \node[font = \footnotesize, align = center] (t) at (-2,0) {Agricultural\\productivity};
-    \node[font = \footnotesize, align = center] (y) at  (2,0) {State\\GDP};
-    \node[font = \footnotesize] (u) at  (-2,-2) {$U$};
-    \draw[->, >=stealth, thick] (z) -- (t);
-    \draw[->, >=stealth, thick] (t) --  (y);
-    \draw[->, >=stealth, thick] (u) --  (t);
-    \draw[->, >=stealth, thick] (u) --  (y);
-  \end{tikzpicture}
-</script><p><strong>Economist 2</strong></p>
-<script type="text/tikz">
-\begin{tikzpicture}[x = .3in, y = .2in]
-    \node[font = \footnotesize, align = center] (z) at (-6,0) {Sierra\\snowpack};
-    \node[font = \footnotesize, align = center] (t) at (-2,0) {Ski resort\\productivity};
-    \node[font = \footnotesize, align = center] (y) at  (2,0) {State\\GDP};
-    \node[font = \footnotesize] (u) at  (-2,-2) {$U$};
-    \draw[->, >=stealth, thick] (z) -- (t);
-    \draw[->, >=stealth, thick] (t) --  (y);
-    \draw[->, >=stealth, thick] (u) --  (t);
-    \draw[->, >=stealth, thick] (u) --  (y);
-  \end{tikzpicture}
-</script><p>The first economist argues that random differences in the Sierra snowpack create random fluctuations in agricultural productivity, thereby providing an instrumental variable for the effect of agricultural productivity on the state’s GDP.</p>
-<p>The second economist argues that random difference in the Sierra snowpack create random fluctuations in the quality of skiing at Mammoth Mountain and other Sierra resorts, thereby providing an instrumental variable for the effect of ski resort productivity on the state’s GDP.</p>
-<p>Both economists argue that their instruments are valid because the snowpack is randomly assigned. Can both economists be right that their instrument is valid? Why or why not?</p>
-</div>
-<div id="points-regression-discontinuity" class="section level2 unnumbered">
-<h2>3. (20 points) Regression discontinuity<a class="anchor" aria-label="anchor" href="#points-regression-discontinuity"><i class="fas fa-link"></i></a>
-</h2>
-<div id="points-a-local-estimand" class="section level3 unnumbered">
-<h3>3.1 (5 points) A local estimand<a class="anchor" aria-label="anchor" href="#points-a-local-estimand"><i class="fas fa-link"></i></a>
-</h3>
-<p>A colleague tells you they’ve read that regression discontinuity designs have proven that winning one election (greater than 50% of the vote) causes a political party to have better chances in the next election. In your district, the winner won with 70% of the vote. Why isn’t the regression discontinuity evidence very informative for districts like yours?</p>
-</div>
-<div id="points-examples-of-discontinuity" class="section level3 unnumbered">
-<h3>3.2 (5 points) Examples of Discontinuity<a class="anchor" aria-label="anchor" href="#points-examples-of-discontinuity"><i class="fas fa-link"></i></a>
-</h3>
-<p>Describe an example you have encountered where a regression discontinuity analysis might be used to estimate a causal effect. Draw a causal diagram for the example.</p>
-</div>
-<div id="points-effect-of-incumbency" class="section level3 unnumbered">
-<h3>3.3 (10 points) Effect of incumbency<a class="anchor" aria-label="anchor" href="#points-effect-of-incumbency"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the discussion section, we considered two causal effects. First, we estimated the causal effect of incumbency when a senator is up for re-election. Next, we considered the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election.</p>
-<p>Using the package, give an estimate for the second causal effect. Also, explain the results by clearly stating the quantity we are estimating in plain language and also explaining whether you conclude that the causal effect is non-zero or not.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">### Code from Discussion section to get you started</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rddensity</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: package 'rddensity' was built under R version
-## 4.3.3</code></pre>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rdrobust</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: package 'rdrobust' was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">rdlocrand</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: package 'rdlocrand' was built under R version
-## 4.3.3</code></pre>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dem_vote_t1</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
-<span><span class="va">dem_margin_t0</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
-<span></span>
-<span><span class="co"># plotting the data</span></span>
-<span><span class="co"># Shows average to the left and to the right of the cut-off</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/rdrobust/man/rdplot.html">rdplot</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">dem_vote_t1</span>, </span>
-<span>       x <span class="op">=</span>  <span class="va">dem_margin_t0</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, </span>
-<span>       p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, </span>
-<span>       col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, </span>
-<span>       title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, </span>
-<span>       y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, </span>
-<span>       x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, </span>
-<span>       y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="pset5_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
+<p>We have not posted this assignment yet.</p>
+<p>In the meantime, you may reference Problem Set 5 from <a href="https://causal3900.github.io/fa23/problem-set-5.-iv-rd.html">Fall 2023</a>, but please note <strong>there may be significant changes.</strong></p>
 
-</div>
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></div>
 <div class="next"><a href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#problem-set-5.-iv-rd">Problem Set 5. IV + RD</a></li>
-<li><a class="nav-link" href="#points-instrumental-variables-in-experiments">1. (20 points) Instrumental variables in experiments</a></li>
-<li><a class="nav-link" href="#points-iv-in-observational-studies">2. (10 points) IV in observational studies</a></li>
-<li>
-<a class="nav-link" href="#points-regression-discontinuity">3. (20 points) Regression discontinuity</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-a-local-estimand">3.1 (5 points) A local estimand</a></li>
-<li><a class="nav-link" href="#points-examples-of-discontinuity">3.2 (5 points) Examples of Discontinuity</a></li>
-<li><a class="nav-link" href="#points-effect-of-incumbency">3.3 (10 points) Effect of incumbency</a></li>
-</ul>
-</li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#problem-set-5.-iv-rd">Problem Set 5. IV + RD</a></li></ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>

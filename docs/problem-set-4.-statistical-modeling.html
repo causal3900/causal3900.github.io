@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 4. Statistical modeling | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Relevant material will be covered by Oct 5. Problem set is due Oct 19. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta name="description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 4 from Fall 2023, but please note there may be significant changes.">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Problem Set 4. Statistical modeling | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Oct 5. Problem set is due Oct 19. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta property="og:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 4 from Fall 2023, but please note there may be significant changes.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 4. Statistical modeling | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Oct 5. Problem set is due Oct 19. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta name="twitter:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 4 from Fall 2023, but please note there may be significant changes.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,238 +91,16 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-4.-statistical-modeling" class="section level1 unnumbered">
 <h1>Problem Set 4. Statistical modeling<a class="anchor" aria-label="anchor" href="#problem-set-4.-statistical-modeling"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Oct 5</strong>. Problem set is due <strong>Oct 19</strong>.</p>
-<p>To complete the problem set, <a href="https://drive.google.com/file/d/12_NT4ivtZqUnACrPMc7r7ET-QtW6kg8Q/view?usp=drive_link"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
-<p>The learning goals of completing this problem set are</p>
-<ul>
-<li>explain the role of statistical modeling
-<ul>
-<li>with respect to causal claims</li>
-<li>with respect to data sparsity</li>
-</ul>
-</li>
-<li>estimate average treatment effects by
-<ul>
-<li>exact matching (in a setting with few confounders)</li>
-<li>learning an outcome model</li>
-<li>learning a treatment model</li>
-<li>a matching method of your choosing</li>
-</ul>
-</li>
-</ul>
-<p>The reason for practicing many statistical modeling estimators is so you can see how the ideas of this class apply to all those estimators—and to future estimators you will encounter that are not part of this class!</p>
-<p>This problem set uses data from the following paper:</p>
-<blockquote>
-<p>Dehejia, R. H. and Wahba, S. 1999. <a href="https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?">Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs</a>. Journal of the American Statistical Association 94(448):1053–1062.</p>
-</blockquote>
-<p>The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study’s data as an illustration.</p>
-<p>The following lines will load these data into R.</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>FALSE Warning: package 'ggplot2' was built under R version 4.3.3</code></pre>
-<pre><code>FALSE Warning: package 'tidyr' was built under R version 4.3.3</code></pre>
-<pre><code>FALSE Warning: package 'readr' was built under R version 4.3.3</code></pre>
-<pre><code>FALSE Warning: package 'dplyr' was built under R version 4.3.3</code></pre>
-<pre><code>FALSE Warning: package 'stringr' was built under R version 4.3.3</code></pre>
-<pre><code>FALSE Warning: package 'lubridate' was built under R version
-FALSE 4.3.3</code></pre>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>FALSE Warning: package 'MatchIt' was built under R version 4.3.3</code></pre>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"lalonde"</span><span class="op">)</span></span></code></pre></div>
-<p>To learn about the data, type <code><a href="https://kosukeimai.github.io/MatchIt/reference/lalonde.html">?lalonde</a></code> in your R console.</p>
-<div id="conceptual-questions" class="section level2 unnumbered">
-<h2>1. Conceptual questions<a class="anchor" aria-label="anchor" href="#conceptual-questions"><i class="fas fa-link"></i></a>
-</h2>
-<div id="points-statistical-modeling-and-causal-claims" class="section level3 unnumbered">
-<h3>1.1. (5 points) Statistical modeling and causal claims<a class="anchor" aria-label="anchor" href="#points-statistical-modeling-and-causal-claims"><i class="fas fa-link"></i></a>
-</h3>
-<p>Imagine that someone who has not taken our class tells you they don’t need DAGs or causal assumptions because they know a really good matching method. In no more than 3 sentences, explain to them why causal assumptions are necessary for matching to yield causal conclusions.</p>
-</div>
-</div>
-<div id="nonparametric-estimation" class="section level2 unnumbered">
-<h2>2. Nonparametric estimation<a class="anchor" aria-label="anchor" href="#nonparametric-estimation"><i class="fas fa-link"></i></a>
-</h2>
-<p>Our goal is to estimate the effect of job training <code>treat</code> on future earnings <code>re78</code> (real earnings in 1978), among those who received job training (the average treatment effect on the treated, ATT).</p>
-<div id="points-exact-matching-with-low-dimensional-confounding" class="section level3 unnumbered">
-<h3>2.1. (4 points) Exact matching with low-dimensional confounding<a class="anchor" aria-label="anchor" href="#points-exact-matching-with-low-dimensional-confounding"><i class="fas fa-link"></i></a>
-</h3>
-<p>For this part, assume that three variables comprise a sufficient adjustment set: <code>race</code>, <code>married</code>, and <code>nodegree</code>. Use <code>matchit</code> with the argument <code>method = "exact"</code> to conduct exact matching, which matches two units only if they are identical along <code>race</code>, <code>married</code>, and <code>nodegree</code>.</p>
-<blockquote>
-<p>Note: Here we are calling this <strong>exact matching</strong>. This is the same thing we previously called <strong>nonparametric estimation</strong>: make subgroups of units identical along confounders, estimate the treatment effect within those subgroups, and aggregate over the sample. We are using the language of matching to be parallel with what comes in Question 4.</p>
-</blockquote>
-<p>How many control units were matched? How many treated units?</p>
-</div>
-<div id="points-effect-estimate" class="section level3 unnumbered">
-<h3>2.2. (4 points) Effect estimate<a class="anchor" aria-label="anchor" href="#points-effect-estimate"><i class="fas fa-link"></i></a>
-</h3>
-<p>Estimate a linear regression model using your match data from 2.1. Include the treatment and all confounders from 2.1 in a linear, additive specification. Weight by the weights from matching.</p>
-<p>What is the estimated effect of job training on earnings?</p>
-</div>
-<div id="points-exact-matching-with-high-dimensional-confounding" class="section level3 unnumbered">
-<h3>2.3. (4 points) Exact matching with high-dimensional confounding<a class="anchor" aria-label="anchor" href="#points-exact-matching-with-high-dimensional-confounding"><i class="fas fa-link"></i></a>
-</h3>
-<p>Now suppose the adjustment set needs to also include 1974 earnings, <code>re74</code>. The adjustment set for this part is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. Repeat exact matching as above.</p>
-<p>How many control units were matched? How many treated units?</p>
-</div>
-<div id="points-examining-matched-units" class="section level3 unnumbered">
-<h3>2.4. (4 points) Examining matched units<a class="anchor" aria-label="anchor" href="#points-examining-matched-units"><i class="fas fa-link"></i></a>
-</h3>
-<p>Look at the <code>re74</code> values in the full data and among the matched units (no need to print this in your output).
-Explain what happened: what is different about the 1974 earnings of the matched vs the unmatched cases?</p>
-<p>Here is one way to do this:</p>
-<ul>
-<li>Using the function <code>summary</code>, look at descriptive statistics of the <code>re74</code> values in the full data.</li>
-<li>Using the function <code>summary</code>, look at descriptive statistics of the <code>re74</code> values in the matched data. You can get the matched data using the <code>match.data</code> function.</li>
-<li>You can learn about how to use the <code>summary</code> function to look at descriptive statistics of R data <a href="https://intro2r.com/summarising-data-frames.html"><strong>here</strong></a>.</li>
-</ul>
-<p>What do you notice? What is different about the values of <code>re74</code> in the full data versus the matched data? Explain what happened and why it happened.</p>
-</div>
-<div id="points-drawbacks-of-exact-matching" class="section level3 unnumbered">
-<h3>2.5. (4 points) Drawbacks of exact matching<a class="anchor" aria-label="anchor" href="#points-drawbacks-of-exact-matching"><i class="fas fa-link"></i></a>
-</h3>
-<p>Briefly interpret the result from 2.4: what is the drawback of using exact matching in this setting?</p>
-</div>
-</div>
-<div id="parametric-estimation" class="section level2 unnumbered">
-<h2>3. Parametric estimation<a class="anchor" aria-label="anchor" href="#parametric-estimation"><i class="fas fa-link"></i></a>
-</h2>
-<div id="points-outcome-modeling" class="section level3 unnumbered">
-<h3>3.1. (5 points) Outcome modeling<a class="anchor" aria-label="anchor" href="#points-outcome-modeling"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the code below, we use <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> to estimate an Ordinary Least Squares regression of future earnings <code>re78</code> on treatment <code>treat</code>, interacted with confounders: <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>.</p>
-<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">outcome_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span> <span class="op">*</span> <span class="op">(</span><span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span><span class="op">)</span>,</span>
-<span>                    data <span class="op">=</span> <span class="va">lalonde</span><span class="op">)</span></span></code></pre></div>
-<p>Use the model above to estimate the average treatment effect among the <em>treated</em>.</p>
-<p>To do this, you should</p>
-<ol style="list-style-type: decimal">
-<li>Create two data frames
-<ul>
-<li>The first should contain the <em>treated</em> individuals (with their factual treatment of <code>1</code>)</li>
-<li>The second should contain the same <em>treated</em> individuals, but with <code>treat</code> set to the value <code>0</code>
-</li>
-</ul>
-</li>
-<li>Using the model above, predict the expected outcomes for the two data frames you created in step 1.</li>
-<li>Report the average treatment effect among the treated.</li>
-</ol>
-</div>
-<div id="points-treatment-modeling-creating-weights" class="section level3 unnumbered">
-<h3>3.2. (5 points) Treatment modeling: Creating weights<a class="anchor" aria-label="anchor" href="#points-treatment-modeling-creating-weights"><i class="fas fa-link"></i></a>
-</h3>
-<blockquote>
-<p>Note: This part has much help from us. You should read what we have provided to understand, and you will do a small part at the end. We are doing this to maximize the learning-value-to-workload ratio of the problem.</p>
-</blockquote>
-<p>Using the <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> below, we estimate the probability of treatment given confounders.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">treatment_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span>,</span>
-<span>                       data <span class="op">=</span> <span class="va">lalonde</span>,</span>
-<span>                       family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span></code></pre></div>
-<p>Then, using the code below, we</p>
-<ul>
-<li>predict the probability that <code>treat = 1</code>
-</li>
-<li>generate the propensity score for each unit</li>
-<li>create a weight for estimating the Average Treatment Effect on the Treated, by the formula</li>
-</ul>
-<p><span class="math display">\[w_i = \frac{P(A = 1\mid \vec{L} = \vec\ell_i)}{P(A = a_i\mid \vec{L} = \vec\ell_i)}\]</span></p>
-<blockquote>
-<p>Note: For treated units, this weight is 1. For untreated units, the value varies.</p>
-</blockquote>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">with_weight</span> <span class="op">&lt;-</span> <span class="va">lalonde</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="co"># Create the propensity score</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p_a_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">treatment_model</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span>,</span>
-<span>         pscore <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="va">p_a_1</span>,</span>
-<span>                            <span class="va">treat</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="fl">1</span> <span class="op">-</span> <span class="va">p_a_1</span><span class="op">)</span>,</span>
-<span>         weight <span class="op">=</span> <span class="va">p_a_1</span> <span class="op">/</span> <span class="va">pscore</span><span class="op">)</span></span></code></pre></div>
-<p>How many treated units does the most-heavily-weighted <em>untreated</em> unit represent? To answer this, you will want to determine the maximum weight amongst untreated individuals in <code>with_weight.</code></p>
-</div>
-<div id="points-treatment-modeling-estimating-outcomes" class="section level3 unnumbered">
-<h3>3.3. (5 points) Treatment modeling: Estimating outcomes<a class="anchor" aria-label="anchor" href="#points-treatment-modeling-estimating-outcomes"><i class="fas fa-link"></i></a>
-</h3>
-<p>Using the <code>with_weight</code> object, take <em>weighted means</em> of the observed outcomes <code>re78</code> weighted by <code>weight</code> to estimate the average outcome of treated units, and the weighted average outcome of control units (weighted to be comparable to the treated units).</p>
-<blockquote>
-<p>Hint: You will want to take a <em>weighted mean</em>, but <em>grouped by</em> treatment status.</p>
-</blockquote>
-</div>
-</div>
-<div id="matching-without-requiring-exact-matches" class="section level2 unnumbered">
-<h2>4. Matching without requiring exact matches<a class="anchor" aria-label="anchor" href="#matching-without-requiring-exact-matches"><i class="fas fa-link"></i></a>
-</h2>
-<p>We hope that from this class you are prepared to learn new causal estimators, apply them in R, and explain what you have done. This question is a chance to practice! In class we discussed many matching approaches. For this question, you will choose your own approach. There are many correct answers, and you will be evaluated by the clarity of your code and explanations.</p>
-<p>Task: Using <code>matchit</code>, conduct matching to estimate the ATT where <code>treat</code> is the treatment and the sufficient adjustment set is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>.</p>
-<ol style="list-style-type: decimal">
-<li>Use <code>matchit</code>, setting <code>method</code>, <code>distance</code>, and any other arguments to any values of your choosing. The only requirements are
-<ul>
-<li><code>formula = treat ~ race + married + nodegree + re74</code></li>
-<li><code>estimand = "ATT"</code></li>
-</ul>
-</li>
-<li>Create matched dataset using <code><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">match.data()</a></code>
-</li>
-<li>Estimate a linear regression model using <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> with the formula <code>re78 ~ treat + race + married + nodegree + re74</code> using your matched data, weighted by the <code>weights</code> that are produced by <code><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">match.data()</a></code>.</li>
-</ol>
-<div id="points-conduct-the-matching" class="section level3 unnumbered">
-<h3>4.1. (4 points) Conduct the matching<a class="anchor" aria-label="anchor" href="#points-conduct-the-matching"><i class="fas fa-link"></i></a>
-</h3>
-<p>This is space to conduct the matching. We expect this part to be an R code chunk.</p>
-</div>
-<div id="points-explain-your-choices" class="section level3 unnumbered">
-<h3>4.2. (2 points) Explain your choices<a class="anchor" aria-label="anchor" href="#points-explain-your-choices"><i class="fas fa-link"></i></a>
-</h3>
-<p>In a few sentences, tell us about the matching approach you have chosen.</p>
-</div>
-<div id="points-how-many-units-did-you-keep" class="section level3 unnumbered">
-<h3>4.3. (2 points) How many units did you keep?<a class="anchor" aria-label="anchor" href="#points-how-many-units-did-you-keep"><i class="fas fa-link"></i></a>
-</h3>
-<p>Report the number of treated and control units in the original data, and how many were kept by your matching procedure.</p>
-</div>
-<div id="points-report-your-causal-estimate" class="section level3 unnumbered">
-<h3>4.4. (2 points) Report your causal estimate<a class="anchor" aria-label="anchor" href="#points-report-your-causal-estimate"><i class="fas fa-link"></i></a>
-</h3>
-<p>What do you estimate for the average treatment effect on the treated? This is the coefficient on <code>treat</code> in the linear regression you fit on the matched data.</p>
+<p>We have not posted this assignment yet.</p>
+<p>In the meantime, you may reference Problem Set 4 from <a href="https://causal3900.github.io/fa23/problem-set-4.-statistical-modeling.html">Fall 2023</a>, but please note <strong>there may be significant changes.</strong></p>
 
-</div>
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></div>
 <div class="next"><a href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#problem-set-4.-statistical-modeling">Problem Set 4. Statistical modeling</a></li>
-<li>
-<a class="nav-link" href="#conceptual-questions">1. Conceptual questions</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#points-statistical-modeling-and-causal-claims">1.1. (5 points) Statistical modeling and causal claims</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#nonparametric-estimation">2. Nonparametric estimation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-exact-matching-with-low-dimensional-confounding">2.1. (4 points) Exact matching with low-dimensional confounding</a></li>
-<li><a class="nav-link" href="#points-effect-estimate">2.2. (4 points) Effect estimate</a></li>
-<li><a class="nav-link" href="#points-exact-matching-with-high-dimensional-confounding">2.3. (4 points) Exact matching with high-dimensional confounding</a></li>
-<li><a class="nav-link" href="#points-examining-matched-units">2.4. (4 points) Examining matched units</a></li>
-<li><a class="nav-link" href="#points-drawbacks-of-exact-matching">2.5. (4 points) Drawbacks of exact matching</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#parametric-estimation">3. Parametric estimation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-outcome-modeling">3.1. (5 points) Outcome modeling</a></li>
-<li><a class="nav-link" href="#points-treatment-modeling-creating-weights">3.2. (5 points) Treatment modeling: Creating weights</a></li>
-<li><a class="nav-link" href="#points-treatment-modeling-estimating-outcomes">3.3. (5 points) Treatment modeling: Estimating outcomes</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#matching-without-requiring-exact-matches">4. Matching without requiring exact matches</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-conduct-the-matching">4.1. (4 points) Conduct the matching</a></li>
-<li><a class="nav-link" href="#points-explain-your-choices">4.2. (2 points) Explain your choices</a></li>
-<li><a class="nav-link" href="#points-how-many-units-did-you-keep">4.3. (2 points) How many units did you keep?</a></li>
-<li><a class="nav-link" href="#points-report-your-causal-estimate">4.4. (2 points) Report your causal estimate</a></li>
-</ul>
-</li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#problem-set-4.-statistical-modeling">Problem Set 4. Statistical modeling</a></li></ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>

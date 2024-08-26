@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 3. DAGs. | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Relevant material will be covered by Sep 21. Problem set is due Sep 28. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta name="description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Problem Set 3. DAGs. | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Sep 21. Problem set is due Sep 28. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta property="og:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 3. DAGs. | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Sep 21. Problem set is due Sep 28. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta name="twitter:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,119 +91,16 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-3.-dags." class="section level1 unnumbered">
 <h1>Problem Set 3. DAGs.<a class="anchor" aria-label="anchor" href="#problem-set-3.-dags."><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Sep 21</strong>. Problem set is due <strong>Sep 28</strong>.</p>
-<p>To complete the problem set, <a href="https://raw.githubusercontent.com/causal3900/causal3900.github.io/main/assets/psets/pset3_download.Rmd"><strong>copy this code</strong></a> into a .Rmd and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
-<p>Note: For this problem set only, you alternatively may complete the homework by hand. This is because you are welcome to draw DAGs by hand instead of producing them by code. If you do this, scan or take a picture of your document.</p>
-<div id="true-or-false" class="section level2 unnumbered">
-<h2>1. True or False<a class="anchor" aria-label="anchor" href="#true-or-false"><i class="fas fa-link"></i></a>
-</h2>
-<p>For 1.1–1.5, answer True or False: <span class="math inline">\(X\)</span> is a sufficient adjustment set to identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>. Explain in one sentence. If False, state the backdoor path that is unblocked conditional on <span class="math inline">\(X\)</span>. A path is a linear series of nodes connected by arrows; see examples in 1.6 and 1.7.</p>
-<style>.img-responsive {
-  max-width: 100%;
-}
-</style>
-<div class="panel">
-<div class="inline-figure"><img class="img-responsive" src="assets/pset3dags.png" alt="DAGs for question 1"></div>
-</div>
-<div id="points-8" class="section level3 unnumbered">
-<h3>1.6 (3 points)<a class="anchor" aria-label="anchor" href="#points-8"><i class="fas fa-link"></i></a>
-</h3>
-<p>True or False? Conditioning on <span class="math inline">\(X\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \leftarrow X \rightarrow C \rightarrow Y\)</span></p>
-</div>
-<div id="points-9" class="section level3 unnumbered">
-<h3>1.7 (3 points)<a class="anchor" aria-label="anchor" href="#points-9"><i class="fas fa-link"></i></a>
-</h3>
-<p>True or False? Conditioning on <span class="math inline">\(X\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \rightarrow X \leftarrow C \rightarrow Y\)</span></p>
-</div>
-</div>
-<div id="draw-a-dag-10-points" class="section level2 unnumbered">
-<h2>2. Draw a DAG (10 points)<a class="anchor" aria-label="anchor" href="#draw-a-dag-10-points"><i class="fas fa-link"></i></a>
-</h2>
-<p>A researcher comes to you with a proposal: identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> by adjusting for any variable <span class="math inline">\(X\)</span> that predicts <span class="math inline">\(A\)</span> and also predicts <span class="math inline">\(Y\)</span>. They propose that machine learning can thus solve causal identification for us.</p>
-<p>The researcher is wrong. Show them why. Draw a DAG in which</p>
-<ul>
-<li>the effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> is unconfounded</li>
-<li>a variable <span class="math inline">\(X\)</span> is statistically associated with <span class="math inline">\(A\)</span>
-</li>
-<li>a variable <span class="math inline">\(X\)</span> is statistically associated with <span class="math inline">\(Y\)</span>
-</li>
-<li>but one does not need to adjust for <span class="math inline">\(X\)</span> to identify the causal effect</li>
-</ul>
-</div>
-<div id="using-dags-in-a-new-context" class="section level2 unnumbered">
-<h2>3. Using DAGs in a new context<a class="anchor" aria-label="anchor" href="#using-dags-in-a-new-context"><i class="fas fa-link"></i></a>
-</h2>
-<p>DAGs are not just useful for causal inference: they can be useful whenever we need to know whether one variable is statistically independent of another. This is true, for example, when drawing inference about a population from a sample.</p>
-<p>A researcher uses an opt-in online web survey to draw inference about support for President Biden. They ask respondents: ``Do you approve of President Biden’s performance in office?’’ with the answer choices Yes/No. The researcher also gathers data on two demographic characteristics: whether the respondent completed college and current employment. They write:</p>
-<blockquote>
-<p>My sample is not representative. Suppose for every person in the population, <span class="math inline">\(S\)</span> denotes whether they are included in my sample. Then <span class="math inline">\(S\)</span> is related to their approval of President Biden (<span class="math inline">\(Y\)</span>).</p>
-<p>However, I believe my sample <em>is</em> representative when I look at a set of people who all take the same value along college completion and employment, such as those who finished college and are currently employed. If these variables are <span class="math inline">\(X_1,X_2\)</span>, I believe this independence statement: <span class="math inline">\(S\)</span> is independent of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X_1,X_2\)</span>. I will therefore get population estimates by a procedure with several steps: use my sample to estimate the mean outcome <span class="math inline">\(E(Y\mid \vec{X} = \vec{x})\)</span> in each stratum, then use Census data to estimate the size of each stratum <span class="math inline">\(P(\vec{X} = \vec{x})\)</span> in the population, then estimate <span class="math inline">\(E(Y) = \sum_{\vec{x}}E(Y\mid \vec{X} = \vec{x})P(\vec{X} = \vec{x})\)</span>.</p>
-</blockquote>
-<p>This researcher’s reasoning is a common strategy known as <strong>post-stratification</strong>. This question is about formalizing a set of conditions under which the researcher is right and wrong.</p>
-<p>Before you begin, we want to emphasize one aspect of the researcher’s assumption that is different from the exchangeability assumption for causal inference.</p>
-<ul>
-<li>for causal claims, we assume conditional exchangeability: <span class="math inline">\(A\)</span> independent of <span class="math inline">\(Y^a\)</span> given <span class="math inline">\(\vec{X}\)</span>
-<ul>
-<li>involves the potential outcome <span class="math inline">\(Y^a\)</span>
-</li>
-<li>holds if the only unblocked paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> are causal paths</li>
-</ul>
-</li>
-<li>for sample-to-population inference, we assume conditionally independent sampling <span class="math inline">\(S\)</span> independent of <span class="math inline">\(Y\)</span> given <span class="math inline">\(\vec{X}\)</span>
-<ul>
-<li>involves the factual outcome <span class="math inline">\(Y\)</span>; there is no intervention here</li>
-<li>holds if there are no unblocked paths between <span class="math inline">\(S\)</span> and <span class="math inline">\(Y\)</span>
-</li>
-</ul>
-</li>
-</ul>
-<p>Although the assumption is different, the principles of DAGs are still relevant.</p>
-<div id="points-10" class="section level3 unnumbered">
-<h3>3.1. (5 points)<a class="anchor" aria-label="anchor" href="#points-10"><i class="fas fa-link"></i></a>
-</h3>
-<p>Draw a DAG under which the researcher’s claim is valid. Use <span class="math inline">\(S,Y,X_1,X_2\)</span>.</p>
-</div>
-<div id="points-11" class="section level3 unnumbered">
-<h3>3.2. (2 points)<a class="anchor" aria-label="anchor" href="#points-11"><i class="fas fa-link"></i></a>
-</h3>
-<p>In a sentence or two, explain your DAG from 3.1 to the researcher. Tell us in words what is meant by each edge in your DAG.</p>
-</div>
-<div id="points-12" class="section level3 unnumbered">
-<h3>3.3. (5 points)<a class="anchor" aria-label="anchor" href="#points-12"><i class="fas fa-link"></i></a>
-</h3>
-<p>Draw a DAG showing a counterexample under which the researcher’s claim is invalid.</p>
-</div>
-<div id="points-13" class="section level3 unnumbered">
-<h3>3.4 (2 points)<a class="anchor" aria-label="anchor" href="#points-13"><i class="fas fa-link"></i></a>
-</h3>
-<p>In a sentence or two, explain your DAG from 3.3 to the researcher. Tell us particularly about the path that creates a statistical dependence between <span class="math inline">\(S\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p>We have not posted this assignment yet.</p>
+<p>In the meantime, you may reference Problem Set 3 from <a href="https://causal3900.github.io/fa23/problem-set-3.-dags..html">Fall 2023</a>, but please note <strong>there may be significant changes.</strong></p>
 
-</div>
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
 <div class="next"><a href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li>
-<li>
-<a class="nav-link" href="#true-or-false">1. True or False</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-8">1.6 (3 points)</a></li>
-<li><a class="nav-link" href="#points-9">1.7 (3 points)</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#draw-a-dag-10-points">2. Draw a DAG (10 points)</a></li>
-<li>
-<a class="nav-link" href="#using-dags-in-a-new-context">3. Using DAGs in a new context</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-10">3.1. (5 points)</a></li>
-<li><a class="nav-link" href="#points-11">3.2. (2 points)</a></li>
-<li><a class="nav-link" href="#points-12">3.3. (5 points)</a></li>
-<li><a class="nav-link" href="#points-13">3.4 (2 points)</a></li>
-</ul>
-</li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li></ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>

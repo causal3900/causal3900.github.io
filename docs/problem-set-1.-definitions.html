@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 1. Definitions | Causal Inference Course</title>
 <meta name="author" content="Ian Lundberg and Sam Wang">
-<meta name="description" content="Relevant material will be covered by Aug 24. Problem set is due Aug 31. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference....">
+<meta name="description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 1 from Fall 2023, but please note there may be significant changes.">
 <meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Problem Set 1. Definitions | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Aug 24. Problem set is due Aug 31. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference....">
+<meta property="og:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 1 from Fall 2023, but please note there may be significant changes.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 1. Definitions | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Aug 24. Problem set is due Aug 31. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference....">
+<meta name="twitter:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 1 from Fall 2023, but please note there may be significant changes.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -91,132 +91,16 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-1.-definitions" class="section level1 unnumbered">
 <h1>Problem Set 1. Definitions<a class="anchor" aria-label="anchor" href="#problem-set-1.-definitions"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Aug 24</strong>. Problem set is due <strong>Aug 31</strong>.</p>
-<p>Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.</p>
-<p>To complete the problem set, <a href="assets/psets/pset1_download.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
-<div id="practice-with-potential-outcomes" class="section level2 unnumbered">
-<h2>1. Practice with potential outcomes<a class="anchor" aria-label="anchor" href="#practice-with-potential-outcomes"><i class="fas fa-link"></i></a>
-</h2>
-<p>Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.</p>
-<div id="points" class="section level3 unnumbered">
-<h3>1.1 (7 points)<a class="anchor" aria-label="anchor" href="#points"><i class="fas fa-link"></i></a>
-</h3>
-<p>In Jose’s claim, what is the treatment?</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-1" class="section level3 unnumbered">
-<h3>1.2 (7 points)<a class="anchor" aria-label="anchor" href="#points-1"><i class="fas fa-link"></i></a>
-</h3>
-<p>Using the mathematical notation we discussed in class, define the two potential outcomes to which Jose is referring</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-2" class="section level3 unnumbered">
-<h3>1.3 (7 points)<a class="anchor" aria-label="anchor" href="#points-2"><i class="fas fa-link"></i></a>
-</h3>
-<p>In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Jose’s claim.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-3" class="section level3 unnumbered">
-<h3>1.4 (7 points)<a class="anchor" aria-label="anchor" href="#points-3"><i class="fas fa-link"></i></a>
-</h3>
-<p>Using conditional expectations or probabilities, write the following in math: the probability of majoring in statistics is higher among students who attend Cornell than among students who attend NYU.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-4" class="section level3 unnumbered">
-<h3>1.5 (7 points)<a class="anchor" aria-label="anchor" href="#points-4"><i class="fas fa-link"></i></a>
-</h3>
-<p>Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-</div>
-<div id="a-sailing-class" class="section level2 unnumbered">
-<h2>2. A sailing class<a class="anchor" aria-label="anchor" href="#a-sailing-class"><i class="fas fa-link"></i></a>
-</h2>
-<p>You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.</p>
-<div id="points-5" class="section level3 unnumbered">
-<h3>2.1 (5 points)<a class="anchor" aria-label="anchor" href="#points-5"><i class="fas fa-link"></i></a>
-</h3>
-<p>Last year, there was a survey of students who did and did not take the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher among those who took the class.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-6" class="section level3 unnumbered">
-<h3>2.2 (5 points)<a class="anchor" aria-label="anchor" href="#points-6"><i class="fas fa-link"></i></a>
-</h3>
-<p>Last year, there was a survey of students before and after the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher in the survey taken after the class.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-<div id="points-7" class="section level3 unnumbered">
-<h3>2.3 (5 points)<a class="anchor" aria-label="anchor" href="#points-7"><i class="fas fa-link"></i></a>
-</h3>
-<p>On average, the students in this class emerged more prepared to sail than they would have been without the class.</p>
-<p><strong>Answer.</strong> Your answer here</p>
-</div>
-</div>
-<div id="session-info" class="section level2 unnumbered">
-<h2>Session info<a class="anchor" aria-label="anchor" href="#session-info"><i class="fas fa-link"></i></a>
-</h2>
-<p>The chunk below will record information about your R session, which is useful for debugging issues in homework assignments that contain code.</p>
-<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## R version 4.3.1 (2023-06-16 ucrt)
-## Platform: x86_64-w64-mingw32/x64 (64-bit)
-## Running under: Windows 10 x64 (build 19045)
-## 
-## Matrix products: default
-## 
-## 
-## locale:
-## [1] LC_COLLATE=English_United States.utf8 
-## [2] LC_CTYPE=English_United States.utf8   
-## [3] LC_MONETARY=English_United States.utf8
-## [4] LC_NUMERIC=C                          
-## [5] LC_TIME=English_United States.utf8    
-## 
-## time zone: America/New_York
-## tzcode source: internal
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets 
-## [6] methods   base     
-## 
-## loaded via a namespace (and not attached):
-##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.40    
-##  [4] fastmap_1.2.0     xfun_0.47         cachem_1.1.0     
-##  [7] knitr_1.48        memoise_2.0.1     htmltools_0.5.8.1
-## [10] rmarkdown_2.28    lifecycle_1.0.4   xml2_1.3.6       
-## [13] cli_3.6.1         downlit_0.4.4     sass_0.4.9       
-## [16] withr_3.0.1       jquerylib_0.1.4   compiler_4.3.1   
-## [19] rstudioapi_0.16.0 tools_4.3.1       evaluate_0.24.0  
-## [22] bslib_0.8.0       yaml_2.3.7        fs_1.6.4         
-## [25] jsonlite_1.8.8    rlang_1.1.1</code></pre>
+<p>We have not posted this assignment yet.</p>
+<p>In the meantime, you may reference Problem Set 1 from <a href="https://causal3900.github.io/fa23/problem-set-1.-definitions.html">Fall 2023</a>, but please note <strong>there may be significant changes.</strong></p>
 
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="final-project.html">Final Project</a></div>
 <div class="next"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#problem-set-1.-definitions">Problem Set 1. Definitions</a></li>
-<li>
-<a class="nav-link" href="#practice-with-potential-outcomes">1. Practice with potential outcomes</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points">1.1 (7 points)</a></li>
-<li><a class="nav-link" href="#points-1">1.2 (7 points)</a></li>
-<li><a class="nav-link" href="#points-2">1.3 (7 points)</a></li>
-<li><a class="nav-link" href="#points-3">1.4 (7 points)</a></li>
-<li><a class="nav-link" href="#points-4">1.5 (7 points)</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#a-sailing-class">2. A sailing class</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-5">2.1 (5 points)</a></li>
-<li><a class="nav-link" href="#points-6">2.2 (5 points)</a></li>
-<li><a class="nav-link" href="#points-7">2.3 (5 points)</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#session-info">Session info</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#problem-set-1.-definitions">Problem Set 1. Definitions</a></li></ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
