@@ -5,7 +5,7 @@ To see the lecture slides from Fall 2023, [click here](https://causal3900.github
 
 ## Observing versus intervening
 
-> Aug 27. [**Slides**]()
+> Aug 27. [**Slides**](assets/slides/1-1_observing_intervening.pdf)
 
 Statistical inference is about observing: if I observe a sample from a population, what can I infer about that population? Causal inference is about intervening: if I take a sample from a population and intervene to change some exposure, what average outcome would result?
 
