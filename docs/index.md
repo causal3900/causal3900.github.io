@@ -47,11 +47,16 @@ We are grateful to the authors for this excellent text.
 
 Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go. [Who we are](Who we are) tells you a bit about the teaching team.
 
+## Previous iterations of the course {-}
+To access the course website from Fall 2023 [click here](https://causal3900.github.io/fa23). 
+
+
 ## Land acknowledgment {-}
 
 We recognize the university land acknowledgment, as well as an additional emphasis from the [Cornell American Indian and Indigenous Studies Program](https://cals.cornell.edu/american-indian-indigenous-studies).
 
 > Cornell University is located on the traditional homelands of the Gayogo̱hó:nǫɁ (the Cayuga Nation). The Gayogo̱hó:nǫɁ are members of the Haudenosaunee Confederacy, an alliance of six sovereign Nations with a historic and contemporary presence on this land. The Confederacy precedes the establishment of Cornell University, New York state, and the United States of America. We acknowledge the painful history of Gayogo̱hó:nǫɁ dispossession, and honor the ongoing connection of Gayogo̱hó:nǫɁ people, past and present, to these lands and waters.
+
 
 > This land acknowledgment has been reviewed and approved by the traditional Gayogo̱hó:nǫɁ leadership.
 
