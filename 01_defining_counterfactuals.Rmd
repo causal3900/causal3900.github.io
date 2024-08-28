@@ -1,7 +1,4 @@
-
 # Defining counterfactuals
-
-To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/defining-counterfactuals.html). Updated slides will be linked below as soon as they are available.
 
 ## Observing versus intervening
 
