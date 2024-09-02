@@ -4,7 +4,7 @@ output: pdf_document
 
 # Problem Set 1. Definitions 
 
-Relevant material will be covered by **Sept 2**. Problem set is due **Sept 9** at 5pm.
+Relevant material will be covered by **Sept 3**. Problem set is due **Sept 9** at 5pm.
 
 Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.
 
