@@ -1,13 +1,11 @@
-
 # (PART) Identification by exchangeability {-}
 
 # Exchangeability and experiments
 
-To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/exchangeability-and-experiments.html). Updated slides will be linked below as soon as they are available.
 
 ## Randomized experiments
 
-> Sep 3. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
+> Sep 3. [**Slides.**](assets/slides/2-1_random_experiments.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2 through the end of 2.1.
 
 Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.
 
