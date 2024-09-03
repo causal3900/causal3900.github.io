@@ -12,8 +12,3 @@ lm(y~x)
 # plot
 plot(x,y)
 abline(lm(y~x), lwd=2.5)
-
-
-
-
-Hello
