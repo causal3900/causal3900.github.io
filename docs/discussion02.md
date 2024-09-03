@@ -7,7 +7,7 @@
 To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion2_download.Rmd)
 
 
-```r
+``` r
 library(ggplot2)
 library(ggmosaic)
 library(tibble)
@@ -18,7 +18,7 @@ library(tibble)
 We can generate simulations to show that sample mean and variance converge to
 population values.
 
-```r
+``` r
 true_mean <- 2
 true_var <- 5
 
@@ -51,7 +51,7 @@ ggplot(means, aes(y = `Sample Mean`, x = N)) +
 
 <img src="discussion02_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
-```r
+``` r
 ggplot(vars, aes(y = `Sample Variance`, x = N)) +
   geom_line(color = "lightblue") +
   geom_abline(slope = 0, intercept = true_var, color = "red") +
@@ -65,7 +65,7 @@ ggplot(vars, aes(y = `Sample Variance`, x = N)) +
 Simulate conditional expectations within groups that differ from the sample
 mean.
 
-```r
+``` r
 group1_means <- rnorm(100, mean = 20, sd = 5)
 group2_means <- rnorm(100, mean = 30, sd = 5)
 group_means <- data.frame(
@@ -101,7 +101,7 @@ ggplot(group_means, aes(x = x, y = Values, color = Group)) +
 ## Show independence of variables - example of two dice rolling
 
 
-```r
+``` r
 dice_1 <- sample(1:6, 100000, replace = TRUE)
 dice_2 <- sample(1:6, 100000, replace = TRUE)
 dice <- tibble(
