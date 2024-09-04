@@ -43,7 +43,7 @@ img {
 <div class="row">
   <div class="column"><img src="assets/Shira.jpg" style="width:75px"></div>
   <div class="col-md-5">[**Shira Mingelgrin**](https://stat.cornell.edu/people/phds/shira-mingelgrin)<br>PhD Student<br>Statistics and Data Science<br>
-[sm2267@cornell.edu](mailto:sm2267@cornell.edu)<br> Wed 3-4 Comstock 1187</div>
+[sm2267@cornell.edu](mailto:sm2267@cornell.edu)<br> Wed 5:30-6:30 Comstock 1187</div>
 </div>
 
 > I am currently working on graphical models with noisy measurements. I am interested in causal discovery and its applications in social science and biology. In my free time I like doing puzzles, playing pool, and baking.  
