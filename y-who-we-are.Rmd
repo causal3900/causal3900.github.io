@@ -47,4 +47,3 @@ img {
 </div>
 
 > I am currently working on graphical models with noisy measurements. I am interested in causal discovery and its applications in social science and biology. In my free time I like doing puzzles, playing pool, and baking.  
-
