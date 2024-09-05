@@ -48,3 +48,4 @@ This lab will use R to analyze data from a randomized experiment in which househ
 > Sep 12. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapters 3.1 and 3.2.
 
 This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds.
+
