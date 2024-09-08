@@ -14,7 +14,7 @@ One of the main difficulties of a regression discontinuity analysis is choosing 
 
 Suppose $Y$ is a very non-linear function of $X$, and we want to extrapolate and predict $Y$ at $X=0$.
 
-```r
+``` r
 n <- 100
 X <- runif(n, -5, 0)
 ### Y is a very non-linear function of X + some noise
@@ -33,7 +33,7 @@ If we blindly fit a line to all our observations, the predicted value for $X=0$ 
 
 If we instead restrict ourselves to a smaller region around 0, we can do a bit better
 
-```r
+``` r
 ## Only consider points h away from 0
 h <- 3
 
@@ -51,7 +51,7 @@ points(0, 5, pch = 18, col = "orange", cex = 3)
 <img src="discussion10_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 However, if we get more and more data, we don't really improve much
 
-```r
+``` r
 n <- 10000
 X <- runif(n, -5, 0)
 Y <- 5 - 3*X + .6 * X^2 + .3 * X^3 + 15 * sin(X) + rnorm(n, sd = 4)
@@ -73,7 +73,7 @@ points(0, 5, pch = 18, col = "orange", cex = 3)
 Ideally, we would decrease the bandwidth to reduce this bias, but this also means we are working with less data. Since each data point is noisy, if we were to get a new sample, the estimate could change quite a bit. Try running this a few times and see how much the estimate moves. Compare this which how much the estimate moves if the bandwidth is 2.
 
 
-```r
+``` r
 h <- .3 # bandwidth
 # h <- 2 
 n <- 100
@@ -100,7 +100,7 @@ Knowing the best bandwidth is a hard problem, but generally speaking a good choi
 If we measure accuracy in terms of average squared error, we can see when $n = 100$, a bandwidth of 1.2 seems to be best. However, test and see if how that changes for larger values of $n$
 
 
-```r
+``` r
 n <- 100
 h <- c(.5, .8, 1.2, 2)
 sim.size <- 500
@@ -131,11 +131,11 @@ colMeans(rec)
 ```
 
 ```
-## [1] 14.528798  4.584740  3.707355 13.175417  4.858576
-## [6]  4.568648  4.062579  1.689930
+## [1]  9.896012  5.239283  4.333188 13.921712  4.610633
+## [6]  4.500149  3.917164  1.553854
 ```
 
-```r
+``` r
 boxplot(as.list(data.frame(rec[, 5:8])), ylim = c(0, 20))
 abline(h = 5, col = "red")
 ```
@@ -150,7 +150,7 @@ $$\min_b \sum_i w_i(Y_i - X_i b)^2$$
 When $w_i$ is larger, the squared error for observation $i$ will cost more so the selected linear coefficient will prioritize minimizing errors where $w_i$ is large. In our particular setting, we want to prioritize fitting the data well around $0$, so we can use weights which are ``triangular'' which prioritize points near $0$.  
 
 
-```r
+``` r
 n <- 200
 X <- runif(n, -5, 0)
 Y <- 5 - 3*X + .6 * X^2 + .3 * X^3 + 15 * sin(X) + rnorm(n, sd = 4)
@@ -168,7 +168,7 @@ If we use a bandwidth of $h$ (i.e., only include observations within $h$ of the 
 When using triangular weights, we can see that this does better than using all the points.
 
 
-```r
+``` r
 n <- 200
 h <- 3
 X <- runif(n, -5, 0)
@@ -207,7 +207,7 @@ points(0, predict(fit.mod, newdata = data.frame(X = 0)), col = "purple", pch = 1
 <img src="discussion10_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 In practice, we can combine both a hard thresholding bandwidth as well as triangular weights (within the bandwidth) 
 
-```r
+``` r
 # bandwidth
 h <- 3
 n <- 200
@@ -240,7 +240,7 @@ We will look at the causal effect on being an incumbent in senate races in two d
 We'll examine data from US Senate races from 1914 to 2010 to try and answer these questions. 
 
 
-```r
+``` r
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -283,7 +283,7 @@ head(data)
 ## 6      39.80264          0          0        0        0
 ```
 
-```r
+``` r
 # presdemvoteshlag1 is democratic vote share in the previous presidential election
 # demmv is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
 #   so a value just above 0 indicates a very close victory, a value just below 0 indicates a very close loss
@@ -295,7 +295,7 @@ head(data)
 For the first analysis, we will consider whether being the incumbent effects vote share in the next election. Thus, the outcome of interest is \texttt{demvoteshfor2} because the next time the same seat goes up for election is 2 cycles in the future.
 
 
-```r
+``` r
 dem_vote_t2 <- data$demvoteshfor2
 dem_margin_t0 <- data$demmv
 
@@ -308,7 +308,7 @@ rdplot(y = dem_vote_t2, x =  dem_margin_t0, nbins = c(1000, 1000), p = 0, col.li
 
 Let's zoom in a bit to the closer races and use non-linear regression. There appears to still be a slight discontinuity. 
 
-```r
+``` r
 rdplot(dem_vote_t2[abs(dem_margin_t0) <= 25], dem_margin_t0[abs(dem_margin_t0) <= 25], nbins = c(2500, 500), p = 4, col.lines = "red", col.dots = "lightgray", title = "",  y.lim = c(0,100))
 ```
 
@@ -317,7 +317,7 @@ rdplot(dem_vote_t2[abs(dem_margin_t0) <= 25], dem_margin_t0[abs(dem_margin_t0) <
 ### Estimating the causal effect
 As an example, we'll manually set the bandwidth to 10, and then estimate a linear regression on both sides of the cut-off. The estimated intercept is the prediction at $0$, so to get the estimate, we just take the difference.
 
-```r
+``` r
 # Set bandwidth to 10
 h <- 10
 # Fit regression to left and right of cut-off
@@ -335,7 +335,7 @@ lm_right$coefficients[1] - lm_left$coefficients[1]
 
 We can try the same with the triangular weights.
 
-```r
+``` r
 h <- 10
 weight <- ifelse(abs(dem_margin_t0) < h, 1 - abs(dem_margin_t0) / h, 0) 
 
@@ -360,7 +360,7 @@ lm_right$coefficients[1] - lm_left$coefficients[1]
 As you can see, getting the estimates aren't so difficult once we've selected a bandwidth. But selecting a good bandwidth can be tricky and getting standard errors on the estimate are also difficult.  We can use the R package \texttt{rdrobust} to select the bandwidth, estimate the causal effect quantities, and give standard errors. 
 
 
-```r
+``` r
 # uniform kernel with bandwidth 10
 out <- rdrobust(dem_vote_t2, dem_margin_t0, kernel = 'uniform',  p = 1, h = 10)
 summary(out)
@@ -392,7 +392,7 @@ summary(out)
 ```
 
 
-```r
+``` r
 # triangular kernel with bandwidth 10
 out <- rdrobust(dem_vote_t2, dem_margin_t0,  kernel = 'triangular',  p = 1, h = 10)
 summary(out)
@@ -426,7 +426,7 @@ summary(out)
 
 If we don't specify a bandwidth directly, the software will choose for us
 
-```r
+``` r
 # uniform kernel with software selected bandwidth
 out <- rdrobust(dem_vote_t2, dem_margin_t0, kernel = 'triangular',  p = 1)
 summary(out)
@@ -464,7 +464,7 @@ summary(out)
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is demvoteshfor1 since we are interested in the immediately following election.  
 
 
-```r
+``` r
 dem_vote_t1 <- data$demvoteshfor1
 dem_margin_t0 <- data$demmv
 

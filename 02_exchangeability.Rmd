@@ -39,12 +39,13 @@ By the end of class, you will be able to
 
 ## Lab: Analyze a randomized experiment
 
-> Sep 11. [**Slides.**]()
+> Sep 11. [**Slides.**](assets/discussions/discussion3-analyzing-experiment.pdf)
 
-This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)).
+This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion3.Rmd).
 
 ## Inverse probability weighting
 
 > Sep 12. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapters 3.1 and 3.2.
 
 This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds.
+
