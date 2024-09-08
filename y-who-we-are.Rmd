@@ -24,7 +24,7 @@ img {
 <div class="row">
   <div class="column"><img src="assets/Mayleen.jpeg" style="width:75px"></div>
   <div class="col-md-5">[**Mayleen Cortez-Rodriguez**](https://www.mayleencortez.com/)<br>PhD Candidate<br>Applied Mathematics<br>
-[mec383@cornell.edu](mailto:mec383@cornell.edu)<br> Thur 10:15-11:15 Rhodes Hall 657 (Room 1)</div>
+[mec383@cornell.edu](mailto:mec383@cornell.edu)<br> Thur 11-12 Rhodes Hall 657 (Room 1)</div>
 </div>
 
 > I'm currently working on problems in causal inference under network interference. I think causal inference is really cool because it has applications across so many different fields. I'm generally interested in applications to public health, social welfare, and social good. In my free time, I enjoy singing, dancing, cooking, watching movies, and traveling to various theme parks. 
