@@ -4,9 +4,8 @@ output: html_document
 
 # Discussion 03. Analyzing an Experiment in R {-}
 
-**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
 
-[**Slides**](assets/discussions/discussion3-slides.pdf)
+[**Slides**](assets/discussions/discussion3-analyzing-experiment.pdf)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
@@ -49,7 +48,6 @@ would be revealed to all other members of their household.
 would be revealed to their household *and* to their neighbors.
 
 ## Analyze Experiment
-Download this RMarkdown file [here]().
 
 ### Necessary packages
 

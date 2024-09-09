@@ -2,7 +2,7 @@
 
 # Discussion 2. Stats review {-}
 
-**NOTE: This is from Fall 2023. We have not updated to reflect the current term yet.**
+[**Slides**](assets/discussions/discussion2-probandstatsreview.pdf)
 
 To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion2_download.Rmd)
 
