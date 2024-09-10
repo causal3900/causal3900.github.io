@@ -7,7 +7,7 @@
 <title>Discussion 07. Causal Effects with Matching | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here. Some packages you may need to install first: optmatch:...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Discussion 07. Causal Effects with Matching | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here. Some packages you may need to install first: optmatch:...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="NOTE: This is from Fall 2023. We have not updated to reflect the current term yet. Slides Download today’s .Rmd document here. Some packages you may need to install first: optmatch:...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -118,7 +118,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span><span class="co"># method: nearest is a greedy 1:1 matching without replacement</span></span>
 <span><span class="co"># distance: euclidean (other possible options are scaled_euclidean, mahalanobis, robust_mahalanobis)</span></span>
 <span><span class="co"># read more on distances here: https://rdrr.io/cran/MatchIt/man/distance.html#mat</span></span>
-<span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
+<span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span></code></pre></div>
@@ -132,7 +132,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span><span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Greedy is using nearest</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -140,7 +140,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 ##   0.016   0.000   0.016</code></pre>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># method: optimal is optimal matching</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">[</span><span class="va">ind</span>, <span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -149,7 +149,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <p>On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># With full data set greedy matching takes ~ 0.5-1.5 seconds</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                              method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -157,7 +157,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 ##   0.605   0.077   0.684</code></pre>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Meanwhile, optimal matching takes 60-130 seconds</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span></span>
 <span>                              <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                              method <span class="op">=</span> <span class="st">"optimal"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                              data <span class="op">=</span> <span class="va">d</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -208,7 +208,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>  <span class="va">cov</span></span>
 <span></span>
 <span><span class="co"># Then we compute the Mahalanobis distance with the function mahalanobis_dist</span></span>
-<span><span class="fu">mahalanobis_dist</span><span class="op">(</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">re74</span> <span class="op">+</span> <span class="va">re75</span>, data <span class="op">=</span> <span class="va">dat</span>, var <span class="op">=</span> <span class="va">dataCov</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/mahalanobis_dist.html">mahalanobis_dist</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">re74</span> <span class="op">+</span> <span class="va">re75</span>, data <span class="op">=</span> <span class="va">dat</span>, var <span class="op">=</span> <span class="va">dataCov</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##          1        2        3
 ## 1 0.000000 3.225953 1.098595
 ## 2 3.225953 0.000000 2.152528
@@ -231,7 +231,7 @@ Download today’s <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd do
 <span>    <span class="co"># So for the function, you only need to specify if using method = "nearest"</span></span>
 <span><span class="co"># ratio: how many control matches for each treated unit</span></span>
 <span><span class="co"># caliper: by default, the caliper width in standard units (i.e., Z-scores)</span></span>
-<span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">re74</span> <span class="op">+</span> <span class="va">re75</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">race</span>,</span>
+<span><span class="va">m.out0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">re74</span> <span class="op">+</span> <span class="va">re75</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">race</span>,</span>
 <span>                  method <span class="op">=</span> <span class="st">"nearest"</span>, distance <span class="op">=</span> <span class="st">"euclidean"</span>,</span>
 <span>                  data <span class="op">=</span> <span class="va">lalonde</span>, replace <span class="op">=</span> <span class="cn">F</span>, </span>
 <span>                  ratio <span class="op">=</span> <span class="fl">1</span>, caliper <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>re74  <span class="op">=</span> <span class="fl">.2</span>, re75 <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -303,7 +303,7 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 <span><span class="co">#         if the data set was matched more than once</span></span>
 <span><span class="co"># subclass: the index of the "pair"</span></span>
 <span><span class="co">#</span></span>
-<span><span class="va">m.out0.data</span> <span class="op">&lt;-</span> <span class="fu">match.data</span><span class="op">(</span><span class="va">m.out0</span>, drop.unmatched <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="va">m.out0.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">match.data</a></span><span class="op">(</span><span class="va">m.out0</span>, drop.unmatched <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">m.out0.data</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##      treat age educ   race married nodegree re74 re75
 ## NSW1     1  37   11  black       1        1    0    0
@@ -327,7 +327,7 @@ Given the matching (and assuming it is good enough), we can estimate the ATT.</d
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Also produces matched data set, though will duplicate rows if matching with replacement</span></span>
 <span><span class="co"># and a control is matched more than once</span></span>
-<span><span class="va">m.out0.data</span> <span class="op">&lt;-</span> <span class="fu">get_matches</span><span class="op">(</span><span class="va">m.out0</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">m.out0.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">get_matches</a></span><span class="op">(</span><span class="va">m.out0</span><span class="op">)</span></span></code></pre></div>
 <p>As a first step, we could simply compare the means of the outcomes for both groups. Notice this is the first time we’ve looked at the outcomes!</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Take the mean of both groups</span></span>

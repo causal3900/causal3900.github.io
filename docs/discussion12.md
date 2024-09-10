@@ -19,7 +19,7 @@ the onset of political terrorism in the 1970s.
 Let's go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don't worry, that's how it is meant to be!
 
-``` r
+```r
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -90,7 +90,7 @@ more than high school (`school.post.high`).
 Running the following line of code will show you some helpful information in the "Help" box on the bottom right of your R Studio Screen. We call this *documentation*. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.
 
 
-``` r
+```r
 ?basque
 ```
 
@@ -143,7 +143,7 @@ We are creating a "prepared" dataset `dataprep.out` by running our "unprepared" 
 This is because the Synth package requires the data to be in a specific format to do synthetic control.
 
 
-``` r
+```r
 dataprep.out <- dataprep(
   foo = basque,          # Our analysis data that needs to be prepared
   predictors = c(        # 1(a). list the variables that we want to use as predictors
@@ -199,7 +199,7 @@ this means that `synth()` will create weights for each of the other regions
 so that the weighted average of the other regions' GDP will closely match the
 true GDP of the Basque Country region.
 
-``` r
+```r
 synth.out <- synth(data.prep.obj = dataprep.out, method = "BFGS")
 ```
 
@@ -231,7 +231,7 @@ We'll explore the model output below.
 First, we can begin by creating some summary tables from our Synthetic Control
 model.
 
-``` r
+```r
 synth.tables <- synth.tab(dataprep.res = dataprep.out, synth.res = synth.out)
 ```
 
@@ -241,7 +241,7 @@ compares the predictor values between the Basque Country (denoted `Treated` in
 the table) and our Synthetic Control. **Note** we want the values in the
 `Treated` and `Synthetic` columns to be really close together.
 
-``` r
+```r
 synth.tables$tab.pred
 ```
 
@@ -285,7 +285,7 @@ Next, we can look at the weights that got assigned to each of the non-treatment
 regions. We can drop regions that have a weight of 0 since those regions don't
 contribute to our synthetic control at all!
 
-``` r
+```r
 synth.tables$tab.w[synth.tables$tab.w$w.weights != 0, ]
 ```
 
@@ -304,7 +304,7 @@ Finally we can look at the weights that got assigned to each of our predictor
 variables. This can be interpreted as the relative importance of each of our
 predictor variables.
 
-``` r
+```r
 synth.tables$tab.v
 ```
 
@@ -343,7 +343,7 @@ sharply when the violent conflict occurs.
 
 Let's create such a plot and see if it indicates a significant treatment effect.
 
-``` r
+```r
 path.plot(
   synth.res = synth.out,
   dataprep.res = dataprep.out,
@@ -369,7 +369,7 @@ of showing two lines for the outcome of the Basque Country region and the
 outcome of the Synthetic Control Unit, we plot a single line that is the
 difference between the two lines in each time period.
 
-``` r
+```r
 gaps.plot(
   synth.res = synth.out,
   dataprep.res = dataprep.out,

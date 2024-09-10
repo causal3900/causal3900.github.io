@@ -23,19 +23,11 @@ We talk about why experiments are good: they are a setting in which a key identi
 
 ## Standardization and effect measures
 
-> Sep 10. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 1.3 and 2.4.
+> Sep 10. [**Slides.**](assets/slides/2-3_standardization.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.4.
 
-Standardization is an important statistical procedure with two steps:
-
-* estimate the causal effect in each population subgroup
-* average over the population distribution of subgroups
+Stratification allows us to estimate the average causal effect within a subpopulation, or strata, also known as the conditional average treatment effect. Standardization is an important statistical procedure that allows us to estimate the population average treatment effect by taking a weighted average over the subpopulations. 
 
 In conditionally randomized experiments, standardization is essential to yield unbiased estimates of the population average causal effect. This strategy will also be essential in observational studies that we will discuss soon.
-
-By the end of class, you will be able to
-
-* describe different ways to quantitatively measure a causal effect
-* estimate the average causal effect using data from a conditionally randomized experiment
 
 ## Lab: Analyze a randomized experiment
 

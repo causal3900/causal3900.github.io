@@ -53,14 +53,14 @@ __Note:__ If this errors you probably either don't have `dplyr` or `haven`
 installed.
 
 
-``` r
+```r
 library(dplyr)
 library(haven)
 ```
 
 ### Import data
 
-``` r
+```r
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 ```
 
@@ -71,7 +71,7 @@ gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 
 Run the following code to get a quick peek at the dataset using the [function `glimpse`](https://dplyr.tidyverse.org/reference/glimpse.html). This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about year of birth `yob` but not explicitly age. Also notice that the treatments are labeled with the numbers 0 through 4.
 
-``` r
+```r
 glimpse(gotv)
 ```
 
@@ -88,7 +88,7 @@ was born in. For this, we use the `mutate` function, which you can read about [h
 We have the code started for you below. Fill in the appropriate expression after `age = ` to add a column to `gotv` labeled `age` that contains how old each person was in 2006.
 
 
-``` r
+```r
 gotv <- gotv |>
   mutate(age = )
 ```
@@ -111,14 +111,14 @@ corresponding labels which are
 
 We have started the code for you below. Decide what argument(s) to pass inside the parantheses of `case_when()`.
 
-``` r
+```r
 gotv <- gotv |>
   mutate(treatment = case_when()) 
 ```
 
 Now, when we use `glimpse` we see there is an added `age` variable and that the treatments have word instead of number labels.
 
-``` r
+```r
 glimpse(gotv)
 ```
 
@@ -139,7 +139,7 @@ We have started some code for you below. What you need to do is:
   - You may find the function [`across`](https://dplyr.tidyverse.org/reference/across.html) useful here as well. You can use this function *inside* of `summarise()`!
 
 
-``` r
+```r
 covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
 
 gotv_balance <- gotv |>
@@ -161,7 +161,7 @@ Finally, let's replicate the final results (Table 2). For each treatment group, 
   - Create a column titled `num_of_individuals` that contains the total number of people in that group
 
 
-``` r
+```r
 gotv_results <- gotv |>
   group_by(...) |>
   summarise(...)

@@ -14,25 +14,25 @@ For any given intervention, some subgroups of people will respond more than othe
 **Simulated data.** In real data, it can be difficult to evaluate causal estimators because the truth is unknown. Today we will use data simulated from a known process in order to study the properties of estimators. The code below will prepare your R environment with a function `simulate_sample()` that will generate data with 50 observations.
 
 
-``` r
+```r
 library(tidyverse)
 source("https://raw.githubusercontent.com/causal3900/causal3900.github.io/main/assets/data/simulate_sample.R")
 ```
 
 Here is an example of the code to simulate data:
 
-``` r
+```r
 simulated <- simulate_sample()
 ```
 
 ```
-##   X         A         Y
-## 1 1 untreated  66.10544
-## 2 1   treated  10.05529
-## 3 1 untreated  42.73385
-## 4 1   treated  17.22100
-## 5 1 untreated 161.48251
-## 6 2   treated  40.59368
+##   X         A        Y
+## 1 1 untreated 35.10994
+## 2 1   treated 51.92193
+## 3 1 untreated 48.16631
+## 4 1   treated 63.56696
+## 5 1 untreated 81.35253
+## 6 2   treated 35.14614
 ```
 
 **Causal estimands.** In this example, we would like to estimate $$\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})$$
@@ -42,7 +42,7 @@ for each value $x = 1,\dots,10$. These estimands are the average causal effect o
 
 **Estimator.** An estimator is a function that takes a dataset and returns estimates. Below is a nonparametric estimator for our setting.
 
-``` r
+```r
 estimator <- function(data) {
   data %>%
     # Group by treatment A and confounder X
@@ -62,7 +62,7 @@ estimator <- function(data) {
 You can apply this estimator as follows.
 
 
-``` r
+```r
 estimate <- estimator(simulated)
 ```
 
