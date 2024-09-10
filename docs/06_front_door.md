@@ -74,8 +74,8 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.594
-## 2     1 0.749
+## 1     0 0.590
+## 2     1 0.753
 ```
 
 Estimate the probability of each $M$ given $A$. Under the causal assumptions, this corresponds to the expected value of $M$ under assignment to each value of $A$ since $M\rightarrow A$ is unconfounded.
@@ -97,10 +97,10 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.903 
-## 2     0     1      0.0970
-## 3     1     0      0.103 
-## 4     1     1      0.897
+## 1     0     0      0.902 
+## 2     0     1      0.0980
+## 3     1     0      0.101 
+## 4     1     1      0.899
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
@@ -122,8 +122,8 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.494
-## 2     1 0.506
+## 1     0 0.493
+## 2     1 0.507
 ```
 
 You also need the outcome distribution given $M$ and $A$.
@@ -141,10 +141,10 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.584
-## 2     0     1         0.689
-## 3     1     0         0.633
-## 4     1     1         0.763
+## 1     0     0         0.583
+## 2     0     1         0.660
+## 3     1     0         0.635
+## 4     1     1         0.766
 ```
 
 Given the above, you can use backdoor adjustment to identify the outcome under intervention on $M$ by backdoor adjustment for $A$.
@@ -163,7 +163,7 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ##       M p_Y_under_M
 ##   <int>       <dbl>
 ## 1     0       0.609
-## 2     1       0.726
+## 2     1       0.714
 ```
 
 Bringing the above together, we have front-door identification.
@@ -183,5 +183,5 @@ p_Y_under_A <- p_M_given_A %>%
 ##       A estimate
 ##   <int>    <dbl>
 ## 1     0    0.620
-## 2     1    0.714
+## 2     1    0.704
 ```
