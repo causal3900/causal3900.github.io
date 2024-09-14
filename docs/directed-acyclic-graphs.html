@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Directed Acyclic Graphs | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
-<meta name="description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 19. Slides. After class, read Hernán and...">
+<meta name="description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 19. Slides. After class, read Hernán and...">
+<meta property="og:description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
-<meta name="twitter:description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 19. Slides. After class, read Hernán and...">
+<meta name="twitter:description" content="To see the lecture slides from Fall 2023, click here. Updated slides will be linked below as soon as they are available.  4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -97,7 +97,7 @@
 <span class="header-section-number">4.1</span> Marginal independence<a class="anchor" aria-label="anchor" href="#marginal-independence"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 19. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
+<p>Sep 24. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
 </blockquote>
 <p>This class will introduce key ideas about DAGs.</p>
 <ol style="list-style-type: decimal">
@@ -126,12 +126,21 @@
   \end{tikzpicture}
 </script>
 </div>
-<div id="conditional-independence" class="section level2" number="4.2">
+<div id="lab-dags-review-and-causal-discovery" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">4.2</span> Conditional independence<a class="anchor" aria-label="anchor" href="#conditional-independence"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Lab: DAGs Review and Causal discovery<a class="anchor" aria-label="anchor" href="#lab-dags-review-and-causal-discovery"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 24. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.</p>
+<p>Sep 25. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Fine Point 6.3.</p>
+</blockquote>
+<p>In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed. We’ll also talk a bit about causal discovery and practice creating DAGs from data.</p>
+</div>
+<div id="conditional-independence" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Conditional independence<a class="anchor" aria-label="anchor" href="#conditional-independence"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Sep 26. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.</p>
 </blockquote>
 <p>Often, we want to condition on some set of variables <span class="math inline">\(\vec{L}\)</span> so that conditional exchangeability holds.</p>
 <p>A path is blocked if any node on the path is blocked. If every node on a path is open, then the entire path is open</p>
@@ -140,21 +149,12 @@
 <li>A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked</li>
 </ol>
 </div>
-<div id="lab-dags-review-and-causal-discovery" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Lab: DAGs Review and Causal discovery<a class="anchor" aria-label="anchor" href="#lab-dags-review-and-causal-discovery"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Sep 25. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Fine Point 6.3.</p>
-</blockquote>
-<p>In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed. We’ll also talk a bit about causal discovery and practice creating DAGs from data.</p>
-</div>
 <div id="sufficient-adjustment-sets" class="section level2" number="4.4">
 <h2>
 <span class="header-section-number">4.4</span> Sufficient adjustment sets<a class="anchor" aria-label="anchor" href="#sufficient-adjustment-sets"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 26. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> 7.1–7.4.</p>
+<p>Oct 1. <a href=""><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> 7.1–7.4.</p>
 </blockquote>
 <p>When marginal exchangeability does not hold, we may be able to condition on some set of variables <span class="math inline">\(\vec{L}\)</span> so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:</p>
 <ol style="list-style-type: decimal">
@@ -172,8 +172,8 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#directed-acyclic-graphs"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
 <li><a class="nav-link" href="#marginal-independence"><span class="header-section-number">4.1</span> Marginal independence</a></li>
-<li><a class="nav-link" href="#conditional-independence"><span class="header-section-number">4.2</span> Conditional independence</a></li>
-<li><a class="nav-link" href="#lab-dags-review-and-causal-discovery"><span class="header-section-number">4.3</span> Lab: DAGs Review and Causal discovery</a></li>
+<li><a class="nav-link" href="#lab-dags-review-and-causal-discovery"><span class="header-section-number">4.2</span> Lab: DAGs Review and Causal discovery</a></li>
+<li><a class="nav-link" href="#conditional-independence"><span class="header-section-number">4.3</span> Conditional independence</a></li>
 <li><a class="nav-link" href="#sufficient-adjustment-sets"><span class="header-section-number">4.4</span> Sufficient adjustment sets</a></li>
 </ul>
       <div class="book-extra">
@@ -194,7 +194,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-09-12</p>
+    <p>Last built on 2024-09-14</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

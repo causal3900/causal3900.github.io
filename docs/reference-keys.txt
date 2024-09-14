@@ -11,11 +11,12 @@ lab-analyze-a-randomized-experiment
 inverse-probability-weighting
 consistency-and-positivity
 asking-good-causal-questions
-lab-interference
+lab-exchangeability-and-consistency-review
+asking-good-causal-questions-1
 directed-acyclic-graphs
 marginal-independence
-conditional-independence
 lab-dags-review-and-causal-discovery
+conditional-independence
 sufficient-adjustment-sets
 statistical-modeling
 why-model
