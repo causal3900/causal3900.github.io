@@ -108,12 +108,12 @@
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   X         A         Y
-## 1 1 untreated 47.361286
-## 2 1   treated 33.283696
-## 3 1 untreated 77.194282
-## 4 1   treated 87.312323
-## 5 1 untreated 71.029724
-## 6 2   treated  7.659161</code></pre>
+## 1 1 untreated 56.524731
+## 2 1   treated  6.404575
+## 3 1 untreated 82.485790
+## 4 1   treated 62.292258
+## 5 1 untreated 20.460279
+## 6 2   treated 38.026908</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
@@ -187,7 +187,7 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-09-16</p>
+    <p>Last built on 2024-09-17</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
