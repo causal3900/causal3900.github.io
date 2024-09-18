@@ -10,9 +10,9 @@ standardization-and-effect-measures
 lab-analyze-a-randomized-experiment
 inverse-probability-weighting
 consistency-and-positivity
-asking-good-causal-questions
+exchangeability-in-observational-studies
 lab-exchangeability-and-consistency-review
-asking-good-causal-questions-1
+asking-good-causal-questions
 directed-acyclic-graphs
 marginal-independence
 lab-dags-review-and-causal-discovery

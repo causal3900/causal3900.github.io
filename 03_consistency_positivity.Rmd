@@ -1,7 +1,7 @@
 
 # Consistency and positivity
 
-## Asking good causal questions
+## Exchangeability in Observational Studies
 
 > Sep 17. [**Slides.**](assets/slides/3-1_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.4-3.5. Optionally, read [Hernán 2016](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5207342/).
 
@@ -16,7 +16,7 @@ You will go through an activity to really hone in on the concepts of exchangeabi
 
 ## Asking good causal questions
 
-> Sep 19. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.3 & 3.6. Optionally, read [Sobel 2007](https://www.tandfonline.com/doi/abs/10.1198/016214506000000636).
+> Sep 19. [**Slides.**](assets/slides/3-2_good_questions.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.3 & 3.6. 
 
 Good causal questions are structured so that credibility is strong for two key assumptions: positivity and consistency.
 
