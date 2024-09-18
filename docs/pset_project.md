@@ -4,7 +4,7 @@ The course project is an opportunity to engage with the course content via a rea
 
 
 * [**Project Overview expectations**](assets/psets/project/project_overview.pdf)
-* [**Task 1 Details**](assets/psets/project/project_overview.pdf) and the [.Rmd file](assets/psets/project/task1.Rmd) to fill out
+* [**Task 1 Details**](assets/psets/project/task1.pdf) and the [.Rmd file](assets/psets/project/task1.Rmd) to fill out
 * Task 2 Details
 * Task 3 Details
 * Task 4 Details
