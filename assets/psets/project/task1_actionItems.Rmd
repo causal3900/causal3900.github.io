@@ -1,0 +1,43 @@
+---
+output: pdf_document
+---
+
+# Course Project: Task 1  
+Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
+
+Take a look at the [Task 1 details](https://causal3900.github.io/assets/psets/project/task1.pdf) and fill out the Action Items listed out below.
+
+# Action Items
+
+## (7 pts) Describe your causal question in a way that someone who has not taken this class would understand. Why are you interested in this question? How could answering this question allow for better decision making? 
+
+**Answer.** Your answer here
+
+
+## (3 pts) What is the treatment? What is the outcome? Write out the potential outcomes using the notation we have used in class.If your treatment is a variable that can take many different values, you could consider making it binary by simplifying the treatment in some way. For instance, if the treatment is the number of hours spent studying each day, you could dichotomize the treatment in the following way
+
+$$A_i = \begin{cases}
+            0 & \text{ if Hours } \leq 2\\
+        1 & \text{ if Hours } > 2
+        \end{cases} $$
+    
+**Answer.** Your answer here
+
+
+## (5 pts) How does the fundamental problem of causal inference apply to your question?
+
+
+**Answer.** Your answer here
+
+
+## (10 pts) We want to make sure there's some data available which gives you a chance of answer your question of interest. 
+
+If you are using ADD health data list out the variable name for the treatment and outcome below
+
+* Treatment variable name:
+* Outcome variable name:
+
+
+If you are using an original data set, provide a link to the data which includes observations on both the treatment and the outcome:
+
+**Answer.** Your answer here

@@ -7,7 +7,7 @@
 <title>Problem Set 1. Definitions | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="Problem Set 1. Definitions | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -68,10 +68,10 @@
 <li><a class="" href="discussion-07.-causal-effects-with-matching.html">Discussion 07. Causal Effects with Matching</a></li>
 <li><a class="" href="discussion-10.-causal-effects-with-regression-discontinuity.html">Discussion 10. Causal Effects with Regression Discontinuity</a></li>
 <li><a class="" href="discussion-12.-empirical-application-how-the-onset-of-violent-conflict-affects-economic-output.html">Discussion 12. Empirical Application: How the Onset of Violent Conflict Affects Economic Output</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="final-project.html">Final Project</a></li>
-<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="active" href="problem-set-1.-definitions-1.html">Problem Set 1. Definitions</a></li>
 <li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
@@ -94,125 +94,130 @@
 <p>Relevant material will be covered by <strong>Aug 29</strong>. Problem set is due <strong>Sept 10</strong> at 5pm.</p>
 <p>Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.</p>
 <p>To complete the problem set, <a href="assets/psets/pset1_download.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
-<div id="practice-with-potential-outcomes" class="section level2 unnumbered">
-<h2>1. Practice with potential outcomes<a class="anchor" aria-label="anchor" href="#practice-with-potential-outcomes"><i class="fas fa-link"></i></a>
+<div id="practice-with-potential-outcomes-1" class="section level2 unnumbered">
+<h2>1. Practice with potential outcomes<a class="anchor" aria-label="anchor" href="#practice-with-potential-outcomes-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.</p>
-<div id="points" class="section level3 unnumbered">
-<h3>1.1 (7 points)<a class="anchor" aria-label="anchor" href="#points"><i class="fas fa-link"></i></a>
+<div id="points-8" class="section level3 unnumbered">
+<h3>1.1 (7 points)<a class="anchor" aria-label="anchor" href="#points-8"><i class="fas fa-link"></i></a>
 </h3>
 <p>In Jose’s claim, what is the treatment?</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-1" class="section level3 unnumbered">
-<h3>1.2 (7 points)<a class="anchor" aria-label="anchor" href="#points-1"><i class="fas fa-link"></i></a>
+<div id="points-9" class="section level3 unnumbered">
+<h3>1.2 (7 points)<a class="anchor" aria-label="anchor" href="#points-9"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using the mathematical notation we discussed in class, define the two potential outcomes to which Jose is referring</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-2" class="section level3 unnumbered">
-<h3>1.3 (7 points)<a class="anchor" aria-label="anchor" href="#points-2"><i class="fas fa-link"></i></a>
+<div id="points-10" class="section level3 unnumbered">
+<h3>1.3 (7 points)<a class="anchor" aria-label="anchor" href="#points-10"><i class="fas fa-link"></i></a>
 </h3>
 <p>In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Jose’s claim.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-3" class="section level3 unnumbered">
-<h3>1.4 (7 points)<a class="anchor" aria-label="anchor" href="#points-3"><i class="fas fa-link"></i></a>
+<div id="points-11" class="section level3 unnumbered">
+<h3>1.4 (7 points)<a class="anchor" aria-label="anchor" href="#points-11"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using conditional expectations or probabilities, write the following in math: the probability of majoring in statistics is higher among students who attend Cornell than among students who attend NYU.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-4" class="section level3 unnumbered">
-<h3>1.5 (7 points)<a class="anchor" aria-label="anchor" href="#points-4"><i class="fas fa-link"></i></a>
+<div id="points-12" class="section level3 unnumbered">
+<h3>1.5 (7 points)<a class="anchor" aria-label="anchor" href="#points-12"><i class="fas fa-link"></i></a>
 </h3>
 <p>Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
-<div id="a-sailing-class" class="section level2 unnumbered">
-<h2>2. A sailing class<a class="anchor" aria-label="anchor" href="#a-sailing-class"><i class="fas fa-link"></i></a>
+<div id="a-sailing-class-1" class="section level2 unnumbered">
+<h2>2. A sailing class<a class="anchor" aria-label="anchor" href="#a-sailing-class-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.</p>
-<div id="points-5" class="section level3 unnumbered">
-<h3>2.1 (5 points)<a class="anchor" aria-label="anchor" href="#points-5"><i class="fas fa-link"></i></a>
+<div id="points-13" class="section level3 unnumbered">
+<h3>2.1 (5 points)<a class="anchor" aria-label="anchor" href="#points-13"><i class="fas fa-link"></i></a>
 </h3>
 <p>Last year, there was a survey of students who did and did not take the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher among those who took the class.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-6" class="section level3 unnumbered">
-<h3>2.2 (5 points)<a class="anchor" aria-label="anchor" href="#points-6"><i class="fas fa-link"></i></a>
+<div id="points-14" class="section level3 unnumbered">
+<h3>2.2 (5 points)<a class="anchor" aria-label="anchor" href="#points-14"><i class="fas fa-link"></i></a>
 </h3>
 <p>Last year, there was a survey of students before and after the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher in the survey taken after the class.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-7" class="section level3 unnumbered">
-<h3>2.3 (5 points)<a class="anchor" aria-label="anchor" href="#points-7"><i class="fas fa-link"></i></a>
+<div id="points-15" class="section level3 unnumbered">
+<h3>2.3 (5 points)<a class="anchor" aria-label="anchor" href="#points-15"><i class="fas fa-link"></i></a>
 </h3>
 <p>On average, the students in this class emerged more prepared to sail than they would have been without the class.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
-<div id="session-info" class="section level2 unnumbered">
-<h2>Session info<a class="anchor" aria-label="anchor" href="#session-info"><i class="fas fa-link"></i></a>
+<div id="session-info-1" class="section level2 unnumbered">
+<h2>Session info<a class="anchor" aria-label="anchor" href="#session-info-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>The chunk below will record information about your R session, which is useful for debugging issues in homework assignments that contain code.</p>
 <div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## R version 4.3.1 (2023-06-16)
-## Platform: aarch64-apple-darwin20 (64-bit)
-## Running under: macOS Sonoma 14.5
+<pre><code>## R version 4.4.1 (2024-06-14)
+## Platform: x86_64-pc-linux-gnu
+## Running under: Ubuntu 22.04.5 LTS
 ## 
 ## Matrix products: default
-## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
+## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
 ## 
 ## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## time zone: America/New_York
-## tzcode source: internal
+## tzcode source: system (glibc)
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.35    
-##  [4] fastmap_1.2.0     xfun_0.47         cachem_1.1.0     
-##  [7] knitr_1.43        memoise_2.0.1     htmltools_0.5.8.1
-## [10] rmarkdown_2.22    lifecycle_1.0.3   xml2_1.3.4       
-## [13] cli_3.6.1         downlit_0.4.4     sass_0.4.9       
-## [16] withr_2.5.0       jquerylib_0.1.4   compiler_4.3.1   
-## [19] rstudioapi_0.14   tools_4.3.1       evaluate_0.21    
-## [22] bslib_0.8.0       yaml_2.3.7        fs_1.6.2         
-## [25] jsonlite_1.8.7    rlang_1.1.1</code></pre>
+##  [1] digest_0.6.35     R6_2.5.1          bookdown_0.40    
+##  [4] fastmap_1.2.0     xfun_0.44         cachem_1.1.0     
+##  [7] knitr_1.47        memoise_2.0.1     htmltools_0.5.8.1
+## [10] rmarkdown_2.27    lifecycle_1.0.4   xml2_1.3.6       
+## [13] cli_3.6.2         downlit_0.4.3     sass_0.4.9       
+## [16] withr_3.0.0       jquerylib_0.1.4   compiler_4.4.1   
+## [19] rstudioapi_0.16.0 tools_4.4.1       evaluate_0.23    
+## [22] bslib_0.7.0       yaml_2.3.8        fs_1.6.4         
+## [25] jsonlite_1.8.8    rlang_1.1.3</code></pre>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></div>
+<div class="prev"><a href="course-project.html">Course Project</a></div>
 <div class="next"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#problem-set-1.-definitions-1">Problem Set 1. Definitions</a></li>
 <li>
-<a class="nav-link" href="#practice-with-potential-outcomes">1. Practice with potential outcomes</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points">1.1 (7 points)</a></li>
-<li><a class="nav-link" href="#points-1">1.2 (7 points)</a></li>
-<li><a class="nav-link" href="#points-2">1.3 (7 points)</a></li>
-<li><a class="nav-link" href="#points-3">1.4 (7 points)</a></li>
-<li><a class="nav-link" href="#points-4">1.5 (7 points)</a></li>
+<a class="nav-link" href="#practice-with-potential-outcomes-1">1. Practice with potential outcomes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#points-8">1.1 (7 points)</a></li>
+<li><a class="nav-link" href="#points-9">1.2 (7 points)</a></li>
+<li><a class="nav-link" href="#points-10">1.3 (7 points)</a></li>
+<li><a class="nav-link" href="#points-11">1.4 (7 points)</a></li>
+<li><a class="nav-link" href="#points-12">1.5 (7 points)</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#a-sailing-class">2. A sailing class</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-5">2.1 (5 points)</a></li>
-<li><a class="nav-link" href="#points-6">2.2 (5 points)</a></li>
-<li><a class="nav-link" href="#points-7">2.3 (5 points)</a></li>
+<a class="nav-link" href="#a-sailing-class-1">2. A sailing class</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#points-13">2.1 (5 points)</a></li>
+<li><a class="nav-link" href="#points-14">2.2 (5 points)</a></li>
+<li><a class="nav-link" href="#points-15">2.3 (5 points)</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#session-info">Session info</a></li>
+<li><a class="nav-link" href="#session-info-1">Session info</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -232,7 +237,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-09-02</p>
+    <p>Last built on 2024-09-18</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
