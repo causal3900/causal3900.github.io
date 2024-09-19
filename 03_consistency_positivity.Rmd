@@ -10,7 +10,7 @@ What makes causal inference with observational data so challenging? Why is makin
 
 ## Lab: Exchangeability and Consistency Review
 
-> Sep 18 [**Slides.**](assets/discussions/discussion4-class_activity.pdf)
+> Sep 18 [**Slides.**](assets/discussions/discussion4-class_activity_solutions.pdf)
 
 You will go through an activity to really hone in on the concepts of exchangeability and consistency. Download the class assignment [**here**](assets/discussions/discussion-9-18.pdf).
 
