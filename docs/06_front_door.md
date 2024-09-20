@@ -74,7 +74,7 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.595
+## 1     0 0.583
 ## 2     1 0.743
 ```
 
@@ -97,10 +97,10 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.903 
-## 2     0     1      0.0973
-## 3     1     0      0.0969
-## 4     1     1      0.903
+## 1     0     0       0.899
+## 2     0     1       0.101
+## 3     1     0       0.100
+## 4     1     1       0.900
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
@@ -122,8 +122,8 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.505
-## 2     1 0.495
+## 1     0 0.506
+## 2     1 0.494
 ```
 
 You also need the outcome distribution given $M$ and $A$.
@@ -141,10 +141,10 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.588
-## 2     0     1         0.664
-## 3     1     0         0.652
-## 4     1     1         0.753
+## 1     0     0         0.571
+## 2     0     1         0.695
+## 3     1     0         0.661
+## 4     1     1         0.752
 ```
 
 Given the above, you can use backdoor adjustment to identify the outcome under intervention on $M$ by backdoor adjustment for $A$.
@@ -162,8 +162,8 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ## # A tibble: 2 × 2
 ##       M p_Y_under_M
 ##   <int>       <dbl>
-## 1     0       0.620
-## 2     1       0.708
+## 1     0       0.616
+## 2     1       0.723
 ```
 
 Bringing the above together, we have front-door identification.
@@ -182,6 +182,6 @@ p_Y_under_A <- p_M_given_A %>%
 ## # A tibble: 2 × 2
 ##       A estimate
 ##   <int>    <dbl>
-## 1     0    0.628
-## 2     1    0.699
+## 1     0    0.626
+## 2     1    0.712
 ```
