@@ -1,11 +1,9 @@
-
 # Directed Acyclic Graphs
 
-To see the lecture slides from Fall 2023, [click here](https://causal3900.github.io/fa23/directed-acyclic-graphs.html). Updated slides will be linked below as soon as they are available.
 
 ## Marginal independence
 
-> Sep 24. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
+> Sep 24. [**Slides.**](assets/sli4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
 
 This class will introduce key ideas about DAGs.
 
@@ -30,11 +28,9 @@ DAGs help us know if variables $A$ and $B$ are statistically related
   \end{tikzpicture}
 </script>
 
-## Lab: DAGs Review and Causal discovery
+## Lab: Project Overview
 
-> Sep 25. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Fine Point 6.3.
-
-In this lab, we're reviewing some DAG basics such as identifying paths and determining whether a path is open or closed. We'll also talk a bit about causal discovery and practice creating DAGs from data.
+> Sep 25. [**Slides.**]() 
 
 ## Conditional independence
 

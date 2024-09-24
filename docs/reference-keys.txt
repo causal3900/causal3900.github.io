@@ -15,7 +15,7 @@ lab-exchangeability-and-consistency-review
 asking-good-causal-questions
 directed-acyclic-graphs
 marginal-independence
-lab-dags-review-and-causal-discovery
+lab-project-overview
 conditional-independence
 sufficient-adjustment-sets
 statistical-modeling
