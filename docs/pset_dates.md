@@ -11,7 +11,7 @@ We'll post due dates here throughout the semester.
 
 - Pset 2 **Peer Reviews**: Due Tuesday, October 1st at 11:59pm via Canvas
 
-- Project Task 1: Due Thursday, October 3rd at 5pm via Canvas
+- Project Task 1: Due Thursday, October 3rd at 11:59pm via Canvas
 
 ## Past {-}
 
