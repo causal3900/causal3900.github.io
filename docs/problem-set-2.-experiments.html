@@ -7,7 +7,7 @@
 <title>Problem Set 2. Experiments | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Problem Set 2. Experiments | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.7.0/transition.js"></script><script src="libs/bs3compat-0.7.0/tabs.js"></script><script src="libs/bs3compat-0.7.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
@@ -129,13 +129,13 @@
 <h2>2. Analyzing the experimental data<a class="anchor" aria-label="anchor" href="#analyzing-the-experimental-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Load packages that our code will use.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 <p><strong>To complete the rest of this assignment, you will need to download the study’s data from OpenICPSR</strong>: <a href="https://www.openicpsr.org/openicpsr/project/116023/version/V1/view">https://www.openicpsr.org/openicpsr/project/116023/version/V1/view</a>. This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using <code>read_dta</code>.</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"assets/data/lakisha_aer.dta"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"assets/data/lakisha_aer_aggregated.dta"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p>If you have an error, you might need to set your working directory first. This tells R where to look for data files. In other words, your data file needs to be in the same folder as your homework file, AND RStudio needs to be told which folder to look at. At the top of RStudio, click Session -&gt; Set Working Directory -&gt; To Source File Location.</p>
@@ -192,7 +192,7 @@
 </table></div>
 <p>For 2.1–2.4, we will think of <code>race</code> as the treatment. For 2.5–2.6, we will think of <code>firstname</code> as the treatment.</p>
 <p>Restrict to these variables using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>.</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_selected</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">call</span>, <span class="va">firstname</span>, <span class="va">race</span>, <span class="va">sex</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
@@ -215,7 +215,7 @@
 <blockquote>
 <p>Here’s a <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">reference</a> that introduces <code>group_by</code> and <code>summarize</code>.</p>
 </blockquote>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_summarized</span> <span class="op">&lt;-</span> <span class="va">d_selected</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
 <span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -242,7 +242,7 @@
 <p><strong>Standard error in code.</strong> We translated the standard error formula into code for you below. This function accepts an estimated probability <code>p</code> and sample size <code>n</code> and returns the estimated standard error. You can use this <code>se_binary()</code> function in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
 </blockquote>
 <blockquote>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">se_binary</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span> <span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
@@ -262,7 +262,7 @@
 </blockquote>
 <blockquote>
 <p><strong>Confidence interval in code.</strong> We translated the confidence interval formula into code for you below. These functions accept an estimate and standard error and return the lower and upper bounds (respectively) of a 95% confidence interval that assumes a Normal sampling distribution. You can use these functions in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_lower</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">estimate</span>, <span class="va">standard_error</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">estimate</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.975</span><span class="op">)</span> <span class="op">*</span> <span class="va">standard_error</span></span>
 <span><span class="op">}</span></span>
@@ -291,7 +291,7 @@
 <blockquote>
 <p>One way to visualize is by placing first names on the <span class="math inline">\(x\)</span>-axis and using a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> layer to facet over race and sex.</p>
 </blockquote>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">your_ggplot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">sex</span>,</span>
 <span>             scales <span class="op">=</span> <span class="st">"free_x"</span>, </span>

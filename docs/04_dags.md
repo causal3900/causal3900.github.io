@@ -30,7 +30,7 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 
 ## Lab: Project Overview
 
-> Sep 25. [**Slides.**]() 
+> Sep 25. You can find information about the course project [**here**](https://causal3900.github.io/course-project.html). During discussion, we will walk through the [**project overview**](https://causal3900.github.io/assets/psets/project/project_overview.pdf) and the instructions for [**Task 1**](https://causal3900.github.io/assets/psets/project/task1.pdf). *Task 1 is due Thursday, October 3rd.*
 
 ## Conditional independence
 

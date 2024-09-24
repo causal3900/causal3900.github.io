@@ -38,12 +38,12 @@ $$P(Y^a)=\sum_m P(M = m\mid A = a) \sum_{a'}P(A = a')P(Y\mid M = m, A = a')$$
 The lecture slides translate this method into code in one simulated example. We are providing the code below to make it easy to copy and follow along.
 
 
-``` r
+```r
 library(tidyverse)
 ```
 
 
-``` r
+```r
 sim_data <- function(n = 100) {
   data.frame(U = runif(n)) %>%
     # Generate a binary treatment
@@ -64,7 +64,7 @@ data <- sim_data(n = 10e3)
 
 Examine the descriptive relationship between $A$ and $Y$.
 
-``` r
+```r
 data %>%
   group_by(A) %>%
   summarize(Y = mean(Y))
@@ -74,13 +74,13 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.595
-## 2     1 0.748
+## 1     0 0.600
+## 2     1 0.753
 ```
 
 Estimate the probability of each $M$ given $A$. Under the causal assumptions, this corresponds to the expected value of $M$ under assignment to each value of $A$ since $M\rightarrow A$ is unconfounded.
 
-``` r
+```r
 p_M_given_A <- data %>%
   # Count size of each group
   group_by(A, M) %>%
@@ -97,15 +97,15 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.900 
-## 2     0     1      0.100 
-## 3     1     0      0.0929
-## 4     1     1      0.907
+## 1     0     0      0.897 
+## 2     0     1      0.103 
+## 3     1     0      0.0980
+## 4     1     1      0.902
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
 
-``` r
+```r
 # Probability of each A
 p_A <- data %>%
   # Count size of each group
@@ -122,13 +122,13 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.501
-## 2     1 0.499
+## 1     0 0.495
+## 2     1 0.505
 ```
 
 You also need the outcome distribution given $M$ and $A$.
 
-``` r
+```r
 # Probability of Y = 1 given M and A
 p_Y_given_M_A <- data %>%
   group_by(A,M) %>%
@@ -141,15 +141,15 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.586
-## 2     0     1         0.671
-## 3     1     0         0.655
-## 4     1     1         0.757
+## 1     0     0         0.589
+## 2     0     1         0.699
+## 3     1     0         0.681
+## 4     1     1         0.761
 ```
 
 Given the above, you can use backdoor adjustment to identify the outcome under intervention on $M$ by backdoor adjustment for $A$.
 
-``` r
+```r
 # Probability of Y = 1 under intervention on M
 p_Y_under_M <- p_Y_given_M_A %>%
   left_join(p_A, by = "A") %>%
@@ -162,13 +162,13 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ## # A tibble: 2 × 2
 ##       M p_Y_under_M
 ##   <int>       <dbl>
-## 1     0       0.621
-## 2     1       0.714
+## 1     0       0.635
+## 2     1       0.731
 ```
 
 Bringing the above together, we have front-door identification.
 
-``` r
+```r
 # Probability of Y = 1 under intervention on A
 p_Y_under_A <- p_M_given_A %>%
   left_join(p_Y_under_M,
@@ -182,6 +182,6 @@ p_Y_under_A <- p_M_given_A %>%
 ## # A tibble: 2 × 2
 ##       A estimate
 ##   <int>    <dbl>
-## 1     0    0.630
-## 2     1    0.705
+## 1     0    0.645
+## 2     1    0.721
 ```
