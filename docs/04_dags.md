@@ -36,7 +36,7 @@ You can find information about the course project [**here**](https://causal3900.
 
 ## Conditional independence
 
-> Sep 26. [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 26. [**Slides.**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
 Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 
