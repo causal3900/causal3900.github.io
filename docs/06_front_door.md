@@ -74,8 +74,8 @@ data %>%
 ## # A tibble: 2 × 2
 ##       A     Y
 ##   <int> <dbl>
-## 1     0 0.613
-## 2     1 0.742
+## 1     0 0.587
+## 2     1 0.757
 ```
 
 Estimate the probability of each $M$ given $A$. Under the causal assumptions, this corresponds to the expected value of $M$ under assignment to each value of $A$ since $M\rightarrow A$ is unconfounded.
@@ -97,10 +97,10 @@ p_M_given_A <- data %>%
 ## # Groups:   A [2]
 ##       A     M p_M_under_A
 ##   <int> <int>       <dbl>
-## 1     0     0      0.903 
-## 2     0     1      0.0974
-## 3     1     0      0.103 
-## 4     1     1      0.897
+## 1     0     0      0.909 
+## 2     0     1      0.0913
+## 3     1     0      0.0998
+## 4     1     1      0.900
 ```
 
 Within the front-door identification formula, you need the marginal probability of each treatment value.
@@ -122,8 +122,8 @@ p_A <- data %>%
 ## # A tibble: 2 × 2
 ##       A   p_A
 ##   <int> <dbl>
-## 1     0 0.505
-## 2     1 0.495
+## 1     0 0.493
+## 2     1 0.507
 ```
 
 You also need the outcome distribution given $M$ and $A$.
@@ -141,10 +141,10 @@ p_Y_given_M_A <- data %>%
 ## # A tibble: 4 × 3
 ##       A     M P_Y_given_A_M
 ##   <int> <int>         <dbl>
-## 1     0     0         0.601
-## 2     0     1         0.726
-## 3     1     0         0.659
-## 4     1     1         0.752
+## 1     0     0         0.579
+## 2     0     1         0.669
+## 3     1     0         0.656
+## 4     1     1         0.768
 ```
 
 Given the above, you can use backdoor adjustment to identify the outcome under intervention on $M$ by backdoor adjustment for $A$.
@@ -162,8 +162,8 @@ p_Y_under_M <- p_Y_given_M_A %>%
 ## # A tibble: 2 × 2
 ##       M p_Y_under_M
 ##   <int>       <dbl>
-## 1     0       0.630
-## 2     1       0.739
+## 1     0       0.618
+## 2     1       0.719
 ```
 
 Bringing the above together, we have front-door identification.
@@ -182,6 +182,6 @@ p_Y_under_A <- p_M_given_A %>%
 ## # A tibble: 2 × 2
 ##       A estimate
 ##   <int>    <dbl>
-## 1     0    0.641
-## 2     1    0.727
+## 1     0    0.627
+## 2     1    0.709
 ```
