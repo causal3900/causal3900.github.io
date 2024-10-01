@@ -54,3 +54,10 @@ When marginal exchangeability does not hold, we may be able to condition on some
 
 1. The set $L$ blocks all backdoor paths
 2. The set $L$ does not contain any descendants of $A$
+
+
+## Lab: DAGs Review
+
+> Oct 2  [**Slides.**](assets/discussions/discussion6-dags.pdf)
+
+In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.

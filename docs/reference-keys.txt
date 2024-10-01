@@ -18,6 +18,7 @@ marginal-independence
 lab-project-overview
 conditional-independence
 sufficient-adjustment-sets
+lab-dags-review
 statistical-modeling
 why-model
 lab-parametric-g-formula
