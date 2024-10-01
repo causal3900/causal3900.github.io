@@ -74,11 +74,11 @@ sessionInfo()
 ```
 ## R version 4.4.1 (2024-06-14)
 ## Platform: x86_64-pc-linux-gnu
-## Running under: Ubuntu 22.04.5 LTS
+## Running under: Ubuntu 24.04.1 LTS
 ## 
 ## Matrix products: default
 ## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
-## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
+## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -102,7 +102,7 @@ sessionInfo()
 ## [10] rmarkdown_2.27    lifecycle_1.0.4   xml2_1.3.6       
 ## [13] cli_3.6.2         downlit_0.4.3     sass_0.4.9       
 ## [16] withr_3.0.0       jquerylib_0.1.4   compiler_4.4.1   
-## [19] rstudioapi_0.16.0 tools_4.4.1       evaluate_0.23    
-## [22] bslib_0.7.0       yaml_2.3.8        fs_1.6.4         
-## [25] jsonlite_1.8.8    rlang_1.1.3
+## [19] tools_4.4.1       evaluate_0.23     bslib_0.7.0      
+## [22] yaml_2.3.8        fs_1.6.4          rlang_1.1.3      
+## [25] jsonlite_1.8.8
 ```
