@@ -28,7 +28,7 @@ True or False? Conditioning on $C$ blocks this path: $A\leftarrow B \rightarrow 
 
 ### 1.7 (4 points) {-}
 
-True or False? Conditioning on $C$ blocks this path: $A\leftarrow B \leftarrow C \rightarrow D \rightarrow Y$
+True or False? Conditioning on $C$ blocks this path: $A\leftarrow B \leftarrow C \rightarrow D \rightarrow Y$. Explain your answer.
 
 ## 2. Draw a DAG {-}
 
