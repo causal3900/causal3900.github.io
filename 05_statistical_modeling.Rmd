@@ -1,9 +1,8 @@
-
 # Statistical modeling
 
 ## Why model?
 
-> Sep 26. [**Slides.**](assets/slides/5-1_why_model.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+> Oct 3. [**Slides.**](assets/slides/5-1_why_model.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
 
 To this point, we have not used any statistical models. Instead, we have
 
@@ -12,9 +11,16 @@ To this point, we have not used any statistical models. Instead, we have
 
 Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.
 
+## Inverse probability of treatment weighting
+
+> Oct 8. [**Slides.**](assets/slides/5_3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
+
+Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.
+
+
 ## Lab: Parametric g-formula
 
-> Sep 27. Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
+> Oct 9. Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
 
 Before discussion, make sure to download the data we'll be using. See the Ed Discussion post for more detail. 
 
@@ -22,35 +28,28 @@ After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-
 
 [**Solutions**](assets/discussions/discussion6-solutions.html) for lab exercise and [**slides**](assets/discussions/discussion6-slides.pdf)
 
-## Inverse probability of treatment weighting
-
-> Sep 28. [**Slides.**](assets/slides/5_3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
-
-Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.
 
 ## Matching
 
-> Oct 3. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 10. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
 
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 
-## Lab: Matching in R
 
-> Oct 4. [**Slides.**](assets/discussions/discussion7.pdf) [**R Markdown.**](assets/discussions/matching_lab.Rmd)
-
-In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
 ## Discussion of matching
 
-> Oct 5 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
+> Oct 15 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
-## Lab: Final Project + HW4 Q&A
 
-> Oct 10 [**Slides**](assets/discussions/discussion8.pdf)
+## Lab: Matching in R
 
-We'll talk about the final project!
+> Oct 16. [**Slides.**](assets/discussions/discussion7.pdf) [**R Markdown.**](assets/discussions/matching_lab.Rmd)
+
+In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
+
 
 ## Worked example of statistical modeling
 

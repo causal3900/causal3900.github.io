@@ -21,12 +21,11 @@ sufficient-adjustment-sets
 lab-dags-review
 statistical-modeling
 why-model
-lab-parametric-g-formula
 inverse-probability-of-treatment-weighting
+lab-parametric-g-formula
 matching
-lab-matching-in-r
 discussion-of-matching
-lab-final-project-hw4-qa
+lab-matching-in-r
 worked-example-of-statistical-modeling
 data-access
 worked-example-outcome-modeling
