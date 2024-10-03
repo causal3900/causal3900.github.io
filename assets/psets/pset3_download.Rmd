@@ -12,7 +12,7 @@ header-includes: \usepackage{tikz} \usetikzlibrary{arrows,shapes.arrows,position
 
 Relevant material will be covered by **Oct 1**. Problem set is due **Oct 11**.
 
-To complete the problem set, [**copy this code**](https://raw.githubusercontent.com/causal3900/causal3900.github.io/main/assets/psets/pset3_download.Rmd) into a .Rmd and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas. 
+Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas. 
 
 Note: For this problem set only, you alternatively may complete the homework by hand. This is because you are welcome to draw DAGs by hand instead of producing them by code. If you do this, scan or take a picture of your document.
 

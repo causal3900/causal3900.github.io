@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 3. DAGs. | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
-<meta name="description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Problem Set 3. DAGs. | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
+<meta property="og:description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 3. DAGs. | Causal Inference Course">
-<meta name="twitter:description" content="We have not posted this assignment yet. In the meantime, you may reference Problem Set 3 from Fall 2023, but please note there may be significant changes.">
+<meta name="twitter:description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -88,16 +88,89 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-3.-dags." class="section level1 unnumbered">
 <h1>Problem Set 3. DAGs.<a class="anchor" aria-label="anchor" href="#problem-set-3.-dags."><i class="fas fa-link"></i></a>
 </h1>
-<p>We have not posted this assignment yet.</p>
-<p>In the meantime, you may reference Problem Set 3 from <a href="https://causal3900.github.io/fa23/problem-set-3.-dags..html">Fall 2023</a>, but please note <strong>there may be significant changes.</strong></p>
+<p>Relevant material will be covered by <strong>Oct 1</strong>. Problem set is due <strong>Oct 11</strong>.</p>
+<p>To complete the problem set, <a href="https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset3_download.Rmd"><strong>copy this code</strong></a> into a .Rmd and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
+<p>Note: For this problem set only, you may alternatively complete the homework by hand. This is because you are welcome to draw DAGs by hand instead of producing them by code. If you do this, scan or take a picture of your document.</p>
+<div id="true-or-false" class="section level2 unnumbered">
+<h2>1. True or False<a class="anchor" aria-label="anchor" href="#true-or-false"><i class="fas fa-link"></i></a>
+</h2>
+<p>For 1.1–1.5, answer True or False: The <span class="math inline">\(Z\)</span> nodes (i.e., either <span class="math inline">\(Z\)</span> itself or the set <span class="math inline">\(\{Z_1, Z_2, \ldots \}\)</span>) form a sufficient adjustment set to identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>. Explain your answer in one sentence. If False, state the backdoor path that is unblocked conditional on <span class="math inline">\(Z\)</span>.</p>
+<style>.img-responsive {
+  max-width: 100%;
+}
+</style>
+<div class="panel">
+<div class="inline-figure"><img class="img-responsive" src="assets/pset3dags.png" alt="DAGs for question 1"></div>
+</div>
+<div id="points-8" class="section level3 unnumbered">
+<h3>1.6 (4 points)<a class="anchor" aria-label="anchor" href="#points-8"><i class="fas fa-link"></i></a>
+</h3>
+<p>True or False? Conditioning on <span class="math inline">\(C\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \rightarrow C \leftarrow D \rightarrow Y\)</span>. Explain your answer.</p>
+</div>
+<div id="points-9" class="section level3 unnumbered">
+<h3>1.7 (4 points)<a class="anchor" aria-label="anchor" href="#points-9"><i class="fas fa-link"></i></a>
+</h3>
+<p>True or False? Conditioning on <span class="math inline">\(C\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \leftarrow C \rightarrow D \rightarrow Y\)</span></p>
+</div>
+</div>
+<div id="draw-a-dag" class="section level2 unnumbered">
+<h2>2. Draw a DAG<a class="anchor" aria-label="anchor" href="#draw-a-dag"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>In this problem, we reference the idea of “adjusting for” a variable <span class="math inline">\(X\)</span>. We are using the terminology “adjust for” as equivalent to the terminology “condition on.” To <em>adjust for</em> or <em>condition on</em> <span class="math inline">\(X\)</span> means to conduct analysis conditional on <span class="math inline">\(X\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>Building intuition from standardization, to adjust for or condition on <span class="math inline">\(X\)</span> means to</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>conduct analysis within each subgroup with <span class="math inline">\(X = x\)</span> (example: estimate the relationship between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> among those with <span class="math inline">\(X = x\)</span>)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>average the <span class="math inline">\(x\)</span>-specific estimates over the population distribution of <span class="math inline">\(X\)</span>
+</li>
+</ul>
+</blockquote>
+<div id="your-task-12-points" class="section level3 unnumbered">
+<h3>2.1. Your Task (12 points)<a class="anchor" aria-label="anchor" href="#your-task-12-points"><i class="fas fa-link"></i></a>
+</h3>
+<p>A researcher comes to you with a proposal: identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> by adjusting for any variable <span class="math inline">\(B\)</span> that predicts <span class="math inline">\(A\)</span> and also predicts <span class="math inline">\(Y\)</span>. They propose that machine learning can thus solve causal identification for us.</p>
+<p>The researcher is wrong. Show them why. Draw a DAG in which</p>
+<ul>
+<li>the effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> is unconfounded (i.e. marginal exchangeability holds)</li>
+<li>a variable <span class="math inline">\(B\)</span> is statistically associated with <span class="math inline">\(A\)</span>
+</li>
+<li>a variable <span class="math inline">\(B\)</span> is statistically associated with <span class="math inline">\(Y\)</span>
+</li>
+<li>but one does not need to adjust for <span class="math inline">\(B\)</span> to identify the causal effect</li>
+</ul>
+<p>For full credit, all you need to do is draw a DAG. No need to explain your answer, although we encourage you to write down your explanation for your own sake, to make sure your DAG says what you expect!</p>
+<blockquote>
+<p>See <a href="https://rpubs.com/brianwood1/698510">https://rpubs.com/brianwood1/698510</a> for how to insert an image.</p>
+</blockquote>
 
+</div>
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
 <div class="next"><a href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li>
+<li>
+<a class="nav-link" href="#true-or-false">1. True or False</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#points-8">1.6 (4 points)</a></li>
+<li><a class="nav-link" href="#points-9">1.7 (4 points)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#draw-a-dag">2. Draw a DAG</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#your-task-12-points">2.1. Your Task (12 points)</a></li></ul>
+</li>
+</ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
@@ -116,7 +189,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-10-02</p>
+    <p>Last built on 2024-10-03</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

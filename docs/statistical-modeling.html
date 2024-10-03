@@ -7,7 +7,7 @@
 <title>5 Statistical modeling | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="5.1 Why model?  Oct 3. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="5 Statistical modeling | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="5.1 Why model?  Oct 3. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
@@ -132,23 +132,23 @@
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
-<div id="discussion-of-matching" class="section level2" number="5.5">
+<div id="lab-matching-in-r" class="section level2" number="5.5">
 <h2>
-<span class="header-section-number">5.5</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Oct 15 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides.</strong></a> <a href="assets/slides/matching_cont.Rmd"><strong>R Markdown.</strong></a></p>
-</blockquote>
-<p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
-</div>
-<div id="lab-matching-in-r" class="section level2" number="5.6">
-<h2>
-<span class="header-section-number">5.6</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.5</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 16. <a href="assets/discussions/discussion7.pdf"><strong>Slides.</strong></a> <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a></p>
 </blockquote>
 <p>In this lab, we’ll go over distance metrics when matching on multiple covariates. We’ll also go over examples of using R to do matching to estimate causal effects.</p>
+</div>
+<div id="discussion-of-matching" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 17 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides.</strong></a> <a href="assets/slides/matching_cont.Rmd"><strong>R Markdown.</strong></a></p>
+</blockquote>
+<p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
 </div>
 <div id="worked-example-of-statistical-modeling" class="section level2" number="5.7">
 <h2>
@@ -448,7 +448,7 @@ graduate whose probability of completing college was similar</li>
 </ul>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
-<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
 <span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
 <span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
@@ -542,8 +542,8 @@ points.</p>
 <li><a class="nav-link" href="#inverse-probability-of-treatment-weighting"><span class="header-section-number">5.2</span> Inverse probability of treatment weighting</a></li>
 <li><a class="nav-link" href="#lab-parametric-g-formula"><span class="header-section-number">5.3</span> Lab: Parametric g-formula</a></li>
 <li><a class="nav-link" href="#matching"><span class="header-section-number">5.4</span> Matching</a></li>
-<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.5</span> Discussion of matching</a></li>
-<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.6</span> Lab: Matching in R</a></li>
+<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.5</span> Lab: Matching in R</a></li>
+<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.6</span> Discussion of matching</a></li>
 <li>
 <a class="nav-link" href="#worked-example-of-statistical-modeling"><span class="header-section-number">5.7</span> Worked example of statistical modeling</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#data-access"><span class="header-section-number">5.7.1</span> Data access</a></li>
@@ -571,7 +571,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-10-02</p>
+    <p>Last built on 2024-10-03</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

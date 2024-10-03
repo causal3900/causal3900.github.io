@@ -2,6 +2,8 @@
 
 # Front door
 
+**NOT UPDATED YET: DATES & CONTENT ARE STILL FROM FALL 2023**
+
 > Oct 12. [**Slides.**](assets/slides/6-1_front_door.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Technical Point 7.4. Optionally, see [Glynn and Kashin 2018](https://doi.org/10.1080/01621459.2017.1398657)
 
 This lecture is about how to engage with new methods for causal identification beyond backdoor adjustment. The learning goals are general

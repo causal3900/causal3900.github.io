@@ -36,20 +36,18 @@ After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 
 
-
-## Discussion of matching
-
-> Oct 15 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
-
-We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
-
-
 ## Lab: Matching in R
 
 > Oct 16. [**Slides.**](assets/discussions/discussion7.pdf) [**R Markdown.**](assets/discussions/matching_lab.Rmd)
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
+
+## Discussion of matching
+
+> Oct 17 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
+
+We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
 ## Worked example of statistical modeling
 
