@@ -31,7 +31,6 @@ data-access
 worked-example-outcome-modeling
 worked-example-treatment-modeling
 worked-example-matching
-front-door
 instrumental-variables
 experimental-settings
 lab-instrumental-variable-analysis-in-code

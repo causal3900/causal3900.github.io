@@ -1,9 +1,12 @@
+# (PART) Identification without exchangeability {-}
 
 # Instrumental variables
 
+**NOTE THAT SLIDES MAY BE OLD - IF THEY SAY FALL 2023 THEY HAVE NOT BEEN UPDATED YET!**
+
 ## Experimental settings
 
-> Oct 17. [**Slides.**](assets/slides/7-1_iv_experimental.pdf)
+> Oct 22. [**Slides.**](assets/slides/7-1_iv_experimental.pdf)
 
 An instrumental variable (IV) identification strategy applies when a treatment effect of $A$ on $Y$ is confounded by unobserved variables ($U$), but an **instrument** $Z$ creates random unconfounded variation in $A$.
 
@@ -24,12 +27,12 @@ A very clean setting for IV is randomized experiments with non-compliance: an ex
 
 In this lab we will implement instrumental variables estimators in R.
 
-> October 18 [**Slides.**](assets/discussions/discussion9-slides.pdf) Download the
+> October 23 [**Slides.**](assets/discussions/discussion9-slides.pdf) Download the
 R Markdown file [**here**](assets/discussions/discussion9.Rmd). **_Update_**:
 Solutions to the coding exercise are [**here**](assets/discussions/discussion9-solutions.Rmd).
 
 ## Observational settings
 
-> Oct 19 [**Slides.**](assets/slides/7-2_iv_observational.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
+> Oct 24 [**Slides.**](assets/slides/7-2_iv_observational.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
 
 On Thursday, we move on to IV analysis in observational settings. Here we focus on the casual assumptions required for IV. These assumptions often hold by design in experiments with non-compliance. In observational settings, they can be more doubtful.

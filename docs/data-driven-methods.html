@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>11 Data-driven methods | Causal Inference Course</title>
+<title>10 Data-driven methods | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
-<meta name="description" content="11.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
+<meta name="description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="11 Data-driven methods | Causal Inference Course">
+<meta property="og:title" content="10 Data-driven methods | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="11.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
+<meta property="og:description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 Data-driven methods | Causal Inference Course">
-<meta name="twitter:description" content="11.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
+<meta name="twitter:title" content="10 Data-driven methods | Causal Inference Course">
+<meta name="twitter:description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -53,15 +53,14 @@
 <li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
 <li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
 <li class="book-part">Identification without exchangeability</li>
-<li><a class="" href="front-door.html"><span class="header-section-number">6</span> Front door</a></li>
-<li><a class="" href="instrumental-variables.html"><span class="header-section-number">7</span> Instrumental variables</a></li>
-<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
-<li><a class="" href="difference-in-difference.html"><span class="header-section-number">9</span> Difference in difference</a></li>
-<li><a class="" href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-difference.html"><span class="header-section-number">8</span> Difference in difference</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="active" href="data-driven-methods.html"><span class="header-section-number">11</span> Data-driven methods</a></li>
-<li><a class="" href="current-research.html"><span class="header-section-number">12</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">13</span> Course recap</a></li>
+<li><a class="active" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -85,13 +84,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-driven-methods" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-driven-methods" class="section level1" number="10">
 <h1>
-<span class="header-section-number">11</span> Data-driven methods<a class="anchor" aria-label="anchor" href="#data-driven-methods"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Data-driven methods<a class="anchor" aria-label="anchor" href="#data-driven-methods"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introduction-3" class="section level2" number="11.1">
+<div id="introduction-3" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">11.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-3"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Nov 14 <a href="assets/slides/11-1_data_driven_intro.pdf"><strong>Slides.</strong></a></p>
@@ -99,24 +98,24 @@
 <p>For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these subgroups.</p>
 <p><strong>Concrete example.</strong> Who responds most to a nudget to go for a walk? Imagine your first conduct a survey that asks people how much they love the fall, from (<span class="math inline">\(X = 1\)</span> for least) to (<span class="math inline">\(X = 10\)</span> for most). You then randomize them to a control condition (<span class="math inline">\(A = \texttt{untreated}\)</span>) or a treatment condition (<span class="math inline">\(A = \texttt{treated}\)</span>) that encourages them to go for a walk outside. The outcome <span class="math inline">\(Y\)</span> is active minutes in the day, as recorded on an activity tracker.</p>
 <p><strong>Simulated data.</strong> In real data, it can be difficult to evaluate causal estimators because the truth is unknown. Today we will use data simulated from a known process in order to study the properties of estimators. The code below will prepare your R environment with a function <code>simulate_sample()</code> that will generate data with 50 observations.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html">source</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/main/assets/data/simulate_sample.R"</span><span class="op">)</span></span></code></pre></div>
 <p>Here is an example of the code to simulate data:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A         Y
-## 1 1 untreated  98.61746
-## 2 1   treated 109.98194
-## 3 1 untreated 164.77864
-## 4 1   treated  34.68188
-## 5 1 untreated 107.75567
-## 6 2   treated  32.56704</code></pre>
+<pre><code>##   X         A          Y
+## 1 1 untreated  16.178026
+## 2 1   treated  30.624871
+## 3 1 untreated   3.766683
+## 4 1   treated  31.047962
+## 5 1 untreated 146.284487
+## 6 2   treated  40.134253</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
 <p><strong>Estimator.</strong> An estimator is a function that takes a dataset and returns estimates. Below is a nonparametric estimator for our setting.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estimator</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>    <span class="co"># Group by treatment A and confounder X</span></span>
@@ -132,7 +131,7 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>effect <span class="op">=</span> <span class="va">y_treated</span> <span class="op">-</span> <span class="va">y_untreated</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>You can apply this estimator as follows.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">estimate</span> <span class="op">&lt;-</span> <span class="fu">estimator</span><span class="op">(</span><span class="va">simulated</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Task.</strong> Using a sample simulated on your computer, estimate the average causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> within subgroups defined by <span class="math inline">\(X\)</span>. Report two numbers to us.</p>
 <ul>
@@ -142,9 +141,9 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 <p>We will discuss the distribution of estimates that we get as a class.</p>
 <p>If you are ready early, you could think about how you might evaluate performance of this approach over many repeated simulations.</p>
 </div>
-<div id="machine-learning-approaches" class="section level2" number="11.2">
+<div id="machine-learning-approaches" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">11.2</span> Machine learning approaches<a class="anchor" aria-label="anchor" href="#machine-learning-approaches"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Machine learning approaches<a class="anchor" aria-label="anchor" href="#machine-learning-approaches"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Nov 16 <a href="assets/slides/11-2_data_driven_ml.pdf"><strong>Slides.</strong></a></p>
@@ -158,14 +157,14 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="synthetic-control.html"><span class="header-section-number">10</span> Synthetic control</a></div>
-<div class="next"><a href="current-research.html"><span class="header-section-number">12</span> Current research</a></div>
+<div class="prev"><a href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></div>
+<div class="next"><a href="current-research.html"><span class="header-section-number">11</span> Current research</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-driven-methods"><span class="header-section-number">11</span> Data-driven methods</a></li>
-<li><a class="nav-link" href="#introduction-3"><span class="header-section-number">11.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#machine-learning-approaches"><span class="header-section-number">11.2</span> Machine learning approaches</a></li>
+<li><a class="nav-link" href="#data-driven-methods"><span class="header-section-number">10</span> Data-driven methods</a></li>
+<li><a class="nav-link" href="#introduction-3"><span class="header-section-number">10.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#machine-learning-approaches"><span class="header-section-number">10.2</span> Machine learning approaches</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">

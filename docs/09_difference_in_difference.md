@@ -1,9 +1,11 @@
 
 # Difference in difference
 
+**NOTE THAT SLIDES MAY BE OLD - IF THEY SAY FALL 2023 THEY HAVE NOT BEEN UPDATED YET!**
+
 ## Introduction
 
-> Oct 31. [**Slides.**](assets/slides/9-1_did.pdf) No reading is required, but for reference see [Card \& Krueger 1994](https://davidcard.berkeley.edu/papers/njmin-aer.pdf)
+> Nov 5. [**Slides.**](assets/slides/9-1_did.pdf) No reading is required, but for reference see [Card \& Krueger 1994](https://davidcard.berkeley.edu/papers/njmin-aer.pdf)
 
 Today we study the effect of a policy change in New Jersey, drawing on evidence from the neighboring state of Pennsylvania.
 
@@ -11,14 +13,14 @@ Difference in difference is an identification strategy to be used when one or mo
 
 ## Lab
 
-> Nov 1 [**Slides.**](assets/discussions/DIDdiscussion.pdf) Download the
+> Nov 6 [**Slides.**](assets/discussions/DIDdiscussion.pdf) Download the
 R Markdown file [**here**](assets/discussions/DID-discussion.Rmd).
 
 In lab, you will implement a difference in difference estimator in a specific setting. The example comes from [Malesky, Nguyen, \& Tran 2014](https://doi.org/10.1017/S0003055413000580) and will most closely follow the re-analysis of these data by [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8).
 
 ## Extensions of DID
 
-> Nov 2. [**Slides.**](assets/slides/9-2_did_extensions.pdf) No reading is required, but for reference see [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8)
+> Nov 7. [**Slides.**](assets/slides/9-2_did_extensions.pdf) No reading is required, but for reference see [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8)
 
 How do we know when the parallel trends assumption holds? And what do we do if it does not hold? This class discusses recent extensions of the DID framework.
 

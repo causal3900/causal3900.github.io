@@ -7,21 +7,19 @@ We'll post due dates here throughout the semester.
 
 ## Upcoming {-}
 
-- Project Task 1: Due Thursday, October 3rd at 11:59pm via Canvas
+- **Project** Task 1: Due Thursday, October 3rd at 11:59pm via Canvas
 
 - Pset 3: Due Friday, October 11th at 11:59pm via Canvas
 
-- Project Task 1 **Peer Reviews**: Due Friday, October 11th at 11:59pm via Canvas (*these will be assigned Monday, October 7th*)
-
-- Project Task 2: Due Thursday, October 17th at 11:59pm via Canvas
+- **Project** Task 2: Due Thursday, October 17th at 11:59pm via Canvas
 
 
 ## Past {-}
 
-- Pset 1: Due Tuesday, September 10th at 5pm via Canvas
+- Pset 1: Due Tuesday, September 10th at 5pm 
 
-- Pset 1 **Peer Reviews**: Due Tuesday, September 17th at 5pm via Canvas
+- Pset 1 **Peer Reviews**: Due Tuesday, September 17th at 5pm 
 
-- Pset 2: Due Tuesday, September 24th at 11:59pm via Canvas
+- Pset 2: Due Tuesday, September 24th at 11:59pm 
 
-- Pset 2 **Peer Reviews**: Due Tuesday, October 1st at 11:59pm via Canvas
+- Pset 2 **Peer Reviews**: Due Tuesday, October 1st at 11:59pm 
