@@ -7,7 +7,7 @@
 <title>10 Data-driven methods | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="10 Data-driven methods | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
@@ -105,12 +105,12 @@
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   X         A         Y
-## 1 1 untreated 34.544926
-## 2 1   treated  6.330458
-## 3 1 untreated 93.377220
-## 4 1   treated 27.709453
-## 5 1 untreated 72.641615
-## 6 2   treated 33.580001</code></pre>
+## 1 1 untreated  35.79430
+## 2 1   treated 125.12103
+## 3 1 untreated  21.54396
+## 4 1   treated  85.58931
+## 5 1 untreated  69.27308
+## 6 2   treated  74.20070</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
@@ -184,7 +184,7 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-10-07</p>
+    <p>Last built on 2024-10-08</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

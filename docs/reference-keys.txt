@@ -21,7 +21,7 @@ sufficient-adjustment-sets
 lab-dags-review
 statistical-modeling
 why-model
-inverse-probability-of-treatment-weighting
+parametric-modeling
 lab-parametric-g-formula
 matching
 lab-matching-in-r
@@ -66,5 +66,3 @@ import-data
 clean-data
 balance-table
 results
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
-parametric-modeling

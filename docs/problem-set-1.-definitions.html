@@ -7,7 +7,7 @@
 <title>Problem Set 1. Definitions | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
 <meta property="og:title" content="Problem Set 1. Definitions | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
@@ -154,39 +154,34 @@
 <p>The chunk below will record information about your R session, which is useful for debugging issues in homework assignments that contain code.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## R version 4.4.1 (2024-06-14)
-## Platform: x86_64-pc-linux-gnu
-## Running under: Ubuntu 22.04.5 LTS
+<pre><code>## R version 4.3.1 (2023-06-16)
+## Platform: aarch64-apple-darwin20 (64-bit)
+## Running under: macOS Sonoma 14.5
 ## 
 ## Matrix products: default
-## BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.10.0 
-## LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.10.0
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.11.0
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## time zone: America/New_York
-## tzcode source: system (glibc)
+## tzcode source: internal
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.37     R6_2.5.1          bookdown_0.40    
-##  [4] fastmap_1.2.0     xfun_0.48         cachem_1.1.0     
-##  [7] knitr_1.48        memoise_2.0.1     htmltools_0.5.8.1
-## [10] rmarkdown_2.28    lifecycle_1.0.4   xml2_1.3.6       
-## [13] cli_3.6.3         downlit_0.4.4     sass_0.4.9       
-## [16] withr_3.0.1       jquerylib_0.1.4   compiler_4.4.1   
-## [19] rstudioapi_0.16.0 tools_4.4.1       evaluate_1.0.0   
-## [22] bslib_0.8.0       yaml_2.3.10       fs_1.6.4         
-## [25] jsonlite_1.8.9    rlang_1.1.4</code></pre>
+##  [1] digest_0.6.33     R6_2.5.1          bookdown_0.35    
+##  [4] fastmap_1.2.0     xfun_0.47         cachem_1.1.0     
+##  [7] knitr_1.43        memoise_2.0.1     htmltools_0.5.8.1
+## [10] rmarkdown_2.22    lifecycle_1.0.3   xml2_1.3.4       
+## [13] cli_3.6.1         downlit_0.4.4     sass_0.4.9       
+## [16] withr_2.5.0       jquerylib_0.1.4   compiler_4.3.1   
+## [19] rstudioapi_0.14   tools_4.3.1       evaluate_0.21    
+## [22] bslib_0.8.0       yaml_2.3.7        fs_1.6.2         
+## [25] jsonlite_1.8.7    rlang_1.1.1</code></pre>
 
 </div>
 </div>
@@ -233,7 +228,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-10-07</p>
+    <p>Last built on 2024-10-08</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

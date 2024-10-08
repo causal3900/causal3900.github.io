@@ -22,11 +22,11 @@ Today will introduce how to estimate causal effects by directly modeling the out
 
 > Oct 9. Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
 
-Before discussion, make sure to download the data we'll be using. See the Ed Discussion post for more detail. 
+Before discussion, make sure to download the data we'll be using. See the [Ed Discussion post](https://edstem.org/us/courses/62970/discussion/5445307) for more detail. 
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
-[**Solutions**](assets/discussions/discussion6-solutions.html) for lab exercise and [**slides**](assets/discussions/discussion6-slides.pdf)
+[**Solutions**]() for lab exercise and [**slides**]()
 
 
 ## Matching
