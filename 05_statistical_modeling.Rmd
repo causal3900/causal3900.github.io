@@ -11,11 +11,11 @@ To this point, we have not used any statistical models. Instead, we have
 
 Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.
 
-## Inverse probability of treatment weighting
+## Parametric Modeling
 
 > Oct 8. [**Slides.**](assets/slides/5-3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 
-Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.
+Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss how to model the probability of treatment, also known as the propensity score.
 
 
 ## Lab: Parametric g-formula
