@@ -26,7 +26,7 @@ Before discussion, make sure to download the data we'll be using. See the [Ed Di
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
-[**Solutions**]() for lab exercise and [**slides**]()
+Solutions for lab exercise can be found is [**slides**]()
 
 
 ## Matching
