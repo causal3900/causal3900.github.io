@@ -13,7 +13,7 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 ## Inverse probability of treatment weighting
 
-> Oct 8. [**Slides.**](assets/slides/5_3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
+> Oct 8. [**Slides.**](assets/slides/5-3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 
 Today will introduce how to estimate causal effects by modeling the probability of treatment, also known as the propensity score.
 
