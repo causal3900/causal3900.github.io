@@ -6,7 +6,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
 ```
 
-# Solutions: Parametric g-formula Lab
+# Solutions: Parametric g-formula Lab {-}
 
 - The goal: estimate the average treatment effect (ATE) $E(Y^{a=1}) - E(Y^{a=0})$.
 - If I knew both potential outcomes for everyone in the population, I could just take the averages.
@@ -15,17 +15,17 @@ knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
   - For a person who is treated, I know their outcome under treatment. I use a model to predict what their outcome would be if they had not been treated.
 - I can predict the *other* potential outcome for everyone in my dataset using a model! 
 
-## Download the Data
+## Download the Data {-}
 
 Follow the steps on Ed Discussion to download the data!
 ```{r}
 library(tidyverse)
-d <- readRDS("d.RDS")
+d <- readRDS("assets/discussions/d.RDS")
 ```
 
 After you download the data and save it into the variable name `d`, go up top to where it says `knitr::opts_chunk$set(echo = TRUE, eval=F)` at the top of the R Markdown file and change `eval` to true, i.e. set `eval=T` so that when you knit the file, your code runs.
 
-## Step 0: Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+## Step 0: Learn a model to predict $Y$ given $\{A,\vec{L}\}$ {-}
 You can learn more about the `lm` function [**here**](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm).
 Note that this function takes several arguments. The first argument is a formula, specifically a symbolic description of the model to be fitted. 
 
@@ -38,7 +38,7 @@ f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income + log_parent_we
 fit <- lm(formula = f, data = d)
 ```
 
-## Step 1: Create Two Copies of the Original Data
+## Step 1: Create Two Copies of the Original Data {-}
 
 Next, we are going to create two copies of our original data. The first copy will set all the treatment values `= "no_college"` and the second copy will set all the treatment values `= "college"`. 
 ```{r}
@@ -50,7 +50,7 @@ d_all_treated <- d %>%
 ```
 
 
-## Step 2: Predict both potential outcomes for everyone
+## Step 2: Predict both potential outcomes for everyone {-}
 Next we will use our model (estimated above) to predict both potential outcomes for each individual using the two data.frames that we just created. We will then append the estimated potential outcomes to our original data.
 
 To see more details on the `predict` function, see the 
@@ -67,7 +67,7 @@ conditional_average_outcomes <- d %>%
          yhat1 = potential_outcomes_under_treatment)
 ```
 
-## Step 3: Estimate the causal effect
+## Step 3: Estimate the causal effect {-}
 
 Now let's compute the causal effect by taking the difference between their potential outcomes and averaging.
 
@@ -88,7 +88,7 @@ conditional_average_outcomes %>%
 summarize(ate = mean(yhat1 - yhat0))
 ```
 
-# Extension 1: Conditional average effects
+## Extension 1: Conditional average effects {-}
 
 Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
 
@@ -106,7 +106,7 @@ conditional_average_effects %>%
   summarise(across(.fns = mean))
 ```
 
-# Extension 2: Logistic regression
+## Extension 2: Logistic regression {-}
 
 In groups: Repeat the steps above with logistic regression
 
@@ -116,7 +116,7 @@ $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 -
 -   Read about using `glm()` to estimate logistic regression
 -   when using `predict()`, search to find out how to predict probabilities
 
-## Extension: Logistic regression
+## Extension: Logistic regression {-}
 
 Fit a model
 
@@ -127,7 +127,7 @@ f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
 fit <- glm(formula = f, family = binomial, data = d)
 ```
 
-## Extension: Logistic regression
+## Extension: Logistic regression {-}
 
 Predict and summarize to estimate the average effect
 
