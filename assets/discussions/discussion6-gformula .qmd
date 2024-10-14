@@ -1,0 +1,215 @@
+---
+title: "Discussion. Parametric g-formula: Outcome modeling"
+author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2024 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
+date: 09 Oct 2024
+format: beamer
+date-format: DD MMM YYYY
+header-includes:
+  \usecolortheme{dove}
+  \setbeamertemplate{footline}[page number]
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(echo = T)
+```
+
+
+## Agenda
+
+- __Reminders and Announcements__
+- __In class assignment__: Parametric estimation (g-formula)
+- __Homework Check-in and Questions__
+
+
+## Reminders and Announcements
+\vspace{0.5em}
+- HW 3 due Friday (Oct 11) by 11:59pm
+    - Submit a PDF from RMarkdown via Canvas
+\vspace{0.5em}
+- Task 2 due Thursday (Oct 17) by 11:59pm
+\vspace{0.5em}
+- Office hours
+    - Filippo: \break Monday 11am-12pm in Comstock 1187 \break  
+              Thursday 11am-12pm in Comstock 1187
+    - Shira: \break Tuesday 3-4pm in  in Comstock 1187 
+\vspace{0.5em}
+- Check Ed for HW questions!
+
+
+## Setup
+
+Follow the instructions on Ed to download the data!
+
+```{r, include = F, eval = T}
+library(tidyverse)
+d <- readRDS("d.RDS")
+```
+
+## Statistical modeling
+
+Under exchangeability, $$E\left(Y^a\mid\vec{L} = \vec\ell\right) = E\left(Y^a\mid A = a, \vec{L} = \vec\ell\right)$$
+Under consistency, $$E\left(Y^a\mid A = a,\vec{L} = \vec\ell\right) = E\left(Y\mid A = a, \vec{L} = \vec\ell\right)$$
+
+To estimate, we have been taking the subgroup mean $$\hat{E}(Y\mid A = a, \vec{L} = \vec\ell) = \frac{1}{n_{a,\vec\ell}}\sum_{i:A_i=a,\vec{L}_i=\vec\ell} Y_i$$ When subgroups are empty, we need a model. Example:
+
+$$\hat{E}\left(Y\mid A = a, \vec{L} = \vec\ell\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$
+
+## Parametric g-formula: Outcome modeling
+
+1.  Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+2.  For each $i$, predict
+    -   $\{A = 1,\vec{L} = \vec\ell_i\}$, the conditional average outcome under treatment
+    -   $\{A = 0, \vec{L} = \vec\ell_i\}$, the conditional average outcome under control
+3.  Take the difference for each unit
+4.  Average over the units
+
+## G-formula: Data example
+
+Estimate a model based on the true data
+
+```{r, echo=FALSE}
+d |>
+  select(a:race) |>
+  head(10) |>
+  arrange(a)
+```
+
+## Predict values - control
+
+Predict the counterfactuals when everybody is in the control group
+```{r, echo=FALSE}
+d |>
+  select(a:race, -y) |>
+  head(10) |>
+  arrange(a) |>
+  mutate(a = "no_college")
+```
+
+## Predict values - treatment
+
+Predict the counterfactuals when everybody is in the treatment group
+```{r, echo=FALSE}
+d |>
+  select(a:race, -y) |>
+  head(10) |>
+  arrange(a) |>
+  mutate(a = "college")
+```
+
+## 1. Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+
+```{r}
+fit <- lm(y ~ a + sex + race + mom_educ + dad_educ + 
+                   log_parent_income + 
+                   log_parent_wealth + 
+                   test_percentile,
+          data = d)
+```
+
+## 2. Predict conditional average potential outcomes for every unit
+
+```{r}
+conditional_average_outcomes <- d %>%
+  mutate(yhat1 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "college")),
+         yhat0 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "no_college")))
+```
+
+## 3. Difference to estimate conditional average effects
+
+```{r}
+conditional_average_effects <- 
+  conditional_average_outcomes %>%
+  mutate(effect = yhat1 - yhat0)
+```
+
+## 4. Average over units
+
+```{r}
+conditional_average_effects %>%
+  select(yhat1, yhat0, effect) %>%
+  summarize_all(.funs = mean)
+```
+
+## Recap. Parametric g-formula: Outcome modeling
+
+1.  Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+2.  For each $i$, predict
+    -   $\{A = 1,\vec{L} = \vec\ell_i\}$, the conditional average outcome under treatment
+    -   $\{A = 0, \vec{L} = \vec\ell_i\}$, the conditional average outcome under control
+3.  Take the difference for each unit
+4.  Average over the units
+
+## Extension 1: Conditional average effects
+
+Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
+
+1.  those with `sex == Male`
+2.  those with `sex == Female`
+
+If you finish, choose a subgroup of interest to you and summarize.
+
+. . .
+
+One way to code it:
+
+```{r}
+conditional_average_effects %>%
+  group_by(sex) %>%
+  select(sex, yhat0,yhat1,effect) %>%
+  summarize_all(.funs = mean)
+```
+
+## Extension 2: Logistic regression
+
+In groups: Repeat the steps above with logistic regression
+
+$$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
+
+-   read about using `glm()` to estimate logistic regression
+-   when using `predict()`, search to find out how to predict probabilities
+
+## Extension: Logistic regression
+
+Fit a model
+
+```{r}
+fit <- glm(y ~ a*(sex + race + mom_educ + dad_educ + 
+                    log_parent_income + 
+                    log_parent_wealth + 
+                    test_percentile),
+           data = d,
+           family = binomial)
+```
+
+## Extension: Logistic regression
+
+Predict and summarize to estimate the average effect
+
+\footnotesize
+```{r}
+d %>%
+  mutate(yhat1 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "college"), 
+                         type = "response"),
+         yhat0 = predict(fit, 
+                         newdata = d %>% 
+                           mutate(a = "no_college"), 
+                         type = "response"),
+         effect = yhat1 - yhat0) %>%
+  select(yhat1,yhat0,effect) %>%
+  summarize_all(.funs = mean)
+```
+
+## Recap. Parametric g-formula: Outcome modeling
+
+1.  Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+2.  For each $i$, predict
+    -   $\{A = 1,\vec{L} = \vec\ell_i\}$, the conditional average outcome under treatment
+    -   $\{A = 0, \vec{L} = \vec\ell_i\}$, the conditional average outcome under control
+3.  Take the difference for each unit
+4.  Average over the units
