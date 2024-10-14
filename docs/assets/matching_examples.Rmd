@@ -1,0 +1,357 @@
+---
+output:
+  pdf_document: default
+---
+
+# More Examples of Matching with the "MatchIt" Package 
+In Problem Set 4, we ask you to do your own matching and explain your choices. Some guiding questions to help you are: 
+
+* Think about what an appropriate DAG might be and choose the variables you want to match on
+  - Ask yourself: Do I know how to choose variables I should match on?
+* Choose a matching procedure
+  - Ask yourself: Do I know how to explain this matching procedure and its bias-variance trade off?
+* Evaluate the balance in the match. If it doesn't look good, try another matching procedure
+  - Ask yourself: Do I know what a balanced matching looks like? 
+* Estimate the causal effect 
+  - Ask yourself: Do I know what I just estimated?
+  
+Below are several examples to help you see the various choices you have for conducting matching via the `MatchIt` package. We'll walk through different ways to do matching using the NLSY data you downloaded for last week's lab.
+
+# Load Data and Libraries
+If you try running the block below and it gives you an error, you may need to install some packages first.
+
+- optmatch: `install.packages("optmatch")`
+- sandwich: `install.packages("sandwich")`
+- MatchIt: `install.packages("MatchIt")`
+- marginaleffects: `install.packages("marginaleffects")`
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("MatchIt")
+library("marginaleffects")
+```
+
+First, we'll load the data set from last week.
+
+```{r}
+
+d <- readRDS("d.RDS")
+```
+
+
+# Different options in the `matchit()` function
+
+All the options can be found [here](https://kosukeimai.github.io/MatchIt/reference/matchit.html), but below we've listed some of them for convenience!
+
+- `method` : the matching method to use, some options are:
+    * [`exact`](https://rdrr.io/cran/MatchIt/man/method_exact.html) for exact matching
+    * [`nearest`](https://rdrr.io/cran/MatchIt/man/method_nearest.html) for greedy nearest neighbor matching
+    * [`optimal`](https://rdrr.io/cran/MatchIt/man/method_optimal.html) for optimal pair matching
+    * [`full`](https://rdrr.io/cran/MatchIt/man/method_full.html) for optimal full matching
+    * [`cem`](https://rdrr.io/cran/MatchIt/man/method_cem.html) for coarsened exact matching
+    
+- `distance` : the distance metric to use, some options are:
+    * `euclidean` 
+    * `scaled_euclidean`
+    * `mahalanobis`
+    * `robust_mahalanobis`
+    * Read more about these options [here](https://rdrr.io/cran/MatchIt/man/distance.html#mat)
+    
+- `replace` : if TRUE, does matching with replacement; if FALSE, does matching without replacement
+    
+- `caliper` : for methods that allow it, this specifies the width(s) of the caliper(s) to use in matching
+    
+- `ratio` : for methods that allow it, how many control units should be matched to each treated unit in k:1 matching (should be a single integer value)
+
+## Example: Greedy Nearest Neighbor vs Optimal Matching
+Optimal matching is usually better than greedy matching, as long as your data isn't too big.
+
+```{r,eval=FALSE}
+# This is an example of running a greedy nearest neighbor matching with the euclidean distance metric
+m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth + test_percentile,
+                  method = "nearest", 
+                  distance = "euclidean",
+                  data = d)
+```
+
+```{r,eval=FALSE}
+# This is an example of running an optimal matching with the euclidean distance metric
+m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth + test_percentile,
+                  method = "optimal", 
+                  distance = "euclidean",
+                  data = d)
+```
+
+**Ask yourself**: What is different about the above two code chunks? What is the same? 
+
+The following code times the two methods! Try it with different values of n by changing the value of `size`:
+
+```{r,eval=FALSE}
+## Optimal vs greedy with NYLSR data
+# With n = 1000; .01 sec vs .8 sec
+# With n = 2000; .05 sec vs 8 sec
+# With n = 4000; .1 vs 25
+
+ind <- sample(nrow(d), size = 1000)
+
+# Method: greedy nearest neighbor
+system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
+                              + test_percentile,
+                              method = "nearest", distance = "euclidean",
+                              data = d[ind, ]))
+# Method: optimal matching
+system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
+                              + test_percentile,
+                              method = "optimal", distance = "euclidean",
+                              data = d[ind, ]))
+```
+**Ask yourself:** What do you notice about the differences in the time it takes to run each method?
+
+
+On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible:
+```{r,eval=FALSE}
+
+# With full data set greedy matching takes ~ 0.5-1.5 seconds
+system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
+                              + test_percentile,
+                              method = "nearest", distance = "euclidean",
+                              data = d))
+
+# Meanwhile, optimal matching takes 60-130 seconds
+system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
+                              + test_percentile,
+                              method = "optimal", distance = "euclidean",
+                              data = d))
+```
+
+
+## Example: Different Distance Metrics
+
+The Euclidean distance metric can be absolutely fine to use, depending on which covariates you are considering.
+
+The Mahalanobis distance metric is motivated by two principles:
+
+- Principle 1: Address unequal variances
+    - Age might range uniformly from 18 to 80
+    - Education range uniformly from 0 to 16
+    - We want correct for this so age doesn't dominate the distance
+    
+- Principle 2: Address correlations
+    - Suppose we included age in years, age in months, and education
+    - Suppose we included age in years and age in months are very correlated
+    - We would care about a correlation-corrected distance
+    
+If we know our variables have similar variance and no correlations, then using Euclidean is probably fine!
+
+
+```{r,eval=FALSE}
+# This is an example of running a greedy nearest neighbor matching with the euclidean distance metric
+m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth + test_percentile,
+                  method = "nearest", 
+                  distance = "euclidean",
+                  data = d)
+```
+
+```{r,eval=FALSE}
+# This is an example of running a greedy nearest neighbor matching with the mahalanobis distance metric
+m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth + test_percentile,
+                  method = "nearest", 
+                  distance = "mahalanobis",
+                  data = d)
+```
+
+**Ask yourself**: What is different about the above two code chunks? What is the same? Bonus: What is the difference between using the euclidean distance metric and the mahalanobis distance metric? Why would you use one over the other?
+
+# Matching with job training data from (LaLonde 1986)
+For the remainder of the example, we'll use a portion of the data from a job training program. In particular, the treatment is whether or not someone participated in a job training program. The outcome of interest is their salary in 1978 (`re78`).
+
+```{r}
+# Load the data
+data("lalonde")
+
+# See what's in the data
+?lalonde # this opens up the "Help" tab with the documentation 
+head(lalonde) # this shows you the first few rows of the dataset
+
+```
+
+We expect income in 1974 (`re74`) is highly correlated with income in 1975 (`re75`). It also has a much higher variability than age.
+```{r}
+## Suppose there are 3 individuals
+dat <- matrix(c(50, 5000, 5500,
+                20, 5100, 5900,
+                40, 5200, 6200), ncol = 3, byrow = T)
+colnames(dat) <- c("age", "re74", "re75")
+```
+
+Is individual 2 or 3 more similar to individual 1? To answer this, we should compute the distances between individuals 1 and 2, and 1 and 3. One way is to compute the Mahalanobis distance by first computing the covariance matrix of the confounding variables. In this case, the confounders are `age`, `re74`, and `re75`.
+```{r}
+dataCov <- lalonde %>%
+  select(age, re74, re75) %>%
+  cov
+
+# Then we compute the Mahalanobis distance with the function mahalanobis_dist
+mahalanobis_dist( ~ age + re74 + re75, data = dat, var = dataCov)
+
+# We can also compute the Euclidean distance
+dist(dat, method = "euclidean")
+```
+Now let's try to run the matching procedure using the `matchit()` function. Let's start with Euclidean distance, even if may not be great.
+```{r}
+# method: nearest (i.e. greedy 1:1)
+# distance: euclidean
+# data: lalonde (the data set we're working with)
+# replace: True (T) or False (F) - whether to sample with or without replacement. 
+    # Note, if allowing for replacement, greedy and optimal are the same
+    # So for the function, you only need to specify if using method = "nearest"
+# ratio: how many control matches for each treated unit (i.e. k:1 matching)
+# caliper: by default, the caliper width in standard units (i.e., Z-scores)
+m.out0 <- matchit(treat ~ re74 + re75 + age + race,
+                  method = "nearest", 
+                  distance = "euclidean",
+                  data = lalonde, 
+                  replace = F, 
+                  ratio = 1, 
+                  caliper = c(re74  = .2, re75 = .2))
+
+
+```
+
+## Assessing the matching
+We can check how well the balancing has been done. The following code gives the following information (& more):
+
+- Means Treated: average value of that covariate for the treated group
+- Means Control: average value of that covariate for the control group
+- Std. Mean Diff (SMD): difference of means, standardized by the standard deviation of treatment group
+- Var. Ratio: ratio of variances in treatment and control group. Compares spread of data
+- Rubin (2001) presents rule of thumb that SMD should be less than .25 and variance ratio should be between .5 and 2
+- Max eCDF: Kolmogorov-Smirnov statistic. Max difference across entire CDF
+
+```{r}
+?summary.matchit # Look in the Help tab (on the bottom right) for documentation on summary.matchit
+
+# interactions: check interaction terms too? (T or F)
+# un: show statistics for unmatched data as well (T or F)
+summary(m.out0, interactions = F, un = F)
+```
+
+**Ask Yourself**: How is the balance? How do the means compare between the treatment and control groups? What about SMD and variance ratio?
+
+We can also visually asses the matches with different plots:
+```{r}
+## Produces QQ plots of all variables in which.xs
+plot(m.out0, type = "qq", which.xs = ~age + re74, interactive = F)
+## Plots the density of all variables in which.xs
+plot(m.out0, type = "density", which.xs = ~age + re74 + race, interactive = F)
+## Plots the empirical CDF of all variables in which.xs
+plot(m.out0, type = "ecdf", which.xs = ~age + re74, interactive = F)
+```
+
+## Other options
+Let's try using calipers.
+```{r results='hide'}
+
+m.out0 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "nearest", distance = "glm",
+                  data = lalonde, replace = F, caliper = .05, std.caliper = F,
+                  ratio = 1)
+summary(m.out0, interactions = F, un = F)
+
+```
+
+As an alternative, let's try with coarsened exact matching.
+```{r results='hide'}
+# data: lalonde (the data set we're working with)
+# replace: True (T) or False (F) - whether to sample with or without replacement. 
+    # Note, if allowing for replacement, greedy and optimal are the same
+# ratio: how many control matches for each treated unit
+m.out1 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "cem",
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+
+# We only match 65 of the original 185 treated units
+summary(m.out1, interactions = F, un = F)
+
+m.out2 <- matchit(treat ~ re74 + re75 + age + race + educ + married + nodegree,
+                  method = "cem", 
+                  grouping = list(race = list(c("black"), c("hispan", "white"))),
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+
+# We only match 65 of the original 185 treated units
+summary(m.out2, interactions = F, un = F)
+
+# We could group hispanic/white together for the purposes of matching
+# and not enforce matching on married, educ, nodegree
+m.out2 <- matchit(treat ~ re74 + re75 + age + race,
+                  method = "cem", 
+                  grouping = list(race = list(c("black"), c("hispan", "white"))),
+                  data = lalonde, replace = F, 
+                  ratio = 1)
+summary(m.out2, interactions = F, un = F, addlvariables = ~ married + nodegree + educ)
+
+match.data(m.out2) %>%
+  arrange(subclass)
+
+
+```
+
+
+## Estimating the effect
+Given the matching (and assuming it is good enough), we can estimate the ATT. But we can do even better by combining regression + matching.
+```{r}
+
+# propensity score matched
+m.out0.data <- match.data(m.out0)
+# CEM matched
+m.out2.data <- match.data(m.out2)
+
+# Fitting a linear model on the treatments will work
+# even if all weights are not 1. We just need to feed them in
+fit1 <- lm(re78 ~ treat, data = m.out2.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit1, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out2.data, treat == 1),
+                wts = "weights")
+
+
+# Fitting a linear model on the treatments will work
+# even if all weights are not 1. We just need to feed them in
+fit2 <- lm(re78 ~ treat + re74 + re75 + age + race + married + nodegree + educ,
+           data =m.out2.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit2, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out2.data, treat == 1),
+                wts = "weights")
+
+
+fit3 <- lm(re78 ~ treat + re74 + re75 + age + race + married + nodegree + educ,
+           data =m.out0.data, weights = weights)
+
+# vcov: tells R to use robust standard errors
+avg_comparisons(fit3, variables = "treat",
+                vcov = "HC3",
+                newdata = subset(m.out0.data, treat == 1),
+                wts = "weights")
+
+```
+
+**Ask yourself**: What is the estimate and how do I interpret it?
+
+# Fit your own model
+In the problem set, we ask you to do your own matching and explain your choices. Some guiding questions to help you are: 
+
+* Think about what an appropriate DAG might be and choose the variables you want to match on
+  - Ask yourself: Do I know how to choose variables I should match on?
+* Choose a matching procedure
+  - Ask yourself: Do I know how to explain this matching procedure and its bias-variance trade off?
+* Evaluate the balance in the match. If it doesn't look good, try another matching procedure
+  - Ask yourself: Do I know what a balanced matching looks like? 
+* Estimate the causal effect 
+  - Ask yourself: Do I know what I just estimated?

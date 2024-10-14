@@ -1,17 +1,25 @@
 ---
-output: pdf_document
+output: html_document
 ---
 
-# Matching Lab
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
+```
 
-## Data and R Libraries
+# Discussion 7: Matching Lab {-}
+
+Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab. *Submit your work on Canvas before you leave discussion!* Solutions will be posted here later.
+
+If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
+
+## Data and R Libraries {-}
 The first exercise and problem set 4 use the `lalonde` dataset from the following paper:
 
 > Dehejia, R. H. and Wahba, S. 1999. [Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs](https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?). Journal of the American Statistical Association 94(448):1053--1062.
 
 The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
 
-```{r setup, include=FALSE}
+```
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("MatchIt")
@@ -20,11 +28,11 @@ data("lalonde") # this step loads the data
 
 To learn about the data, type `?lalonde` in your R console.
 
-## 2. Example: Exact Matching with low-dimensional confounding
+## 2. Example: Exact Matching with low-dimensional confounding {-}
 
 Our goal is to estimate the effect of job training `treat` on future earnings `re78` (real earnings in 1978), among those who received job training (the average treatment effect on the treated, ATT).
 
-### 2.1.  Using `matchit()` to conduct a matching
+### 2.1.  Using `matchit()` to conduct a matching {-}
 
 For this part, we assume that three variables comprise a sufficient adjustment set: `race`, `married`, and `nodegree`. We use `matchit` with:
 
@@ -35,7 +43,7 @@ For this part, we assume that three variables comprise a sufficient adjustment s
 
 We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
-```{r}
+```
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
                  method = "exact",
@@ -49,11 +57,11 @@ summary(exact_low)$nn
 **Answer**:
 
 
-### 2.2. Effect estimate
+### 2.2. Effect estimate {-}
 
 Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
 
-```{r}
+```
 fit <- lm(re78 ~ treat + race + married + nodegree,
           data = match.data(exact_low),
           w = weights)
@@ -64,14 +72,14 @@ print(round(coef(fit)["treat"],2))
 
 **Answer**: 
 
-### 2.3. Assessing the Match: Balance of Covariates
+### 2.3. Assessing the Match: Balance of Covariates {-}
 
 In matching, one thing we care about is balance across covariates. In other words, we want to see that the distributions of different covariates are about the same between the treatment and the control groups. We can check how well the balancing has been done with the `summary()` function.
 
 - `interactions`: check interaction terms too? (T or F)
 - `un`: show statistics for unmatched data as well? (T or F)
 
-```{r}
+```
 summary(exact_low, interactions = F, un = F)$sum.matched
 ```
 
@@ -81,13 +89,13 @@ summary(exact_low, interactions = F, un = F)$sum.matched
 
 In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
 
-## 3. Try it Yourself: Exact matching with high-dimensional confounding
+## 3. Try it Yourself: Exact matching with high-dimensional confounding {-}
 You will use the results from this section in Problem Set 4.
 
-### 3.1. Using `matchit()` to conduct a matching
+### 3.1. Using `matchit()` to conduct a matching {-}
 Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
 
-```{r}
+```
 # Your code goes here
 ```
 
@@ -96,7 +104,7 @@ Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The 
 **Answer**: 
 
 
-### 3.2. Assessing the Match: Examining matched units
+### 3.2. Assessing the Match: Examining matched units {-}
 
 Look at the `re74` values in the full data and among the matched units.
 
@@ -109,12 +117,12 @@ Here is one way to do this:
 - Examples of using the `select()` function are [**here**](https://benwhalley.github.io/just-enough-r/selecting-columns.html)
 
 Full data:
-```{r}
+```
 # your code goes here
 ```
 
 Matched data:
-```{r}
+```
 # your code goes here
 ```
 

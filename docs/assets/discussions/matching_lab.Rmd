@@ -1,203 +1,121 @@
 ---
-title: "Matching Lab"
-output: html_document
-date: "2023-09-30"
+output: pdf_document
 ---
 
-Some packages you may need to install first:
+# Matching Lab
 
-- optmatch: `install.packages("optmatch")`
-- sandwich: `install.packages("sandwich")`
-- MatchIt: `install.packages("MatchIt")`
-- marginaleffects: `install.packages("marginaleffects")`
+## Data and R Libraries
+The first exercise and problem set 4 use the `lalonde` dataset from the following paper:
+
+> Dehejia, R. H. and Wahba, S. 1999. [Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs](https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?). Journal of the American Statistical Association 94(448):1053--1062.
+
+The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("MatchIt")
-library("marginaleffects")
+data("lalonde") # this step loads the data
 ```
 
-## R Markdown
-Learn to do matching with the "MatchIt" package
+To learn about the data, type `?lalonde` in your R console.
 
-First, we'll use the data set from last week to compare greedy vs optimal matching. We'll use the NLSY data since it is larger.
-```{r}
+## 2. Example: Exact Matching with low-dimensional confounding
 
-d <- readRDS("d.RDS")
+Our goal is to estimate the effect of job training `treat` on future earnings `re78` (real earnings in 1978), among those who received job training (the average treatment effect on the treated, ATT).
 
-# matchit function implements matching
-# Formula: Treatment ~ variables to match on
-# method: nearest is a greedy 1:1 matching without replacement
-# distance: euclidean (other possible options are scaled_euclidean, mahalanobis, robust_mahalanobis)
-# read more on distances here: https://rdrr.io/cran/MatchIt/man/distance.html#mat
-m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
-                              + test_percentile,
-                              method = "nearest", distance = "euclidean",
-                              data = d)
-```
+### 2.1.  Using `matchit()` to conduct a matching
 
-First compare optimal vs greedy. Optimal matching is usually better than greedy matching, as long as your data isn't too big  
-```{r}
-## Optimal vs greedy with NYLSR data
-# With n = 1000; .01 sec vs .8 sec
-# With n = 2000; .05 sec vs 8 sec
-# With n = 4000; .1 vs 25
+For this part, we assume that three variables comprise a sufficient adjustment set: `race`, `married`, and `nodegree`. We use `matchit` with:
 
-ind <- sample(nrow(d), size = 1000)
+- a formula `treat ~ race + married + nodegree`
+- `method = "exact"` to conduct exact matching, which matches two units only if they are identical along `race`, `married`, and `nodegree`
+- `data = lalonde` since we are using the `lalonde` data
+-  `estimand = "ATT"` since we are targeting the average treatment effect on the treated (ATT)
 
-# Greedy is using nearest
-system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
-                              + test_percentile,
-                              method = "nearest", distance = "euclidean",
-                              data = d[ind, ]))
-# method: optimal is optimal matching
-system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
-                              + test_percentile,
-                              method = "optimal", distance = "euclidean",
-                              data = d[ind, ]))
-```
-
-On the full data, using optimal is possible, but can take a bit of time. On larger data sets, it might not be possible 
-```{r}
-
-# With full data set greedy matching takes ~ 0.5-1.5 seconds
-system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
-                              + test_percentile,
-                              method = "nearest", distance = "euclidean",
-                              data = d))
-
-# Meanwhile, optimal matching takes 60-130 seconds
-system.time(m.out0 <- matchit(a == "college" ~ log_parent_income + log_parent_wealth
-                              + test_percentile,
-                              method = "optimal", distance = "euclidean",
-                              data = d))
-```
-
-# Matching with job training data from ``Evaluating the econometric evaluations of training programs with experimental data'' (LaLonde 1986)
-For the remainder of the lab, we'll use a portion of the data from a job training program. In particular, the treatment is whether or not someone participated in a job training program. The outcome of interest is their salary in 1978 (re78).
-```{r}
-# Load the data
-data("lalonde")
-
-# See what's in the data
-?lalonde # this opens up the "Help" tab with the documentation! 
-head(lalonde)
-
-```
-
-We expect income in 1974 is highly correlated with income in 1975. It also has a much higher variability than age.
-```{r}
-
-## Suppose there are 3 individuals
-dat <- matrix(c(50, 5000, 5500,
-                20, 5100, 5900,
-                40, 5200, 6200), ncol = 3, byrow = T)
-colnames(dat) <- c("age", "re74", "re75")
-
-# Is individual 2 or 3 more similar to individual 1? 
-# To answer this, we should compute the distances between individuals 1 and 2, and 1 and 3. 
-
-# One way is to compute the Mahalanobis distance by first computing the covariance matrix of the confounding variables
-# In this case, the confounders are age, re74, and re75
-dataCov <- lalonde %>%
-  select(age, re74, re75) %>%
-  cov
-
-# Then we compute the Mahalanobis distance with the function mahalanobis_dist
-mahalanobis_dist( ~ age + re74 + re75, data = dat, var = dataCov)
-
-# We can also compute the Euclidean distance
-dist(dat, method = "euclidean")
-```
-
-Now let's try to run the matching procedure using the \texttt{matchit} function. 
-```{r}
-# For now, let's start with Euclidean distance, even if may not be great
-
-# method: nearest (i.e. greedy 1:1)
-# distance: euclidean
-# data: lalonde (the data set we're working with)
-# replace: True (T) or False (F) - whether to sample with or without replacement. 
-    # Note, if allowing for replacement, greedy and optimal are the same
-    # So for the function, you only need to specify if using method = "nearest"
-# ratio: how many control matches for each treated unit
-# caliper: by default, the caliper width in standard units (i.e., Z-scores)
-m.out0 <- matchit(treat ~ re74 + re75 + age + race,
-                  method = "nearest", distance = "euclidean",
-                  data = lalonde, replace = F, 
-                  ratio = 1, caliper = c(re74  = .2, re75 = .2))
-
-
-```
-
-# Assessing the matching
-We can check how well the balancing has been done
-```{r}
-?summary.matchit # Look in the Help tab (on the bottom right) for documentation on summary.matchit
-
-
-# interactions: check interaction terms too? (T or F)
-# un: show statistics for unmatched data as well (T or F)
-summary(m.out0, interactions = F, un = F)
-# Std. Mean Diff (SMD): difference of means, standardized by sd of treatment group
-# Var. Ratio: ratio of variances in treatment and control group. Compares spread of data
-# Rubin (2001) presents rule of thumb that SMD should be less than .25 and variance ratio should be between .5 and 2
-# Max eCDF: Kolmogorov-Smirnov statistic. Max difference across entire CDF
-```
-
-We can also visually asses the matches
-```{r}
-## Produces QQ plots of all variables in which.xs
-plot(m.out0, type = "qq", which.xs = ~age + re74, interactive = F)
-## Plots the density of all variables in which.xs
-plot(m.out0, type = "density", which.xs = ~age + re74 + race, interactive = F)
-## Plots the empirical CDF of all variables in which.xs
-plot(m.out0, type = "ecdf", which.xs = ~age + re74, interactive = F)
-```
-# Estimating the effect
-Given the matching (and assuming it is good enough), we can estimate the ATT. 
-```{r}
-
-# Produces data frame same as input, but has two additional columns
-# weights: the weight of the row in the paired data set. Can be greater than 1
-#         if the data set was matched more than once
-# subclass: the index of the "pair"
-#
-m.out0.data <- match.data(m.out0, drop.unmatched = T)
-head(m.out0.data)
-names(m.out0.data)
-# Also produces matched data set, though will duplicate rows if matching with replacement
-# and a control is matched more than once
-m.out0.data <- get_matches(m.out0)
-```
-As a first step, we could simply compare the means of the outcomes for both groups. Notice this is the first time we've looked at the outcomes!
+We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
 ```{r}
-# Take the mean of both groups
-# this will only work if all weights are 1
-aggregate(re78~ treat, FUN = mean, data = m.out0.data)
-
-# Fitting a linear model on the treatments will work
-# even if all weights are not 1. We just need to feed them in
-fit1 <- lm(re78~ treat, data = m.out0.data, weights = weights)
-
-# vcov: tells R to use robust standard errors
-avg_comparisons(fit1, variables = "treat",
-                vcov = "HC3",
-                newdata = subset(m.out0.data, treat == 1),
-                wts = "weights")
+exact_low <- matchit(treat ~ race + married + nodegree,
+                 data = lalonde,
+                 method = "exact",
+                 estimand = "ATT")
+# Note: There are multiple correct ways to extract the numbers below
+summary(exact_low)$nn
 ```
 
+**Question**: How many control units were matched? How many treated units?
 
-# Fit your own model
-Now try for yourself. Note, you will need to do something very similar for the homework with this dataset.
+**Answer**:
 
-* Think about what an appropriate DAG might be and choose the variables you want to match on
-  - Ask yourself: Do I know how to choose variables I should match on?
-* Choose a matching procedure
-  - Ask yourself: Do I know how to explain this matching procedure and its bias-variance trade off?
-* Evaluate the balance in the match. If it doesn't look good, try another matching procedure
-  - Ask yourself: Do I know what a balanced matching looks like? 
-* Estimate the causal effect 
-  - Ask yourself: Do I know what I just estimated?
+
+### 2.2. Effect estimate
+
+Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
+
+```{r}
+fit <- lm(re78 ~ treat + race + married + nodegree,
+          data = match.data(exact_low),
+          w = weights)
+print(round(coef(fit)["treat"],2))
+```
+
+**Question**: What is the estimated effect of job training on earnings?
+
+**Answer**: 
+
+### 2.3. Assessing the Match: Balance of Covariates
+
+In matching, one thing we care about is balance across covariates. In other words, we want to see that the distributions of different covariates are about the same between the treatment and the control groups. We can check how well the balancing has been done with the `summary()` function.
+
+- `interactions`: check interaction terms too? (T or F)
+- `un`: show statistics for unmatched data as well? (T or F)
+
+```{r}
+summary(exact_low, interactions = F, un = F)$sum.matched
+```
+
+**Question**: What do you notice about the means of different covariates for the treated versus control groups? 
+
+**Answer**: 
+
+In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
+
+## 3. Try it Yourself: Exact matching with high-dimensional confounding
+You will use the results from this section in Problem Set 4.
+
+### 3.1. Using `matchit()` to conduct a matching
+Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
+
+```{r}
+# Your code goes here
+```
+
+**Question**: How many control units were matched? How many treated units?
+
+**Answer**: 
+
+
+### 3.2. Assessing the Match: Examining matched units
+
+Look at the `re74` values in the full data and among the matched units.
+
+Here is one way to do this:
+
+1. Use the `select()` function to get the `re74` column in the *full* data. Pass this to the `summary()` function to look at descriptive statistics of the `re74` values in the full data.
+2. Use the `select()` function to get the `re74` column in the *matched* data. Pass this to the `summary()` function to look at descriptive statistics of the `re74` values in the full data. You can get the matched data using the `match.data` function. 
+
+- Examples of using the `summary` function are [**here**](https://intro2r.com/summarising-data-frames.html).
+- Examples of using the `select()` function are [**here**](https://benwhalley.github.io/just-enough-r/selecting-columns.html)
+
+Full data:
+```{r}
+# your code goes here
+```
+
+Matched data:
+```{r}
+# your code goes here
+```
+
+**Explain what happened**: What do you notice? What is different about the values of `re74` in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?

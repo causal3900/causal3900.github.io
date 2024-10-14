@@ -1,5 +1,7 @@
 ---
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Matching Lab
@@ -46,7 +48,7 @@ summary(exact_low)$nn
 
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**:
+\textbf{Answer.} All treated and control units were kept!
 
 
 ### 2.2. Effect estimate
@@ -62,7 +64,7 @@ print(round(coef(fit)["treat"],2))
 
 **Question**: What is the estimated effect of job training on earnings?
 
-**Answer**: 
+**Answer.** The estimate suggests that job training increases future earnings by \$`r format(round(coef(fit)["treat"],2),nsmall=2)`.
 
 ### 2.3. Assessing the Match: Balance of Covariates
 
@@ -77,7 +79,7 @@ summary(exact_low, interactions = F, un = F)$sum.matched
 
 **Question**: What do you notice about the means of different covariates for the treated versus control groups? 
 
-**Answer**: 
+**Answer**: Their means are the same! 
 
 In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
 
@@ -88,12 +90,17 @@ You will use the results from this section in Problem Set 4.
 Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
 
 ```{r}
-# Your code goes here
+exact_high <- matchit(treat ~ race + married + nodegree + re74,
+                 data = lalonde,
+                 method = "exact",
+                 estimand = "ATT")
+# Note: There are multiple correct ways to extract the numbers below
+summary(exact_high)$nn
 ```
 
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**: 
+\textbf{Answer.} Now only 108 out of 429 control units are matched, and only 131 out of 185 treated units.
 
 
 ### 3.2. Assessing the Match: Examining matched units
@@ -110,12 +117,18 @@ Here is one way to do this:
 
 Full data:
 ```{r}
-# your code goes here
+summary(
+  lalonde %>%
+    select(re74)
+)
 ```
-
 Matched data:
 ```{r}
-# your code goes here
+matched_data <- match.data(exact_high)
+summary(
+  matched_data %>%
+    select(re74)
+)
 ```
 
 **Explain what happened**: What do you notice? What is different about the values of `re74` in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?

@@ -28,6 +28,8 @@ Before discussion, make sure to download the data we'll be using. See the [Ed Di
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
+Solutions to the lab exercise are [here](https://causal3900.github.io/solutions-parametric-g-formula-lab.html).
+
 
 ## Matching
 
@@ -38,9 +40,13 @@ Today will introduce the idea of matching and how it allows us to estimate the a
 
 ## Lab: Matching in R
 
-> Oct 16. [**Slides.**](assets/discussions/discussion7.pdf) [**R Markdown.**](assets/discussions/matching_lab.Rmd)
+> Oct 16. [**Slides.**]()
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
+
+Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab; view the knit file [**here**](assets/discussions/matching_lab.html). *Submit your work on Canvas before you leave discussion!* Solutions will be posted here later.
+
+If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
 
 
 ## Discussion of matching

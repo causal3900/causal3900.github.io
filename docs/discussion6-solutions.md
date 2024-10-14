@@ -17,24 +17,24 @@ output: html_document
 
 Follow the steps on Ed Discussion to download the data!
 
-``` r
+```r
 library(tidyverse)
 ```
 
 ```
 ## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.2     
+## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+## ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+## ✔ purrr     1.0.1     
 ## ── Conflicts ────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-``` r
+```r
 d <- readRDS("assets/discussions/d.RDS")
 ```
 
@@ -47,7 +47,7 @@ Note that this function takes several arguments. The first argument is a formula
 First, we create the formula `f` which represents the outcome `y` as a function of our treatment `a` and all our confounders. Then, using the `lm()` function, we fit a model with linear regression.
 
 
-``` r
+```r
 f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income + log_parent_wealth + test_percentile)
 
 # Estimate the model with OLS
@@ -58,7 +58,7 @@ fit <- lm(formula = f, data = d)
 
 Next, we are going to create two copies of our original data. The first copy will set all the treatment values `= "no_college"` and the second copy will set all the treatment values `= "college"`. 
 
-``` r
+```r
 d_all_control <- d %>%
   mutate(a = "no_college")
 
@@ -74,7 +74,7 @@ To see more details on the `predict` function, see the
 [documentation here](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/predict).
 
 
-``` r
+```r
 # Estimate potential outcomes using our model
 potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
 potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
@@ -92,7 +92,7 @@ Now let's compute the causal effect by taking the difference between their poten
 One way to do this is:
 
 
-``` r
+```r
 conditional_average_effects <- conditional_average_outcomes %>%
   mutate(effect = yhat1 - yhat0)
 
@@ -110,7 +110,7 @@ conditional_average_effects %>%
 
 An alternative way to compute the treatment effect is below
 
-``` r
+```r
 conditional_average_outcomes %>%
 summarize(ate = mean(yhat1 - yhat0))
 ```
@@ -134,7 +134,7 @@ Among those for whom `sex == Female`? __HINT__: this should only be a slight mod
 of your code above that takes the average for the whole data.frame.
 
 
-``` r
+```r
 conditional_average_effects %>%
   select(yhat1, yhat0, effect, sex) %>%
   group_by(sex) %>%
@@ -173,7 +173,7 @@ $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 -
 Fit a model
 
 
-``` r
+```r
 f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
   log_parent_wealth + test_percentile)
 
@@ -187,7 +187,7 @@ Predict and summarize to estimate the average effect
 \footnotesize
 
 
-``` r
+```r
 potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control, type = "response")
 potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated, type = "response")
 
