@@ -7,7 +7,7 @@
 <title>10 Data-driven methods | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
 <meta name="description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
 <meta property="og:title" content="10 Data-driven methods | Causal Inference Course">
 <meta property="og:type" content="book">
 <meta property="og:description" content="10.1 Introduction  Nov 14 Slides. For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these...">
@@ -106,13 +106,13 @@
 <p>Here is an example of the code to simulate data:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A        Y
-## 1 1 untreated 45.63431
-## 2 1   treated 37.54986
-## 3 1 untreated 87.89899
-## 4 1   treated 52.68471
-## 5 1 untreated 19.10527
-## 6 2   treated 27.97031</code></pre>
+<pre><code>##   X         A         Y
+## 1 1 untreated  1.534326
+## 2 1   treated 19.175577
+## 3 1 untreated 41.174851
+## 4 1   treated  5.971854
+## 5 1 untreated 10.378471
+## 6 2   treated 70.825677</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>

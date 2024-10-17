@@ -40,18 +40,18 @@ Today will introduce the idea of matching and how it allows us to estimate the a
 
 ## Lab: Matching in R
 
-> Oct 16. [**Slides.**]()
+> Oct 16. [**Slides.**](assets/discussions/matching_lab_slides.pdf)
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
-Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab; view the knit file [**here**](assets/discussions/matching_lab.html). *Submit your work on Canvas before you leave discussion!* Solutions will be posted here later.
+Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab; view the knit file [**here**](assets/discussions/matching_lab.html). *Submit your work on Canvas before you leave discussion!* [**Solutions**](assets/discussions/matching_lab_solutions.html)
 
 If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
 
 
 ## Discussion of matching
 
-> Oct 17 [**Slides.**](assets/slides/5-5_matching_cont.pdf) [**R Markdown.**](assets/slides/matching_cont.Rmd)
+> Oct 17 [**Slides.**](assets/slides/5-5_matching_cont.pdf) 
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
