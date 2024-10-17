@@ -4,7 +4,7 @@ output:
 urlcolor: blue
 ---
 
-# Problem Set 4. Statistical modeling.
+# Problem Set 4. Statistical Modeling.
 
 Relevant material will be covered by **Oct 17**. Problem set is due **Oct 24**.
 

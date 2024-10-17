@@ -73,7 +73,7 @@
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical modeling</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
 <li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
 <li><a class="" href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
@@ -106,13 +106,13 @@
 <p>Here is an example of the code to simulate data:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A          Y
-## 1 1 untreated  66.026660
-## 2 1   treated  77.828488
-## 3 1 untreated 109.987478
-## 4 1   treated  82.436494
-## 5 1 untreated  11.157260
-## 6 2   treated   5.687004</code></pre>
+<pre><code>##   X         A         Y
+## 1 1 untreated  61.89284
+## 2 1   treated  15.11968
+## 3 1 untreated 119.92601
+## 4 1   treated  73.53522
+## 5 1 untreated 100.24491
+## 6 2   treated 107.22860</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>

@@ -1,5 +1,5 @@
 
-# Problem Set 4. Statistical modeling {-}
+# Problem Set 4. Statistical Modeling {-}
 
 Relevant material will be covered by **Oct 17**. Problem set is due **Oct 24**.
 
@@ -16,23 +16,14 @@ The paper compares methods for observational causal inference to recover an aver
 
 The following lines will load these data into R.
 
-
-```r
+```
 library(tidyverse)
 library(MatchIt)
 library(randomForest)
-```
-
-```
-FALSE Warning: package 'randomForest' was built under R version
-FALSE 4.3.3
-```
-
-```r
 data("lalonde")
 ```
 
-## 1. (10 points) Drawbacks of Exact Matching
+## 1. (10 points) Drawbacks of Exact Matching {-}
 
 In the discussion section on Wednesday, October 16th, you walked through an example of exact matching with high-dimensional confounding. You looked at some statistics and information of the `re74` values in the full data versus the matched data. Answer the following questions about what you observed:
 
@@ -41,7 +32,7 @@ In the discussion section on Wednesday, October 16th, you walked through an exam
 
 **Answer.**
 
-## 2. (6 points) Outcome modeling
+## 2. (6 points) Outcome modeling {-}
 
 In the code below, we use `randomForest` to learn a model of future earnings `re78` on treatment `treat`, interacted with confounders: `race`, `married`, `nodegree`, and `re74`. A random forest is a machine learning method that trains multiple decision trees in the final prediction model. 
 
@@ -49,8 +40,7 @@ In the code below, we use `randomForest` to learn a model of future earnings `re
 > Documentation for the R Library `randomForest` can be found [here](https://cran.r-project.org/web/packages/randomForest/randomForest.pdf)
 
 
-
-```r
+```
 outcome_model <- randomForest(re78 ~ treat * (race + married + nodegree + re74), 
                               data = lalonde, 
                               ntree=1000, keep.forest=TRUE)
@@ -73,7 +63,7 @@ outcome_model <- randomForest(re78 ~ treat * (race + married + nodegree + re74),
 ```
 
 
-## 3. Matching without requiring exact matches
+## 3. Matching without requiring exact matches {-}
 
 We hope that from this class you are prepared to learn new causal estimators, apply them in R, and explain what you have done. This question is a chance to practice! In class we discussed many matching approaches. For this question, you will choose your own approach. There are many correct answers, and you will be evaluated by the clarity of your code and explanations.
 
@@ -87,7 +77,7 @@ Task: Using `matchit`, conduct matching to estimate the ATT where `treat` is the
 3. Using linear regression with `lm()`, estimate a model using the formula `re78 ~ treat + race + married + nodegree + re74` and your matched data, weighted by the `weights` that are produced by `match.data()`.
 4. Report your estimate of the ATT.
 
-### 3.1. (5 points) Conduct the matching
+### 3.1. (5 points) Conduct the matching {-}
 
 This is space to conduct the matching. We expect this part to be an R code chunk.
 
@@ -98,26 +88,26 @@ This is space to conduct the matching. We expect this part to be an R code chunk
 
 
 
-### 3.2. (5 points) Explain your choices
+### 3.2. (5 points) Explain your choices {-}
 
 In a few sentences, tell us about the matching approach you have chosen. Cite content from lecture or discussion slides in your answer by including the slide number(s) and date(s). 
 
 **Answer.**
 
-### 3.3. (2 points) How many units did you keep?
+### 3.3. (2 points) How many units did you keep? {-}
 
 Report the number of treated and control units in the original data, and how many were kept by your matching procedure.
 
 **Answer.**
 
-### 3.4. (2 points) Report your causal estimate
+### 3.4. (2 points) Report your causal estimate {-}
 
 What do you estimate for the average treatment effect on the treated? This is the coefficient on `treat` in the linear regression you fit on the matched data.
 
 **Answer.**
 
 
-## 4. (10 points) Reflection Question
+## 4. (10 points) Reflection Question {-}
 Answer **one** of the following two prompts in a short paragraph. For full credit, you must refer to at least **two** lecture or discussion slides or exercises that relate to what you choose to write about. To cite slides, simply reference the slide number and date. If you are citing an exercise/.Rmd notebook from a discussion or lecture, indicate the date, title, and subsection if appropriate.
 
 a. Reflect on your overall experience with [Unit 5: Statistical Modeling](https://causal3900.github.io/statistical-modeling.html) by: describing an interesting idea or tool you learned, why it was interesting to you, and what it tells you about causal inference. 

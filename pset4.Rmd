@@ -1,5 +1,5 @@
 
-# Problem Set 4. Statistical modeling {-}
+# Problem Set 4. Statistical Modeling {-}
 
 Relevant material will be covered by **Oct 17**. Problem set is due **Oct 24**.
 
@@ -40,7 +40,7 @@ In the code below, we use `randomForest` to learn a model of future earnings `re
 > Documentation for the R Library `randomForest` can be found [here](https://cran.r-project.org/web/packages/randomForest/randomForest.pdf)
 
 
-```{r}
+```
 outcome_model <- randomForest(re78 ~ treat * (race + married + nodegree + re74), 
                               data = lalonde, 
                               ntree=1000, keep.forest=TRUE)
