@@ -2,15 +2,8 @@
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
-```
-
-# Discussion 7: Matching Lab {-}
-
-Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab. *Submit your work on Canvas before you leave discussion!* Solutions will be posted here later.
-
-If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
+# Solutions: Matching Lab {-}
+View the original instructions [**here**](https://causal3900.github.io/statistical-modeling.html#lab-matching-in-r).
 
 ## Data and R Libraries {-}
 The first exercise and problem set 4 use the `lalonde` dataset from the following paper:
@@ -19,7 +12,7 @@ The first exercise and problem set 4 use the `lalonde` dataset from the followin
 
 The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
 
-```
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("MatchIt")
@@ -43,7 +36,7 @@ For this part, we assume that three variables comprise a sufficient adjustment s
 
 We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
-```
+```{r}
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
                  method = "exact",
@@ -54,14 +47,14 @@ summary(exact_low)$nn
 
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**:
+\textbf{Answer.} All treated and control units were kept!
 
 
 ### 2.2. Effect estimate {-}
 
 Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
 
-```
+```{r}
 fit <- lm(re78 ~ treat + race + married + nodegree,
           data = match.data(exact_low),
           w = weights)
@@ -70,7 +63,7 @@ print(round(coef(fit)["treat"],2))
 
 **Question**: What is the estimated effect of job training on earnings?
 
-**Answer**: 
+**Answer.** The estimate suggests that job training increases future earnings by \$`r format(round(coef(fit)["treat"],2),nsmall=2)`.
 
 ### 2.3. Assessing the Match: Balance of Covariates {-}
 
@@ -79,13 +72,13 @@ In matching, one thing we care about is balance across covariates. In other word
 - `interactions`: check interaction terms too? (T or F)
 - `un`: show statistics for unmatched data as well? (T or F)
 
-```
+```{r}
 summary(exact_low, interactions = F, un = F)$sum.matched
 ```
 
 **Question**: What do you notice about the means of different covariates for the treated versus control groups? 
 
-**Answer**: 
+**Answer**: Their means are the same! 
 
 In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
 
@@ -95,13 +88,19 @@ You will use the results from this section in Problem Set 4.
 ### 3.1. Using `matchit()` to conduct a matching {-}
 Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
 
-```
-# Your code goes here
+**Solution**
+```{r}
+exact_high <- matchit(treat ~ race + married + nodegree + re74,
+                 data = lalonde,
+                 method = "exact",
+                 estimand = "ATT")
+# Note: There are multiple correct ways to extract the numbers below
+summary(exact_high)$nn
 ```
 
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**: 
+\textbf{Answer.} Now only 108 out of 429 control units are matched, and only 131 out of 185 treated units.
 
 
 ### 3.2. Assessing the Match: Examining matched units {-}
@@ -116,14 +115,23 @@ Here is one way to do this:
 - Examples of using the `summary` function are [**here**](https://intro2r.com/summarising-data-frames.html).
 - Examples of using the `select()` function are [**here**](https://benwhalley.github.io/just-enough-r/selecting-columns.html)
 
-Full data:
-```
-# your code goes here
-```
 
-Matched data:
+**Solution**
+
+Full data:
+```{r}
+summary(
+  lalonde %>%
+    select(re74)
+)
 ```
-# your code goes here
+Matched data:
+```{r}
+matched_data <- match.data(exact_high)
+summary(
+  matched_data %>%
+    select(re74)
+)
 ```
 
 **Explain what happened**: What do you notice? What is different about the values of `re74` in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?

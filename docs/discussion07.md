@@ -2,13 +2,8 @@
 output: html_document
 ---
 
-
-
-# Discussion 7: Matching Lab {-}
-
-Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab. *Submit your work on Canvas before you leave discussion!* Solutions will be posted here later.
-
-If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
+# Solutions: Matching Lab {-}
+View the original instructions [**here**](https://causal3900.github.io/statistical-modeling.html#lab-matching-in-r).
 
 ## Data and R Libraries {-}
 The first exercise and problem set 4 use the `lalonde` dataset from the following paper:
@@ -17,12 +12,7 @@ The first exercise and problem set 4 use the `lalonde` dataset from the followin
 
 The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
 
-```
-knitr::opts_chunk$set(echo = TRUE)
-library("tidyverse")
-library("MatchIt")
-data("lalonde") # this step loads the data
-```
+
 
 To learn about the data, type `?lalonde` in your R console.
 
@@ -41,7 +31,8 @@ For this part, we assume that three variables comprise a sufficient adjustment s
 
 We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
-```
+
+```r
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
                  method = "exact",
@@ -50,25 +41,41 @@ exact_low <- matchit(treat ~ race + married + nodegree,
 summary(exact_low)$nn
 ```
 
+```
+##                Control Treated
+## All (ESS)     429.0000     185
+## All           429.0000     185
+## Matched (ESS) 111.5254     185
+## Matched       429.0000     185
+## Unmatched       0.0000       0
+## Discarded       0.0000       0
+```
+
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**:
+\textbf{Answer.} All treated and control units were kept!
 
 
 ### 2.2. Effect estimate {-}
 
 Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
 
-```
+
+```r
 fit <- lm(re78 ~ treat + race + married + nodegree,
           data = match.data(exact_low),
           w = weights)
 print(round(coef(fit)["treat"],2))
 ```
 
+```
+##  treat 
+## 1309.9
+```
+
 **Question**: What is the estimated effect of job training on earnings?
 
-**Answer**: 
+**Answer.** The estimate suggests that job training increases future earnings by \$1309.90.
 
 ### 2.3. Assessing the Match: Balance of Covariates {-}
 
@@ -77,13 +84,35 @@ In matching, one thing we care about is balance across covariates. In other word
 - `interactions`: check interaction terms too? (T or F)
 - `un`: show statistics for unmatched data as well? (T or F)
 
-```
+
+```r
 summary(exact_low, interactions = F, un = F)$sum.matched
+```
+
+```
+##            Means Treated Means Control Std. Mean Diff.
+## raceblack     0.84324324    0.84324324   -4.440892e-16
+## racehispan    0.05945946    0.05945946   -4.857226e-17
+## racewhite     0.09729730    0.09729730   -6.938894e-17
+## married       0.18918919    0.18918919   -1.387779e-16
+## nodegree      0.70810811    0.70810811   -3.330669e-16
+##            Var. Ratio    eCDF Mean     eCDF Max
+## raceblack          NA 4.440892e-16 4.440892e-16
+## racehispan         NA 4.857226e-17 4.857226e-17
+## racewhite          NA 6.938894e-17 6.938894e-17
+## married            NA 1.387779e-16 1.387779e-16
+## nodegree           NA 3.330669e-16 3.330669e-16
+##            Std. Pair Dist.
+## raceblack                0
+## racehispan               0
+## racewhite                0
+## married                  0
+## nodegree                 0
 ```
 
 **Question**: What do you notice about the means of different covariates for the treated versus control groups? 
 
-**Answer**: 
+**Answer**: Their means are the same! 
 
 In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
 
@@ -93,13 +122,30 @@ You will use the results from this section in Problem Set 4.
 ### 3.1. Using `matchit()` to conduct a matching {-}
 Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
 
+**Solution**
+
+```r
+exact_high <- matchit(treat ~ race + married + nodegree + re74,
+                 data = lalonde,
+                 method = "exact",
+                 estimand = "ATT")
+# Note: There are multiple correct ways to extract the numbers below
+summary(exact_high)$nn
 ```
-# Your code goes here
+
+```
+##                 Control Treated
+## All (ESS)     429.00000     185
+## All           429.00000     185
+## Matched (ESS)  48.73116     131
+## Matched       108.00000     131
+## Unmatched     321.00000      54
+## Discarded       0.00000       0
 ```
 
 **Question**: How many control units were matched? How many treated units?
 
-**Answer**: 
+\textbf{Answer.} Now only 108 out of 429 control units are matched, and only 131 out of 185 treated units.
 
 
 ### 3.2. Assessing the Match: Examining matched units {-}
@@ -114,14 +160,45 @@ Here is one way to do this:
 - Examples of using the `summary` function are [**here**](https://intro2r.com/summarising-data-frames.html).
 - Examples of using the `select()` function are [**here**](https://benwhalley.github.io/just-enough-r/selecting-columns.html)
 
+
+**Solution**
+
 Full data:
-```
-# your code goes here
+
+```r
+summary(
+  lalonde %>%
+    select(re74)
+)
 ```
 
-Matched data:
 ```
-# your code goes here
+##       re74      
+##  Min.   :    0  
+##  1st Qu.:    0  
+##  Median : 1042  
+##  Mean   : 4558  
+##  3rd Qu.: 7888  
+##  Max.   :35040
+```
+Matched data:
+
+```r
+matched_data <- match.data(exact_high)
+summary(
+  matched_data %>%
+    select(re74)
+)
+```
+
+```
+##       re74  
+##  Min.   :0  
+##  1st Qu.:0  
+##  Median :0  
+##  Mean   :0  
+##  3rd Qu.:0  
+##  Max.   :0
 ```
 
 **Explain what happened**: What do you notice? What is different about the values of `re74` in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?
