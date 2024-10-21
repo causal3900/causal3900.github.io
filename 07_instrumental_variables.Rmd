@@ -2,8 +2,6 @@
 
 # Instrumental variables
 
-**NOTE THAT SLIDES MAY BE OLD - IF THEY SAY FALL 2023 THEY HAVE NOT BEEN UPDATED YET!**
-
 ## Experimental settings
 
 > Oct 22. [**Slides.**](assets/slides/7-1_iv_experimental.pdf)

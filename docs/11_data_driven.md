@@ -27,12 +27,12 @@ simulated <- simulate_sample()
 
 ```
 ##   X         A         Y
-## 1 1 untreated 158.48658
-## 2 1   treated  82.89739
-## 3 1 untreated  16.26601
-## 4 1   treated  52.03848
-## 5 1 untreated  13.85080
-## 6 2   treated  41.06564
+## 1 1 untreated  1.481215
+## 2 1   treated 44.872576
+## 3 1 untreated 80.807115
+## 4 1   treated 16.094423
+## 5 1 untreated 33.245640
+## 6 2   treated 23.736777
 ```
 
 **Causal estimands.** In this example, we would like to estimate $$\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})$$
