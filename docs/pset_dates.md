@@ -7,11 +7,9 @@ We'll post due dates here throughout the semester.
 
 ## Upcoming {-}
 
-- **Project** Task 2: Due Thursday, October 17th at 11:59pm via Canvas
-
 - Pset 3 **Peer Reviews**: Due Thursday, October 24th at 11:59pm (released Oct 16)
 
-- Pset 4: Due Thursday, October 24th at 11:59pm (released Oct 17)
+- Pset 4: Due Friday, October 25th at 11:59pm (released Oct 17)
 
 ## Future {-}
 
@@ -24,6 +22,8 @@ We'll post due dates here throughout the semester.
 - Pset 5: Due Thursday, November 7th at 11:59pm (released Oct 31)
 
 ## Past {-}
+
+- **Project** Task 2: Due Thursday, October 17th at 11:59pm via Canvas
 
 - Pset 1: Due Tuesday, September 10th at 5pm 
 
