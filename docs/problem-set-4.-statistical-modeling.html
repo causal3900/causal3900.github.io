@@ -140,7 +140,7 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <li>Report the average treatment effect among the treated (ATT).</li>
 </ol>
 <p></p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
 <div id="matching-without-requiring-exact-matches" class="section level2 unnumbered">
@@ -156,16 +156,16 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <li>For <code>method</code>, you may <em>not</em> use <code>exact</code>.</li>
 </ul>
 </li>
-<li>Create matched dataset using <code>match.data()</code>
+<li>Create matched dataset using <code><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">match.data()</a></code>
 </li>
-<li>Using linear regression with <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, estimate a model using the formula <code>re78 ~ treat + race + married + nodegree + re74</code> and your matched data, weighted by the <code>weights</code> that are produced by <code>match.data()</code>.</li>
+<li>Using linear regression with <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, estimate a model using the formula <code>re78 ~ treat + race + married + nodegree + re74</code> and your matched data, weighted by the <code>weights</code> that are produced by <code><a href="https://kosukeimai.github.io/MatchIt/reference/match.data.html">match.data()</a></code>.</li>
 <li>Report your estimate of the ATT.</li>
 </ol>
 <div id="points-conduct-the-matching" class="section level3 unnumbered">
 <h3>3.1. (5 points) Conduct the matching<a class="anchor" aria-label="anchor" href="#points-conduct-the-matching"><i class="fas fa-link"></i></a>
 </h3>
 <p>This is space to conduct the matching. We expect this part to be an R code chunk.</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
 <div id="points-explain-your-choices" class="section level3 unnumbered">

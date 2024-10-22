@@ -26,6 +26,10 @@ lab-parametric-g-formula
 matching
 lab-matching-in-r
 discussion-of-matching
+worked-example-of-statistical-modeling
+data-access
+worked-example-outcome-modeling
+worked-example-matching
 instrumental-variables
 experimental-settings
 lab-instrumental-variable-analysis-in-code
