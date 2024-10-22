@@ -1,7 +1,7 @@
 
 # Problem Set 4. Statistical Modeling {-}
 
-Relevant material will be covered by **Oct 17**. Problem set is due **Oct 24**.
+Relevant material will be covered by **Oct 17**. Problem set is due **Oct 25**.
 
 To complete the problem set:
 
