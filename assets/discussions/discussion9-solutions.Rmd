@@ -1,7 +1,9 @@
 ---
 title: "Discussion 9 - IV"
-date: "2023-10-17"
-output: html_document
+date: "2024-10-23"
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -77,18 +79,20 @@ Finally, we will estimate the Local Average Treatment Effect (average
 treatment effect on the compliers) of participating in a 401(k) using the
 Wald Estimator and two-stage least squares. 
 
+
 ### Wald Estimator
-The Wald estimator proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
+The estimator we discussed in class is also called the Wald estimator. This happens to be the same person, [Abraham Wald](https://en.wikipedia.org/wiki/Abraham_Wald), whose work is the inspiration of the [survivorship bias airplane meme](https://knowyourmeme.com/memes/survivorship-bias-plane)]  It proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
 $$\begin{aligned}
 \hat{E}(Y^{a=1}-Y^{a=0}) &= \frac{\hat{E}(Y^{z=1}-Y^{z=0})}{\hat{E}(A^{z=1}-A^{z=0})}\\
 &= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
 \end{aligned}$$
 
+
 First let's calculate the effect of the instrument on the outcome:
 ```{r}
 mean_outcome_by_instrument <- pension |>
   group_by(e401) |>
-  summarise(net_tfa = mean(net_tfa), .groups = "drop")
+  summarise(net_tfa = mean(net_tfa))
 
 instrument_on_outcome <- (
   mean_outcome_by_instrument$net_tfa[2] - mean_outcome_by_instrument$net_tfa[1]
@@ -99,7 +103,7 @@ Now, calculate the effect of the instrument on the treatment:
 ```{r}
 mean_treatment_by_instrument <- pension |>
   group_by(e401) |>
-  summarise(p401 = mean(p401), .groups = "drop")
+  summarise(p401 = mean(p401))
 
 instrument_on_treatment <- (
   mean_treatment_by_instrument$p401[2] - mean_treatment_by_instrument$p401[1]
@@ -108,7 +112,7 @@ instrument_on_treatment <- (
 
 Calculate the LATE by dividing these two:
 ```{r}
-wald_late <- instrument_on_outcome/instrument_on_treatment
+wald_late <- instrument_on_outcome / instrument_on_treatment
 
 wald_late
 ```
@@ -116,8 +120,8 @@ wald_late
 
 ### Two stage least squeares
 
-To estimate the LATE with two stage least squares, we will use the `ivreg`
-function from the AER package. To see the help file for this function,
+We can also estimate the LATE with a procedure called two stage least squares. To do that we will use the `ivreg`
+function from the AER package. When the treatment and instrument are both binary, this should give the exact same answer as the Wald estimator above. However, when the treatment or instrument are continuous, the Wald estimator may not work and two stage least squares can be used instead. To see the help file for this function,
 run `?ivreg` in your console and take a look at the documentation.
 
 You will have to create a formula that tells `ivreg` what your outcome variable,
