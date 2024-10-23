@@ -106,13 +106,13 @@
 <p>Here is an example of the code to simulate data:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A          Y
-## 1 1 untreated  26.277980
-## 2 1   treated  10.386653
-## 3 1 untreated 112.243522
-## 4 1   treated 135.970472
-## 5 1 untreated  54.380057
-## 6 2   treated   2.681981</code></pre>
+<pre><code>##   X         A         Y
+## 1 1 untreated  29.80856
+## 2 1   treated  71.87417
+## 3 1 untreated  78.34523
+## 4 1   treated  30.12401
+## 5 1 untreated 141.32610
+## 6 2   treated  59.14205</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
@@ -186,7 +186,7 @@ for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estima
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-10-22</p>
+    <p>Last built on 2024-10-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
