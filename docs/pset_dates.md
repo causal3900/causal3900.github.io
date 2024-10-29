@@ -9,6 +9,8 @@ We'll post due dates here throughout the semester.
 
 - Pset 4 **Peer Reviews**: Due Friday, November 1st at 11:59pm (released Oct 28)
 
+- Submit **Project Topic Preferences** by Thursday, Oct 31st at 5pm. For details, refer to Canvas or Ed (note this does not count toward your grade).
+
 ## Future {-}
 
 *Important: These dates are tentative, meaning they may change. We will not make any of these due sooner, meaning they will be due at the date listed or possibly later. We have not included dates for all assignments!*
