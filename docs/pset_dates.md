@@ -7,19 +7,15 @@ We'll post due dates here throughout the semester.
 
 ## Upcoming {-}
 
-- Pset 3 **Peer Reviews**: Due Thursday, October 24th at 11:59pm (released Oct 16)
-
-- Pset 4: Due Friday, October 25th at 11:59pm (released Oct 17)
+- Pset 4 **Peer Reviews**: Due Friday, November 1st at 11:59pm (released Oct 28)
 
 ## Future {-}
 
 *Important: These dates are tentative, meaning they may change. We will not make any of these due sooner, meaning they will be due at the date listed or possibly later. We have not included dates for all assignments!*
 
-- **Project** Task 3: Due Thursday, October 31st at 11:59pm (released Oct 24)
-
-- Pset 4 **Peer Reviews**: Due Friday, November 1st at 11:59pm (released Oct 28)
-
 - Pset 5: Due Thursday, November 7th at 11:59pm (released Oct 31)
+
+- **Project** Task 3: Not yet assigned
 
 ## Past {-}
 
@@ -36,3 +32,7 @@ We'll post due dates here throughout the semester.
 - **Project** Task 1: Due Thursday, October 3rd at 11:59pm
 
 - Pset 3: Due Friday, October 11th at 11:59pm via Canvas
+
+- Pset 3 **Peer Reviews**: Due Thursday, October 24th at 11:59pm (released Oct 16)
+
+- Pset 4: Due Friday, October 25th at 11:59pm (released Oct 17)
