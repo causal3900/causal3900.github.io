@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion: Regression Discontinuity | Causal Inference Course</title>
+<meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
+<meta name="description" content="Download the discussion slides here and the RMarkdown File here. The goal of today’s activity is to interact with regression discontinuity through a real-world example using R. The first section...">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta property="og:title" content="Discussion: Regression Discontinuity | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Download the discussion slides here and the RMarkdown File here. The goal of today’s activity is to interact with regression discontinuity through a real-world example using R. The first section...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion: Regression Discontinuity | Causal Inference Course">
+<meta name="twitter:description" content="Download the discussion slides here and the RMarkdown File here. The goal of today’s activity is to interact with regression discontinuity through a real-world example using R. The first section...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-difference.html"><span class="header-section-number">8</span> Difference in difference</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
+<li><a class="active" href="discussion-regression-discontinuity.html">Discussion: Regression Discontinuity</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
+<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
+<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
+<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="course-project.html">Course Project</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
+<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li><a class="" href="problem-set-6.-difference-in-difference-synthetic-control.html">Problem Set 6. Difference in Difference + Synthetic Control</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-regression-discontinuity" class="section level1 unnumbered">
+<h1>Discussion: Regression Discontinuity<a class="anchor" aria-label="anchor" href="#discussion-regression-discontinuity"><i class="fas fa-link"></i></a>
+</h1>
+<p>Download the discussion slides <a href=""><strong>here</strong></a> and the RMarkdown File <a href="assets/discussions/rdd_lab.Rmd"><strong>here</strong></a>.</p>
+<p>The goal of today’s activity is to interact with regression discontinuity through a real-world example using R. The first section is more conceptual, to help you understand the particular application. Afterwards, there is a mix of conceptual and coding questions. Most of the coding is already done for you and we instead ask that you explore the code by changing some variables.</p>
+<div id="background-an-application-to-party-advantages-in-the-u.s.-senate" class="section level2 unnumbered">
+<h2>1. Background: An Application to Party Advantages in the U.S. Senate<a class="anchor" aria-label="anchor" href="#background-an-application-to-party-advantages-in-the-u.s.-senate"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let’s apply a regression discontinuity analysis to data. This example follows the analysis ``Randomization Inference in the Regression Discontinuity Design: An Application to Party Advantages in the U.S. Senate’’ by Cattaneo, Frandsen, and Titiunik (2015) and their replication file.</p>
+<p>Political scientists are interested in the effect of being an incumbent (the currently elected politician) on the share of votes in an election. Being the current public official means increased name recognition, fundraising opportunities, etc. On the other hand, being an incumbent means you can get blamed for all the bad things that have happened during your term. Elections also give a natural setting where you have a cutoff: if you only win 49.9% of the votes, you’re out of luck… but win 50.1% of the votes and you’ve won the whole election!</p>
+<p>The data we analyze considers US senators. Each state in the US has two senators with 6 year terms, and the election for each of the two senators alternates every 3 years. So for instance, there are two senate seats: A and B. In 2000 senate seat A undergoes an election, in 2003 senate seat B undergoes an election but senate seat A continues, in 2006 senate seat A undergoes an election but senate seat B continues on, etc.</p>
+<p><em>Causal question</em>: Does being an incumbent affect your vote share the next time you run for office?</p>
+<p><em>Treatment</em>: Being an incumbent (in other words, being in office)</p>
+<p><em>Outcome</em>: Vote share in your next election (i.e. what percentage of votes did you get?)</p>
+<p><em>Running variable</em>: Margin of victory (by how much did you win in your last election)</p>
+<p><em>Cutoff</em>: 0 (you win, i.e. become incumbent, if your margin of victory is greater than 0; otherwise, you lost!)</p>
+<div id="check-your-understanding" class="section level3 unnumbered">
+<h3>1.1 Check Your Understanding<a class="anchor" aria-label="anchor" href="#check-your-understanding"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Question:</strong> In your own words, explain how we might use regression discontinuity to provide an answer to the question.</p>
+<p><strong>Answer:</strong> (type your answer here)</p>
+</div>
+</div>
+<div id="data" class="section level2 unnumbered">
+<h2>2. Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+</h2>
+<p>For this section, <strong>run the code block below and read through the comments inside the code block.</strong> The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Lines like this (starting with a hashtag) are called comments</span></span>
+<span><span class="co"># Comments are meant to help explain what is going on</span></span>
+<span><span class="co"># Comments are not always necessary, but can be helpful</span></span>
+<span></span>
+<span><span class="co"># Below, we create a function that loads in libraries (packages), but first checks if it is installed</span></span>
+<span><span class="co"># The piece of code below is not necessary, but it makes loading libraries more convenient </span></span>
+<span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">package</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># install and load some libraries (packages) using the function created above</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"lpdensity"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"rddensity"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"rdrobust"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"rdlocrand"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># read in the datafile</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># the head function shows us the first few rows of our data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##         state year dopen population presdemvoteshlag1
+## 1 Connecticut 1914     0    1233000          39.15937
+## 2 Connecticut 1916     0    1294000          39.15937
+## 3 Connecticut 1922     0    1431000          33.02737
+## 4 Connecticut 1926     0    1531000          27.52570
+## 5 Connecticut 1928     1    1577000          27.52570
+## 6 Connecticut 1932     0    1637000          45.57480
+##         demmv demvoteshlag1 demvoteshlag2 demvoteshfor1
+## 1  -7.6885610            NA            NA      46.23941
+## 2  -3.9237082      42.07694            NA      36.09757
+## 3  -6.8686604      36.09757      46.23941      35.64121
+## 4 -27.6680560      45.46875      36.09757      45.59821
+## 5  -8.2569685      35.64121      45.46875      48.47606
+## 6   0.7324815      45.59821      35.64121      51.74687
+##   demvoteshfor2 demwinprv1 demwinprv2 dmidterm dpresdem
+## 1      36.09757         NA         NA        1        1
+## 2      45.46875          0         NA        0        1
+## 3      45.59821          0          0        1        0
+## 4      48.47606          0          0        1        0
+## 5      51.74687          0          0        0        0
+## 6      39.80264          0          0        0        0</code></pre>
+<p>Here is what some of these column names (variables) mean:</p>
+<ul>
+<li>
+<code>demmv</code> is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
+<ul>
+<li>so a value just above 0 indicates a very close victory, a value just below 0 indicates a very close loss</li>
+</ul>
+</li>
+<li>
+<code>demovoteshlag1</code> and <code>demovoteshlag2</code> indicates the vote share 1 and 2 election cycles ago, respectively</li>
+<li>
+<code>demovoteshfor1</code> and <code>demovoteshfor2</code> indicates the vote share 1 and 2 elections cycles in the future, respectively</li>
+</ul>
+</div>
+<div id="rdd-in-r" class="section level2 unnumbered">
+<h2>3. RDD in R<a class="anchor" aria-label="anchor" href="#rdd-in-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is <code>demvoteshfor2</code> because the next time the same seat goes up for election is 2 cycles in the future. The running variable is <code>demmv</code>.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Save the column "demvoteshfor2" from data into a variable called "outcome"</span></span>
+<span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor2</span></span>
+<span></span>
+<span><span class="co"># Save the column "demmv" from data into a variable called "running_variable"</span></span>
+<span><span class="va">running_variable</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
+<span></span>
+<span><span class="co"># plot the data</span></span>
+<span><span class="fu">rdplot</span><span class="op">(</span>y <span class="op">=</span> <span class="va">outcome</span>, x <span class="op">=</span>  <span class="va">running_variable</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, </span>
+<span>       p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, </span>
+<span>       title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, </span>
+<span>       x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion_rdd_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<p><strong>Optional</strong>: Explore the documentation for the function <a href="https://rdrr.io/cran/rdrobust/man/rdplot.html"><code>rdplot()</code></a> Read the description and the arguments. What do the arguments (<code>y</code>, <code>x</code>, <code>nbins</code>, <code>p</code>, <code>col.lines</code>, etc) in the function mean? Are any of them optional? Do any of them have default values? What happens to the plot if you change these values?</p>
+<div id="is-there-a-discontinuity" class="section level3 unnumbered">
+<h3>3.1 Is there a discontinuity?<a class="anchor" aria-label="anchor" href="#is-there-a-discontinuity"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Question:</strong> In the code above, compare what happens when you run the code with <span class="math inline">\(p=0\)</span> versus <span class="math inline">\(p=1\)</span> versus <span class="math inline">\(p=2\)</span>. To do this, look for <code>p</code> in the function <code>rdplot</code> above. It is currently set to <code>p = 0</code> so if you run the code, it will give you results for <code>p = 0</code>. Then, you can change the value of <code>p</code> and re-run the code. What changes? Is there a discontinuity (jump) at the cutoff?</p>
+<p><strong>Answer:</strong> (type your answer here)</p>
+</div>
+<div id="estimating-the-causal-effect-using-rdrobust" class="section level3 unnumbered">
+<h3>3.2 Estimating the causal effect using rdrobust<a class="anchor" aria-label="anchor" href="#estimating-the-causal-effect-using-rdrobust"><i class="fas fa-link"></i></a>
+</h3>
+<p>Getting the estimates aren’t so difficult once we’ve selected a bandwidth, but selecting a good bandwidth can be tricky and getting standard errors on the estimate are also difficult. The R package <code>rdrobust</code> selects the bandwidth, estimates the causal effect quantities, and give standard errors with just a couple of lines of code.</p>
+<p>For <code>rdrobust</code>, the syntax is <code>rdrobust(y, x, kernel, p, h)</code> where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth.</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># uniform kernel with bandwidth 10 and a linear (degree 1) model</span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">rdrobust</span><span class="op">(</span><span class="va">outcome</span>, <span class="va">running_variable</span>, kernel <span class="op">=</span> <span class="st">'uniform'</span>,  p <span class="op">=</span> <span class="fl">1</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># print the results</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Sharp RD estimates using local polynomial regression.
+## 
+## Number of Obs.                 1297
+## BW type                      Manual
+## Kernel                      Uniform
+## VCE method                       NN
+## 
+## Number of Obs.                  595          702
+## Eff. Number of Obs.             245          206
+## Order est. (p)                    1            1
+## Order bias  (q)                   2            2
+## BW est. (h)                  10.000       10.000
+## BW bias (b)                  10.000       10.000
+## rho (h/b)                     1.000        1.000
+## Unique Obs.                     595          702
+## 
+## =============================================================================
+##         Method     Coef. Std. Err.         z     P&gt;|z|      [ 95% C.I. ]       
+## =============================================================================
+##   Conventional     6.899     1.722     4.007     0.000     [3.525 , 10.273]    
+##         Robust         -         -     3.891     0.000     [5.156 , 15.624]    
+## =============================================================================</code></pre>
+<div id="questions" class="section level4 unnumbered">
+<h4>3.2.1 Questions<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
+</h4>
+<p><strong>Question:</strong> In both mathematical notation and in your own words, describe the causal effect that is being estimated. What is the estimated value?</p>
+<p><strong>Answer:</strong> (type your answer here)</p>
+</div>
+</div>
+</div>
+<div id="try-coding-on-your-own" class="section level2 unnumbered">
+<h2>4. Try coding on your own<a class="anchor" aria-label="anchor" href="#try-coding-on-your-own"><i class="fas fa-link"></i></a>
+</h2>
+<p>For this next piece, the question is “If the other sitting senator is from your same party, what is the effect on your vote share?” In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competeing with the other senator, because elections are every 3 years and alternate between senators.</p>
+<p>Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is <code>demvoteshfor1</code> since we are interested in the immediately following election. The running variable is still margin of victory <code>demmn</code>. We’ve plotted the data for you below.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">outcome_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
+<span><span class="va">running_variable_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
+<span></span>
+<span><span class="co"># plot the data</span></span>
+<span><span class="co"># Set p = 0 for a straight line (i.e., regression with X^p)</span></span>
+<span><span class="fu">rdplot</span><span class="op">(</span>y <span class="op">=</span> <span class="va">outcome_2</span>, x <span class="op">=</span>  <span class="va">running_variable_2</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion_rdd_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<p>Your task is to use <code>rdrobust()</code> to get an estimate of the LATE by specifying a kernel, model degree (<code>p</code>) and bandwidth size (<code>h</code>). Can you explain what you did and why?</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
+<p><strong>Question:</strong> Does the estimate change if you change the value of <code>kernel</code> (see what happens when you set to ‘uniform’ versus ‘triangular’)? What if you change the value of <code>p</code>? What happens if you change <code>h</code> or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?</p>
+<p><strong>Answer:</strong> (type your answer here)</p>
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></div>
+<div class="next"><a href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-regression-discontinuity">Discussion: Regression Discontinuity</a></li>
+<li>
+<a class="nav-link" href="#background-an-application-to-party-advantages-in-the-u.s.-senate">1. Background: An Application to Party Advantages in the U.S. Senate</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#check-your-understanding">1.1 Check Your Understanding</a></li></ul>
+</li>
+<li><a class="nav-link" href="#data">2. Data</a></li>
+<li>
+<a class="nav-link" href="#rdd-in-r">3. RDD in R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#is-there-a-discontinuity">3.1 Is there a discontinuity?</a></li>
+<li><a class="nav-link" href="#estimating-the-causal-effect-using-rdrobust">3.2 Estimating the causal effect using rdrobust</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#try-coding-on-your-own">4. Try coding on your own</a></li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2024-10-29</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

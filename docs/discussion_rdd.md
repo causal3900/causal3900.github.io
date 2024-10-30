@@ -4,7 +4,7 @@ output: html_document
 
 # Discussion 10: Regression Discontinuity {-}
 
-Download the discussion slides [**here**]() and the RMarkdown File [**here**](assets/discussions/rdd_lab.Rmd). You may need to copy and paste into a .Rmd file.
+Download the discussion slides [**here**]() and the RMarkdown File [**here**](assets/discussions/rdd_lab.Rmd).
 
 The goal of today's activity is to interact with regression discontinuity through a real-world example using R. The first section is more conceptual, to help you understand the particular application. Afterwards, there is a mix of conceptual and coding questions. Most of the coding is already done for you and we instead ask that you explore the code by changing some variables.
 
@@ -114,7 +114,7 @@ rdplot(y = outcome, x =  running_variable, nbins = c(1000, 1000),
        x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="discussion_rdd_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 **Optional**: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values? What happens to the plot if you change these values?
 
@@ -183,7 +183,7 @@ running_variable_2 <- data$demmv
 rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col.lines = "red", col.dots = "lightgray", title = "Incumbency Advantage", y.lim = c(0,100), x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="discussion_rdd_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why?
 

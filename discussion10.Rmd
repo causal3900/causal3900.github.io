@@ -35,8 +35,7 @@ _Cutoff_: 0 (you win, i.e. become incumbent, if your margin of victory is greate
 ## 2. Data {-}
 For this section, **run the code block below and read through the comments inside the code block.** The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
 
-
-```r
+```{r}
 # Lines like this (starting with a hashtag) are called comments
 # Comments are meant to help explain what is going on
 # Comments are not always necessary, but can be helpful
@@ -64,30 +63,6 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 head(data)
 ```
 
-```
-##         state year dopen population presdemvoteshlag1
-## 1 Connecticut 1914     0    1233000          39.15937
-## 2 Connecticut 1916     0    1294000          39.15937
-## 3 Connecticut 1922     0    1431000          33.02737
-## 4 Connecticut 1926     0    1531000          27.52570
-## 5 Connecticut 1928     1    1577000          27.52570
-## 6 Connecticut 1932     0    1637000          45.57480
-##         demmv demvoteshlag1 demvoteshlag2 demvoteshfor1
-## 1  -7.6885610            NA            NA      46.23941
-## 2  -3.9237082      42.07694            NA      36.09757
-## 3  -6.8686604      36.09757      46.23941      35.64121
-## 4 -27.6680560      45.46875      36.09757      45.59821
-## 5  -8.2569685      35.64121      45.46875      48.47606
-## 6   0.7324815      45.59821      35.64121      51.74687
-##   demvoteshfor2 demwinprv1 demwinprv2 dmidterm dpresdem
-## 1      36.09757         NA         NA        1        1
-## 2      45.46875          0         NA        0        1
-## 3      45.59821          0          0        1        0
-## 4      48.47606          0          0        1        0
-## 5      51.74687          0          0        0        0
-## 6      39.80264          0          0        0        0
-```
-
 Here is what some of these column names (variables) mean:
 
 - `demmv` is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
@@ -99,8 +74,7 @@ Here is what some of these column names (variables) mean:
 ## 3. RDD in R {-}
 We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is `demvoteshfor2` because the next time the same seat goes up for election is 2 cycles in the future. The running variable is `demmv`.
 
-
-```r
+```{r}
 # Save the column "demvoteshfor2" from data into a variable called "outcome"
 outcome <- data$demvoteshfor2
 
@@ -113,8 +87,6 @@ rdplot(y = outcome, x =  running_variable, nbins = c(1000, 1000),
        title = "Incumbency Advantage", y.lim = c(0,100), 
        x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
 ```
-
-<img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 **Optional**: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values? What happens to the plot if you change these values?
 
@@ -129,38 +101,12 @@ Getting the estimates aren't so difficult once we've selected a bandwidth, but s
 
 For `rdrobust`, the syntax is `rdrobust(y, x, kernel, p, h)` where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth. 
 
-
-```r
+```{r}
 # uniform kernel with bandwidth 10 and a linear (degree 1) model
 out <- rdrobust(outcome, running_variable, kernel = 'uniform',  p = 1, h = 10)
 
 # print the results
 summary(out)
-```
-
-```
-## Sharp RD estimates using local polynomial regression.
-## 
-## Number of Obs.                 1297
-## BW type                      Manual
-## Kernel                      Uniform
-## VCE method                       NN
-## 
-## Number of Obs.                  595          702
-## Eff. Number of Obs.             245          206
-## Order est. (p)                    1            1
-## Order bias  (q)                   2            2
-## BW est. (h)                  10.000       10.000
-## BW bias (b)                  10.000       10.000
-## rho (h/b)                     1.000        1.000
-## Unique Obs.                     595          702
-## 
-## =============================================================================
-##         Method     Coef. Std. Err.         z     P>|z|      [ 95% C.I. ]       
-## =============================================================================
-##   Conventional     6.899     1.722     4.007     0.000     [3.525 , 10.273]    
-##         Robust         -         -     3.891     0.000     [5.156 , 15.624]    
-## =============================================================================
 ```
 
 #### 3.2.1 Questions {-}
@@ -173,22 +119,19 @@ summary(out)
 For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competeing with the other senator, because elections are every 3 years and alternate between senators.
 
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is still margin of victory `demmn`. We've plotted the data for you below. 
-
-```r
+```{r}
 outcome_2 <- data$demvoteshfor1
 running_variable_2 <- data$demmv
 
 # plot the data
 # Set p = 0 for a straight line (i.e., regression with X^p)
 rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col.lines = "red", col.dots = "lightgray", title = "Incumbency Advantage", y.lim = c(0,100), x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
-```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+```
 
 Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why?
 
-
-```r
+```{r}
 # Your code goes here
 ```
 
