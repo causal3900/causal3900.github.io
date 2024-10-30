@@ -16,6 +16,6 @@ We'll discuss a bandwidth selection and triangular weighting. We'll also apply r
 
 ## Discussion
 
-> Oct 31. [**Slides.**]() After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.2.2. through 20.2.4.
+> Oct 31. [**Slides.**](assets/slides/rdd_extensions.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.2.2. through 20.2.4. 
 
 We'll continue our discussion of regression discontinuity designs by discussing fuzzy RDD and validation checks for RDD.

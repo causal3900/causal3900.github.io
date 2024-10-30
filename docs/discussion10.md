@@ -2,7 +2,7 @@
 output: html_document
 ---
 
-# Discussion 10: Regression Discontinuity {-}
+# Discussion 10: RDD Lab Solutions {-}
 
 Download the discussion slides [**here**]() and the RMarkdown File [**here**](assets/discussions/rdd_lab.Rmd). You may need to copy and paste into a .Rmd file.
 
@@ -25,15 +25,14 @@ _Running variable_: Margin of victory (by how much did you win in your last elec
 
 _Cutoff_: 0 (you win, i.e. become incumbent, if your margin of victory is greater than 0; otherwise, you lost!)
 
-
 ### 1.1 Check Your Understanding {-}
 
 **Question:** In your own words, explain how we might use regression discontinuity to provide an answer to the question. 
 
-**Answer:** (type your answer here)
+**Answer:** *Using data from senators who just barely won or just barely lost an election, we can use regression discontinuity to compute the effect that being in office has on your outcome in the next election. In other words, we can answer the question "What effect does just barely winning or just barely losing the election have on your outcome in the next election?" Critically, this estimate only applies to senators who just barely won or just barely lost, and would not generalize to other senators without further assumptions.*
 
 ## 2. Data {-}
-For this section, **run the code block below and read through the comments inside the code block.** The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
+For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
 
 
 ```r
@@ -41,7 +40,7 @@ For this section, **run the code block below and read through the comments insid
 # Comments are meant to help explain what is going on
 # Comments are not always necessary, but can be helpful
 
-# Below, we create a function that loads in libraries (packages), but first checks if it is installed
+# Below, we create a function that loads in libraries, but first checks if it is installed
 # The piece of code below is not necessary, but it makes loading libraries more convenient 
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
@@ -50,7 +49,7 @@ install <- function(package) {
   }
 }
 
-# install and load some libraries (packages) using the function created above
+# install and load some libraries using the function created above
 install("ggplot2")
 install("lpdensity")
 install("rddensity")
@@ -87,7 +86,6 @@ head(data)
 ## 5      51.74687          0          0        0        0
 ## 6      39.80264          0          0        0        0
 ```
-
 Here is what some of these column names (variables) mean:
 
 - `demmv` is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
@@ -116,12 +114,12 @@ rdplot(y = outcome, x =  running_variable, nbins = c(1000, 1000),
 
 <img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
-**Optional**: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values? What happens to the plot if you change these values?
+Optional: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values?
 
 ### 3.1 Is there a discontinuity? {-}
 **Question:** In the code above, compare what happens when you run the code with $p=0$ versus $p=1$ versus $p=2$. To do this, look for `p` in the function `rdplot` above. It is currently set to `p = 0` so if you run the code, it will give you results for `p = 0`. Then, you can change the value of `p` and re-run the code. What changes? Is there a discontinuity (jump) at the cutoff?
 
-**Answer:** (type your answer here)
+**Answer:** *Changing the value of `p` changes the degree of the polynomial we are assuming for the data. As we increase `p`, the curves on the left and right of the cutoff seem to possibly fit the data a little better. However, this may indicate overfitting. In all instances, there is a clear jump at the cutoff.*
 
 
 ### 3.2 Estimating the causal effect using rdrobust {-}
@@ -166,11 +164,11 @@ summary(out)
 #### 3.2.1 Questions {-}
 **Question:** In both mathematical notation and in your own words, describe the causal effect that is being estimated. What is the estimated value?
 
-**Answer:** (type your answer here)
+**Answer:** *The estimated value is 6.899. We are estimating the local average treatment effect. In this example, this is the average treatment effect of being an incumbent on vote share for the group of senators who just barely won or just barely lost (these are the senators around the cutoff).* 
 
 ## 4. Try coding on your own {-}
 
-For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competeing with the other senator, because elections are every 3 years and alternate between senators.
+For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators.
 
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is still margin of victory `demmn`. We've plotted the data for you below. 
 
@@ -185,13 +183,12 @@ rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col
 
 <img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why?
+Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why? Can you explain what quantity you estimated?
 
 
 ```r
 # Your code goes here
 ```
 
-**Question:** Does the estimate change if you change the value of `kernel` (see what happens when you set to 'uniform' versus 'triangular')? What if you change the value of `p`? What happens if you change `h` or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?
 
-**Answer:** (type your answer here)
+**Question:** Does the estimate change if you change the value of `kernel` (see what happens when you set to 'uniform' versus 'triangular')? What if you change the value of `p`? What happens if you change `h` or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?
