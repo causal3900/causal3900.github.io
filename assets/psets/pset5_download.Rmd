@@ -1,26 +1,39 @@
+---
+output:
+  pdf_document
+urlcolor: blue
+header-includes:
+  \usepackage{tikz}
+  \usetikzlibrary{arrows,shapes.arrows,positioning,shapes,patterns,calc}
+---
+
 # Problem Set 5. IV + RD {-}
 
 Relevant material will be covered by **Oct 31**. Problem set is due **Nov 7**.
 
-To complete the problem set, feel free to [**Download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
+To complete the problem set, feel free to [**Download the .Rmd**](). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity and to apply these methods to data from a real-world example in order to answer a causal question using R.
 
-*You are allowed to use outside resources as you study and work on this problem set. However, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material). Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.* 
+*You are allowed to use outside resources as you study and work on this problem set. However, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material).Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.* 
      
 ## 1. (20 points) Instrumental variables in experiments {-}
 Suppose you are a professor at Cornell and are interested in the effect of attending office hours on a students final grade. You randomly select some students to receive an email encouraging them to regularly attend office hours.   
 
-<style>.img-responsive {
-  max-width: 100%;
-}
-</style>
-
-<div class="panel">
-  <img class="img-responsive" src="assets/pset5_dag.png" alt="DAGs for question 1">
-</div>
-
-
+\begin{tikzpicture}[x = .3in, y = .15in]
+    \node (z) at (-6,0) {$Z$};
+    \node (a) at (-2,0) {$A$};
+    \node (y) at  (2,0) {$Y$};
+    \node[font = \footnotesize, align = right, anchor = east] at (z.west) {Randomized to\\recieve encouragement};
+    \node (u) at  (-2,-2) {$U$};
+    \node[font = \footnotesize, align = center, anchor = south] at (a.north) {Attends\\office hours};
+    \node[font = \footnotesize, align = left, anchor = west] at  (y.east) {Final Grade};
+    \node[font = \footnotesize, align = right, anchor = east] at (u.west) {Interest in course};
+    \draw[->, >=stealth, thick] (z) -- (a);
+    \draw[->, >=stealth, thick] (a) --  (y);
+    \draw[->, >=stealth, thick] (u) --  (a);
+    \draw[->, >=stealth, thick] (u) --  (y);
+  \end{tikzpicture}
 
 In many cases, whether a student received the email $Z$ determines their actual treatment $A$ (when $Z = 1$ then $A = 1$, and when $Z = 0$ then $A = 0$). But there are some difficulties:
 

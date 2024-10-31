@@ -1,4 +1,3 @@
-
 # Problem Set 4. Statistical Modeling {-}
 
 Relevant material will be covered by **Oct 17**. Problem set is due **Oct 25**.
@@ -58,7 +57,7 @@ outcome_model <- randomForest(re78 ~ treat * (race + married + nodegree + re74),
 \textbf{Answer.}
 
 
-```r
+``` r
 # Your code goes here
 ```
 
@@ -82,7 +81,7 @@ Task: Using `matchit`, conduct matching to estimate the ATT where `treat` is the
 This is space to conduct the matching. We expect this part to be an R code chunk.
 
 
-```r
+``` r
 # Your code goes here
 ```
 

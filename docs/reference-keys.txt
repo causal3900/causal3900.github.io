@@ -65,3 +65,6 @@ import-data
 clean-data
 balance-table
 results
+points-regression-discontinuity-design-rdd
+points-suppose-we-believe-the-argument-and-want-to-use-the-instrument-of-being-near-a-4-year-college.-estimate-the-causal-effect-of-years-of-education-on-wage.
+points-there-is-some-disagreement-about-whether-the-instrumental-variables-setup-is-reasonable-in-this-setting.-playing-devils-advocate-give-at-least-one-reason-why-the-assumptions-of-instrumental-variables-might-be-violated-for-this-example.
