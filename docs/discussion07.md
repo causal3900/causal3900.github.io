@@ -32,7 +32,7 @@ For this part, we assume that three variables comprise a sufficient adjustment s
 We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
 
-``` r
+```r
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
                  method = "exact",
@@ -61,7 +61,7 @@ summary(exact_low)$nn
 Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
 
 
-``` r
+```r
 fit <- lm(re78 ~ treat + race + married + nodegree,
           data = match.data(exact_low),
           w = weights)
@@ -85,7 +85,7 @@ In matching, one thing we care about is balance across covariates. In other word
 - `un`: show statistics for unmatched data as well? (T or F)
 
 
-``` r
+```r
 summary(exact_low, interactions = F, un = F)$sum.matched
 ```
 
@@ -124,7 +124,7 @@ Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The 
 
 **Solution**
 
-``` r
+```r
 exact_high <- matchit(treat ~ race + married + nodegree + re74,
                  data = lalonde,
                  method = "exact",
@@ -165,7 +165,7 @@ Here is one way to do this:
 
 Full data:
 
-``` r
+```r
 summary(
   lalonde %>%
     select(re74)
@@ -183,7 +183,7 @@ summary(
 ```
 Matched data:
 
-``` r
+```r
 matched_data <- match.data(exact_high)
 summary(
   matched_data %>%

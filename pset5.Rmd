@@ -8,7 +8,7 @@ The learning goals of completing this problem set are to engage with conceptual 
 
 *You are allowed to use outside resources as you study and work on this problem set. However, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material). Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.* 
      
-## 1. (20 points) Instrumental variables in experiments {-}
+## 1. (25 points) Instrumental variables in experiments {-}
 Suppose you are a professor at Cornell and are interested in the effect of attending office hours on a students final grade. You randomly select some students to receive an email encouraging them to regularly attend office hours.   
 
 <style>.img-responsive {
@@ -45,13 +45,13 @@ Answer the following in a sentence each.
 
 8. (5 points) Suppose the causal graph drawn above is not correct. In particular, the emails got caught in a spam filter, so no student actually received the email. Explain why the Wald estimator would give an unreliable estimate of the true causal effect. Which assumption that we discussed in class does this situation relate to? You must cite a lecture slide to receive credit.
 
-## 2. (10 points) Regression Discontinuity Design (RDD)
+## 2. (10 points) Regression Discontinuity Design (RDD) {-}
 
-(3 points) In your own words, explain the key assumption of regression discontinuity. Your answer should include what it means intuitively, what it means in math, and why it's important. 
+**2.1. (3 points)** In your own words, explain the key assumption of regression discontinuity. Your answer should include what it means intuitively, what it means in math, and why it's important. 
 
 **Answer**:
 
-(7 points) Draw two images by hand:
+**2.2. (7 points)** Draw two images by hand:
 
 - In the first, draw a visual representation of what it looks like when the assumption is satisfied
 - In the second, draw a visual representation of what it looks like when the assumption is not satisfied
@@ -80,7 +80,7 @@ card$wage
 ```
 
 
-### 3.1 (5 points) Suppose we believe the argument and want to use the instrument of being near a 4 year college. Estimate the causal effect of years of education on wage.
+### 3.1 (5 points) Suppose we believe the argument and want to use the instrument of being near a 4 year college. Estimate the causal effect of years of education on wage. {-}
 
 **Answer**:
 
@@ -89,7 +89,7 @@ card$wage
 
 ```
 
-### 3.2 (5 points) There is some disagreement about whether the instrumental variables setup is reasonable in this setting. Playing devil's advocate, give at least one reason why the assumptions of instrumental variables might be violated for this example.   
+### 3.2 (5 points) There is some disagreement about whether the instrumental variables setup is reasonable in this setting. Playing devil's advocate, give at least one reason why the assumptions of instrumental variables might be violated for this example. {-}
 
 **Answer**:
 
@@ -119,7 +119,7 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 ```
 
 
-(5 points) Using [`rdrobust`](https://rdrr.io/cran/rdrobust/man/rdrobust.html), get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). 
+**4.1 (5 points)** Using [`rdrobust`](https://rdrr.io/cran/rdrobust/man/rdrobust.html), get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). 
 ```{r}
 outcome <- data$demvoteshfor1
 running_variable <- data$demmv
@@ -127,6 +127,6 @@ running_variable <- data$demmv
 # your code goes here
 ```
 
-(5 points) What happens if you change the value of `p`? What happens if you change `h`? How do these changes relate to bias and variance? For full credit, your should try a few different values of `p` and `h`, reporting the estimate and standard error for each. 
+**4.2 (5 points)** What happens if you change the value of `p`? What happens if you change `h`? How do these changes relate to bias and variance? For full credit, your should try a few different values of `p` and `h`, reporting the estimate and standard error for each. 
 
 **Answer**:
