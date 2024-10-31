@@ -72,37 +72,32 @@ sessionInfo()
 ```
 
 ```
-## R version 4.4.1 (2024-06-14)
-## Platform: x86_64-pc-linux-gnu
-## Running under: Ubuntu 22.04.5 LTS
+## R version 4.4.0 (2024-04-24)
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Sonoma 14.7
 ## 
 ## Matrix products: default
-## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
-## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so;  LAPACK version 3.10.0
+## BLAS:   /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRblas.0.dylib 
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## time zone: America/New_York
-## tzcode source: system (glibc)
+## tzcode source: internal
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets 
 ## [6] methods   base     
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] digest_0.6.37     R6_2.5.1          bookdown_0.40    
-##  [4] fastmap_1.2.0     xfun_0.48         cachem_1.1.0     
-##  [7] knitr_1.48        memoise_2.0.1     htmltools_0.5.8.1
-## [10] rmarkdown_2.28    lifecycle_1.0.4   xml2_1.3.6       
-## [13] cli_3.6.3         downlit_0.4.4     sass_0.4.9       
-## [16] withr_3.0.1       jquerylib_0.1.4   compiler_4.4.1   
-## [19] rstudioapi_0.16.0 tools_4.4.1       evaluate_1.0.0   
-## [22] bslib_0.8.0       yaml_2.3.10       fs_1.6.4         
-## [25] jsonlite_1.8.9    rlang_1.1.4
+##  [1] digest_0.6.36     R6_2.5.1          bookdown_0.40    
+##  [4] fastmap_1.2.0     xfun_0.45         cachem_1.1.0     
+##  [7] knitr_1.47        memoise_2.0.1     htmltools_0.5.8.1
+## [10] rmarkdown_2.27    lifecycle_1.0.4   xml2_1.3.6       
+## [13] cli_3.6.2         downlit_0.4.4     sass_0.4.9       
+## [16] withr_3.0.0       jquerylib_0.1.4   compiler_4.4.0   
+## [19] rstudioapi_0.16.0 tools_4.4.0       evaluate_0.24.0  
+## [22] bslib_0.7.0       yaml_2.3.8        fs_1.6.4         
+## [25] jsonlite_1.8.8    rlang_1.1.4
 ```

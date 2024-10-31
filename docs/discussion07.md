@@ -91,17 +91,17 @@ summary(exact_low, interactions = F, un = F)$sum.matched
 
 ```
 ##            Means Treated Means Control Std. Mean Diff.
-## raceblack     0.84324324    0.84324324    0.000000e+00
-## racehispan    0.05945946    0.05945946    6.938894e-18
-## racewhite     0.09729730    0.09729730    1.387779e-17
-## married       0.18918919    0.18918919    0.000000e+00
-## nodegree      0.70810811    0.70810811    0.000000e+00
+## raceblack     0.84324324    0.84324324   -4.440892e-16
+## racehispan    0.05945946    0.05945946   -4.857226e-17
+## racewhite     0.09729730    0.09729730   -6.938894e-17
+## married       0.18918919    0.18918919   -1.387779e-16
+## nodegree      0.70810811    0.70810811   -3.330669e-16
 ##            Var. Ratio    eCDF Mean     eCDF Max
-## raceblack          NA 0.000000e+00 0.000000e+00
-## racehispan         NA 6.938894e-18 6.938894e-18
-## racewhite          NA 1.387779e-17 1.387779e-17
-## married            NA 0.000000e+00 0.000000e+00
-## nodegree           NA 0.000000e+00 0.000000e+00
+## raceblack          NA 4.440892e-16 4.440892e-16
+## racehispan         NA 4.857226e-17 4.857226e-17
+## racewhite          NA 6.938894e-17 6.938894e-17
+## married            NA 1.387779e-16 1.387779e-16
+## nodegree           NA 3.330669e-16 3.330669e-16
 ##            Std. Pair Dist.
 ## raceblack                0
 ## racehispan               0

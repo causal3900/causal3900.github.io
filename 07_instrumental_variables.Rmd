@@ -27,6 +27,7 @@ In this lab we will implement instrumental variables estimators in R.
 
 > October 23 [**Slides.**](assets/discussions/discussion9-slides.pdf) Download the
 R Markdown file [**here**](assets/discussions/discussion9.Rmd). 
+Solutions to the lab exercise are [**here**](assets/discussions/discussion9-solutions.html). 
 
 ## Observational settings
 
