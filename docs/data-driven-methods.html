@@ -107,13 +107,13 @@
 <p>Here is an example of the code to simulate data:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##   X         A        Y
-## 1 1 untreated 39.94169
-## 2 1   treated 59.26379
-## 3 1 untreated 40.03555
-## 4 1   treated 92.04629
-## 5 1 untreated 95.09687
-## 6 2   treated 37.24223</code></pre>
+<pre><code>##   X         A         Y
+## 1 1 untreated 50.578933
+## 2 1   treated 98.520067
+## 3 1 untreated 37.339518
+## 4 1   treated 27.516869
+## 5 1 untreated  8.720222
+## 6 2   treated 49.020261</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
