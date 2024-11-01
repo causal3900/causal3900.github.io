@@ -2,7 +2,7 @@
 
 Relevant material will be covered by **Oct 31**. Problem set is due **Nov 7**.
 
-To complete the problem set, feel free to [**Download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
+To complete the problem set, feel free to [**Download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd) and the [pdf](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.pdf). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity and to apply these methods to data from a real-world example in order to answer a causal question using R.
 

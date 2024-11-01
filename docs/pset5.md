@@ -2,7 +2,7 @@
 
 Relevant material will be covered by **Oct 31**. Problem set is due **Nov 7**.
 
-To complete the problem set, feel free to [**Download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
+To complete the problem set, feel free to [**Download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd) and the [pdf](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.pdf). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity and to apply these methods to data from a real-world example in order to answer a causal question using R.
 
@@ -68,7 +68,7 @@ In the paper [Using Geographic Variation in College Proximity to Estimate the Re
 
 You can access the data in the \texttt{woolridge} package. However, since it's not easily installable from R, we have provided an alternative for you to get the data here:
 
-```r
+``` r
 card <- read.csv("https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/data/card.csv")
 
 ###
@@ -101,7 +101,7 @@ The question is "If the other sitting senator is from your same party, what is t
 Your task is to estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is the margin of victory `demmn`. We have started the code for you below.
 
 
-```r
+``` r
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -120,7 +120,7 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 
 **4.1 (5 points)** Using [`rdrobust`](https://rdrr.io/cran/rdrobust/man/rdrobust.html), get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). 
 
-```r
+``` r
 outcome <- data$demvoteshfor1
 running_variable <- data$demmv
 
