@@ -6,7 +6,7 @@ To complete the problem set, feel free to [**Download the .Rmd**](https://github
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity and to apply these methods to data from a real-world example in order to answer a causal question using R.
 
-*You are allowed to use outside resources as you study and work on this problem set. However, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material). Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.* 
+*You are allowed to use outside resources as you study and work on this problem set. However, if you do, you must cite the source to receive credit. In addition, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material). Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.* 
      
 ## 1. (25 points) Instrumental variables in experiments {-}
 Suppose you are a professor at Cornell and are interested in the effect of attending office hours on a students final grade. You randomly select some students to receive an email encouraging them to regularly attend office hours.   
