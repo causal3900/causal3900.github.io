@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>6 Instrumental variables | Causal Inference Course</title>
+<title>8 Difference in differences | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
-<meta name="description" content="6.1 Experimental settings  Oct 22. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
+<meta name="description" content="8.1 Introduction  Nov 5. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="6 Instrumental variables | Causal Inference Course">
+<meta property="og:title" content="8 Difference in differences | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="6.1 Experimental settings  Oct 22. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
+<meta property="og:description" content="8.1 Introduction  Nov 5. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="6 Instrumental variables | Causal Inference Course">
-<meta name="twitter:description" content="6.1 Experimental settings  Oct 22. Slides. An instrumental variable (IV) identification strategy applies when a treatment effect of \(A\) on \(Y\) is confounded by unobserved variables (\(U\)),...">
+<meta name="twitter:title" content="8 Difference in differences | Causal Inference Course">
+<meta name="twitter:description" content="8.1 Introduction  Nov 5. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -53,9 +53,9 @@
 <li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
 <li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
 <li class="book-part">Identification without exchangeability</li>
-<li><a class="active" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
 <li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
-<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="active" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
 <li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
@@ -88,61 +88,51 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="instrumental-variables" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="difference-in-differences" class="section level1" number="8">
 <h1>
-<span class="header-section-number">6</span> Instrumental variables<a class="anchor" aria-label="anchor" href="#instrumental-variables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Difference in differences<a class="anchor" aria-label="anchor" href="#difference-in-differences"><i class="fas fa-link"></i></a>
 </h1>
-<div id="experimental-settings" class="section level2" number="6.1">
+<div id="introduction-1" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">6.1</span> Experimental settings<a class="anchor" aria-label="anchor" href="#experimental-settings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 22. <a href="assets/slides/7-1_iv_experimental.pdf"><strong>Slides.</strong></a></p>
+<p>Nov 5. <a href="assets/slides/did_intro.pdf"><strong>Slides.</strong></a> No reading is required, but for reference see <a href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card &amp; Krueger 1994</a></p>
 </blockquote>
-<p>An instrumental variable (IV) identification strategy applies when a treatment effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> is confounded by unobserved variables (<span class="math inline">\(U\)</span>), but an <strong>instrument</strong> <span class="math inline">\(Z\)</span> creates random unconfounded variation in <span class="math inline">\(A\)</span>.</p>
-<script type="text/tikz">
-  \begin{tikzpicture}
-    \node (l) at (0,0) {$L$};
-    \node (a) at (1,0) {$A$};
-    \node (y) at (2,0) {$Y$};
-    \draw[->] (l) -- (a);
-    \draw[->] (a) -- (y);
-    \draw[->] (l) to[bend right] (y);
-  \end{tikzpicture}
-</script><p>A very clean setting for IV is randomized experiments with non-compliance: an experimenter randomizes the assigned treatment (<span class="math inline">\(Z\)</span>) but the actual treatment (<span class="math inline">\(A\)</span>) may be unequal to <span class="math inline">\(Z\)</span> because some units do not follow their assignment. Our first class will discuss this setting.</p>
+<p>Today we study the effect of a policy change in New Jersey, drawing on evidence from the neighboring state of Pennsylvania.</p>
+<p>Difference in difference is an identification strategy to be used when one or more units become treated at some time point while others do not. If we believe an assumption of <strong>parallel trends</strong>, then we can use the change over time for the never-treated units to estimate the change over time that would have been experienced by the units who become treated, in a counterfactual world where they had not become treated.</p>
 </div>
-<div id="lab-instrumental-variable-analysis-in-code" class="section level2" number="6.2">
+<div id="lab" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">6.2</span> Lab: Instrumental Variable analysis in Code<a class="anchor" aria-label="anchor" href="#lab-instrumental-variable-analysis-in-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Lab<a class="anchor" aria-label="anchor" href="#lab"><i class="fas fa-link"></i></a>
 </h2>
-<p>In this lab we will implement instrumental variables estimators in R.</p>
 <blockquote>
-<p>October 23 <a href="assets/discussions/discussion9-slides.pdf"><strong>Slides.</strong></a> Download the
-R Markdown file <a href="assets/discussions/discussion9.Rmd"><strong>here</strong></a>.
-Solutions to the lab exercise are <a href="assets/discussions/discussion9-solutions.html"><strong>here</strong></a>.</p>
+<p>Nov 6 <a href="assets/discussions/DIDdiscussion_slides.pdf"><strong>Slides.</strong></a> Download the
+R Markdown file <a href="assets/discussions/DID-discussion.Rmd"><strong>here</strong></a>. You can find the knitted version <a href="https://causal3900.github.io/discussion-11-did-lab.html"><strong>here</strong></a>.</p>
 </blockquote>
+<p>In lab, you will implement a difference in difference estimator in a specific setting. The example comes from <a href="https://doi.org/10.1017/S0003055413000580">Malesky, Nguyen, &amp; Tran 2014</a> and will most closely follow the re-analysis of these data by <a href="https://doi.org/10.1017/pan.2022.8">Egami &amp; Yamauchi 2023</a>.</p>
 </div>
-<div id="observational-settings" class="section level2" number="6.3">
+<div id="extensions-of-did" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">6.3</span> Observational settings<a class="anchor" aria-label="anchor" href="#observational-settings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Extensions of DID<a class="anchor" aria-label="anchor" href="#extensions-of-did"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 24 <a href="assets/slides/7-2_iv_observational.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 16.</p>
+<p>Nov 7. <a href=""><strong>Slides.</strong></a> No reading is required, but for reference see <a href="https://doi.org/10.1017/pan.2022.8">Egami &amp; Yamauchi 2023</a></p>
 </blockquote>
-<p>On Thursday, we move on to IV analysis in observational settings. Here we focus on the casual assumptions required for IV. These assumptions often hold by design in experiments with non-compliance. In observational settings, they can be more doubtful.</p>
+<p>How do we know when the parallel trends assumption holds? And what do we do if it does not hold? This class discusses recent extensions of the DID framework.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></div>
-<div class="next"><a href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></div>
+<div class="prev"><a href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></div>
+<div class="next"><a href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#instrumental-variables"><span class="header-section-number">6</span> Instrumental variables</a></li>
-<li><a class="nav-link" href="#experimental-settings"><span class="header-section-number">6.1</span> Experimental settings</a></li>
-<li><a class="nav-link" href="#lab-instrumental-variable-analysis-in-code"><span class="header-section-number">6.2</span> Lab: Instrumental Variable analysis in Code</a></li>
-<li><a class="nav-link" href="#observational-settings"><span class="header-section-number">6.3</span> Observational settings</a></li>
+<li><a class="nav-link" href="#difference-in-differences"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">8.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#lab"><span class="header-section-number">8.2</span> Lab</a></li>
+<li><a class="nav-link" href="#extensions-of-did"><span class="header-section-number">8.3</span> Extensions of DID</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">

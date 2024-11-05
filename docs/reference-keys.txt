@@ -38,7 +38,7 @@ regression-discontinuity
 introduction
 lab-regression-discontinuity---bandwidth-and-examples
 discussion
-difference-in-difference
+difference-in-differences
 introduction-1
 lab
 extensions-of-did
@@ -65,3 +65,8 @@ import-data
 clean-data
 balance-table
 results
+empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam
+download-the-data
+about-the-data
+visualizing-trends-in-the-treatment-and-control-groups
+basic-difference-in-differences-analysis-with-one-pretreatment-period

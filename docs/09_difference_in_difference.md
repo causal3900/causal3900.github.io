@@ -1,5 +1,5 @@
 
-# Difference in difference
+# Difference in differences
 
 ## Introduction
 
@@ -11,8 +11,8 @@ Difference in difference is an identification strategy to be used when one or mo
 
 ## Lab
 
-> Nov 6 [**Slides.**]() Download the
-R Markdown file [**here**]().
+> Nov 6 [**Slides.**](assets/discussions/DIDdiscussion_slides.pdf) Download the
+R Markdown file [**here**](assets/discussions/DID-discussion.Rmd). You can find the knitted version [**here**](https://causal3900.github.io/discussion-11-did-lab.html).
 
 In lab, you will implement a difference in difference estimator in a specific setting. The example comes from [Malesky, Nguyen, \& Tran 2014](https://doi.org/10.1017/S0003055413000580) and will most closely follow the re-analysis of these data by [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8).
 

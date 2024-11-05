@@ -55,7 +55,7 @@
 <li class="book-part">Identification without exchangeability</li>
 <li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
 <li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
-<li><a class="" href="difference-in-difference.html"><span class="header-section-number">8</span> Difference in difference</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
 <li><a class="active" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
@@ -67,6 +67,7 @@
 <li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
 <li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
 <li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
+<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
 <li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
@@ -108,12 +109,12 @@
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">simulated</span> <span class="op">&lt;-</span> <span class="fu">simulate_sample</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##   X         A         Y
-## 1 1 untreated 25.215698
-## 2 1   treated 24.733289
-## 3 1 untreated 18.598839
-## 4 1   treated 56.575403
-## 5 1 untreated  3.016604
-## 6 2   treated 80.958693</code></pre>
+## 1 1 untreated  20.60137
+## 2 1   treated  37.28428
+## 3 1 untreated  66.50978
+## 4 1   treated 111.26978
+## 5 1 untreated  77.11348
+## 6 2   treated  32.47692</code></pre>
 <p><strong>Causal estimands.</strong> In this example, we would like to estimate <span class="math display">\[\tau_x = E(\underbrace{Y^1 - Y^0}_{\substack{\text{effect of}\\\text{nudge to walk}\\\text{on active}\\\text{minutes}}}\mid \underbrace{X = x}_{\substack{\text{among those}\\\text{with love of}\\\text{fall = }x}})\]</span>
 for each value <span class="math inline">\(x = 1,\dots,10\)</span>. These estimands are the average causal effect of a nudge to walk (<span class="math inline">\(A\)</span>) on active minutes (<span class="math inline">\(Y\)</span>) within subgroups defined by each value of the scale for love of fall (<span class="math inline">\(X\)</span>).</p>
 <p><strong>Identification.</strong> In our simulate data, <span class="math inline">\(A\)</span> is assigned at random. There are no backdoor paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>.</p>
