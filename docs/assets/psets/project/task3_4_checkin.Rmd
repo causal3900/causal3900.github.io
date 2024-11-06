@@ -1,0 +1,34 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Action Items
+
+1. (1 pt) Has your group been able to get into contact with everyone in the group? (yes/no)
+
+**Answer**:
+
+2. (2 pts) List the name of the treatment and the name of the outcome your group is considering. 
+
+**Answer**:
+
+3. (3 pts) Data. Refer to the instructions on the course website for more details.
+
+**Answer**:
+
+4. (4 pts) Write 1-2 sentences describing your group's plan for Task 3. Refer to the instructions on the course website for more details.
+
+**Answer**:
+
+5. (4 pts) Write 1-2 sentences describing your group's plan for Task 4. Refer to the instructions on the course website for more details.
+
+**Answer**:
+
+6. (1 pt) List the next date your group is planning to check in on progress (either via a meeting or through a groupchat).
+
+**Answer**:
+
