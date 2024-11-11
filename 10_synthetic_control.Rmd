@@ -1,12 +1,15 @@
-
 # Synthetic control
 
-**NOTE THAT SLIDES MAY BE OLD - IF THEY SAY FALL 2023 THEY HAVE NOT BEEN UPDATED YET!**
 
 
 ## Introduction
 
 > Nov 12 [**Slides.**](assets/slides/10-1_synth_control.pdf) 
+
+Today we will introduce the idea of synthetic control. After class you should be able to:
+
+* Explain the intuition behind synthetic control
+* Understand how synthetic control relates to other causal inference methods
 
 
 ## Lab

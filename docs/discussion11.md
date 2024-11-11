@@ -14,7 +14,7 @@ Refer to Tuesday's lecture ([slides](assets/slides/did_intro.pdf) and recording)
 All you need to do in this section is run the code block.
 
 
-```r
+``` r
 # Recall that lines starting with hashtags are called comments
 
 # The next few lines a code create a function called install that installs and loads a package/library
@@ -47,16 +47,16 @@ install("dplyr")
 ##     intersect, setdiff, setequal, union
 ```
 
-```r
+``` r
 install("tidyverse")
 ```
 
 ```
 ## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-## ✔ forcats   1.0.0     ✔ readr     2.1.4
-## ✔ ggplot2   3.4.2     ✔ stringr   1.5.0
-## ✔ lubridate 1.9.2     ✔ tibble    3.2.1
-## ✔ purrr     1.0.1     ✔ tidyr     1.3.0
+## ✔ forcats   1.0.0     ✔ readr     2.1.5
+## ✔ ggplot2   3.5.1     ✔ stringr   1.5.1
+## ✔ lubridate 1.9.3     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2     ✔ tidyr     1.3.1
 ```
 
 ```
@@ -67,7 +67,7 @@ install("tidyverse")
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-```r
+``` r
 # Read in the raw data file
 malesky2014 <- read_csv("https://github.com/causal3900/causal3900.github.io/raw/main/assets/data/malesky2014.csv")
 ```
@@ -82,7 +82,7 @@ malesky2014 <- read_csv("https://github.com/causal3900/causal3900.github.io/raw/
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
-```r
+``` r
 # some data cleaning (drop rows with missing values in particular columns)
 malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) 
 ```
@@ -101,7 +101,7 @@ Variables in the data set:
 - `post_treat`: binary variable indicating if the record is from the pre-treatment period ($0$) or the post-treatment period ($0$)
 
 
-```r
+``` r
 # show the first few lines of the dataset
 head(malesky2014)
 ```
@@ -133,7 +133,7 @@ In a DID design, the first step is to visualize the trends of the treatment and 
 All you need to do in this section is run the code block and look at the plot. What is going on in the plot?
 
 
-```r
+``` r
 # Plot the outcome for `Education and Cultural Program`
 ed_and_culture <- malesky2014 %>%
   mutate(treatment = ifelse(treatment == 1, "Treated in 2009","Untreated")) %>%
@@ -154,7 +154,7 @@ ed_and_culture <- malesky2014 %>%
 ## override using the `.groups` argument.
 ```
 
-```r
+``` r
 ed_and_culture + 
     guides(color = guide_legend(nrow = 1)) +
     theme(legend.position = "bottom")
@@ -171,7 +171,7 @@ create the interaction variable that is `treatment`*`post_treat`. Call this
 new variable `did`. 
 
 
-```r
+``` r
 # remove the extra pretreatment periods from the dataset
 onePerMalesky <- malesky2014 %>%
   filter(year==2008 | year ==2010) # keep only 2008 and 2010
@@ -189,7 +189,7 @@ OLS regression. Use the formula that we discussed in the slides to create
 your model formula.
 
 
-```r
+``` r
 # TASK: regression for Education and Cultural Program on treatment, time period, and interaction term
 didReg <- lm(...put your formula here..., data = onePerMalesky)
 
