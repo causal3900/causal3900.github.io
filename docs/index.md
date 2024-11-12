@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Mayleen Cortez-Rodriguez and Sam Wang"
-date: "2024-11-11"
+date: "2024-11-12"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
