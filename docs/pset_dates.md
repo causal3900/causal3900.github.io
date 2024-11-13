@@ -7,15 +7,13 @@ We'll post due dates here throughout the semester.
 
 ## Upcoming {-}
 
-- Pset 5: Due Thursday, November 7th at 11:59pm (released Oct 31)
+- Pset 5 **Peer Reviews**: Due Friday Nov 15 at 11:59pm (released Nov 11)
 
 - **Project** Task 3 & 4 Check-In: Due Sunday Nov 17 at 11:59pm (released Nov 5)
 
 ## Future {-}
 
 *Important: These dates are tentative, meaning they may change. We will not make any of these due sooner, meaning they will be due at the date listed or possibly later. We have not included dates for all assignments!*
-
-- Pset 5 **Peer Reviews**: Due Friday Nov 15 at 11:59pm (released Nov 11)
 
 - Pset 6:  Due Thursday, November 21st (released Nov 14th) Note: there will not be peer reviews
 
@@ -46,3 +44,5 @@ We'll post due dates here throughout the semester.
 - Submit **Project Topic Preferences** by Thursday, Oct 31st at 5pm. For details, refer to Canvas or Ed (note this does not count toward your grade).
 
 - Pset 4 **Peer Reviews**: Due Friday, November 1st at 11:59pm (released Oct 28)
+
+- Pset 5: Due Thursday, November 7th at 11:59pm (released Oct 31)
