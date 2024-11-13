@@ -68,7 +68,7 @@ In the paper [Using Geographic Variation in College Proximity to Estimate the Re
 
 You can access the data in the \texttt{woolridge} package. However, since it's not easily installable from R, we have provided an alternative for you to get the data here:
 
-``` r
+```r
 card <- read.csv("https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/data/card.csv")
 
 ###
@@ -101,7 +101,7 @@ The question is "If the other sitting senator is from your same party, what is t
 Your task is to estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is the margin of victory `demmn`. We have started the code for you below.
 
 
-``` r
+```r
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -120,7 +120,7 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 
 **4.1 (5 points)** Using [`rdrobust`](https://rdrr.io/cran/rdrobust/man/rdrobust.html), get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). 
 
-``` r
+```r
 outcome <- data$demvoteshfor1
 running_variable <- data$demmv
 
