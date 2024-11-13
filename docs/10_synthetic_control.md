@@ -20,5 +20,10 @@ We review the main idea behind synthetic control as well as compare and contrast
 
 ## Discussion
 
-> Nov 14 [**Slides. (Updated with explanation of interference)**](assets/slides/10-2_synth_control_example.pdf). 
-After class, read Chapter 10 of the Causal Inference Mixtape [Cunningham 2021](https://mixtape.scunning.com/10-synthetic_controls)
+> Nov 14 [**Slides.**](assets/slides/10-2_synth_control_example.pdf). Read Chapter 10 of the Causal Inference Mixtape [Cunningham 2021](https://mixtape.scunning.com/10-synthetic_controls)
+
+After class you should be able to:
+
+* Understand how to conduct a hypothesis test for estimates
+from a synthtic control analysis
+* Reason about how interference will affect estimates from a synthetic control analysis
