@@ -35,7 +35,7 @@ _Cutoff_: 0 (you win, i.e. become incumbent, if your margin of victory is greate
 For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
 
 
-``` r
+```r
 # Lines like this (starting with a hashtag) are called comments
 # Comments are meant to help explain what is going on
 # Comments are not always necessary, but can be helpful
@@ -98,7 +98,7 @@ Here is what some of these column names (variables) mean:
 We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is `demvoteshfor2` because the next time the same seat goes up for election is 2 cycles in the future. The running variable is `demmv`.
 
 
-``` r
+```r
 # Save the column "demvoteshfor2" from data into a variable called "outcome"
 outcome <- data$demvoteshfor2
 
@@ -128,7 +128,7 @@ Getting the estimates aren't so difficult once we've selected a bandwidth, but s
 For `rdrobust`, the syntax is `rdrobust(y, x, kernel, p, h)` where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth. 
 
 
-``` r
+```r
 # uniform kernel with bandwidth 10 and a linear (degree 1) model
 out <- rdrobust(outcome, running_variable, kernel = 'uniform',  p = 1, h = 10)
 
@@ -172,7 +172,7 @@ For this next piece, the question is "If the other sitting senator is from your 
 
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is still margin of victory `demmn`. We've plotted the data for you below. 
 
-``` r
+```r
 outcome_2 <- data$demvoteshfor1
 running_variable_2 <- data$demmv
 
@@ -186,7 +186,7 @@ rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col
 Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why? Can you explain what quantity you estimated?
 
 
-``` r
+```r
 # Your code goes here
 ```
 

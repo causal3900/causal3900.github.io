@@ -11,11 +11,11 @@ We'll post due dates here throughout the semester.
 
 - **Project** Task 3 & 4 Check-In: Due Sunday Nov 17 at 11:59pm (released Nov 5)
 
+- Pset 6:  Due Thursday, November 21st (released Nov 14th) Note: there will not be peer reviews
+
 ## Future {-}
 
 *Important: These dates are tentative, meaning they may change. We will not make any of these due sooner, meaning they will be due at the date listed or possibly later. We have not included dates for all assignments!*
-
-- Pset 6:  Due Thursday, November 21st (released Nov 14th) Note: there will not be peer reviews
 
 - **Project** Final Paper: Due December 5th
 

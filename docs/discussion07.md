@@ -32,7 +32,7 @@ For this part, we assume that three variables comprise a sufficient adjustment s
 We then use the `summary()` function to see how many control units and how many treatment units were matched. 
 
 
-``` r
+```r
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
                  method = "exact",
@@ -61,7 +61,7 @@ summary(exact_low)$nn
 Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
 
 
-``` r
+```r
 fit <- lm(re78 ~ treat + race + married + nodegree,
           data = match.data(exact_low),
           w = weights)
@@ -85,23 +85,23 @@ In matching, one thing we care about is balance across covariates. In other word
 - `un`: show statistics for unmatched data as well? (T or F)
 
 
-``` r
+```r
 summary(exact_low, interactions = F, un = F)$sum.matched
 ```
 
 ```
 ##            Means Treated Means Control Std. Mean Diff.
-## raceblack     0.84324324    0.84324324    0.000000e+00
-## racehispan    0.05945946    0.05945946    6.938894e-18
-## racewhite     0.09729730    0.09729730    1.387779e-17
-## married       0.18918919    0.18918919    0.000000e+00
-## nodegree      0.70810811    0.70810811    0.000000e+00
+## raceblack     0.84324324    0.84324324   -4.440892e-16
+## racehispan    0.05945946    0.05945946   -4.857226e-17
+## racewhite     0.09729730    0.09729730   -6.938894e-17
+## married       0.18918919    0.18918919   -1.387779e-16
+## nodegree      0.70810811    0.70810811   -3.330669e-16
 ##            Var. Ratio    eCDF Mean     eCDF Max
-## raceblack          NA 0.000000e+00 0.000000e+00
-## racehispan         NA 6.938894e-18 6.938894e-18
-## racewhite          NA 1.387779e-17 1.387779e-17
-## married            NA 0.000000e+00 0.000000e+00
-## nodegree           NA 0.000000e+00 0.000000e+00
+## raceblack          NA 4.440892e-16 4.440892e-16
+## racehispan         NA 4.857226e-17 4.857226e-17
+## racewhite          NA 6.938894e-17 6.938894e-17
+## married            NA 1.387779e-16 1.387779e-16
+## nodegree           NA 3.330669e-16 3.330669e-16
 ##            Std. Pair Dist.
 ## raceblack                0
 ## racehispan               0
@@ -124,7 +124,7 @@ Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The 
 
 **Solution**
 
-``` r
+```r
 exact_high <- matchit(treat ~ race + married + nodegree + re74,
                  data = lalonde,
                  method = "exact",
@@ -165,7 +165,7 @@ Here is one way to do this:
 
 Full data:
 
-``` r
+```r
 summary(
   lalonde %>%
     select(re74)
@@ -183,7 +183,7 @@ summary(
 ```
 Matched data:
 
-``` r
+```r
 matched_data <- match.data(exact_high)
 summary(
   matched_data %>%
