@@ -1,6 +1,6 @@
 # Problem Set 6. Difference in Differences + Synthetic Control {-}
 
-Relevant material will be covered by **Nov 14**. Problem set is due **Nov 21**. To complete the problem set, [**download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset6_download.Rmd) and submit the knitted PDF.
+Relevant material will be covered by **Nov 14**. Problem set is due **Nov 24** ~~Nov 21~~. To complete the problem set, [**download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset6_download.Rmd) and submit the knitted PDF.
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for difference in difference and synthetic control. There is no coding for you to do in this assignment. 
 
