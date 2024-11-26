@@ -1,0 +1,121 @@
+---
+output: pdf_document
+---
+
+# Final report 
+
+* Group Topic:
+* Team members: 
+
+## Causal Question 
+
+##### Describe your causal question in a way that someone who has not taken this class would understand. Why are you interested in this question? How could answering this question allow for better decision making? Include any necessary background or context. Cite outside sources you use.
+
+**Answer**
+
+##### Describe your causal question in the language of causal inference we’ve learned in this course: What is the treatment? What is the outcome? What are the potential outcomes? Write these out in words and in the math notation we have used in class.
+
+**Answer**
+
+
+## Causal Diagram 
+
+##### Draw a DAG representing your causal question that includes at least three relevant variables besides treatment and outcome that are included in your dataset. You may include more than three variables. You may include variables that are not in your dataset, but at least 3 of your variables (excluding treatment and outcome) must be included in your dataset. If you use letters to denote variables, make sure they are clearly defined
+
+**Answer**
+
+##### Explain your DAG: tell us in words what is meant by each edge in your DAG.
+
+**Answer**
+
+##### Discuss your DAG. How realistic is it? Are there variables or edges you excluded from your DAG that someone else might argue should be included? Playing devil’s advocate, how would you critique the reliability of your DAG?
+
+**Answer**
+
+
+## Method and Identification 
+
+##### What method are you using to estimate a causal effect? What causal effect are you estimating (ATE vs LATE vs ATT)? What assumptions are required to identify the causal effect via your chosen method?
+
+**Answer**
+
+
+
+##### Explain what conditional exchangeability means in the context of your causal question. Is it important? Why or why not? How do sufficient adjustment sets relate to conditional exchangeability?
+
+**Answer**
+
+
+##### Assuming your DAG is true, list out all non-causal paths between treatment and outcome and list one sufficient adjustment set to identify the causal effect of the treatment on the outcome. If a sufficient adjustment set does not exist, add additional variables to your DAG so that one does exist.
+
+**Answer**
+
+
+##### Discuss the plausibility of conditional exchangeability in your setting. If your sufficient adjustment set contains variables that are not in your dataset, discuss the implications.
+
+**Answer**
+
+
+##### Discuss any other identification assumptions for your method here, such as positivity and consistency. What do they mean in the context of your causal question and are they plausible?
+
+**Answer**
+
+
+
+## Discussion: Analysis and Results
+
+##### Give some context for your dataset. Who is included in your dataset? How was the data collected? When was the data collected? Make sure to cite the dataset.
+
+**Answer**
+
+
+
+##### Discuss any choices you made regarding data cleaning and processing: Did your data have missing values or outliers? How did you handle them? Were there any variables you dichotomized (i.e. made binary), or variables that you changed the format (e.g. yes/no to 1/0)?
+
+**Answer**
+
+
+##### Discuss the impact of any choices you made regarding your dataset, such as choices you made in data cleaning or processing.
+
+**Answer**
+
+
+##### Explain how you estimated a causal effect.
+* If you used matching, explain and discuss your choices. What formula did you use and why?
+What matching strategy did you use and why? Are there any advantages or drawbacks to the
+strategy you chose? How many units did your matching drop? How was the covariate balance in
+your matched sample? Discuss the implications of any choices you made and the quality of your
+matching.
+* If you didn’t use matching, explain any choices you made related to the method you used and
+discuss their implications. Think about advantages or drawbacks to any choices you made, possible
+bias-variance trade-offs, and assessing how well your method did.
+
+**Answer**
+
+
+##### Report your causal effect estimate and interpret it in the context of your causal question.
+
+**Answer**
+
+
+##### Discuss the limitations of your analysis: what are the limitations of your dataset? Is there other data you would have wanted to have to bolster your analysis? Playing devil’s advocate, how would you critique the reliability of you causal estimate?
+
+**Answer**
+
+
+\newpage
+
+# Code:
+
+
+```{r}
+# This is where your code goes for the data cleaning/processing and analysis. 
+# Make your code clean and easy-to-follow. Add short comments to explain what you are doing. 
+# If a classmate who wasn’t as familiar with R were to read through this section, 
+# would they be able to follow along?
+
+
+
+```
+
+
