@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>11 Current research | Causal Inference Course</title>
+<title>10 Current research | Causal Inference Course</title>
 <meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
-<meta name="description" content="11.1 Research discussion: Sam  Nov 21 Slides Today we will be discussing causal discovery: how we might learn DAGs from data  11.2 Research discussion: Ian  Nov 28 Slides You can optionally read...">
+<meta name="description" content="10.1 Research discussion: Mayleen  Dec 3 Slides Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
 <meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="11 Current research | Causal Inference Course">
+<meta property="og:title" content="10 Current research | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="11.1 Research discussion: Sam  Nov 21 Slides Today we will be discussing causal discovery: how we might learn DAGs from data  11.2 Research discussion: Ian  Nov 28 Slides You can optionally read...">
+<meta property="og:description" content="10.1 Research discussion: Mayleen  Dec 3 Slides Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 Current research | Causal Inference Course">
-<meta name="twitter:description" content="11.1 Research discussion: Sam  Nov 21 Slides Today we will be discussing causal discovery: how we might learn DAGs from data  11.2 Research discussion: Ian  Nov 28 Slides You can optionally read...">
+<meta name="twitter:title" content="10 Current research | Causal Inference Course">
+<meta name="twitter:description" content="10.1 Research discussion: Mayleen  Dec 3 Slides Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -58,9 +58,8 @@
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
-<li><a class="active" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
+<li><a class="active" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -88,39 +87,30 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="current-research" class="section level1" number="11">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="current-research" class="section level1" number="10">
 <h1>
-<span class="header-section-number">11</span> Current research<a class="anchor" aria-label="anchor" href="#current-research"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10</span> Current research<a class="anchor" aria-label="anchor" href="#current-research"><i class="fas fa-link"></i></a>
 </h1>
-<div id="research-discussion-sam" class="section level2" number="11.1">
+<div id="research-discussion-mayleen" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">11.1</span> Research discussion: Sam<a class="anchor" aria-label="anchor" href="#research-discussion-sam"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Research discussion: Mayleen<a class="anchor" aria-label="anchor" href="#research-discussion-mayleen"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Nov 21 <a href="assets/slides/research_sam.pdf"><strong>Slides</strong></a></p>
+<p>Dec 3 <a href="assets/sliinterference_lecture.pdf"><strong>Slides</strong></a></p>
 </blockquote>
-<p>Today we will be discussing causal discovery: how we might learn DAGs from data</p>
-</div>
-<div id="research-discussion-ian" class="section level2" number="11.2">
-<h2>
-<span class="header-section-number">11.2</span> Research discussion: Ian<a class="anchor" aria-label="anchor" href="#research-discussion-ian"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Nov 28 <a href="assets/slides/research_ian.pdf"><strong>Slides</strong></a> You can optionally read more at our project page: <a href="https://ilundberg.github.io/pstratreg/">ilundberg.github.io/pstratreg</a>.</p>
-</blockquote>
-<p>Sometimes the treatment causes the outcome to be undefined. This problem has been well-studied in randomized controlled trials in biostatistics, when some people die before the end of the trial. We will talk about applications of this idea in the study of inequality that require adjustment for measured confounding. This is joint work with Soonhong Cho (PhD Candidate, UCLA Political Science).</p>
+<p>Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.</p>
+
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></div>
-<div class="next"><a href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></div>
+<div class="prev"><a href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></div>
+<div class="next"><a href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#current-research"><span class="header-section-number">11</span> Current research</a></li>
-<li><a class="nav-link" href="#research-discussion-sam"><span class="header-section-number">11.1</span> Research discussion: Sam</a></li>
-<li><a class="nav-link" href="#research-discussion-ian"><span class="header-section-number">11.2</span> Research discussion: Ian</a></li>
+<li><a class="nav-link" href="#current-research"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="nav-link" href="#research-discussion-mayleen"><span class="header-section-number">10.1</span> Research discussion: Mayleen</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -140,7 +130,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2024-11-26</p>
+    <p>Last built on 2024-12-03</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

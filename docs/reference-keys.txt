@@ -46,12 +46,8 @@ synthetic-control
 introduction-2
 lab-1
 discussion-1
-data-driven-methods
-introduction-3
-machine-learning-approaches
 current-research
-research-discussion-sam
-research-discussion-ian
+research-discussion-mayleen
 course-recap
 sample-expectations-converge-to-population
 simulate-conditional-expectations
