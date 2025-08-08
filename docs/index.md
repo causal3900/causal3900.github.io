@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
-author: "Mayleen Cortez-Rodriguez and Sam Wang"
-date: "2024-11-19"
+author: "Sam Wang and Christina Yu"
+date: "2025-08-08"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -15,11 +15,11 @@ csl: chicago-fullnote-bibliography.csl
 
 # Welcome {-}
 
-Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA24/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA24/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA24/class/STSCI/3900). Causal Inference. Fall 2024.
+Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA25/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA25/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA25/class/STSCI/3900). Causal Inference. Fall 2025.
 
 Welcome! Together, we will learn to make causal claims by combining data with arguments.
 
-Taught by [Y. Samuel Wang](https://ysamuelwang.com/), [Mayleen Cortez-Rodriguez](https://www.mayleencortez.com/), [Filippo Fiocchi](https://filippofiocchi.github.io/), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
+Taught by [Christina Lee Yu](https://cleeyu.orie.cornell.edu/), [Y. Samuel Wang](https://ysamuelwang.com/), [Filippo Fiocchi](https://filippofiocchi.github.io/), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
 
 ## Learning objectives {-}
 
@@ -48,6 +48,8 @@ We are grateful to the authors for this excellent text.
 Each course module in the left panel will span several lectures. Within each module, the right panel will help you navigate. We will build this site over the course of the semester, uploading lecture slides as we go. [Who we are](Who we are) tells you a bit about the teaching team.
 
 ## Previous iterations of the course {-}
+Much of the material for this course will draw directly from previous iterations of the course which were also developed by [**Ian Lundberg**](https://www.ianlundberg.org/) and [**Mayleen Cortez-Rodriguez**](https://www.mayleencortez.com/).
+
 To access the course website from Fall 2023 [click here](https://causal3900.github.io/fa23). 
 
 
