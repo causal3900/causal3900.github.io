@@ -7,15 +7,9 @@ We'll post due dates here throughout the semester.
 
 ## Upcoming {-}
 
-- Pset 6:  Due **Sunday, November 24th** ~~Thursday, November 21st~~ (released Nov 14th) Note: there will not be peer reviews
+- **Project** Final Paper: Due Monday, December 9th at 11:59pm
 
-## Future {-}
-
-*Important: These dates are tentative, meaning they may change. We will not make any of these due sooner, meaning they will be due at the date listed or possibly later.*
-
-- **Project** Final Paper: Due December 5th
-
-- **Project** Video Presentation: Due Dec 18th
+- ~~**Project** Video Presentation: Due Dec 18th~~ There will no longer be a video presentation.
 
 ## Past {-}
 
@@ -46,3 +40,5 @@ We'll post due dates here throughout the semester.
 - Pset 5 **Peer Reviews**: Due Friday Nov 15 at 11:59pm (released Nov 11)
 
 - **Project** Task 3 & 4 Check-In: Due Sunday Nov 17 at 11:59pm (released Nov 5)
+
+- Pset 6:  Due **Sunday, November 24th** ~~Thursday, November 21st~~ (released Nov 14th) Note: there will not be peer reviews

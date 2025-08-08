@@ -58,9 +58,8 @@
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
-<li><a class="" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -115,7 +114,7 @@
 <h2>2. Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h2>
 <p>For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Lines like this (starting with a hashtag) are called comments</span></span>
 <span><span class="co"># Comments are meant to help explain what is going on</span></span>
 <span><span class="co"># Comments are not always necessary, but can be helpful</span></span>
@@ -180,7 +179,7 @@
 <h2>3. RDD in R<a class="anchor" aria-label="anchor" href="#rdd-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is <code>demvoteshfor2</code> because the next time the same seat goes up for election is 2 cycles in the future. The running variable is <code>demmv</code>.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the column "demvoteshfor2" from data into a variable called "outcome"</span></span>
 <span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor2</span></span>
 <span></span>
@@ -205,7 +204,7 @@
 </h3>
 <p>Getting the estimates aren’t so difficult once we’ve selected a bandwidth, but selecting a good bandwidth can be tricky and getting standard errors on the estimate are also difficult. The R package <code>rdrobust</code> selects the bandwidth, estimates the causal effect quantities, and give standard errors with just a couple of lines of code.</p>
 <p>For <code>rdrobust</code>, the syntax is <code>rdrobust(y, x, kernel, p, h)</code> where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># uniform kernel with bandwidth 10 and a linear (degree 1) model</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">rdrobust</span><span class="op">(</span><span class="va">outcome</span>, <span class="va">running_variable</span>, kernel <span class="op">=</span> <span class="st">'uniform'</span>,  p <span class="op">=</span> <span class="fl">1</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
@@ -246,7 +245,7 @@
 </h2>
 <p>For this next piece, the question is “If the other sitting senator is from your same party, what is the effect on your vote share?” In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators.</p>
 <p>Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is <code>demvoteshfor1</code> since we are interested in the immediately following election. The running variable is still margin of victory <code>demmn</code>. We’ve plotted the data for you below.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcome_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
 <span><span class="va">running_variable_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
@@ -255,7 +254,7 @@
 <span><span class="fu">rdplot</span><span class="op">(</span>y <span class="op">=</span> <span class="va">outcome_2</span>, x <span class="op">=</span>  <span class="va">running_variable_2</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>Your task is to use <code>rdrobust()</code> to get an estimate of the LATE by specifying a kernel, model degree (<code>p</code>) and bandwidth size (<code>h</code>). Can you explain what you did and why? Can you explain what quantity you estimated?</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 <p><strong>Question:</strong> Does the estimate change if you change the value of <code>kernel</code> (see what happens when you set to ‘uniform’ versus ‘triangular’)? What if you change the value of <code>p</code>? What happens if you change <code>h</code> or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?</p>
 
@@ -298,7 +297,11 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
+<<<<<<< HEAD
     <p>Last built on 2025-08-08</p>
+=======
+    <p>Last built on 2024-12-04</p>
+>>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e
   </div>
 
   <div class="col-12 col-md-6 mt-3">

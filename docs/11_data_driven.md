@@ -1,14 +1,15 @@
 
 # (PART) Areas of active research {-}
 
-# Data-driven methods
+# Current research
 
-## Introduction
+## Research discussion: Mayleen
 
-> Nov 14 [**Slides.**](assets/slides/11-1_data_driven_intro.pdf)
+> Dec 3 [**Slides**](assets/sliinterference_lecture.pdf)
 
-For any given intervention, some subgroups of people will respond more than others. Ideas from machine learning can help us target human attention toward these subgroups.
+Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions. 
 
+<<<<<<< HEAD
 **Concrete example.** Who responds most to a nudget to go for a walk? Imagine your first conduct a survey that asks people how much they love the fall, from ($X = 1$ for least) to ($X = 10$ for most). You then randomize them to a control condition ($A = \texttt{untreated}$) or a treatment condition ($A = \texttt{treated}$) that encourages them to go for a walk outside. The outcome $Y$ is active minutes in the day, as recorded on an activity tracker.
 
 **Simulated data.** In real data, it can be difficult to evaluate causal estimators because the truth is unknown. Today we will use data simulated from a known process in order to study the properties of estimators. The code below will prepare your R environment with a function `simulate_sample()` that will generate data with 50 observations.
@@ -84,3 +85,5 @@ Today we generalize the ideas from Tuesday. We will discuss how sample splitting
 - choose among many estimands
 - choose among many estimators
 - develop new data science approaches
+=======
+>>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e

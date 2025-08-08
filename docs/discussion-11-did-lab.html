@@ -5,15 +5,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 11: DiD Lab | Causal Inference Course</title>
+<<<<<<< HEAD
 <meta name="author" content="Sam Wang and Christina Yu">
 <meta name="description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  12.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
+=======
+<meta name="author" content="Mayleen Cortez-Rodriguez and Sam Wang">
+<meta name="description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  11.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
+<meta name="generator" content="bookdown 0.35 with bs4_book()">
+>>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e
 <meta property="og:title" content="Discussion 11: DiD Lab | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  12.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
+<meta property="og:description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  11.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 11: DiD Lab | Causal Inference Course">
-<meta name="twitter:description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  12.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
+<meta name="twitter:description" content="Nov 6 Slides. for this discussion section. Download the R Markdown file here.  11.7 Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam Refer to...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -58,9 +64,8 @@
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
-<li><a class="" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -92,17 +97,17 @@
 <h1>Discussion 11: DiD Lab<a class="anchor" aria-label="anchor" href="#discussion-11-did-lab"><i class="fas fa-link"></i></a>
 </h1>
 <p>Nov 6 <a href="assets/discussions/DIDdiscussion_slides.pdf"><strong>Slides.</strong></a> for this discussion section. Download the R Markdown file <a href="assets/discussions/DID-discussion.Rmd"><strong>here</strong></a>.</p>
-<div id="empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam" class="section level2" number="12.7">
+<div id="empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam" class="section level2" number="11.7">
 <h2>
-<span class="header-section-number">12.7</span> Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam<a class="anchor" aria-label="anchor" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7</span> Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam<a class="anchor" aria-label="anchor" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam"><i class="fas fa-link"></i></a>
 </h2>
 <p>Refer to Tuesday’s lecture (<a href="assets/slides/did_intro.pdf">slides</a> and recording) for some background on this experiment. Here’s a <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58">link</a> to the paper from the original experiment and a <a href="https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7">link</a> to the paper that re-analyzed this experiment, which we’re basing this lab on.</p>
-<div id="download-the-data" class="section level3" number="12.7.1">
+<div id="download-the-data" class="section level3" number="11.7.1">
 <h3>
-<span class="header-section-number">12.7.1</span> Download the data<a class="anchor" aria-label="anchor" href="#download-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.1</span> Download the data<a class="anchor" aria-label="anchor" href="#download-the-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>All you need to do in this section is run the code block.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Recall that lines starting with hashtags are called comments</span></span>
 <span></span>
 <span><span class="co"># The next few lines a code create a function called install that installs and loads a package/library</span></span>
@@ -124,7 +129,7 @@
 <pre><code>## The following objects are masked from 'package:base':
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">install</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 ## ✔ forcats   1.0.0     ✔ readr     2.1.5
@@ -136,7 +141,7 @@
 ## ✖ dplyr::lag()       masks stats::lag()
 ## ✖ lubridate::stamp() masks cowplot::stamp()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read in the raw data file</span></span>
 <span><span class="va">malesky2014</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/causal3900/causal3900.github.io/raw/main/assets/data/malesky2014.csv"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Rows: 6265 Columns: 42
@@ -146,13 +151,13 @@
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># some data cleaning (drop rows with missing values in particular columns)</span></span>
 <span><span class="va">malesky2014</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">malesky2014</span>, <span class="va">lnarea</span>, <span class="va">lnpopden</span>, <span class="va">city</span><span class="op">)</span> </span></code></pre></div>
 </div>
-<div id="about-the-data" class="section level3" number="12.7.2">
+<div id="about-the-data" class="section level3" number="11.7.2">
 <h3>
-<span class="header-section-number">12.7.2</span> About the data<a class="anchor" aria-label="anchor" href="#about-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.2</span> About the data<a class="anchor" aria-label="anchor" href="#about-the-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>All you need to do in this section is read the text and run the code block.</p>
 <p>Variables in the data set:</p>
@@ -170,7 +175,7 @@
 <li>
 <code>post_treat</code>: binary variable indicating if the record is from the pre-treatment period (<span class="math inline">\(0\)</span>) or the post-treatment period (<span class="math inline">\(0\)</span>)</li>
 </ul>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># show the first few lines of the dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">malesky2014</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 42
@@ -190,13 +195,13 @@
 ## #   vpost &lt;dbl&gt;, rm2c7a &lt;dbl&gt;, rm2c7f &lt;dbl&gt;, market &lt;dbl&gt;,
 ## #   nonfarm &lt;dbl&gt;, vmarket1 &lt;dbl&gt;, vmarket2 &lt;dbl&gt;, …</code></pre>
 </div>
-<div id="visualizing-trends-in-the-treatment-and-control-groups" class="section level3" number="12.7.3">
+<div id="visualizing-trends-in-the-treatment-and-control-groups" class="section level3" number="11.7.3">
 <h3>
-<span class="header-section-number">12.7.3</span> Visualizing Trends in the Treatment and Control Groups<a class="anchor" aria-label="anchor" href="#visualizing-trends-in-the-treatment-and-control-groups"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.3</span> Visualizing Trends in the Treatment and Control Groups<a class="anchor" aria-label="anchor" href="#visualizing-trends-in-the-treatment-and-control-groups"><i class="fas fa-link"></i></a>
 </h3>
 <p>In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at one possible outcome: “Education and Cultural Program.”</p>
 <p>All you need to do in this section is run the code block and look at the plot. What is going on in the plot?</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the outcome for `Education and Cultural Program`</span></span>
 <span><span class="va">ed_and_culture</span> <span class="op">&lt;-</span> <span class="va">malesky2014</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Treated in 2009"</span>,<span class="st">"Untreated"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -212,42 +217,42 @@
 <span>        plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'treatment'. You can
 ## override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ed_and_culture</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion11_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 </div>
-<div id="basic-difference-in-differences-analysis-with-one-pretreatment-period" class="section level3" number="12.7.4">
+<div id="basic-difference-in-differences-analysis-with-one-pretreatment-period" class="section level3" number="11.7.4">
 <h3>
-<span class="header-section-number">12.7.4</span> Basic Difference in Differences Analysis with One Pretreatment Period<a class="anchor" aria-label="anchor" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.7.4</span> Basic Difference in Differences Analysis with One Pretreatment Period<a class="anchor" aria-label="anchor" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period"><i class="fas fa-link"></i></a>
 </h3>
 <p>All you need to do in this section is read the text and fill in the TASK pieces within the code.</p>
 <p>In the data our treatment indicator variable is called <code>treatment</code>, and our
 post-treatment time period indicator is called <code>post_treat</code>. You will need to
 create the interaction variable that is <code>treatment</code>*<code>post_treat</code>. Call this
 new variable <code>did</code>.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="discussion-11-did-lab.html#cb68-1" tabindex="-1"></a><span class="co"># remove the extra pretreatment periods from the dataset</span></span>
-<span id="cb68-2"><a href="discussion-11-did-lab.html#cb68-2" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> malesky2014 <span class="sc">%&gt;%</span></span>
-<span id="cb68-3"><a href="discussion-11-did-lab.html#cb68-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2008</span> <span class="sc">|</span> year <span class="sc">==</span><span class="dv">2010</span>) <span class="co"># keep only 2008 and 2010</span></span>
-<span id="cb68-4"><a href="discussion-11-did-lab.html#cb68-4" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="discussion-11-did-lab.html#cb68-5" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: create the interaction term between treatment and post_treat</span></span>
-<span id="cb68-6"><a href="discussion-11-did-lab.html#cb68-6" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> onePerMalesky <span class="sc">%&gt;%</span></span>
-<span id="cb68-7"><a href="discussion-11-did-lab.html#cb68-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">did =</span> ...create your interaction variable here...)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="discussion-11-did-lab.html#cb63-1" tabindex="-1"></a><span class="co"># remove the extra pretreatment periods from the dataset</span></span>
+<span id="cb63-2"><a href="discussion-11-did-lab.html#cb63-2" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> malesky2014 <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="discussion-11-did-lab.html#cb63-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2008</span> <span class="sc">|</span> year <span class="sc">==</span><span class="dv">2010</span>) <span class="co"># keep only 2008 and 2010</span></span>
+<span id="cb63-4"><a href="discussion-11-did-lab.html#cb63-4" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="discussion-11-did-lab.html#cb63-5" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: create the interaction term between treatment and post_treat</span></span>
+<span id="cb63-6"><a href="discussion-11-did-lab.html#cb63-6" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> onePerMalesky <span class="sc">%&gt;%</span></span>
+<span id="cb63-7"><a href="discussion-11-did-lab.html#cb63-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">did =</span> ...create your interaction variable here...)</span></code></pre></div>
 <p>Now that you have your <code>treatment</code>, <code>post_treat</code>, and <code>did</code> variables, you are
 ready to estimate the causal effect of de-centralizing government on whether or
 not people participate in an Educational and Cultural Program. Your outcome
 variable in this case is <code>pro4</code>. We will estimate the causal effect with an
 OLS regression. Use the formula that we discussed in the slides to create
 your model formula.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="discussion-11-did-lab.html#cb69-1" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: regression for Education and Cultural Program on treatment, time period, and interaction term</span></span>
-<span id="cb69-2"><a href="discussion-11-did-lab.html#cb69-2" tabindex="-1"></a>didReg <span class="ot">&lt;-</span> <span class="fu">lm</span>(...put your formula here..., <span class="at">data =</span> onePerMalesky)</span>
-<span id="cb69-3"><a href="discussion-11-did-lab.html#cb69-3" tabindex="-1"></a></span>
-<span id="cb69-4"><a href="discussion-11-did-lab.html#cb69-4" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span></span>
-<span id="cb69-5"><a href="discussion-11-did-lab.html#cb69-5" tabindex="-1"></a><span class="fu">summary</span>(...put your DiD model object here...) <span class="co"># hint: what did you create above?</span></span>
-<span id="cb69-6"><a href="discussion-11-did-lab.html#cb69-6" tabindex="-1"></a></span>
-<span id="cb69-7"><a href="discussion-11-did-lab.html#cb69-7" tabindex="-1"></a><span class="co"># estimate</span></span>
-<span id="cb69-8"><a href="discussion-11-did-lab.html#cb69-8" tabindex="-1"></a><span class="fu">print</span>(didReg<span class="sc">$</span>coefficients[<span class="st">"did"</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="discussion-11-did-lab.html#cb64-1" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: regression for Education and Cultural Program on treatment, time period, and interaction term</span></span>
+<span id="cb64-2"><a href="discussion-11-did-lab.html#cb64-2" tabindex="-1"></a>didReg <span class="ot">&lt;-</span> <span class="fu">lm</span>(...put your formula here..., <span class="at">data =</span> onePerMalesky)</span>
+<span id="cb64-3"><a href="discussion-11-did-lab.html#cb64-3" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="discussion-11-did-lab.html#cb64-4" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span></span>
+<span id="cb64-5"><a href="discussion-11-did-lab.html#cb64-5" tabindex="-1"></a><span class="fu">summary</span>(...put your DiD model object here...) <span class="co"># hint: what did you create above?</span></span>
+<span id="cb64-6"><a href="discussion-11-did-lab.html#cb64-6" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="discussion-11-did-lab.html#cb64-7" tabindex="-1"></a><span class="co"># estimate</span></span>
+<span id="cb64-8"><a href="discussion-11-did-lab.html#cb64-8" tabindex="-1"></a><span class="fu">print</span>(didReg<span class="sc">$</span>coefficients[<span class="st">"did"</span>])</span></code></pre></div>
 
 </div>
 </div>
@@ -260,11 +265,11 @@ your model formula.</p>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#discussion-11-did-lab">Discussion 11: DiD Lab</a></li>
 <li>
-<a class="nav-link" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam"><span class="header-section-number">12.7</span> Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#download-the-data"><span class="header-section-number">12.7.1</span> Download the data</a></li>
-<li><a class="nav-link" href="#about-the-data"><span class="header-section-number">12.7.2</span> About the data</a></li>
-<li><a class="nav-link" href="#visualizing-trends-in-the-treatment-and-control-groups"><span class="header-section-number">12.7.3</span> Visualizing Trends in the Treatment and Control Groups</a></li>
-<li><a class="nav-link" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period"><span class="header-section-number">12.7.4</span> Basic Difference in Differences Analysis with One Pretreatment Period</a></li>
+<a class="nav-link" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam"><span class="header-section-number">11.7</span> Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#download-the-data"><span class="header-section-number">11.7.1</span> Download the data</a></li>
+<li><a class="nav-link" href="#about-the-data"><span class="header-section-number">11.7.2</span> About the data</a></li>
+<li><a class="nav-link" href="#visualizing-trends-in-the-treatment-and-control-groups"><span class="header-section-number">11.7.3</span> Visualizing Trends in the Treatment and Control Groups</a></li>
+<li><a class="nav-link" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period"><span class="header-section-number">11.7.4</span> Basic Difference in Differences Analysis with One Pretreatment Period</a></li>
 </ul>
 </li>
 </ul>
@@ -286,7 +291,11 @@ your model formula.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
+<<<<<<< HEAD
     <p>Last built on 2025-08-08</p>
+=======
+    <p>Last built on 2024-12-04</p>
+>>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e
   </div>
 
   <div class="col-12 col-md-6 mt-3">

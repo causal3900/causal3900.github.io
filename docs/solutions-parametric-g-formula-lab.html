@@ -58,9 +58,8 @@
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="" href="data-driven-methods.html"><span class="header-section-number">10</span> Data-driven methods</a></li>
-<li><a class="" href="current-research.html"><span class="header-section-number">11</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">12</span> Course recap</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
 <li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
@@ -106,7 +105,7 @@
 <h2>Download the Data<a class="anchor" aria-label="anchor" href="#download-the-data-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Follow the steps on Ed Discussion to download the data!</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -118,7 +117,7 @@
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"assets/discussions/d.RDS"</span><span class="op">)</span></span></code></pre></div>
 <p>After you download the data and save it into the variable name <code>d</code>, go up top to where it says <code>knitr::opts_chunk$set(echo = TRUE, eval=F)</code> at the top of the R Markdown file and change <code>eval</code> to true, i.e. set <code>eval=T</code> so that when you knit the file, your code runs.</p>
 </div>
@@ -128,7 +127,7 @@
 <p>You can learn more about the <code>lm</code> function <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm"><strong>here</strong></a>.
 Note that this function takes several arguments. The first argument is a formula, specifically a symbolic description of the model to be fitted.</p>
 <p>First, we create the formula <code>f</code> which represents the outcome <code>y</code> as a function of our treatment <code>a</code> and all our confounders. Then, using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function, we fit a model with linear regression.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="op">(</span><span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Estimate the model with OLS</span></span>
@@ -138,7 +137,7 @@ Note that this function takes several arguments. The first argument is a formula
 <h2>Step 1: Create Two Copies of the Original Data<a class="anchor" aria-label="anchor" href="#step-1-create-two-copies-of-the-original-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Next, we are going to create two copies of our original data. The first copy will set all the treatment values <code>= "no_college"</code> and the second copy will set all the treatment values <code>= "college"</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_all_control</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"no_college"</span><span class="op">)</span></span>
 <span></span>
@@ -151,7 +150,7 @@ Note that this function takes several arguments. The first argument is a formula
 <p>Next we will use our model (estimated above) to predict both potential outcomes for each individual using the two data.frames that we just created. We will then append the estimated potential outcomes to our original data.</p>
 <p>To see more details on the <code>predict</code> function, see the
 <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/predict">documentation here</a>.</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Estimate potential outcomes using our model</span></span>
 <span><span class="va">potential_outcomes_under_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_control</span><span class="op">)</span></span>
 <span><span class="va">potential_outcomes_under_treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_treated</span><span class="op">)</span></span>
@@ -166,7 +165,7 @@ Note that this function takes several arguments. The first argument is a formula
 </h2>
 <p>Now let’s compute the causal effect by taking the difference between their potential outcomes and averaging.</p>
 <p>One way to do this is:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">conditional_average_effects</span> <span class="op">&lt;-</span> <span class="va">conditional_average_outcomes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>effect <span class="op">=</span> <span class="va">yhat1</span> <span class="op">-</span> <span class="va">yhat0</span><span class="op">)</span></span>
 <span></span>
@@ -178,7 +177,7 @@ Note that this function takes several arguments. The first argument is a formula
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 ## 1 0.404 0.163  0.241</code></pre>
 <p>An alternative way to compute the treatment effect is below</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">conditional_average_outcomes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>ate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">yhat1</span> <span class="op">-</span> <span class="va">yhat0</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 1 × 1
@@ -199,7 +198,7 @@ Note that this function takes several arguments. The first argument is a formula
 <p>Specifically this means, what is the average effect among those for whom <code>sex == Male</code>?
 Among those for whom <code>sex == Female</code>? <strong>HINT</strong>: this should only be a slight modification
 of your code above that takes the average for the whole data.frame.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">conditional_average_effects</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">yhat1</span>, <span class="va">yhat0</span>, <span class="va">effect</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -231,7 +230,7 @@ of your code above that takes the average for the whole data.frame.</p>
 <h2>Extension: Logistic regression<a class="anchor" aria-label="anchor" href="#extension-logistic-regression"><i class="fas fa-link"></i></a>
 </h2>
 <p>Fit a model</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="va">y</span> <span class="op">~</span> <span class="va">a</span><span class="op">*</span><span class="op">(</span><span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span></span>
 <span>  <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span><span class="op">)</span></span>
 <span></span>
@@ -241,7 +240,7 @@ of your code above that takes the average for the whole data.frame.</p>
 <h2>Extension: Logistic regression<a class="anchor" aria-label="anchor" href="#extension-logistic-regression-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Predict and summarize to estimate the average effect</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">potential_outcomes_under_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_control</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
 <span><span class="va">potential_outcomes_under_treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_treated</span>, type <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></span>
 <span></span>
@@ -298,7 +297,11 @@ of your code above that takes the average for the whole data.frame.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
+<<<<<<< HEAD
     <p>Last built on 2025-08-08</p>
+=======
+    <p>Last built on 2024-12-04</p>
+>>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e
   </div>
 
   <div class="col-12 col-md-6 mt-3">
