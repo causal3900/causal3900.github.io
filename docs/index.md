@@ -1,12 +1,7 @@
 --- 
 title: "Causal Inference Course"
-<<<<<<< HEAD
 author: "Sam Wang and Christina Yu"
-date: "2025-08-08"
-=======
-author: "Mayleen Cortez-Rodriguez and Sam Wang"
-date: "2024-12-04"
->>>>>>> 3bf8b6387dd83de7ad9793602f027f9869ce047e
+date: "2025-08-14"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -36,7 +31,7 @@ As a result of participating in this course, students will be able to
 
 ## Is this course for me? {-}
 
-The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses.
+The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses. We will also assume that students are familiar with the statistical computing language R.
 
 Not a Cornell student? You are welcome to follow along on this site.
 
@@ -46,7 +41,7 @@ Especially in the beginning, this course draws heavily on
 
 > Hernán, M.A., and J.M. Robins. 2020. [**Causal Inference: What If?**](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Boca Raton: Chapman \& Hall / CRC.
 
-We are grateful to the authors for this excellent text.
+We are grateful to the authors for this excellent text. 
 
 ## Organization of the site {-}
 

@@ -19,7 +19,7 @@ img {
 [cleeyu@cornell.edu](mailto:cleeyu@cornell.edu)<br>OH TBD</div>
 </div>
 
-> Christina Lee Yu is an Assistant Professor at Cornell University in the School of Operations Research and Information Engineering. She is also an Amazon scholar. Prior to Cornell, she was a postdoc at Microsoft Research New England. She received her PhD and MS in Electrical Engineering and Computer Science from Massachusetts Institute of Technology, and her BS in Computer Science from California Institute of Technology. She is a recipient of the NSF CAREER Award, ACM SIGMETRICS Rising Stars Award, Intel Rising Stars Award, JPMorgan Faculty Research Award, and honorable mention for the 2018 INFORMS Dantzig Dissertation Award. Her work is supported by grants from the National Science Foundation and the Air Force Office of Scientific Research. She is currently an associate editor for Stochastic Systems. Her research interests include algorithm design and analysis, high dimensional statistics, inference over networks, sequential decision making under uncertainty, online learning, and network causal inference.
+> My research interests include algorithm design and analysis, high dimensional statistics, inference over networks, sequential decision making under uncertainty, and online learning. My interests in causal inference primarily revolve around settings that involve complex dependencies over networks or dynamics over time.
 
 
 <div class="row">

@@ -31,7 +31,7 @@ As a result of participating in this course, students will be able to
 
 ## Is this course for me? {-}
 
-The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses.
+The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses. We will also assume that students are familiar with the statistical computing language R.
 
 Not a Cornell student? You are welcome to follow along on this site.
 
@@ -41,7 +41,7 @@ Especially in the beginning, this course draws heavily on
 
 > Hernán, M.A., and J.M. Robins. 2020. [**Causal Inference: What If?**](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Boca Raton: Chapman \& Hall / CRC.
 
-We are grateful to the authors for this excellent text.
+We are grateful to the authors for this excellent text. 
 
 ## Organization of the site {-}
 

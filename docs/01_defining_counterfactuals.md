@@ -2,7 +2,8 @@
 
 ## Observing versus intervening
 
-> Aug 27. [**Slides**](assets/slides/1-1_observing_intervening.pdf)
+> Aug 26. <!--
+[**Slides**](assets/slides/1-1_observing_intervening.pdf)--!>
 After class, install R and Rstudio on your computer (see slide 14 from today's lecture).
 
 Statistical inference is about observing: if I observe a sample from a population, what can I infer about that population? Causal inference is about intervening: if I take a sample from a population and intervene to change some exposure, what average outcome would result?
@@ -13,7 +14,7 @@ Today we will discuss observing, intervening, and why the difference is so impor
 
 ## Lab: Designing a study
 
-> Aug 28
+> Aug 27
 
 In this lab, we will start by getting to know one another. Then, we will discuss a hypothetical scenario.
 
@@ -31,7 +32,7 @@ There is no expectation to have clear answers now. Over the course of the semest
 
 ## Defining causal effects
 
-> Aug 29. [**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)
+> Aug 28. <!--[**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)--!>
 After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/).
 
 Today we will define average causal effects in the potential outcomes framework.
