@@ -1,6 +1,6 @@
 defining-counterfactuals
 observing-versus-intervening
-lab-designing-a-study
+lab-statistics-review
 defining-causal-effects
 exchangeability-and-experiments
 randomized-experiments

@@ -31,7 +31,7 @@ As a result of participating in this course, students will be able to
 
 ## Is this course for me? {-}
 
-The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses. We will also assume that students are familiar with the statistical computing language R.
+The course is designed for upper-division undergraduate students. We will assume familiarity with an introductory statistics course at the level of STSCI 2110, PAM 2100, PSYCH 2500, SOC 3010, ECON 3110, or similar courses. We will also assume that students are familiar with the statistical computing language [**R**](https://www.r-project.org/).
 
 Not a Cornell student? You are welcome to follow along on this site.
 

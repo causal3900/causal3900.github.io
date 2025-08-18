@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>1 Defining counterfactuals | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="1.1 Observing versus intervening  Aug 26. &lt;!– Slides–!&gt; After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I...">
+<meta name="description" content="1.1 Observing versus intervening  Aug 26. After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I observe a sample...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="1 Defining counterfactuals | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="1.1 Observing versus intervening  Aug 26. &lt;!– Slides–!&gt; After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I...">
+<meta property="og:description" content="1.1 Observing versus intervening  Aug 26. After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I observe a sample...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1 Defining counterfactuals | Causal Inference Course">
-<meta name="twitter:description" content="1.1 Observing versus intervening  Aug 26. &lt;!– Slides–!&gt; After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I...">
+<meta name="twitter:description" content="1.1 Observing versus intervening  Aug 26. After class, install R and Rstudio on your computer (see slide 14 from today’s lecture). Statistical inference is about observing: if I observe a sample...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -96,41 +96,28 @@
 <span class="header-section-number">1.1</span> Observing versus intervening<a class="anchor" aria-label="anchor" href="#observing-versus-intervening"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Aug 26. &lt;!–
-<a href="assets/slides/1-1_observing_intervening.pdf"><strong>Slides</strong></a>–!&gt;
+<p>Aug 26.
+<!-- [**Slides**](assets/slides/1-1_observing_intervening.pdf) -->
 After class, install R and Rstudio on your computer (see slide 14 from today’s lecture).</p>
 </blockquote>
 <p>Statistical inference is about observing: if I observe a sample from a population, what can I infer about that population? Causal inference is about intervening: if I take a sample from a population and intervene to change some exposure, what average outcome would result?</p>
 <p>Today we will discuss observing, intervening, and why the difference is so important.</p>
 </div>
-<div id="lab-designing-a-study" class="section level2" number="1.2">
+<div id="lab-statistics-review" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Lab: Designing a study<a class="anchor" aria-label="anchor" href="#lab-designing-a-study"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Lab: Statistics review<a class="anchor" aria-label="anchor" href="#lab-statistics-review"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Aug 27</p>
 </blockquote>
-<p>In this lab, we will start by getting to know one another. Then, we will discuss a hypothetical scenario.</p>
-<p>A researcher (with whom you may disagree) says to you:
-&gt; Coming to office hours frequently causes student success in the classroom.</p>
-<p>In groups of about 3 students, discuss the following.</p>
-<ol style="list-style-type: decimal">
-<li>Imagine it is the <strong>start</strong> of the semester. How would you design a randomized experiment to assess this claim?
-<ul>
-<li>Imagine that you can assign students to a treatment condition and they will comply</li>
-<li>Consider the details: who would you enroll, how would you define frequently, how would you assess success, etc.</li>
-</ul>
-</li>
-<li>Imagine it is the <strong>end</strong> of the semester. No randomized study was run. You want to conduct an observational study using administrative records (and you get IRB approval to do this). How would you design an observational study to assess this claim?</li>
-</ol>
-<p>There is no expectation to have clear answers now. Over the course of the semester we will learn to formalize these types of questions and their solutions.</p>
+<p>In this lab, we will start by reviewing some basic statistical (random variables, expectation, conditional expectation, etc) and programming concepts.</p>
 </div>
 <div id="defining-causal-effects" class="section level2" number="1.3">
 <h2>
 <span class="header-section-number">1.3</span> Defining causal effects<a class="anchor" aria-label="anchor" href="#defining-causal-effects"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Aug 28. &lt;!–<a href="assets/slides/1-2_defining_causal_effects.pdf"><strong>Slides.</strong></a>–!&gt;
+<p>Aug 28. <!--[**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)-->
 After class, read Chapter 1 of <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a>.</p>
 </blockquote>
 <p>Today we will define average causal effects in the potential outcomes framework.</p>
@@ -139,7 +126,6 @@ After class, read Chapter 1 of <a href="https://www.hsph.harvard.edu/miguel-hern
 <li>define potential outcomes</li>
 <li>explain the Fundamental Problem of Causal Inference<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Holland &lt;a href="https://doi.org/10.2307/2289064"&gt;1986&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>
 </li>
-<li>recall statistical concepts: random variables, expectation, conditional expectation</li>
 </ul>
 </div>
 </div>
@@ -155,7 +141,7 @@ After class, read Chapter 1 of <a href="https://www.hsph.harvard.edu/miguel-hern
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#defining-counterfactuals"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
 <li><a class="nav-link" href="#observing-versus-intervening"><span class="header-section-number">1.1</span> Observing versus intervening</a></li>
-<li><a class="nav-link" href="#lab-designing-a-study"><span class="header-section-number">1.2</span> Lab: Designing a study</a></li>
+<li><a class="nav-link" href="#lab-statistics-review"><span class="header-section-number">1.2</span> Lab: Statistics review</a></li>
 <li><a class="nav-link" href="#defining-causal-effects"><span class="header-section-number">1.3</span> Defining causal effects</a></li>
 </ul>
       <div class="book-extra">
