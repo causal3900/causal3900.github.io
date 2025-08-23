@@ -3,7 +3,7 @@
 
 ## Marginal independence
 
-> Sep 24. [**Slides.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
+> Sep 24. [**Slides from 2024.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
 
 This class will introduce key ideas about DAGs.
 
@@ -30,13 +30,13 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 
 ## Lab: Project Overview
 
-> Sep 25.  [**Slides.**](assets/discussions/discussion5-task1.pdf)
+> Sep 25.  [**Slides from 2024.**](assets/discussions/discussion5-task1.pdf)
 
 You can find information about the course project [**here**](https://causal3900.github.io/course-project.html). During discussion, we will walk through the [**project overview**](https://causal3900.github.io/assets/psets/project/project_overview.pdf) and the instructions for [**Task 1**](https://causal3900.github.io/assets/psets/project/task1.pdf). *Task 1 is due Thursday, October 3rd.*
 
 ## Conditional independence
 
-> Sep 26. [**Slides.**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 26. [**Slides from 2024.**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
 Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 
@@ -48,7 +48,7 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 
 ## Sufficient adjustment sets
 
-> Oct 1. [**Slides.**](assets/slides/4-3_adjustment_sets.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
+> Oct 1. [**Slides from 2024.**](assets/slides/4-3_adjustment_sets.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
 
 When marginal exchangeability does not hold, we may be able to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between $A$ and $Y$. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:
 
@@ -58,6 +58,6 @@ When marginal exchangeability does not hold, we may be able to condition on some
 
 ## Lab: DAGs Review
 
-> Oct 2  [**Slides.**](assets/discussions/discussion6-dags.pdf)
+> Oct 2  [**Slides from 2024.**](assets/discussions/discussion6-dags.pdf)
 
 In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.

@@ -4,7 +4,7 @@
 
 ## Introduction
 
-> Oct 29. [**Slides.**](assets/slides/rdd_intro.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: [**Annotated Slides.**](assets/slides/rdd_intro_annotated.pdf)
+> Oct 29. [**Slides from 2024.**](assets/slides/rdd_intro.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: [**Annotated Slides.**](assets/slides/rdd_intro_annotated.pdf)
 
 In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs. 
 
@@ -16,6 +16,6 @@ We'll discuss a bandwidth selection and triangular weighting. We'll also apply r
 
 ## Discussion
 
-> Oct 31. [**Slides.**](assets/slides/rdd_extensions.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.2.2. through 20.2.4. [**R Code Example: Fuzzy RDD**](assets/data/fuzzy_example.R)
+> Oct 31. [**Slides from 2024.**](assets/slides/rdd_extensions.pdf) After class, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, sections 20.2.2. through 20.2.4. [**R Code Example: Fuzzy RDD**](assets/data/fuzzy_example.R)
 
 We'll continue our discussion of regression discontinuity designs by discussing fuzzy RDD and validation checks for RDD.

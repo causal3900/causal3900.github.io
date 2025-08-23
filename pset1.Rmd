@@ -1,64 +1,70 @@
 # Problem Set 1. Definitions {-}
 
-Relevant material will be covered by **Aug 29**. Problem set is due **Sept 10** at 5pm.
+Relevant material will be covered by **Aug 28**. Problem set is due **Sept 9** at 5pm.
 
-Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.
+Welcome to the first problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.
 
-To complete the problem set, [**Download the .Rmd**](assets/psets/pset1_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/57329).
+To complete the problem set, [**Download the .Rmd**](assets/psets/pset1_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
 
 ## 1. Practice with potential outcomes {-}
 
-Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.
+Popeye says that eating spinach caused him to grow strong muscles. He claims that if he had not eaten spinach, he would not have grown strong muscles.  
 
 ### 1.1 (7 points) {-}
 
-In Jose's claim, what is the treatment?
+In Popeye's claim, what is the treatment? You can either describe the treatment variable or explicitly write out the two options the treatment variable can take.
 
 **Answer.** Your answer here
 
 ### 1.2 (7 points) {-}
 
-Using the mathematical notation we discussed in class, define the two potential outcomes to which Jose is referring
+Using the mathematical notation we discussed in class, define the two potential outcomes to which Popeye is referring
 
 **Answer.** Your answer here
 
 ### 1.3 (7 points) {-}
 
-In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Jose's claim.
+In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Popeye's claim.
 
 **Answer.** Your answer here
 
 ### 1.4 (7 points) {-}
 
-Using conditional expectations or probabilities, write the following in math: the probability of majoring in statistics is higher among students who attend Cornell than among students who attend NYU.
+Using conditional expectations or probabilities, write the following in math: the probability of having strong muscles is higher among individuals who eat spinach than among individuals who do not eat spinach.
 
 **Answer.** Your answer here
 
 ### 1.5 (7 points) {-}
 
-Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.
+Give one reason why the average causal effect of eating spinach (the quantity from 1.2, averaged over all individuals) might be different from the average descriptive difference (from 1.4) of having strong muscles.
 
 **Answer.** Your answer here
 
-## 2. A sailing class {-}
+## 2. Taking 3900 {-}
 
-You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.
+You are wondering if taking STSCI 3900 will help you get a higher paying job. For each claim below, tell us whether the claim is causal or descriptive.
 
 ### 2.1 (5 points) {-}
 
-Last year, there was a survey of students who did and did not take the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher among those who took the class.
+Last year, there was a survey of all Cornell students who have graduated in the past two years. The students who did take 3900 reported an average salary of 85,000 dollars and the students who did not take 3900 reported an average salary of 78,000 dollars. 
 
 **Answer.** Your answer here
 
 ### 2.2 (5 points) {-}
 
-Last year, there was a survey of students before and after the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher in the survey taken after the class.
+A student who did not take the course took a job after graduation that paid 80,000. Had this student taken the course, they would have taken a job that paid 85,000. 
 
 **Answer.** Your answer here
 
 ### 2.3 (5 points) {-}
 
-On average, the students in this class emerged more prepared to sail than they would have been without the class.
+Among students who have an on-campus job and took the course, the average wage was 18.50/hr the semester before they took the course and the average wage the semester after taking the course was 21.25.  
+
+**Answer.** Your answer here
+
+### 2.4 (5 points) {-}
+
+Students who took the course applied for twice as many jobs after graduation compared to students who did not take the course.  
 
 **Answer.** Your answer here
 

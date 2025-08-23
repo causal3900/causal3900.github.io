@@ -52,17 +52,3 @@ course-recap
 sample-expectations-converge-to-population
 simulate-conditional-expectations
 show-independence-of-variables---example-of-two-dice-rolling
-download-.rmd-document
-get-out-and-vote-experiment
-experimental-design
-analyze-experiment
-necessary-packages
-import-data
-clean-data
-balance-table
-results
-empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam
-download-the-data
-about-the-data
-visualizing-trends-in-the-treatment-and-control-groups
-basic-difference-in-differences-analysis-with-one-pretreatment-period

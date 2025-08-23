@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Directed Acyclic Graphs | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta name="description" content="4.1 Marginal independence  Sep 24. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta property="og:description" content="4.1 Marginal independence  Sep 24. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
-<meta name="twitter:description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta name="twitter:description" content="4.1 Marginal independence  Sep 24. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,21 +62,9 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -96,7 +84,7 @@
 <span class="header-section-number">4.1</span> Marginal independence<a class="anchor" aria-label="anchor" href="#marginal-independence"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 24. <a href="assets/slides/4-1_dags_marginal.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
+<p>Sep 24. <a href="assets/slides/4-1_dags_marginal.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
 </blockquote>
 <p>This class will introduce key ideas about DAGs.</p>
 <ol style="list-style-type: decimal">
@@ -130,7 +118,7 @@
 <span class="header-section-number">4.2</span> Lab: Project Overview<a class="anchor" aria-label="anchor" href="#lab-project-overview"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 25. <a href="assets/discussions/discussion5-task1.pdf"><strong>Slides.</strong></a></p>
+<p>Sep 25. <a href="assets/discussions/discussion5-task1.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>You can find information about the course project <a href="https://causal3900.github.io/course-project.html"><strong>here</strong></a>. During discussion, we will walk through the <a href="https://causal3900.github.io/assets/psets/project/project_overview.pdf"><strong>project overview</strong></a> and the instructions for <a href="https://causal3900.github.io/assets/psets/project/task1.pdf"><strong>Task 1</strong></a>. <em>Task 1 is due Thursday, October 3rd.</em></p>
 </div>
@@ -139,7 +127,7 @@
 <span class="header-section-number">4.3</span> Conditional independence<a class="anchor" aria-label="anchor" href="#conditional-independence"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 26. <a href="assets/slides/4-2_dag_conditional.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.</p>
+<p>Sep 26. <a href="assets/slides/4-2_dag_conditional.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.</p>
 </blockquote>
 <p>Often, we want to condition on some set of variables <span class="math inline">\(\vec{L}\)</span> so that conditional exchangeability holds.</p>
 <p>A path is blocked if any node on the path is blocked. If every node on a path is open, then the entire path is open</p>
@@ -153,7 +141,7 @@
 <span class="header-section-number">4.4</span> Sufficient adjustment sets<a class="anchor" aria-label="anchor" href="#sufficient-adjustment-sets"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 1. <a href="assets/slides/4-3_adjustment_sets.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> 7.1–7.4.</p>
+<p>Oct 1. <a href="assets/slides/4-3_adjustment_sets.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> 7.1–7.4.</p>
 </blockquote>
 <p>When marginal exchangeability does not hold, we may be able to condition on some set of variables <span class="math inline">\(\vec{L}\)</span> so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span>. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:</p>
 <ol style="list-style-type: decimal">
@@ -167,7 +155,7 @@
 <span class="header-section-number">4.5</span> Lab: DAGs Review<a class="anchor" aria-label="anchor" href="#lab-dags-review"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 2 <a href="assets/discussions/discussion6-dags.pdf"><strong>Slides.</strong></a></p>
+<p>Oct 2 <a href="assets/discussions/discussion6-dags.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.</p>
 
@@ -189,8 +177,8 @@
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -204,7 +192,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-08-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

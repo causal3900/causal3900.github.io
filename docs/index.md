@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Sam Wang and Christina Yu"
-date: "2025-08-14"
+date: "2025-08-23"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -17,7 +17,7 @@ csl: chicago-fullnote-bibliography.csl
 
 Cornell [STSCI](https://classes.cornell.edu/browse/roster/FA25/class/STSCI/3900) / [INFO](https://classes.cornell.edu/browse/roster/FA25/class/INFO3900) / [ILRST 3900](https://classes.cornell.edu/browse/roster/FA25/class/STSCI/3900). Causal Inference. Fall 2025.
 
-Welcome! Together, we will learn to make causal claims by combining data with arguments.
+Welcome! Together, we will learn to reason about and assess the plausibility of causal claims by combining data with assumptions.
 
 Taught by [Christina Lee Yu](https://cleeyu.orie.cornell.edu/), [Y. Samuel Wang](https://ysamuelwang.com/), [Filippo Fiocchi](https://filippofiocchi.github.io/), and [Shira Mingelgrin](https://stat.cornell.edu/people/phds/shira-mingelgrin). Read about us [here](who-we-are)!
 

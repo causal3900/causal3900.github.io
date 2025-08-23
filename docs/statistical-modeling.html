@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>5 Statistical modeling | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="5.1 Why model?  Oct 3. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="description" content="5.1 Why model?  Oct 3. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="5 Statistical modeling | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="5.1 Why model?  Oct 3. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta property="og:description" content="5.1 Why model?  Oct 3. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5 Statistical modeling | Causal Inference Course">
-<meta name="twitter:description" content="5.1 Why model?  Oct 3. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
+<meta name="twitter:description" content="5.1 Why model?  Oct 3. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,21 +62,9 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -96,7 +84,7 @@
 <span class="header-section-number">5.1</span> Why model?<a class="anchor" aria-label="anchor" href="#why-model"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 3. <a href="assets/slides/5-1_why_model.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
+<p>Oct 3. <a href="assets/slides/5-1_why_model.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
 </blockquote>
 <p>To this point, we have not used any statistical models. Instead, we have</p>
 <ul>
@@ -110,7 +98,7 @@
 <span class="header-section-number">5.2</span> Parametric Modeling<a class="anchor" aria-label="anchor" href="#parametric-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 8. <a href="assets/slides/5-3_ipw.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
+<p>Oct 8. <a href="assets/slides/5-3_ipw.pdf"><strong>Slides from 2024.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
 </blockquote>
 <p>Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss how to model the probability of treatment, also known as the propensity score.</p>
 </div>
@@ -119,7 +107,7 @@
 <span class="header-section-number">5.3</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 9. <a href="assets/discussions/discussion6-gformula-.pdf"><strong>Slides.</strong></a></p>
+<p>Oct 9. <a href="assets/discussions/discussion6-gformula-.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>Download the corresponding R Markdown file <a href="assets/discussions/discussion6.Rmd"><strong>here</strong></a>.</p>
 <p>Before discussion, make sure to download the data we’ll be using. See the <a href="https://edstem.org/us/courses/62970/discussion/5445307">Ed Discussion post</a> for more detail.</p>
@@ -131,7 +119,7 @@
 <span class="header-section-number">5.4</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 10. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
+<p>Oct 10. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
@@ -140,7 +128,7 @@
 <span class="header-section-number">5.5</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 16. <a href="assets/discussions/matching_lab_slides.pdf"><strong>Slides.</strong></a></p>
+<p>Oct 16. <a href="assets/discussions/matching_lab_slides.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>In this lab, we’ll go over distance metrics when matching on multiple covariates. We’ll also go over examples of using R to do matching to estimate causal effects.</p>
 <p>Download the <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a> file for today’s lab; view the knit file <a href="assets/discussions/matching_lab.html"><strong>here</strong></a>. <em>Submit your work on Canvas before you leave discussion!</em> <a href="assets/discussions/matching_lab_solutions.html"><strong>Solutions</strong></a></p>
@@ -151,7 +139,7 @@
 <span class="header-section-number">5.6</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 17 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides.</strong></a></p>
+<p>Oct 17 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
 </div>
@@ -457,8 +445,8 @@ points.</p>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -472,7 +460,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-08-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

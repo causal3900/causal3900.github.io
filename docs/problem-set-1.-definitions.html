@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 1. Definitions | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
+<meta name="description" content="Relevant material will be covered by Aug 28. Problem set is due Sept 9 at 5pm. Welcome to the first problem set! This homework will practice conceptual and notation ideas for descriptive and...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Problem Set 1. Definitions | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
+<meta property="og:description" content="Relevant material will be covered by Aug 28. Problem set is due Sept 9 at 5pm. Welcome to the first problem set! This homework will practice conceptual and notation ideas for descriptive and...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 1. Definitions | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Aug 29. Problem set is due Sept 10 at 5pm. Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal...">
+<meta name="twitter:description" content="Relevant material will be covered by Aug 28. Problem set is due Sept 9 at 5pm. Welcome to the first problem set! This homework will practice conceptual and notation ideas for descriptive and...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -62,21 +62,9 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="active" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -90,64 +78,70 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-1.-definitions" class="section level1 unnumbered">
 <h1>Problem Set 1. Definitions<a class="anchor" aria-label="anchor" href="#problem-set-1.-definitions"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Aug 29</strong>. Problem set is due <strong>Sept 10</strong> at 5pm.</p>
-<p>Welcome to the problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.</p>
-<p>To complete the problem set, <a href="assets/psets/pset1_download.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on <a href="https://canvas.cornell.edu/courses/57329">Canvas</a>.</p>
+<p>Relevant material will be covered by <strong>Aug 28</strong>. Problem set is due <strong>Sept 9</strong> at 5pm.</p>
+<p>Welcome to the first problem set! This homework will practice conceptual and notation ideas for descriptive and causal inference.</p>
+<p>To complete the problem set, <a href="assets/psets/pset1_download.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
 <div id="practice-with-potential-outcomes" class="section level2 unnumbered">
 <h2>1. Practice with potential outcomes<a class="anchor" aria-label="anchor" href="#practice-with-potential-outcomes"><i class="fas fa-link"></i></a>
 </h2>
-<p>Jose says that coming to Cornell caused him to discover statistics, and it became his major! He says that if he had gone to NYU, he would have stuck with biology.</p>
+<p>Popeye says that eating spinach caused him to grow strong muscles. He claims that if he had not eaten spinach, he would not have grown strong muscles.</p>
 <div id="points" class="section level3 unnumbered">
 <h3>1.1 (7 points)<a class="anchor" aria-label="anchor" href="#points"><i class="fas fa-link"></i></a>
 </h3>
-<p>In Jose’s claim, what is the treatment?</p>
+<p>In Popeye’s claim, what is the treatment? You can either describe the treatment variable or explicitly write out the two options the treatment variable can take.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-1" class="section level3 unnumbered">
 <h3>1.2 (7 points)<a class="anchor" aria-label="anchor" href="#points-1"><i class="fas fa-link"></i></a>
 </h3>
-<p>Using the mathematical notation we discussed in class, define the two potential outcomes to which Jose is referring</p>
+<p>Using the mathematical notation we discussed in class, define the two potential outcomes to which Popeye is referring</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-2" class="section level3 unnumbered">
 <h3>1.3 (7 points)<a class="anchor" aria-label="anchor" href="#points-2"><i class="fas fa-link"></i></a>
 </h3>
-<p>In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Jose’s claim.</p>
+<p>In a sentence or two, say how the Fundamental Problem of Causal Inference applies to Popeye’s claim.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-3" class="section level3 unnumbered">
 <h3>1.4 (7 points)<a class="anchor" aria-label="anchor" href="#points-3"><i class="fas fa-link"></i></a>
 </h3>
-<p>Using conditional expectations or probabilities, write the following in math: the probability of majoring in statistics is higher among students who attend Cornell than among students who attend NYU.</p>
+<p>Using conditional expectations or probabilities, write the following in math: the probability of having strong muscles is higher among individuals who eat spinach than among individuals who do not eat spinach.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-4" class="section level3 unnumbered">
 <h3>1.5 (7 points)<a class="anchor" aria-label="anchor" href="#points-4"><i class="fas fa-link"></i></a>
 </h3>
-<p>Give one reason why the average causal effect of attending Cornell versus NYU (the quantity from 1.2, averaged over all students) might be different from the average descriptive difference (from 1.4) in rates of majoring in statistics.</p>
+<p>Give one reason why the average causal effect of eating spinach (the quantity from 1.2, averaged over all individuals) might be different from the average descriptive difference (from 1.4) of having strong muscles.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
-<div id="a-sailing-class" class="section level2 unnumbered">
-<h2>2. A sailing class<a class="anchor" aria-label="anchor" href="#a-sailing-class"><i class="fas fa-link"></i></a>
+<div id="taking-3900" class="section level2 unnumbered">
+<h2>2. Taking 3900<a class="anchor" aria-label="anchor" href="#taking-3900"><i class="fas fa-link"></i></a>
 </h2>
-<p>You are looking into a sailing class through Cornell Wellness! For each claim below, tell us whether the claim is causal or descriptive.</p>
+<p>You are wondering if taking STSCI 3900 will help you get a higher paying job. For each claim below, tell us whether the claim is causal or descriptive.</p>
 <div id="points-5" class="section level3 unnumbered">
 <h3>2.1 (5 points)<a class="anchor" aria-label="anchor" href="#points-5"><i class="fas fa-link"></i></a>
 </h3>
-<p>Last year, there was a survey of students who did and did not take the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher among those who took the class.</p>
+<p>Last year, there was a survey of all Cornell students who have graduated in the past two years. The students who did take 3900 reported an average salary of 85,000 dollars and the students who did not take 3900 reported an average salary of 78,000 dollars.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-6" class="section level3 unnumbered">
 <h3>2.2 (5 points)<a class="anchor" aria-label="anchor" href="#points-6"><i class="fas fa-link"></i></a>
 </h3>
-<p>Last year, there was a survey of students before and after the class. The proportion reporting that they felt prepared to sail on Cayuga Lake was higher in the survey taken after the class.</p>
+<p>A student who did not take the course took a job after graduation that paid 80,000. Had this student taken the course, they would have taken a job that paid 85,000.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-7" class="section level3 unnumbered">
 <h3>2.3 (5 points)<a class="anchor" aria-label="anchor" href="#points-7"><i class="fas fa-link"></i></a>
 </h3>
-<p>On average, the students in this class emerged more prepared to sail than they would have been without the class.</p>
+<p>Among students who have an on-campus job and took the course, the average wage was 18.50/hr the semester before they took the course and the average wage the semester after taking the course was 21.25.</p>
+<p><strong>Answer.</strong> Your answer here</p>
+</div>
+<div id="points-8" class="section level3 unnumbered">
+<h3>2.4 (5 points)<a class="anchor" aria-label="anchor" href="#points-8"><i class="fas fa-link"></i></a>
+</h3>
+<p>Students who took the course applied for twice as many jobs after graduation compared to students who did not take the course.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
@@ -155,7 +149,7 @@
 <h2>Session info<a class="anchor" aria-label="anchor" href="#session-info"><i class="fas fa-link"></i></a>
 </h2>
 <p>The chunk below will record information about your R session, which is useful for debugging issues in homework assignments that contain code.</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## R version 4.5.0 (2025-04-11)
 ## Platform: x86_64-pc-linux-gnu
@@ -194,9 +188,12 @@
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="course-project.html">Course Project</a></div>
-<div class="next"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
+<div class="prev"><a href="due-dates.html">Due dates</a></div>
+<div class="next"><a href="who-we-are.html">Who we are</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -211,10 +208,11 @@
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#a-sailing-class">2. A sailing class</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#taking-3900">2. Taking 3900</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#points-5">2.1 (5 points)</a></li>
 <li><a class="nav-link" href="#points-6">2.2 (5 points)</a></li>
 <li><a class="nav-link" href="#points-7">2.3 (5 points)</a></li>
+<li><a class="nav-link" href="#points-8">2.4 (5 points)</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#session-info">Session info</a></li>
@@ -222,8 +220,8 @@
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -237,7 +235,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-08-23</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
