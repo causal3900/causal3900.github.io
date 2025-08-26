@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 1. Prob &amp; Stats Review | Causal Inference Course</title>
+<meta name="author" content="Sam Wang and Christina Yu">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  August 27, 2025 To execute these simulations locally, download the .Rmd here  Announcements Office Hours throughout the week (see Syllabus or website)...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Discussion 1. Prob &amp; Stats Review | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  August 27, 2025 To execute these simulations locally, download the .Rmd here  Announcements Office Hours throughout the week (see Syllabus or website)...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 1. Prob &amp; Stats Review | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  August 27, 2025 To execute these simulations locally, download the .Rmd here  Announcements Office Hours throughout the week (see Syllabus or website)...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="active" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-1.-prob-stats-review" class="section level1 unnumbered">
+<h1>Discussion 1. Prob &amp; Stats Review<a class="anchor" aria-label="anchor" href="#discussion-1.-prob-stats-review"><i class="fas fa-link"></i></a>
+</h1>
+<div id="stsciinfoilrst-3900-causal-inference" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference"><i class="fas fa-link"></i></a>
+</h2>
+<div id="august-27-2025" class="section level4 unnumbered">
+<h4>August 27, 2025<a class="anchor" aria-label="anchor" href="#august-27-2025"><i class="fas fa-link"></i></a>
+</h4>
+<p>To execute these simulations locally, <a href="assets/discussions/discussion01.Rmd"><strong>download the .Rmd here</strong></a></p>
+</div>
+<div id="announcements" class="section level3 unnumbered">
+<h3>Announcements<a class="anchor" aria-label="anchor" href="#announcements"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Office Hours throughout the week (see Syllabus or website)
+<ul>
+<li>Filippo: Thursday 4-5pm in 321A Computing &amp; Information Science Building</li>
+<li>Shira: Monday 5-6 pm in 329A Computing and Information Science Building<br>
+</li>
+<li>See Ed Discussion for Zoom links/info</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="probability-and-statistics-review" class="section level3 unnumbered">
+<h3>Probability and Statistics Review<a class="anchor" aria-label="anchor" href="#probability-and-statistics-review"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Expectation</li>
+<li>Variance</li>
+<li>Conditional Expectation</li>
+<li>Independence</li>
+<li>Bernoulli Random Variables</li>
+<li>Law of Total Expectation</li>
+<li>Confidence Intervals</li>
+<li>Regression (OLS, logistic)</li>
+</ul>
+<div id="expectation" class="section level4 unnumbered">
+<h4>1. Expectation<a class="anchor" aria-label="anchor" href="#expectation"><i class="fas fa-link"></i></a>
+</h4>
+<div id="expected-value-population-mean-average" class="section level5 unnumbered">
+<h5>(Expected Value, Population Mean, Average)<a class="anchor" aria-label="anchor" href="#expected-value-population-mean-average"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>Notation: <span class="math inline">\(E(X), \mu\)</span>
+</li>
+<li>The expected value of a finite random variable
+<span class="math display">\[\mu=E(X) := \sum_{i=1}^N x_i P(x_i) \quad \text{where} \quad P(x_i):=\text{prob}(X=x_i)\]</span>
+</li>
+<li>The expected value of a countable random variable, i.e. the (long run) average
+<span class="math display">\[E(X):= \sum_{i=1}^\infty x_i P(x_i)\]</span>
+</li>
+<li>For <span class="math inline">\(n\)</span> independent and identically distributed (i.i.d.) random variables <span class="math inline">\(X_1,\ldots,X_N\)</span>
+the sample mean is
+<span class="math display">\[\bar X = \frac{1}{N}\sum_{i=1}^N X_i\]</span>
+</li>
+<li>Law of Large Numbers (LLN): the sample mean converges to the expected value (population mean) as <span class="math inline">\(N \to \infty\)</span>
+</li>
+<li>Example: <span class="math inline">\(X_i\)</span> are random draws from <span class="math inline">\(\sim \mathcal{N}(2,5)\)</span> (a Normal r.v. with mean 2, variance 5)</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">true_mean</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">true_var</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">8</span>, <span class="fl">12</span> , length<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean<span class="op">=</span><span class="va">true_mean</span>, sd<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">true_var</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">true_mean</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y<span class="op">=</span><span class="st">"Density"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion01_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sample_seq</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3000</span></span>
+<span><span class="va">means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sample_seq</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sample_seq</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">sample_seq</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">n</span> <span class="op">&lt;-</span> <span class="va">sample_seq</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span>  <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, mean <span class="op">=</span> <span class="va">true_mean</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">true_var</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">sample_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span>  <span class="va">sample_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">data</span> <span class="op">-</span> <span class="va">sample_mean</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">means</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">sample_mean</span></span>
+<span>  <span class="va">vars</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">sample_var</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span></span>
+<span><span class="va">means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"N"</span> <span class="op">=</span> <span class="va">sample_seq</span>, <span class="st">"Sample Mean"</span> <span class="op">=</span> <span class="va">means</span><span class="op">)</span></span>
+<span><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="st">"N"</span> <span class="op">=</span> <span class="va">sample_seq</span>, <span class="st">"Sample Variance"</span> <span class="op">=</span> <span class="va">vars</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sample Mean"</span> <span class="op">=</span> <span class="st">"lightblue"</span>, <span class="st">"Population Mean"</span> <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">means</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Sample Mean`</span>, x <span class="op">=</span> <span class="va">N</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_mean</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion01_files/figure-html/unnamed-chunk-2-2.png" width="384" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="variance" class="section level4 unnumbered">
+<h4>2. Variance<a class="anchor" aria-label="anchor" href="#variance"><i class="fas fa-link"></i></a>
+</h4>
+<div id="describes-the-spread-of-the-data" class="section level5 unnumbered">
+<h5>Describes the spread of the data<a class="anchor" aria-label="anchor" href="#describes-the-spread-of-the-data"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>Notation: <span class="math inline">\(V(X), Var(X),\sigma^2\)</span>
+</li>
+<li>Variance is the average of the squared differences from the mean</li>
+<li>For a random variable <span class="math inline">\(X\)</span> with expected value <span class="math inline">\(\mu:=E(X)\)</span>, the variance is
+<span class="math display">\[\sigma^2 = Var(X) := E\Big[\big(X-\mu\big)^2\Big] = E\big[X^2\big] - \mu^2\]</span>
+More explicitly
+<span class="math display">\[Var(X) = \sum_{i=1}^n P(x_i)\cdot (x_i-\mu)^2 \quad \text{where} \quad P(x_i):=\text{prob}(X=x_i)\]</span>
+</li>
+</ul>
+</div>
+</div>
+<div id="sample-empirical-variance" class="section level4 unnumbered">
+<h4>3. Sample (Empirical) Variance<a class="anchor" aria-label="anchor" href="#sample-empirical-variance"><i class="fas fa-link"></i></a>
+</h4>
+<div id="for-a-finite-dataset-or-finite-sample" class="section level5 unnumbered">
+<h5>For a finite dataset or finite sample<a class="anchor" aria-label="anchor" href="#for-a-finite-dataset-or-finite-sample"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>In practice, you can compute the variance of a finite dataset as
+<span class="math display">\[\sigma^2 = \Big(\frac{1}{N}\sum_{i=1}^N x_i^2\Big)-\bar{X}^2 \quad \text{where} \quad \bar{X} := \frac{1}{N}\sum_{i=1}^N x_i\]</span>
+</li>
+<li>You don’t need to have the formula memorized, just be aware of it</li>
+<li>Likely you’ll never have to explicitly compute it this way, just use an R function</li>
+<li>Example: <span class="math inline">\(X_i\)</span> are random draws from <span class="math inline">\(\sim \mathcal{N}(2,5)\)</span> (a Normal r.v. with mean 2, variance 5)</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">vars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Sample Variance`</span>, x <span class="op">=</span> <span class="va">N</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span><span class="op">(</span>slope <span class="op">=</span> <span class="fl">0</span>, intercept <span class="op">=</span> <span class="va">true_var</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion01_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="conditional-expectation" class="section level4 unnumbered">
+<h4>4. Conditional Expectation<a class="anchor" aria-label="anchor" href="#conditional-expectation"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>Notation: <span class="math inline">\(E(X|Y)\)</span>
+</li>
+<li>The expected value given a set of “conditions”</li>
+<li>Read as “the expectation of <span class="math inline">\(X\)</span> given (or conditioned on) <span class="math inline">\(Y\)</span>”
+<span class="math display">\[E(X|Y) = \sum_{i=1}^n x_i \cdot P(X=x_i | Y) \quad \text{where} \quad P(X=x_i|Y) = \frac{P(X=x_i \text{ and } Y)}{P(Y)}\]</span>
+</li>
+<li>Example: Roll a fair dice
+<ul>
+<li>Let <span class="math inline">\(A=1\)</span> if you roll an even number, <span class="math inline">\(0\)</span> otherwise</li>
+<li>Let <span class="math inline">\(B=1\)</span> if you roll a prime number, <span class="math inline">\(0\)</span> otherwise</li>
+<li>Then
+<span class="math display">\[E[A] = \sum_{i=1}^6 a_i\cdot P(a_i) = \frac{0+1+0+1+0+1}{6} = \frac{1}{2}\]</span>
+and the conditional expectation of <span class="math inline">\(A\)</span> given <span class="math inline">\(B=1\)</span> (i.e. we rolled 2, 3, or 5)
+<span class="math display">\[E[A | B=1]= \sum_{i=1}^3 a_i\cdot P(a_i|B=1) = \frac{1 + 0 + 0}{3}= \frac{1}{3}\]</span>
+</li>
+</ul>
+</li>
+<li>Visualization in R for <span class="math inline">\(E(X)=25\)</span>, <span class="math inline">\(E[X| \text{group 1}] = 20\)</span>, <span class="math inline">\(E[X| \text{group 2}] = 30\)</span>
+</li>
+</ul>
+<div class="inline-figure"><img src="discussion01_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;"></div>
+</div>
+<div id="independence" class="section level4 unnumbered">
+<h4>5. Independence<a class="anchor" aria-label="anchor" href="#independence"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>Notation: <span class="math inline">\(\perp, \ X \perp Y\)</span>
+</li>
+<li>Two random variables are independent if the outcome of one does not give any information about the outcome of the other</li>
+<li>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if <span class="math inline">\(P(A \text{ and } B) =P(A \cap B) = P(A)P(B)\)</span>
+</li>
+<li>Recall: <span class="math inline">\(P(A \cap B) = P(A | B)P(B)\)</span>
+</li>
+<li>If <span class="math inline">\(A \perp B\)</span> , then <span class="math inline">\(P(A|B)=P(A) \text{ and } P(B|A)=P(B)\)</span>
+</li>
+<li>Example:
+<ul>
+<li>Suppose you roll two fair dice. Let <span class="math inline">\(A\)</span> be the value of the first dice and let <span class="math inline">\(B\)</span> be the value of the second dice.</li>
+<li>If I say that <span class="math inline">\(A=3\)</span>, does that give you any info about what the value of <span class="math inline">\(B\)</span> is?</li>
+<li>We can show that the events <span class="math inline">\(A=3\)</span> and <span class="math inline">\(B=3\)</span> are independent:
+<span class="math display">\[\begin{align*}
+  P(\{A=3\} \cap \{B=3\}) &amp;= P(\{A=3\} | \{B=3\})\cdot P(\{B=3\}) \\
+  &amp;= \frac{1}{6} \cdot \frac{1}{6} \\
+  &amp;= P(\{A=3\}) \cdot P(\{B=3\})
+  \end{align*}\]</span>
+</li>
+<li>To show <span class="math inline">\(A \perp B\)</span>, you would show this holds for all values of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="bernoulli-random-variables" class="section level4 unnumbered">
+<h4>6. Bernoulli Random Variables<a class="anchor" aria-label="anchor" href="#bernoulli-random-variables"><i class="fas fa-link"></i></a>
+</h4>
+<div id="a-binarydichotomous-random-variable" class="section level5 unnumbered">
+<h5>A binary/dichotomous random variable<a class="anchor" aria-label="anchor" href="#a-binarydichotomous-random-variable"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>Notation: <span class="math inline">\(B(p), \text{Bernoulli}(p), \mathcal{B}(p)\)</span>
+</li>
+<li>Takes the value <span class="math inline">\(1\)</span> with probability (w.p.) <span class="math inline">\(p\)</span>, and the value <span class="math inline">\(0\)</span> w.p. <span class="math inline">\(q:=1-p\)</span>
+</li>
+<li>Let <span class="math inline">\(X \sim B(p)\)</span>:
+<ul>
+<li>“Let <span class="math inline">\(X\)</span> be a Bernoulli random variable with mean <span class="math inline">\(p\)</span>”</li>
+<li><span class="math inline">\(E(X) = p \text{ and } Var(X) = p(1-p) = pq\)</span></li>
+</ul>
+</li>
+<li>Cool fact: <span class="math inline">\(E(X) = P(X=1) = p\)</span>
+</li>
+</ul>
+</div>
+</div>
+<div id="law-of-total-expectation" class="section level4 unnumbered">
+<h4>7. Law of Total Expectation<a class="anchor" aria-label="anchor" href="#law-of-total-expectation"><i class="fas fa-link"></i></a>
+</h4>
+<div id="i.e.-law-of-iterated-expectations-tower-rule" class="section level5 unnumbered">
+<h5>(i.e. law of iterated expectations, tower rule)<a class="anchor" aria-label="anchor" href="#i.e.-law-of-iterated-expectations-tower-rule"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>Useful property (or “trick) that will be used in class <span class="math display">\[E(X) = E\big(E(X|Y)\big) \]</span>
+</li>
+<li>Don’t worry too much about the technical details, just add to your toolbox :)</li>
+</ul>
+</div>
+</div>
+<div id="confidence-intervals" class="section level4 unnumbered">
+<h4>8. Confidence Intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>A set of values that contains the real parameter with probability <span class="math inline">\(1-\alpha\)</span>
+</li>
+<li>Define <span class="math inline">\(CI=[L,U]\)</span> then <span class="math inline">\(P(L \leq \mu \leq U)= 1-\alpha\)</span>
+</li>
+<li>Usually <span class="math inline">\(1-\alpha\)</span> is <span class="math inline">\(95\%\)</span> or <span class="math inline">\(99\%\)</span>
+</li>
+<li>Example: <span class="math inline">\(X_i\)</span> are random draws from <span class="math inline">\(\sim \mathcal{N}(2,5)\)</span>
+</li>
+<li>Estimating expectation of a random variable using sample mean:
+<span class="math display">\[\hat E(X)=\hat\mu= \bar X =\frac{1}{N}\sum_{i=1}^N X_i\]</span>
+</li>
+<li>
+<span class="math inline">\(\bar X\)</span> is an estimate for <span class="math inline">\(\mu\)</span> with some uncertainty</li>
+<li><span class="math inline">\(P(\mu \leq \bar X -c)=P(\mu \geq \bar X +c)=\frac{\alpha}{2}\)</span></li>
+<li><span class="math inline">\(P\left(\frac{\bar X-\mu}{\sigma/\sqrt{N}}\leq \frac{\mu-c-\mu}{\sigma/\sqrt{N}}\right) \Rightarrow -c=Z_\frac{\alpha}{2}\frac{\sigma}{\sqrt{N}}\)</span></li>
+<li>
+<span class="math inline">\(Z_\frac{\alpha}{2}\)</span> is the the critical value of the Normal distribution (For example in R: <span class="math inline">\(\texttt{qnorm(0.025)})\)</span>
+</li>
+<li><span class="math inline">\(CI= \bar X \pm Z_\frac{\alpha}{2} \frac{\sigma}{\sqrt{N}}\)</span></li>
+</ul>
+<div class="inline-figure"><img src="assets/discussions/discussion01_files/confidence-limits.png" width="230"></div>
+</div>
+<div id="regression" class="section level4 unnumbered">
+<h4>9. Regression<a class="anchor" aria-label="anchor" href="#regression"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>Estimates the relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> where</li>
+<li>
+<span class="math inline">\(Y\)</span>- the dependent variable, outcome/response</li>
+<li>
+<span class="math inline">\(X\)</span>- independent variable, regressor/explanatory</li>
+<li>Main types of regression: Linear and Logistic</li>
+</ul>
+<div id="linear-regression" class="section level5 unnumbered">
+<h5>9.1. Linear Regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>Assume data was generated: <span class="math inline">\(Y_i=\alpha+\beta X_i+\varepsilon_i\)</span> for <span class="math inline">\(i=1,\ldots,N\)</span>
+</li>
+<li>
+<span class="math inline">\(\alpha, \beta\)</span> are the coefficients where <span class="math inline">\(\alpha\)</span> is the intercept and <span class="math inline">\(\beta\)</span> the slope
+<div>
+<img src="assets/discussions/discussion01_files/lin_reg.png" width="400">
+</div>
+</li>
+<li>Using ordinary least squares (OLS) to estimate <span class="math inline">\(\hat Y_i=\hat\alpha+\hat\beta X_i\)</span>
+</li>
+<li>Minimizes sum of squared errors: <span class="math inline">\((\hat \alpha,\hat \beta)=\mathrm{argmin}_{a,b} \sum_{i=1}^N\big(Y_i-(a+bX_i)\big)^2\)</span>
+</li>
+<li><span class="math inline">\(\frac{\partial}{\partial a} SSE = \sum_{i=1}^N -2(Y_i-a-bX_i) \qquad \Rightarrow \qquad \hat \alpha=\bar Y-\hat \beta \bar X\)</span></li>
+<li>
+<span class="math inline">\(\frac{\partial}{\partial b} SSE = \sum_{i=1}^N -2(Y_i-(\bar Y-b\bar X) -bX_i)X_i\)</span>
+<span class="math inline">\(\qquad \qquad = \sum_{i=1}^N -2\big[(Y_i-\bar Y)X_i-b(X_i-\bar X)X_i \big]\)</span>
+<span class="math inline">\(\qquad\qquad\qquad \Rightarrow \hat \beta=\frac{\sum_{i=1}^N (Y_i-\bar Y)(X_i-\bar X)}{\sum_{i=1}^N (X_i-\bar X)^2}\)</span>
+</li>
+</ul>
+</div>
+<div id="logistic-regression" class="section level5 unnumbered">
+<h5>9.2. Logistic Regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
+</h5>
+<ul>
+<li>
+<span class="math inline">\(Y_i\)</span>- the outcome variable is binary for <span class="math inline">\(i=1,\ldots,N\)</span>
+</li>
+<li>Use a link function to estimate <span class="math inline">\(P(Y_i=1):=p_i\)</span> that satisfies <span class="math inline">\(\mathbb{R} \to (0,1)\)</span>
+<ul>
+<li>Most common- logistic function: <span class="math inline">\(\sigma(t)=\frac{1}{1+e^{-t}}\)</span>
+<div>
+<img src="assets/discussions/discussion01_files/logistic.png" width="250">
+</div>
+</li>
+</ul>
+</li>
+<li>In a linear model we estimate <span class="math inline">\(\hat Y_i=\hat\alpha+\hat\beta X_i\)</span>
+</li>
+<li>In logistic model we estimate <span class="math inline">\(\hat p_i= \frac{1}{1+e^{-(\hat\alpha+\hat\beta X_i)}}\)</span>
+</li>
+<li><span class="math inline">\(\alpha+\beta X_i= \ln\left(\frac{ p_i}{1- p_i}\right)\)</span></li>
+<li>Odds ratio: <span class="math inline">\(\frac{ p_i}{1- p_i}=\frac{P(Y_i=1)}{P(Y_1=0)}\)</span>
+</li>
+<li>For example: <span class="math inline">\(\frac{P(\text{Passing exam})}{P(\text{Not passing})}=\frac{3/4}{1/4}\)</span> the odds ratio is <span class="math inline">\(3:1\)</span>
+</li>
+<li>To estimate <span class="math inline">\(\hat \alpha, \hat \beta\)</span> we use maximum likelihood estimates (MLE)</li>
+<li>Likelihood function: <span class="math inline">\(L(a,b;y)= \prod_{i=1}^N P(Y_i=y_i)= \prod_{i=1}^Np_i^{y_i}(1-p_i)^{(1-y_i)}\)</span>
+</li>
+<li>Log likelihood: <span class="math inline">\(l(a,b;y)= \sum_{i=1}^N y_i\ln(p_i)+(1-y_i)\ln(1-p_i)=\sum_{i=1}^N \ln(1-p_i)+y_i \ln\left(\frac{p_i}{1-p_i}\right)\)</span>
+</li>
+<li>To find MLE we solve <span class="math inline">\(\frac{\partial}{\partial (a,b)}l(a,b;y)=0\)</span>
+</li>
+<li>No close form solution iterative method such as: gradient descent or Newton–Raphson
+<div style="text-align: center;">
+<img src="assets/discussions/discussion01_files/log_reg.png" width="450">
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="rrstudio-intro" class="section level3 unnumbered">
+<h3>R/RStudio Intro<a class="anchor" aria-label="anchor" href="#rrstudio-intro"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>R is an open-source programming language</li>
+<li>Used for statistical computing and creating plots</li>
+<li>
+<a href="https://cran.r-project.org/"><strong>Download and install R</strong></a>
+<div style="text-align: center;">
+<img src="assets/discussions/discussion01_files/r_qr.png" width="150">
+</div>
+</li>
+<li>RStudio is an open-source IDE (integrated development environment)</li>
+<li>
+<a href="https://posit.co/download/rstudio-desktop/"><strong>Download and install RStudio</strong></a> (scroll down for earlier versions)
+<div style="text-align: center;">
+<img src="assets/discussions/discussion01_files/rs_qr.png" width="150">
+</div>
+</li>
+<li>install.packages(“rmarkdown”)</li>
+<li>install.packages(“knitr”)</li>
+<li>
+<a href="discussion1.Rmd"><strong>Download this .Rmd</strong></a> and open in RStudio</li>
+<li>Compile to a PDF (HW submission will be a PDF file)
+<div>
+<img src="assets/discussions/discussion01_files/knitr.png" width="200">
+</div>
+</li>
+<li>
+<a href="https://www.rforecology.com/post/how-to-use-rmarkdown-part-one/"><strong>R Markdown tutorial </strong></a> and open in RStudio
+<div style="text-align: center;">
+<img src="assets/discussions/discussion01_files/rmd_qr.png" width="150">
+</div>
+</li>
+<li>Subscripts and superscripts: to get <span class="math inline">\(Y_{i}^{a}\)</span> inline use <code>$Y_{i}^{a}$</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-1.-prob-stats-review">Discussion 1. Prob &amp; Stats Review</a></li>
+<li>
+<a class="nav-link" href="#stsciinfoilrst-3900-causal-inference">STSCI/INFO/ILRST 3900: Causal Inference</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#announcements">Announcements</a></li>
+<li><a class="nav-link" href="#probability-and-statistics-review">Probability and Statistics Review</a></li>
+<li><a class="nav-link" href="#rrstudio-intro">R/RStudio Intro</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2025-08-26</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

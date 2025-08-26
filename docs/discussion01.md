@@ -2,27 +2,24 @@
 output:
   html_document:
     mathjax: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-  pdf_document: default
 ---
+# (PART) Discussions {-}
 <style>li {line-height: 1.8;}</style>
 
-# Prob & Stats Review
-## STSCI/INFO/ILRST 3900: Causal Inference
-#### August 27, 2025
-```{r echo=FALSE}
-library(ggplot2)
-library(tibble)
+# Discussion 1. Prob & Stats Review {-}
+## STSCI/INFO/ILRST 3900: Causal Inference {-}
+#### August 27, 2025 {-}
 
-set.seed(1234)
-```
+ 
+To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion01.Rmd)
 
-### Announcements
+### Announcements {-}
 - Office Hours throughout the week (see Syllabus or website)
-  - Filippo: Wednesday 4-5pm in 
-  - Shira: Monday 3-4pm in  in 
+  - Filippo: Thursday 4-5pm in 321A Computing & Information Science Building
+  - Shira: Monday 5-6 pm in 329A Computing and Information Science Building  
   - See Ed Discussion for Zoom links/info
 
-### Probability and Statistics Review 
+### Probability and Statistics Review {-}
 - Expectation
 - Variance
 - Conditional Expectation 
@@ -33,8 +30,8 @@ set.seed(1234)
 - Regression (OLS, logistic)
 
 
-#### 1. Expectation
-##### (Expected Value, Population Mean, Average)
+#### 1. Expectation {-}
+##### (Expected Value, Population Mean, Average) {-}
 
 - Notation: $E(X), \mu$
 - The expected value of a finite random variable
@@ -47,7 +44,8 @@ $$\bar X = \frac{1}{N}\sum_{i=1}^N X_i$$
 - Law of Large Numbers (LLN): the sample mean converges to the expected value (population mean) as $N \to \infty$
 - Example: $X_i$ are random draws from $\sim \mathcal{N}(2,5)$ (a Normal r.v. with mean 2, variance 5)
 
-```{r, warning=FALSE, fig.dim=c(4, 3), fig.align='center'}
+
+``` r
 true_mean <- 2
 true_var <- 5
 
@@ -58,8 +56,11 @@ ggplot() + geom_line(aes(x,y)) +
     geom_vline(xintercept = true_mean, color = "red") +
     theme_bw() +
     labs(y="Density")
+```
 
+<img src="discussion01_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
 
+``` r
 sample_seq <- 1:3000
 means <- numeric(length(sample_seq))
 vars <- numeric(length(sample_seq))
@@ -86,12 +87,13 @@ ggplot(means, aes(y = `Sample Mean`, x = N)) +
   geom_line(color = "lightblue") +
   geom_abline(slope = 0, intercept = true_mean, color = "red") +
   theme_bw()
-
 ```
 
+<img src="discussion01_files/figure-html/unnamed-chunk-2-2.png" width="384" style="display: block; margin: auto;" />
 
-#### 2. Variance
-##### Describes the spread of the data
+
+#### 2. Variance {-}
+##### Describes the spread of the data {-}
 
 - Notation: $V(X), Var(X),\sigma^2$
 - Variance is the average of the squared differences from the mean
@@ -100,8 +102,8 @@ ggplot(means, aes(y = `Sample Mean`, x = N)) +
   More explicitly
   $$Var(X) = \sum_{i=1}^n P(x_i)\cdot (x_i-\mu)^2 \quad \text{where} \quad P(x_i):=\text{prob}(X=x_i)$$
 
-#### 3. Sample (Empirical) Variance
-##### For a finite dataset or finite sample
+#### 3. Sample (Empirical) Variance {-}
+##### For a finite dataset or finite sample {-}
 
 - In practice, you can compute the variance of a finite dataset as
   $$\sigma^2 = \Big(\frac{1}{N}\sum_{i=1}^N x_i^2\Big)-\bar{X}^2 \quad \text{where} \quad \bar{X} := \frac{1}{N}\sum_{i=1}^N x_i$$ 
@@ -110,15 +112,18 @@ ggplot(means, aes(y = `Sample Mean`, x = N)) +
 - Example: $X_i$ are random draws from $\sim \mathcal{N}(2,5)$ (a Normal r.v. with mean 2, variance 5)
 
 
-```{r, warning=FALSE, fig.dim=c(4, 3), fig.align='center'}
+
+``` r
 ggplot(vars, aes(y = `Sample Variance`, x = N)) +
   geom_line(color = "lightblue") +
   geom_abline(slope = 0, intercept = true_var, color = "red") +
   theme_bw()
 ```
 
+<img src="discussion01_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
 
-#### 4. Conditional Expectation
+
+#### 4. Conditional Expectation {-}
 
 - Notation: $E(X|Y)$
 - The expected value given a set of “conditions” 
@@ -134,39 +139,10 @@ ggplot(vars, aes(y = `Sample Variance`, x = N)) +
 - Visualization in R for $E(X)=25$, $E[X| \text{group 1}] = 20$, $E[X| \text{group 2}] = 30$
 
 
-```{r, warning=FALSE, fig.dim=c(5, 3), fig.align='center', echo=FALSE}
-group1_means <- rnorm(100, mean = 20, sd = 5)
-group2_means <- rnorm(100, mean = 30, sd = 5)
-group_means <- data.frame(
-  "Group" = c(rep("Group 1", 100), rep("Group 2", 100)),
-  "Values" = c(group1_means, group2_means),
-  "x" = rnorm(200, 5, sd = 3)
-)
-ggplot(group_means, aes(x = x, y = Values, color = Group)) +
-  geom_point() +
-  geom_abline(
-    slope = 0,
-    intercept = mean(group_means$Values),
-    show.legend = TRUE,
-    color = "gray30"
-  ) +
-  geom_abline(
-    slope = 0,
-    intercept = mean(group_means[group_means$Group == "Group 1", ]$Values),
-    show.legend = TRUE,
-    color = "#F8766D"
-  ) +
-  geom_abline(
-    slope = 0,
-    intercept = mean(group_means[group_means$Group == "Group 2", ]$Values),
-    show.legend = TRUE,
-    color = "#00BFC4"
-  ) +
-  theme_bw()
-```
+<img src="discussion01_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" />
 
 
-#### 5. Independence
+#### 5. Independence {-}
 
 - Notation: $\perp, \ X \perp Y$
 - Two random variables are independent if the outcome of one does not give any information about the outcome of the other
@@ -185,8 +161,8 @@ ggplot(group_means, aes(x = x, y = Values, color = Group)) +
   - To show $A \perp B$, you would show this holds for all values of $A$ and $B$
 
 
-#### 6. Bernoulli Random Variables
-##### A binary/dichotomous random variable
+#### 6. Bernoulli Random Variables {-}
+##### A binary/dichotomous random variable {-}
 
 - Notation: $B(p), \text{Bernoulli}(p), \mathcal{B}(p)$
 - Takes the value $1$ with probability (w.p.) $p$, and the value $0$ w.p. $q:=1-p$
@@ -195,14 +171,14 @@ ggplot(group_means, aes(x = x, y = Values, color = Group)) +
   - $E(X) = p \text{ and } Var(X) = p(1-p) = pq$
 - Cool fact: $E(X) = P(X=1) = p$
 
-#### 7. Law of Total Expectation
-##### (i.e. law of iterated expectations, tower rule)
+#### 7. Law of Total Expectation {-}
+##### (i.e. law of iterated expectations, tower rule) {-}
 
 - Useful property (or “trick) that will be used in class $$E(X) = E\big(E(X|Y)\big) $$
 - Don’t worry too much about the technical details, just add to your toolbox :)
 
 
-#### Confidence Intervals
+#### 8. Confidence Intervals {-}
 
 - A set of values that contains the real parameter with probability $1-\alpha$
 - Define $CI=[L,U]$ then $P(L \leq \mu \leq U)= 1-\alpha$
@@ -216,28 +192,30 @@ ggplot(group_means, aes(x = x, y = Values, color = Group)) +
 - $Z_\frac{\alpha}{2}$ is the the critical value of the Normal distribution (For example in R: $\texttt{qnorm(0.025)})$
 - $CI= \bar X \pm Z_\frac{\alpha}{2} \frac{\sigma}{\sqrt{N}}$
 
-<img src="confidence-limits.png" width="230"/>
+<img src="assets/discussions/discussion01_files/confidence-limits.png" width="230"/>
 
-#### 8. Regression
+#### 9. Regression {-}
 - Estimates the relationships between $X$ and $Y$ where
 - $Y$- the dependent variable, outcome/response 
 - $X$- independent variable, regressor/explanatory
 - Main types of regression: Linear and Logistic
 
-##### 8.1. Linear Regression
+##### 9.1. Linear Regression {-}
 - Assume data was generated: $Y_i=\alpha+\beta X_i+\varepsilon_i$  for  $i=1,\ldots,N$
 - $\alpha, \beta$ are the coefficients where $\alpha$ is the intercept and $\beta$ the slope
-<div><img src="lin_reg.png" width="400"/></div>
+<div><img src="assets/discussions/discussion01_files/lin_reg.png" width="400"/></div>
 - Using ordinary least squares (OLS) to estimate $\hat Y_i=\hat\alpha+\hat\beta X_i$
 - Minimizes sum of squared errors: $(\hat \alpha,\hat \beta)=\mathrm{argmin}_{a,b} \sum_{i=1}^N\big(Y_i-(a+bX_i)\big)^2$
 - $\frac{\partial}{\partial a} SSE = \sum_{i=1}^N -2(Y_i-a-bX_i) \qquad \Rightarrow \qquad \hat \alpha=\bar Y-\hat \beta \bar X$
-- $\frac{\partial}{\partial b} SSE = \sum_{i=1}^N -2(Y_i-(\bar Y-b\bar X) -bX_i)X_i = \sum_{i=1}^N -2\big[(Y_i-\bar Y)X_i-b(X_i-\bar X)X_i \big]\qquad  \Rightarrow \qquad \hat \beta=\frac{\sum_{i=1}^N (Y_i-\bar Y)(X_i-\bar X)}{\sum_{i=1}^N (X_i-\bar X)^2}$
+- $\frac{\partial}{\partial b} SSE = \sum_{i=1}^N -2(Y_i-(\bar Y-b\bar X) -bX_i)X_i$
+$\qquad \qquad = \sum_{i=1}^N -2\big[(Y_i-\bar Y)X_i-b(X_i-\bar X)X_i \big]$
+$\qquad\qquad\qquad \Rightarrow \hat \beta=\frac{\sum_{i=1}^N (Y_i-\bar Y)(X_i-\bar X)}{\sum_{i=1}^N (X_i-\bar X)^2}$
 
-##### 8.2. Logistic Regression
+##### 9.2. Logistic Regression {-}
 - $Y_i$- the outcome variable is binary for $i=1,\ldots,N$
 - Use a link function to estimate $P(Y_i=1):=p_i$ that satisfies $\mathbb{R} \to (0,1)$
   - Most common- logistic function:  $\sigma(t)=\frac{1}{1+e^{-t}}$
-  <div><img src="logistic.png" width="250"/></div>
+  <div><img src="assets/discussions/discussion01_files/logistic.png" width="250"/></div>
 - In a linear model we estimate $\hat Y_i=\hat\alpha+\hat\beta X_i$
 - In logistic model we estimate $\hat p_i= \frac{1}{1+e^{-(\hat\alpha+\hat\beta X_i)}}$
 - $\alpha+\beta X_i= \ln\left(\frac{ p_i}{1- p_i}\right)$
@@ -248,23 +226,23 @@ ggplot(group_means, aes(x = x, y = Values, color = Group)) +
 - Log likelihood: $l(a,b;y)= \sum_{i=1}^N y_i\ln(p_i)+(1-y_i)\ln(1-p_i)=\sum_{i=1}^N \ln(1-p_i)+y_i \ln\left(\frac{p_i}{1-p_i}\right)$
 - To find MLE we solve $\frac{\partial}{\partial (a,b)}l(a,b;y)=0$
 - No close form solution iterative method such as: gradient descent or Newton–Raphson
-<div style="text-align: center;"><img src="log_reg.png" width="450"/></div>
+<div style="text-align: center;"><img src="assets/discussions/discussion01_files/log_reg.png" width="450"/></div>
 
 
-### R/RStudio Intro
+### R/RStudio Intro {-}
 
 - R is an open-source programming language
 - Used for statistical computing and creating plots
 - [**Download and install R**](https://cran.r-project.org/)
-<div style="text-align: center;"> <img src="r_qr.png" width="150"/></div>
+<div style="text-align: center;"> <img src="assets/discussions/discussion01_files/r_qr.png" width="150"/></div>
 - RStudio is an open-source IDE (integrated development environment)
 - [**Download and install RStudio**](https://posit.co/download/rstudio-desktop/) (scroll down for earlier versions)
-<div style="text-align: center;">  <img src="rs_qr.png" width="150"/></div>
+<div style="text-align: center;">  <img src="assets/discussions/discussion01_files/rs_qr.png" width="150"/></div>
 - install.packages("rmarkdown")
 - install.packages(“knitr")
 - [**Download this .Rmd**](discussion1.Rmd) and open in RStudio
 - Compile to a PDF (HW submission will be a PDF file)
-<div><img src="knitr.png" width="200"/></div>
+<div><img src="assets/discussions/discussion01_files/knitr.png" width="200"/></div>
 - [**R Markdown tutorial **](https://www.rforecology.com/post/how-to-use-rmarkdown-part-one/) and open in RStudio
-<div style="text-align: center;">  <img src="rmd_qr.png" width="150"/></div>
+<div style="text-align: center;">  <img src="assets/discussions/discussion01_files/rmd_qr.png" width="150"/></div>
 - Subscripts and superscripts: to get $Y_{i}^{a}$ inline use `$Y_{i}^{a}$`
