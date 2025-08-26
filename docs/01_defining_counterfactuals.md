@@ -14,7 +14,7 @@ Today we will discuss observing, intervening, and why the difference is so impor
 
 ## Lab: Statistics review
 
-> Aug 27
+> Aug 27. [**Slides**](discussion-1.-prob-stats-review), download [**.Rmd file**](assets/discussions/discussion01.Rmd)
 
 In this lab, we will start by reviewing some basic statistical (random variables, expectation, conditional expectation, etc) and programming concepts.  
 

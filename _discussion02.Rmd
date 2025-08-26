@@ -1,5 +1,3 @@
-# (PART) Discussions {-}
-
 # Discussion 2. Stats review {-}
 
 [**Slides**](assets/discussions/discussion2-probandstatsreview.pdf)
