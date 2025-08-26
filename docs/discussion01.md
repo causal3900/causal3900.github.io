@@ -17,7 +17,6 @@ To execute these simulations locally, [**download the .Rmd here**](assets/discus
 - Office Hours throughout the week (see Syllabus or website)
   - Filippo: Thursday 4-5pm in 321A Computing & Information Science Building
   - Shira: Monday 5-6 pm in 329A Computing and Information Science Building  
-  - See Ed Discussion for Zoom links/info
 
 ### Probability and Statistics Review {-}
 - Expectation
