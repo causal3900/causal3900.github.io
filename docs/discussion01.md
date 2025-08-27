@@ -238,7 +238,8 @@ $\qquad\qquad\qquad \Rightarrow \hat \beta=\frac{\sum_{i=1}^N (Y_i-\bar Y)(X_i-\
 - [**Download and install RStudio**](https://posit.co/download/rstudio-desktop/) (scroll down for earlier versions)
 <div style="text-align: center;">  <img src="assets/discussions/discussion01_files/rs_qr.png" width="150"/></div>
 - install.packages("rmarkdown")
-- install.packages(“knitr")
+- install.packages("knitr")
+- tinytex::install_tinytex()
 - [**Download this .Rmd**](assets/discussions/discussion01.Rmd) and open in RStudio
 - Compile to a PDF (HW submission will be a PDF file)
 <div><img src="assets/discussions/discussion01_files/knitr.png" width="200"/></div>
