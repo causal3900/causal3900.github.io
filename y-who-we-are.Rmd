@@ -25,10 +25,10 @@ img {
 <div class="row">
   <div class="column"><img src="assets/Sam.jpeg" style="width:75px"></div>
   <div class="col-md-5">[**Y. Samuel Wang**](https://ysamuelwang.com/)<br>Assistant Professor<br>Statistics and Data Science<br>
-[ysw7@cornell.edu](mailto:ysw7@cornell.edu)<br> OH TBD </div>
+[ysw7@cornell.edu](mailto:ysw7@cornell.edu)<br> Tues 4-5pm  </div>
 </div>
 
-> I enjoy thinking about problems where the goal is to discover interpretable structure which underlies the data generating process. This includes problems in the areas of causal discovery, graphical models, and mixed membership models. In many cases, the methods are tailored for the high-dimensional setting where the number of variables considered may be large when compared to the number of observed samples. My applied interests vary but are generally social science related.
+> I enjoy thinking about problems where the goal is to discover interpretable structure which underlies the data generating process. This includes problems in the areas of causal discovery, graphical models, and mixed membership models. 
 
 ## Teaching assistants {.unnumbered}
 
