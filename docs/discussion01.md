@@ -191,7 +191,7 @@ ggplot(vars, aes(y = `Sample Variance`, x = N)) +
 - $Z_\frac{\alpha}{2}$ is the the critical value of the Normal distribution (For example in R: $\texttt{qnorm(0.025)})$
 - $CI= \bar X \pm Z_\frac{\alpha}{2} \frac{\sigma}{\sqrt{N}}$
 
-<img src="assets/discussions/discussion01_files/confidence-limits.png" width="230"/>
+<div style="text-align: center;"><img src="assets/discussions/discussion01_files/confidence-limits.png" width="230"/></div>
 
 #### 9. Regression {-}
 - Estimates the relationships between $X$ and $Y$ where
@@ -239,7 +239,7 @@ $\qquad\qquad\qquad \Rightarrow \hat \beta=\frac{\sum_{i=1}^N (Y_i-\bar Y)(X_i-\
 <div style="text-align: center;">  <img src="assets/discussions/discussion01_files/rs_qr.png" width="150"/></div>
 - install.packages("rmarkdown")
 - install.packages(“knitr")
-- [**Download this .Rmd**](discussion1.Rmd) and open in RStudio
+- [**Download this .Rmd**](assets/discussions/discussion01.Rmd) and open in RStudio
 - Compile to a PDF (HW submission will be a PDF file)
 <div><img src="assets/discussions/discussion01_files/knitr.png" width="200"/></div>
 - [**R Markdown tutorial **](https://www.rforecology.com/post/how-to-use-rmarkdown-part-one/) and open in RStudio
