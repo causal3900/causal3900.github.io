@@ -14,7 +14,7 @@ Much of this course will address observational studies with non-randomized treat
 
 > Sep 3. [**Discussion**](discussion-2.-analyzing-an-experiment-in-r)
 
-This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion02.Rmd).
+This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion2.Rmd).
 
 ## Exchangeability and conditional randomization
 
