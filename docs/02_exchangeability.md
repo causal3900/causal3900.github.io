@@ -10,11 +10,11 @@ After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-
 
 Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.
 
-## Lab: Statistics review with math and simulations
+## Lab: Analyze a randomized experiment
 
-> Sep 3. [**Slides from 2024.**](assets/discussions/discussion2-probandstatsreview.pdf)
+> Sep 3. [**Discussion**](discussion-2.-analyzing-an-experiment-in-r)
 
-The course will use several ideas from your previous coursework in statistics, including random variables, expected values, and independence. This lab will review these concepts in math and using simulations in R. Download the R script demo [**here**](assets/discussions/discussion2.R)
+This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion02.Rmd).
 
 ## Exchangeability and conditional randomization
 

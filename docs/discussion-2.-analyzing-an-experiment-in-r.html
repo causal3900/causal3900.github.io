@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 2. Analyzing an Experiment in R | Causal Inference Course</title>
+<meta name="author" content="Sam Wang and Christina Yu">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Discussion 2. Analyzing an Experiment in R | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 2. Analyzing an Experiment in R | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="active" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-2.-analyzing-an-experiment-in-r" class="section level1 unnumbered">
+<h1>Discussion 2. Analyzing an Experiment in R<a class="anchor" aria-label="anchor" href="#discussion-2.-analyzing-an-experiment-in-r"><i class="fas fa-link"></i></a>
+</h1>
+<div id="stsciinfoilrst-3900-causal-inference-1" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="september-3-2025" class="section level4 unnumbered">
+<h4>September 3, 2025<a class="anchor" aria-label="anchor" href="#september-3-2025"><i class="fas fa-link"></i></a>
+</h4>
+</div>
+<div id="announcements-1" class="section level3 unnumbered">
+<h3>Announcements<a class="anchor" aria-label="anchor" href="#announcements-1"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>HW 1 due Tuesday (September 9) by 5pm
+<ul>
+<li>Submit a PDF from RMarkdown via Canvas</li>
+</ul>
+</li>
+<li>Office Hours throughout the week (see Syllabus or website)
+<ul>
+<li>Filippo: Thursday 4-5pm in 321A CIS Building</li>
+<li>Shira: Monday 5-6 pm in 329A CIS Building<br>
+</li>
+<li>Sam: Tuesday 4-5pm, CIS Building</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="get-out-and-vote-experiment" class="section level3 unnumbered">
+<h3>Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Why do people vote?</li>
+<li>One long-standing theory: People vote due to social norms (civic duty)</li>
+<li>Empirical evidence for this theory was extremely thin</li>
+<li>
+<strong>Research Question:</strong> to what extent do social norms cause voter turnout?</li>
+<li>Article: <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/social-pressure-and-voter-turnout-evidence-from-a-largescale-field-experiment/11E84AF4C0B7FBD1D20C855972C2C3EB#">“Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment.”</a>in American Political Science Review</li>
+<li>Authors: Alan S. Gerber, Donald P. Green, and Christopher W. Larimer</li>
+<li>We’ll be analyzing their experiment today!</li>
+</ul>
+</div>
+<div id="experimental-design" class="section level3 unnumbered">
+<h3>Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Approximately 80k Michigan households were randomly assigned 1 of 4 mailings encouraging them to vote
+<ol style="list-style-type: decimal">
+<li>Simply reminded them that voting is a civic duty</li>
+<li>Told that researchers would be studying their turnout based on public records</li>
+<li>Received record of voting turnout <em>within</em> their household</li>
+<li>Received record of voting turnout within their household <em>and</em> their neighbors’ households.</li>
+</ol>
+</li>
+<li>Third and fourth treatment arms were told that their turnout would be revealed as well</li>
+</ul>
+</div>
+<div id="goal-for-today" class="section level3 unnumbered">
+<h3>Goal for Today<a class="anchor" aria-label="anchor" href="#goal-for-today"><i class="fas fa-link"></i></a>
+</h3>
+<strong>Replicate Something Similar to Tables 1 and 2 from the article</strong>
+<div style="text-align: center;">
+<img src="assets/discussions/discussion02_files/tab1.png" width="550">
+</div>
+<div style="text-align: center;">
+<img src="assets/discussions/discussion02_files/tab2.png" width="550">
+</div>
+</div>
+<div id="resources-for-markdown" class="section level3 unnumbered">
+<h3>Resources for Markdown<a class="anchor" aria-label="anchor" href="#resources-for-markdown"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Hadley Wickham’s R for Data Science <a href="https://r4ds.had.co.nz/r-markdown.html">“Chapter 27”</a>
+</li>
+<li>
+<a href="https://rmarkdown.rstudio.com/lesson-15.HTML">“RMarkdown cheat sheet”</a> from RStudio</li>
+<li>
+<a href="https://bookdown.org/content/24942ad6-9ed7-44e9-b214-1ea8ba9f0224/data-wrangling-and-analyses-with-tidyverse.html">“Data Wrangling and Analyses with Tidyverse”</a> by Bookdown</li>
+<li>
+<a href="https://rmd4sci.njtierney.com/">“RMarkdown for Scientists”</a> by Nicholas Tierney</li>
+<li>If you can’t figure out how to do something, try Googling it first!</li>
+<li>Also feel free to ask a classmate or ask me :)</li>
+<li>For homework sets, don’t forget about Ed Discussion!</li>
+</ul>
+</div>
+<div id="step-1-download-the-.rmd-file-here" class="section level3 unnumbered">
+<h3>Step 1: Download the <a href="assets/discussions/discussion2.Rmd"><strong>.Rmd file here</strong></a><a class="anchor" aria-label="anchor" href="#step-1-download-the-.rmd-file-here"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Start by running the code in Section “Necessary packages”</li>
+<li>If you get an error, you may need to install the package</li>
+</ul>
+</div>
+<div id="step-2-import-and-clean-the-data" class="section level3 unnumbered">
+<h3>Step 2: Import and Clean the Data<a class="anchor" aria-label="anchor" href="#step-2-import-and-clean-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu">read_dta</span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Quick peek at the dataset using the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">function <code>glimpse</code></a>
+</li>
+<li>Notice that we have information about year of birth <code>yob</code> but not explicitly age</li>
+<li>Notice that the treatments are labeled with the numbers 0 through 4</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Rows: 344,084
+## Columns: 16
+## $ sex           &lt;dbl+lbl&gt; 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ yob           &lt;dbl&gt; 1941, 1947, 1951, 1950, 1982, 1981, …
+## $ g2000         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2004         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ p2000         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ p2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ p2004         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ treatment     &lt;dbl+lbl&gt; 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0,…
+## $ cluster       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ voted         &lt;dbl+lbl&gt; 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
+## $ hh_id         &lt;dbl&gt; 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
+## $ hh_size       &lt;dbl&gt; 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
+## $ numberofnames &lt;dbl&gt; 21, 21, 21, 21, 21, 21, 21, 21, 21, …
+## $ p2004_mean    &lt;dbl&gt; 0.09523810, 0.09523810, 0.04761905, …
+## $ g2004_mean    &lt;dbl&gt; 0.8571429, 0.8571429, 0.8571429, 0.8…</code></pre>
+<ul>
+<li>Calculate the ages of everyone in our dataset in the year 2006</li>
+<li>Use <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutatet()</code></a> to construct an age variable</li>
+<li>You can do arithmetic operations with information from the dataset</li>
+<li>For example: <code>mutate(col_3 = col_1 + col_2)</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Replace the numeric labels of treatment (0-4) with word labels:
+<ul>
+<li>0: “Control”</li>
+<li>1: “Hawthorne” (this is the ‘researchers viewing records via public data’ treatment arm)</li>
+<li>2: “Civic Duty” (this is the ‘voting is your civic duty’ treatment arm)</li>
+<li>3: “Neighbors” (this is the ‘voting turnout revealed to neighbors’ treatment arm)</li>
+<li>4: “Self” (this is the ‘voting turnout revealed to household’ treatment arm)</li>
+</ul>
+</li>
+<li>For this, you will want to use the function <code>case_when</code> which is described <a href="https://www.sharpsightlabs.com/blog/case-when-r/">here</a>
+</li>
+<li>The general syntax is <code>case_when(condition ~ output-value)</code>
+</li>
+<li>A condition would be <code>treatement == 0</code> and an output value would be <code>"Control"</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<ul>
+<li>When you run <code>glimpse(gotv)</code>, you should see something like this</li>
+</ul>
+<div style="text-align: center;">
+<img src="assets/discussions/discussion02_files/glimpse.png" width="550">
+</div>
+</div>
+<div id="step-3-table-1" class="section level3 unnumbered">
+<h3>Step 3: Table 1<a class="anchor" aria-label="anchor" href="#step-3-table-1"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Is the data balanced on covariates?</li>
+<li>We want to check that the treatment groups are balanced on covariates</li>
+<li>For each treatment arm/group, calculate the mean for each of the designated covariates:
+<ul>
+<li>Household size, Nov 2002, Nov 2000, Aug 2004, Aug 2002, Aug 2000, Female, Age (in years)</li>
+</ul>
+</li>
+<li>Use <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a> to calculate separate means for each treatment arm</li>
+<li>Use <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a> to computes the mean of each covariate in <code>covariates</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"g2000"</span>, <span class="st">"g2002"</span>, <span class="st">"p2000"</span>, <span class="st">"p2002"</span>, <span class="st">"p2004"</span>, <span class="st">"hh_size"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gotv_balance</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_balance</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Your table should look like this (covariates similar across the groups)
+<div style="text-align: center;">
+<img src="assets/discussions/discussion02_files/mean.png" width="550">
+</div>
+</li>
+</ul>
+</div>
+<div id="step-4-table-2" class="section level3 unnumbered">
+<h3>Step 4: Table 2<a class="anchor" aria-label="anchor" href="#step-4-table-2"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>What are the results of the experiment?</li>
+<li>For each treatment group, calculate the percent that voted and the total number of individuals in that group</li>
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to calculate separate means for each treatment arm</li>
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to to do the following:
+<ul>
+<li>Create a column <code>Percentage_Voting</code>- the percent that voted of each group</li>
+<li>Create a column <code>num_of_individuals</code>- the total number of people in that group</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Your table should look like this
+<div style="text-align: center;">
+<img src="assets/discussions/discussion02_files/percent_vote.png" width="550">
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-2.-analyzing-an-experiment-in-r">Discussion 2. Analyzing an Experiment in R</a></li>
+<li>
+<a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-1">STSCI/INFO/ILRST 3900: Causal Inference</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#announcements-1">Announcements</a></li>
+<li><a class="nav-link" href="#get-out-and-vote-experiment">Get out and Vote Experiment</a></li>
+<li><a class="nav-link" href="#experimental-design">Experimental Design</a></li>
+<li><a class="nav-link" href="#goal-for-today">Goal for Today</a></li>
+<li><a class="nav-link" href="#resources-for-markdown">Resources for Markdown</a></li>
+<li><a class="nav-link" href="#step-1-download-the-.rmd-file-here">Step 1: Download the .Rmd file here</a></li>
+<li><a class="nav-link" href="#step-2-import-and-clean-the-data">Step 2: Import and Clean the Data</a></li>
+<li><a class="nav-link" href="#step-3-table-1">Step 3: Table 1</a></li>
+<li><a class="nav-link" href="#step-4-table-2">Step 4: Table 2</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2025-09-02</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -62,6 +62,7 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -89,14 +90,14 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 </blockquote>
 <p>Much of this course will address observational studies with non-randomized treatments. To set the stage, today we will first discuss why randomized experiments are so powerful when they are possible.</p>
 </div>
-<div id="lab-statistics-review-with-math-and-simulations" class="section level2" number="2.2">
+<div id="lab-analyze-a-randomized-experiment" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">2.2</span> Lab: Statistics review with math and simulations<a class="anchor" aria-label="anchor" href="#lab-statistics-review-with-math-and-simulations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> Lab: Analyze a randomized experiment<a class="anchor" aria-label="anchor" href="#lab-analyze-a-randomized-experiment"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 3. <a href="assets/discussions/discussion2-probandstatsreview.pdf"><strong>Slides from 2024.</strong></a></p>
+<p>Sep 3. <a href="discussion-2.-analyzing-an-experiment-in-r"><strong>Discussion</strong></a></p>
 </blockquote>
-<p>The course will use several ideas from your previous coursework in statistics, including random variables, expected values, and independence. This lab will review these concepts in math and using simulations in R. Download the R script demo <a href="assets/discussions/discussion2.R"><strong>here</strong></a></p>
+<p>This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout (<a href="https://doi.org/10.1017/S000305540808009X">Gerber, Green, &amp; Larimer 2008</a>). Download the R Markdown file <a href="assets/discussions/discussion02.Rmd"><strong>here</strong></a>.</p>
 </div>
 <div id="exchangeability-and-conditional-randomization" class="section level2" number="2.3">
 <h2>
@@ -119,9 +120,9 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 <p>Stratification allows us to estimate the average causal effect within a subpopulation, or strata, also known as the conditional average treatment effect. Standardization is an important statistical procedure that allows us to estimate the population average treatment effect by taking a weighted average over the subpopulations.</p>
 <p>In conditionally randomized experiments, standardization is essential to yield unbiased estimates of the population average causal effect. This strategy will also be essential in observational studies that we will discuss soon.</p>
 </div>
-<div id="lab-analyze-a-randomized-experiment" class="section level2" number="2.5">
+<div id="lab-analyze-a-randomized-experiment-1" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.5</span> Lab: Analyze a randomized experiment<a class="anchor" aria-label="anchor" href="#lab-analyze-a-randomized-experiment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Lab: Analyze a randomized experiment<a class="anchor" aria-label="anchor" href="#lab-analyze-a-randomized-experiment-1"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Sep 10. <a href="assets/discussions/discussion3-analyzing-experiment.pdf"><strong>Slides from 2024.</strong></a></p>
@@ -148,10 +149,10 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#exchangeability-and-experiments"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
 <li><a class="nav-link" href="#randomized-experiments"><span class="header-section-number">2.1</span> Randomized experiments</a></li>
-<li><a class="nav-link" href="#lab-statistics-review-with-math-and-simulations"><span class="header-section-number">2.2</span> Lab: Statistics review with math and simulations</a></li>
+<li><a class="nav-link" href="#lab-analyze-a-randomized-experiment"><span class="header-section-number">2.2</span> Lab: Analyze a randomized experiment</a></li>
 <li><a class="nav-link" href="#exchangeability-and-conditional-randomization"><span class="header-section-number">2.3</span> Exchangeability and conditional randomization</a></li>
 <li><a class="nav-link" href="#standardization-and-effect-measures"><span class="header-section-number">2.4</span> Standardization and effect measures</a></li>
-<li><a class="nav-link" href="#lab-analyze-a-randomized-experiment"><span class="header-section-number">2.5</span> Lab: Analyze a randomized experiment</a></li>
+<li><a class="nav-link" href="#lab-analyze-a-randomized-experiment-1"><span class="header-section-number">2.5</span> Lab: Analyze a randomized experiment</a></li>
 <li><a class="nav-link" href="#inverse-probability-weighting"><span class="header-section-number">2.6</span> Inverse probability weighting</a></li>
 </ul>
       <div class="book-extra">
@@ -172,7 +173,7 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-09-01</p>
+    <p>Last built on 2025-09-02</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

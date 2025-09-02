@@ -4,10 +4,10 @@ lab-statistics-review
 defining-causal-effects
 exchangeability-and-experiments
 randomized-experiments
-lab-statistics-review-with-math-and-simulations
+lab-analyze-a-randomized-experiment
 exchangeability-and-conditional-randomization
 standardization-and-effect-measures
-lab-analyze-a-randomized-experiment
+lab-analyze-a-randomized-experiment-1
 inverse-probability-weighting
 consistency-and-positivity
 exchangeability-in-observational-studies

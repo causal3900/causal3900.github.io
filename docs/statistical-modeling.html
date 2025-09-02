@@ -62,6 +62,7 @@
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -338,7 +339,7 @@ graduate whose probability of completing college was similar</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
-<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
 <span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
 <span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
@@ -460,7 +461,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-09-01</p>
+    <p>Last built on 2025-09-02</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
