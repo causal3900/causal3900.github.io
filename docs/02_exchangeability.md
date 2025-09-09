@@ -34,7 +34,7 @@ Stratification allows us to estimate the average causal effect within a subpopul
 
 In conditionally randomized experiments, standardization is essential to yield unbiased estimates of the population average causal effect. This strategy will also be essential in observational studies that we will discuss soon.
 
-## Lab: Analyze a randomized experiment
+## Lab: Treatment Effect Heterogeneity and Exploring ADD Health Data
 
 > Sep 10. [**Slides from 2024.**](assets/discussions/discussion3-analyzing-experiment.pdf)
 
