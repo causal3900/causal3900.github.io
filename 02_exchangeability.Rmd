@@ -25,8 +25,10 @@ We talk about why experiments are good: they are a setting in which a key identi
 
 ## Standardization and effect measures
 
-> Sep 9. [**Slides from 2024.**](assets/slides/2-3_standardization.pdf)
-After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.4.
+> Sep 9. [**Slides**](assets/slides/2-3_standardization_gen.pdf)
+After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.3 and 4.1-4.3.
+
+Although we can use the ACE to describe the average over the entire population, the treatment effect may vary across sub-populations. This is called treatment effect heterogeneity and is an important consideration when making policy decisions.
 
 Stratification allows us to estimate the average causal effect within a subpopulation, or strata, also known as the conditional average treatment effect. Standardization is an important statistical procedure that allows us to estimate the population average treatment effect by taking a weighted average over the subpopulations. 
 
@@ -36,12 +38,11 @@ In conditionally randomized experiments, standardization is essential to yield u
 
 > Sep 10. [**Slides from 2024.**](assets/discussions/discussion3-analyzing-experiment.pdf)
 
-This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion3.Rmd).
 
 ## Inverse probability weighting
 
 > Sep 11. [**Slides from 2024.**](assets/slides/2-4_ipw.pdf)
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapters 3.1 and 3.2.
 
-This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds.
+This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds. We will also discuss alternative ways to measure a causal effect. Finally, we will discuss when conditional exchangeability might also hold in observational studies.
 
