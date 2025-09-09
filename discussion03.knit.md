@@ -48,13 +48,35 @@ would be revealed to their household *and* to their neighbors.
 __Note:__ If this errors you probably either don't have `dplyr` or `haven`
 installed.
 
-```{r}
+
+``` r
 library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+``` r
 library(haven)
 ```
 
 ### Import data
-```{r}
+
+``` r
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 ```
 
@@ -64,8 +86,30 @@ gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
 > `gotv <- read_dta("social_pressure.dta")`
 
 Run the following code to get a quick peek at the dataset using the [function `glimpse`](https://dplyr.tidyverse.org/reference/glimpse.html). This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about year of birth `yob` but not explicitly age. Also notice that the treatments are labeled with the numbers 0 through 4.
-```{r}
+
+``` r
 glimpse(gotv)
+```
+
+```
+## Rows: 344,084
+## Columns: 16
+## $ sex           <dbl+lbl> 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ yob           <dbl> 1941, 1947, 1951, 1950, 1982, 1981, …
+## $ g2000         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2002         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2004         <dbl+lbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ p2000         <dbl+lbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ p2002         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ p2004         <dbl+lbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ treatment     <dbl+lbl> 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0,…
+## $ cluster       <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ voted         <dbl+lbl> 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
+## $ hh_id         <dbl> 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
+## $ hh_size       <dbl> 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
+## $ numberofnames <dbl> 21, 21, 21, 21, 21, 21, 21, 21, 21, …
+## $ p2004_mean    <dbl> 0.09523810, 0.09523810, 0.04761905, …
+## $ g2004_mean    <dbl> 0.8571429, 0.8571429, 0.8571429, 0.8…
 ```
 
 ### Clean data
@@ -80,80 +124,13 @@ was born in. For this, we use the `mutate` function, which you can read about [h
 
 We have the code started for you below. Fill in the appropriate expression after `age = ` to add a column to `gotv` labeled `age` that contains how old each person was in 2006.
 
-```{r}
-gotv <- gotv |>
-  mutate(age = )
-```
-
-Now, convert the `treatment` variable from it's numeric representation to the
-corresponding labels which are
-
-- 0: "Control" 
-- 1: "Hawthorne" (this is the 'researchers viewing records via public data' treatment arm)
-- 2: "Civic Duty" (this is the 'voting is your civic duty' treatment arm)
-- 3: "Neighbors" (this is the 'voting turnout revealed to neighbors' treatment arm)
-- 4: "Self" (this is the 'voting turnout revealed to household' treatment arm)
 
 
-> For this, you will want to use the function `case_when` which is described [here](https://www.sharpsightlabs.com/blog/case-when-r/).
-> The general syntax is `case_when(condition ~ output-value)`
-> 
-> For example, a condition would be `treatement == 0` and an output value would be `"Control"`. This would search for every value in the `treatment` column that equals `0` and replace that with the string `"Control"`.
 
 
-We have started the code for you below. Decide what argument(s) to pass inside the parantheses of `case_when()`.
-```{r}
-gotv <- gotv |>
-  mutate(treatment = case_when()) 
-```
 
-Now, when we use `glimpse` we see there is an added `age` variable and that the treatments have word instead of number labels.
-```{r}
-glimpse(gotv)
-```
 
-### Balance table
 
-Next, we're going to confirm that our control and treatment groups look pretty
-much the same across a set of covariates, i.e. that the two groups are *balanced on covariates*. Specifically this means we're going to calculate the mean value of a set of covariates across each of the treatment/control
-arms, and we expect them to be pretty much equal if our randomization worked. This is related to the idea of exchangeability.
 
-In this exercise, we are going to reproduce a table similar to Table 1 from the paper. We want a table that shows the mean value of the following covariates for each of the five treatment arms: Household size, Nov 2002, Nov 2000, Aug 2004, Aug 2002, Aug 2000, Female, and Age (in years). You should create a table with 5 rows, one for each treatment arm, and 8 columns, one for each covariate of interest. 
 
-We have started some code for you below. What you need to do is:
-
-- Pass an argument to `group_by()` so that we calculate seperate means for each treatment arm.
-  - Look [here](https://dplyr.tidyverse.org/reference/group_by.html) for documentation on the `group_by` function.
-- Pass an argument to `summarise()` that computes the mean of each covariate in `covariates` for each seperate treatment arm.
-  - Look [here](https://dplyr.tidyverse.org/reference/summarise.html) for documentation on the `summarise` function.
-  - You may find the function [`across`](https://dplyr.tidyverse.org/reference/across.html) useful here as well. You can use this function *inside* of `summarise()`!
-
-```{r}
-covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
-
-gotv_balance <- gotv |>
-  group_by(...) |>
-  summarise(...)
-
-print(gotv_balance)
-```
-
-Note that your numbers will not match up exactly with Table 1. What you want to notice is that the values in each column are similar across the rows.
-
-### Results
-
-Finally, let's replicate the final results (Table 2). For each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! We started the code for you below. You need to 
-
-- Pass an argument to `group_by()` so that we are working with each treatment arm seperately (this should be the same as before!)
-- Pass two arguments to `summarise()` to do the following:
-  - Create a column titled `Percentage_Voting` that contains the percent of each group that voted
-  - Create a column titled `num_of_individuals` that contains the total number of people in that group
-
-```{r}
-gotv_results <- gotv |>
-  group_by(...) |>
-  summarise(...)
-
-print(gotv_results)
-```
 
