@@ -25,7 +25,7 @@ We talk about why experiments are good: they are a setting in which a key identi
 
 ## Standardization and effect measures
 
-> Sep 9. [**Slides**](assets/slides/2-3_standardization_gen.pdf)
+> Sep 9. [**Slides**](assets/slides/2-3_standardization_and_gen.pdf)
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.3 and 4.1-4.3.
 
 Although we can use the ACE to describe the average over the entire population, the treatment effect may vary across sub-populations. This is called treatment effect heterogeneity and is an important consideration when making policy decisions.
