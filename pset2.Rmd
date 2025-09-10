@@ -1,6 +1,6 @@
 # Problem Set 2. Experiments {-}
 
-Relevant material will be covered by **Sep 11**. Problem set is due **Sep 18**.
+Relevant material will be covered by **Sep 11**. Problem set is due **Sep 19**.
 
 To complete the problem set, [**Download the .Rmd**](assets/psets/pset2_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
 

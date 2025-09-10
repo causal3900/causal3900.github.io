@@ -10,7 +10,7 @@ urlcolor: blue
 ---
 # Problem Set 2. Experiments {-}
 
-Relevant material will be covered by **Sep 11**. Problem set is due **Sep 18**. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
+Relevant material will be covered by **Sep 11**. Problem set is due **Sep 19**. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
 
 This problem set is based on:
 
