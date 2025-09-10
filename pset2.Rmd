@@ -25,7 +25,7 @@ Read the first 10 pages of the paper (through the end of section 2).
 
 ### 1.1. (5 points) Fundamental Problem {-}
 
-One submitted resume had the name "Emily Baker." It yielded a callback. The same resume could have had the name "Lakisha Washington." Explain how the Fundamental Problem of Causal Inference applies to this case (1--2 sentences).
+One submitted resume had the name "Emily Baker." It yielded a callback. The same resume could have had the name "Lakisha Washington," and in that hypothetical world it would not have yielded a callback. Explain how the Fundamental Problem of Causal Inference applies to this case (1--2 sentences). Write out the potential outcomes using the notation we have described in class.
 
 **Answer.** Your answer here
 
@@ -54,7 +54,7 @@ library(haven)
 **To complete the rest of this assignment, you will need to download the study's data from OpenICPSR**: [https://www.openicpsr.org/openicpsr/project/116023/version/V1/view](https://www.openicpsr.org/openicpsr/project/116023/version/V1/view). This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using `read_dta`.
 
 ```{r}
-d <- read_dta("lakisha_aer.dta")
+d <- read_dta("assets/data/lakisha_aer.dta")
 ```
 > If you have an error, you might need to set your working directory first. This tells R where to look for data files. In other words, your data file needs to be in the same folder as your homework file, AND RStudio needs to be told which folder to look at. At the top of RStudio, click Session -> Set Working Directory -> To Source File Location.
 
@@ -219,7 +219,7 @@ Within race and sex, not all first names have the same effect. Suppose these are
 
 **Answer.** Your answer here
 
-### 2.6. (5 points) Treatment effect heterogeneity {-}
+### 2.7. (5 points) Treatment effect heterogeneity {-}
 To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race **and city** by placing a `group_by()` action between `d` and `summarize`.  
 
 **Answer.** Modify the code below
@@ -234,7 +234,7 @@ callback_city <- d %>%
 ```
 
 
-### 2.6. (5 points) Treatment effect heterogeneity {-}
+### 2.8. (5 points) Transportability {-}
 One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using `filter(city == "b")` and `filter(city == "c")` we can only use rows which correspond to Boston and Chicago respectively.  
 
 ```{r}

@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 2. Experiments | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta name="description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 18. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Problem Set 2. Experiments | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta property="og:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 18. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 2. Experiments | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 24. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
+<meta name="twitter:description" content="Relevant material will be covered by Sep 11. Problem set is due Sep 18. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -61,22 +62,13 @@
 <li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
-<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li><a class="active" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -90,8 +82,8 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-2.-experiments" class="section level1 unnumbered">
 <h1>Problem Set 2. Experiments<a class="anchor" aria-label="anchor" href="#problem-set-2.-experiments"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Sep 11</strong>. Problem set is due <strong>Sep 24</strong>.</p>
-<p>To complete the problem set, <a href="https://drive.google.com/file/d/1Gj16YkG4Zx3kg5UiWXt-LzLqsIAlRbLF/view?usp=drive_link"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
+<p>Relevant material will be covered by <strong>Sep 11</strong>. Problem set is due <strong>Sep 18</strong>.</p>
+<p>To complete the problem set, <a href="assets/psets/pset2_download.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
 <p>This problem set is based on:</p>
 <p>Bertrand, M &amp; Mullainathan, S. 2004. “<a href="https://www-jstor-org.proxy.library.cornell.edu/stable/3592802">Are Emily and Greg More Employable Than Lakisha and Jamal? A Field Experiment on Labor Market Discrimination</a>.” American Economic Review 94(4):991–1013.</p>
 <p>Here’s a heads-up about what will be hard in this problem set</p>
@@ -111,31 +103,32 @@
 <div id="points-fundamental-problem" class="section level3 unnumbered">
 <h3>1.1. (5 points) Fundamental Problem<a class="anchor" aria-label="anchor" href="#points-fundamental-problem"><i class="fas fa-link"></i></a>
 </h3>
-<p>One submitted resume had the name “Emily Baker.” It yielded a callback. The same resume could have had the name “Lakisha Washington.” Explain how the Fundamental Problem of Causal Inference applies to this case (1–2 sentences).</p>
+<p>One submitted resume had the name “Emily Baker.” It yielded a callback. The same resume could have had the name “Lakisha Washington,” and in that hypothetical world it would not have yielded a callback. Explain how the Fundamental Problem of Causal Inference applies to this case (1–2 sentences). Write out the potential outcomes using the notation we have described in class.</p>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-exchangeability" class="section level3 unnumbered">
 <h3>1.2. (5 points) Exchangeability<a class="anchor" aria-label="anchor" href="#points-exchangeability"><i class="fas fa-link"></i></a>
 </h3>
 <p>In a sentence, state what exchangeability means in this study. For concreteness, for this question you may suppose that the only names in the study were “Emily Baker” and “Lakisha Washington.”</p>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-something-you-liked" class="section level3 unnumbered">
-<h3>1.3. (10 points) Something you liked<a class="anchor" aria-label="anchor" href="#points-something-you-liked"><i class="fas fa-link"></i></a>
+<h3>1.3. (5 points) Something you liked<a class="anchor" aria-label="anchor" href="#points-something-you-liked"><i class="fas fa-link"></i></a>
 </h3>
 <p>State something concrete that you appreciate about the study design, other than randomization.</p>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
 <div id="analyzing-the-experimental-data" class="section level2 unnumbered">
 <h2>2. Analyzing the experimental data<a class="anchor" aria-label="anchor" href="#analyzing-the-experimental-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Load packages that our code will use.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 <p><strong>To complete the rest of this assignment, you will need to download the study’s data from OpenICPSR</strong>: <a href="https://www.openicpsr.org/openicpsr/project/116023/version/V1/view">https://www.openicpsr.org/openicpsr/project/116023/version/V1/view</a>. This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using <code>read_dta</code>.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"assets/data/lakisha_aer.dta"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"assets/data/lakisha_aer_aggregated.dta"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p>If you have an error, you might need to set your working directory first. This tells R where to look for data files. In other words, your data file needs to be in the same folder as your homework file, AND RStudio needs to be told which folder to look at. At the top of RStudio, click Session -&gt; Set Working Directory -&gt; To Source File Location.</p>
 </blockquote>
@@ -190,10 +183,24 @@
 </tbody>
 </table></div>
 <p>For 2.1–2.4, we will think of <code>race</code> as the treatment. For 2.5–2.6, we will think of <code>firstname</code> as the treatment.</p>
-<p>Restrict to these variables using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<p>We can print the relevant variables in a table</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_selected</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">call</span>, <span class="va">firstname</span>, <span class="va">race</span>, <span class="va">sex</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">call</span>, <span class="va">firstname</span>, <span class="va">race</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 4,870 × 4
+##     call firstname race  sex  
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;
+##  1     0 Allison   w     f    
+##  2     0 Kristen   w     f    
+##  3     0 Lakisha   b     f    
+##  4     0 Latonya   b     f    
+##  5     0 Carrie    w     f    
+##  6     0 Jay       w     m    
+##  7     0 Jill      w     f    
+##  8     0 Kenya     b     f    
+##  9     0 Latonya   b     f    
+## 10     0 Tyrone    b     m    
+## # ℹ 4,860 more rows</code></pre>
 <blockquote>
 <p>If you are new to R, here is what just happened:</p>
 <ul>
@@ -214,7 +221,8 @@
 <blockquote>
 <p>Here’s a <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">reference</a> that introduces <code>group_by</code> and <code>summarize</code>.</p>
 </blockquote>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<p><strong>Answer.</strong> Modify the code below</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_summarized</span> <span class="op">&lt;-</span> <span class="va">d_selected</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
 <span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -241,7 +249,7 @@
 <p><strong>Standard error in code.</strong> We translated the standard error formula into code for you below. This function accepts an estimated probability <code>p</code> and sample size <code>n</code> and returns the estimated standard error. You can use this <code>se_binary()</code> function in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
 </blockquote>
 <blockquote>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">se_binary</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span> <span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
@@ -254,14 +262,14 @@
 <p><strong>Sampling distribution in a graph.</strong></p>
 </blockquote>
 <blockquote>
-<div class="inline-figure"><img src="pset2_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<div class="inline-figure"><img src="pset2_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 </blockquote>
 <blockquote>
 <p><strong>Confidence interval in math.</strong> We get a 95% confidence interval by plugging in the estimates <span class="math inline">\(\hat\pi^a\)</span> and <span class="math inline">\(\widehat{SE}(\hat\pi^a)\)</span> to the limits above. This interval is centered on the estimate <span class="math inline">\(\hat\pi^a\)</span> and has a nice property: if we repeatedly made a confidence interval by this procedure using hypothetical samples from the population, our interval would contain the unknown true parameter <span class="math inline">\(\pi^a\)</span> 95% of the time.</p>
 </blockquote>
 <blockquote>
 <p><strong>Confidence interval in code.</strong> We translated the confidence interval formula into code for you below. These functions accept an estimate and standard error and return the lower and upper bounds (respectively) of a 95% confidence interval that assumes a Normal sampling distribution. You can use these functions in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_lower</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">estimate</span>, <span class="va">standard_error</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">estimate</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.975</span><span class="op">)</span> <span class="op">*</span> <span class="va">standard_error</span></span>
 <span><span class="op">}</span></span>
@@ -274,6 +282,7 @@
 <h3>2.3. (5 points) Interpret your confidence interval<a class="anchor" aria-label="anchor" href="#points-interpret-your-confidence-interval"><i class="fas fa-link"></i></a>
 </h3>
 <p>In words, interpret the confidence intervals. Be sure to discuss what their property is over hypothetical repeated samples, and be sure to frame your answer using the numbers and variables from the actual experiment we are analyzing.</p>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-visualize-expected-potential-outcomes" class="section level3 unnumbered">
 <h3>2.4. (5 points) Visualize expected potential outcomes<a class="anchor" aria-label="anchor" href="#points-visualize-expected-potential-outcomes"><i class="fas fa-link"></i></a>
@@ -282,6 +291,7 @@
 <blockquote>
 <p>If you have never used <code>ggplot</code>, see <a href="https://r4ds.had.co.nz/data-visualisation.html">Ch 3</a> of R for Data Science by Hadley Wickham.</p>
 </blockquote>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-estimate-and-visualize-by-firstname" class="section level3 unnumbered">
 <h3>2.5. (5 points) Estimate and visualize by firstname<a class="anchor" aria-label="anchor" href="#points-estimate-and-visualize-by-firstname"><i class="fas fa-link"></i></a>
@@ -290,7 +300,7 @@
 <blockquote>
 <p>One way to visualize is by placing first names on the <span class="math inline">\(x\)</span>-axis and using a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> layer to facet over race and sex.</p>
 </blockquote>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">your_ggplot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">sex</span>,</span>
 <span>             scales <span class="op">=</span> <span class="st">"free_x"</span>, </span>
@@ -299,18 +309,136 @@
 <p>Any strategy to visualize is fine, as long as it shows estimates for each <code>firstname</code> and indicates the <code>race</code> and <code>sex</code> signaled by that <code>firstname</code>
 Up through 2.4, you were making two estimates: one for white and one for Black. In 2.5, you are aggregating within a more fine-grained set of groups defined by race, sex, and firstname. So you will need to start fresh from the raw person-level data in order to answer 2.5</p>
 </blockquote>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-interpret" class="section level3 unnumbered">
 <h3>2.6. (5 points) Interpret<a class="anchor" aria-label="anchor" href="#points-interpret"><i class="fas fa-link"></i></a>
 </h3>
 <p>Within race and sex, not all first names have the same effect. Suppose these are true differences (not due to sampling variability). What does this tell you about the importance of researcher decisions about which names to use as treatments? There are many possible right answers, and here we are asking you to think about what it might mean for research design that the names have different effects.</p>
+<p><strong>Answer.</strong> Your answer here</p>
+</div>
+<div id="points-treatment-effect-heterogeneity" class="section level3 unnumbered">
+<h3>2.7. (5 points) Treatment effect heterogeneity<a class="anchor" aria-label="anchor" href="#points-treatment-effect-heterogeneity"><i class="fas fa-link"></i></a>
+</h3>
+<p>To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race <strong>and city</strong> by placing a <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> action between <code>d</code> and <code>summarize</code>.</p>
+<p><strong>Answer.</strong> Modify the code below</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">callback_city</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
+<span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
+##   callback_rate number_cases
+##           &lt;dbl&gt;        &lt;int&gt;
+## 1        0.0805         4870</code></pre>
+</div>
+<div id="points-transportability" class="section level3 unnumbered">
+<h3>2.8. (5 points) Transportability<a class="anchor" aria-label="anchor" href="#points-transportability"><i class="fas fa-link"></i></a>
+</h3>
+<p>One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using <code>filter(city == "b")</code> and <code>filter(city == "c")</code> we can only use rows which correspond to Boston and Chicago respectively.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Currently the industries for each firm is encoded across 7 different columns;</span></span>
+<span><span class="co"># i.e., a 1 in manuf and 0 in the other columns indicates a firm is in manufacturing.</span></span>
+<span><span class="co"># So, we first create an additional variable in d which explicitly states the industry </span></span>
+<span><span class="va">industry_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"manuf"</span>, <span class="st">"transcom"</span>, <span class="st">"bankreal"</span>, <span class="st">"trade"</span>, <span class="st">"busservice"</span>, <span class="st">"otherservice"</span>, <span class="st">"other"</span><span class="op">)</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>industry <span class="op">=</span> <span class="va">industry_list</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/maxCol.html">max.col</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">manuf</span>, <span class="va">transcom</span>, <span class="va">bankreal</span>, <span class="va">trade</span>, <span class="va">busservice</span>, <span class="va">othservice</span>, <span class="va">missind</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Proportions for Boston</span></span>
+<span><span class="co"># By using filter(city == "b) we are only including rows</span></span>
+<span><span class="co"># for which city == b; i.e. when the city is boston</span></span>
+<span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>freq <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># first get the number of times each industry appears and put that in the freq variable</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percent <span class="op">=</span> <span class="va">freq</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">freq</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># using the frequency calculate the proportions </span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">freq</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># don't print the freq column</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   industry     percent
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 bankreal      0.0480
+## 2 busservice    0.259 
+## 3 manuf         0.0896
+## 4 other         0.193 
+## 5 otherservice  0.117 
+## 6 trade         0.249 
+## 7 transcom      0.0443</code></pre>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Proportions for Chicago</span></span>
+<span><span class="co"># By using filter(city == "b) we are only including rows</span></span>
+<span><span class="co"># for which city == b; i.e. when the city is boston</span></span>
+<span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"c"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>freq <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percent <span class="op">=</span> <span class="va">freq</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">freq</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">freq</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   industry     percent
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 bankreal      0.115 
+## 2 busservice    0.275 
+## 3 manuf         0.0777
+## 4 other         0.143 
+## 5 otherservice  0.185 
+## 6 trade         0.186 
+## 7 transcom      0.0192</code></pre>
+<p>Suppose the researchers had first conducted a pilot study in Boston only. The code below calculates an estimated conditional ACE for each industry using data from Boston. Assuming that the conditional causal effect for each industry is the same in Boston as it is in Chicago, what would you estimate for the average causal effect of race on callback rates in Chicago is? To receive full points, you should include the code for how you calculated the answer.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Table with callback rates by industry and race for Boston</span></span>
+<span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span>, <span class="va">race</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'industry'. You can
+## override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 14 × 3
+## # Groups:   industry [7]
+##    industry     race  callback_rate
+##    &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt;
+##  1 bankreal     b            0.0385
+##  2 bankreal     w            0.154 
+##  3 busservice   b            0.0821
+##  4 busservice   w            0.136 
+##  5 manuf        b            0.0103
+##  6 manuf        w            0.0928
+##  7 other        b            0.0861
+##  8 other        w            0.105 
+##  9 otherservice b            0.165 
+## 10 otherservice w            0.173 
+## 11 trade        b            0.0519
+## 12 trade        w            0.0778
+## 13 transcom     b            0.104 
+## 14 transcom     w            0.125</code></pre>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Table with same information as above, but rearranged so that callback rates by each race is it's own column</span></span>
+<span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span>, <span class="va">race</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">race</span>, values_from <span class="op">=</span> <span class="va">callback_rate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># puts the each race into its own column</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>diff <span class="op">=</span> <span class="va">w</span> <span class="op">-</span> <span class="va">b</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># calculates the difference</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'industry'. You can
+## override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 7 × 4
+## # Groups:   industry [7]
+##   industry          b      w    diff
+##   &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
+## 1 bankreal     0.0385 0.154  0.115  
+## 2 busservice   0.0821 0.136  0.0536 
+## 3 manuf        0.0103 0.0928 0.0825 
+## 4 other        0.0861 0.105  0.0191 
+## 5 otherservice 0.165  0.173  0.00787
+## 6 trade        0.0519 0.0778 0.0259 
+## 7 transcom     0.104  0.125  0.0208</code></pre>
+<p>}</p>
+<p><strong>Answer.</strong> Your answer here</p>
 
 </div>
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></div>
-<div class="next"><a href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></div>
+<div class="next"><a href="who-we-are.html">Who we are</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -319,7 +447,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <a class="nav-link" href="#conceptual-questions-about-the-study-design">1. Conceptual questions about the study design</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#points-fundamental-problem">1.1. (5 points) Fundamental Problem</a></li>
 <li><a class="nav-link" href="#points-exchangeability">1.2. (5 points) Exchangeability</a></li>
-<li><a class="nav-link" href="#points-something-you-liked">1.3. (10 points) Something you liked</a></li>
+<li><a class="nav-link" href="#points-something-you-liked">1.3. (5 points) Something you liked</a></li>
 </ul>
 </li>
 <li>
@@ -330,14 +458,16 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <li><a class="nav-link" href="#points-visualize-expected-potential-outcomes">2.4. (5 points) Visualize expected potential outcomes</a></li>
 <li><a class="nav-link" href="#points-estimate-and-visualize-by-firstname">2.5. (5 points) Estimate and visualize by firstname</a></li>
 <li><a class="nav-link" href="#points-interpret">2.6. (5 points) Interpret</a></li>
+<li><a class="nav-link" href="#points-treatment-effect-heterogeneity">2.7. (5 points) Treatment effect heterogeneity</a></li>
+<li><a class="nav-link" href="#points-transportability">2.8. (5 points) Transportability</a></li>
 </ul>
 </li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -351,7 +481,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-09-10</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

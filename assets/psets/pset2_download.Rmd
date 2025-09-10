@@ -227,7 +227,7 @@ Within race and sex, not all first names have the same effect. Suppose these are
 
 **Answer.** Your answer here
 
-### 2.6. (5 points) Treatment effect heterogeneity {-}
+### 2.7. (5 points) Treatment effect heterogeneity {-}
 To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race **and city** by placing a `group_by()` action between `d` and `summarize`.  
 
 **Answer.** Modify the code below
@@ -242,7 +242,7 @@ callback_city <- d %>%
 ```
 
 
-### 2.6. (5 points) Treatment effect heterogeneity {-}
+### 2.8. (5 points) Transportability {-}
 One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using `filter(city == "b")` and `filter(city == "c")` we can only use rows which correspond to Boston and Chicago respectively.  
 
 ```{r}
