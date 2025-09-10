@@ -41,7 +41,7 @@ In conditionally randomized experiments, standardization is essential to yield u
 
 ## Inverse probability weighting
 
-> Sep 11. [**Slides from 2024.**](assets/slides/2-4_ipw.pdf)
+> Sep 11. [**Slides**](assets/slides/2-4_ipw_fa25.pdf)
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapters 3.1 and 3.2.
 
 This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds. We will also discuss alternative ways to measure a causal effect. Finally, we will discuss when conditional exchangeability might also hold in observational studies.
