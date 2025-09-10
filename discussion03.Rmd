@@ -8,9 +8,9 @@ output: html_document
 #### September 10, 2025 {-}
 
 
+You can download the [**slides.**](assets/discussions/discussion3-addHealth.pdf) for this week's discussion.
 
-
-## Get out and Vote Experiment
+## Get out and Vote Experiment {-}
 
 Last week, we explored an experiment that digs into the mechanisms
 underlying __why people vote__. This exercise is based on: 
@@ -24,7 +24,7 @@ explanation, had very little empirical backing for a long time. This experiment
 examines this very theory by asking the question:
 __to what extent do social norms cause voter turnout__?
 
-### Experimental Design
+### Experimental Design {-}
 
 In order to answer this question, approximately 80,000 Michigan households
 were randomly assigned to treatment and control groups, where the treatment
@@ -41,20 +41,139 @@ would be revealed to all other members of their household.
 4. The fourth treatment arm was mailed a letter stating that their voting turnout
 would be revealed to their household *and* to their neighbors.
 
-## Analyze Experiment
+## Analyze Experiment {-}
 
-### Necessary packages
+### Necessary packages {-}
 
-__Note:__ If this errors you probably either don't have `dplyr` or `haven`
-installed.
-
-```{r}
+```{r message=FALSE}
 library(dplyr)
 library(haven)
+library(kableExtra)
 ```
 
-### Import data
+### Import data {-}
 ```{r}
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
+```
+
+### Clean data {-}
+
+First, we construct an age variable describing how old (in number of years) each person was in the year 2006. The `yob` variable says which year each person was born in. \> For this, we use the `mutate` function. 
+Then, we convert the `treatment` variable from it's numeric representation to the corresponding labels which are
+
+-   0: "Control"
+-   1: "Hawthorne" (this is the 'researchers viewing records via public data' treatment arm)
+-   2: "Civic Duty" (this is the 'voting is your civic duty' treatment arm)
+-   3: "Neighbors" (this is the 'voting turnout revealed to neighbors' treatment arm)
+-   4: "Self" (this is the 'voting turnout revealed to household' treatment arm)
+
+For this, we use the `case_when` function. 
+
+```{r}
+
+gotv <- gotv |>
+  mutate(treatment = case_when(
+    treatment == 0 ~ "Control",
+    treatment == 1 ~ "Hawthorne",
+    treatment == 2 ~ "Civic Duty",
+    treatment == 3 ~ "Neighbors",
+    treatment == 4 ~ "Self")) 
+
+
+gotv <- gotv |>
+  mutate(age = 2006 - yob)
+```
+
+
+### Average Causal Effect {-}
+
+Finally, for each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! The solutions below use the function [`n`](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/n) which counts the number of observations in the current group for you.
+
+```{r}         
+gotv_results <- gotv |>
+  group_by(treatment) |>
+  summarise(Per_Voting = mean(voted), num_of_individuals = n())
+
+print(gotv_results)
+```
+
+
+### Conditional Average Causal Effect {-}
+
+Now, we look into the treatment effect across sub-population, so we can determine if there is treatment effect heterogeneity
+
+First, we assign into age groups and household size groups
+```{r}
+gotv <- gotv |>
+  mutate(ageGroup = cut(age, breaks = c(18, 30, 45, 60, 120))) |>
+  mutate(hhGroup = cut(hh_size, breaks = c(0,1, 2, 10)))
+
+```
+
+#### Examine voting by age group {-}
+```{r}
+gotv_results_age <- gotv |>
+  group_by(ageGroup, treatment) |>
+  summarise(
+    Per_Voting = mean(voted),
+    Count = n(),
+    .groups = "drop"
+  ) |>
+  group_by(treatment) |>
+  mutate( Per_in_AgeGroup = Count / sum(Count))
+
+print(gotv_results_age, n = Inf)
+```
+
+
+#### Examine voting by hh size group {-}
+
+```{r}
+gotv_results_hh <- gotv |>
+  group_by(hhGroup, treatment) |>
+  summarise(
+    Per_Voting = mean(voted),
+    Count = n(),
+    .groups = "drop"
+  ) |>
+  group_by(treatment) |>
+  mutate( Per_in_hhGroup = Count / sum(Count) ) 
+
+print(gotv_results_hh, n = Inf)
+```
+
+
+### Questions: {-}
+- Does there seem to be heterogeneity in treatment effects across age and/or house hold size?
+- Could you improve voting rates by assigning different treatments to different individuals?
+- What would you expect the treatment effect for civic duty if we considered a population that was evenly split across the 4 age groups?
+
+
+To answer these questions it might be useful to slightly rearrange table:
+```{r}
+gotv_results_age <- gotv |>
+  group_by(ageGroup, treatment) |>
+  summarise(
+    Per_Voting = mean(voted),
+    Count = n(),
+    .groups = "drop"
+  ) |>
+  group_by(treatment) |>
+  mutate(
+    Per_in_AgeGroup = Count / sum(Count)
+  ) |>
+  select(-Count) |>
+  group_by(ageGroup) |>
+  mutate(
+    Control_Voting = Per_Voting[treatment == "Control"],
+    Difference_from_Control = Per_Voting - Control_Voting
+  ) |>
+  ungroup()
+
+
+gotv_results_age %>%
+  kbl() %>%
+  kable_styling(font_size = 12, full_width = FALSE) %>%
+  scroll_box(width = "100%", height = "500px")
 ```
 

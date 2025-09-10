@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>13 May be useful to slightly rearrange table | Causal Inference Course</title>
+
+    <meta name="author" content="Sam Wang and Christina Yu" />
+  
+   <meta name="description" content="An undergraduate course on causal inference" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="13 May be useful to slightly rearrange table | Causal Inference Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="An undergraduate course on causal inference" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 May be useful to slightly rearrange table | Causal Inference Course" />
+  
+  <meta name="twitter:description" content="An undergraduate course on causal inference" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.9.0/transition.js"></script>
+    <script src="libs/bs3compat-0.9.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.9.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+      <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+  <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+      </form>
+
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="#">View site source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="may-be-useful-to-slightly-rearrange-table" class="section level1" number="13">
+<h1><span class="header-section-number">13</span> May be useful to slightly rearrange table</h1>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-1" tabindex="-1"></a>gotv_results_age <span class="ot">&lt;-</span> gotv <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-2" tabindex="-1"></a>  <span class="fu">group_by</span>(ageGroup, treatment) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-3" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-4"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-4" tabindex="-1"></a>    <span class="at">Per_Voting =</span> <span class="fu">mean</span>(voted),</span>
+<span id="cb11-5"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-5" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">n</span>(),</span>
+<span id="cb11-6"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-6" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb11-7"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-7" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-8" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">|&gt;</span></span>
+<span id="cb11-9"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-9" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-10"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-10" tabindex="-1"></a>    <span class="at">Per_in_AgeGroup =</span> Count <span class="sc">/</span> <span class="fu">sum</span>(Count)</span>
+<span id="cb11-11"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-11" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-12"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-12" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Count) <span class="sc">|&gt;</span></span>
+<span id="cb11-13"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-13" tabindex="-1"></a>  <span class="fu">group_by</span>(ageGroup) <span class="sc">|&gt;</span></span>
+<span id="cb11-14"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-14" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-15"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-15" tabindex="-1"></a>    <span class="at">Control_Voting =</span> Per_Voting[treatment <span class="sc">==</span> <span class="st">&quot;Control&quot;</span>],</span>
+<span id="cb11-16"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-16" tabindex="-1"></a>    <span class="at">Difference_from_Control =</span> Per_Voting <span class="sc">-</span> Control_Voting</span>
+<span id="cb11-17"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-17" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb11-18"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-18" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb11-19"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-19" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="may-be-useful-to-slightly-rearrange-table.html#cb11-20" tabindex="-1"></a><span class="fu">print</span>(gotv_results_age, <span class="at">n =</span> <span class="cn">Inf</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 20 × 6
+##    ageGroup treatment  Per_Voting Per_in_AgeGroup
+##    &lt;fct&gt;    &lt;chr&gt;           &lt;dbl&gt;           &lt;dbl&gt;
+##  1 (18,30]  Civic Duty      0.166           0.111
+##  2 (18,30]  Control         0.156           0.108
+##  3 (18,30]  Hawthorne       0.158           0.107
+##  4 (18,30]  Neighbors       0.193           0.110
+##  5 (18,30]  Self            0.175           0.108
+##  6 (30,45]  Civic Duty      0.293           0.260
+##  7 (30,45]  Control         0.268           0.261
+##  8 (30,45]  Hawthorne       0.297           0.266
+##  9 (30,45]  Neighbors       0.356           0.262
+## 10 (30,45]  Self            0.317           0.263
+## 11 (45,60]  Civic Duty      0.320           0.421
+## 12 (45,60]  Control         0.310           0.420
+## 13 (45,60]  Hawthorne       0.338           0.417
+## 14 (45,60]  Neighbors       0.391           0.412
+## 15 (45,60]  Self            0.357           0.418
+## 16 (60,120] Civic Duty      0.410           0.208
+## 17 (60,120] Control         0.378           0.211
+## 18 (60,120] Hawthorne       0.407           0.210
+## 19 (60,120] Neighbors       0.474           0.216
+## 20 (60,120] Self            0.444           0.211
+## # ℹ 2 more variables: Control_Voting &lt;dbl&gt;,
+## #   Difference_from_Control &lt;dbl&gt;</code></pre>
+
+</div>
+
+
+
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2025-09-09</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+
+</html>

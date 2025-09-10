@@ -49,8 +49,3 @@ discussion-1
 current-research
 research-discussion-mayleen
 course-recap
-get-out-and-vote-experiment-1
-experimental-design-1
-analyze-experiment
-necessary-packages
-import-data

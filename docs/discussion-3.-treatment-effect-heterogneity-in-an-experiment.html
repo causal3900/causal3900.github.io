@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 3. Treatment effect heterogneity in an Experiment | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025   11.1 Get out and Vote Experiment Last week, we explored an experiment that digs into the mechanisms underlying why people vote. This...">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025 You can download the slides. for this week’s discussion.  Get out and Vote Experiment Last week, we explored an experiment that digs...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Discussion 3. Treatment effect heterogneity in an Experiment | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025   11.1 Get out and Vote Experiment Last week, we explored an experiment that digs into the mechanisms underlying why people vote. This...">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025 You can download the slides. for this week’s discussion.  Get out and Vote Experiment Last week, we explored an experiment that digs...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 3. Treatment effect heterogneity in an Experiment | Causal Inference Course">
-<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025   11.1 Get out and Vote Experiment Last week, we explored an experiment that digs into the mechanisms underlying why people vote. This...">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 10, 2025 You can download the slides. for this week’s discussion.  Get out and Vote Experiment Last week, we explored an experiment that digs...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -86,11 +87,11 @@
 <div id="september-10-2025" class="section level4 unnumbered">
 <h4>September 10, 2025<a class="anchor" aria-label="anchor" href="#september-10-2025"><i class="fas fa-link"></i></a>
 </h4>
+<p>You can download the <a href="assets/discussions/discussion3-addHealth.pdf"><strong>slides.</strong></a> for this week’s discussion.</p>
 </div>
 </div>
-<div id="get-out-and-vote-experiment-1" class="section level2" number="11.1">
-<h2>
-<span class="header-section-number">11.1</span> Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment-1"><i class="fas fa-link"></i></a>
+<div id="get-out-and-vote-experiment-1" class="section level2 unnumbered">
+<h2>Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Last week, we explored an experiment that digs into the mechanisms
 underlying <strong>why people vote</strong>. This exercise is based on:</p>
@@ -101,9 +102,8 @@ is their civic duty). This theory, while being a dominant theoretical
 explanation, had very little empirical backing for a long time. This experiment
 examines this very theory by asking the question:
 <strong>to what extent do social norms cause voter turnout</strong>?</p>
-<div id="experimental-design-1" class="section level3" number="11.1.1">
-<h3>
-<span class="header-section-number">11.1.1</span> Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design-1"><i class="fas fa-link"></i></a>
+<div id="experimental-design-1" class="section level3 unnumbered">
+<h3>Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>In order to answer this question, approximately 80,000 Michigan households
 were randomly assigned to treatment and control groups, where the treatment
@@ -122,35 +122,613 @@ would be revealed to their household <em>and</em> to their neighbors.</li>
 </ol>
 </div>
 </div>
-<div id="analyze-experiment" class="section level2" number="11.2">
-<h2>
-<span class="header-section-number">11.2</span> Analyze Experiment<a class="anchor" aria-label="anchor" href="#analyze-experiment"><i class="fas fa-link"></i></a>
+<div id="analyze-experiment" class="section level2 unnumbered">
+<h2>Analyze Experiment<a class="anchor" aria-label="anchor" href="#analyze-experiment"><i class="fas fa-link"></i></a>
 </h2>
-<div id="necessary-packages" class="section level3" number="11.2.1">
-<h3>
-<span class="header-section-number">11.2.1</span> Necessary packages<a class="anchor" aria-label="anchor" href="#necessary-packages"><i class="fas fa-link"></i></a>
+<div id="necessary-packages" class="section level3 unnumbered">
+<h3>Necessary packages<a class="anchor" aria-label="anchor" href="#necessary-packages"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>Note:</strong> If this errors you probably either don’t have <code>dplyr</code> or <code>haven</code>
-installed.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>## 
-## Attaching package: 'dplyr'</code></pre>
-<pre><code>## The following objects are masked from 'package:stats':
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="import-data" class="section level3" number="11.2.2">
-<h3>
-<span class="header-section-number">11.2.2</span> Import data<a class="anchor" aria-label="anchor" href="#import-data"><i class="fas fa-link"></i></a>
+<div id="import-data" class="section level3 unnumbered">
+<h3>Import data<a class="anchor" aria-label="anchor" href="#import-data"><i class="fas fa-link"></i></a>
 </h3>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="clean-data" class="section level3 unnumbered">
+<h3>Clean data<a class="anchor" aria-label="anchor" href="#clean-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>First, we construct an age variable describing how old (in number of years) each person was in the year 2006. The <code>yob</code> variable says which year each person was born in. &gt; For this, we use the <code>mutate</code> function.
+Then, we convert the <code>treatment</code> variable from it’s numeric representation to the corresponding labels which are</p>
+<ul>
+<li>0: “Control”</li>
+<li>1: “Hawthorne” (this is the ‘researchers viewing records via public data’ treatment arm)</li>
+<li>2: “Civic Duty” (this is the ‘voting is your civic duty’ treatment arm)</li>
+<li>3: “Neighbors” (this is the ‘voting turnout revealed to neighbors’ treatment arm)</li>
+<li>4: “Self” (this is the ‘voting turnout revealed to household’ treatment arm)</li>
+</ul>
+<p>For this, we use the <code>case_when</code> function.</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>    <span class="va">treatment</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">~</span> <span class="st">"Control"</span>,</span>
+<span>    <span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Hawthorne"</span>,</span>
+<span>    <span class="va">treatment</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Civic Duty"</span>,</span>
+<span>    <span class="va">treatment</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"Neighbors"</span>,</span>
+<span>    <span class="va">treatment</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Self"</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span></span>
+<span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fl">2006</span> <span class="op">-</span> <span class="va">yob</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="average-causal-effect" class="section level3 unnumbered">
+<h3>Average Causal Effect<a class="anchor" aria-label="anchor" href="#average-causal-effect"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, for each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! The solutions below use the function <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/n"><code>n</code></a> which counts the number of observations in the current group for you.</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Per_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>, num_of_individuals <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 5 × 3
+##   treatment  Per_Voting num_of_individuals
+##   &lt;chr&gt;           &lt;dbl&gt;              &lt;int&gt;
+## 1 Civic Duty      0.315              38218
+## 2 Control         0.297             191243
+## 3 Hawthorne       0.322              38204
+## 4 Neighbors       0.378              38201
+## 5 Self            0.345              38218</code></pre>
+</div>
+<div id="conditional-average-causal-effect" class="section level3 unnumbered">
+<h3>Conditional Average Causal Effect<a class="anchor" aria-label="anchor" href="#conditional-average-causal-effect"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now, we look into the treatment effect across sub-population, so we can determine if there is treatment effect heterogeneity</p>
+<p>First, we assign into age groups and household size groups</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ageGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">age</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">30</span>, <span class="fl">45</span>, <span class="fl">60</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>hhGroup <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">hh_size</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div id="examine-voting-by-age-group" class="section level4 unnumbered">
+<h4>Examine voting by age group<a class="anchor" aria-label="anchor" href="#examine-voting-by-age-group"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_age</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ageGroup</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    Per_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>,</span>
+<span>    Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span> Per_in_AgeGroup <span class="op">=</span> <span class="va">Count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results_age</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 20 × 5
+## # Groups:   treatment [5]
+##    ageGroup treatment  Per_Voting Count Per_in_AgeGroup
+##    &lt;fct&gt;    &lt;chr&gt;           &lt;dbl&gt; &lt;int&gt;           &lt;dbl&gt;
+##  1 (18,30]  Civic Duty      0.166  4255           0.111
+##  2 (18,30]  Control         0.156 20650           0.108
+##  3 (18,30]  Hawthorne       0.158  4087           0.107
+##  4 (18,30]  Neighbors       0.193  4189           0.110
+##  5 (18,30]  Self            0.175  4139           0.108
+##  6 (30,45]  Civic Duty      0.293  9921           0.260
+##  7 (30,45]  Control         0.268 49917           0.261
+##  8 (30,45]  Hawthorne       0.297 10159           0.266
+##  9 (30,45]  Neighbors       0.356 10026           0.262
+## 10 (30,45]  Self            0.317 10043           0.263
+## 11 (45,60]  Civic Duty      0.320 16086           0.421
+## 12 (45,60]  Control         0.310 80330           0.420
+## 13 (45,60]  Hawthorne       0.338 15926           0.417
+## 14 (45,60]  Neighbors       0.391 15735           0.412
+## 15 (45,60]  Self            0.357 15968           0.418
+## 16 (60,120] Civic Duty      0.410  7956           0.208
+## 17 (60,120] Control         0.378 40346           0.211
+## 18 (60,120] Hawthorne       0.407  8032           0.210
+## 19 (60,120] Neighbors       0.474  8251           0.216
+## 20 (60,120] Self            0.444  8068           0.211</code></pre>
+</div>
+<div id="examine-voting-by-hh-size-group" class="section level4 unnumbered">
+<h4>Examine voting by hh size group<a class="anchor" aria-label="anchor" href="#examine-voting-by-hh-size-group"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_hh</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">hhGroup</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    Per_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>,</span>
+<span>    Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span> Per_in_hhGroup <span class="op">=</span> <span class="va">Count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span> <span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results_hh</span>, n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 15 × 5
+## # Groups:   treatment [5]
+##    hhGroup treatment  Per_Voting  Count Per_in_hhGroup
+##    &lt;fct&gt;   &lt;chr&gt;           &lt;dbl&gt;  &lt;int&gt;          &lt;dbl&gt;
+##  1 (0,1]   Civic Duty      0.354   5398          0.141
+##  2 (0,1]   Control         0.331  26481          0.138
+##  3 (0,1]   Hawthorne       0.370   5281          0.138
+##  4 (0,1]   Neighbors       0.423   5364          0.140
+##  5 (0,1]   Self            0.400   5310          0.139
+##  6 (1,2]   Civic Duty      0.327  23536          0.616
+##  7 (1,2]   Control         0.303 119022          0.622
+##  8 (1,2]   Hawthorne       0.326  23998          0.628
+##  9 (1,2]   Neighbors       0.391  23738          0.621
+## 10 (1,2]   Self            0.352  23792          0.623
+## 11 (2,10]  Civic Duty      0.261   9284          0.243
+## 12 (2,10]  Control         0.261  45740          0.239
+## 13 (2,10]  Hawthorne       0.285   8925          0.234
+## 14 (2,10]  Neighbors       0.318   9099          0.238
+## 15 (2,10]  Self            0.296   9116          0.239</code></pre>
+</div>
+</div>
+<div id="questions" class="section level3 unnumbered">
+<h3>Questions:<a class="anchor" aria-label="anchor" href="#questions"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Does there seem to be heterogeneity in treatment effects across age and/or house hold size?</li>
+<li>Could you improve voting rates by assigning different treatments to different individuals?</li>
+<li>What would you expect the treatment effect for civic duty if we considered a population that was evenly split across the 4 age groups?</li>
+</ul>
+<p>To answer these questions it might be useful to slightly rearrange table:</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_age</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ageGroup</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    Per_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>,</span>
+<span>    Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    .groups <span class="op">=</span> <span class="st">"drop"</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    Per_in_AgeGroup <span class="op">=</span> <span class="va">Count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Count</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ageGroup</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    Control_Voting <span class="op">=</span> <span class="va">Per_Voting</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Control"</span><span class="op">]</span>,</span>
+<span>    Difference_from_Control <span class="op">=</span> <span class="va">Per_Voting</span> <span class="op">-</span> <span class="va">Control_Voting</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">gotv_results_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span>, full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"500px"</span><span class="op">)</span></span></code></pre></div>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
+<div class="inline-table"><table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ageGroup
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+treatment
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Per_Voting
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Per_in_AgeGroup
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Control_Voting
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Difference_from_Control
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.1661575
+</td>
+<td style="text-align:right;">
+0.1113350
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.0098863
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.1079778
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.1583068
+</td>
+<td style="text-align:right;">
+0.1069783
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.0020356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.1933636
+</td>
+<td style="text-align:right;">
+0.1096568
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.0370924
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:left;">
+Self
+</td>
+<td style="text-align:right;">
+0.1751631
+</td>
+<td style="text-align:right;">
+0.1082998
+</td>
+<td style="text-align:right;">
+0.1562712
+</td>
+<td style="text-align:right;">
+0.0188919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.2933172
+</td>
+<td style="text-align:right;">
+0.2595897
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0253925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.2610135
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.2965843
+</td>
+<td style="text-align:right;">
+0.2659146
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0286596
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.3561739
+</td>
+<td style="text-align:right;">
+0.2624539
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0882492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Self
+</td>
+<td style="text-align:right;">
+0.3168376
+</td>
+<td style="text-align:right;">
+0.2627819
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0489128
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.3197190
+</td>
+<td style="text-align:right;">
+0.4209011
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0101460
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.4200415
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.3383147
+</td>
+<td style="text-align:right;">
+0.4168673
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0287417
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.3906578
+</td>
+<td style="text-align:right;">
+0.4119002
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0810848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Self
+</td>
+<td style="text-align:right;">
+0.3569639
+</td>
+<td style="text-align:right;">
+0.4178136
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0473909
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.4098793
+</td>
+<td style="text-align:right;">
+0.2081742
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0316262
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.2109672
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.4068725
+</td>
+<td style="text-align:right;">
+0.2102398
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0286194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.4738820
+</td>
+<td style="text-align:right;">
+0.2159891
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0956288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Self
+</td>
+<td style="text-align:right;">
+0.4442241
+</td>
+<td style="text-align:right;">
+0.2111047
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0659710
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
 
 </div>
 </div>
@@ -167,12 +745,16 @@ installed.</p>
 <li><a class="nav-link" href="#discussion-3.-treatment-effect-heterogneity-in-an-experiment">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
 <li><a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-2">STSCI/INFO/ILRST 3900: Causal Inference</a></li>
 <li>
-<a class="nav-link" href="#get-out-and-vote-experiment-1"><span class="header-section-number">11.1</span> Get out and Vote Experiment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#experimental-design-1"><span class="header-section-number">11.1.1</span> Experimental Design</a></li></ul>
+<a class="nav-link" href="#get-out-and-vote-experiment-1">Get out and Vote Experiment</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#experimental-design-1">Experimental Design</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#analyze-experiment"><span class="header-section-number">11.2</span> Analyze Experiment</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#necessary-packages"><span class="header-section-number">11.2.1</span> Necessary packages</a></li>
-<li><a class="nav-link" href="#import-data"><span class="header-section-number">11.2.2</span> Import data</a></li>
+<a class="nav-link" href="#analyze-experiment">Analyze Experiment</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#necessary-packages">Necessary packages</a></li>
+<li><a class="nav-link" href="#import-data">Import data</a></li>
+<li><a class="nav-link" href="#clean-data">Clean data</a></li>
+<li><a class="nav-link" href="#average-causal-effect">Average Causal Effect</a></li>
+<li><a class="nav-link" href="#conditional-average-causal-effect">Conditional Average Causal Effect</a></li>
+<li><a class="nav-link" href="#questions">Questions:</a></li>
 </ul>
 </li>
 </ul>
