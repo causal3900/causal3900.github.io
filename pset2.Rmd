@@ -1,16 +1,8 @@
----
-output: pdf_document
-header-includes:
-  \usepackage{framed}
-  \usepackage{xcolor}
-  \let\oldquote=\quote
-  \let\endoldquote=\endquote
-  \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
-urlcolor: blue
----
 # Problem Set 2. Experiments {-}
 
-Relevant material will be covered by **Sep 11**. Problem set is due **Sep 18**. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
+Relevant material will be covered by **Sep 11**. Problem set is due **Sep 18**.
+
+To complete the problem set, [**Download the .Rmd**](assets/psets/pset2_download.Rmd) and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
 
 This problem set is based on:
 
@@ -295,5 +287,4 @@ d %>% filter(city == "b") %>%
 }
 
 **Answer.** Your answer here
-
 
