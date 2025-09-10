@@ -49,9 +49,12 @@ discussion-1
 current-research
 research-discussion-mayleen
 course-recap
+<<<<<<< HEAD
 get-out-and-vote-experiment-1
 experimental-design-1
 analyze-experiment
 necessary-packages
 import-data
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
+=======
+>>>>>>> e278e12f552853fd89bcd6eaa0b69cd802e58568
