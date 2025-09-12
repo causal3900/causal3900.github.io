@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>10 Current research | Causal Inference Course</title>
+<title>Discussion 4. Interference and | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="10.1 Research discussion: Mayleen  Dec 3 Slides from 2024. Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 17, 2025   Interference You can download the slides. for this week’s discussion. library(dplyr) library(ggplot2)  Stat review reminder  \(\pi^a=...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
-<meta property="og:title" content="10 Current research | Causal Inference Course">
+<meta property="og:title" content="Discussion 4. Interference and | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="10.1 Research discussion: Mayleen  Dec 3 Slides from 2024. Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 17, 2025   Interference You can download the slides. for this week’s discussion. library(dplyr) library(ggplot2)  Stat review reminder  \(\pi^a=...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="10 Current research | Causal Inference Course">
-<meta name="twitter:description" content="10.1 Research discussion: Mayleen  Dec 3 Slides from 2024. Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.">
+<meta name="twitter:title" content="Discussion 4. Interference and | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 17, 2025   Interference You can download the slides. for this week’s discussion. library(dplyr) library(ggplot2)  Stat review reminder  \(\pi^a=...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -59,13 +59,13 @@
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
-<li><a class="active" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
 <li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
 <li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
-<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="active" href="discussion-4.-interference-and.html">Discussion 4. Interference and</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -80,29 +80,107 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="current-research" class="section level1" number="10">
-<h1>
-<span class="header-section-number">10</span> Current research<a class="anchor" aria-label="anchor" href="#current-research"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-4.-interference-and" class="section level1 unnumbered">
+<h1>Discussion 4. Interference and<a class="anchor" aria-label="anchor" href="#discussion-4.-interference-and"><i class="fas fa-link"></i></a>
 </h1>
-<div id="research-discussion-mayleen" class="section level2" number="10.1">
-<h2>
-<span class="header-section-number">10.1</span> Research discussion: Mayleen<a class="anchor" aria-label="anchor" href="#research-discussion-mayleen"><i class="fas fa-link"></i></a>
+<div id="stsciinfoilrst-3900-causal-inference-3" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-3"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p>Dec 3 <a href="assets/sliinterference_lecture.pdf"><strong>Slides from 2024.</strong></a></p>
-</blockquote>
-<p>Today we will be discussing interference, the challenges it brings to causal inference, and some proposed solutions.</p>
+<div id="september-17-2025" class="section level4 unnumbered">
+<h4>September 17, 2025<a class="anchor" aria-label="anchor" href="#september-17-2025"><i class="fas fa-link"></i></a>
+</h4>
+</div>
+</div>
+<div id="interference" class="section level2 unnumbered">
+<h2>Interference<a class="anchor" aria-label="anchor" href="#interference"><i class="fas fa-link"></i></a>
+</h2>
+<p>You can download the <a href="assets/discussions/discussion4-interference.pdf"><strong>slides.</strong></a> for this week’s discussion.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="stat-review-reminder" class="section level2 unnumbered">
+<h2>Stat review reminder<a class="anchor" aria-label="anchor" href="#stat-review-reminder"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<span class="math inline">\(\pi^a= P(Y^a=1)\)</span>) under treatment condition <span class="math inline">\(a\)</span>
+</li>
+<li>Let <span class="math inline">\(\hat\pi^a\)</span> be the estimate of that unknown probability</li>
+<li>
+<span class="math inline">\(\hat\pi^a = \frac{1}{n_a}\sum_{i:A_i=a} Y_i^a\)</span>, proportion of people in that treatment condition to have outcome 1</li>
+<li>To make a confidence interval on <span class="math inline">\(\hat\pi^a\)</span> we need the standard error of <span class="math inline">\(\hat\pi^a\)</span>
+</li>
+</ul>
+<div id="standard-error" class="section level3 unnumbered">
+<h3>Standard error<a class="anchor" aria-label="anchor" href="#standard-error"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Let <span class="math inline">\(Y^a\)</span> be a Bernoulli random variable</li>
+<li>The variance of <span class="math inline">\(Y^a\)</span> is <span class="math inline">\(V(Y^a) = \pi^a (1-\pi^a)\)</span>
+</li>
+<li>We have estimated by an average: <span class="math inline">\(\hat\pi^a\)</span>
+</li>
+<li>If we did this many times in many hypothetical samples, we would get different estimate</li>
+<li>The estimates sampling variance is <span class="math inline">\(V(\hat\pi^a) = \frac{\pi^a(1-\pi^a)}{n_a}\)</span>
+</li>
+<li>The standard error is the square root of the sampling variance:
+<span class="math display">\[SE(\hat\pi^a) = \sqrt\frac{\pi^a(1-\pi^a)}{n_a}\]</span>
+</li>
+<li>We can estimate this SE by plugging in our estimate <span class="math inline">\(\hat\pi^a\)</span>
+</li>
+<li>In R: we translated the standard error formula into code
+&gt;
+&gt; <code>r &gt; se_binary &lt;- function(p, n) { &gt;   se &lt;- sqrt( p * (1 - p) / n ) &gt;   return(se) &gt; } &gt;</code>
+</li>
+</ul>
+</div>
+<div id="sampling-distribution" class="section level3 unnumbered">
+<h3>Sampling distribution<a class="anchor" aria-label="anchor" href="#sampling-distribution"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<span class="math inline">\(\hat\pi^a\)</span> is a sample mean</li>
+<li>By the Central Limit Theorem: as <span class="math inline">\(n \to \infty\)</span>, across hypothetical repeated samples the distribution of <span class="math inline">\(\hat\pi^a\)</span> estimates becomes Normal</li>
+<li>Across repeated samples, the middle 95% of estimates will fall within a known range:
+<span class="math display">\[\pi^a \pm \Phi^{-1}(.975) \times SE(\hat\pi^a)\]</span>
+</li>
+<li>where <span class="math inline">\(\Phi^{-1}()\)</span> is the quantile of the standard Normal distribution</li>
+<li>
+<span class="math inline">\(\Phi^{-1}(.975) \approx 1.96\)</span>, so the number 1.96 might be familiar to you</li>
+</ul>
+<div class="inline-figure"><img src="discussion04_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<ul>
+<li>Plug in the estimates <span class="math inline">\(\hat\pi^a\)</span> and <span class="math inline">\(\widehat{SE}(\hat\pi^a)\)</span> to get a 95% confidence interval</li>
+<li>The CI is centered on the estimate <span class="math inline">\(\hat\pi^a\)</span>
+</li>
+<li>If we repeatedly made a CI using hypothetical samples from the population, the CI would contain the unknown true parameter <span class="math inline">\(\pi^a\)</span> 95% of the time</li>
+<li>In R: we translated the confidence interval formula into code
+&gt;
+&gt; <code>r &gt; ci_lower &lt;- function(estimate, standard_error) { &gt;   estimate - qnorm(.975) * standard_error &gt; } &gt; ci_upper &lt;- function(estimate, standard_error) { &gt;   estimate + qnorm(.975) * standard_error &gt; } &gt;</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
-</div>
-</div>
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></div>
-<div class="next"><a href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></div>
+<div class="prev"><a href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#current-research"><span class="header-section-number">10</span> Current research</a></li>
-<li><a class="nav-link" href="#research-discussion-mayleen"><span class="header-section-number">10.1</span> Research discussion: Mayleen</a></li>
+<li><a class="nav-link" href="#discussion-4.-interference-and">Discussion 4. Interference and</a></li>
+<li><a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-3">STSCI/INFO/ILRST 3900: Causal Inference</a></li>
+<li><a class="nav-link" href="#interference">Interference</a></li>
+<li>
+<a class="nav-link" href="#stat-review-reminder">Stat review reminder</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#standard-error">Standard error</a></li>
+<li><a class="nav-link" href="#sampling-distribution">Sampling distribution</a></li>
+</ul>
+</li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
