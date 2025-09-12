@@ -213,7 +213,6 @@ print(gotv_results_hh, n = Inf)
 - Could you improve voting rates by assigning different treatments to different individuals?
 - What would you expect the treatment effect for civic duty if we considered a population that was evenly split across the 4 age groups?
 
-
 To answer these questions it might be useful to slightly rearrange table:
 
 ``` r
