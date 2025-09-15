@@ -134,7 +134,14 @@ d_summarized <- d_selected %>%
 ## 1        0.0805         4870
 ```
 
-### 2.2. (5 points) Inference for expected potential outcomes {-}
+### 2.2. (5 points) Measuring the causal effect {-}
+
+Given the call back rates for resumes with Black names and white names, you could measure a causal effect in multiple ways. 
+
+**Answer.** Modify the code below
+
+
+### 2.3. (5 points) Inference for expected potential outcomes {-}
 
 Use `mutate()` (see [reference page](https://dplyr.tidyverse.org/reference/mutate.html#ref-examples)) to create a new columns containing the standard error of each estimate as well as lower and upper limits of 95% confidence intervals.
 
@@ -173,14 +180,14 @@ Use `mutate()` (see [reference page](https://dplyr.tidyverse.org/reference/mutat
 > }
 > ```
 
-### 2.3. (5 points) Interpret your confidence interval {-}
+### 2.4. (5 points) Interpret your confidence interval {-}
 
 In words, interpret the confidence intervals. Be sure to discuss what their property is over hypothetical repeated samples, and be sure to frame your answer using the numbers and variables from the actual experiment we are analyzing.
 
 **Answer.** Your answer here
 
 
-### 2.4. (5 points) Visualize expected potential outcomes {-}
+### 2.5. (5 points) Visualize expected potential outcomes {-}
 
 Using `ggplot()`, visualize the estimated callback rate by race. Use `geom_point()` for point estimates and `geom_errorbar()` for confidence intervals, with race on the `x` axis and estimates on the `y` axis. Label the axes using full words.
 
@@ -188,7 +195,7 @@ Using `ggplot()`, visualize the estimated callback rate by race. Use `geom_point
 
 **Answer.** Your answer here
 
-### 2.5. (5 points) Estimate and visualize by firstname {-}
+### 2.6. (5 points) Estimate and visualize by firstname {-}
 
 Do distinct first names yield distinct effects? Repeat the *coding* steps from 2.2--2.4, but now create estimates grouped by `race`, `sex`, and `firstname`. Visualize point estimates and confidence intervals.
 
@@ -205,13 +212,13 @@ your_ggplot +
 
 **Answer.** Your answer here
 
-### 2.6. (5 points) Interpret {-}
+### 2.7. (5 points) Interpret {-}
 
 Within race and sex, not all first names have the same effect. Suppose these are true differences (not due to sampling variability). What does this tell you about the importance of researcher decisions about which names to use as treatments? There are many possible right answers, and here we are asking you to think about what it might mean for research design that the names have different effects.
 
 **Answer.** Your answer here
 
-### 2.7. (5 points) Treatment effect heterogeneity {-}
+### 2.8. (5 points) Treatment effect heterogeneity {-}
 To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race **and city** by placing a `group_by()` action between `d` and `summarize`.  
 
 **Answer.** Modify the code below
@@ -232,7 +239,7 @@ callback_city <- d %>%
 ```
 
 
-### 2.8. (5 points) Transportability {-}
+### 2.9. (5 points) Transportability {-}
 One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using `filter(city == "b")` and `filter(city == "c")` we can only use rows which correspond to Boston and Chicago respectively.  
 
 
