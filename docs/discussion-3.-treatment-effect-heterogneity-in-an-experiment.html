@@ -292,7 +292,6 @@ Then, we convert the <code>treatment</code> variable from it’s numeric represe
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    Per_in_AgeGroup <span class="op">=</span> <span class="va">Count</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Count</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Count</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ageGroup</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
 <span>    Control_Voting <span class="op">=</span> <span class="va">Per_Voting</span><span class="op">[</span><span class="va">treatment</span> <span class="op">==</span> <span class="st">"Control"</span><span class="op">]</span>,</span>
@@ -301,9 +300,10 @@ Then, we convert the <code>treatment</code> variable from it’s numeric represe
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="va">gotv_results_age</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span>, full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="va">gotv_results_age</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">treatment</span>,<span class="va">ageGroup</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">12</span>, full_width <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/scroll_box.html">scroll_box</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span>, height <span class="op">=</span> <span class="st">"500px"</span><span class="op">)</span></span></code></pre></div>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <div class="inline-table"><table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -316,6 +316,9 @@ treatment
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 Per_Voting
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Count
 </th>
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
 Per_in_AgeGroup
@@ -339,6 +342,9 @@ Civic Duty
 0.1661575
 </td>
 <td style="text-align:right;">
+4255
+</td>
+<td style="text-align:right;">
 0.1113350
 </td>
 <td style="text-align:right;">
@@ -346,6 +352,75 @@ Civic Duty
 </td>
 <td style="text-align:right;">
 0.0098863
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.2933172
+</td>
+<td style="text-align:right;">
+9921
+</td>
+<td style="text-align:right;">
+0.2595897
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0253925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.3197190
+</td>
+<td style="text-align:right;">
+16086
+</td>
+<td style="text-align:right;">
+0.4209011
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0101460
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Civic Duty
+</td>
+<td style="text-align:right;">
+0.4098793
+</td>
+<td style="text-align:right;">
+7956
+</td>
+<td style="text-align:right;">
+0.2081742
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0316262
 </td>
 </tr>
 <tr>
@@ -359,10 +434,82 @@ Control
 0.1562712
 </td>
 <td style="text-align:right;">
+20650
+</td>
+<td style="text-align:right;">
 0.1079778
 </td>
 <td style="text-align:right;">
 0.1562712
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+49917
+</td>
+<td style="text-align:right;">
+0.2610135
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+80330
+</td>
+<td style="text-align:right;">
+0.4200415
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Control
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+40346
+</td>
+<td style="text-align:right;">
+0.2109672
+</td>
+<td style="text-align:right;">
+0.3782531
 </td>
 <td style="text-align:right;">
 0.0000000
@@ -379,6 +526,9 @@ Hawthorne
 0.1583068
 </td>
 <td style="text-align:right;">
+4087
+</td>
+<td style="text-align:right;">
 0.1069783
 </td>
 <td style="text-align:right;">
@@ -386,6 +536,75 @@ Hawthorne
 </td>
 <td style="text-align:right;">
 0.0020356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.2965843
+</td>
+<td style="text-align:right;">
+10159
+</td>
+<td style="text-align:right;">
+0.2659146
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0286596
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.3383147
+</td>
+<td style="text-align:right;">
+15926
+</td>
+<td style="text-align:right;">
+0.4168673
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0287417
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Hawthorne
+</td>
+<td style="text-align:right;">
+0.4068725
+</td>
+<td style="text-align:right;">
+8032
+</td>
+<td style="text-align:right;">
+0.2102398
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0286194
 </td>
 </tr>
 <tr>
@@ -399,6 +618,9 @@ Neighbors
 0.1933636
 </td>
 <td style="text-align:right;">
+4189
+</td>
+<td style="text-align:right;">
 0.1096568
 </td>
 <td style="text-align:right;">
@@ -410,6 +632,75 @@ Neighbors
 </tr>
 <tr>
 <td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.3561739
+</td>
+<td style="text-align:right;">
+10026
+</td>
+<td style="text-align:right;">
+0.2624539
+</td>
+<td style="text-align:right;">
+0.2679248
+</td>
+<td style="text-align:right;">
+0.0882492
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.3906578
+</td>
+<td style="text-align:right;">
+15735
+</td>
+<td style="text-align:right;">
+0.4119002
+</td>
+<td style="text-align:right;">
+0.3095730
+</td>
+<td style="text-align:right;">
+0.0810848
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:left;">
+Neighbors
+</td>
+<td style="text-align:right;">
+0.4738820
+</td>
+<td style="text-align:right;">
+8251
+</td>
+<td style="text-align:right;">
+0.2159891
+</td>
+<td style="text-align:right;">
+0.3782531
+</td>
+<td style="text-align:right;">
+0.0956288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 (18,30]
 </td>
 <td style="text-align:left;">
@@ -417,6 +708,9 @@ Self
 </td>
 <td style="text-align:right;">
 0.1751631
+</td>
+<td style="text-align:right;">
+4139
 </td>
 <td style="text-align:right;">
 0.1082998
@@ -433,90 +727,13 @@ Self
 (30,45]
 </td>
 <td style="text-align:left;">
-Civic Duty
-</td>
-<td style="text-align:right;">
-0.2933172
-</td>
-<td style="text-align:right;">
-0.2595897
-</td>
-<td style="text-align:right;">
-0.2679248
-</td>
-<td style="text-align:right;">
-0.0253925
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(30,45]
-</td>
-<td style="text-align:left;">
-Control
-</td>
-<td style="text-align:right;">
-0.2679248
-</td>
-<td style="text-align:right;">
-0.2610135
-</td>
-<td style="text-align:right;">
-0.2679248
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(30,45]
-</td>
-<td style="text-align:left;">
-Hawthorne
-</td>
-<td style="text-align:right;">
-0.2965843
-</td>
-<td style="text-align:right;">
-0.2659146
-</td>
-<td style="text-align:right;">
-0.2679248
-</td>
-<td style="text-align:right;">
-0.0286596
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(30,45]
-</td>
-<td style="text-align:left;">
-Neighbors
-</td>
-<td style="text-align:right;">
-0.3561739
-</td>
-<td style="text-align:right;">
-0.2624539
-</td>
-<td style="text-align:right;">
-0.2679248
-</td>
-<td style="text-align:right;">
-0.0882492
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(30,45]
-</td>
-<td style="text-align:left;">
 Self
 </td>
 <td style="text-align:right;">
 0.3168376
+</td>
+<td style="text-align:right;">
+10043
 </td>
 <td style="text-align:right;">
 0.2627819
@@ -533,90 +750,13 @@ Self
 (45,60]
 </td>
 <td style="text-align:left;">
-Civic Duty
-</td>
-<td style="text-align:right;">
-0.3197190
-</td>
-<td style="text-align:right;">
-0.4209011
-</td>
-<td style="text-align:right;">
-0.3095730
-</td>
-<td style="text-align:right;">
-0.0101460
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(45,60]
-</td>
-<td style="text-align:left;">
-Control
-</td>
-<td style="text-align:right;">
-0.3095730
-</td>
-<td style="text-align:right;">
-0.4200415
-</td>
-<td style="text-align:right;">
-0.3095730
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(45,60]
-</td>
-<td style="text-align:left;">
-Hawthorne
-</td>
-<td style="text-align:right;">
-0.3383147
-</td>
-<td style="text-align:right;">
-0.4168673
-</td>
-<td style="text-align:right;">
-0.3095730
-</td>
-<td style="text-align:right;">
-0.0287417
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(45,60]
-</td>
-<td style="text-align:left;">
-Neighbors
-</td>
-<td style="text-align:right;">
-0.3906578
-</td>
-<td style="text-align:right;">
-0.4119002
-</td>
-<td style="text-align:right;">
-0.3095730
-</td>
-<td style="text-align:right;">
-0.0810848
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(45,60]
-</td>
-<td style="text-align:left;">
 Self
 </td>
 <td style="text-align:right;">
 0.3569639
+</td>
+<td style="text-align:right;">
+15968
 </td>
 <td style="text-align:right;">
 0.4178136
@@ -633,90 +773,13 @@ Self
 (60,120]
 </td>
 <td style="text-align:left;">
-Civic Duty
-</td>
-<td style="text-align:right;">
-0.4098793
-</td>
-<td style="text-align:right;">
-0.2081742
-</td>
-<td style="text-align:right;">
-0.3782531
-</td>
-<td style="text-align:right;">
-0.0316262
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(60,120]
-</td>
-<td style="text-align:left;">
-Control
-</td>
-<td style="text-align:right;">
-0.3782531
-</td>
-<td style="text-align:right;">
-0.2109672
-</td>
-<td style="text-align:right;">
-0.3782531
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(60,120]
-</td>
-<td style="text-align:left;">
-Hawthorne
-</td>
-<td style="text-align:right;">
-0.4068725
-</td>
-<td style="text-align:right;">
-0.2102398
-</td>
-<td style="text-align:right;">
-0.3782531
-</td>
-<td style="text-align:right;">
-0.0286194
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(60,120]
-</td>
-<td style="text-align:left;">
-Neighbors
-</td>
-<td style="text-align:right;">
-0.4738820
-</td>
-<td style="text-align:right;">
-0.2159891
-</td>
-<td style="text-align:right;">
-0.3782531
-</td>
-<td style="text-align:right;">
-0.0956288
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(60,120]
-</td>
-<td style="text-align:left;">
 Self
 </td>
 <td style="text-align:right;">
 0.4442241
+</td>
+<td style="text-align:right;">
+8068
 </td>
 <td style="text-align:right;">
 0.2111047
@@ -731,6 +794,183 @@ Self
 </tbody>
 </table></div>
 </div>
+</div>
+<div id="answers" class="section level3 unnumbered">
+<h3>Answers:<a class="anchor" aria-label="anchor" href="#answers"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Does there seem to be heterogeneity in treatment effects across age and/or house hold size?</li>
+</ul>
+<blockquote>
+<p>We say there is treatment effect heterogeneity if the treatment effect varies across sub-population. To check if there’s treatment effect heterogeneity across age groups, we look at <span class="math inline">\(E[Y^{a=j}|L=l]-E[Y^{a=0}|L=l]\)</span> for each age group <span class="math inline">\(l\)</span>, and treatment <span class="math inline">\(j\)</span>.
+For example, the “Civic Duty” treatment effect for individuals ages 18-30 is
+<span class="math display">\[\begin{align*}
+E\big[Y^{a="Civic Duty"}|L=(18-30]\big]-&amp;E\big[Y^{a="Control"}|L=(18-30]\big]]\\ &amp;= 0.166-0.156\\&amp;=0.001
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>These values can be found in the following table, <code>gotv_results_ageGroup</code></p>
+</blockquote>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_ageGroup</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ageGroup</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span></span>
+<span>    Per_Voting <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">voted</span><span class="op">)</span>,</span>
+<span>    Count <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<blockquote>
+A nice way to present this table would be using the variable <code>Difference_from_Control</code>, created above. This table makes it easier to look at the causal effect across age groups and examining whether the effect is fixed or not
+<table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+ageGroup
+</th>
+<th style="text-align:right;">
+Civic Duty
+</th>
+<th style="text-align:right;">
+Control
+</th>
+<th style="text-align:right;">
+Hawthorne
+</th>
+<th style="text-align:right;">
+Neighbors
+</th>
+<th style="text-align:right;">
+Self
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+(18,30]
+</td>
+<td style="text-align:right;">
+0.0098863
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0020356
+</td>
+<td style="text-align:right;">
+0.0370924
+</td>
+<td style="text-align:right;">
+0.0188919
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+(30,45]
+</td>
+<td style="text-align:right;">
+0.0253925
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0286596
+</td>
+<td style="text-align:right;">
+0.0882492
+</td>
+<td style="text-align:right;">
+0.0489128
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+(45,60]
+</td>
+<td style="text-align:right;">
+0.0101460
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0287417
+</td>
+<td style="text-align:right;">
+0.0810848
+</td>
+<td style="text-align:right;">
+0.0473909
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+(60,120]
+</td>
+<td style="text-align:right;">
+0.0316262
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0286194
+</td>
+<td style="text-align:right;">
+0.0956288
+</td>
+<td style="text-align:right;">
+0.0659710
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<ul>
+<li>What would you expect the treatment effect for civic duty if we considered a population that was evenly split across the 4 age groups?</li>
+</ul>
+<blockquote>
+<p>First, let’s consider the average treatment effect for Civic Duty, which is given by:
+<span class="math display">\[E[Y|a=\text{Civic Duty}]-E[Y|a=\text{Control}]\]</span>
+Standardization allows us to estimate the ACE by combining
+estimates from each sub-population
+<span class="math display">\[\sum_l P(L=l)E[Y|a=\text{Civic Duty},L=l]-\sum_l P(L=l)E[Y|a=\text{Control},L=l]\]</span>
+<span class="math display">\[\sum_l P(L=l) \Big(E[Y|a=\text{Civic Duty},L=l]-E[Y|a=\text{Control},L=l]\Big)\]</span>
+For the age group the ACE looks like:
+<span class="math display">\[\begin{align*} ACE =&amp; 0.111 \times (0.166-0.156)  \\  &amp;+0.260 \times (0.293-0.268)\\&amp;+0.421\times (0.320-0.310)\\&amp;+ 0.208\times (0.410-0.378)
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_age</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">==</span><span class="st">"Civic Duty"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Per_in_AgeGroup</span><span class="op">*</span><span class="va">Difference_from_Control</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   `sum(Per_in_AgeGroup * Difference_from_Control)`
+##                                              &lt;dbl&gt;
+## 1                                           0.0185</code></pre>
+<p>To estimate the treatment effect for civic duty if the population was evenly split across the 4 age group, we replace the share of each age group with <span class="math inline">\(0.25\)</span>.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gotv_results_age</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">==</span><span class="st">"Civic Duty"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">.25</span><span class="op">*</span><span class="va">Difference_from_Control</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   `sum(0.25 * Difference_from_Control)`
+##                                   &lt;dbl&gt;
+## 1                                0.0193</code></pre>
+</blockquote>
 
 <style>li {line-height: 1.8;}</style>
 </div>
@@ -755,6 +995,7 @@ Self
 <li><a class="nav-link" href="#average-causal-effect">Average Causal Effect</a></li>
 <li><a class="nav-link" href="#conditional-average-causal-effect">Conditional Average Causal Effect</a></li>
 <li><a class="nav-link" href="#questions">Questions:</a></li>
+<li><a class="nav-link" href="#answers">Answers:</a></li>
 </ul>
 </li>
 </ul>
@@ -776,7 +1017,7 @@ Self
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-09-12</p>
+    <p>Last built on 2025-09-15</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

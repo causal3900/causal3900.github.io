@@ -161,7 +161,6 @@ gotv_results_age <- gotv |>
   mutate(
     Per_in_AgeGroup = Count / sum(Count)
   ) |>
-  select(-Count) |>
   group_by(ageGroup) |>
   mutate(
     Control_Voting = Per_Voting[treatment == "Control"],
@@ -170,9 +169,68 @@ gotv_results_age <- gotv |>
   ungroup()
 
 
-gotv_results_age %>%
-  kbl() %>%
-  kable_styling(font_size = 12, full_width = FALSE) %>%
+gotv_results_age |>
+  arrange(treatment,ageGroup) |>
+  kbl() |>
+  kable_styling(font_size = 12, full_width = FALSE) |>
   scroll_box(width = "100%", height = "500px")
 ```
+
+
+
+### Answers: {-}
+- Does there seem to be heterogeneity in treatment effects across age and/or house hold size?
+
+> We say there is treatment effect heterogeneity if the treatment effect varies across sub-population. To check if there's treatment effect heterogeneity across age groups, we look at $E[Y^{a=j}|L=l]-E[Y^{a=0}|L=l]$ for each age group $l$, and treatment $j$.
+> For example, the "Civic Duty" treatment effect for individuals ages 18-30 is
+\begin{align*}
+E\big[Y^{a="Civic Duty"}|L=(18-30]\big]-&E\big[Y^{a="Control"}|L=(18-30]\big]]\\ &= 0.166-0.156\\&=0.001
+\end{align*}
+
+> These values can be found in the following table, `gotv_results_ageGroup`
+```{r message=FALSE}
+gotv_results_ageGroup <- gotv |>
+  group_by(ageGroup, treatment) |>
+  summarise(
+    Per_Voting = mean(voted),
+    Count = n())
+```
+
+> A nice way to present this table would be using the variable `Difference_from_Control`, created above. This table makes it easier to look at the causal effect across age groups and examining whether the effect is fixed or not
+```{r echo=FALSE}
+Difference_from_Control <- 
+   gotv_results_age |>
+   as.data.frame() |>
+   select(treatment,ageGroup,Difference_from_Control) |>
+   reshape(direction = "wide",idvar = "ageGroup",timevar = "treatment")
+names(Difference_from_Control) <-
+  sub("Difference_from_Control\\.", "",names(Difference_from_Control))
+Difference_from_Control |>
+  kbl()
+```
+
+
+- What would you expect the treatment effect for civic duty if we considered a population that was evenly split across the 4 age groups?
+
+> First, let's consider the average treatment effect for Civic Duty, which is given by:
+$$E[Y|a=\text{Civic Duty}]-E[Y|a=\text{Control}]$$
+> Standardization allows us to estimate the ACE by combining
+estimates from each sub-population
+$$\sum_l P(L=l)E[Y|a=\text{Civic Duty},L=l]-\sum_l P(L=l)E[Y|a=\text{Control},L=l]$$
+$$\sum_l P(L=l) \Big(E[Y|a=\text{Civic Duty},L=l]-E[Y|a=\text{Control},L=l]\Big)$$
+For the age group the ACE looks like:
+\begin{align*} ACE =& 0.111 \times (0.166-0.156)  \\  &+0.260 \times (0.293-0.268)\\&+0.421\times (0.320-0.310)\\&+ 0.208\times (0.410-0.378)
+\end{align*}
+
+> ```{r}
+gotv_results_age |>
+   filter(treatment=="Civic Duty") |>
+   summarise(sum(Per_in_AgeGroup*Difference_from_Control))
+> ```
+To estimate the treatment effect for civic duty if the population was evenly split across the 4 age group, we replace the share of each age group with $0.25$.
+> ```{r}
+gotv_results_age |>
+   filter(treatment=="Civic Duty") |>
+   summarise(sum(.25*Difference_from_Control))
+> ```
 
