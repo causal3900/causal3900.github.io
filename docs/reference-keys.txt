@@ -11,7 +11,7 @@ lab-treatment-effect-heterogeneity-and-exploring-add-health-data
 inverse-probability-weighting
 consistency-and-positivity
 exchangeability-in-observational-studies
-lab-exchangeability-and-consistency-review
+lab-causal-inference-with-interference
 asking-good-causal-questions
 directed-acyclic-graphs
 marginal-independence

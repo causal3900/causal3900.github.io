@@ -233,8 +233,14 @@
 ##           &lt;dbl&gt;        &lt;int&gt;
 ## 1        0.0805         4870</code></pre>
 </div>
+<div id="points-measuring-the-causal-effect" class="section level3 unnumbered">
+<h3>2.2. (5 points) Measuring the causal effect<a class="anchor" aria-label="anchor" href="#points-measuring-the-causal-effect"><i class="fas fa-link"></i></a>
+</h3>
+<p>Given the call back rates for resumes with Black names and white names, you could measure a causal effect in multiple ways.</p>
+<p><strong>Answer.</strong> Modify the code below</p>
+</div>
 <div id="points-inference-for-expected-potential-outcomes" class="section level3 unnumbered">
-<h3>2.2. (5 points) Inference for expected potential outcomes<a class="anchor" aria-label="anchor" href="#points-inference-for-expected-potential-outcomes"><i class="fas fa-link"></i></a>
+<h3>2.3. (5 points) Inference for expected potential outcomes<a class="anchor" aria-label="anchor" href="#points-inference-for-expected-potential-outcomes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> (see <a href="https://dplyr.tidyverse.org/reference/mutate.html#ref-examples">reference page</a>) to create a new columns containing the standard error of each estimate as well as lower and upper limits of 95% confidence intervals.</p>
 <blockquote>
@@ -280,13 +286,13 @@
 </blockquote>
 </div>
 <div id="points-interpret-your-confidence-interval" class="section level3 unnumbered">
-<h3>2.3. (5 points) Interpret your confidence interval<a class="anchor" aria-label="anchor" href="#points-interpret-your-confidence-interval"><i class="fas fa-link"></i></a>
+<h3>2.4. (5 points) Interpret your confidence interval<a class="anchor" aria-label="anchor" href="#points-interpret-your-confidence-interval"><i class="fas fa-link"></i></a>
 </h3>
 <p>In words, interpret the confidence intervals. Be sure to discuss what their property is over hypothetical repeated samples, and be sure to frame your answer using the numbers and variables from the actual experiment we are analyzing.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-visualize-expected-potential-outcomes" class="section level3 unnumbered">
-<h3>2.4. (5 points) Visualize expected potential outcomes<a class="anchor" aria-label="anchor" href="#points-visualize-expected-potential-outcomes"><i class="fas fa-link"></i></a>
+<h3>2.5. (5 points) Visualize expected potential outcomes<a class="anchor" aria-label="anchor" href="#points-visualize-expected-potential-outcomes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, visualize the estimated callback rate by race. Use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> for point estimates and <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_errorbar()</a></code> for confidence intervals, with race on the <code>x</code> axis and estimates on the <code>y</code> axis. Label the axes using full words.</p>
 <blockquote>
@@ -295,7 +301,7 @@
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-estimate-and-visualize-by-firstname" class="section level3 unnumbered">
-<h3>2.5. (5 points) Estimate and visualize by firstname<a class="anchor" aria-label="anchor" href="#points-estimate-and-visualize-by-firstname"><i class="fas fa-link"></i></a>
+<h3>2.6. (5 points) Estimate and visualize by firstname<a class="anchor" aria-label="anchor" href="#points-estimate-and-visualize-by-firstname"><i class="fas fa-link"></i></a>
 </h3>
 <p>Do distinct first names yield distinct effects? Repeat the <em>coding</em> steps from 2.2–2.4, but now create estimates grouped by <code>race</code>, <code>sex</code>, and <code>firstname</code>. Visualize point estimates and confidence intervals.</p>
 <blockquote>
@@ -313,13 +319,13 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-interpret" class="section level3 unnumbered">
-<h3>2.6. (5 points) Interpret<a class="anchor" aria-label="anchor" href="#points-interpret"><i class="fas fa-link"></i></a>
+<h3>2.7. (5 points) Interpret<a class="anchor" aria-label="anchor" href="#points-interpret"><i class="fas fa-link"></i></a>
 </h3>
 <p>Within race and sex, not all first names have the same effect. Suppose these are true differences (not due to sampling variability). What does this tell you about the importance of researcher decisions about which names to use as treatments? There are many possible right answers, and here we are asking you to think about what it might mean for research design that the names have different effects.</p>
 <p><strong>Answer.</strong> Your answer here</p>
 </div>
 <div id="points-treatment-effect-heterogeneity" class="section level3 unnumbered">
-<h3>2.7. (5 points) Treatment effect heterogeneity<a class="anchor" aria-label="anchor" href="#points-treatment-effect-heterogeneity"><i class="fas fa-link"></i></a>
+<h3>2.8. (5 points) Treatment effect heterogeneity<a class="anchor" aria-label="anchor" href="#points-treatment-effect-heterogeneity"><i class="fas fa-link"></i></a>
 </h3>
 <p>To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race <strong>and city</strong> by placing a <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> action between <code>d</code> and <code>summarize</code>.</p>
 <p><strong>Answer.</strong> Modify the code below</p>
@@ -334,7 +340,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 ## 1        0.0805         4870</code></pre>
 </div>
 <div id="points-transportability" class="section level3 unnumbered">
-<h3>2.8. (5 points) Transportability<a class="anchor" aria-label="anchor" href="#points-transportability"><i class="fas fa-link"></i></a>
+<h3>2.9. (5 points) Transportability<a class="anchor" aria-label="anchor" href="#points-transportability"><i class="fas fa-link"></i></a>
 </h3>
 <p>One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using <code>filter(city == "b")</code> and <code>filter(city == "c")</code> we can only use rows which correspond to Boston and Chicago respectively.</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
@@ -454,13 +460,14 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <li>
 <a class="nav-link" href="#analyzing-the-experimental-data">2. Analyzing the experimental data</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#points-point-estimates-of-expected-potential-outcomes">2.1. (5 points) Point estimates of expected potential outcomes</a></li>
-<li><a class="nav-link" href="#points-inference-for-expected-potential-outcomes">2.2. (5 points) Inference for expected potential outcomes</a></li>
-<li><a class="nav-link" href="#points-interpret-your-confidence-interval">2.3. (5 points) Interpret your confidence interval</a></li>
-<li><a class="nav-link" href="#points-visualize-expected-potential-outcomes">2.4. (5 points) Visualize expected potential outcomes</a></li>
-<li><a class="nav-link" href="#points-estimate-and-visualize-by-firstname">2.5. (5 points) Estimate and visualize by firstname</a></li>
-<li><a class="nav-link" href="#points-interpret">2.6. (5 points) Interpret</a></li>
-<li><a class="nav-link" href="#points-treatment-effect-heterogeneity">2.7. (5 points) Treatment effect heterogeneity</a></li>
-<li><a class="nav-link" href="#points-transportability">2.8. (5 points) Transportability</a></li>
+<li><a class="nav-link" href="#points-measuring-the-causal-effect">2.2. (5 points) Measuring the causal effect</a></li>
+<li><a class="nav-link" href="#points-inference-for-expected-potential-outcomes">2.3. (5 points) Inference for expected potential outcomes</a></li>
+<li><a class="nav-link" href="#points-interpret-your-confidence-interval">2.4. (5 points) Interpret your confidence interval</a></li>
+<li><a class="nav-link" href="#points-visualize-expected-potential-outcomes">2.5. (5 points) Visualize expected potential outcomes</a></li>
+<li><a class="nav-link" href="#points-estimate-and-visualize-by-firstname">2.6. (5 points) Estimate and visualize by firstname</a></li>
+<li><a class="nav-link" href="#points-interpret">2.7. (5 points) Interpret</a></li>
+<li><a class="nav-link" href="#points-treatment-effect-heterogeneity">2.8. (5 points) Treatment effect heterogeneity</a></li>
+<li><a class="nav-link" href="#points-transportability">2.9. (5 points) Transportability</a></li>
 </ul>
 </li>
 </ul>

@@ -16,7 +16,7 @@ You will go through an activity to really hone in on the concepts of exchangeabi
 
 ## Asking good causal questions
 
-> Sep 19. [**Slides from 2024.**](assets/slides/3-2_good_questions.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.3 & 3.6. 
+> Sep 18. [**Slides from 2024.**](assets/slides/3-2_good_questions.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 3.3 & 3.6. 
 
 Good causal questions are structured so that credibility is strong for two key assumptions: positivity and consistency.
 
