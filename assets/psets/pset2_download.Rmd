@@ -33,7 +33,9 @@ Read the first 10 pages of the paper (through the end of section 2).
 
 ### 1.1. (5 points) Fundamental Problem {-}
 
-One submitted resume had the name "Emily Baker." It yielded a callback. The same resume could have had the name "Lakisha Washington." Explain how the Fundamental Problem of Causal Inference applies to this case (1--2 sentences).
+One submitted resume had the name “Emily Baker.” It yielded a callback. The same resume could have had the name “Lakisha Washington,” and in that hypothetical world it would not have yielded a callback. Explain how the Fundamental Problem of Causal Inference applies to this case (1–2 sentences). Write out the potential outcomes using the notation we have described in class.
+
+
 
 **Answer.** Your answer here
 
