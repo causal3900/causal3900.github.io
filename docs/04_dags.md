@@ -28,15 +28,10 @@ DAGs help us know if variables $A$ and $B$ are statistically related
   \end{tikzpicture}
 </script>
 
-## Lab: Project Overview
-
-> Sep 25.  [**Slides from 2024.**](assets/discussions/discussion5-task1.pdf)
-
-You can find information about the course project [**here**](https://causal3900.github.io/course-project.html). During discussion, we will walk through the [**project overview**](https://causal3900.github.io/assets/psets/project/project_overview.pdf) and the instructions for [**Task 1**](https://causal3900.github.io/assets/psets/project/task1.pdf). *Task 1 is due Thursday, October 3rd.*
 
 ## Conditional independence
 
-> Sep 26. [**Slides from 2024.**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 23. [**Slides**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
 Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 

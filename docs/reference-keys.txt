@@ -14,7 +14,6 @@ exchangeability-in-observational-studies
 lab-causal-inference-with-interference
 directed-acyclic-graphs
 marginal-independence
-lab-project-overview
 conditional-independence
 sufficient-adjustment-sets
 lab-dags-review
