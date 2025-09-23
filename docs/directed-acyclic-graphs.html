@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>4 Directed Acyclic Graphs | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta name="description" content="4.1 Marginal independence  Sep 18. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta property="og:description" content="4.1 Marginal independence  Sep 18. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="4 Directed Acyclic Graphs | Causal Inference Course">
-<meta name="twitter:description" content="4.1 Marginal independence  Sep 24. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
+<meta name="twitter:description" content="4.1 Marginal independence  Sep 18. Slides. After class, read Hernán and Robins 2020 Chapter 6.1 and 6.2. For historical reference, optionally see Greenland, Pearl, and Robins 1999. This class will...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -66,6 +66,7 @@
 <li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
 <li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
 <li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -89,7 +90,7 @@
 <span class="header-section-number">4.1</span> Marginal independence<a class="anchor" aria-label="anchor" href="#marginal-independence"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 24. <a href="assets/slides/4-1_dags_marginal.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
+<p>Sep 18. <a href="assets/slides/4-1_dags_marginal.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 6.1 and 6.2. For historical reference, optionally see <a href="https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx">Greenland, Pearl, and Robins 1999</a>.</p>
 </blockquote>
 <p>This class will introduce key ideas about DAGs.</p>
 <ol style="list-style-type: decimal">
@@ -132,9 +133,18 @@
 <li>A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked</li>
 </ol>
 </div>
-<div id="sufficient-adjustment-sets" class="section level2" number="4.3">
+<div id="lab-dags-review" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">4.3</span> Sufficient adjustment sets<a class="anchor" aria-label="anchor" href="#sufficient-adjustment-sets"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Lab: DAGs Review<a class="anchor" aria-label="anchor" href="#lab-dags-review"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Sep 25. <a href="discussion-5.-directed-acyclic-graphs"><strong>Discussion</strong></a> and <a href="assets/discussidiscussion5_dags.pdf.pdf"><strong>discussion slides</strong></a></p>
+</blockquote>
+<p>In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.</p>
+</div>
+<div id="sufficient-adjustment-sets" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Sufficient adjustment sets<a class="anchor" aria-label="anchor" href="#sufficient-adjustment-sets"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 1. <a href="assets/slides/4-3_adjustment_sets.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> 7.1–7.4.</p>
@@ -146,16 +156,6 @@
 </li>
 </ol>
 </div>
-<div id="lab-dags-review" class="section level2" number="4.4">
-<h2>
-<span class="header-section-number">4.4</span> Lab: DAGs Review<a class="anchor" aria-label="anchor" href="#lab-dags-review"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Oct 2 <a href="assets/discussions/discussion6-dags.pdf"><strong>Slides from 2024.</strong></a></p>
-</blockquote>
-<p>In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.</p>
-
-</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></div>
@@ -166,8 +166,8 @@
 <li><a class="nav-link" href="#directed-acyclic-graphs"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
 <li><a class="nav-link" href="#marginal-independence"><span class="header-section-number">4.1</span> Marginal independence</a></li>
 <li><a class="nav-link" href="#conditional-independence"><span class="header-section-number">4.2</span> Conditional independence</a></li>
-<li><a class="nav-link" href="#sufficient-adjustment-sets"><span class="header-section-number">4.3</span> Sufficient adjustment sets</a></li>
-<li><a class="nav-link" href="#lab-dags-review"><span class="header-section-number">4.4</span> Lab: DAGs Review</a></li>
+<li><a class="nav-link" href="#lab-dags-review"><span class="header-section-number">4.3</span> Lab: DAGs Review</a></li>
+<li><a class="nav-link" href="#sufficient-adjustment-sets"><span class="header-section-number">4.4</span> Sufficient adjustment sets</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">

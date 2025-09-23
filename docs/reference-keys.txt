@@ -15,8 +15,8 @@ lab-causal-inference-with-interference
 directed-acyclic-graphs
 marginal-independence
 conditional-independence
-sufficient-adjustment-sets
 lab-dags-review
+sufficient-adjustment-sets
 statistical-modeling
 why-model
 parametric-modeling

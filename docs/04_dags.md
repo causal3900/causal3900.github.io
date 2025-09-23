@@ -3,7 +3,7 @@
 
 ## Marginal independence
 
-> Sep 24. [**Slides.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
+> Sep 18. [**Slides.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
 
 This class will introduce key ideas about DAGs.
 
@@ -40,6 +40,12 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 1. A non-collider is blocked if is conditioned on, otherwise it is open
 2. A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked
 
+## Lab: DAGs Review
+
+> Sep 25.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussidiscussion5_dags.pdf.pdf)
+
+In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
+
 
 ## Sufficient adjustment sets
 
@@ -51,8 +57,3 @@ When marginal exchangeability does not hold, we may be able to condition on some
 2. The set $L$ does not contain any descendants of $A$
 
 
-## Lab: DAGs Review
-
-> Oct 2  [**Slides from 2024.**](assets/discussions/discussion6-dags.pdf)
-
-In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.

@@ -10,7 +10,7 @@ What makes causal inference with observational data so challenging? Why is makin
 
 ## Lab: Causal inference with interference
 
-> Sep 17 [**Slides**](assets/discussions/discussion4-interference.pdf)
+> Sep 17  [**Discussion**](discussion-4.-interference-and-stat-review) and [**discussion slides**](assets/discussions/discussion4-interference.pdf)
 
 When defining causal effects, we often discuss the outcome $Y^a$ that a person would realize if they were exposed to treatment value $a$. But definitions become harder if there exists *interference*: the outcome of unit $i$ depends on the treatment assigned to unit $j$. This discussion will focus on understanding interference and why we need to update our potential outcomes notation if interference is present.
 
