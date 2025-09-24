@@ -42,7 +42,7 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 
 ## Lab: DAGs Review
 
-> Sep 25.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussidiscussion5_dags.pdf.pdf)
+> Sep 25.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
 
 In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
 
