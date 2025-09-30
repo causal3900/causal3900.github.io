@@ -45,7 +45,37 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html">Problem Set 3. DAGs.</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="active" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
           
@@ -63,7 +93,7 @@
 <p>For 1.1–1.5, answer True or False: The <span class="math inline">\(Z\)</span> nodes (i.e., either <span class="math inline">\(Z\)</span> itself or the set <span class="math inline">\(\{Z_1, Z_2, \ldots \}\)</span>) form a sufficient adjustment set to identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>. Explain your answer in one sentence. If False, state the backdoor path that is unblocked conditional on <span class="math inline">\(Z\)</span>.</p>
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.1.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.1};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -75,8 +105,9 @@
     \draw[->, thick] (u1) -- (a);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script><script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.2. (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.2};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -91,8 +122,9 @@
     \draw[->, thick] (u2) to[bend right] (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script><script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.3.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.3};
     \node (z1) at (-1,0) {$Z_1$};
     \node (z2) at (0,1) {$Z_2$};
     \node (u) at (1,1) {$U$};
@@ -104,24 +136,26 @@
     \draw[->, thick] (z2) -- (a);
     \draw[->, thick] (u) -- (y);
     \draw[->, thick] (u) -- (z2);
-    \draw[->, thick] (x) to[bend right] (y);
+    \draw[->, thick] (z1) to[bend right] (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script><script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.4. (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.4};
     \node (z1) at (-1,0) {$Z_1$};
     \node (z2) at (.5,-1) {$Z_2$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
     \draw[->, thick] (a) -- (y);
     \draw[->, thick] (z1) -- (a);
-    \draw[->, thick] (x) to[bend left] (y);
+    \draw[->, thick] (z1) to[bend left] (y);
     \draw[->, thick] (a) -- (z2);
-    \draw[->, thick] (y) -- (z2);
+    \draw[->, thick] (z2) -- (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script><script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.5.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.5};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -259,10 +293,8 @@
 \node[box, right=20mm of Visit] (Respond) {Respond};
 
 
-% Right column (outcome)
 \node[box, right=20mm of Residency] (Admission) {Y: Admission};
 
-% Edges
 \draw[arr] (Residency) -- (Admission);
 \draw[arr] (SES) -- (Residency);
 \draw[arr] (SES) -- (SAT);
@@ -287,11 +319,31 @@
 
 
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
+<div class="next"><a href="who-we-are.html">Who we are</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li>
+<li>
+<a class="nav-link" href="#true-or-false">1. True or False</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#points-9">1.1 (2 points)</a></li>
+<li><a class="nav-link" href="#points-10">1.2 (2 points)</a></li>
+<li><a class="nav-link" href="#points-11">1.3 (2 points)</a></li>
+<li><a class="nav-link" href="#points-12">1.4 (2 points)</a></li>
+<li><a class="nav-link" href="#points-13">1.5 (2 points)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#which-dag-is-correct">2. Which DAG is ‘’Correct’’?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#pts">2.1 (5 pts)</a></li>
+<li><a class="nav-link" href="#pts-1">2.1 (8 pts)</a></li>
+<li><a class="nav-link" href="#pts-2">2.2 (8 pts)</a></li>
+<li><a class="nav-link" href="#pts-3">2.3 (5 pts)</a></li>
+<li><a class="nav-link" href="#pts-4">2.4 (8 pts)</a></li>
+</ul>
+</li>
+</ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
@@ -310,7 +362,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-09-28</p>
+    <p>Last built on 2025-09-29</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

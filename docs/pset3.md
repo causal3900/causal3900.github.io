@@ -11,11 +11,9 @@ To complete the problem set, [**Download the .Rmd**](assets/psets/pset3_download
 For 1.1--1.5, answer True or False: The $Z$ nodes (i.e., either $Z$ itself or the set $\{Z_1, Z_2, \ldots \}$) form a sufficient adjustment set to identify the causal effect of $A$ on $Y$. Explain your answer in one sentence. If False, state the backdoor path that is unblocked conditional on $Z$.
 
 
-\vspace{2em}
-
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.1.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.1};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -27,8 +25,10 @@ For 1.1--1.5, answer True or False: The $Z$ nodes (i.e., either $Z$ itself or th
     \draw[->, thick] (u1) -- (a);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script>
+<script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.2. (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.2};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -43,8 +43,10 @@ For 1.1--1.5, answer True or False: The $Z$ nodes (i.e., either $Z$ itself or th
     \draw[->, thick] (u2) to[bend right] (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script>
+<script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.3.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.3};
     \node (z1) at (-1,0) {$Z_1$};
     \node (z2) at (0,1) {$Z_2$};
     \node (u) at (1,1) {$U$};
@@ -56,24 +58,28 @@ For 1.1--1.5, answer True or False: The $Z$ nodes (i.e., either $Z$ itself or th
     \draw[->, thick] (z2) -- (a);
     \draw[->, thick] (u) -- (y);
     \draw[->, thick] (u) -- (z2);
-    \draw[->, thick] (x) to[bend right] (y);
+    \draw[->, thick] (z1) to[bend right] (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script>
+<script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.4. (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.4};
     \node (z1) at (-1,0) {$Z_1$};
     \node (z2) at (.5,-1) {$Z_2$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
     \draw[->, thick] (a) -- (y);
     \draw[->, thick] (z1) -- (a);
-    \draw[->, thick] (x) to[bend left] (y);
+    \draw[->, thick] (z1) to[bend left] (y);
     \draw[->, thick] (a) -- (z2);
-    \draw[->, thick] (y) -- (z2);
+    \draw[->, thick] (z2) -- (y);
     \node at (0,-1.2) {};
 \end{tikzpicture}
+</script>
+<script type="text/tikz">
 \begin{tikzpicture}
-    \node[anchor = north west] at (-1.5,2) {1.5.  (4 points)};
+    \node[anchor = north west] at (-1.5,2) {1.5};
     \node (x) at (-1,0) {$Z$};
     \node (a) at (0,0) {$A$};
     \node (y) at (1,0) {$Y$};
@@ -201,10 +207,8 @@ Students who live in NY are more likely to visit since they are closer. Students
 \node[box, right=20mm of Visit] (Respond) {Respond};
 
 
-% Right column (outcome)
 \node[box, right=20mm of Residency] (Admission) {Y: Admission};
 
-% Edges
 \draw[arr] (Residency) -- (Admission);
 \draw[arr] (SES) -- (Residency);
 \draw[arr] (SES) -- (SAT);

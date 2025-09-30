@@ -77,13 +77,15 @@ Suppose your classmate uses standardization to estimate a causal effect by condi
 
 **Answer**
 
-### 2.4 (5 pts) {-}
+### 2.4 (8 pts) {-}
 Since individual admissions data are not publicly available, you recall that your classmate gathered the data by first collecting contact information from high school students who visited Cornell. After admissions decisions were released, your classmate sent these individuals a email with a link to the survey. Thus, you add the following variables to the graph
 
 * Visit: Whether or not a student visits Cornell
 * Respond: Whether or not a student responded to the survey
 
 Students who live in NY are more likely to visit since they are closer. Students who visit are more likely to get a link to the survey so that they can respond. Also, students who get admitted are more likely to respond (or said another way, students who did not get admitted are less likely to respond). Thus, you think this is a more accurate causal graph (use the graph on the course website). 
-Since you only have data on students who responded, the analysis your classmate conducted implicitly conditions on ``Respond.'' In this case, is the causal estimate your classmate estimated reliable? Why or why not?
+
+
+Since you only have data on students who responded, the analysis your classmate conducted implicitly conditions on ''Respond.'' In this case, is the causal estimate your classmate estimated still reliable? Why or why not?
 
 **Answer.** Your answer here
