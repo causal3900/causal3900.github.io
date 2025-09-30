@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 3. DAGs. | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta name="description" content="Relevant material will be covered by Sep 25. Problem set is due Oct 8. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Problem Set 3. DAGs. | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta property="og:description" content="Relevant material will be covered by Sep 25. Problem set is due Oct 8. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 3. DAGs. | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Oct 1. Problem set is due Oct 11. To complete the problem set, copy this code into a .Rmd and complete the homework. Omit your name so we can have anonymous...">
+<meta name="twitter:description" content="Relevant material will be covered by Sep 25. Problem set is due Oct 8. To complete the problem set, Download the .Rmd and complete the homework. Omit your name so we can have anonymous peer...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -44,43 +45,7 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
-<li class="book-part">Identification by exchangeability</li>
-<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
-<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
-<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
-<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
-<li class="book-part">Identification without exchangeability</li>
-<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
-<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
-<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
-<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
-<li class="book-part">Areas of active research</li>
-<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
-<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
-<li class="book-part">Discussions</li>
-<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
-<li class="book-part">Assignments</li>
-<li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
-<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="active" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
-<li class="book-part">Course information</li>
-<li><a class="" href="who-we-are.html">Who we are</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html">Problem Set 3. DAGs.</a></li></ul>
 
         <div class="book-extra">
           
@@ -90,94 +55,248 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-3.-dags." class="section level1 unnumbered">
 <h1>Problem Set 3. DAGs.<a class="anchor" aria-label="anchor" href="#problem-set-3.-dags."><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Oct 1</strong>. Problem set is due <strong>Oct 11</strong>.</p>
-<p>To complete the problem set, <a href="https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset3_download.Rmd"><strong>copy this code</strong></a> into a .Rmd and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
-<p>Note: For this problem set only, you may alternatively complete the homework by hand. This is because you are welcome to draw DAGs by hand instead of producing them by code. If you do this, scan or take a picture of your document.</p>
+<p>Relevant material will be covered by <strong>Sep 25</strong>. Problem set is due <strong>Oct 8</strong>.</p>
+<p>To complete the problem set, <a href="assets/psets/pset3_download_fa25.Rmd"><strong>Download the .Rmd</strong></a> and complete the homework. Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.</p>
 <div id="true-or-false" class="section level2 unnumbered">
 <h2>1. True or False<a class="anchor" aria-label="anchor" href="#true-or-false"><i class="fas fa-link"></i></a>
 </h2>
 <p>For 1.1–1.5, answer True or False: The <span class="math inline">\(Z\)</span> nodes (i.e., either <span class="math inline">\(Z\)</span> itself or the set <span class="math inline">\(\{Z_1, Z_2, \ldots \}\)</span>) form a sufficient adjustment set to identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span>. Explain your answer in one sentence. If False, state the backdoor path that is unblocked conditional on <span class="math inline">\(Z\)</span>.</p>
-<style>.img-responsive {
-  max-width: 100%;
-}
-</style>
-<div class="panel">
-<div class="inline-figure"><img class="img-responsive" src="assets/pset3dags.png" alt="DAGs for question 1"></div>
-</div>
-<div id="points-8" class="section level3 unnumbered">
-<h3>1.6 (4 points)<a class="anchor" aria-label="anchor" href="#points-8"><i class="fas fa-link"></i></a>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \node[anchor = north west] at (-1.5,2) {1.1.  (4 points)};
+    \node (x) at (-1,0) {$Z$};
+    \node (a) at (0,0) {$A$};
+    \node (y) at (1,0) {$Y$};
+    \draw[->, thick] (a) -- (y);
+    \draw[->, thick] (x) -- (a);
+    \draw[->, thick] (x) to[bend right] (y);
+    \node (u1) at (-.5,1) {$U$};
+    \draw[->, thick] (u1) -- (x);
+    \draw[->, thick] (u1) -- (a);
+    \node at (0,-1.2) {};
+\end{tikzpicture}
+\begin{tikzpicture}
+    \node[anchor = north west] at (-1.5,2) {1.2. (4 points)};
+    \node (x) at (-1,0) {$Z$};
+    \node (a) at (0,0) {$A$};
+    \node (y) at (1,0) {$Y$};
+    \draw[->, thick] (a) -- (y);
+    \draw[->, thick] (x) -- (a);
+    \draw[->, thick] (x) to[bend right] (y);
+    \node (u1) at (-.5,1) {$U_2$};
+    \draw[->, thick] (u1) -- (x);
+    \draw[->, thick] (u1) -- (a);
+    \node (u2) at (-1,-1) {$U_1$};
+    \draw[->, thick] (u2) -- (x);
+    \draw[->, thick] (u2) to[bend right] (y);
+    \node at (0,-1.2) {};
+\end{tikzpicture}
+\begin{tikzpicture}
+    \node[anchor = north west] at (-1.5,2) {1.3.  (4 points)};
+    \node (z1) at (-1,0) {$Z_1$};
+    \node (z2) at (0,1) {$Z_2$};
+    \node (u) at (1,1) {$U$};
+    \node (a) at (0,0) {$A$};
+    \node (y) at (1,0) {$Y$};
+    \draw[->, thick] (a) -- (y);
+    \draw[->, thick] (z1) -- (a);
+    \draw[->, thick] (z2) -- (y);
+    \draw[->, thick] (z2) -- (a);
+    \draw[->, thick] (u) -- (y);
+    \draw[->, thick] (u) -- (z2);
+    \draw[->, thick] (x) to[bend right] (y);
+    \node at (0,-1.2) {};
+\end{tikzpicture}
+\begin{tikzpicture}
+    \node[anchor = north west] at (-1.5,2) {1.4. (4 points)};
+    \node (z1) at (-1,0) {$Z_1$};
+    \node (z2) at (.5,-1) {$Z_2$};
+    \node (a) at (0,0) {$A$};
+    \node (y) at (1,0) {$Y$};
+    \draw[->, thick] (a) -- (y);
+    \draw[->, thick] (z1) -- (a);
+    \draw[->, thick] (x) to[bend left] (y);
+    \draw[->, thick] (a) -- (z2);
+    \draw[->, thick] (y) -- (z2);
+    \node at (0,-1.2) {};
+\end{tikzpicture}
+\begin{tikzpicture}
+    \node[anchor = north west] at (-1.5,2) {1.5.  (4 points)};
+    \node (x) at (-1,0) {$Z$};
+    \node (a) at (0,0) {$A$};
+    \node (y) at (1,0) {$Y$};
+    \draw[->, thick] (a) -- (y);
+    \draw[->, thick] (x) -- (a);
+    \draw[->, thick] (x) to[bend right] (y);
+    \node (u1) at (.5,1) {$U$};
+    \draw[->, thick] (u1) -- (a);
+    \draw[->, thick] (u1) -- (y);
+    \node at (0,-1.2) {};
+\end{tikzpicture}
+</script><div id="points-9" class="section level3 unnumbered">
+<h3>1.1 (2 points)<a class="anchor" aria-label="anchor" href="#points-9"><i class="fas fa-link"></i></a>
 </h3>
-<p>True or False? Conditioning on <span class="math inline">\(C\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \rightarrow C \leftarrow D \rightarrow Y\)</span>. Explain your answer.</p>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
-<div id="points-9" class="section level3 unnumbered">
-<h3>1.7 (4 points)<a class="anchor" aria-label="anchor" href="#points-9"><i class="fas fa-link"></i></a>
+<div id="points-10" class="section level3 unnumbered">
+<h3>1.2 (2 points)<a class="anchor" aria-label="anchor" href="#points-10"><i class="fas fa-link"></i></a>
 </h3>
-<p>True or False? Conditioning on <span class="math inline">\(C\)</span> blocks this path: <span class="math inline">\(A\leftarrow B \leftarrow C \rightarrow D \rightarrow Y\)</span>. Explain your answer.</p>
+<p><strong>Answer.</strong> Your answer here</p>
+</div>
+<div id="points-11" class="section level3 unnumbered">
+<h3>1.3 (2 points)<a class="anchor" aria-label="anchor" href="#points-11"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Answer.</strong> Your answer here</p>
+</div>
+<div id="points-12" class="section level3 unnumbered">
+<h3>1.4 (2 points)<a class="anchor" aria-label="anchor" href="#points-12"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Answer.</strong> Your answer here</p>
+</div>
+<div id="points-13" class="section level3 unnumbered">
+<h3>1.5 (2 points)<a class="anchor" aria-label="anchor" href="#points-13"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Answer.</strong> Your answer here</p>
 </div>
 </div>
-<div id="draw-a-dag" class="section level2 unnumbered">
-<h2>2. Draw a DAG<a class="anchor" aria-label="anchor" href="#draw-a-dag"><i class="fas fa-link"></i></a>
+<div id="which-dag-is-correct" class="section level2 unnumbered">
+<h2>2. Which DAG is ‘’Correct’’?<a class="anchor" aria-label="anchor" href="#which-dag-is-correct"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p>In this problem, we reference the idea of “adjusting for” a variable <span class="math inline">\(X\)</span>. We are using the terminology “adjust for” as equivalent to the terminology “condition on.” To <em>adjust for</em> or <em>condition on</em> <span class="math inline">\(X\)</span> means to conduct analysis conditional on <span class="math inline">\(X\)</span>.</p>
-</blockquote>
-<blockquote>
-<p>Building intuition from standardization, to adjust for or condition on <span class="math inline">\(X\)</span> means to</p>
-</blockquote>
-<blockquote>
+<p>Suppose you and your classmate are interested in estimating the causal effect of being an New York resident on admission to Cornell as an undergraduate. Your classmate states a causal DAG which they believe describes the causal system. The included variables are:</p>
 <ul>
-<li>conduct analysis within each subgroup with <span class="math inline">\(X = x\)</span> (example: estimate the relationship between <span class="math inline">\(A\)</span> and <span class="math inline">\(Y\)</span> among those with <span class="math inline">\(X = x\)</span>)</li>
+<li>Residency: This is the treatment and is either NY or non-NY</li>
+<li>Admission: This is the outcome and is either Yes or No</li>
+<li>Family SES: The socioeconomic level of the applicant’s family</li>
+<li>SAT scores: The applicant’s SAT score</li>
+<li>Legacy: Whether or not an applicant has family members who are Cornell alumni</li>
 </ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>average the <span class="math inline">\(x\)</span>-specific estimates over the population distribution of <span class="math inline">\(X\)</span>
-</li>
-</ul>
-</blockquote>
-<div id="your-task-12-points" class="section level3 unnumbered">
-<h3>2.1. Your Task (12 points)<a class="anchor" aria-label="anchor" href="#your-task-12-points"><i class="fas fa-link"></i></a>
+<script type="text/tikz">
+\begin{tikzpicture}[
+  node distance=15mm and 25mm,
+  every node/.style={font=\sffamily, align=center},
+  box/.style={draw, rounded corners, minimum width=25mm, minimum height=8mm},
+  arr/.style={-{Latex[length=3mm]}, line width=0.8pt}
+]
+
+
+\node[box] (SES) {Family SES};
+\node[box, below=20mm of SES] (Legacy) {Legacy};
+\node[box, right=10mm of SES] (Residency) {A: Residency};
+\node[box, above=of Residency] (SAT) {SAT scores};
+
+\node[box, right=20mm of Residency] (Admission) {Y: Admission};
+
+
+\draw[arr] (Residency) -- (Admission);
+\draw[arr] (SES) -- (Residency);
+\draw[arr] (SES) -- (SAT);
+\draw[arr, bend right=40] (SES) to (Admission);
+\draw[arr] (SAT) -- (Admission);
+\draw[arr] (Legacy) -- (Admission);
+\draw[arr] (Legacy) -- (SES);
+
+\end{tikzpicture}
+</script><div id="pts" class="section level3 unnumbered">
+<h3>2.1 (5 pts)<a class="anchor" aria-label="anchor" href="#pts"><i class="fas fa-link"></i></a>
 </h3>
-<p>A researcher comes to you with a proposal: identify the causal effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> by adjusting for any variable <span class="math inline">\(B\)</span> that predicts <span class="math inline">\(A\)</span> and also predicts <span class="math inline">\(Y\)</span>. They propose that machine learning can thus solve causal identification for us.</p>
-<p>The researcher is wrong. Show them why. Draw a DAG in which</p>
+<p>Write out the notation for the potential outcomes (for a generic individual <span class="math inline">\(i\)</span>) using the notation from class.</p>
+<p><strong>Answer.</strong></p>
+</div>
+<div id="pts-1" class="section level3 unnumbered">
+<h3>2.1 (8 pts)<a class="anchor" aria-label="anchor" href="#pts-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the causal diagram above list all the paths from Residency to Admission and state whether they are causal paths or not. For each of the paths that contains more than just the treatment and outcome, indicate whether each node on that path is a collider or non-collider. There should be 4 paths total.</p>
+<p><strong>Answer.</strong></p>
 <ul>
-<li>the effect of <span class="math inline">\(A\)</span> on <span class="math inline">\(Y\)</span> is unconfounded (i.e. marginal exchangeability holds)</li>
-<li>a variable <span class="math inline">\(B\)</span> is statistically associated with <span class="math inline">\(A\)</span>
-</li>
-<li>a variable <span class="math inline">\(B\)</span> is statistically associated with <span class="math inline">\(Y\)</span>
-</li>
-<li>but one does not need to adjust for <span class="math inline">\(B\)</span> to identify the causal effect</li>
+<li>Path 1:</li>
+<li>Path 2:</li>
+<li>Path 3:</li>
+<li>Path 4:</li>
 </ul>
-<p>For full credit, all you need to do is draw a DAG. No need to explain your answer, although we encourage you to write down your explanation for your own sake, to make sure your DAG says what you expect!</p>
-<blockquote>
-<p>See <a href="https://rpubs.com/brianwood1/698510">https://rpubs.com/brianwood1/698510</a> for how to insert an image.</p>
-</blockquote>
+</div>
+<div id="pts-2" class="section level3 unnumbered">
+<h3>2.2 (8 pts)<a class="anchor" aria-label="anchor" href="#pts-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>For each path above, determine if the path is open or blocked when conditioning on ‘’Family SES.’’ Explain why for each path.</p>
+<p><strong>Answer.</strong></p>
+<ul>
+<li>Path 1:</li>
+<li>Path 2:</li>
+<li>Path 3:</li>
+<li>Path 4:</li>
+</ul>
+</div>
+<div id="pts-3" class="section level3 unnumbered">
+<h3>2.3 (5 pts)<a class="anchor" aria-label="anchor" href="#pts-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Suppose your classmate uses standardization to estimate a causal effect by conditioning on ‘’Family SES.’’ <strong>Assuming</strong> the graph is correct, does conditional exchangeability hold? Why or why not?</p>
+<p><strong>Answer</strong></p>
+</div>
+<div id="pts-4" class="section level3 unnumbered">
+<h3>2.4 (8 pts)<a class="anchor" aria-label="anchor" href="#pts-4"><i class="fas fa-link"></i></a>
+</h3>
+<p>Since individual admissions data are not publicly available, you recall that your classmate gathered the data by first collecting contact information from high school students who visited Cornell. After admissions decisions were released, your classmate sent these individuals a email with a link to the survey. Thus, you add the following variables to the graph</p>
+<ul>
+<li>Visit: Whether or not a student visits Cornell</li>
+<li>Respond: Whether or not a student responded to the survey</li>
+</ul>
+<p>Students who live in NY are more likely to visit since they are closer. Students who visit are more likely to get a link to the survey so that they can respond. Also, students who get admitted are more likely to respond (or said another way, students who did not get admitted are less likely to respond). Thus, you think this is a more accurate causal graph.</p>
+<script type="text/tikz">
+\begin{tikzpicture}[
+  node distance=15mm and 25mm,
+  every node/.style={font=\sffamily, align=center},
+  box/.style={draw, rounded corners, minimum width=25mm, minimum height=8mm},
+  arr/.style={-{Latex[length=3mm]}, line width=0.8pt}
+]
+
+
+\node[box] (SES) {Family SES};
+\node[box, below=20mm of SES] (Legacy) {Legacy};
+\node[box, above=20mm of SES] (PE) {Parents Edu};
+\node[box, right=10mm of SES] (Residency) {A: Residency};
+\node[box, above=of Residency] (SAT) {SAT scores};
+\node[box, right=10mm of Legacy] (Visit) {Visit};
+\node[box, right=20mm of Visit] (Respond) {Respond};
+
+
+% Right column (outcome)
+\node[box, right=20mm of Residency] (Admission) {Y: Admission};
+
+% Edges
+\draw[arr] (Residency) -- (Admission);
+\draw[arr] (SES) -- (Residency);
+\draw[arr] (SES) -- (SAT);
+\draw[arr, bend right=40] (SES) to (Admission);
+\draw[arr] (PE) -- (SAT);
+\draw[arr] (SAT) -- (Admission);
+\draw[arr] (Legacy) -- (Admission);
+\draw[arr] (Legacy) -- (Admission);
+\draw[arr] (Residency) -- (Visit);
+\draw[arr] (Visit) -- (Respond);
+\draw[arr] (Admission) -- (Respond);
+
+
+\end{tikzpicture}
+</script><p>Since you only have data on students who responded, the analysis your classmate conducted implicitly conditions on ‘’Respond.’’ In this case, is the causal estimate your classmate estimated still reliable? Why or why not?</p>
+<p><strong>Answer.</strong> Your answer here</p>
 
 </div>
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></div>
-<div class="next"><a href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#problem-set-3.-dags.">Problem Set 3. DAGs.</a></li>
-<li>
-<a class="nav-link" href="#true-or-false">1. True or False</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-8">1.6 (4 points)</a></li>
-<li><a class="nav-link" href="#points-9">1.7 (4 points)</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#draw-a-dag">2. Draw a DAG</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#your-task-12-points">2.1. Your Task (12 points)</a></li></ul>
-</li>
-</ul>
+      <div id="book-on-this-page"></div>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -191,7 +310,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-09-28</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

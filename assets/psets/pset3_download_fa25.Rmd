@@ -1,0 +1,91 @@
+---
+output:
+  pdf_document: default
+urlcolor: blue
+---
+# Problem Set 3. DAGs. {-}
+
+Relevant material will be covered by **Sep 25**. Problem set is due **Oct 8**.
+
+Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
+
+
+## 1. True or False {-}
+
+For 1.1--1.5, use the graphs from the course website to answer True or False: The $Z$ nodes (i.e., either $Z$ itself or the set $\{Z_1, Z_2, \ldots \}$) form a sufficient adjustment set to identify the causal effect of $A$ on $Y$. Explain your answer in one sentence. If False, state the backdoor path that is unblocked conditional on $Z$.
+
+
+
+### 1.1 (2 points) {-}
+**Answer.** Your answer here
+
+### 1.2 (2 points) {-}
+**Answer.** Your answer here
+
+### 1.3 (2 points) {-}
+**Answer.** Your answer here
+
+### 1.4 (2 points) {-}
+**Answer.** Your answer here
+
+### 1.5 (2 points) {-}
+**Answer.** Your answer here
+
+
+
+## 2. Which DAG is ''Correct''? {-}
+Suppose you and your classmate are interested in estimating the causal effect of being an New York resident on admission to Cornell as an undergraduate. Your classmate states a causal DAG which they believe describes the causal system. The included variables are:
+
+* Residency: This is the treatment and is either NY or non-NY
+* Admission: This is the outcome and is either Yes or No
+* Family SES: The socioeconomic level of the applicant's family
+* SAT scores: The applicant's SAT score
+* Legacy: Whether or not an applicant has family members who are Cornell alumni
+
+Use the graph on the shown on course website.
+
+
+
+### 2.1 (5 pts) {-}
+Write out the notation for the potential outcomes (for a generic individual $i$) using the notation from class.
+
+**Answer.**
+
+
+### 2.1 (8 pts) {-}
+In the causal diagram above list all the paths from Residency to Admission and state whether they are causal paths or not. For each of the paths that contains more than just the treatment and outcome, indicate whether each node on that path is a collider or non-collider. There should be 4 paths total.
+
+**Answer.** 
+
+* Path 1:
+* Path 2:
+* Path 3:
+* Path 4:
+
+### 2.2 (8 pts) {-}
+For each path above, determine if the path is open or blocked when conditioning on ''Family SES.'' Explain why for each path. 
+
+**Answer.** 
+
+* Path 1: 
+* Path 2:
+* Path 3:
+* Path 4:
+
+### 2.3 (5 pts) {-}
+Suppose your classmate uses standardization to estimate a causal effect by conditioning on ''Family SES.'' **Assuming** the graph is correct, does conditional exchangeability hold? Why or why not?  
+
+**Answer**
+
+### 2.4 (8 pts) {-}
+Since individual admissions data are not publicly available, you recall that your classmate gathered the data by first collecting contact information from high school students who visited Cornell. After admissions decisions were released, your classmate sent these individuals a email with a link to the survey. Thus, you add the following variables to the graph
+
+* Visit: Whether or not a student visits Cornell
+* Respond: Whether or not a student responded to the survey
+
+Students who live in NY are more likely to visit since they are closer. Students who visit are more likely to get a link to the survey so that they can respond. Also, students who get admitted are more likely to respond (or said another way, students who did not get admitted are less likely to respond). Thus, you think this is a more accurate causal graph (use the graph on the course website). 
+
+
+Since you only have data on students who responded, the analysis your classmate conducted implicitly conditions on ''Respond.'' In this case, is the causal estimate your classmate estimated still reliable? Why or why not?
+
+**Answer.** Your answer here
