@@ -42,14 +42,14 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 
 ## Lab: DAGs Review
 
-> Sep 25.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
+> Sep 24.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
 
 In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
 
 
 ## Sufficient adjustment sets
 
-> Oct 1. [**Slides.**](assets/slides/4-3_adjustment_sets.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
+> Sep 25. [**Slides.**](assets/slides/4-3_adjustment_sets.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) 7.1--7.4.
 
 When marginal exchangeability does not hold, we may be able to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. We can accomplish this by blocking all non-causal paths between $A$ and $Y$. A set that does that is called a sufficient adjustment set. To find a sufficient adjustment set, we will use the backdoor criterion:
 

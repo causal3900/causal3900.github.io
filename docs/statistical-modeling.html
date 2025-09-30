@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>5 Statistical modeling | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="5.1 Why model?  Sep 30. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
+<meta name="description" content="5.1 Why model?  Sep 30. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="5 Statistical modeling | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="5.1 Why model?  Sep 30. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
+<meta property="og:description" content="5.1 Why model?  Sep 30. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5 Statistical modeling | Causal Inference Course">
-<meta name="twitter:description" content="5.1 Why model?  Sep 30. Slides from 2024. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups...">
+<meta name="twitter:description" content="5.1 Why model?  Sep 30. Slides. After class, read Hernán and Robins 2020 Chapter 11. To this point, we have not used any statistical models. Instead, we have taken means within subgroups then...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -67,6 +67,7 @@
 <li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
 <li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
 <li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -91,7 +92,7 @@
 <span class="header-section-number">5.1</span> Why model?<a class="anchor" aria-label="anchor" href="#why-model"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 30. <a href="assets/slides/WhyModel_fa25.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
+<p>Sep 30. <a href="assets/slides/WhyModel_fa25.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 11.</p>
 </blockquote>
 <p>To this point, we have not used any statistical models. Instead, we have</p>
 <ul>
@@ -105,7 +106,7 @@
 <span class="header-section-number">5.2</span> Lab: Project Discussion<a class="anchor" aria-label="anchor" href="#lab-project-discussion"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 1.</p>
+<p>Oct 1. We will go over <a href="assets/psets/project/project_part1.pdf"><strong>Part 1</strong></a> of the course project. To complete part 1, download the <a href="assets/psets/project/part1.Rmd"><strong>.Rmd</strong></a>, compile to a PDF and submit the PDF on Canvas.</p>
 </blockquote>
 </div>
 <div id="parametric-modeling" class="section level2" number="5.3">
@@ -353,7 +354,7 @@ graduate whose probability of completing college was similar</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
-<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
 <span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
 <span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
@@ -476,7 +477,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-09-29</p>
+    <p>Last built on 2025-09-30</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

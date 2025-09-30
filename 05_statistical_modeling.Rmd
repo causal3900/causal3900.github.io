@@ -2,7 +2,7 @@
 
 ## Why model?
 
-> Sep 30. [**Slides from 2024.**](assets/slides/WhyModel_fa25.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+> Sep 30. [**Slides.**](assets/slides/WhyModel_fa25.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
 
 To this point, we have not used any statistical models. Instead, we have
 
@@ -14,7 +14,7 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 
 ## Lab: Project Discussion
-> Oct 1.
+> Oct 1. We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
 
 
 ## Parametric Modeling

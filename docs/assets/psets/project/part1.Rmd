@@ -1,0 +1,62 @@
+---
+output: pdf_document
+---
+
+# Course Project: Part 1
+Compile to a PDF and submit the PDF on [Canvas](https://canvas.cornell.edu/courses/80503).
+
+Take a look at the [Part 1 details](assets/psets/project/project_part1.pdf) and fill out the Action Items listed out below.
+
+# Action Items
+
+## (7 pts) Describe your causal question in a way that someone who has not taken this class would understand. Why are you interested in this question? How could answering this question allow for better decision making? 
+
+**Answer.** Your answer here
+
+
+## (3 pts) What is the treatment? What is the outcome? Write out the potential outcomes using the notation we have used in class.If your treatment is a variable that can take many different values, you could consider making it binary by simplifying the treatment in some way. For instance, if the treatment is the number of hours spent studying each day, you could dichotomize the treatment in the following way
+
+$$A_i = \begin{cases}
+            0 & \text{ if Hours } \leq 2\\
+        1 & \text{ if Hours } > 2
+        \end{cases} $$
+    
+**Answer.** Your answer here
+
+
+## (5 pts) How does the fundamental problem of causal inference apply to your question?
+
+
+**Answer.** Your answer here
+
+
+## (10 pts) We want to make sure there's some data available which gives you a chance of answer your question of interest. List out the variable name for the treatment and outcome below
+
+
+**Answer.** 
+* Treatment variable name: Your answer here
+* Outcome variable name: Your answer here
+
+
+## (5 pts) List out 4-6 factors that are particularly relevant for your causal question. These might be variables which either
+
+* Cause (either directly or through other factors) both your treatment variable and your potential outcomes
+* Are caused by both the treatment and the outcome
+
+Make sure at least 3 factors are included in the Add Health Data.
+    
+**Answer.** Your answer here
+
+## (10 points) Draw a DAG that includes your treatment variable, outcome variable, and the factors you listed in the previous part. If you use letters for variables names, make sure you explain what the letter stands for.
+
+**Answer.** Your answer here
+
+
+## (5 points) In a few sentences, explain your DAG: tell us in words what is meant by each edge in your DAG.
+
+**Answer.** Your answer here
+
+## (5 points) Assuming your DAG is true, list one sufficient adjustment set to identify the causal effect of the treatment on the outcome. If a sufficient adjustment set does not exist, add additional variables to your DAG so that one does exist. 
+
+**Answer.** Your answer here
+

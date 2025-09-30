@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>7 Regression discontinuity | Causal Inference Course</title>
+<title>Discussion 6. Course Project- Part 1 | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="7.1 Introduction  Oct 29. Slides from 2024. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: Annotated Slides. In some settings,...">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 1, 2025  Announcements HW 3 due Wednesday (October 8) Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see Syllabus or...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
-<meta property="og:title" content="7 Regression discontinuity | Causal Inference Course">
+<meta property="og:title" content="Discussion 6. Course Project- Part 1 | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 Introduction  Oct 29. Slides from 2024. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: Annotated Slides. In some settings,...">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 1, 2025  Announcements HW 3 due Wednesday (October 8) Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see Syllabus or...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="7 Regression discontinuity | Causal Inference Course">
-<meta name="twitter:description" content="7.1 Introduction  Oct 29. Slides from 2024. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: Annotated Slides. In some settings,...">
+<meta name="twitter:title" content="Discussion 6. Course Project- Part 1 | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 1, 2025  Announcements HW 3 due Wednesday (October 8) Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see Syllabus or...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 <li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
 <li class="book-part">Identification without exchangeability</li>
 <li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
-<li><a class="active" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
 <li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
 <li class="book-part">Areas of active research</li>
@@ -67,7 +67,7 @@
 <li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
 <li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
 <li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
-<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="active" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -83,49 +83,60 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regression-discontinuity" class="section level1" number="7">
-<h1>
-<span class="header-section-number">7</span> Regression discontinuity<a class="anchor" aria-label="anchor" href="#regression-discontinuity"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-6.-course-project--part-1" class="section level1 unnumbered">
+<h1>Discussion 6. Course Project- Part 1<a class="anchor" aria-label="anchor" href="#discussion-6.-course-project--part-1"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introduction" class="section level2" number="7.1">
-<h2>
-<span class="header-section-number">7.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+<div id="stsciinfoilrst-3900-causal-inference-5" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-5"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p>Oct 29. <a href="assets/slides/rdd_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.1 and 20.3.4. Slides with annotations from lecture: <a href="assets/slides/rdd_intro_annotated.pdf"><strong>Annotated Slides.</strong></a></p>
-</blockquote>
-<p>In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs.</p>
+<div id="october-1-2025" class="section level4 unnumbered">
+<h4>October 1, 2025<a class="anchor" aria-label="anchor" href="#october-1-2025"><i class="fas fa-link"></i></a>
+</h4>
 </div>
-<div id="lab-regression-discontinuity---bandwidth-and-examples" class="section level2" number="7.2">
-<h2>
-<span class="header-section-number">7.2</span> Lab: Regression Discontinuity - Bandwidth and Examples<a class="anchor" aria-label="anchor" href="#lab-regression-discontinuity---bandwidth-and-examples"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Oct 30 <a href="assets/discussions/rdd_lab_slides.pdf"><strong>Slides from 2024.</strong></a>. Download today’s <a href="assets/discussions/rdd_lab.Rmd"><strong>.Rmd document here</strong></a>. After lab, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, section 20.2.1.</p>
-</blockquote>
-<p>We’ll discuss a bandwidth selection and triangular weighting. We’ll also apply regression discontinuity to a concrete example and give you a chance to try it out for yourself.</p>
+<div id="announcements-2" class="section level3 unnumbered">
+<h3>Announcements<a class="anchor" aria-label="anchor" href="#announcements-2"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>HW 3 due Wednesday (October 8)
+<ul>
+<li>Submit a PDF from RMarkdown via Canvas</li>
+</ul>
+</li>
+<li>Office Hours throughout the week (see Syllabus or website)
+<ul>
+<li>Filippo: Thursday 4-5pm in 321A CIS Building</li>
+<li>Shira: Monday 5-6 pm in 329A CIS Building<br>
+</li>
+<li>Sam: Tuesday 4-5pm, in 350 CIS Building</li>
+</ul>
+</li>
+</ul>
 </div>
-<div id="discussion" class="section level2" number="7.3">
-<h2>
-<span class="header-section-number">7.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion"><i class="fas fa-link"></i></a>
-</h2>
-<blockquote>
-<p>Oct 31. <a href="assets/slides/rdd_extensions.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.2.2. through 20.2.4. <a href="assets/data/fuzzy_example.R"><strong>R Code Example: Fuzzy RDD</strong></a></p>
-</blockquote>
-<p>We’ll continue our discussion of regression discontinuity designs by discussing fuzzy RDD and validation checks for RDD.</p>
+<div id="course-project" class="section level3 unnumbered">
+<h3>Course Project<a class="anchor" aria-label="anchor" href="#course-project"><i class="fas fa-link"></i></a>
+</h3>
+<p>Take a look at the <a href="assets/psets/project/project_part1.pdf">Part 1 details</a>.
+To complete part 1, download the <a href="assets/psets/project/part1.Rmd"><strong>.Rmd</strong></a>. Compile to a PDF and submit the PDF on Canvas.</p>
 
 </div>
 </div>
+</div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></div>
-<div class="next"><a href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></div>
+<div class="prev"><a href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#regression-discontinuity"><span class="header-section-number">7</span> Regression discontinuity</a></li>
-<li><a class="nav-link" href="#introduction"><span class="header-section-number">7.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#lab-regression-discontinuity---bandwidth-and-examples"><span class="header-section-number">7.2</span> Lab: Regression Discontinuity - Bandwidth and Examples</a></li>
-<li><a class="nav-link" href="#discussion"><span class="header-section-number">7.3</span> Discussion</a></li>
+<li><a class="nav-link" href="#discussion-6.-course-project--part-1">Discussion 6. Course Project- Part 1</a></li>
+<li>
+<a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-5">STSCI/INFO/ILRST 3900: Causal Inference</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#announcements-2">Announcements</a></li>
+<li><a class="nav-link" href="#course-project">Course Project</a></li>
+</ul>
+</li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
