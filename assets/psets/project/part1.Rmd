@@ -38,12 +38,12 @@ $$A_i = \begin{cases}
 * Outcome variable name: Your answer here
 
 
-## (5 pts) List out 4-6 factors that are particularly relevant for your causal question. These might be variables which either
+## (5 pts) List out 4-6 other variables that are particularly relevant for your causal question. These might be variables which either
 
 * Cause (either directly or through other factors) both your treatment variable and your potential outcomes
 * Are caused by both the treatment and the outcome
 
-Make sure at least 3 factors are included in the Add Health Data.
+Make sure at least 3 of those variables are included in the Add Health Data. List out the variable names for those  variables as they appear in the ADD Health data.
     
 **Answer.** Your answer here
 
