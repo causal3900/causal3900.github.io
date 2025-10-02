@@ -18,6 +18,8 @@ output: html_document
 
 
 ### Course Project {-}
+You can download the [**slides.**](assets/discussions/discussion6-part1.pdf) for this week's discussion.
+
 Take a look at the [Part 1 details](assets/psets/project/project_part1.pdf).
 To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd). Compile to a PDF and submit the PDF on Canvas.
 

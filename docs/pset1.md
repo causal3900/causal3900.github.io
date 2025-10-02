@@ -79,8 +79,13 @@ sessionInfo()
 
 ```
 ## R version 4.5.1 (2025-06-13)
+<<<<<<< HEAD
 ## Platform: x86_64-pc-linux-gnu
 ## Running under: Ubuntu 22.04.5 LTS
+=======
+## Platform: aarch64-apple-darwin20
+## Running under: macOS Tahoe 26.0.1
+>>>>>>> fb331dfd5f8cf95b8d538da999e32fa30273749e
 ## 
 ## Matrix products: default
 ## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 

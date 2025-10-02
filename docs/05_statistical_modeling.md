@@ -14,9 +14,13 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 
 ## Lab: Project Discussion
+<<<<<<< HEAD
 > Oct 1. [**Slides.**](assets/discussions/part1_discussion.pdf). We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project and brainstorm potential ideas for the project. 
 
 To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
+=======
+> Oct 1. [**Slides.**](assets/discussions/discussion6-part1.pdf) We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
+>>>>>>> fb331dfd5f8cf95b8d538da999e32fa30273749e
 
 
 ## Parametric Modeling
