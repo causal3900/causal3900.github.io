@@ -14,18 +14,13 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 
 ## Lab: Project Discussion
-<<<<<<< HEAD
-> Oct 1. [**Slides.**](assets/discussions/part1_discussion.pdf). We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project and brainstorm potential ideas for the project. 
 
-To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
-=======
-> Oct 1. [**Slides.**](assets/discussions/discussion6-part1.pdf) We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
->>>>>>> fb331dfd5f8cf95b8d538da999e32fa30273749e
+> Oct 1. [**Slides.**](assets/discussions/discussion6-part1.pdf) We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project and brainstorm ideas. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
 
 
 ## Parametric Modeling
 
-> Oct 2. [**Slides from 2024.**](assets/slides/5-3_ipw.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
+> Oct 2. [**Slides.**](assets/slides/5-3_ipw_fa25.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 
 Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss how to model the probability of treatment, also known as the propensity score.
 
