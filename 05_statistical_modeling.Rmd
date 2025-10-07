@@ -18,16 +18,20 @@ Today we will discuss how this strategy breaks down when there are many confound
 > Oct 1. [**Slides.**](assets/discussions/discussion6-part1.pdf) We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project and brainstorm ideas. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
 
 
-## Parametric Modeling
+## Parametric Modeling: outcome modeling
 
-> Oct 2. [**Slides.**](assets/slides/5-3_ipw_fa25.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
+> Oct 2. [**Slides.**](assets/slides/5-3_outcomeModeling.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 
-Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss how to model the probability of treatment, also known as the propensity score.
+Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss the bias vs. variance trade-off and how that applies to causal estimands.
 
+## Parametric modeling: Propensity model
+
+> Oct 6. [**Slides.**](assets/discussions/5-4_ipw.pdf)
+
+We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.''
 
 ## Lab: Parametric g-formula
-
-> Oct 9. [**Slides from 2024.**](assets/discussions/discussion6-gformula-.pdf)
+> Oct 7. [**Slides from 2024.**](assets/discussions/discussion6-gformula-.pdf)
 
 Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
 
@@ -35,12 +39,10 @@ Before discussion, make sure to download the data we'll be using. See the [Ed Di
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
-Solutions to the lab exercise are [here](https://causal3900.github.io/solutions-parametric-g-formula-lab.html).
-
 
 ## Matching
 
-> Oct 10. [**Slides from 2024.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 8. [**Slides from 2024.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
 
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 

@@ -20,7 +20,8 @@ sufficient-adjustment-sets
 statistical-modeling
 why-model
 lab-project-discussion
-parametric-modeling
+parametric-modeling-outcome-modeling
+parametric-modeling-propensity-model
 lab-parametric-g-formula
 matching
 lab-matching-in-r

@@ -109,39 +109,47 @@
 <p>Oct 1. <a href="assets/discussions/discussion6-part1.pdf"><strong>Slides.</strong></a> We will go over <a href="assets/psets/project/project_part1.pdf"><strong>Part 1</strong></a> of the course project and brainstorm ideas. To complete part 1, download the <a href="assets/psets/project/part1.Rmd"><strong>.Rmd</strong></a>, compile to a PDF and submit the PDF on Canvas.</p>
 </blockquote>
 </div>
-<div id="parametric-modeling" class="section level2" number="5.3">
+<div id="parametric-modeling-outcome-modeling" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">5.3</span> Parametric Modeling<a class="anchor" aria-label="anchor" href="#parametric-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Parametric Modeling: outcome modeling<a class="anchor" aria-label="anchor" href="#parametric-modeling-outcome-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 2. <a href="assets/slides/5-3_ipw_fa25.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
+<p>Oct 2. <a href="assets/slides/5-3_outcomeModeling.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
 </blockquote>
-<p>Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss how to model the probability of treatment, also known as the propensity score.</p>
+<p>Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss the bias vs. variance trade-off and how that applies to causal estimands.</p>
 </div>
-<div id="lab-parametric-g-formula" class="section level2" number="5.4">
+<div id="parametric-modeling-propensity-model" class="section level2" number="5.4">
 <h2>
-<span class="header-section-number">5.4</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.4</span> Parametric modeling: Propensity model<a class="anchor" aria-label="anchor" href="#parametric-modeling-propensity-model"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 9. <a href="assets/discussions/discussion6-gformula-.pdf"><strong>Slides from 2024.</strong></a></p>
+<p>Oct 6. <a href="assets/discussions/5-4_ipw.pdf"><strong>Slides.</strong></a></p>
+</blockquote>
+<p>We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.’’</p>
+</div>
+<div id="lab-parametric-g-formula" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
+</h2>
+<blockquote>
+<p>Oct 7. <a href="assets/discussions/discussion6-gformula-.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>Download the corresponding R Markdown file <a href="assets/discussions/discussion6.Rmd"><strong>here</strong></a>.</p>
 <p>Before discussion, make sure to download the data we’ll be using. See the <a href="https://edstem.org/us/courses/62970/discussion/5445307">Ed Discussion post</a> for more detail.</p>
 <p>After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 13 and 15.1.</p>
-<p>Solutions to the lab exercise are <a href="https://causal3900.github.io/solutions-parametric-g-formula-lab.html">here</a>.</p>
 </div>
-<div id="matching" class="section level2" number="5.5">
+<div id="matching" class="section level2" number="5.6">
 <h2>
-<span class="header-section-number">5.5</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.6</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 10. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
+<p>Oct 8. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
-<div id="lab-matching-in-r" class="section level2" number="5.6">
+<div id="lab-matching-in-r" class="section level2" number="5.7">
 <h2>
-<span class="header-section-number">5.6</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.7</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 16. <a href="assets/discussions/matching_lab_slides.pdf"><strong>Slides from 2024.</strong></a></p>
@@ -150,18 +158,18 @@
 <p>Download the <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a> file for today’s lab; view the knit file <a href="assets/discussions/matching_lab.html"><strong>here</strong></a>. <em>Submit your work on Canvas before you leave discussion!</em> <a href="assets/discussions/matching_lab_solutions.html"><strong>Solutions</strong></a></p>
 <p>If you finish the exact matching exercise early, work through this <a href="assets/matching_examples.html">R Markdown Notebook</a> with further examples (download the <a href="assets/matching_examples.Rmd">.Rmd file here</a>). There is also a video walking through the examples on canvas.</p>
 </div>
-<div id="discussion-of-matching" class="section level2" number="5.7">
+<div id="discussion-of-matching" class="section level2" number="5.8">
 <h2>
-<span class="header-section-number">5.7</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.8</span> Discussion of matching<a class="anchor" aria-label="anchor" href="#discussion-of-matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 17 <a href="assets/slides/5-5_matching_cont.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>We’ll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We’ll also discuss combining regression with matching methods to estimate causal effects.</p>
 </div>
-<div id="worked-example-of-statistical-modeling" class="section level2" number="5.8">
+<div id="worked-example-of-statistical-modeling" class="section level2" number="5.9">
 <h2>
-<span class="header-section-number">5.8</span> Worked example of statistical modeling<a class="anchor" aria-label="anchor" href="#worked-example-of-statistical-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.9</span> Worked example of statistical modeling<a class="anchor" aria-label="anchor" href="#worked-example-of-statistical-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <p>This section presents math and code for a worked example of statistical
 modeling, including</p>
@@ -181,9 +189,9 @@ probability that someone lives with a high-earning partner. A college
 degree thus affects household incomes not only through its effect on
 individual earnings but also through its effect on how individuals pool
 into households.</p>
-<div id="data-access" class="section level3" number="5.8.1">
+<div id="data-access" class="section level3" number="5.9.1">
 <h3>
-<span class="header-section-number">5.8.1</span> Data access<a class="anchor" aria-label="anchor" href="#data-access"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.9.1</span> Data access<a class="anchor" aria-label="anchor" href="#data-access"><i class="fas fa-link"></i></a>
 </h3>
 <p>We have prepared data for you to study this question. You will need to
 download these data directly from the data distributor for the <a href="https://www.bls.gov/nls/nlsy97.htm">National
@@ -231,9 +239,9 @@ the wide use of the data and is useful when securing funding for
 future surveys!</li>
 </ol>
 </div>
-<div id="worked-example-outcome-modeling" class="section level3" number="5.8.2">
+<div id="worked-example-outcome-modeling" class="section level3" number="5.9.2">
 <h3>
-<span class="header-section-number">5.8.2</span> Worked example: Outcome modeling<a class="anchor" aria-label="anchor" href="#worked-example-outcome-modeling"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.9.2</span> Worked example: Outcome modeling<a class="anchor" aria-label="anchor" href="#worked-example-outcome-modeling"><i class="fas fa-link"></i></a>
 </h3>
 <p>Outcome modeling is based on the following identification result, which
 translates a causal quantity to a statistical estimand that does not
@@ -334,9 +342,9 @@ to no college degree themselves</li>
 having a spouse or partner with a college degree</li>
 </ol>
 </div>
-<div id="worked-example-matching" class="section level3" number="5.8.3">
+<div id="worked-example-matching" class="section level3" number="5.9.3">
 <h3>
-<span class="header-section-number">5.8.3</span> Worked example: Matching<a class="anchor" aria-label="anchor" href="#worked-example-matching"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.9.3</span> Worked example: Matching<a class="anchor" aria-label="anchor" href="#worked-example-matching"><i class="fas fa-link"></i></a>
 </h3>
 <p>We could also estimate by matching. Matching can be interpreted as an
 outcome modeling strategy where the conditional mean outcome
@@ -446,16 +454,17 @@ points.</p>
 <li><a class="nav-link" href="#statistical-modeling"><span class="header-section-number">5</span> Statistical modeling</a></li>
 <li><a class="nav-link" href="#why-model"><span class="header-section-number">5.1</span> Why model?</a></li>
 <li><a class="nav-link" href="#lab-project-discussion"><span class="header-section-number">5.2</span> Lab: Project Discussion</a></li>
-<li><a class="nav-link" href="#parametric-modeling"><span class="header-section-number">5.3</span> Parametric Modeling</a></li>
-<li><a class="nav-link" href="#lab-parametric-g-formula"><span class="header-section-number">5.4</span> Lab: Parametric g-formula</a></li>
-<li><a class="nav-link" href="#matching"><span class="header-section-number">5.5</span> Matching</a></li>
-<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.6</span> Lab: Matching in R</a></li>
-<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.7</span> Discussion of matching</a></li>
+<li><a class="nav-link" href="#parametric-modeling-outcome-modeling"><span class="header-section-number">5.3</span> Parametric Modeling: outcome modeling</a></li>
+<li><a class="nav-link" href="#parametric-modeling-propensity-model"><span class="header-section-number">5.4</span> Parametric modeling: Propensity model</a></li>
+<li><a class="nav-link" href="#lab-parametric-g-formula"><span class="header-section-number">5.5</span> Lab: Parametric g-formula</a></li>
+<li><a class="nav-link" href="#matching"><span class="header-section-number">5.6</span> Matching</a></li>
+<li><a class="nav-link" href="#lab-matching-in-r"><span class="header-section-number">5.7</span> Lab: Matching in R</a></li>
+<li><a class="nav-link" href="#discussion-of-matching"><span class="header-section-number">5.8</span> Discussion of matching</a></li>
 <li>
-<a class="nav-link" href="#worked-example-of-statistical-modeling"><span class="header-section-number">5.8</span> Worked example of statistical modeling</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-access"><span class="header-section-number">5.8.1</span> Data access</a></li>
-<li><a class="nav-link" href="#worked-example-outcome-modeling"><span class="header-section-number">5.8.2</span> Worked example: Outcome modeling</a></li>
-<li><a class="nav-link" href="#worked-example-matching"><span class="header-section-number">5.8.3</span> Worked example: Matching</a></li>
+<a class="nav-link" href="#worked-example-of-statistical-modeling"><span class="header-section-number">5.9</span> Worked example of statistical modeling</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-access"><span class="header-section-number">5.9.1</span> Data access</a></li>
+<li><a class="nav-link" href="#worked-example-outcome-modeling"><span class="header-section-number">5.9.2</span> Worked example: Outcome modeling</a></li>
+<li><a class="nav-link" href="#worked-example-matching"><span class="header-section-number">5.9.3</span> Worked example: Matching</a></li>
 </ul>
 </li>
 </ul>
@@ -477,7 +486,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-10-01</p>
+    <p>Last built on 2025-10-06</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
