@@ -26,7 +26,7 @@ Today will introduce how to estimate causal effects by directly modeling the out
 
 ## Parametric modeling: Propensity model
 
-> Oct 6. [**Slides.**](assets/discussions/5-4_ipw.pdf)
+> Oct 6. [**Slides.**](assets/slides/5-4_ipw.pdf)
 
 We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.''
 
