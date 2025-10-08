@@ -34,8 +34,7 @@ We will review concepts from Oct 2 (since the projector was broken). In addition
 
 ## Lab: Parametric g-formula
 
-> Oct 8. [**Slides.**](assets/discussions/discussion7-gformula-.pdf)
-Download the corresponding R Markdown file [**here**](assets/discussions/discussion7.Rmd).
+> Oct 8. [**Discussion**](discussion-7.-parametric-g-formula) and [**discussion slides**](assets/discussions/discussion7-gformula-.pdf). Download the corresponding R Markdown file [**here**](assets/discussions/discussion7.Rmd).
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
