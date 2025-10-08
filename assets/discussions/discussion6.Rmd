@@ -1,7 +1,7 @@
 ---
 title: "Discussion6-gformula"
-author: "Mayleen and Daniel"
-date: "2023-09-26"
+author: ""
+date: "2025-10-8"
 output: pdf_document
 ---
 
@@ -149,8 +149,8 @@ Predict and summarize to estimate the average effect. When using `predict()`, se
 \footnotesize
 
 ```{r}
-potential_outcomes_under_control <- predict(object = ..., newdata = ...)
-potential_outcomes_under_treatment <- predict(object = ..., newdata = ...)
+potential_outcomes_under_control <- predict(object = ..., newdata = ..., type = "response")
+potential_outcomes_under_treatment <- predict(object = ..., newdata = ..., type = "response")
 
 conditional_average_outcomes <- d %>%
   mutate(yhat1 = ...,

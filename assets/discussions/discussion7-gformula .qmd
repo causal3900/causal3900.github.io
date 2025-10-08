@@ -7,6 +7,8 @@ date-format: DD MMM YYYY
 header-includes:
   \usecolortheme{dove}
   \setbeamertemplate{footline}[page number]
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = F}
@@ -118,7 +120,55 @@ conditional_average_effects %>%
 3.  Take the difference for each unit
 4.  Average over the units
 
-## Extension 1: Conditional average effects
+## Extension 1: IPW Estimator
+We can also estimate the causal effect using an IPW estimator
+$$ \pi_i = P(A_i = 1 \mid L = \ell_i) $$
+
+-   read about using `glm()` to estimate logistic regression
+
+-   when using `predict()`, search to find out how to predict probabilities
+
+```{r}
+# turn outcome into 0/1
+d <- d %>% 
+  mutate(a_binary = a == "college")
+
+# Estimate propensity score using logistic regression
+propensity_model <- glm(a_binary ~ sex + race +
+                          mom_educ + dad_educ +
+                          log_parent_income +
+                          log_parent_wealth +
+                          test_percentile,
+                        family = binomial, data = d)
+```
+
+## IPW: Estimate the causal effect
+Use the estimated propensty scores to calculate the ACE
+
+$$\hat E(Y^1) = \frac{1}{n} \sum_i \frac{A_i Y_i}{\hat \pi_i} $$
+$$\hat E(Y^0) = \frac{1}{n} \sum_i \frac{(1-A_i) Y_i}{1-\hat \pi_i} $$
+
+```{r}
+# Add propensity score
+d <- d %>% 
+  mutate(ps = predict(propensity_model,
+                      newdata = d, type = "response"))
+
+## 
+d <- d %>% 
+  mutate(weightedMean = a_binary*y / ps - (1-a_binary)*y /(1- ps))
+
+
+```
+
+## IPW: Estimate the causal effect
+```{r}
+  d %>% select(weightedMean) %>%
+  summarize_all(.funs = mean)
+```
+
+
+## Extension 2: Conditional average effects
 
 Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
 
@@ -139,12 +189,12 @@ conditional_average_effects %>%
 
 ## Extension 2: Logistic regression
 
+Since out outcome is binary, it's more appropriate to use logistic regression.
 Repeat the steps above with logistic regression
 
 $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
 
--   read about using `glm()` to estimate logistic regression
--   when using `predict()`, search to find out how to predict probabilities
+
 
 ## Extension: Logistic regression
 

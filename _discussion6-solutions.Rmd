@@ -6,8 +6,43 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
 ```
 
-# Solutions: Parametric g-formula Lab {-}
+# Lab with simulated data {-}
+We will use simulated data to examine the performance of different estimators. The nice thing about using simulated data is that we know what the true causal effect should be so we can accurately assess how well each estimator is doing. We will have a toy example about the causal effect of going to college on someone's income at the age of 35.
 
+In the simulated data, we will initially consider 
+
+* familySES: initially 0 or 1 to indicate high or low
+* college: The treatment variable 0 or 1
+* income: The outcome variable in dollars
+
+In this example familySES will be a confounder and affect both college and income.
+
+## Simple model {-}
+We can generate the data using a simple model below. familySES is randomly selected to be 0/1, college depends on familySES, and income depends on both familySES as well as college.
+```{r}
+library(tidyverse)
+
+# number of samples
+n <- 500
+
+# familySES is either 0 or 1 (e.g., low or high)
+familySES <- rbinom(n, 1, prob = 1/2)
+# college is either 0 or 1 (i.e., no or yes)
+college <- rbinom(n, 1, prob = plogis(-1 +2 * familySES))
+
+# mean of income is a function of familySES and college
+income <- rnorm(n, 45000 + 10000 * familySES + 20000 * college, sd = 2000)
+
+# put the data into one data frame
+d <- data.frame(familySES, college, income)
+```
+
+
+### Question
+* In the true model, the outcome really is a linear model of familySES and college. Looking into the code, what is the causal effect of college in the simulated data?
+
+
+# Parametric g-formula outline {-}
 - The goal: estimate the average treatment effect (ATE) $E(Y^{a=1}) - E(Y^{a=0})$.
 - If I knew both potential outcomes for everyone in the population, I could just take the averages.
 - The fundamental problem of causal inference: I can only observe one potential outcome for each person. 
@@ -15,38 +50,26 @@ knitr::opts_chunk$set(echo = TRUE, eval=TRUE)
   - For a person who is treated, I know their outcome under treatment. I use a model to predict what their outcome would be if they had not been treated.
 - I can predict the *other* potential outcome for everyone in my dataset using a model! 
 
-## Download the Data {-}
 
-Follow the steps on Ed Discussion to download the data!
-```{r}
-library(tidyverse)
-d <- readRDS("assets/discussions/d.RDS")
-```
-
-After you download the data and save it into the variable name `d`, go up top to where it says `knitr::opts_chunk$set(echo = TRUE, eval=F)` at the top of the R Markdown file and change `eval` to true, i.e. set `eval=T` so that when you knit the file, your code runs.
 
 ## Step 0: Learn a model to predict $Y$ given $\{A,\vec{L}\}$ {-}
 You can learn more about the `lm` function [**here**](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm).
-Note that this function takes several arguments. The first argument is a formula, specifically a symbolic description of the model to be fitted. 
-
-First, we create the formula `f` which represents the outcome `y` as a function of our treatment `a` and all our confounders. Then, using the `lm()` function, we fit a model with linear regression.
+Note that this function takes several arguments. The first argument is a formula, specifically a symbolic description of the model to be fitted. The second argument is the data.
 
 ```{r}
-f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income + log_parent_wealth + test_percentile)
-
 # Estimate the model with OLS
-fit <- lm(formula = f, data = d)
+fit <- lm(formula = income~ familySES + college, data = d)
 ```
 
 ## Step 1: Create Two Copies of the Original Data {-}
 
-Next, we are going to create two copies of our original data. The first copy will set all the treatment values `= "no_college"` and the second copy will set all the treatment values `= "college"`. 
+Next, we are going to create two copies of our original data. The first copy will set all the treatment values `college=0` and the second copy will set all the treatment values `college=1`. 
 ```{r}
 d_all_control <- d %>%
-  mutate(a = "no_college")
+  mutate(college = 0)
 
 d_all_treated <- d %>%
-  mutate(a = "college")
+  mutate(college = 1)
 ```
 
 
@@ -58,13 +81,13 @@ To see more details on the `predict` function, see the
 
 ```{r}
 # Estimate potential outcomes using our model
-potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
-potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
+est_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
+est_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
 
 # append the estimated potential outcomes to our original data.
 conditional_average_outcomes <- d %>%
-  mutate(yhat0 = potential_outcomes_under_control,
-         yhat1 = potential_outcomes_under_treatment)
+  mutate(yhat0 = est_outcomes_under_control,
+         yhat1 = est_outcomes_under_treatment)
 ```
 
 ## Step 3: Estimate the causal effect {-}
@@ -88,61 +111,104 @@ conditional_average_outcomes %>%
 summarize(ate = mean(yhat1 - yhat0))
 ```
 
-## Extension 1: Conditional average effects {-}
+## Propensity score modeling {-}
+We can also estimate the causal effect by modeling the propensity of treatment
+\[\pi_i = Pr(A = 1 \mid L = \ell_i)\]
 
-Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
-
-1.  those with `sex == Male`
-2.  those with `sex == Female`
-
-Specifically this means, what is the average effect among those for whom `sex == Male`?
-Among those for whom `sex == Female`? __HINT__: this should only be a slight modification
-of your code above that takes the average for the whole data.frame.
-
+  
 ```{r}
-conditional_average_effects %>%
-  select(yhat1, yhat0, effect, sex) %>%
-  group_by(sex) %>%
-  summarise(across(.fns = mean))
+# Same model as before
+# number of samples
+n <- 500
+# familySES is either 0 or 1 (e.g., low or high)
+familySES <- sample(c(0:1), n, replace = T)
+# college is either 0 or 1 (i.e., no or yes)
+college <- rbinom(n, 1, prob = plogis(-1 +2 * familySES))
+income <- rnorm(n, 45000 + 10000 * familySES + 20000 * college, sd = 2000)
+
+
+d <- data.frame(familySES, college, income)
+d_all_treated <- d %>%
+  mutate(college = 1)
+
+# Use logistic regression to estimate the probability of treatment (college) given familySES
+fit <- glm(formula = college~familySES, family = binomial, data = d)
+
+# get the probability that A = 1
+propensityScores <- predict(object = fit, newdata = d_all_treated, type = "response")
+
+# IPW estimator of E(Y^1)
+mean(college * income / propensityScores)
+# IPW estimator E(Y^0)
+mean((1-college) * income / (1-propensityScores))
+# IPW estimator ACE
+mean(college * income / propensityScores) - mean((1-college) * income / (1-propensityScores))
+
 ```
 
-## Extension 2: Logistic regression {-}
+## More complex model
 
-In groups: Repeat the steps above with logistic regression
-
-$$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
-
--   This should be a simple extension of all the code above that uses `lm()`.
--   Read about using `glm()` to estimate logistic regression
--   when using `predict()`, search to find out how to predict probabilities
-
-## Extension: Logistic regression {-}
-
-Fit a model
-
+To make things a bit more complex, let's make SES a continuous variable. The causal effect is still the same, but the conditional mean of income given familySES and college is no longer linear. 
 ```{r}
-f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile)
+# number of samples
+n <- 5000
 
-fit <- glm(formula = f, family = binomial, data = d)
+# familySES is now continuous
+familySES <- rgamma(n, 1, 1)
+# college is either 0 or 1 (i.e., no or yes)
+college <- rbinom(n, 1, prob = plogis(-1 +2 * familySES))
+
+# mean of income is a function of familySES and college
+income <- rnorm(n, 45000 + 10000 * exp(familySES + 2) + 20000*college, sd = 2000)
+
+
+# put the data into one data frame
+d <- data.frame(familySES, college, income)
 ```
 
-## Extension: Logistic regression {-}
-
-Predict and summarize to estimate the average effect
-
-\footnotesize
-
+We can repeat our analysis with a linear model and see how well our estimate matches the true causal effect
 ```{r}
-potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control, type = "response")
-potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated, type = "response")
+# Estimate the model with OLS
+fit <- lm(formula = income~ familySES + college, data = d)
 
+plot(income, predict(fit, newdata = d))
+
+d_all_control <- d %>%
+  mutate(college = 0)
+
+d_all_treated <- d %>%
+  mutate(college = 1)
+
+# Estimate potential outcomes using our model
+est_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
+est_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treated)
+
+# append the estimated potential outcomes to our original data.
 conditional_average_outcomes <- d %>%
-  mutate(yhat1 = potential_outcomes_under_treatment,
-         yhat0 = potential_outcomes_under_control,
-         effect = yhat1 - yhat0) %>%
-  select(yhat1, yhat0, effect) %>%
-  summarise(across(.fns = mean))
+  mutate(yhat0 = est_outcomes_under_control,
+         yhat1 = est_outcomes_under_treatment)
 
-conditional_average_outcomes
+conditional_average_effects <- conditional_average_outcomes %>%
+  mutate(effect = yhat1 - yhat0)
+
+conditional_average_effects %>%
+  select(yhat1, yhat0, effect) %>%
+  summarise_all(.funs = mean)
+```
+
+```{r}
+
+# Use logistic regression to estimate the probability of treatment (college) given familySES
+fit <- glm(formula = college~familySES, family = binomial, data = d)
+
+# get the probability that A = 1
+propensityScores <- predict(object = fit, newdata = d_all_treated, type = "response")
+
+# IPW estimator of E(Y^1)
+mean(college * income / propensityScores)
+# IPW estimator E(Y^0)
+mean((1-college) * income / (1-propensityScores))
+# IPW estimator ACE
+mean(college * income / propensityScores) - mean((1-college) * income / (1-propensityScores))
+
 ```
