@@ -156,7 +156,8 @@ d <- d %>%
 
 ## 
 d <- d %>% 
-  mutate(weightedMean = a_binary*y / ps - (1-a_binary)*y /(1- ps))
+  mutate(weightedMean = a_binary*y / ps -
+           (1-a_binary)*y /(1- ps))
 
 
 ```
