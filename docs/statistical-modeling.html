@@ -68,6 +68,7 @@
 <li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
 <li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
 <li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -114,8 +115,9 @@
 <span class="header-section-number">5.3</span> Parametric Modeling: outcome modeling<a class="anchor" aria-label="anchor" href="#parametric-modeling-outcome-modeling"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 2. <a href="assets/slides/5-3_outcomeModeling.pdf"><strong>Slides.</strong></a> Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
+<p>Oct 2. <a href="assets/slides/5-3_outcomeModeling.pdf"><strong>Slides.</strong></a></p>
 </blockquote>
+<p>Reading: After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 12.1–12.5.</p>
 <p>Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss the bias vs. variance trade-off and how that applies to causal estimands.</p>
 </div>
 <div id="parametric-modeling-propensity-model" class="section level2" number="5.4">
@@ -123,7 +125,7 @@
 <span class="header-section-number">5.4</span> Parametric modeling: Propensity model<a class="anchor" aria-label="anchor" href="#parametric-modeling-propensity-model"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 6. <a href="assets/slides/5-4_ipw.pdf"><strong>Slides.</strong></a></p>
+<p>Oct 7. <a href="assets/slides/5-4_ipw.pdf"><strong>Slides.</strong></a></p>
 </blockquote>
 <p>We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.’’</p>
 </div>
@@ -132,10 +134,9 @@
 <span class="header-section-number">5.5</span> Lab: Parametric g-formula<a class="anchor" aria-label="anchor" href="#lab-parametric-g-formula"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 7. <a href="assets/discussions/discussion6-gformula-.pdf"><strong>Slides from 2024.</strong></a></p>
+<p>Oct 8. <a href="assets/discussions/discussion7-gformula-.pdf"><strong>Slides.</strong></a>
+Download the corresponding R Markdown file <a href="assets/discussions/discussion7.Rmd"><strong>here</strong></a>.</p>
 </blockquote>
-<p>Download the corresponding R Markdown file <a href="assets/discussions/discussion6.Rmd"><strong>here</strong></a>.</p>
-<p>Before discussion, make sure to download the data we’ll be using. See the <a href="https://edstem.org/us/courses/62970/discussion/5445307">Ed Discussion post</a> for more detail.</p>
 <p>After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 13 and 15.1.</p>
 </div>
 <div id="matching" class="section level2" number="5.6">
@@ -143,7 +144,7 @@
 <span class="header-section-number">5.6</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 8. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
+<p>Oct 9. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
@@ -362,7 +363,7 @@ graduate whose probability of completing college was similar</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
-<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
 <span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
 <span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
@@ -486,7 +487,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-10-07</p>
+    <p>Last built on 2025-10-08</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

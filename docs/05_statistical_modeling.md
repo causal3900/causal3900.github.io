@@ -20,29 +20,29 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 ## Parametric Modeling: outcome modeling
 
-> Oct 2. [**Slides.**](assets/slides/5-3_outcomeModeling.pdf) Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
+> Oct 2. [**Slides.**](assets/slides/5-3_outcomeModeling.pdf)
+
+Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 
 Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss the bias vs. variance trade-off and how that applies to causal estimands.
 
 ## Parametric modeling: Propensity model
 
-> Oct 6. [**Slides.**](assets/slides/5-4_ipw.pdf)
+> Oct 7. [**Slides.**](assets/slides/5-4_ipw.pdf)
 
 We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.''
 
 ## Lab: Parametric g-formula
-> Oct 7. [**Slides from 2024.**](assets/discussions/discussion6-gformula-.pdf)
 
-Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
-
-Before discussion, make sure to download the data we'll be using. See the [Ed Discussion post](https://edstem.org/us/courses/62970/discussion/5445307) for more detail. 
+> Oct 8. [**Slides.**](assets/discussions/discussion7-gformula-.pdf)
+Download the corresponding R Markdown file [**here**](assets/discussions/discussion7.Rmd).
 
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
 
 
 ## Matching
 
-> Oct 8. [**Slides from 2024.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 9. [**Slides from 2024.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
 
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 

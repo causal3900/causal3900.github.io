@@ -1,7 +1,7 @@
 ---
 title: "Discussion. Parametric g-formula: Outcome modeling"
-author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2024 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
-date: 09 Oct 2024
+author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2025 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
+date: 08 Oct 2025
 format: beamer
 date-format: DD MMM YYYY
 header-includes:
@@ -14,31 +14,6 @@ knitr::opts_chunk$set(echo = T)
 ```
 
 
-## Agenda
-
-- __Reminders and Announcements__
-- __In class assignment__: Parametric estimation (g-formula)
-- __Homework Check-in and Questions__
-
-
-## Reminders and Announcements
-\vspace{0.5em}
-- HW 3 due Friday (Oct 11) by 11:59pm
-    - Submit a PDF from RMarkdown via Canvas
-\vspace{0.5em}
-- Task 2 due Thursday (Oct 17) by 11:59pm
-\vspace{0.5em}
-- Office hours
-    - Filippo: \break Monday 11am-12pm in Comstock 1187 \break  
-              Thursday 11am-12pm in Comstock 1187
-    - Shira: \break Tuesday 3-4pm in  in Comstock 1187 
-\vspace{0.5em}
-- Check Ed for HW questions!
-
-
-## Setup
-
-Follow the instructions on Ed to download the data!
 
 ```{r, include = F, eval = T}
 library(tidyverse)
@@ -150,7 +125,6 @@ Modify the procedure above to estimate the average effect in subgroups defined b
 1.  those with `sex == Male`
 2.  those with `sex == Female`
 
-If you finish, choose a subgroup of interest to you and summarize.
 
 . . .
 
@@ -165,7 +139,7 @@ conditional_average_effects %>%
 
 ## Extension 2: Logistic regression
 
-In groups: Repeat the steps above with logistic regression
+Repeat the steps above with logistic regression
 
 $$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
 

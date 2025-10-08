@@ -1,0 +1,159 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=F)
+```
+
+# Discussion: Parametric g-formula
+
+## Download the Data
+
+Follow the steps on the course website to download the data!
+
+```{r}
+library(tidyverse)
+d <- readRDS("d.RDS")
+```
+
+After you download the data and save it into the variable name `d`, go up top to where it says `knitr::opts_chunk$set(echo = TRUE, eval=F)` at the top of the R Markdown file and change `eval` to true, i.e. set `eval=T` so that when you knit the file, your code runs.
+
+## Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+For this problem, our fitted model is going into the variable `fit` and we are using the `lm` function.
+
+YOUR TASK: Pass two arguments to `lm` below that fit a regression model using our data. Click [**here**](https://www.statology.org/lm-function-in-r/) to learn how to use the `lm` function. 
+
+```{r}
+# The following formula represents Y as a function of our treatment (A) and all our confounders
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
+
+# Estimate the model with OLS
+fit <- lm(...)
+```
+
+## Predict conditional average potential outcomes for every unit
+
+Next, we are going to create two copies of our original data and use [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html) to change each copy slightly. The first copy
+will be stored in the variable `d_all_control` and has all the treatment values equal to `"no_college"`. The second copy will be stored in the variable `d_all_treated` and will set all the treatment values equal to `"college"`. Note that the column we are changing here corresponds to `a` for treatment.
+
+YOUR TASK: Pass an argument to the first `mutate()` so that `d_all_control` has all of column `a` *equal to* `"no_college"`. Then, pass an argument to the second `mutate()` so that `d_all_control` has all of column `a` *equal to* `"college"`.
+
+```{r}
+d_all_control <- d %>%
+  mutate(...)
+
+glimpse(d_all_control)
+
+d_all_treated <- d %>%
+  mutate(...)
+
+glimpse(d_all_treated)
+```
+
+Next we will use our linear regression that we estimated above to predict both potential
+outcomes for each individual (i.e. $Y_i^{a=0}$ and $Y_i^{a=1}$) using the two data.frames that we just created. We
+will then append the estimated potential outcomes to our original data.
+
+ To see how to use `predict` alongside `lm` for this problem, refer to [**this link**](https://www.statology.org/r-lm-predict/#:~:text=The%20lm()%20function%20in,value%20of%20a%20new%20observation.&text=where%3A,using%20the%20glm()%20function). To see details on the `predict` function in general, see the 
+[**documentation here**](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/predict).
+
+YOUR TASK: Determine what to set `object` and `newdata` equal to inside the `predict()` function for the two potential outcomes. Then, determine what to set `yhat1` and `yhat0` to so that `conditional_average_outcomes` contains a column `yhat0` with the predicted values for each person in our data set under the control (no college $a=0$) and a column `yhat1` with the predicted values for each person in our data set under the treatment (college $a=1$).
+
+```{r}
+# Estimate potential outcomes using our model, i.e. predict outcome for each person under control/treatment
+potential_outcomes_under_control <- predict(object = ..., newdata = ...)
+potential_outcomes_under_treatment <- predict(object = ..., newdata = ...)
+
+conditional_average_outcomes <- d %>%
+  mutate(yhat0 = ...,
+         yhat1 = ...)
+
+glimpse(conditional_average_outcomes)
+```
+
+## Difference to estimate conditional average effects
+
+Now, we will estimate the causal effect for each individual by taking the
+difference between their potential outcomes, i.e. $Y_i^{a=1} - Y_i^{a=0}$.
+
+YOUR TASK: Fill in what goes after `effect =` so that the data frame `conditional_average_effects` contains a column called `effect` with the causal effect estimated for each individual. Recall that we stored our predicted values of $Y_i^{a=1}$ into the data.frame as column `yhat1` and our predicted values of $Y_i^{a=0}$ as column `yhat0`.
+```{r}
+conditional_average_effects <- conditional_average_outcomes %>%
+  mutate(effect = ...)
+```
+
+## Average over units
+
+Now, we can calculate the average treatment effect by taking the average
+individual effect across the whole data.frame. 
+
+YOUR TASK: Use the `summarise_all` function, or instead use the `summarise` function along with `across`, to take the mean effect over the whole data.frame, i.e. *across* all columns. 
+
+Information about `summarise_all` can be found [**here**](https://dplyr.tidyverse.org/reference/summarise_all.html).
+Details about `summarise` can be found [**here**](https://www.rdocumentation.org/packages/dplyr/versions/0.7.8/topics/summarise).
+Details about `across` can be found [**here**](https://dplyr.tidyverse.org/reference/across.html).
+Example of how to use `summarise` with `across` can be found [**here**](https://www.statology.org/dplyr-across/).
+
+```{r}
+conditional_average_effects %>%
+  select(yhat1, yhat0, effect) %>%
+  ...
+```
+
+## Extension 1: Conditional average effects
+
+Modify the procedure above to estimate the average effect in subgroups defined by mom's education:
+
+1.  those with `sex == Male`
+2.  those with `sex == Female`
+
+Specifically, what is the average effect among those for whom `sex == Male`?
+Among those for whom `sex == Female`? __HINT__: this should only be a slight modification
+of your code directly above that takes the average for the whole data.frame. You need to select the appropriate variables, look at subgroups by `sex` and calculate an average.
+
+```{r}
+conditional_average_effects %>%
+  select(...)
+  group_by(...)
+  ...
+```
+
+## Extension 2: Logistic regression
+
+Repeat the steps above with logistic regression
+
+$$\text{log}\left(\frac{\hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}{1 - \hat{P}\left(Y\mid A = a, \vec{L} = \vec\ell\right)}\right) = \hat\alpha + A\hat\beta + \vec{L}'\hat{\vec\gamma} + A\vec{L}'\hat{\vec\eta}$$ Helpful hints:
+
+-   This should be a simple extension of the code above that uses `lm()`.
+-   Read about using `glm()` to estimate logistic regression. [**here**](https://www.datacamp.com/tutorial/generalized-linear-models).
+
+## Extension: Logistic regression - fit a model
+
+Fit a model
+
+```{r}
+f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile)
+
+fit <- glm(...)
+```
+
+## Extension: Logistic regression - make predictions and estimate the average effect
+
+Predict and summarize to estimate the average effect. When using `predict()`, search [**here**](http://www.science.smith.edu/~jcrouser/SDS293/labs/lab4-r.html#:~:text=The%20predict()%20function%20can,information%20such%20as%20the%20logit%20.) to find out how to predict probabilities.
+
+\footnotesize
+
+```{r}
+potential_outcomes_under_control <- predict(object = ..., newdata = ...)
+potential_outcomes_under_treatment <- predict(object = ..., newdata = ...)
+
+conditional_average_outcomes <- d %>%
+  mutate(yhat1 = ...,
+         yhat0 = ...,
+         effect = ...) %>%
+  select(yhat1, yhat0, effect) %>%
+  summarise(...)
+```
