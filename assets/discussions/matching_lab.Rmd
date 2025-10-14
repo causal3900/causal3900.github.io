@@ -15,6 +15,7 @@ The paper compares methods for observational causal inference to recover an aver
 knitr::opts_chunk$set(echo = TRUE)
 library("tidyverse")
 library("MatchIt")
+library("marginaleffects")
 data("lalonde") # this step loads the data
 ```
 
@@ -29,7 +30,8 @@ Our goal is to estimate the effect of job training `treat` on future earnings `r
 For this part, we assume that three variables comprise a sufficient adjustment set: `race`, `married`, and `nodegree`. We use `matchit` with:
 
 - a formula `treat ~ race + married + nodegree`
-- `method = "exact"` to conduct exact matching, which matches two units only if they are identical along `race`, `married`, and `nodegree`
+- `method = "nearest"` to conduct exact matching, which matches two units only if they are identical along `race`, `married`, and `nodegree`
+- `exact = ~ race + married + no degree' enforces exact 1:1 matching on the variables included
 - `data = lalonde` since we are using the `lalonde` data
 -  `estimand = "ATT"` since we are targeting the average treatment effect on the treated (ATT)
 
@@ -38,10 +40,13 @@ We then use the `summary()` function to see how many control units and how many 
 ```{r}
 exact_low <- matchit(treat ~ race + married + nodegree,
                  data = lalonde,
-                 method = "exact",
+                 method = "nearest",
+                 exact = ~ race + married + nodegree,
                  estimand = "ATT")
 # Note: There are multiple correct ways to extract the numbers below
 summary(exact_low)$nn
+
+
 ```
 
 **Question**: How many control units were matched? How many treated units?
@@ -49,22 +54,7 @@ summary(exact_low)$nn
 **Answer**:
 
 
-### 2.2. Effect estimate
-
-Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
-
-```{r}
-fit <- lm(re78 ~ treat + race + married + nodegree,
-          data = match.data(exact_low),
-          w = weights)
-print(round(coef(fit)["treat"],2))
-```
-
-**Question**: What is the estimated effect of job training on earnings?
-
-**Answer**: 
-
-### 2.3. Assessing the Match: Balance of Covariates
+### 2.2. Assessing the Match: Balance of Covariates
 
 In matching, one thing we care about is balance across covariates. In other words, we want to see that the distributions of different covariates are about the same between the treatment and the control groups. We can check how well the balancing has been done with the `summary()` function.
 
@@ -73,6 +63,7 @@ In matching, one thing we care about is balance across covariates. In other word
 
 ```{r}
 summary(exact_low, interactions = F, un = F)$sum.matched
+plot(exact_low, type = "density", interactive = F)
 ```
 
 **Question**: What do you notice about the means of different covariates for the treated versus control groups? 
@@ -81,8 +72,84 @@ summary(exact_low, interactions = F, un = F)$sum.matched
 
 In this case, we basically have perfect balance. This doesn't always happen. Depending on the method and parameters you use, you could have "bad" matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn't look good, try another matching procedure!
 
+
+
+### 2.2. Effect estimate
+
+Here, we estimate linear regression models using the match data from 2.1 using the `lm()` function with the formula  `re78 ~ treat + race + married + nodegree` and `re78 ~ treat*(race + married + nodegree)`. The second linear model includes an interaction term. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact_low)`. In the model without an interaction, the coefficient in front of the variable `treat` in the linear regression is our estimated effect. We can also simply compare the means of the two groups or calculate the parametric g-formulat by hand or by using \textt{avg_comparisons} from the 'marginaleffects' package. When using exact 1:1 matching and simple linear model, all estimates will agree. 
+
+If we use a different type of matching procedure, the estimates typically will not all be exactly the same. Additionally, if we use a more complicated model (such as the one with interactions) the causal effect will not correspond to a single coefficient from the linear model, but the parametric g-formula will still work.
+
+```{r}
+fit <- lm(re78 ~ treat + race + married + nodegree,
+          data = match.data(exact_low),
+          w = weights)
+
+coef(fit)
+
+fit_int <- lm(re78 ~ treat*(race + married + nodegree),
+          data = match.data(exact_low),
+          w = weights)
+
+
+# compare means of groups
+mean(potential_outcomes_under_treatment) - mean(potential_outcomes_under_control)
+
+
+## parametric g-formula by hand from last week
+
+## Get Actually treated individuals and set treatment to 0
+d_all_control <- match.data(exact_low) %>%
+  subset(treat == 1) %>% mutate(treat =0)
+
+## Get Actually treated individuals
+d_all_treat <- match.data(exact_low) %>%
+  subset(treat == 1)
+
+potential_outcomes_under_control <- predict(object = fit, newdata = d_all_control)
+potential_outcomes_under_treatment <- predict(object = fit, newdata = d_all_treat)
+
+
+
+
+# Take the average outcome for each group
+match.data(exact_low) %>% group_by(treat) %>% summarise(mean = mean(re78)) 
+
+
+## parametric g-formula using marginal effects
+avg_comparisons(fit,
+                variables = "treat",
+                vcov = ~subclass,
+                newdata = subset(treat == 1))
+
+
+
+
+
+potential_outcomes_under_control <- predict(object = fit_int, newdata = d_all_control)
+potential_outcomes_under_treatment <- predict(object = fit_int, newdata = d_all_treat)
+
+
+
+## parametric g-formula using marginal effects
+avg_comparisons(fit_int,
+                variables = "treat",
+                vcov = ~subclass,
+                newdata = subset(treat == 1))
+
+
+```
+
+```{r}
+
+
+```
+
+**Question**: What is the estimated effect of job training on earnings?
+
+**Answer**: 
+
 ## 3. Try it Yourself: Exact matching with high-dimensional confounding
-You will use the results from this section in Problem Set 4.
 
 ### 3.1. Using `matchit()` to conduct a matching
 Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Repeat exact matching as above.
@@ -119,3 +186,34 @@ Matched data:
 ```
 
 **Explain what happened**: What do you notice? What is different about the values of `re74` in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?
+
+### 3.3. Using `matchit()` to conduct a matching
+Now suppose the adjustment set needs to also include 1974 earnings, `re74`. The adjustment set for this part is `race`, `married`, `nodegree`, and `re74`. Use nearest neighbor matching, but do not require exact matches. Instead pick a distance of your choice.
+
+
+
+```{r}
+# use help to see what the various distances are
+?matchit
+
+# Your code goes here
+
+non_exact_high <- matchit(treat ~ race + married + nodegree + re74,
+                 data = lalonde,
+                 method = "nearest",
+                 estimand = "ATT", 
+                 distance = ...)
+```
+
+
+### 3.4.  Effect estimate
+Using the matching from above, estimate a causal effect using the parametric g-formula.
+
+
+```{r}
+
+
+# Your code goes here
+
+
+```

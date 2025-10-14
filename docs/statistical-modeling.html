@@ -143,7 +143,7 @@
 <span class="header-section-number">5.6</span> Matching<a class="anchor" aria-label="anchor" href="#matching"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 9. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides from 2024.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
+<p>Oct 9. <a href="assets/slides/5-4_matching_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 15.2.</p>
 </blockquote>
 <p>Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.</p>
 </div>
@@ -152,7 +152,7 @@
 <span class="header-section-number">5.7</span> Lab: Matching in R<a class="anchor" aria-label="anchor" href="#lab-matching-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Oct 16. <a href="assets/discussions/matching_lab_slides.pdf"><strong>Slides from 2024.</strong></a></p>
+<p>Oct 15. <a href="assets/discussions/matching_lab_slides.pdf"><strong>Slides from 2024.</strong></a></p>
 </blockquote>
 <p>In this lab, we’ll go over distance metrics when matching on multiple covariates. We’ll also go over examples of using R to do matching to estimate causal effects.</p>
 <p>Download the <a href="assets/discussions/matching_lab.Rmd"><strong>R Markdown.</strong></a> file for today’s lab; view the knit file <a href="assets/discussions/matching_lab.html"><strong>here</strong></a>. <em>Submit your work on Canvas before you leave discussion!</em> <a href="assets/discussions/matching_lab_solutions.html"><strong>Solutions</strong></a></p>
@@ -362,7 +362,7 @@ graduate whose probability of completing college was similar</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
-<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu">matchit</span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
+<span><span class="va">matched</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">a</span> <span class="op">==</span> <span class="st">"college"</span> <span class="op">~</span> <span class="va">sex</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">mom_educ</span> <span class="op">+</span> </span>
 <span>                     <span class="va">dad_educ</span> <span class="op">+</span> <span class="va">log_parent_income</span> <span class="op">+</span> </span>
 <span>                     <span class="va">log_parent_wealth</span> <span class="op">+</span> <span class="va">test_percentile</span>,</span>
 <span>                   method <span class="op">=</span> <span class="st">"nearest"</span>, </span>
@@ -486,7 +486,7 @@ points.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-10-08</p>
+    <p>Last built on 2025-10-09</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

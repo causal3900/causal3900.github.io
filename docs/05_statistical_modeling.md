@@ -41,14 +41,14 @@ After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-
 
 ## Matching
 
-> Oct 9. [**Slides from 2024.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 9. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
 
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 
 
 ## Lab: Matching in R
 
-> Oct 16. [**Slides from 2024.**](assets/discussions/matching_lab_slides.pdf)
+> Oct 15. [**Slides from 2024.**](assets/discussions/matching_lab_slides.pdf)
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
