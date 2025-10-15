@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 8. Matching | Causal Inference Course</title>
+<meta name="author" content="Sam Wang and Christina Yu">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 15, 2025 You can download the slides for this week’s discussion and the .Rmd. The first exercise and problem set 4 use the lalonde dataset from the...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Discussion 8. Matching | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 15, 2025 You can download the slides for this week’s discussion and the .Rmd. The first exercise and problem set 4 use the lalonde dataset from the...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 8. Matching | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 15, 2025 You can download the slides for this week’s discussion and the .Rmd. The first exercise and problem set 4 use the lalonde dataset from the...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
+<li><a class="active" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-8.-matching" class="section level1 unnumbered">
+<h1>Discussion 8. Matching<a class="anchor" aria-label="anchor" href="#discussion-8.-matching"><i class="fas fa-link"></i></a>
+</h1>
+<div id="stsciinfoilrst-3900-causal-inference-7" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-7"><i class="fas fa-link"></i></a>
+</h2>
+<div id="october-15-2025" class="section level4 unnumbered">
+<h4>October 15, 2025<a class="anchor" aria-label="anchor" href="#october-15-2025"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can download the <a href="assets/discussions/matching_lab_slides.pdf"><strong>slides</strong></a> for this week’s discussion and the <a href="assets/discussions/matching_lab.Rmd"><strong>.Rmd</strong></a>.</p>
+<p>The first exercise and problem set 4 use the <code>lalonde</code> dataset from the following paper:</p>
+<blockquote>
+<p>Dehejia, R. H. and Wahba, S. 1999. <a href="https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?">Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs</a>. Journal of the American Statistical Association 94(448):1053–1062.</p>
+</blockquote>
+<p>The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study’s data as an illustration. We’ll load the data into R with the first code block.</p>
+<p>To learn about the data, type <code><a href="https://kosukeimai.github.io/MatchIt/reference/lalonde.html">?lalonde</a></code> in your R console.</p>
+</div>
+</div>
+<div id="example-exact-matching-with-low-dimensional-confounding" class="section level2 unnumbered">
+<h2>2. Example: Exact Matching with low-dimensional confounding<a class="anchor" aria-label="anchor" href="#example-exact-matching-with-low-dimensional-confounding"><i class="fas fa-link"></i></a>
+</h2>
+<p>Our goal is to estimate the effect of job training <code>treat</code> on future earnings <code>re78</code> (real earnings in 1978), among those who received job training (the average treatment effect on the treated, ATT).</p>
+<div id="using-matchit-to-conduct-a-matching" class="section level3 unnumbered">
+<h3>2.1. Using <code>matchit()</code> to conduct a matching<a class="anchor" aria-label="anchor" href="#using-matchit-to-conduct-a-matching"><i class="fas fa-link"></i></a>
+</h3>
+<p>For this part, we assume that three variables comprise a sufficient adjustment set: <code>race</code>, <code>married</code>, and <code>nodegree</code>. We use <code>matchit</code> with:</p>
+<ul>
+<li>a formula <code>treat ~ race + married + nodegree</code>
+</li>
+<li>
+<code>method = "nearest"</code> to conduct exact matching, which matches two units only if they are identical along <code>race</code>, <code>married</code>, and <code>nodegree</code>
+</li>
+<li>`exact = ~ race + married + no degree’ enforces exact 1:1 matching on the variables included</li>
+<li>
+<code>data = lalonde</code> since we are using the <code>lalonde</code> data</li>
+<li>
+<code>estimand = "ATT"</code> since we are targeting the average treatment effect on the treated (ATT)</li>
+</ul>
+<p>We then use the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to see how many control units and how many treatment units were matched.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">exact_low</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span>,</span>
+<span>                 data <span class="op">=</span> <span class="va">lalonde</span>,</span>
+<span>                 method <span class="op">=</span> <span class="st">"nearest"</span>,</span>
+<span>                 exact <span class="op">=</span> <span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span>,</span>
+<span>                 estimand <span class="op">=</span> <span class="st">"ATT"</span><span class="op">)</span></span>
+<span><span class="co"># Note: There are multiple correct ways to extract the numbers below</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span><span class="op">$</span><span class="va">nn</span></span></code></pre></div>
+<pre><code>##               Control Treated
+## All (ESS)         429     185
+## All               429     185
+## Matched (ESS)     111     111
+## Matched           111     111
+## Unmatched         318      74
+## Discarded           0       0</code></pre>
+<p><strong>Question</strong>: How many control units were matched? How many treated units?</p>
+</div>
+<div id="assessing-the-match-balance-of-covariates" class="section level3 unnumbered">
+<h3>2.2. Assessing the Match: Balance of Covariates<a class="anchor" aria-label="anchor" href="#assessing-the-match-balance-of-covariates"><i class="fas fa-link"></i></a>
+</h3>
+<p>In matching, one thing we care about is balance across covariates. In other words, we want to see that the distributions of different covariates are about the same between the treatment and the control groups. We can check how well the balancing has been done with the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function.</p>
+<ul>
+<li>
+<code>interactions</code>: check interaction terms too? (T or F)</li>
+<li>
+<code>un</code>: show statistics for unmatched data as well? (T or F)</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">exact_low</span>, interactions <span class="op">=</span> <span class="cn">F</span>, un <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">$</span><span class="va">sum.matched</span></span></code></pre></div>
+<pre><code>##            Means Treated Means Control Std. Mean Diff.
+## distance       0.5005432     0.5005432   -3.330669e-16
+## raceblack      0.7387387     0.7387387    0.000000e+00
+## racehispan     0.0990991     0.0990991    0.000000e+00
+## racewhite      0.1621622     0.1621622    0.000000e+00
+## married        0.2342342     0.2342342    0.000000e+00
+## nodegree       0.6666667     0.6666667    0.000000e+00
+##            Var. Ratio   eCDF Mean     eCDF Max
+## distance            1 4.91505e-18 1.734723e-17
+## raceblack          NA 0.00000e+00 0.000000e+00
+## racehispan         NA 0.00000e+00 0.000000e+00
+## racewhite          NA 0.00000e+00 0.000000e+00
+## married            NA 0.00000e+00 0.000000e+00
+## nodegree           NA 0.00000e+00 0.000000e+00
+##            Std. Pair Dist.
+## distance                 0
+## raceblack                0
+## racehispan               0
+## racewhite                0
+## married                  0
+## nodegree                 0</code></pre>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">exact_low</span>, type <span class="op">=</span> <span class="st">"density"</span>, interactive <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion08_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+<p><strong>Question</strong>: What do you notice about the means of different covariates for the treated versus control groups?</p>
+<p>In this case, we basically have perfect balance. This doesn’t always happen. Depending on the method and parameters you use, you could have “bad” matches where the covariates are unbalanced. If you conduct a matching and the covariate balance doesn’t look good, try another matching procedure!</p>
+</div>
+<div id="effect-estimate" class="section level3 unnumbered">
+<h3>2.2. Effect estimate<a class="anchor" aria-label="anchor" href="#effect-estimate"><i class="fas fa-link"></i></a>
+</h3>
+<p>Here, we estimate linear regression models using the match data from 2.1 using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function with the formula <code>re78 ~ treat + race + married + nodegree</code> and <code>re78 ~ treat*(race + married + nodegree)</code>. The second linear model includes an interaction term. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data <code>match.data(exact_low)</code>. In the model without an interaction, the coefficient in front of the variable <code>treat</code> in the linear regression is our estimated effect. We can also simply compare the means of the two groups or calculate the parametric g-formulat by hand or by using from the ‘marginaleffects’ package. When using exact 1:1 matching and simple linear model, all estimates will agree.</p>
+<p>If we use a different type of matching procedure, the estimates typically will not all be exactly the same. Additionally, if we use a more complicated model (such as the one with interactions) the causal effect will not correspond to a single coefficient from the linear model, but the parametric g-formula will still work.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span>,</span>
+<span>          data <span class="op">=</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span>,</span>
+<span>          w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## (Intercept)       treat  racehispan   racewhite     married 
+##   6855.9543    379.9167   3264.0613   3070.2140   1795.8455 
+##    nodegree 
+##  -3022.6687</code></pre>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fit_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span><span class="op">*</span><span class="op">(</span><span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span><span class="op">)</span>,</span>
+<span>          data <span class="op">=</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span>,</span>
+<span>          w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">fit_int</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      (Intercept)            treat       racehispan 
+##       6517.07875       1057.66787       5175.55809 
+##        racewhite          married         nodegree 
+##       4891.25175       1763.05130      -3229.92957 
+## treat:racehispan  treat:racewhite    treat:married 
+##      -3822.99362      -3642.07549         65.58842 
+##   treat:nodegree 
+##        414.52179</code></pre>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## parametric g-formula by hand from last week</span></span>
+<span></span>
+<span><span class="co">## Get Actually treated individuals and set treatment to 0</span></span>
+<span><span class="va">d_all_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treat <span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Get Actually treated individuals</span></span>
+<span><span class="va">d_all_treat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">potential_outcomes_under_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_control</span><span class="op">)</span></span>
+<span><span class="va">potential_outcomes_under_treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit</span>, newdata <span class="op">=</span> <span class="va">d_all_treat</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># compare means of groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_treatment</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_control</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 379.9167</code></pre>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Take the average outcome for each group</span></span>
+<span><span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">re78</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   treat  mean
+##   &lt;int&gt; &lt;dbl&gt;
+## 1     0 6083.
+## 2     1 6463.</code></pre>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## parametric g-formula using marginal effects</span></span>
+<span><span class="fu">avg_comparisons</span><span class="op">(</span><span class="va">fit</span>,</span>
+<span>                variables <span class="op">=</span> <span class="st">"treat"</span>,</span>
+<span>                vcov <span class="op">=</span> <span class="op">~</span><span class="va">subclass</span>,</span>
+<span>                newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Estimate Std. Error     z Pr(&gt;|z|)   S 2.5 % 97.5 %
+##       380        903 0.421    0.674 0.6 -1390   2150
+## 
+## Term: treat
+## Type: response
+## Comparison: 1 - 0</code></pre>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">potential_outcomes_under_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit_int</span>, newdata <span class="op">=</span> <span class="va">d_all_control</span><span class="op">)</span></span>
+<span><span class="va">potential_outcomes_under_treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit_int</span>, newdata <span class="op">=</span> <span class="va">d_all_treat</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compare means of groups</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_treatment</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_control</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 379.9167</code></pre>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## parametric g-formula using marginal effects</span></span>
+<span><span class="fu">avg_comparisons</span><span class="op">(</span><span class="va">fit_int</span>,</span>
+<span>                variables <span class="op">=</span> <span class="st">"treat"</span>,</span>
+<span>                vcov <span class="op">=</span> <span class="op">~</span><span class="va">subclass</span>,</span>
+<span>                newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+##  Estimate Std. Error    z Pr(&gt;|z|)   S 2.5 % 97.5 %
+##       380        905 0.42    0.674 0.6 -1393   2153
+## 
+## Term: treat
+## Type: response
+## Comparison: 1 - 0</code></pre>
+<p><strong>Question</strong>: What is the estimated effect of job training on earnings?</p>
+</div>
+</div>
+<div id="try-it-yourself-exact-matching-with-high-dimensional-confounding" class="section level2 unnumbered">
+<h2>3. Try it Yourself: Exact matching with high-dimensional confounding<a class="anchor" aria-label="anchor" href="#try-it-yourself-exact-matching-with-high-dimensional-confounding"><i class="fas fa-link"></i></a>
+</h2>
+<div id="using-matchit-to-conduct-a-matching-1" class="section level3 unnumbered">
+<h3>3.1. Using <code>matchit()</code> to conduct a matching<a class="anchor" aria-label="anchor" href="#using-matchit-to-conduct-a-matching-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now suppose the adjustment set needs to also include 1974 earnings, <code>re74</code>. The adjustment set for this part is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. Repeat exact matching as above.</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
+<p><strong>Question</strong>: How many control units were matched? How many treated units?</p>
+</div>
+<div id="assessing-the-match-examining-matched-units" class="section level3 unnumbered">
+<h3>3.2. Assessing the Match: Examining matched units<a class="anchor" aria-label="anchor" href="#assessing-the-match-examining-matched-units"><i class="fas fa-link"></i></a>
+</h3>
+<p>Look at the <code>re74</code> values in the full data and among the matched units.</p>
+<p>Here is one way to do this:</p>
+<ol style="list-style-type: decimal">
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to get the <code>re74</code> column in the <em>full</em> data. Pass this to the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to look at descriptive statistics of the <code>re74</code> values in the full data.</li>
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to get the <code>re74</code> column in the <em>matched</em> data. Pass this to the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to look at descriptive statistics of the <code>re74</code> values in the full data. You can get the matched data using the <code>match.data</code> function.</li>
+</ol>
+<ul>
+<li>Examples of using the <code>summary</code> function are <a href="https://intro2r.com/summarising-data-frames.html"><strong>here</strong></a>.</li>
+<li>Examples of using the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function are <a href="https://benwhalley.github.io/just-enough-r/selecting-columns.html"><strong>here</strong></a>
+</li>
+</ul>
+<p>Full data:</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your code goes here</span></span></code></pre></div>
+<p>Matched data:</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># your code goes here</span></span></code></pre></div>
+<p><strong>Explain what happened</strong>: What do you notice? What is different about the values of <code>re74</code> in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?</p>
+</div>
+<div id="using-matchit-to-conduct-a-matching-2" class="section level3 unnumbered">
+<h3>3.3. Using <code>matchit()</code> to conduct a matching<a class="anchor" aria-label="anchor" href="#using-matchit-to-conduct-a-matching-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now suppose the adjustment set needs to also include 1974 earnings, <code>re74</code>. The adjustment set for this part is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. Use nearest neighbor matching, but do not require exact matches. Instead pick a distance of your choice.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># use help to see what the various distances are</span></span>
+<span><span class="op">?</span><span class="va">matchit</span></span>
+<span></span>
+<span><span class="co"># Your code goes here</span></span>
+<span></span>
+<span><span class="va">non_exact_high</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span>,</span>
+<span>                 data <span class="op">=</span> <span class="va">lalonde</span>,</span>
+<span>                 method <span class="op">=</span> <span class="st">"nearest"</span>,</span>
+<span>                 estimand <span class="op">=</span> <span class="st">"ATT"</span>, </span>
+<span>                 distance <span class="op">=</span> <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="effect-estimate-1" class="section level3 unnumbered">
+<h3>3.4. Effect estimate<a class="anchor" aria-label="anchor" href="#effect-estimate-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Using the matching from above, estimate a causal effect using the parametric g-formula.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-8.-matching">Discussion 8. Matching</a></li>
+<li><a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-7">STSCI/INFO/ILRST 3900: Causal Inference</a></li>
+<li>
+<a class="nav-link" href="#example-exact-matching-with-low-dimensional-confounding">2. Example: Exact Matching with low-dimensional confounding</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-matchit-to-conduct-a-matching">2.1. Using matchit() to conduct a matching</a></li>
+<li><a class="nav-link" href="#assessing-the-match-balance-of-covariates">2.2. Assessing the Match: Balance of Covariates</a></li>
+<li><a class="nav-link" href="#effect-estimate">2.2. Effect estimate</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#try-it-yourself-exact-matching-with-high-dimensional-confounding">3. Try it Yourself: Exact matching with high-dimensional confounding</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-matchit-to-conduct-a-matching-1">3.1. Using matchit() to conduct a matching</a></li>
+<li><a class="nav-link" href="#assessing-the-match-examining-matched-units">3.2. Assessing the Match: Examining matched units</a></li>
+<li><a class="nav-link" href="#using-matchit-to-conduct-a-matching-2">3.3. Using matchit() to conduct a matching</a></li>
+<li><a class="nav-link" href="#effect-estimate-1">3.4. Effect estimate</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2025-10-14</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
