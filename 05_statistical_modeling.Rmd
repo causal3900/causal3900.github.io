@@ -58,7 +58,7 @@ If you finish the exact matching exercise early, work through this [R Markdown N
 
 ## Discussion of matching
 
-> Oct 17 [**Slides from 2024.**](assets/slides/5-5_matching_cont.pdf) 
+> Oct 16 [**Slides**](assets/slides/5-5_matching_cont.pdf) 
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
