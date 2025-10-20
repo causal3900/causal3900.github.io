@@ -23,10 +23,10 @@ library(tidyverse)
 ```
 ## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.2
-## ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     
+## ✔ purrr     1.1.0     
 ## ── Conflicts ────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
@@ -123,7 +123,7 @@ propensity_scores <- glm(treat ~race + age +married + nodegree + re74, family = 
 
 
 
-## 4. Choosing a distance metric for matching
+## 4. Choosing a distance metric for matching {-}
 To better understand the importance of choosing a distance metric we will consider only a subset of the `lalonde` data. We will choose a match for an individual in the treatment group based on `age` and `re74`. 
 
 
@@ -149,7 +149,7 @@ print(lalonde_sub)
 
 
 
-### 4.1. (1 point) Getting intuition
+### 4.1. (1 point) Getting intuition {-}
 
 By looking at the table above and the histograms of the variables below, do you think `Ind2` or `Ind3` would be a better match with `Ind1`? Why?
 
@@ -168,7 +168,7 @@ hist(lalonde$re74)
 
 \textbf{Answer.}
 
-### 4.2. (5 points) Euclidean distance
+### 4.2. (5 points) Euclidean distance {-}
 
 Using the euclidean distance, which individual would be the closest match with `Ind1`? 
 
@@ -193,7 +193,7 @@ re74_ind1 = lalonde_sub["Ind1","re74"]
 ```
 
 
-### 4.3. (5 points) Mahalanobis distance
+### 4.3. (5 points) Mahalanobis distance {-}
 
 Using the Mahalanobis distance, which individual would you match with `Ind1`? 
 
@@ -240,7 +240,7 @@ sqrt(Sigma[2,2])
 # Uncomment the code below by taking away the # at the beginning of each line
 # then fill out the ...
 
-# m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
+# m_dis_ind2 <- sqrt(L["Ind2",] %>% solve(Sigma) %>%  L["Ind2",])
 # m_dis_ind3 <- ...
 # m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
 # print(cbind(m_dis))

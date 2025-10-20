@@ -102,19 +102,19 @@
 </blockquote>
 <p>The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study’s data as an illustration.</p>
 <p>The following lines will load these data into R.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code>## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.2
-## ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
 ## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     
+## ✔ purrr     1.1.0     
 ## ── Conflicts ────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code>## randomForest 4.7-1.2
@@ -129,7 +129,7 @@
 ## The following object is masked from 'package:ggplot2':
 ## 
 ##     margin</code></pre>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"lalonde"</span><span class="op">)</span></span></code></pre></div>
 <div id="points-drawbacks-of-exact-matching" class="section level2 unnumbered">
 <h2>1. (10 points) Drawbacks of Exact Matching<a class="anchor" aria-label="anchor" href="#points-drawbacks-of-exact-matching"><i class="fas fa-link"></i></a>
@@ -149,7 +149,7 @@
 <p>Knowing about decision trees and random forests is not necessary for this course or problem set. However, if you are interested in learning more about these machine learning methods, you can take a look at this cool (and free) <a href="https://developers.google.com/machine-learning/decision-forests/decision-trees">Google course</a> or watch <a href="https://youtu.be/gkXX4h3qYm4?si=2aa3T-D91wh4BZcQ">this short video from IBM Technology</a>.
 Documentation for the R Library <code>randomForest</code> can be found <a href="https://cran.r-project.org/web/packages/randomForest/randomForest.pdf">here</a>. Random forests have a random element when fitting the model. That means each time you re-run the code, the answer may be slightly different. To fix the result to a specific value, we will use the code `set.seed(111)’</p>
 </blockquote>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># set the random number generator to a specific state</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span></span>
 <span></span>
@@ -169,26 +169,25 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <li>Report the average treatment effect among the treated (ATT).</li>
 </ol>
 <p></p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
 <div id="points-ipw-estimator" class="section level2 unnumbered">
 <h2>3. (10 points) IPW estimator<a class="anchor" aria-label="anchor" href="#points-ipw-estimator"><i class="fas fa-link"></i></a>
 </h2>
 <p>Alternatively, we could use a propensity score model to estimate the Average Treatment effect (on everyone, not just those who are treated).</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">propensity_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span><span class="va">race</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span><span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">lalonde</span><span class="op">)</span></span></code></pre></div>
 <p><strong>YOUR TASK</strong>: Use the model above to estimate the average treatment effect among <em>everyone</em> (the ATE).</p>
 <p></p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
-<div id="choosing-a-distance-metric-for-matching" class="section level2" number="11.1">
-<h2>
-<span class="header-section-number">11.1</span> 4. Choosing a distance metric for matching<a class="anchor" aria-label="anchor" href="#choosing-a-distance-metric-for-matching"><i class="fas fa-link"></i></a>
+<div id="choosing-a-distance-metric-for-matching" class="section level2 unnumbered">
+<h2>4. Choosing a distance metric for matching<a class="anchor" aria-label="anchor" href="#choosing-a-distance-metric-for-matching"><i class="fas fa-link"></i></a>
 </h2>
 <p>To better understand the importance of choosing a distance metric we will consider only a subset of the <code>lalonde</code> data. We will choose a match for an individual in the treatment group based on <code>age</code> and <code>re74</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lalonde_sub</span> <span class="op">&lt;-</span> </span>
 <span>  <span class="va">lalonde</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NSW185"</span>,<span class="st">"PSID250"</span>,<span class="st">"PSID303"</span><span class="op">)</span>,<span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">treat</span>,<span class="va">age</span>,<span class="va">re74</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -203,27 +202,25 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 ## Ind1     1  33 14660.71
 ## Ind2     0  32 12553.02
 ## Ind3     0  52 14780.71</code></pre>
-<div id="point-getting-intuition" class="section level3" number="11.1.1">
-<h3>
-<span class="header-section-number">11.1.1</span> 4.1. (1 point) Getting intuition<a class="anchor" aria-label="anchor" href="#point-getting-intuition"><i class="fas fa-link"></i></a>
+<div id="point-getting-intuition" class="section level3 unnumbered">
+<h3>4.1. (1 point) Getting intuition<a class="anchor" aria-label="anchor" href="#point-getting-intuition"><i class="fas fa-link"></i></a>
 </h3>
 <p>By looking at the table above and the histograms of the variables below, do you think <code>Ind2</code> or <code>Ind3</code> would be a better match with <code>Ind1</code>? Why?</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="pset4_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">$</span><span class="va">re74</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="pset4_files/figure-html/unnamed-chunk-7-2.png" width="672"></div>
 <p></p>
 </div>
-<div id="points-euclidean-distance" class="section level3" number="11.1.2">
-<h3>
-<span class="header-section-number">11.1.2</span> 4.2. (5 points) Euclidean distance<a class="anchor" aria-label="anchor" href="#points-euclidean-distance"><i class="fas fa-link"></i></a>
+<div id="points-euclidean-distance" class="section level3 unnumbered">
+<h3>4.2. (5 points) Euclidean distance<a class="anchor" aria-label="anchor" href="#points-euclidean-distance"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using the euclidean distance, which individual would be the closest match with <code>Ind1</code>?</p>
 <p>Remember the euclidean distance is given by <span class="math inline">\(d(i,j) = \sqrt{\sum_p \left( L_{pi} - L_{pj}\right)^2}\)</span>. Fill in the missing variables (indicated by <code>...</code>) to calculate the euclidean distance:</p>
 <p></p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">age_ind1</span> <span class="op">=</span> <span class="va">lalonde_sub</span><span class="op">[</span><span class="st">"Ind1"</span>,<span class="st">"age"</span><span class="op">]</span></span>
 <span><span class="va">re74_ind1</span> <span class="op">=</span> <span class="va">lalonde_sub</span><span class="op">[</span><span class="st">"Ind1"</span>,<span class="st">"re74"</span><span class="op">]</span></span>
 <span></span>
@@ -237,26 +234,25 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <span><span class="co">#         euc_dis = sqrt(...)) %&gt;%</span></span>
 <span><span class="co">#  select(euc_dis)</span></span></code></pre></div>
 </div>
-<div id="points-mahalanobis-distance" class="section level3" number="11.1.3">
-<h3>
-<span class="header-section-number">11.1.3</span> 4.3. (5 points) Mahalanobis distance<a class="anchor" aria-label="anchor" href="#points-mahalanobis-distance"><i class="fas fa-link"></i></a>
+<div id="points-mahalanobis-distance" class="section level3 unnumbered">
+<h3>4.3. (5 points) Mahalanobis distance<a class="anchor" aria-label="anchor" href="#points-mahalanobis-distance"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using the Mahalanobis distance, which individual would you match with <code>Ind1</code>?</p>
 <p>Remember the Mahalanobis distance adjusts for the fact that some variables are measured on different scales than others. Thus, for each variable the distance is divided by the standard deviation of the variable. Furthermore, it adjusts for correlations within variables as well. Mathematically, it is given by <span class="math inline">\(d(i, j) =\sqrt{(\vec{L}_i -\vec{L}_j)^T\Sigma^{-1}(\vec{L}_i -\vec{L}_j)}\)</span>, where <span class="math inline">\(\Sigma\)</span> is the covariance of <span class="math inline">\(\vec{L}\)</span>.</p>
 <p>Fill in the missing variables (indicated by <code>...</code>) to calculate the mahalanobis distance. Note that we’re using the function <code><a href="https://rdrr.io/r/base/solve.html">solve()</a></code> to get the inverse of a matrix.</p>
 <p></p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## the contrivance matrix for age and re74 based on the entire dateset:</span></span>
 <span><span class="va">Sigma</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>,<span class="st">"re74"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># standard deviation of age</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">Sigma</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 9.881187</code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># standard deviation of income in 1974</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">Sigma</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 6477.964</code></pre>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Uncomment the code below by taking away the # at the beginning of each line</span></span>
 <span><span class="co"># then fill out the ...</span></span>
 <span></span>
@@ -271,14 +267,14 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <span><span class="co"># Uncomment the code below by taking away the # at the beginning of each line</span></span>
 <span><span class="co"># then fill out the ...</span></span>
 <span></span>
-<span><span class="co"># m_dis_ind2 &lt;- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])</span></span>
+<span><span class="co"># m_dis_ind2 &lt;- sqrt(L["Ind2",] %&gt;% solve(Sigma) %&gt;%  L["Ind2",])</span></span>
 <span><span class="co"># m_dis_ind3 &lt;- ...</span></span>
 <span><span class="co"># m_dis &lt;- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)</span></span>
 <span><span class="co"># print(cbind(m_dis))</span></span></code></pre></div>
 </div>
-<div id="points-choose-distance" class="section level3" number="11.1.4">
+<div id="points-choose-distance" class="section level3" number="11.0.1">
 <h3>
-<span class="header-section-number">11.1.4</span> 4.4 (2 points) Choose distance<a class="anchor" aria-label="anchor" href="#points-choose-distance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.0.1</span> 4.4 (2 points) Choose distance<a class="anchor" aria-label="anchor" href="#points-choose-distance"><i class="fas fa-link"></i></a>
 </h3>
 <p>Based on your previous answers, which distance metric would you prefer to use for matching? Why?</p>
 <p></p>
@@ -306,7 +302,7 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <h3>5.1. (5 points) Conduct the matching<a class="anchor" aria-label="anchor" href="#points-conduct-the-matching"><i class="fas fa-link"></i></a>
 </h3>
 <p>This is space to conduct the matching. We expect this part to be an R code chunk.</p>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
 <div id="points-explain-your-choices" class="section level3 unnumbered">
@@ -348,11 +344,11 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <li><a class="nav-link" href="#points-outcome-modeling-with-parametric-g-formula">2. (10 points) Outcome modeling with Parametric G-formula</a></li>
 <li><a class="nav-link" href="#points-ipw-estimator">3. (10 points) IPW estimator</a></li>
 <li>
-<a class="nav-link" href="#choosing-a-distance-metric-for-matching"><span class="header-section-number">11.1</span> 4. Choosing a distance metric for matching</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#point-getting-intuition"><span class="header-section-number">11.1.1</span> 4.1. (1 point) Getting intuition</a></li>
-<li><a class="nav-link" href="#points-euclidean-distance"><span class="header-section-number">11.1.2</span> 4.2. (5 points) Euclidean distance</a></li>
-<li><a class="nav-link" href="#points-mahalanobis-distance"><span class="header-section-number">11.1.3</span> 4.3. (5 points) Mahalanobis distance</a></li>
-<li><a class="nav-link" href="#points-choose-distance"><span class="header-section-number">11.1.4</span> 4.4 (2 points) Choose distance</a></li>
+<a class="nav-link" href="#choosing-a-distance-metric-for-matching">4. Choosing a distance metric for matching</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#point-getting-intuition">4.1. (1 point) Getting intuition</a></li>
+<li><a class="nav-link" href="#points-euclidean-distance">4.2. (5 points) Euclidean distance</a></li>
+<li><a class="nav-link" href="#points-mahalanobis-distance">4.3. (5 points) Mahalanobis distance</a></li>
+<li><a class="nav-link" href="#points-choose-distance"><span class="header-section-number">11.0.1</span> 4.4 (2 points) Choose distance</a></li>
 </ul>
 </li>
 <li>

@@ -90,7 +90,7 @@ propensity_scores <- glm(treat ~race + age +married + nodegree + re74, family = 
 
 
 
-## 4. Choosing a distance metric for matching
+## 4. Choosing a distance metric for matching {-}
 To better understand the importance of choosing a distance metric we will consider only a subset of the `lalonde` data. We will choose a match for an individual in the treatment group based on `age` and `re74`. 
 
 ```{r}
@@ -109,7 +109,7 @@ print(lalonde_sub)
 
 
 
-### 4.1. (1 point) Getting intuition
+### 4.1. (1 point) Getting intuition {-}
 
 By looking at the table above and the histograms of the variables below, do you think `Ind2` or `Ind3` would be a better match with `Ind1`? Why?
 
@@ -120,7 +120,7 @@ hist(lalonde$re74)
 
 \textbf{Answer.}
 
-### 4.2. (5 points) Euclidean distance
+### 4.2. (5 points) Euclidean distance {-}
 
 Using the euclidean distance, which individual would be the closest match with `Ind1`? 
 
@@ -140,7 +140,7 @@ lalonde_sub_0 %>%
 ```
 
 
-### 4.3. (5 points) Mahalanobis distance
+### 4.3. (5 points) Mahalanobis distance {-}
 
 Using the Mahalanobis distance, which individual would you match with `Ind1`? 
 
@@ -167,7 +167,7 @@ lalonde_sub_0 <-
 ## the matrix of differences
 L <- as.matrix(lalonde_sub_0[,c("age_dif","re74_dif")])
 
-m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
+m_dis_ind2 <- sqrt(L["Ind2",] %>% solve(Sigma) %>%  L["Ind2",])
 m_dis_ind3 <- ...
 
 m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
@@ -176,7 +176,7 @@ print(cbind(m_dis))
 ```
 
 
-### 4.4 (2 points) Choose distance
+### 4.4 (2 points) Choose distance {-}
 
 Based on your previous answers, which distance metric would you prefer to use for matching? Why?
 

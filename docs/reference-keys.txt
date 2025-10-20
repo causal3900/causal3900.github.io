@@ -49,8 +49,4 @@ discussion-1
 current-research
 research-discussion-mayleen
 course-recap
-choosing-a-distance-metric-for-matching
-point-getting-intuition
-points-euclidean-distance
-points-mahalanobis-distance
 points-choose-distance
