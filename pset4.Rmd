@@ -1,16 +1,10 @@
----
-output:
-  pdf_document
-urlcolor: blue
----
-
-# Problem Set 4. Statistical Modeling.
+# Problem Set 4. Statistical Modeling {-}
 
 Relevant material will be covered by **Oct 16**. Problem set is due **Oct 27**.
 
 To complete the problem set:
 
-- Download the .Rmd and complete the homework. 
+- [**Copy and Paste this into a .Rmd file**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset4_download.Rmd) and complete the homework. 
 - Omit your name so we can have anonymous peer feedback. Compile to a PDF and submit the PDF on Canvas.
 
 This problem set uses data from the following paper:
@@ -132,11 +126,15 @@ Remember the euclidean distance is given by $d(i,j) = \sqrt{\sum_p \left( L_{pi}
 age_ind1 = lalonde_sub["Ind1","age"]
 re74_ind1 = lalonde_sub["Ind1","re74"]
 
-lalonde_sub_0 %>% 
-  mutate(age_dif= ...,
-         re74_dif = ...,
-         euc_dis = sqrt(...)) %>%
-  select(euc_dis)
+
+# Uncomment the code below by taking away the # at the beginning of each line
+# then fill out the ...
+
+# lalonde_sub_0 %>% 
+#  mutate(age_dif= ...,
+#         re74_dif = ...,
+#         euc_dis = sqrt(...)) %>%
+#  select(euc_dis)
 ```
 
 
@@ -159,19 +157,24 @@ sqrt(Sigma[1,1])
 # standard deviation of income in 1974
 sqrt(Sigma[2,2])
 
-lalonde_sub_0 <- 
-  lalonde_sub_0 %>% 
-  mutate(age_dif= ...,
-         re74_dif = ...)
+# Uncomment the code below by taking away the # at the beginning of each line
+# then fill out the ...
 
-## the matrix of differences
-L <- as.matrix(lalonde_sub_0[,c("age_dif","re74_dif")])
+#lalonde_sub_0 <- 
+#  lalonde_sub_0 %>% 
+#  mutate(age_dif= ...,
+#         re74_dif = ...)
+# L <- as.matrix(lalonde_sub_0[,c("age_dif","re74_dif")]) # the matrix of differences
 
-m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
-m_dis_ind3 <- ...
 
-m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
-print(cbind(m_dis))
+
+# Uncomment the code below by taking away the # at the beginning of each line
+# then fill out the ...
+
+# m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
+# m_dis_ind3 <- ...
+# m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
+# print(cbind(m_dis))
 
 ```
 

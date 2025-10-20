@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 4. Statistical Modeling | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="Relevant material will be covered by Oct 17. Problem set is due Oct 25. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
+<meta name="description" content="Relevant material will be covered by Oct 16. Problem set is due Oct 27. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Problem Set 4. Statistical Modeling | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Oct 17. Problem set is due Oct 25. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
+<meta property="og:description" content="Relevant material will be covered by Oct 16. Problem set is due Oct 27. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 4. Statistical Modeling | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Oct 17. Problem set is due Oct 25. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
+<meta name="twitter:description" content="Relevant material will be covered by Oct 16. Problem set is due Oct 27. To complete the problem set: Copy and Paste this into a .Rmd file and complete the homework. Omit your name so we can have...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -61,22 +62,20 @@
 <li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
-<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
+<li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
 <li><a class="active" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -90,7 +89,7 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-4.-statistical-modeling" class="section level1 unnumbered">
 <h1>Problem Set 4. Statistical Modeling<a class="anchor" aria-label="anchor" href="#problem-set-4.-statistical-modeling"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Oct 17</strong>. Problem set is due <strong>Oct 25</strong>.</p>
+<p>Relevant material will be covered by <strong>Oct 16</strong>. Problem set is due <strong>Oct 27</strong>.</p>
 <p>To complete the problem set:</p>
 <ul>
 <li>
@@ -103,32 +102,61 @@
 </blockquote>
 <p>The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study’s data as an illustration.</p>
 <p>The following lines will load these data into R.</p>
-<pre><code><a href="https://tidyverse.tidyverse.org">library(tidyverse)
-library(MatchIt)
-library(randomForest)
-data("lalonde")</a></code></pre>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.2
+## ✔ ggplot2   4.0.0     ✔ tibble    3.3.0
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kosukeimai.github.io/MatchIt/">MatchIt</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## randomForest 4.7-1.2
+## Type rfNews() to see new features/changes/bug fixes.
+## 
+## Attaching package: 'randomForest'
+## 
+## The following object is masked from 'package:dplyr':
+## 
+##     combine
+## 
+## The following object is masked from 'package:ggplot2':
+## 
+##     margin</code></pre>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"lalonde"</span><span class="op">)</span></span></code></pre></div>
 <div id="points-drawbacks-of-exact-matching" class="section level2 unnumbered">
 <h2>1. (10 points) Drawbacks of Exact Matching<a class="anchor" aria-label="anchor" href="#points-drawbacks-of-exact-matching"><i class="fas fa-link"></i></a>
 </h2>
-<p>In the discussion section on Wednesday, October 16th, you walked through an example of exact matching with high-dimensional confounding. You looked at some statistics and information of the <code>re74</code> values in the full data versus the matched data. Answer the following questions about what you observed:</p>
+<p>In the discussion section on Wednesday, October 15th, you walked through an example of exact matching with high-dimensional confounding. You looked at some statistics and information of the <code>re74</code> values in the full data versus the matched data. Answer the following questions about what you observed:</p>
 <ol style="list-style-type: decimal">
 <li>Notice the difference between the values of re74 in the full data versus the matched data. Explain what happened and why it happened.</li>
 <li>In light of this example, what is the drawback of using exact matching in this type of setting?</li>
 </ol>
 <p><strong>Answer.</strong></p>
 </div>
-<div id="points-outcome-modeling" class="section level2 unnumbered">
-<h2>2. (6 points) Outcome modeling<a class="anchor" aria-label="anchor" href="#points-outcome-modeling"><i class="fas fa-link"></i></a>
+<div id="points-outcome-modeling-with-parametric-g-formula" class="section level2 unnumbered">
+<h2>2. (10 points) Outcome modeling with Parametric G-formula<a class="anchor" aria-label="anchor" href="#points-outcome-modeling-with-parametric-g-formula"><i class="fas fa-link"></i></a>
 </h2>
-<p>In the code below, we use <code>randomForest</code> to learn a model of future earnings <code>re78</code> on treatment <code>treat</code>, interacted with confounders: <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. A random forest is a machine learning method that trains multiple decision trees in the final prediction model.</p>
+<p>In the code below, we use <code>randomForest</code> to learn a model of future earnings <code>re78</code> on treatment <code>treat</code>, interacted with confounders: <code>race</code>, ‘age’, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. A random forest is a machine learning method that trains multiple decision trees in the final prediction model.</p>
 <blockquote>
 <p>Knowing about decision trees and random forests is not necessary for this course or problem set. However, if you are interested in learning more about these machine learning methods, you can take a look at this cool (and free) <a href="https://developers.google.com/machine-learning/decision-forests/decision-trees">Google course</a> or watch <a href="https://youtu.be/gkXX4h3qYm4?si=2aa3T-D91wh4BZcQ">this short video from IBM Technology</a>.
-Documentation for the R Library <code>randomForest</code> can be found <a href="https://cran.r-project.org/web/packages/randomForest/randomForest.pdf">here</a></p>
+Documentation for the R Library <code>randomForest</code> can be found <a href="https://cran.r-project.org/web/packages/randomForest/randomForest.pdf">here</a>. Random forests have a random element when fitting the model. That means each time you re-run the code, the answer may be slightly different. To fix the result to a specific value, we will use the code `set.seed(111)’</p>
 </blockquote>
-<pre><code>outcome_model &lt;- randomForest(re78 ~ treat * (race + married + nodegree + re74), 
-                              data = lalonde, 
-                              ntree=1000, keep.forest=TRUE)</code></pre>
-<p><strong>YOUR TASK</strong>: Use the model above to estimate the average treatment effect among the <em>treated</em> (the ATT). o make your code easier to grade, break this task into the following three steps:</p>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># set the random number generator to a specific state</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">111</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># fit the outcome model using random forests</span></span>
+<span><span class="va">outcome_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/randomForest/man/randomForest.html">randomForest</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span><span class="op">*</span><span class="op">(</span><span class="va">race</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span><span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span><span class="op">)</span>, </span>
+<span>                              data <span class="op">=</span> <span class="va">lalonde</span><span class="op">)</span></span></code></pre></div>
+<p><strong>YOUR TASK</strong>: Use the model above to estimate the average treatment effect among the <em>treated</em> (the ATT). To make your code easier to grade, break this task into the following three steps:</p>
 <ol style="list-style-type: decimal">
 <li>Create two data frames from the <code>lalonde</code> data:
 <ul>
@@ -141,89 +169,206 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <li>Report the average treatment effect among the treated (ATT).</li>
 </ol>
 <p></p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
+<div id="points-ipw-estimator" class="section level2 unnumbered">
+<h2>3. (10 points) IPW estimator<a class="anchor" aria-label="anchor" href="#points-ipw-estimator"><i class="fas fa-link"></i></a>
+</h2>
+<p>Alternatively, we could use a propensity score model to estimate the Average Treatment effect (on everyone, not just those who are treated).</p>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">propensity_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span><span class="va">race</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span><span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span> <span class="op">+</span> <span class="va">re74</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">lalonde</span><span class="op">)</span></span></code></pre></div>
+<p><strong>YOUR TASK</strong>: Use the model above to estimate the average treatment effect among <em>everyone</em> (the ATE).</p>
+<p></p>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
+</div>
+<div id="choosing-a-distance-metric-for-matching" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> 4. Choosing a distance metric for matching<a class="anchor" aria-label="anchor" href="#choosing-a-distance-metric-for-matching"><i class="fas fa-link"></i></a>
+</h2>
+<p>To better understand the importance of choosing a distance metric we will consider only a subset of the <code>lalonde</code> data. We will choose a match for an individual in the treatment group based on <code>age</code> and <code>re74</code>.</p>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lalonde_sub</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">lalonde</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"NSW185"</span>,<span class="st">"PSID250"</span>,<span class="st">"PSID303"</span><span class="op">)</span>,<span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">treat</span>,<span class="va">age</span>,<span class="va">re74</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>row.names<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Ind1"</span>, <span class="st">"Ind2"</span>, <span class="st">"Ind3"</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">lalonde_sub_0</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">lalonde_sub</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">treat</span><span class="op">==</span><span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">lalonde_sub</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##      treat age     re74
+## Ind1     1  33 14660.71
+## Ind2     0  32 12553.02
+## Ind3     0  52 14780.71</code></pre>
+<div id="point-getting-intuition" class="section level3" number="11.1.1">
+<h3>
+<span class="header-section-number">11.1.1</span> 4.1. (1 point) Getting intuition<a class="anchor" aria-label="anchor" href="#point-getting-intuition"><i class="fas fa-link"></i></a>
+</h3>
+<p>By looking at the table above and the histograms of the variables below, do you think <code>Ind2</code> or <code>Ind3</code> would be a better match with <code>Ind1</code>? Why?</p>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">$</span><span class="va">age</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="pset4_files/figure-html/unnamed-chunk-7-1.png" width="672"></div>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">$</span><span class="va">re74</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="pset4_files/figure-html/unnamed-chunk-7-2.png" width="672"></div>
+<p></p>
+</div>
+<div id="points-euclidean-distance" class="section level3" number="11.1.2">
+<h3>
+<span class="header-section-number">11.1.2</span> 4.2. (5 points) Euclidean distance<a class="anchor" aria-label="anchor" href="#points-euclidean-distance"><i class="fas fa-link"></i></a>
+</h3>
+<p>Using the euclidean distance, which individual would be the closest match with <code>Ind1</code>?</p>
+<p>Remember the euclidean distance is given by <span class="math inline">\(d(i,j) = \sqrt{\sum_p \left( L_{pi} - L_{pj}\right)^2}\)</span>. Fill in the missing variables (indicated by <code>...</code>) to calculate the euclidean distance:</p>
+<p></p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">age_ind1</span> <span class="op">=</span> <span class="va">lalonde_sub</span><span class="op">[</span><span class="st">"Ind1"</span>,<span class="st">"age"</span><span class="op">]</span></span>
+<span><span class="va">re74_ind1</span> <span class="op">=</span> <span class="va">lalonde_sub</span><span class="op">[</span><span class="st">"Ind1"</span>,<span class="st">"re74"</span><span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Uncomment the code below by taking away the # at the beginning of each line</span></span>
+<span><span class="co"># then fill out the ...</span></span>
+<span></span>
+<span><span class="co"># lalonde_sub_0 %&gt;% </span></span>
+<span><span class="co">#  mutate(age_dif= ...,</span></span>
+<span><span class="co">#         re74_dif = ...,</span></span>
+<span><span class="co">#         euc_dis = sqrt(...)) %&gt;%</span></span>
+<span><span class="co">#  select(euc_dis)</span></span></code></pre></div>
+</div>
+<div id="points-mahalanobis-distance" class="section level3" number="11.1.3">
+<h3>
+<span class="header-section-number">11.1.3</span> 4.3. (5 points) Mahalanobis distance<a class="anchor" aria-label="anchor" href="#points-mahalanobis-distance"><i class="fas fa-link"></i></a>
+</h3>
+<p>Using the Mahalanobis distance, which individual would you match with <code>Ind1</code>?</p>
+<p>Remember the Mahalanobis distance adjusts for the fact that some variables are measured on different scales than others. Thus, for each variable the distance is divided by the standard deviation of the variable. Furthermore, it adjusts for correlations within variables as well. Mathematically, it is given by <span class="math inline">\(d(i, j) =\sqrt{(\vec{L}_i -\vec{L}_j)^T\Sigma^{-1}(\vec{L}_i -\vec{L}_j)}\)</span>, where <span class="math inline">\(\Sigma\)</span> is the covariance of <span class="math inline">\(\vec{L}\)</span>.</p>
+<p>Fill in the missing variables (indicated by <code>...</code>) to calculate the mahalanobis distance. Note that we’re using the function <code><a href="https://rdrr.io/r/base/solve.html">solve()</a></code> to get the inverse of a matrix.</p>
+<p></p>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## the contrivance matrix for age and re74 based on the entire dateset:</span></span>
+<span><span class="va">Sigma</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cov</a></span><span class="op">(</span><span class="va">lalonde</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"age"</span>,<span class="st">"re74"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># standard deviation of age</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">Sigma</span><span class="op">[</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 9.881187</code></pre>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># standard deviation of income in 1974</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">Sigma</span><span class="op">[</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## [1] 6477.964</code></pre>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Uncomment the code below by taking away the # at the beginning of each line</span></span>
+<span><span class="co"># then fill out the ...</span></span>
+<span></span>
+<span><span class="co">#lalonde_sub_0 &lt;- </span></span>
+<span><span class="co">#  lalonde_sub_0 %&gt;% </span></span>
+<span><span class="co">#  mutate(age_dif= ...,</span></span>
+<span><span class="co">#         re74_dif = ...)</span></span>
+<span><span class="co"># L &lt;- as.matrix(lalonde_sub_0[,c("age_dif","re74_dif")]) # the matrix of differences</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co"># Uncomment the code below by taking away the # at the beginning of each line</span></span>
+<span><span class="co"># then fill out the ...</span></span>
+<span></span>
+<span><span class="co"># m_dis_ind2 &lt;- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])</span></span>
+<span><span class="co"># m_dis_ind3 &lt;- ...</span></span>
+<span><span class="co"># m_dis &lt;- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)</span></span>
+<span><span class="co"># print(cbind(m_dis))</span></span></code></pre></div>
+</div>
+<div id="points-choose-distance" class="section level3" number="11.1.4">
+<h3>
+<span class="header-section-number">11.1.4</span> 4.4 (2 points) Choose distance<a class="anchor" aria-label="anchor" href="#points-choose-distance"><i class="fas fa-link"></i></a>
+</h3>
+<p>Based on your previous answers, which distance metric would you prefer to use for matching? Why?</p>
+<p></p>
+</div>
+</div>
 <div id="matching-without-requiring-exact-matches" class="section level2 unnumbered">
-<h2>3. Matching without requiring exact matches<a class="anchor" aria-label="anchor" href="#matching-without-requiring-exact-matches"><i class="fas fa-link"></i></a>
+<h2>5. Matching without requiring exact matches<a class="anchor" aria-label="anchor" href="#matching-without-requiring-exact-matches"><i class="fas fa-link"></i></a>
 </h2>
 <p>We hope that from this class you are prepared to learn new causal estimators, apply them in R, and explain what you have done. This question is a chance to practice! In class we discussed many matching approaches. For this question, you will choose your own approach. There are many correct answers, and you will be evaluated by the clarity of your code and explanations.</p>
 <p>Task: Using <code>matchit</code>, conduct matching to estimate the ATT where <code>treat</code> is the treatment and the sufficient adjustment set is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>.</p>
 <ol style="list-style-type: decimal">
 <li>Use <code>matchit</code>, setting <code>method</code>, <code>distance</code>, and any other arguments (like <code>replace</code>, <code>caliper</code>, <code>ratio</code>) to any values of your choosing. The only requirements are
 <ul>
-<li><code>formula = treat ~ race + married + nodegree + re74</code></li>
+<li><code>formula = treat ~ race + age + married + nodegree + re74</code></li>
 <li><code>estimand = "ATT"</code></li>
 <li>For <code>method</code>, you may <em>not</em> use <code>exact</code>.</li>
 </ul>
 </li>
 <li>Create matched dataset using <code><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data()</a></code>
 </li>
-<li>Using linear regression with <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, estimate a model using the formula <code>re78 ~ treat + race + married + nodegree + re74</code> and your matched data, weighted by the <code>weights</code> that are produced by <code><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data()</a></code>.</li>
+<li>Using linear regression with <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, estimate a model using the formula <code>re78 ~ treat*(age + race + married + nodegree + re74)</code> and your matched data, weighted by the <code>weights</code> that are produced by <code><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data()</a></code>.</li>
 <li>Report your estimate of the ATT.</li>
 </ol>
 <div id="points-conduct-the-matching" class="section level3 unnumbered">
-<h3>3.1. (5 points) Conduct the matching<a class="anchor" aria-label="anchor" href="#points-conduct-the-matching"><i class="fas fa-link"></i></a>
+<h3>5.1. (5 points) Conduct the matching<a class="anchor" aria-label="anchor" href="#points-conduct-the-matching"><i class="fas fa-link"></i></a>
 </h3>
 <p>This is space to conduct the matching. We expect this part to be an R code chunk.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 </div>
 <div id="points-explain-your-choices" class="section level3 unnumbered">
-<h3>3.2. (5 points) Explain your choices<a class="anchor" aria-label="anchor" href="#points-explain-your-choices"><i class="fas fa-link"></i></a>
+<h3>5.2. (5 points) Explain your choices<a class="anchor" aria-label="anchor" href="#points-explain-your-choices"><i class="fas fa-link"></i></a>
 </h3>
 <p>In a few sentences, tell us about the matching approach you have chosen. Cite content from lecture or discussion slides in your answer by including the slide number(s) and date(s).</p>
 <p><strong>Answer.</strong></p>
 </div>
-<div id="points-how-many-units-did-you-keep" class="section level3 unnumbered">
-<h3>3.3. (2 points) How many units did you keep?<a class="anchor" aria-label="anchor" href="#points-how-many-units-did-you-keep"><i class="fas fa-link"></i></a>
-</h3>
-<p>Report the number of treated and control units in the original data, and how many were kept by your matching procedure.</p>
-<p><strong>Answer.</strong></p>
-</div>
 <div id="points-report-your-causal-estimate" class="section level3 unnumbered">
-<h3>3.4. (2 points) Report your causal estimate<a class="anchor" aria-label="anchor" href="#points-report-your-causal-estimate"><i class="fas fa-link"></i></a>
+<h3>5.3. (5 points) Report your causal estimate<a class="anchor" aria-label="anchor" href="#points-report-your-causal-estimate"><i class="fas fa-link"></i></a>
 </h3>
-<p>What do you estimate for the average treatment effect on the treated? This is the coefficient on <code>treat</code> in the linear regression you fit on the matched data.</p>
+<p>Using the matching above, fit an outcome model to the matched data (treatment and non-treatment) and use that to estimate the ATT. What do you estimate for the average treatment effect on the treated?</p>
 <p><strong>Answer.</strong></p>
 </div>
 </div>
 <div id="points-reflection-question" class="section level2 unnumbered">
-<h2>4. (10 points) Reflection Question<a class="anchor" aria-label="anchor" href="#points-reflection-question"><i class="fas fa-link"></i></a>
+<h2>6. (10 points) Reflection Question<a class="anchor" aria-label="anchor" href="#points-reflection-question"><i class="fas fa-link"></i></a>
 </h2>
-<p>Answer <strong>one</strong> of the following two prompts in a short paragraph. For full credit, you must refer to at least <strong>two</strong> lecture or discussion slides or exercises that relate to what you choose to write about. To cite slides, simply reference the slide number and date. If you are citing an exercise/.Rmd notebook from a discussion or lecture, indicate the date, title, and subsection if appropriate.</p>
+<p>Answer the following two questions in a short paragraph. For full credit, you must refer to at least <strong>two</strong> lecture or discussion slides or exercises that relate to what you choose to write about (at least one for each part). To cite slides, simply reference the slide number and date. If you are citing an exercise/.Rmd notebook from a discussion or lecture, indicate the date, title, and subsection if appropriate.</p>
 <ol style="list-style-type: lower-alpha">
-<li><p>Reflect on your overall experience with <a href="https://causal3900.github.io/statistical-modeling.html">Unit 5: Statistical Modeling</a> by: describing an interesting idea or tool you learned, why it was interesting to you, and what it tells you about causal inference.</p></li>
-<li><p>Reflect on your overall experience with this problem set by telling us about a particular question that you found challenging, why it was hard for you, how you approached the problem, and what you learned by struggling through the problem.</p></li>
+<li><p>Reflect on your overall experience in the course so far by describing an interesting idea or tool you learned, why it was interesting to you, and what it tells you about causal inference.</p></li>
+<li><p>Reflect on your overall experience with the course so far by telling us about a particular topic/question that you found challenging, why it was hard for you, how you approached the problem, and what you learned by struggling through the problem.</p></li>
 </ol>
 <p><strong>Answer.</strong></p>
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></div>
-<div class="next"><a href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></div>
+<div class="next"><a href="who-we-are.html">Who we are</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#problem-set-4.-statistical-modeling">Problem Set 4. Statistical Modeling</a></li>
 <li><a class="nav-link" href="#points-drawbacks-of-exact-matching">1. (10 points) Drawbacks of Exact Matching</a></li>
-<li><a class="nav-link" href="#points-outcome-modeling">2. (6 points) Outcome modeling</a></li>
+<li><a class="nav-link" href="#points-outcome-modeling-with-parametric-g-formula">2. (10 points) Outcome modeling with Parametric G-formula</a></li>
+<li><a class="nav-link" href="#points-ipw-estimator">3. (10 points) IPW estimator</a></li>
 <li>
-<a class="nav-link" href="#matching-without-requiring-exact-matches">3. Matching without requiring exact matches</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#points-conduct-the-matching">3.1. (5 points) Conduct the matching</a></li>
-<li><a class="nav-link" href="#points-explain-your-choices">3.2. (5 points) Explain your choices</a></li>
-<li><a class="nav-link" href="#points-how-many-units-did-you-keep">3.3. (2 points) How many units did you keep?</a></li>
-<li><a class="nav-link" href="#points-report-your-causal-estimate">3.4. (2 points) Report your causal estimate</a></li>
+<a class="nav-link" href="#choosing-a-distance-metric-for-matching"><span class="header-section-number">11.1</span> 4. Choosing a distance metric for matching</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#point-getting-intuition"><span class="header-section-number">11.1.1</span> 4.1. (1 point) Getting intuition</a></li>
+<li><a class="nav-link" href="#points-euclidean-distance"><span class="header-section-number">11.1.2</span> 4.2. (5 points) Euclidean distance</a></li>
+<li><a class="nav-link" href="#points-mahalanobis-distance"><span class="header-section-number">11.1.3</span> 4.3. (5 points) Mahalanobis distance</a></li>
+<li><a class="nav-link" href="#points-choose-distance"><span class="header-section-number">11.1.4</span> 4.4 (2 points) Choose distance</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#points-reflection-question">4. (10 points) Reflection Question</a></li>
+<li>
+<a class="nav-link" href="#matching-without-requiring-exact-matches">5. Matching without requiring exact matches</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#points-conduct-the-matching">5.1. (5 points) Conduct the matching</a></li>
+<li><a class="nav-link" href="#points-explain-your-choices">5.2. (5 points) Explain your choices</a></li>
+<li><a class="nav-link" href="#points-report-your-causal-estimate">5.3. (5 points) Report your causal estimate</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#points-reflection-question">6. (10 points) Reflection Question</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -237,7 +382,7 @@ Documentation for the R Library <code>randomForest</code> can be found <a href="
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-10-20</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

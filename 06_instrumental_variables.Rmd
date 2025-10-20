@@ -4,7 +4,7 @@
 
 ## Experimental settings
 
-> Oct 22. [**Slides from 2024.**](assets/slides/7-1_iv_experimental.pdf)
+> Oct 21. [**Slides.**](assets/slides/7-1_iv_experimental.pdf)
 
 An instrumental variable (IV) identification strategy applies when a treatment effect of $A$ on $Y$ is confounded by unobserved variables ($U$), but an **instrument** $Z$ creates random unconfounded variation in $A$.
 
