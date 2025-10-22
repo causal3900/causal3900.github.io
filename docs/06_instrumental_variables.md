@@ -25,9 +25,8 @@ A very clean setting for IV is randomized experiments with non-compliance: an ex
 
 In this lab we will implement instrumental variables estimators in R.
 
-> October 23 [**Slides from 2024.**](assets/discussions/discussion9-slides.pdf) Download the
-R Markdown file [**here**](assets/discussions/discussion9.Rmd). 
-Solutions to the lab exercise are [**here**](assets/discussions/discussion9-solutions.html). 
+> October 22 [**Discussion**](discussion-9.-instrumental-variable) and [**discussion slides**](assets/discussions/discussion9-instrumental-variables.pdf) Download the
+R Markdown file [**here**](assets/discussions/discussion9.Rmd)
 
 ## Observational settings
 
