@@ -167,7 +167,7 @@ lalonde_sub_0 <-
 ## the matrix of differences
 L <- as.matrix(lalonde_sub_0[,c("age_dif","re74_dif")])
 
-m_dis_ind2 <- sqrt(L["Ind2",] %>% solve(Sigma) %>%  L["Ind2",])
+m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
 m_dis_ind3 <- ...
 
 m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
