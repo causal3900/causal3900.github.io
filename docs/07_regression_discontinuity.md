@@ -10,7 +10,8 @@ In some settings, a treatment is assigned based solely off the value of a contin
 
 ## Lab: Regression Discontinuity - Bandwidth and Examples
 
-> Oct 29 [**Slides from 2024.**](assets/discussions/rdd_lab_slides.pdf). Download today's [**.Rmd document here**](assets/discussions/rdd_lab.Rmd). After lab, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, section 20.2.1.
+> Oct 29 [**Discussion**](discussion-10.-regression-discontinuity) and [**discussion slides**](assets/discussions/discussion10_rdd.pdf) Download the
+R Markdown file [**here**](assets/discussions/discussion10.Rmd). After lab, read [Huntington Klein 2021](https://theeffectbook.net/ch-RegressionDiscontinuity.html) Chapter 20, section 20.2.1.
 
 We'll discuss a bandwidth selection and triangular weighting. We'll also apply regression discontinuity to a concrete example and give you a chance to try it out for yourself.
 

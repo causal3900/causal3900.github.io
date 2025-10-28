@@ -13,8 +13,7 @@ You can download the [**slides**](assets/discussions/discussion10_rdd.pdf) for t
 One of the main difficulties of a regression discontinuity analysis is choosing a ''good'' bandwidth. This is a good example of the bias variance trade-off which appears all the time in statistics. In general, we will let the software choose this for us, but it will be helpful to run through a small example to better understand the subtleties involved. 
 
 Suppose $Y$ is a very non-linear function of $X$, and we want to extrapolate and predict $Y$ at $X=0$.
-
-``` r
+```{r}
 n <- 100
 X <- runif(n, -5, 0)
 ### Y is a very non-linear function of X + some noise
@@ -30,14 +29,21 @@ lines(xTrue, yTrue, col = "darkgreen")
 points(0, 5, pch = 18, col = "orange", cex = 3)
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-1-1.png" width="672" />
-
 If we blindly fit a line to all our observations, the predicted value for $X=0$ is off by quite a bit.
-<img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+```{r echo=FALSE}
+fit.mod <- lm(Y~X)
+plot(X, Y, ylim = c(-15, 30), xlim = c(-5, 1))
+abline(v = 0, col = "gray", lwd = 2)
+segments(-5, predict(fit.mod, newdata = data.frame(X = -5)),
+         0, predict(fit.mod, newdata = data.frame(X = 0)),col = "red")
+points(0, 5, pch = 18, col = "orange", cex = 3)
+lines(xTrue, yTrue, col = "darkgreen")
+
+```
 
 If we instead restrict ourselves to a smaller region around 0, we can do a bit better
+```{r}
 
-``` r
 ## Only consider points h away from 0
 h <- 3
 
@@ -51,13 +57,11 @@ segments(-h, predict(fit.mod.bandwidth, newdata = data.frame(X = -h)),
          lwd = 2)
 points(0, 5, pch = 18, col = "orange", cex = 3)
 lines(xTrue, yTrue, col = "darkgreen")
+
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
 However, if we get more and more data, we don't really improve much
-
-``` r
+```{r}
 n <- 10000
 X <- runif(n, -5, 0)
 Y <- 5 - 3*X + .6 * X^2 + .3 * X^3 + 15 * sin(X) + rnorm(n, sd = 4)
@@ -73,14 +77,12 @@ segments(-h, predict(fit.mod.bandwidth, newdata = data.frame(X = -h)),
 
 points(0, 5, pch = 18, col = "orange", cex = 3)
 lines(xTrue, yTrue, col = "darkgreen")
-```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+```
 
 Ideally, we would decrease the bandwidth to reduce this bias, but this also means we are working with less data. Since each data point is noisy, if we were to get a new sample, the estimate could change quite a bit. Try running this a few times and see how much the estimate moves. Compare this which how much the estimate moves if the bandwidth is 2.
 
-
-``` r
+```{r}
 h <- .3 # bandwidth
 # h <- 2 
 n <- 100
@@ -99,16 +101,14 @@ segments(-h, predict(fit.mod.bandwidth, newdata = data.frame(X = -h)),
 points(0, 5, pch = 18, col = "orange", cex = 3)
 points(0, predict(fit.mod.bandwidth, newdata = data.frame(X = 0)), col = "blue", pch = 19)
 lines(xTrue, yTrue, col = "darkgreen")
-```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+```
 
 Knowing the best bandwidth is a hard problem, but generally speaking a good choice of bandwidth will get smaller as the sample size increases. 
 
 If we measure accuracy in terms of average squared error, we can see when $n = 100$, a bandwidth of 1.2 seems to be best. However, test and see if how that changes for larger values of $n$
 
-
-``` r
+```{r}
 n <- 100
 h <- c(.5, .8, 1.2, 2)
 sim.size <- 500
@@ -130,22 +130,11 @@ for(i in 1:sim.size){
 data.frame(h = h,
            y_hat = colMeans(rec)[1:4],
            accuracy = colMeans(rec)[5:8])
-```
 
-```
-##     h    y_hat  accuracy
-## 1 0.5 4.969883 10.574295
-## 2 0.8 4.735670  5.275548
-## 3 1.2 4.071969  4.109586
-## 4 2.0 1.700187 13.029457
-```
 
-``` r
 boxplot(as.list(data.frame(rec[, 1:4])), ylim = c(-5, 20),names = h)
 abline(h = 5, col = "red")
 ```
-
-<img src="discussion10_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 
 ### Weighted Least Squares {-}
@@ -156,16 +145,13 @@ and the squared error for each observation count are considered equally. But if 
 $$\min_b \sum_i w_i(Y_i - X_i b)^2$$
 When $w_i$ is larger, the squared error for observation $i$ will cost more so the selected linear coefficient will prioritize minimizing errors where $w_i$ is large. In our particular setting, we want to prioritize fitting the data well around $0$, so we can use weights which are ``triangular'' which prioritize points near $0$.  
 
-
-``` r
+```{r}
 n <- 200
 X <- runif(n, -5, 0)
 Y <- 5 - 3*X + .6 * X^2 + .3 * X^3 + 15 * sin(X) + rnorm(n, sd = 4)
 weight <- 1 - abs(X) / 5 
 plot(X, weight, type = "p", main = "Triangular Weights")
 ```
-
-<img src="discussion10_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 #### Question {-}
@@ -174,8 +160,7 @@ If we use a bandwidth of $h$ (i.e., only include observations within $h$ of the 
 
 When using triangular weights, we can see that this does better than using all the points.
 
-
-``` r
+```{r}
 n <- 200
 h <- 3
 X <- runif(n, -5, 0)
@@ -213,13 +198,12 @@ lines(xTrue, yTrue, col = "darkgreen")
 legend(x = -.5,y = 30,
       legend = c("True","Bandwidth","Weights","OLS"),
       col = c("darkgreen","blue","green","purple"), lwd = 2)
+
+
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-8-1.png" width="672" />
-
 In practice, we can combine both a hard thresholding bandwidth as well as triangular weights (within the bandwidth) 
-
-``` r
+```{r}
 # bandwidth
 h <- 3
 n <- 200
@@ -231,8 +215,6 @@ weight <- ifelse(abs(X) < h, 1 - abs(X) / h, 0)
 
 plot(X, weight, type = "p", main = "Triangular Weights")
 ```
-
-<img src="discussion10_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 
 ## RDD Analysis {-}
@@ -262,8 +244,7 @@ _Cutoff_: 0 (you win, i.e. become incumbent, if your margin of victory is greate
 ### 2. Data {-}
 For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
 
-
-``` r
+```{r}
 # Below, we create a function that loads in libraries, but first checks if it is installed
 # The piece of code below is not necessary, but it makes loading libraries more convenient 
 install <- function(package) {
@@ -286,30 +267,6 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 # the head function shows us the first few rows of our data
 head(data)
 ```
-
-```
-##         state year dopen population presdemvoteshlag1
-## 1 Connecticut 1914     0    1233000          39.15937
-## 2 Connecticut 1916     0    1294000          39.15937
-## 3 Connecticut 1922     0    1431000          33.02737
-## 4 Connecticut 1926     0    1531000          27.52570
-## 5 Connecticut 1928     1    1577000          27.52570
-## 6 Connecticut 1932     0    1637000          45.57480
-##         demmv demvoteshlag1 demvoteshlag2 demvoteshfor1
-## 1  -7.6885610            NA            NA      46.23941
-## 2  -3.9237082      42.07694            NA      36.09757
-## 3  -6.8686604      36.09757      46.23941      35.64121
-## 4 -27.6680560      45.46875      36.09757      45.59821
-## 5  -8.2569685      35.64121      45.46875      48.47606
-## 6   0.7324815      45.59821      35.64121      51.74687
-##   demvoteshfor2 demwinprv1 demwinprv2 dmidterm dpresdem
-## 1      36.09757         NA         NA        1        1
-## 2      45.46875          0         NA        0        1
-## 3      45.59821          0          0        1        0
-## 4      48.47606          0          0        1        0
-## 5      51.74687          0          0        0        0
-## 6      39.80264          0          0        0        0
-```
 Here is what some of these column names (variables) mean:
 
 - `demmv` is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
@@ -321,8 +278,7 @@ Here is what some of these column names (variables) mean:
 ## 3. RDD in R {-}
 We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is `demvoteshfor2` because the next time the same seat goes up for election is 2 cycles in the future. The running variable is `demmv`.
 
-
-``` r
+```{r}
 # Save the column "demvoteshfor2" from data into a variable called "outcome"
 outcome <- data$demvoteshfor2
 
@@ -336,8 +292,6 @@ rdplot(y = outcome, x =  running_variable, nbins = c(1000, 1000),
        x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
 ```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-11-1.png" width="672" />
-
 Optional: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values?
 
 ### 3.1 Is there a discontinuity? {-}
@@ -350,38 +304,12 @@ Getting the estimates aren't so difficult once we've selected a bandwidth, but s
 
 For `rdrobust`, the syntax is `rdrobust(y, x, kernel, p, h)` where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth. 
 
-
-``` r
+```{r}
 # uniform kernel with bandwidth 10 and a linear (degree 1) model
 out <- rdrobust(outcome, running_variable, kernel = 'uniform',  p = 1, h = 10)
 
 # print the results
 summary(out)
-```
-
-```
-## Sharp RD estimates using local polynomial regression.
-## 
-## Number of Obs.                 1297
-## BW type                      Manual
-## Kernel                      Uniform
-## VCE method                       NN
-## 
-## Number of Obs.                  595          702
-## Eff. Number of Obs.             245          206
-## Order est. (p)                    1            1
-## Order bias  (q)                   2            2
-## BW est. (h)                  10.000       10.000
-## BW bias (b)                  10.000       10.000
-## rho (h/b)                     1.000        1.000
-## Unique Obs.                     595          702
-## 
-## =====================================================================
-##                    Point    Robust Inference
-##                 Estimate         z     P>|z|      [ 95% C.I. ]       
-## ---------------------------------------------------------------------
-##      RD Effect     6.899     3.891     0.000     [5.156 , 15.624]    
-## =====================================================================
 ```
 
 #### 3.2.1 Questions {-}
@@ -394,22 +322,19 @@ summary(out)
 For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators.
 
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is still margin of victory `demmn`. We've plotted the data for you below. 
-
-``` r
+```{r}
 outcome_2 <- data$demvoteshfor1
 running_variable_2 <- data$demmv
 
 # plot the data
 # Set p = 0 for a straight line (i.e., regression with X^p)
 rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col.lines = "red", col.dots = "lightgray", title = "Incumbency Advantage", y.lim = c(0,100), x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
-```
 
-<img src="discussion10_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+```
 
 Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why? Can you explain what quantity you estimated?
 
-
-``` r
+```{r}
 # Your code goes here
 ```
 

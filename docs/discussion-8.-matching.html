@@ -71,6 +71,7 @@
 <li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
 <li><a class="active" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
 <li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
+<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -126,7 +127,7 @@
 <code>estimand = "ATT"</code> since we are targeting the average treatment effect on the treated (ATT)</li>
 </ul>
 <p>We then use the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to see how many control units and how many treatment units were matched.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exact_low</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/matchit.html">matchit</a></span><span class="op">(</span><span class="va">treat</span> <span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span>,</span>
 <span>                 data <span class="op">=</span> <span class="va">lalonde</span>,</span>
 <span>                 method <span class="op">=</span> <span class="st">"nearest"</span>,</span>
@@ -153,23 +154,30 @@
 <li>
 <code>un</code>: show statistics for unmatched data as well? (T or F)</li>
 </ul>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">exact_low</span>, interactions <span class="op">=</span> <span class="cn">F</span>, un <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">$</span><span class="va">sum.matched</span></span></code></pre></div>
 <pre><code>##            Means Treated Means Control Std. Mean Diff.
-## distance       0.5005432     0.5005432               0
-## raceblack      0.7387387     0.7387387               0
-## racehispan     0.0990991     0.0990991               0
-## racewhite      0.1621622     0.1621622               0
-## married        0.2342342     0.2342342               0
-## nodegree       0.6666667     0.6666667               0
-##            Var. Ratio eCDF Mean eCDF Max Std. Pair Dist.
-## distance            1         0        0               0
-## raceblack          NA         0        0               0
-## racehispan         NA         0        0               0
-## racewhite          NA         0        0               0
-## married            NA         0        0               0
-## nodegree           NA         0        0               0</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+## distance       0.5005432     0.5005432   -3.330669e-16
+## raceblack      0.7387387     0.7387387    0.000000e+00
+## racehispan     0.0990991     0.0990991    0.000000e+00
+## racewhite      0.1621622     0.1621622    0.000000e+00
+## married        0.2342342     0.2342342    0.000000e+00
+## nodegree       0.6666667     0.6666667    0.000000e+00
+##            Var. Ratio   eCDF Mean     eCDF Max
+## distance            1 4.91505e-18 1.734723e-17
+## raceblack          NA 0.00000e+00 0.000000e+00
+## racehispan         NA 0.00000e+00 0.000000e+00
+## racewhite          NA 0.00000e+00 0.000000e+00
+## married            NA 0.00000e+00 0.000000e+00
+## nodegree           NA 0.00000e+00 0.000000e+00
+##            Std. Pair Dist.
+## distance                 0
+## raceblack                0
+## racehispan               0
+## racewhite                0
+## married                  0
+## nodegree                 0</code></pre>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">exact_low</span>, type <span class="op">=</span> <span class="st">"density"</span>, interactive <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion08_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
 <p><strong>Question</strong>: What do you notice about the means of different covariates for the treated versus control groups?</p>
@@ -180,7 +188,7 @@
 </h3>
 <p>Here, we estimate linear regression models using the match data from 2.1 using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function with the formula <code>re78 ~ treat + race + married + nodegree</code> and <code>re78 ~ treat*(race + married + nodegree)</code>. The second linear model includes an interaction term. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data <code>match.data(exact_low)</code>. In the model without an interaction, the coefficient in front of the variable <code>treat</code> in the linear regression is our estimated effect. We can also simply compare the means of the two groups or calculate the parametric g-formulat by hand or by using from the ‘marginaleffects’ package. When using exact 1:1 matching and simple linear model, all estimates will agree.</p>
 <p>If we use a different type of matching procedure, the estimates typically will not all be exactly the same. Additionally, if we use a more complicated model (such as the one with interactions) the causal effect will not correspond to a single coefficient from the linear model, but the parametric g-formula will still work.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span> <span class="op">+</span> <span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span>,</span>
 <span>          data <span class="op">=</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span>,</span>
 <span>          w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
@@ -190,7 +198,7 @@
 ##   6855.9543    379.9167   3264.0613   3070.2140   1795.8455 
 ##    nodegree 
 ##  -3022.6687</code></pre>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit_int</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">re78</span> <span class="op">~</span> <span class="va">treat</span><span class="op">*</span><span class="op">(</span><span class="va">race</span> <span class="op">+</span> <span class="va">married</span> <span class="op">+</span> <span class="va">nodegree</span><span class="op">)</span>,</span>
 <span>          data <span class="op">=</span> <span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span>,</span>
 <span>          w <span class="op">=</span> <span class="va">weights</span><span class="op">)</span></span>
@@ -204,7 +212,7 @@
 ##      -3822.99362      -3642.07549         65.58842 
 ##   treat:nodegree 
 ##        414.52179</code></pre>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## parametric g-formula by hand from last week</span></span>
 <span></span>
 <span><span class="co">## Get Actually treated individuals and set treatment to 0</span></span>
@@ -222,7 +230,7 @@
 <span><span class="co"># compare means of groups</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_treatment</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_control</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 379.9167</code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Take the average outcome for each group</span></span>
 <span><span class="fu"><a href="https://kosukeimai.github.io/MatchIt/reference/match_data.html">match.data</a></span><span class="op">(</span><span class="va">exact_low</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">re78</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
@@ -230,7 +238,7 @@
 ##   &lt;int&gt; &lt;dbl&gt;
 ## 1     0 6083.
 ## 2     1 6463.</code></pre>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## parametric g-formula using marginal effects</span></span>
 <span><span class="fu">avg_comparisons</span><span class="op">(</span><span class="va">fit</span>,</span>
 <span>                variables <span class="op">=</span> <span class="st">"treat"</span>,</span>
@@ -243,14 +251,14 @@
 ## Term: treat
 ## Type: response
 ## Comparison: 1 - 0</code></pre>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">potential_outcomes_under_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit_int</span>, newdata <span class="op">=</span> <span class="va">d_all_control</span><span class="op">)</span></span>
 <span><span class="va">potential_outcomes_under_treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">fit_int</span>, newdata <span class="op">=</span> <span class="va">d_all_treat</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># compare means of groups</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_treatment</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">potential_outcomes_under_control</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 379.9167</code></pre>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## parametric g-formula using marginal effects</span></span>
 <span><span class="fu">avg_comparisons</span><span class="op">(</span><span class="va">fit_int</span>,</span>
 <span>                variables <span class="op">=</span> <span class="st">"treat"</span>,</span>
@@ -273,7 +281,7 @@
 <h3>3.1. Using <code>matchit()</code> to conduct a matching<a class="anchor" aria-label="anchor" href="#using-matchit-to-conduct-a-matching-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now suppose the adjustment set needs to also include 1974 earnings, <code>re74</code>. The adjustment set for this part is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. Repeat exact matching as above.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 <p><strong>Question</strong>: How many control units were matched? How many treated units?</p>
 </div>
@@ -292,10 +300,10 @@
 </li>
 </ul>
 <p>Full data:</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># your code goes here</span></span></code></pre></div>
 <p>Matched data:</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># your code goes here</span></span></code></pre></div>
 <p><strong>Explain what happened</strong>: What do you notice? What is different about the values of <code>re74</code> in the full data versus the matched data? Explain what happened and why it happened. Briefly interpret the result from 3.2: what is the drawback of using exact matching in this setting?</p>
 </div>
@@ -303,7 +311,7 @@
 <h3>3.3. Using <code>matchit()</code> to conduct a matching<a class="anchor" aria-label="anchor" href="#using-matchit-to-conduct-a-matching-2"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now suppose the adjustment set needs to also include 1974 earnings, <code>re74</code>. The adjustment set for this part is <code>race</code>, <code>married</code>, <code>nodegree</code>, and <code>re74</code>. Use nearest neighbor matching, but do not require exact matches. Instead pick a distance of your choice.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># use help to see what the various distances are</span></span>
 <span><span class="op">?</span><span class="va">matchit</span></span>
 <span></span>
@@ -319,7 +327,7 @@
 <h3>3.4. Effect estimate<a class="anchor" aria-label="anchor" href="#effect-estimate-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>Using the matching from above, estimate a causal effect using the parametric g-formula.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 
 <style>li {line-height: 1.8;}</style>

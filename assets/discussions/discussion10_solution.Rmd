@@ -1,14 +1,13 @@
 ---
-output: html_document
+output:
+  pdf_document: default
 ---
 
-# Discussion 10: RDD Lab Solutions {-}
-
-Download the discussion slides [**here**]() and the RMarkdown File [**here**](assets/discussions/rdd_lab.Rmd). You may need to copy and paste into a .Rmd file.
+# Regression Discontinuity Lab {-}
 
 The goal of today's activity is to interact with regression discontinuity through a real-world example using R. The first section is more conceptual, to help you understand the particular application. Afterwards, there is a mix of conceptual and coding questions. Most of the coding is already done for you and we instead ask that you explore the code by changing some variables.
 
-## 1. Background: An Application to Party Advantages in the U.S. Senate {-}
+## 1. Background: An Application to Party Advantages in the U.S. Senate
 Let's apply a regression discontinuity analysis to data. This example follows the analysis ``Randomization Inference in the Regression Discontinuity Design: An Application to Party Advantages in the U.S. Senate'' by Cattaneo, Frandsen, and Titiunik (2015) and their replication file.
 
 Political scientists are interested in the effect of being an incumbent (the currently elected politician) on the share of votes in an election. Being the current public official means increased name recognition, fundraising opportunities, etc. On the other hand, being an incumbent means you can get blamed for all the bad things that have happened during your term. Elections also give a natural setting where you have a cutoff: if you only win 49.9% of the votes, you're out of luck... but win 50.1% of the votes and you've won the whole election!
@@ -25,21 +24,18 @@ _Running variable_: Margin of victory (by how much did you win in your last elec
 
 _Cutoff_: 0 (you win, i.e. become incumbent, if your margin of victory is greater than 0; otherwise, you lost!)
 
-### 1.1 Check Your Understanding {-}
 
-**Question:** In your own words, explain how we might use regression discontinuity to provide an answer to the question. 
 
-**Answer:** *Using data from senators who just barely won or just barely lost an election, we can use regression discontinuity to compute the effect that being in office has on your outcome in the next election. In other words, we can answer the question "What effect does just barely winning or just barely losing the election have on your outcome in the next election?" Critically, this estimate only applies to senators who just barely won or just barely lost, and would not generalize to other senators without further assumptions.*
 
-## 2. Data {-}
-For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
+## 2. Data
+For this section, **run the code block below and read through the comments inside the code block.** The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.
 
 ```{r}
 # Lines like this (starting with a hashtag) are called comments
 # Comments are meant to help explain what is going on
 # Comments are not always necessary, but can be helpful
 
-# Below, we create a function that loads in libraries, but first checks if it is installed
+# Below, we create a function that loads in libraries (packages), but first checks if it is installed
 # The piece of code below is not necessary, but it makes loading libraries more convenient 
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
@@ -48,7 +44,7 @@ install <- function(package) {
   }
 }
 
-# install and load some libraries using the function created above
+# install and load some libraries (packages) using the function created above
 install("ggplot2")
 install("lpdensity")
 install("rddensity")
@@ -61,6 +57,7 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 # the head function shows us the first few rows of our data
 head(data)
 ```
+
 Here is what some of these column names (variables) mean:
 
 - `demmv` is the democratic margin of victory in the current senate election (i.e., democratic percentage - next closest percentage)
@@ -86,7 +83,7 @@ rdplot(y = outcome, x =  running_variable, nbins = c(1000, 1000),
        x.label = "Dem Margin of Victory", y.label = "Dem Vote Share in next election")
 ```
 
-Optional: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values?
+**Optional**: Explore the documentation for the function [`rdplot()`](https://rdrr.io/cran/rdrobust/man/rdplot.html) Read the description and the arguments. What do the arguments (`y`, `x`, `nbins`, `p`, `col.lines`, etc) in the function mean? Are any of them optional? Do any of them have default values? What happens to the plot if you change these values?
 
 ### 3.1 Is there a discontinuity? {-}
 **Question:** In the code above, compare what happens when you run the code with $p=0$ versus $p=1$ versus $p=2$. To do this, look for `p` in the function `rdplot` above. It is currently set to `p = 0` so if you run the code, it will give you results for `p = 0`. Then, you can change the value of `p` and re-run the code. What changes? Is there a discontinuity (jump) at the cutoff?
@@ -111,10 +108,9 @@ summary(out)
 **Question:** In both mathematical notation and in your own words, describe the causal effect that is being estimated. What is the estimated value?
 
 **Answer:** *The estimated value is 6.899. We are estimating the local average treatment effect. In this example, this is the average treatment effect of being an incumbent on vote share for the group of senators who just barely won or just barely lost (these are the senators around the cutoff).* 
-
 ## 4. Try coding on your own {-}
 
-For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators.
+For this next piece, the question is "If the other sitting senator is from your same party, what is the effect on your vote share?" In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competeing with the other senator, because elections are every 3 years and alternate between senators.
 
 Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is still margin of victory `demmn`. We've plotted the data for you below. 
 ```{r}
@@ -127,11 +123,14 @@ rdplot(y = outcome_2, x =  running_variable_2, nbins = c(1000, 1000), p = 0, col
 
 ```
 
-Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why? Can you explain what quantity you estimated?
+Your task is to use `rdrobust()` to get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). Can you explain what you did and why?
 
 ```{r}
-# Your code goes here
+out_2 <- rdrobust(outcome_2, running_variable_2, kernel = 'uniform', p = 1, h = 10)
+summary(out_2)
+
 ```
 
-
 **Question:** Does the estimate change if you change the value of `kernel` (see what happens when you set to 'uniform' versus 'triangular')? What if you change the value of `p`? What happens if you change `h` or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?
+
+**Answer:** (type your answer here)

@@ -71,6 +71,7 @@
 <li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
 <li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
 <li><a class="active" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
+<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -104,7 +105,7 @@
 <h2>Load the data<a class="anchor" aria-label="anchor" href="#load-the-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let’s begin by loading the data, which will be called <code>pension</code>. If</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hdm</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">pension</span><span class="op">)</span></span>
 <span><span class="co"># Shuffle data around</span></span>
@@ -124,7 +125,7 @@ potential confounders, but we will ignore them for right now. Remember we are as
 <h2>How are 401(k) eligibility and participation related<a class="anchor" aria-label="anchor" href="#how-are-401k-eligibility-and-participation-related"><i class="fas fa-link"></i></a>
 </h2>
 <p>We want to see how 401(k) eligibility and participation are related to build our intuition for this exercise. In particular it’ll be helpful to see how many people that are eligible to participate in a 401(k) actually do so.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pension</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"e401"</span>, <span class="st">"p401"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##     p401
 ## e401    0    1
@@ -144,23 +145,23 @@ potential confounders, but we will ignore them for right now. Remember we are as
 &amp;= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
 \end{aligned}\]</span></p>
 <p>First let’s calculate the effect of the instrument on the outcome:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="discussion-9.-instrumental-variable.html#cb78-1" tabindex="-1"></a>mean_outcome_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
-<span id="cb78-2"><a href="discussion-9.-instrumental-variable.html#cb78-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
-<span id="cb78-3"><a href="discussion-9.-instrumental-variable.html#cb78-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">net_tfa =</span> <span class="fu">mean</span>(...put your outcome variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb78-4"><a href="discussion-9.-instrumental-variable.html#cb78-4" tabindex="-1"></a></span>
-<span id="cb78-5"><a href="discussion-9.-instrumental-variable.html#cb78-5" tabindex="-1"></a>instrument_on_outcome <span class="ot">&lt;-</span> (</span>
-<span id="cb78-6"><a href="discussion-9.-instrumental-variable.html#cb78-6" tabindex="-1"></a>  mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">2</span>] <span class="sc">-</span> mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">1</span>]</span>
-<span id="cb78-7"><a href="discussion-9.-instrumental-variable.html#cb78-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="discussion-9.-instrumental-variable.html#cb77-1" tabindex="-1"></a>mean_outcome_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
+<span id="cb77-2"><a href="discussion-9.-instrumental-variable.html#cb77-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
+<span id="cb77-3"><a href="discussion-9.-instrumental-variable.html#cb77-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">net_tfa =</span> <span class="fu">mean</span>(...put your outcome variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb77-4"><a href="discussion-9.-instrumental-variable.html#cb77-4" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="discussion-9.-instrumental-variable.html#cb77-5" tabindex="-1"></a>instrument_on_outcome <span class="ot">&lt;-</span> (</span>
+<span id="cb77-6"><a href="discussion-9.-instrumental-variable.html#cb77-6" tabindex="-1"></a>  mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">2</span>] <span class="sc">-</span> mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">1</span>]</span>
+<span id="cb77-7"><a href="discussion-9.-instrumental-variable.html#cb77-7" tabindex="-1"></a>)</span></code></pre></div>
 <p>Now, calculate the effect of the instrument on the treatment:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="discussion-9.-instrumental-variable.html#cb79-1" tabindex="-1"></a>mean_treatment_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
-<span id="cb79-2"><a href="discussion-9.-instrumental-variable.html#cb79-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
-<span id="cb79-3"><a href="discussion-9.-instrumental-variable.html#cb79-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p401 =</span> <span class="fu">mean</span>(...put your treatment variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb79-4"><a href="discussion-9.-instrumental-variable.html#cb79-4" tabindex="-1"></a></span>
-<span id="cb79-5"><a href="discussion-9.-instrumental-variable.html#cb79-5" tabindex="-1"></a>instrument_on_treatment <span class="ot">&lt;-</span> (</span>
-<span id="cb79-6"><a href="discussion-9.-instrumental-variable.html#cb79-6" tabindex="-1"></a>  mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">2</span>] <span class="sc">-</span> mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">1</span>]</span>
-<span id="cb79-7"><a href="discussion-9.-instrumental-variable.html#cb79-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="discussion-9.-instrumental-variable.html#cb78-1" tabindex="-1"></a>mean_treatment_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
+<span id="cb78-2"><a href="discussion-9.-instrumental-variable.html#cb78-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
+<span id="cb78-3"><a href="discussion-9.-instrumental-variable.html#cb78-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p401 =</span> <span class="fu">mean</span>(...put your treatment variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb78-4"><a href="discussion-9.-instrumental-variable.html#cb78-4" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="discussion-9.-instrumental-variable.html#cb78-5" tabindex="-1"></a>instrument_on_treatment <span class="ot">&lt;-</span> (</span>
+<span id="cb78-6"><a href="discussion-9.-instrumental-variable.html#cb78-6" tabindex="-1"></a>  mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">2</span>] <span class="sc">-</span> mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">1</span>]</span>
+<span id="cb78-7"><a href="discussion-9.-instrumental-variable.html#cb78-7" tabindex="-1"></a>)</span></code></pre></div>
 <p>Calculate the LATE by dividing these two:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wald_late</span> <span class="op">&lt;-</span> <span class="va">instrument_on_outcome</span><span class="op">/</span><span class="va">instrument_on_treatment</span></span>
 <span></span>
 <span><span class="va">wald_late</span></span></code></pre></div>
@@ -171,12 +172,12 @@ potential confounders, but we will ignore them for right now. Remember we are as
 <p>We can also estimate the LATE with a procedure called two stage least squares. To do that we will use the <code>ivreg</code>
 function from the AER package. When the treatment and instrument are both binary, this should give the exact same answer as the Wald estimator above. However, when the treatment or instrument are continuous, the Wald estimator may not work and two stage least squares can be used instead. To see the help file for this function, run <code>?ivreg</code> in your console and take a look at the documentation.</p>
 <p>You will have to create a formula that tells <code>ivreg</code> what your outcome variable, treatment variable, and instrument variable are. <strong>NOTE</strong>: This formula should look something like <code>outcome ~ treatment | instrument</code>.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="discussion-9.-instrumental-variable.html#cb81-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"AER"</span>)</span>
-<span id="cb81-2"><a href="discussion-9.-instrumental-variable.html#cb81-2" tabindex="-1"></a>iv_formula <span class="ot">&lt;-</span> ...make your formula here...</span>
-<span id="cb81-3"><a href="discussion-9.-instrumental-variable.html#cb81-3" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="at">formula =</span> iv_formula, <span class="at">data =</span> pension)</span>
-<span id="cb81-4"><a href="discussion-9.-instrumental-variable.html#cb81-4" tabindex="-1"></a></span>
-<span id="cb81-5"><a href="discussion-9.-instrumental-variable.html#cb81-5" tabindex="-1"></a><span class="co"># Print the model</span></span>
-<span id="cb81-6"><a href="discussion-9.-instrumental-variable.html#cb81-6" tabindex="-1"></a>iv_model</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="discussion-9.-instrumental-variable.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"AER"</span>)</span>
+<span id="cb80-2"><a href="discussion-9.-instrumental-variable.html#cb80-2" tabindex="-1"></a>iv_formula <span class="ot">&lt;-</span> ...make your formula here...</span>
+<span id="cb80-3"><a href="discussion-9.-instrumental-variable.html#cb80-3" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="at">formula =</span> iv_formula, <span class="at">data =</span> pension)</span>
+<span id="cb80-4"><a href="discussion-9.-instrumental-variable.html#cb80-4" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="discussion-9.-instrumental-variable.html#cb80-5" tabindex="-1"></a><span class="co"># Print the model</span></span>
+<span id="cb80-6"><a href="discussion-9.-instrumental-variable.html#cb80-6" tabindex="-1"></a>iv_model</span></code></pre></div>
 <p>The Local Average Treatment Effect is the <code>p401</code> coefficient that is in the printed summary above!</p>
 </div>
 </div>
@@ -184,28 +185,26 @@ function from the AER package. When the treatment and instrument are both binary
 <h2>Calculate robust standard errors and create 95% conf. interval<a class="anchor" aria-label="anchor" href="#calculate-robust-standard-errors-and-create-95-conf.-interval"><i class="fas fa-link"></i></a>
 </h2>
 <p>Of course, since we want to understand how much uncertainty is in our estimates, we will calculate the standard errors for our estimate. <strong>NOTE</strong> The <code>vcov. = vcovHC</code> argument below is telling R to calculate robust standard errors, which we typically want to do in our statistical analyses.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="discussion-9.-instrumental-variable.html#cb82-1" tabindex="-1"></a>standard_err <span class="ot">&lt;-</span> <span class="fu">summary</span>(...put the necessary variable here..., <span class="at">vcov. =</span> vcovHC)</span>
-<span id="cb82-2"><a href="discussion-9.-instrumental-variable.html#cb82-2" tabindex="-1"></a>late <span class="ot">&lt;-</span> <span class="fu">coef</span>(standard_err)[<span class="st">"p401"</span>, <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"Std. Error"</span>)]</span>
-<span id="cb82-3"><a href="discussion-9.-instrumental-variable.html#cb82-3" tabindex="-1"></a><span class="co"># 95% conf. int.</span></span>
-<span id="cb82-4"><a href="discussion-9.-instrumental-variable.html#cb82-4" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb82-5"><a href="discussion-9.-instrumental-variable.html#cb82-5" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]],</span>
-<span id="cb82-6"><a href="discussion-9.-instrumental-variable.html#cb82-6" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]]</span>
-<span id="cb82-7"><a href="discussion-9.-instrumental-variable.html#cb82-7" tabindex="-1"></a>)</span>
-<span id="cb82-8"><a href="discussion-9.-instrumental-variable.html#cb82-8" tabindex="-1"></a></span>
-<span id="cb82-9"><a href="discussion-9.-instrumental-variable.html#cb82-9" tabindex="-1"></a><span class="co"># Print the results and confidence interval</span></span>
-<span id="cb82-10"><a href="discussion-9.-instrumental-variable.html#cb82-10" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LATE (Lower bound, Upper bound):</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb82-11"><a href="discussion-9.-instrumental-variable.html#cb82-11" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\r</span><span class="st">"</span>, <span class="fu">round</span>(late[[<span class="st">"Estimate"</span>]], <span class="dv">3</span>)),</span>
-<span id="cb82-12"><a href="discussion-9.-instrumental-variable.html#cb82-12" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"("</span>, <span class="fu">round</span>(ci[[<span class="dv">1</span>]], <span class="dv">3</span>), <span class="st">","</span>),</span>
-<span id="cb82-13"><a href="discussion-9.-instrumental-variable.html#cb82-13" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(ci[[<span class="dv">2</span>]], <span class="dv">3</span>), <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="discussion-9.-instrumental-variable.html#cb81-1" tabindex="-1"></a>standard_err <span class="ot">&lt;-</span> <span class="fu">summary</span>(...put the necessary variable here..., <span class="at">vcov. =</span> vcovHC)</span>
+<span id="cb81-2"><a href="discussion-9.-instrumental-variable.html#cb81-2" tabindex="-1"></a>late <span class="ot">&lt;-</span> <span class="fu">coef</span>(standard_err)[<span class="st">"p401"</span>, <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"Std. Error"</span>)]</span>
+<span id="cb81-3"><a href="discussion-9.-instrumental-variable.html#cb81-3" tabindex="-1"></a><span class="co"># 95% conf. int.</span></span>
+<span id="cb81-4"><a href="discussion-9.-instrumental-variable.html#cb81-4" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb81-5"><a href="discussion-9.-instrumental-variable.html#cb81-5" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]],</span>
+<span id="cb81-6"><a href="discussion-9.-instrumental-variable.html#cb81-6" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]]</span>
+<span id="cb81-7"><a href="discussion-9.-instrumental-variable.html#cb81-7" tabindex="-1"></a>)</span>
+<span id="cb81-8"><a href="discussion-9.-instrumental-variable.html#cb81-8" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="discussion-9.-instrumental-variable.html#cb81-9" tabindex="-1"></a><span class="co"># Print the results and confidence interval</span></span>
+<span id="cb81-10"><a href="discussion-9.-instrumental-variable.html#cb81-10" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LATE (Lower bound, Upper bound):</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb81-11"><a href="discussion-9.-instrumental-variable.html#cb81-11" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\r</span><span class="st">"</span>, <span class="fu">round</span>(late[[<span class="st">"Estimate"</span>]], <span class="dv">3</span>)),</span>
+<span id="cb81-12"><a href="discussion-9.-instrumental-variable.html#cb81-12" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"("</span>, <span class="fu">round</span>(ci[[<span class="dv">1</span>]], <span class="dv">3</span>), <span class="st">","</span>),</span>
+<span id="cb81-13"><a href="discussion-9.-instrumental-variable.html#cb81-13" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(ci[[<span class="dv">2</span>]], <span class="dv">3</span>), <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>))</span></code></pre></div>
 
+<style>li {line-height: 1.8;}</style>
 </div>
 </div>
-
-
-
   <div class="chapter-nav">
 <div class="prev"><a href="discussion-8.-matching.html">Discussion 8. Matching</a></div>
-<div class="next"><a href="due-dates.html">Due dates</a></div>
+<div class="next"><a href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
