@@ -171,7 +171,7 @@ sqrt(Sigma[2,2])
 # Uncomment the code below by taking away the # at the beginning of each line
 # then fill out the ...
 
-# m_dis_ind2 <- sqrt(L["Ind2",] %>% solve(Sigma) %>%  L["Ind2",])
+# m_dis_ind2 <- sqrt(L["Ind2",] %*% solve(Sigma) %*%  L["Ind2",])
 # m_dis_ind3 <- ...
 # m_dis <- c("Ind2" = m_dis_ind2, "Ind3" = m_dis_ind3)
 # print(cbind(m_dis))
