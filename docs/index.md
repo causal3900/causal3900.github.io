@@ -1,11 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Sam Wang and Christina Yu"
-<<<<<<< HEAD
 date: "2025-10-28"
-=======
-date: "2025-10-23"
->>>>>>> 711a72f7c351737abfeab02b8a44fe8c5f7f281a
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
