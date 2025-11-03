@@ -77,8 +77,7 @@ For this section, pick ONE coding question (either number 3 or number 4) to answ
 In the paper [Using Geographic Variation in College Proximity to Estimate the Return to Schooling, in Aspects of Labour Market Behavior](https://davidcard.berkeley.edu/papers/geo_var_schooling.pdf#page=2.00) the economist David Card estimates the causal effect of schooling on wages. Specifically, the treatment of interest ($A_i$) is the number of years of schooling from (1 to 18; where 12 indicates completing high school and values above 12 indicate some college or even graduate school) and the outcome of interest ($Y_i$) is wages in 1976 measured in cents. Of course, there are many confounders present, but Card uses growing up near a 4yr college as an instrument ($Z_i$). In particular, he argues that growing up near a 4yr college increases the years of education by making an individual more likely to go to college so that $Z_i \rightarrow A_i$. However, he argues that growing up near a 4 year college does not have a causal effect on wages except through education levels. 
 
 You can access the data in the \texttt{woolridge} package. However, since it's not easily installable from R, we have provided an alternative for you to get the data here:
-
-``` r
+```{r, eval=F}
 card <- read.csv("https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/data/card.csv")
 
 ###
@@ -95,7 +94,10 @@ card$wage
 
 **Answer**:
 
+```{r}
 
+
+```
 
 ### 3.2 (5 points) There is some disagreement about whether the instrumental variables setup is reasonable in this setting. Playing devil's advocate, give at least one reason why the assumptions of instrumental variables might be violated for this example. {-}
 
@@ -110,8 +112,7 @@ The question is "If the other sitting senator is from your same party, what is t
 
 Your task is to estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is `demvoteshfor1` since we are interested in the immediately following election. The running variable is the margin of victory `demmn`. We have started the code for you below.
 
-
-``` r
+```{r}
 install <- function(package) {
   if (!require(package, quietly = TRUE, character.only = TRUE)) {
     install.packages(package, repos = "http://cran.us.r-project.org", type = "binary")
@@ -129,8 +130,7 @@ data <- read.csv("https://raw.githubusercontent.com/rdpackages-replication/CIT_2
 
 
 **4.1 (5 points)** Using [`rdrobust`](https://rdrr.io/cran/rdrobust/man/rdrobust.html), get an estimate of the LATE by specifying a kernel, model degree (`p`) and bandwidth size (`h`). 
-
-``` r
+```{r}
 outcome <- data$demvoteshfor1
 running_variable <- data$demmv
 

@@ -9,7 +9,7 @@ header-includes:
 
 # Problem Set 5. IV + RD {-}
 
-Relevant material will be covered by **Oct 31**. Problem set is due **Nov 7**.
+Relevant material will be covered by **Oct 30**. Problem set is due **Nov 11**.
 
 To complete the problem set, feel free to [**Download the .Rmd**](). Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.
 

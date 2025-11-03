@@ -6,18 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Problem Set 5. IV + RD | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="Relevant material will be covered by Oct 31. Problem set is due Nov 7. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
+<meta name="description" content="Relevant material will be covered by Oct 30. Problem set is due Nov 11. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="Problem Set 5. IV + RD | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Relevant material will be covered by Oct 31. Problem set is due Nov 7. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
+<meta property="og:description" content="Relevant material will be covered by Oct 30. Problem set is due Nov 11. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Problem Set 5. IV + RD | Causal Inference Course">
-<meta name="twitter:description" content="Relevant material will be covered by Oct 31. Problem set is due Nov 7. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
+<meta name="twitter:description" content="Relevant material will be covered by Oct 30. Problem set is due Nov 11. To complete the problem set, feel free to Download the .Rmd and the pdf. Omit your name so we can have anonymous peer...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -61,22 +62,23 @@
 <li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
-<li><a class="" href="discussion-2.-stats-review.html">Discussion 2. Stats review</a></li>
-<li><a class="" href="discussion-3.-analyzing-an-experiment-in-r.html">Discussion 3. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-05.-course-project-task-1.html">Discussion 05. Course Project: Task 1</a></li>
-<li><a class="" href="solutions-matching-lab.html">Solutions: Matching Lab</a></li>
-<li><a class="" href="discussion-10-rdd-lab-solutions.html">Discussion 10: RDD Lab Solutions</a></li>
-<li><a class="" href="discussion-11-did-lab.html">Discussion 11: DiD Lab</a></li>
-<li><a class="" href="solutions-parametric-g-formula-lab.html">Solutions: Parametric g-formula Lab</a></li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
+<li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
+<li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
+<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="course-project.html">Course Project</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
 <li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
 <li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
 <li><a class="active" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -90,7 +92,7 @@
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="problem-set-5.-iv-rd" class="section level1 unnumbered">
 <h1>Problem Set 5. IV + RD<a class="anchor" aria-label="anchor" href="#problem-set-5.-iv-rd"><i class="fas fa-link"></i></a>
 </h1>
-<p>Relevant material will be covered by <strong>Oct 31</strong>. Problem set is due <strong>Nov 7</strong>.</p>
+<p>Relevant material will be covered by <strong>Oct 30</strong>. Problem set is due <strong>Nov 11</strong>.</p>
 <p>To complete the problem set, feel free to <a href="https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.Rmd"><strong>Download the .Rmd</strong></a> and the <a href="https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset5_download.pdf">pdf</a>. Omit your name so we can have anonymous peer feedback. Submit the PDF on Canvas.</p>
 <p>The learning goals of completing this problem set are to engage with conceptual assumptions for instrumental variables and regression discontinuity and to apply these methods to data from a real-world example in order to answer a causal question using R.</p>
 <p><em>You are allowed to use outside resources as you study and work on this problem set. However, if you do, you must cite the source to receive credit. In addition, the use of generative AI is prohibited. In addition, to receive any credit, you must use the terminology from class (lecture slides or discussion material). Under no circumstances should you directly copy and paste work that is not your own, including from online resources, other students, or AI-generated text/code.</em></p>
@@ -98,14 +100,23 @@
 <h2>1. (25 points) Instrumental variables in experiments<a class="anchor" aria-label="anchor" href="#points-instrumental-variables-in-experiments"><i class="fas fa-link"></i></a>
 </h2>
 <p>Suppose you are a professor at Cornell and are interested in the effect of attending office hours on a students final grade. You randomly select some students to receive an email encouraging them to regularly attend office hours.</p>
-<style>.img-responsive {
-  max-width: 100%;
-}
-</style>
-<div class="panel">
-<div class="inline-figure"><img class="img-responsive" src="assets/pset5_dag.png" alt="DAGs for question 1"></div>
-</div>
-<p>In many cases, whether a student received the email <span class="math inline">\(Z\)</span> determines their actual treatment <span class="math inline">\(A\)</span> (when <span class="math inline">\(Z = 1\)</span> then <span class="math inline">\(A = 1\)</span>, and when <span class="math inline">\(Z = 0\)</span> then <span class="math inline">\(A = 0\)</span>). But there are some difficulties:</p>
+<script type="text/tikz">
+
+\begin{tikzpicture}[x = .3in, y = .15in]
+    \node (z) at (-6,0) {$Z$};
+    \node (a) at (-2,0) {$A$};
+    \node (y) at  (2,0) {$Y$};
+    \node[font = \footnotesize, align = right, anchor = east] at (z.west) {Randomized to\\recieve encouragement};
+    \node (u) at  (-2,-2) {$U$};
+    \node[font = \footnotesize, align = center, anchor = south] at (a.north) {Attends\\office hours};
+    \node[font = \footnotesize, align = left, anchor = west] at  (y.east) {Final Grade};
+    \node[font = \footnotesize, align = right, anchor = east] at (u.west) {Interest in course};
+    \draw[->, >=stealth, thick] (z) -- (a);
+    \draw[->, >=stealth, thick] (a) --  (y);
+    \draw[->, >=stealth, thick] (u) --  (a);
+    \draw[->, >=stealth, thick] (u) --  (y);
+  \end{tikzpicture}
+</script><p>In many cases, whether a student received the email <span class="math inline">\(Z\)</span> determines their actual treatment <span class="math inline">\(A\)</span> (when <span class="math inline">\(Z = 1\)</span> then <span class="math inline">\(A = 1\)</span>, and when <span class="math inline">\(Z = 0\)</span> then <span class="math inline">\(A = 0\)</span>). But there are some difficulties:</p>
 <ol style="list-style-type: lower-alpha">
 <li>Some students have no interest in the class material (<span class="math inline">\(U\)</span>). No matter the value of <span class="math inline">\(Z\)</span>, these students will not attend office hours(<span class="math inline">\(A = 0\)</span>).</li>
 <li>Some students have a lot of interest in the class material (<span class="math inline">\(U\)</span>) so that regardless of the value of <span class="math inline">\(Z\)</span>, these students will attend office hours (<span class="math inline">\(A = 1\)</span>).</li>
@@ -145,7 +156,7 @@
 </h2>
 <p>In the paper <a href="https://davidcard.berkeley.edu/papers/geo_var_schooling.pdf#page=2.00">Using Geographic Variation in College Proximity to Estimate the Return to Schooling, in Aspects of Labour Market Behavior</a> the economist David Card estimates the causal effect of schooling on wages. Specifically, the treatment of interest (<span class="math inline">\(A_i\)</span>) is the number of years of schooling from (1 to 18; where 12 indicates completing high school and values above 12 indicate some college or even graduate school) and the outcome of interest (<span class="math inline">\(Y_i\)</span>) is wages in 1976 measured in cents. Of course, there are many confounders present, but Card uses growing up near a 4yr college as an instrument (<span class="math inline">\(Z_i\)</span>). In particular, he argues that growing up near a 4yr college increases the years of education by making an individual more likely to go to college so that <span class="math inline">\(Z_i \rightarrow A_i\)</span>. However, he argues that growing up near a 4 year college does not have a causal effect on wages except through education levels.</p>
 <p>You can access the data in the package. However, since it’s not easily installable from R, we have provided an alternative for you to get the data here:</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">card</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/data/card.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">###</span></span>
@@ -172,7 +183,7 @@
 <p>Continuing the example from the discussion section, we’ll answer a causal question based on ``Randomization Inference in the Regression Discontinuity Design: An Application to Party Advantages in the U.S. Senate’’ by Cattaneo, Frandsen, and Titiunik (2015).</p>
 <p>The question is “If the other sitting senator is from your same party, what is the effect on your vote share?” In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators. For more context, refer to the <a href="https://causal3900.github.io/discussion-10-rdd-lab-solutions.html">RDD Lab</a>.</p>
 <p>Your task is to estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is <code>demvoteshfor1</code> since we are interested in the immediately following election. The running variable is the margin of victory <code>demmn</code>. We have started the code for you below.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -187,7 +198,7 @@
 <span><span class="co"># read in the datafile</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>4.1 (5 points)</strong> Using <a href="https://rdrr.io/cran/rdrobust/man/rdrobust.html"><code>rdrobust</code></a>, get an estimate of the LATE by specifying a kernel, model degree (<code>p</code>) and bandwidth size (<code>h</code>).</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
 <span><span class="va">running_variable</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
@@ -197,9 +208,12 @@
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></div>
-<div class="next"><a href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></div>
+<div class="next"><a href="who-we-are.html">Who we are</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -218,8 +232,8 @@
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/68745">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/62970">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
           
           
         </ul>
@@ -233,7 +247,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-08-14</p>
+    <p>Last built on 2025-11-03</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
