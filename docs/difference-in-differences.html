@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>8 Difference in differences | Causal Inference Course</title>
 <meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="8.1 Introduction  Nov 5. Slides from 2024. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from...">
+<meta name="description" content="8.1 Introduction  Nov 4. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="8 Difference in differences | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="8.1 Introduction  Nov 5. Slides from 2024. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from...">
+<meta property="og:description" content="8.1 Introduction  Nov 4. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="8 Difference in differences | Causal Inference Course">
-<meta name="twitter:description" content="8.1 Introduction  Nov 5. Slides from 2024. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from...">
+<meta name="twitter:description" content="8.1 Introduction  Nov 4. Slides. No reading is required, but for reference see Card &amp; Krueger 1994 Today we study the effect of a policy change in New Jersey, drawing on evidence from the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -98,7 +98,7 @@
 <span class="header-section-number">8.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Nov 5. <a href="assets/slides/did_intro.pdf"><strong>Slides from 2024.</strong></a> No reading is required, but for reference see <a href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card &amp; Krueger 1994</a></p>
+<p>Nov 4. <a href="assets/slides/did_intro.pdf"><strong>Slides.</strong></a> No reading is required, but for reference see <a href="https://davidcard.berkeley.edu/papers/njmin-aer.pdf">Card &amp; Krueger 1994</a></p>
 </blockquote>
 <p>Today we study the effect of a policy change in New Jersey, drawing on evidence from the neighboring state of Pennsylvania.</p>
 <p>Difference in difference is an identification strategy to be used when one or more units become treated at some time point while others do not. If we believe an assumption of <strong>parallel trends</strong>, then we can use the change over time for the never-treated units to estimate the change over time that would have been experienced by the units who become treated, in a counterfactual world where they had not become treated.</p>
@@ -108,7 +108,7 @@
 <span class="header-section-number">8.2</span> Lab<a class="anchor" aria-label="anchor" href="#lab"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Nov 6 <a href="assets/discussions/DIDdiscussion_slides.pdf"><strong>Slides from 2024.</strong></a> Download the
+<p>Nov 5 <a href="assets/discussions/DIDdiscussion_slides.pdf"><strong>Slides from 2024.</strong></a> Download the
 R Markdown file <a href="assets/discussions/DID-discussion.Rmd"><strong>here</strong></a>. You can find the knitted version <a href="https://causal3900.github.io/discussion-11-did-lab.html"><strong>here</strong></a>.</p>
 </blockquote>
 <p>In lab, you will implement a difference in difference estimator in a specific setting. The example comes from <a href="https://doi.org/10.1017/S0003055413000580">Malesky, Nguyen, &amp; Tran 2014</a> and will most closely follow the re-analysis of these data by <a href="https://doi.org/10.1017/pan.2022.8">Egami &amp; Yamauchi 2023</a>.</p>
@@ -118,7 +118,7 @@ R Markdown file <a href="assets/discussions/DID-discussion.Rmd"><strong>here</st
 <span class="header-section-number">8.3</span> Extensions of DID<a class="anchor" aria-label="anchor" href="#extensions-of-did"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Nov 7. <a href="assets/slides/did_extensions.pdf"><strong>Slides from 2024.</strong></a> No reading is required, but for reference see <a href="https://doi.org/10.1017/pan.2022.8">Egami &amp; Yamauchi 2023</a>
+<p>Nov 6. <a href="assets/slides/did_extensions.pdf"><strong>Slides from 2024.</strong></a> No reading is required, but for reference see <a href="https://doi.org/10.1017/pan.2022.8">Egami &amp; Yamauchi 2023</a>
 Slides with annotations from lecture: <a href="assets/slides/did_extensions_annotated.pdf"><strong>Annotated Slides.</strong></a></p>
 </blockquote>
 <p>How do we know when the parallel trends assumption holds? And what do we do if it does not hold? This class discusses recent extensions of the DID framework.</p>
