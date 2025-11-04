@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Discussion 11. Difference in Differences | Causal Inference Course</title>
+<meta name="author" content="Sam Wang and Christina Yu">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 5, 2025 You can download the slides for this week’s discussion and the .Rmd.  Empirical Application: How the Abolition of Elected Councils Affects...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="Discussion 11. Difference in Differences | Causal Inference Course">
+<meta property="og:type" content="book">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 5, 2025 You can download the slides for this week’s discussion and the .Rmd.  Empirical Application: How the Abolition of Elected Councils Affects...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Discussion 11. Difference in Differences | Causal Inference Course">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 5, 2025 You can download the slides for this week’s discussion and the .Rmd.  Empirical Application: How the Abolition of Elected Councils Affects...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Causal Inference Course</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="defining-counterfactuals.html"><span class="header-section-number">1</span> Defining counterfactuals</a></li>
+<li class="book-part">Identification by exchangeability</li>
+<li><a class="" href="exchangeability-and-experiments.html"><span class="header-section-number">2</span> Exchangeability and experiments</a></li>
+<li><a class="" href="consistency-and-positivity.html"><span class="header-section-number">3</span> Consistency and positivity</a></li>
+<li><a class="" href="directed-acyclic-graphs.html"><span class="header-section-number">4</span> Directed Acyclic Graphs</a></li>
+<li><a class="" href="statistical-modeling.html"><span class="header-section-number">5</span> Statistical modeling</a></li>
+<li class="book-part">Identification without exchangeability</li>
+<li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
+<li><a class="" href="regression-discontinuity.html"><span class="header-section-number">7</span> Regression discontinuity</a></li>
+<li><a class="" href="difference-in-differences.html"><span class="header-section-number">8</span> Difference in differences</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li class="book-part">Areas of active research</li>
+<li><a class="" href="current-research.html"><span class="header-section-number">10</span> Current research</a></li>
+<li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
+<li class="book-part">Discussions</li>
+<li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
+<li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
+<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
+<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
+<li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
+<li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
+<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
+<li><a class="active" href="discussion-11.-difference-in-differences.html">Discussion 11. Difference in Differences</a></li>
+<li class="book-part">Assignments</li>
+<li><a class="" href="due-dates.html">Due dates</a></li>
+<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
+<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
+<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
+<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
+<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li class="book-part">Course information</li>
+<li><a class="" href="who-we-are.html">Who we are</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="discussion-11.-difference-in-differences" class="section level1 unnumbered">
+<h1>Discussion 11. Difference in Differences<a class="anchor" aria-label="anchor" href="#discussion-11.-difference-in-differences"><i class="fas fa-link"></i></a>
+</h1>
+<div id="stsciinfoilrst-3900-causal-inference-10" class="section level2 unnumbered">
+<h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-10"><i class="fas fa-link"></i></a>
+</h2>
+<div id="november-5-2025" class="section level4 unnumbered">
+<h4>November 5, 2025<a class="anchor" aria-label="anchor" href="#november-5-2025"><i class="fas fa-link"></i></a>
+</h4>
+<p>You can download the <a href="assets/discussions/discussion11-DID.pdf"><strong>slides</strong></a> for this week’s discussion and the <a href="assets/discussions/DID-discussion.Rmd"><strong>.Rmd</strong></a>.</p>
+</div>
+</div>
+<div id="empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam" class="section level2 unnumbered">
+<h2>Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam<a class="anchor" aria-label="anchor" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam"><i class="fas fa-link"></i></a>
+</h2>
+<p>Here’s a <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58">link</a> to the paper from the original experiment and a <a href="https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7">link</a> to the paper that re-analyzed this experiment, which we’re basing this lab on.</p>
+<div id="download-the-data" class="section level3 unnumbered">
+<h3>Download the data<a class="anchor" aria-label="anchor" href="#download-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>All you need to do in this section is run the code block.</p>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Recall that lines starting with hashtags are called comments</span></span>
+<span></span>
+<span><span class="co"># The next few lines a code create a function called install that installs and loads a package/library</span></span>
+<span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">package</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># We are using the function created above to install and load some libraries</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"cowplot"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
+<span><span class="fu">install</span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read in the raw data file</span></span>
+<span><span class="va">malesky2014</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://github.com/causal3900/causal3900.github.io/raw/main/assets/data/malesky2014.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># some data cleaning (drop rows with missing values in particular columns)</span></span>
+<span><span class="va">malesky2014</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">malesky2014</span>, <span class="va">lnarea</span>, <span class="va">lnpopden</span>, <span class="va">city</span><span class="op">)</span> </span></code></pre></div>
+</div>
+<div id="about-the-data" class="section level3 unnumbered">
+<h3>About the data<a class="anchor" aria-label="anchor" href="#about-the-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>All you need to do in this section is read the text and run the code block.</p>
+<p>Variables in the data set:</p>
+<ul>
+<li>
+<code>treatment</code>: binary variable indicating if the record is from the treatment group (<span class="math inline">\(1\)</span>) or the control group (<span class="math inline">\(0\)</span>)</li>
+<li>
+<code>pro4</code>: educational and cultural program number 4 outcome variable (binary: <span class="math inline">\(1\)</span> if they participated in the program, <span class="math inline">\(0\)</span> if not)</li>
+<li>
+<code>tapwater</code>: tap water outcome variable (binary: <span class="math inline">\(1\)</span> if they drink tap water, <span class="math inline">\(0\)</span> if not)</li>
+<li>
+<code>agrext</code>: agricultural center outcome variable (binary: <span class="math inline">\(1\)</span> if they use the center, <span class="math inline">\(0\)</span> if not)</li>
+<li>
+<code>year</code>: the year the record is from</li>
+<li>
+<code>post_treat</code>: binary variable indicating if the record is from the pre-treatment period (<span class="math inline">\(0\)</span>) or the post-treatment period (<span class="math inline">\(0\)</span>)</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># show the first few lines of the dataset</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">malesky2014</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## # A tibble: 6 × 42
+##   goodroadv transport  pro3 tapwater roadv  rm2c7d rm2c7e
+##       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+## 1         0         1     1        0     1 0       0.216 
+## 2         1         1     0        0     1 0.0109  0.164 
+## 3         1         1     1        0     1 0       0     
+## 4         1         0     0        0     1 0       0.0384
+## 5         1         0     1        0     1 0.00860 0.119 
+## 6         1         1     1        0     1 0.00857 0.357 
+## # ℹ 35 more variables: rm2c7g &lt;dbl&gt;, animal_s &lt;dbl&gt;,
+## #   agrvisit &lt;dbl&gt;, plant_s &lt;dbl&gt;, agrext &lt;dbl&gt;,
+## #   irrigation &lt;dbl&gt;, rm2c7c &lt;dbl&gt;, pro5 &lt;dbl&gt;, pro4 &lt;dbl&gt;,
+## #   rm2c7b &lt;dbl&gt;, useschool &lt;dbl&gt;, kgarten &lt;dbl&gt;,
+## #   v_prischool &lt;dbl&gt;, broadcast &lt;dbl&gt;, post &lt;dbl&gt;,
+## #   vpost &lt;dbl&gt;, rm2c7a &lt;dbl&gt;, rm2c7f &lt;dbl&gt;, market &lt;dbl&gt;,
+## #   nonfarm &lt;dbl&gt;, vmarket1 &lt;dbl&gt;, vmarket2 &lt;dbl&gt;, …</code></pre>
+</div>
+<div id="visualizing-trends-in-the-treatment-and-control-groups" class="section level3 unnumbered">
+<h3>Visualizing Trends in the Treatment and Control Groups<a class="anchor" aria-label="anchor" href="#visualizing-trends-in-the-treatment-and-control-groups"><i class="fas fa-link"></i></a>
+</h3>
+<p>In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at one possible outcome: “Education and Cultural Program.”</p>
+<p>All you need to do in this section is run the code block and look at the plot. What is going on in the plot?</p>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Plot the outcome for `Education and Cultural Program`</span></span>
+<span><span class="va">ed_and_culture</span> <span class="op">&lt;-</span> <span class="va">malesky2014</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Treated in 2009"</span>,<span class="st">"Untreated"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>estimate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">pro4</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">estimate</span>, color <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Ed. and Cultural Program"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>        legend.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>, colour <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span>,</span>
+<span>        plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'treatment'. You can
+## override using the `.groups` argument.</code></pre>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ed_and_culture</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="discussion11_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+</div>
+<div id="basic-difference-in-differences-analysis-with-one-pretreatment-period" class="section level3 unnumbered">
+<h3>Basic Difference in Differences Analysis with One Pretreatment Period<a class="anchor" aria-label="anchor" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period"><i class="fas fa-link"></i></a>
+</h3>
+<p>All you need to do in this section is read the text and fill in the TASK pieces within the code.</p>
+<p>In the data our treatment indicator variable is called <code>treatment</code>, and our
+post-treatment time period indicator is called <code>post_treat</code>. You will need to
+create the interaction variable that is <code>treatment</code>*<code>post_treat</code>. Call this
+new variable <code>did</code>.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="discussion-11.-difference-in-differences.html#cb105-1" tabindex="-1"></a><span class="co"># remove the extra pretreatment periods from the dataset</span></span>
+<span id="cb105-2"><a href="discussion-11.-difference-in-differences.html#cb105-2" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> malesky2014 <span class="sc">%&gt;%</span></span>
+<span id="cb105-3"><a href="discussion-11.-difference-in-differences.html#cb105-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2008</span> <span class="sc">|</span> year <span class="sc">==</span><span class="dv">2010</span>) <span class="co"># keep only 2008 and 2010</span></span>
+<span id="cb105-4"><a href="discussion-11.-difference-in-differences.html#cb105-4" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="discussion-11.-difference-in-differences.html#cb105-5" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: create the interaction term between treatment and post_treat</span></span>
+<span id="cb105-6"><a href="discussion-11.-difference-in-differences.html#cb105-6" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> onePerMalesky <span class="sc">%&gt;%</span></span>
+<span id="cb105-7"><a href="discussion-11.-difference-in-differences.html#cb105-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">did =</span> ...create your interaction variable here...)</span></code></pre></div>
+<p>Now that you have your <code>treatment</code>, <code>post_treat</code>, and <code>did</code> variables, you are
+ready to estimate the causal effect of de-centralizing government on whether or
+not people participate in an Educational and Cultural Program. Your outcome
+variable in this case is <code>pro4</code>. We will estimate the causal effect with an
+OLS regression. Use the formula that we discussed in the slides to create
+your model formula.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="discussion-11.-difference-in-differences.html#cb106-1" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: regression for Education and Cultural Program on treatment, time period, and interaction term</span></span>
+<span id="cb106-2"><a href="discussion-11.-difference-in-differences.html#cb106-2" tabindex="-1"></a>didReg <span class="ot">&lt;-</span> <span class="fu">lm</span>(...put your formula here..., <span class="at">data =</span> onePerMalesky)</span>
+<span id="cb106-3"><a href="discussion-11.-difference-in-differences.html#cb106-3" tabindex="-1"></a></span>
+<span id="cb106-4"><a href="discussion-11.-difference-in-differences.html#cb106-4" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span></span>
+<span id="cb106-5"><a href="discussion-11.-difference-in-differences.html#cb106-5" tabindex="-1"></a><span class="fu">summary</span>(...put your DiD model object here...) <span class="co"># hint: what did you create above?</span></span>
+<span id="cb106-6"><a href="discussion-11.-difference-in-differences.html#cb106-6" tabindex="-1"></a></span>
+<span id="cb106-7"><a href="discussion-11.-difference-in-differences.html#cb106-7" tabindex="-1"></a><span class="co"># estimate</span></span>
+<span id="cb106-8"><a href="discussion-11.-difference-in-differences.html#cb106-8" tabindex="-1"></a><span class="fu">print</span>(didReg<span class="sc">$</span>coefficients[<span class="st">"did"</span>])</span></code></pre></div>
+
+</div>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#discussion-11.-difference-in-differences">Discussion 11. Difference in Differences</a></li>
+<li><a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-10">STSCI/INFO/ILRST 3900: Causal Inference</a></li>
+<li>
+<a class="nav-link" href="#empirical-application-how-the-abolition-of-elected-councils-affects-local-public-services-in-vietnam">Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#download-the-data">Download the data</a></li>
+<li><a class="nav-link" href="#about-the-data">About the data</a></li>
+<li><a class="nav-link" href="#visualizing-trends-in-the-treatment-and-control-groups">Visualizing Trends in the Treatment and Control Groups</a></li>
+<li><a class="nav-link" href="#basic-difference-in-differences-analysis-with-one-pretreatment-period">Basic Difference in Differences Analysis with One Pretreatment Period</a></li>
+</ul>
+</li>
+</ul>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>Last built on 2025-11-04</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This site was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

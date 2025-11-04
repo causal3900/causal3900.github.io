@@ -1,16 +1,20 @@
 ---
 output: html_document
 ---
+<style>li {line-height: 1.8;}</style>
 
-# Discussion 11: DiD Lab {-}
+# Discussion 11. Difference in Differences {-}
+## STSCI/INFO/ILRST 3900: Causal Inference {-}
+#### November 5, 2025 {-}
 
-Nov 6 [**Slides.**](assets/discussions/DIDdiscussion_slides.pdf) for this discussion section. Download the R Markdown file [**here**](assets/discussions/DID-discussion.Rmd). 
+You can download the [**slides**](assets/discussions/discussion11-DID.pdf) for this week's discussion and the [**.Rmd**](assets/discussions/DID-discussion.Rmd).
 
-## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam
 
-Refer to Tuesday's lecture ([slides](assets/slides/did_intro.pdf) and recording) for some background on this experiment. Here's a [link](https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58) to the paper from the original experiment and a [link](https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7) to the paper that re-analyzed this experiment, which we're basing this lab on. 
+## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam {-}
 
-### Download the data
+Here's a [link](https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58) to the paper from the original experiment and a [link](https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7) to the paper that re-analyzed this experiment, which we're basing this lab on. 
+
+### Download the data {-}
 All you need to do in this section is run the code block.
 
 
@@ -28,67 +32,17 @@ install <- function(package) {
 # We are using the function created above to install and load some libraries
 install("cowplot")
 install("dplyr")
-```
-
-```
-## 
-## Attaching package: 'dplyr'
-```
-
-```
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-```
-
-```
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-```
-
-``` r
 install("tidyverse")
-```
 
-```
-## ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──
-## ✔ forcats   1.0.0     ✔ readr     2.1.5
-## ✔ ggplot2   3.5.2     ✔ stringr   1.5.1
-## ✔ lubridate 1.9.4     ✔ tibble    3.3.0
-## ✔ purrr     1.0.4     ✔ tidyr     1.3.1
-```
-
-```
-## ── Conflicts ────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter()    masks stats::filter()
-## ✖ dplyr::lag()       masks stats::lag()
-## ✖ lubridate::stamp() masks cowplot::stamp()
-## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
-``` r
 # Read in the raw data file
 malesky2014 <- read_csv("https://github.com/causal3900/causal3900.github.io/raw/main/assets/data/malesky2014.csv")
-```
 
-```
-## Rows: 6265 Columns: 42
-## ── Column specification ────────────────────────────────────
-## Delimiter: ","
-## dbl (42): goodroadv, transport, pro3, tapwater, roadv, r...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-``` r
 # some data cleaning (drop rows with missing values in particular columns)
 malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city) 
 ```
 
 
-### About the data
+### About the data {-}
 All you need to do in this section is read the text and run the code block.
 
 Variables in the data set:
@@ -126,7 +80,7 @@ head(malesky2014)
 ```
 
 
-### Visualizing Trends in the Treatment and Control Groups
+### Visualizing Trends in the Treatment and Control Groups {-}
 
 In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at one possible outcome: "Education and Cultural Program."
 
@@ -162,8 +116,8 @@ ed_and_culture +
 
 <img src="discussion11_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
-### Basic Difference in Differences Analysis with One Pretreatment Period
-All you need to do in this section is read the text and fill in the TASK pieces within the code. 
+### Basic Difference in Differences Analysis with One Pretreatment Period  {-}
+All you need to do in this section is read the text and fill in the TASK pieces within the code.
 
 In the data our treatment indicator variable is called `treatment`, and our
 post-treatment time period indicator is called `post_treat`. You will need to

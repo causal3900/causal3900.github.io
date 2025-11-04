@@ -1,19 +1,23 @@
 ---
-output:
-  pdf_document: default
+output: html_document
 ---
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
-```
+<style>li {line-height: 1.8;}</style>
 
-## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam
+# Discussion 11. Difference in Differences {-}
+## STSCI/INFO/ILRST 3900: Causal Inference {-}
+#### November 5, 2025 {-}
+
+You can download the [**slides**](assets/discussions/discussion11-DID.pdf) for this week's discussion and the [**.Rmd**](assets/discussions/DID-discussion.Rmd).
+
+
+## Empirical Application: How the Abolition of Elected Councils Affects Local Public Services in Vietnam {-}
 
 Here's a [link](https://www.cambridge.org/core/journals/american-political-science-review/article/impact-of-recentralization-on-public-services-a-differenceindifferences-analysis-of-the-abolition-of-elected-councils-in-vietnam/3477854BAAFE152DC93C594169D64F58) to the paper from the original experiment and a [link](https://www.cambridge.org/core/journals/political-analysis/article/using-multiple-pretreatment-periods-to-improve-differenceindifferences-and-staggered-adoption-designs/747F618FD4AD82A536823521D89310F7) to the paper that re-analyzed this experiment, which we're basing this lab on. 
 
-### Download the data
+### Download the data {-}
 All you need to do in this section is run the code block.
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 # Recall that lines starting with hashtags are called comments
 
 # The next few lines a code create a function called install that installs and loads a package/library
@@ -37,7 +41,7 @@ malesky2014 <- drop_na(malesky2014, lnarea, lnpopden, city)
 ```
 
 
-### About the data
+### About the data {-}
 All you need to do in this section is read the text and run the code block.
 
 Variables in the data set:
@@ -55,7 +59,7 @@ head(malesky2014)
 ```
 
 
-### Visualizing Trends in the Treatment and Control Groups
+### Visualizing Trends in the Treatment and Control Groups {-}
 
 In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at one possible outcome: "Education and Cultural Program."
 
@@ -81,15 +85,15 @@ ed_and_culture +
     theme(legend.position = "bottom")
 ```
 
-### Basic Difference in Differences Analysis with One Pretreatment Period
-All you need to do in this section is read the text and fill in the TASK pieces within the code. 
+### Basic Difference in Differences Analysis with One Pretreatment Period  {-}
+All you need to do in this section is read the text and fill in the TASK pieces within the code.
 
 In the data our treatment indicator variable is called `treatment`, and our
 post-treatment time period indicator is called `post_treat`. You will need to
 create the interaction variable that is `treatment`*`post_treat`. Call this
 new variable `did`. 
 
-```{r}
+```{r, eval = F}
 # remove the extra pretreatment periods from the dataset
 onePerMalesky <- malesky2014 %>%
   filter(year==2008 | year ==2010) # keep only 2008 and 2010
@@ -106,7 +110,7 @@ variable in this case is `pro4`. We will estimate the causal effect with an
 OLS regression. Use the formula that we discussed in the slides to create 
 your model formula.
 
-```{r}
+```{r, eval = F}
 # TASK: regression for Education and Cultural Program on treatment, time period, and interaction term
 didReg <- lm(...put your formula here..., data = onePerMalesky)
 
@@ -115,6 +119,5 @@ summary(...put your DiD model object here...) # hint: what did you create above?
 
 # estimate
 print(didReg$coefficients["did"])
+
 ```
-
-

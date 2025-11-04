@@ -10,9 +10,7 @@ Today we study the effect of a policy change in New Jersey, drawing on evidence 
 Difference in difference is an identification strategy to be used when one or more units become treated at some time point while others do not. If we believe an assumption of **parallel trends**, then we can use the change over time for the never-treated units to estimate the change over time that would have been experienced by the units who become treated, in a counterfactual world where they had not become treated.
 
 ## Lab
-
-> Nov 5 [**Slides from 2024.**](assets/discussions/DIDdiscussion_slides.pdf) Download the
-R Markdown file [**here**](assets/discussions/DID-discussion.Rmd). You can find the knitted version [**here**](https://causal3900.github.io/discussion-11-did-lab.html).
+> Nov 5  [**Discussion**](discussion-11.-difference-in-differences) and [**discussion slides**](assets/discussions/discussion11-DID.pdf) Download the R Markdown file [**here**](assets/discussions/DID-discussion.Rmd)
 
 In lab, you will implement a difference in difference estimator in a specific setting. The example comes from [Malesky, Nguyen, \& Tran 2014](https://doi.org/10.1017/S0003055413000580) and will most closely follow the re-analysis of these data by [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8).
 
