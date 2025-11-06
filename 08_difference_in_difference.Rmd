@@ -16,8 +16,8 @@ In lab, you will implement a difference in difference estimator in a specific se
 
 ## Extensions of DID
 
-> Nov 6. [**Slides from 2024.**](assets/slides/did_extensions.pdf) No reading is required, but for reference see [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8)
-Slides with annotations from lecture: [**Annotated Slides.**](assets/slides/did_extensions_annotated.pdf)
+> Nov 6. [**Slides.**](assets/slides/did_extensions.pdf) No reading is required, but for reference see [Egami \& Yamauchi 2023](https://doi.org/10.1017/pan.2022.8)
+
 
 How do we know when the parallel trends assumption holds? And what do we do if it does not hold? This class discusses recent extensions of the DID framework.
 

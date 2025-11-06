@@ -80,6 +80,7 @@
 <li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
 <li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
 <li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
+<li><a class="" href="project-1.html">Project</a></li>
 <li class="book-part">Course information</li>
 <li><a class="" href="who-we-are.html">Who we are</a></li>
 <li><a class="" href="references.html">References</a></li>
@@ -107,7 +108,7 @@
 </h2>
 <p>One of the main difficulties of a regression discontinuity analysis is choosing a ‘’good’’ bandwidth. This is a good example of the bias variance trade-off which appears all the time in statistics. In general, we will let the software choose this for us, but it will be helpful to run through a small example to better understand the subtleties involved.</p>
 <p>Suppose <span class="math inline">\(Y\)</span> is a very non-linear function of <span class="math inline">\(X\)</span>, and we want to extrapolate and predict <span class="math inline">\(Y\)</span> at <span class="math inline">\(X=0\)</span>.</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">### Y is a very non-linear function of X + some noise</span></span>
@@ -125,7 +126,7 @@
 <p>If we blindly fit a line to all our observations, the predicted value for <span class="math inline">\(X=0\)</span> is off by quite a bit.
 <img src="discussion10_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
 <p>If we instead restrict ourselves to a smaller region around 0, we can do a bit better</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Only consider points h away from 0</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span></span>
@@ -141,7 +142,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">xTrue</span>, <span class="va">yTrue</span>, col <span class="op">=</span> <span class="st">"darkgreen"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 <p>However, if we get more and more data, we don’t really improve much</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span><span class="op">*</span><span class="va">X</span> <span class="op">+</span> <span class="fl">.6</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">.3</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">15</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
@@ -159,7 +160,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">xTrue</span>, <span class="va">yTrue</span>, col <span class="op">=</span> <span class="st">"darkgreen"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
 <p>Ideally, we would decrease the bandwidth to reduce this bias, but this also means we are working with less data. Since each data point is noisy, if we were to get a new sample, the estimate could change quite a bit. Try running this a few times and see how much the estimate moves. Compare this which how much the estimate moves if the bandwidth is 2.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">.3</span> <span class="co"># bandwidth</span></span>
 <span><span class="co"># h &lt;- 2 </span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
@@ -181,7 +182,7 @@
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>Knowing the best bandwidth is a hard problem, but generally speaking a good choice of bandwidth will get smaller as the sample size increases.</p>
 <p>If we measure accuracy in terms of average squared error, we can see when <span class="math inline">\(n = 100\)</span>, a bandwidth of 1.2 seems to be best. However, test and see if how that changes for larger values of <span class="math inline">\(n\)</span></p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.8</span>, <span class="fl">1.2</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">sim.size</span> <span class="op">&lt;-</span> <span class="fl">500</span></span>
@@ -198,17 +199,23 @@
 <span>  <span class="op">}</span></span>
 <span> </span>
 <span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">h</span>,</span>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code>## Warning in predict.lm(fit.mod.bandwidth, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases
+## Warning in predict.lm(fit.mod.bandwidth, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases</code></pre>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>h <span class="op">=</span> <span class="va">h</span>,</span>
 <span>           y_hat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">rec</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>,</span>
 <span>           accuracy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">colMeans</a></span><span class="op">(</span><span class="va">rec</span><span class="op">)</span><span class="op">[</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##     h    y_hat  accuracy
-## 1 0.5 4.858356 11.144716
-## 2 0.8 4.593329  5.020789
-## 3 1.2 4.075525  3.642925
-## 4 2.0 1.721043 12.757277</code></pre>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+## 1 0.5 4.949768 12.232774
+## 2 0.8 4.676122  4.599477
+## 3 1.2 4.117497  3.469464
+## 4 2.0 1.783014 12.320695</code></pre>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">as.list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">rec</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">20</span><span class="op">)</span>,names <span class="op">=</span> <span class="va">h</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">5</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
@@ -220,7 +227,7 @@
 and the squared error for each observation count are considered equally. But if a good fit around some points is more important than other points, we can also use weighted least squares where <span class="math inline">\(w_i\)</span> is a weight.
 <span class="math display">\[\min_b \sum_i w_i(Y_i - X_i b)^2\]</span>
 When <span class="math inline">\(w_i\)</span> is larger, the squared error for observation <span class="math inline">\(i\)</span> will cost more so the selected linear coefficient will prioritize minimizing errors where <span class="math inline">\(w_i\)</span> is large. In our particular setting, we want to prioritize fitting the data well around <span class="math inline">\(0\)</span>, so we can use weights which are ``triangular’’ which prioritize points near <span class="math inline">\(0\)</span>.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fl">5</span> <span class="op">-</span> <span class="fl">3</span><span class="op">*</span><span class="va">X</span> <span class="op">+</span> <span class="fl">.6</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">.3</span> <span class="op">*</span> <span class="va">X</span><span class="op">^</span><span class="fl">3</span> <span class="op">+</span> <span class="fl">15</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
@@ -232,7 +239,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 </h4>
 <p>If we use a bandwidth of <span class="math inline">\(h\)</span> (i.e., only include observations within <span class="math inline">\(h\)</span> of the cut-off), what does this mean the the weights would be?</p>
 <p>When using triangular weights, we can see that this does better than using all the points.</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="op">-</span><span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span></span>
@@ -272,7 +279,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <span>      col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkgreen"</span>,<span class="st">"blue"</span>,<span class="st">"green"</span>,<span class="st">"purple"</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
 <p>In practice, we can combine both a hard thresholding bandwidth as well as triangular weights (within the bandwidth)</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># bandwidth</span></span>
 <span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">200</span></span>
@@ -308,7 +315,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <h3>2. Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h3>
 <p>For this section, run the code block below and read through the comments inside the code block. The following code installs and loads some libraries into R, then reads in data from an online fine, and finally prints out the first few rows of the data table.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Below, we create a function that loads in libraries, but first checks if it is installed</span></span>
 <span><span class="co"># The piece of code below is not necessary, but it makes loading libraries more convenient </span></span>
 <span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
@@ -370,7 +377,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <h2>3. RDD in R<a class="anchor" aria-label="anchor" href="#rdd-in-r"><i class="fas fa-link"></i></a>
 </h2>
 <p>We are considering whether being the incumbent affects vote share in the next election. Thus, the outcome of interest is <code>demvoteshfor2</code> because the next time the same seat goes up for election is 2 cycles in the future. The running variable is <code>demmv</code>.</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the column "demvoteshfor2" from data into a variable called "outcome"</span></span>
 <span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor2</span></span>
 <span></span>
@@ -394,7 +401,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 </h3>
 <p>Getting the estimates aren’t so difficult once we’ve selected a bandwidth, but selecting a good bandwidth can be tricky and getting standard errors on the estimate are also difficult. The R package <code>rdrobust</code> selects the bandwidth, estimates the causal effect quantities, and give standard errors with just a couple of lines of code.</p>
 <p>For <code>rdrobust</code>, the syntax is <code>rdrobust(y, x, kernel, p, h)</code> where y is the outcome, x is the running variable, kernel says what types of weights to use, p says what degree model (e.g. p = 1 means linear model), and h is the bandwidth.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># uniform kernel with bandwidth 10 and a linear (degree 1) model</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">rdrobust</span><span class="op">(</span><span class="va">outcome</span>, <span class="va">running_variable</span>, kernel <span class="op">=</span> <span class="st">'uniform'</span>,  p <span class="op">=</span> <span class="fl">1</span>, h <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
@@ -434,7 +441,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 </h2>
 <p>For this next piece, the question is “If the other sitting senator is from your same party, what is the effect on your vote share?” In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators.</p>
 <p>Now try on your own and estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is <code>demvoteshfor1</code> since we are interested in the immediately following election. The running variable is still margin of victory <code>demmn</code>. We’ve plotted the data for you below.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcome_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
 <span><span class="va">running_variable_2</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
@@ -443,7 +450,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <span><span class="fu">rdplot</span><span class="op">(</span>y <span class="op">=</span> <span class="va">outcome_2</span>, x <span class="op">=</span>  <span class="va">running_variable_2</span>, nbins <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fl">1000</span><span class="op">)</span>, p <span class="op">=</span> <span class="fl">0</span>, col.lines <span class="op">=</span> <span class="st">"red"</span>, col.dots <span class="op">=</span> <span class="st">"lightgray"</span>, title <span class="op">=</span> <span class="st">"Incumbency Advantage"</span>, y.lim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, x.label <span class="op">=</span> <span class="st">"Dem Margin of Victory"</span>, y.label <span class="op">=</span> <span class="st">"Dem Vote Share in next election"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="discussion10_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Your task is to use <code>rdrobust()</code> to get an estimate of the LATE by specifying a kernel, model degree (<code>p</code>) and bandwidth size (<code>h</code>). Can you explain what you did and why? Can you explain what quantity you estimated?</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Your code goes here</span></span></code></pre></div>
 <p><strong>Question:</strong> Does the estimate change if you change the value of <code>kernel</code> (see what happens when you set to ‘uniform’ versus ‘triangular’)? What if you change the value of <code>p</code>? What happens if you change <code>h</code> or remove it completely? Do the standard errors change? How does what you see relate to bias and variance?</p>
 
@@ -493,7 +500,7 @@ When <span class="math inline">\(w_i\)</span> is larger, the squared error for o
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-11-04</p>
+    <p>Last built on 2025-11-05</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
