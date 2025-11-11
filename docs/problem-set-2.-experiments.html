@@ -135,11 +135,11 @@
 <h2>2. Analyzing the experimental data<a class="anchor" aria-label="anchor" href="#analyzing-the-experimental-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Load packages that our code will use.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://haven.tidyverse.org">haven</a></span><span class="op">)</span></span></code></pre></div>
 <p><strong>To complete the rest of this assignment, you will need to download the study’s data from OpenICPSR</strong>: <a href="https://www.openicpsr.org/openicpsr/project/116023/version/V1/view">https://www.openicpsr.org/openicpsr/project/116023/version/V1/view</a>. This will require creating an account and agreeing to terms for using the data ethically. Put the data in the folder on your computer where this .Rmd is located. Read the data into R using <code>read_dta</code>.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"assets/data/lakisha_aer.dta"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
 <p>If you have an error, you might need to set your working directory first. This tells R where to look for data files. In other words, your data file needs to be in the same folder as your homework file, AND RStudio needs to be told which folder to look at. At the top of RStudio, click Session -&gt; Set Working Directory -&gt; To Source File Location.</p>
@@ -196,7 +196,7 @@
 </table></div>
 <p>For 2.1–2.4, we will think of <code>race</code> as the treatment. For 2.5–2.6, we will think of <code>firstname</code> as the treatment.</p>
 <p>We can print the relevant variables in a table</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_selected</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">call</span>, <span class="va">firstname</span>, <span class="va">race</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 4,870 × 4
@@ -234,7 +234,7 @@
 <p>Here’s a <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">reference</a> that introduces <code>group_by</code> and <code>summarize</code>.</p>
 </blockquote>
 <p><strong>Answer.</strong> Modify the code below</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">d_summarized</span> <span class="op">&lt;-</span> <span class="va">d_selected</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
 <span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -261,7 +261,7 @@
 <p><strong>Standard error in code.</strong> We translated the standard error formula into code for you below. This function accepts an estimated probability <code>p</code> and sample size <code>n</code> and returns the estimated standard error. You can use this <code>se_binary()</code> function in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
 </blockquote>
 <blockquote>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">se_binary</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span> <span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span>
@@ -285,7 +285,7 @@
 </blockquote>
 <blockquote>
 <p><strong>Confidence interval in code.</strong> We translated the confidence interval formula into code for you below. These functions accept an estimate and standard error and return the lower and upper bounds (respectively) of a 95% confidence interval that assumes a Normal sampling distribution. You can use these functions in your code within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> just like how <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> was used within <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> at the start of the problem set.</p>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_lower</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">estimate</span>, <span class="va">standard_error</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">estimate</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.975</span><span class="op">)</span> <span class="op">*</span> <span class="va">standard_error</span></span>
 <span><span class="op">}</span></span>
@@ -316,7 +316,7 @@
 <blockquote>
 <p>One way to visualize is by placing first names on the <span class="math inline">\(x\)</span>-axis and using a <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> layer to facet over race and sex.</p>
 </blockquote>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">your_ggplot</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">race</span> <span class="op">+</span> <span class="va">sex</span>,</span>
 <span>             scales <span class="op">=</span> <span class="st">"free_x"</span>, </span>
@@ -338,7 +338,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 </h3>
 <p>To simplify these next few questions, we will define the treatment as the race coded by the first name instead of the first name itself. The researchers conducted this study in Boston and Chicago. There are many ways that the two cities differ and we might expect that the causal effect of race might be heterogeneous across cities. Similar to above, calculate the callback rate by race <strong>and city</strong> by placing a <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> action between <code>d</code> and <code>summarize</code>.</p>
 <p><strong>Answer.</strong> Modify the code below</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">callback_city</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>callback_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">call</span><span class="op">)</span>,</span>
 <span>            number_cases <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -352,7 +352,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <h3>2.8. (5 points) Transportability<a class="anchor" aria-label="anchor" href="#points-transportability"><i class="fas fa-link"></i></a>
 </h3>
 <p>One reason the causal effect may differ across cities is that the proportion of industries varies across cities and the causal effect may differ across industries. The code below first creates an industry variable and looks at the proportion of industries for each city. Specifically, by using <code>filter(city == "b")</code> and <code>filter(city == "c")</code> we can only use rows which correspond to Boston and Chicago respectively.</p>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Currently the industries for each firm is encoded across 7 different columns;</span></span>
 <span><span class="co"># i.e., a 1 in manuf and 0 in the other columns indicates a firm is in manufacturing.</span></span>
 <span><span class="co"># So, we first create an additional variable in d which explicitly states the industry </span></span>
@@ -377,7 +377,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 ## 5 otherservice  0.117 
 ## 6 trade         0.249 
 ## 7 transcom      0.0443</code></pre>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Proportions for Chicago</span></span>
 <span><span class="co"># By using filter(city == "b) we are only including rows</span></span>
 <span><span class="co"># for which city == b; i.e. when the city is boston</span></span>
@@ -396,7 +396,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 ## 6 trade         0.186 
 ## 7 transcom      0.0192</code></pre>
 <p>Suppose the researchers had first conducted a pilot study in Boston only. The code below calculates an estimated conditional ACE for each industry using data from Boston. Assuming that the conditional causal effect for each industry is the same in Boston as it is in Chicago, what would you estimate for the average causal effect of race on callback rates in Chicago is? To receive full points, you should include the code for how you calculated the answer.</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Table with callback rates by industry and race for Boston</span></span>
 <span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span>, <span class="va">race</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -422,7 +422,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 ## 12 trade        w            0.0778
 ## 13 transcom     b            0.104 
 ## 14 transcom     w            0.125</code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Table with same information as above, but rearranged so that callback rates by each race is it's own column</span></span>
 <span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">city</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">industry</span>, <span class="va">race</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -494,7 +494,7 @@ Up through 2.4, you were making two estimates: one for white and one for Black. 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-11-05</p>
+    <p>Last built on 2025-11-11</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
