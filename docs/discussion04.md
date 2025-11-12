@@ -45,14 +45,6 @@ $$\pi^a \pm \Phi^{-1}(.975) \times SE(\hat\pi^a)$$
 - where $\Phi^{-1}()$ is the quantile of the standard Normal distribution
 - $\Phi^{-1}(.975) \approx 1.96$, so the number 1.96 might be familiar to you 
 
-
-```
-## Warning in annotate(geom = "label", x = 0, y = 0.2 *
-## dnorm(0), label = "'Middle 95% of Sample-Based
-## Estimates'~hat(pi)^a", : Ignoring unknown parameters:
-## `label.size`
-```
-
 <img src="discussion04_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 

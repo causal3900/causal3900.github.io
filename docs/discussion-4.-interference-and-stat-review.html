@@ -73,6 +73,7 @@
 <li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
 <li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
 <li><a class="" href="discussion-11.-difference-in-differences.html">Discussion 11. Difference in Differences</a></li>
+<li><a class="" href="discussion-12.-synthetic-control.html">Discussion 12. Synthetic Control</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -161,10 +162,6 @@
 <li>
 <span class="math inline">\(\Phi^{-1}(.975) \approx 1.96\)</span>, so the number 1.96 might be familiar to you</li>
 </ul>
-<pre><code>## Warning in annotate(geom = "label", x = 0, y = 0.2 *
-## dnorm(0), label = "'Middle 95% of Sample-Based
-## Estimates'~hat(pi)^a", : Ignoring unknown parameters:
-## `label.size`</code></pre>
 <div class="inline-figure"><img src="discussion04_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
 <ul>
 <li>Plug in the estimates <span class="math inline">\(\hat\pi^a\)</span> and <span class="math inline">\(\widehat{SE}(\hat\pi^a)\)</span> to get a 95% confidence interval</li>
@@ -174,7 +171,7 @@
 <li>In R: we translated the confidence interval formula into code</li>
 </ul>
 <blockquote>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ci_lower</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">estimate</span>, <span class="va">standard_error</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">estimate</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.975</span><span class="op">)</span> <span class="op">*</span> <span class="va">standard_error</span></span>
 <span><span class="op">}</span></span>

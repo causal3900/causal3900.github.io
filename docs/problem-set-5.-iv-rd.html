@@ -73,6 +73,7 @@
 <li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
 <li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
 <li><a class="" href="discussion-11.-difference-in-differences.html">Discussion 11. Difference in Differences</a></li>
+<li><a class="" href="discussion-12.-synthetic-control.html">Discussion 12. Synthetic Control</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
 <li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
@@ -158,7 +159,7 @@
 </h2>
 <p>In the paper <a href="https://davidcard.berkeley.edu/papers/geo_var_schooling.pdf#page=2.00">Using Geographic Variation in College Proximity to Estimate the Return to Schooling, in Aspects of Labour Market Behavior</a> the economist David Card estimates the causal effect of schooling on wages. Specifically, the treatment of interest (<span class="math inline">\(A_i\)</span>) is the number of years of schooling from (1 to 18; where 12 indicates completing high school and values above 12 indicate some college or even graduate school) and the outcome of interest (<span class="math inline">\(Y_i\)</span>) is wages in 1976 measured in cents. Of course, there are many confounders present, but Card uses growing up near a 4yr college as an instrument (<span class="math inline">\(Z_i\)</span>). In particular, he argues that growing up near a 4yr college increases the years of education by making an individual more likely to go to college so that <span class="math inline">\(Z_i \rightarrow A_i\)</span>. However, he argues that growing up near a 4 year college does not have a causal effect on wages except through education levels.</p>
 <p>You can access the data in the package. However, since it’s not easily installable from R, we have provided an alternative for you to get the data here:</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">card</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/data/card.csv"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">###</span></span>
@@ -185,7 +186,7 @@
 <p>Continuing the example from the discussion section, we’ll answer a causal question based on ``Randomization Inference in the Regression Discontinuity Design: An Application to Party Advantages in the U.S. Senate’’ by Cattaneo, Frandsen, and Titiunik (2015).</p>
 <p>The question is “If the other sitting senator is from your same party, what is the effect on your vote share?” In other words, if I am a democrat (resp, republican) senator, what is the effect of the other senator also being a democrat (resp, republican) on my share of votes when I run for office? Recall that I would not be competing with the other senator, because elections are every 3 years and alternate between senators. For more context, refer to the <a href="https://causal3900.github.io/discussion-10-rdd-lab-solutions.html">RDD Lab</a>.</p>
 <p>Your task is to estimate the causal effect of the senator who is not up for election being a democrat on the democratic vote share of the senator who is up for election. In this case, the outcome of interest is <code>demvoteshfor1</code> since we are interested in the immediately following election. The running variable is the margin of victory <code>demmn</code>. We have started the code for you below.</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -200,7 +201,7 @@
 <span><span class="co"># read in the datafile</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rdpackages-replication/CIT_2020_CUP/master/CIT_2020_CUP_senate.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>4.1 (5 points)</strong> Using <a href="https://rdrr.io/cran/rdrobust/man/rdrobust.html"><code>rdrobust</code></a>, get an estimate of the LATE by specifying a kernel, model degree (<code>p</code>) and bandwidth size (<code>h</code>).</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcome</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demvoteshfor1</span></span>
 <span><span class="va">running_variable</span> <span class="op">&lt;-</span> <span class="va">data</span><span class="op">$</span><span class="va">demmv</span></span>
 <span></span>
