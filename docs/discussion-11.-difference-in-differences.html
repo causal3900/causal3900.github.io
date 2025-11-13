@@ -112,7 +112,7 @@
 <h3>Download the data<a class="anchor" aria-label="anchor" href="#download-the-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>All you need to do in this section is run the code block.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Recall that lines starting with hashtags are called comments</span></span>
 <span></span>
 <span><span class="co"># The next few lines a code create a function called install that installs and loads a package/library</span></span>
@@ -153,7 +153,7 @@
 <li>
 <code>post_treat</code>: binary variable indicating if the record is from the pre-treatment period (<span class="math inline">\(0\)</span>) or the post-treatment period (<span class="math inline">\(0\)</span>)</li>
 </ul>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># show the first few lines of the dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">malesky2014</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## # A tibble: 6 × 42
@@ -178,7 +178,7 @@
 </h3>
 <p>In a DID design, the first step is to visualize the trends of the treatment and control groups to check if the parallel trends assumption is credible. Here, we look at one possible outcome: “Education and Cultural Program.”</p>
 <p>All you need to do in this section is run the code block and look at the plot. What is going on in the plot?</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot the outcome for `Education and Cultural Program`</span></span>
 <span><span class="va">ed_and_culture</span> <span class="op">&lt;-</span> <span class="va">malesky2014</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">treatment</span> <span class="op">==</span> <span class="fl">1</span>, <span class="st">"Treated in 2009"</span>,<span class="st">"Untreated"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -194,7 +194,7 @@
 <span>        plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'treatment'. You can
 ## override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ed_and_culture</span> <span class="op">+</span> </span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"bottom"</span><span class="op">)</span></span></code></pre></div>
@@ -208,27 +208,27 @@
 post-treatment time period indicator is called <code>post_treat</code>. You will need to
 create the interaction variable that is <code>treatment</code>*<code>post_treat</code>. Call this
 new variable <code>did</code>.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="discussion-11.-difference-in-differences.html#cb105-1" tabindex="-1"></a><span class="co"># remove the extra pretreatment periods from the dataset</span></span>
-<span id="cb105-2"><a href="discussion-11.-difference-in-differences.html#cb105-2" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> malesky2014 <span class="sc">%&gt;%</span></span>
-<span id="cb105-3"><a href="discussion-11.-difference-in-differences.html#cb105-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2008</span> <span class="sc">|</span> year <span class="sc">==</span><span class="dv">2010</span>) <span class="co"># keep only 2008 and 2010</span></span>
-<span id="cb105-4"><a href="discussion-11.-difference-in-differences.html#cb105-4" tabindex="-1"></a></span>
-<span id="cb105-5"><a href="discussion-11.-difference-in-differences.html#cb105-5" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: create the interaction term between treatment and post_treat</span></span>
-<span id="cb105-6"><a href="discussion-11.-difference-in-differences.html#cb105-6" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> onePerMalesky <span class="sc">%&gt;%</span></span>
-<span id="cb105-7"><a href="discussion-11.-difference-in-differences.html#cb105-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">did =</span> ...create your interaction variable here...)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="discussion-11.-difference-in-differences.html#cb108-1" tabindex="-1"></a><span class="co"># remove the extra pretreatment periods from the dataset</span></span>
+<span id="cb108-2"><a href="discussion-11.-difference-in-differences.html#cb108-2" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> malesky2014 <span class="sc">%&gt;%</span></span>
+<span id="cb108-3"><a href="discussion-11.-difference-in-differences.html#cb108-3" tabindex="-1"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2008</span> <span class="sc">|</span> year <span class="sc">==</span><span class="dv">2010</span>) <span class="co"># keep only 2008 and 2010</span></span>
+<span id="cb108-4"><a href="discussion-11.-difference-in-differences.html#cb108-4" tabindex="-1"></a></span>
+<span id="cb108-5"><a href="discussion-11.-difference-in-differences.html#cb108-5" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: create the interaction term between treatment and post_treat</span></span>
+<span id="cb108-6"><a href="discussion-11.-difference-in-differences.html#cb108-6" tabindex="-1"></a>onePerMalesky <span class="ot">&lt;-</span> onePerMalesky <span class="sc">%&gt;%</span></span>
+<span id="cb108-7"><a href="discussion-11.-difference-in-differences.html#cb108-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">did =</span> ...create your interaction variable here...)</span></code></pre></div>
 <p>Now that you have your <code>treatment</code>, <code>post_treat</code>, and <code>did</code> variables, you are
 ready to estimate the causal effect of de-centralizing government on whether or
 not people participate in an Educational and Cultural Program. Your outcome
 variable in this case is <code>pro4</code>. We will estimate the causal effect with an
 OLS regression. Use the formula that we discussed in the slides to create
 your model formula.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="discussion-11.-difference-in-differences.html#cb106-1" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: regression for Education and Cultural Program on treatment, time period, and interaction term</span></span>
-<span id="cb106-2"><a href="discussion-11.-difference-in-differences.html#cb106-2" tabindex="-1"></a>didReg <span class="ot">&lt;-</span> <span class="fu">lm</span>(...put your formula here..., <span class="at">data =</span> onePerMalesky)</span>
-<span id="cb106-3"><a href="discussion-11.-difference-in-differences.html#cb106-3" tabindex="-1"></a></span>
-<span id="cb106-4"><a href="discussion-11.-difference-in-differences.html#cb106-4" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span></span>
-<span id="cb106-5"><a href="discussion-11.-difference-in-differences.html#cb106-5" tabindex="-1"></a><span class="fu">summary</span>(...put your DiD model object here...) <span class="co"># hint: what did you create above?</span></span>
-<span id="cb106-6"><a href="discussion-11.-difference-in-differences.html#cb106-6" tabindex="-1"></a></span>
-<span id="cb106-7"><a href="discussion-11.-difference-in-differences.html#cb106-7" tabindex="-1"></a><span class="co"># estimate</span></span>
-<span id="cb106-8"><a href="discussion-11.-difference-in-differences.html#cb106-8" tabindex="-1"></a><span class="fu">print</span>(didReg<span class="sc">$</span>coefficients[<span class="st">"did"</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="discussion-11.-difference-in-differences.html#cb109-1" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span><span class="co">: regression for Education and Cultural Program on treatment, time period, and interaction term</span></span>
+<span id="cb109-2"><a href="discussion-11.-difference-in-differences.html#cb109-2" tabindex="-1"></a>didReg <span class="ot">&lt;-</span> <span class="fu">lm</span>(...put your formula here..., <span class="at">data =</span> onePerMalesky)</span>
+<span id="cb109-3"><a href="discussion-11.-difference-in-differences.html#cb109-3" tabindex="-1"></a></span>
+<span id="cb109-4"><a href="discussion-11.-difference-in-differences.html#cb109-4" tabindex="-1"></a><span class="co"># </span><span class="al">TASK</span></span>
+<span id="cb109-5"><a href="discussion-11.-difference-in-differences.html#cb109-5" tabindex="-1"></a><span class="fu">summary</span>(...put your DiD model object here...) <span class="co"># hint: what did you create above?</span></span>
+<span id="cb109-6"><a href="discussion-11.-difference-in-differences.html#cb109-6" tabindex="-1"></a></span>
+<span id="cb109-7"><a href="discussion-11.-difference-in-differences.html#cb109-7" tabindex="-1"></a><span class="co"># estimate</span></span>
+<span id="cb109-8"><a href="discussion-11.-difference-in-differences.html#cb109-8" tabindex="-1"></a><span class="fu">print</span>(didReg<span class="sc">$</span>coefficients[<span class="st">"did"</span>])</span></code></pre></div>
 
 <style>li {line-height: 1.8;}</style>
 </div>
@@ -269,7 +269,7 @@ your model formula.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-11-11</p>
+    <p>Last built on 2025-11-13</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
