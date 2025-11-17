@@ -46,7 +46,9 @@ synthetic-control
 introduction-2
 lab-1
 discussion-1
-current-research
-research-discussion-mayleen
+interference
+interference-intro
+lab-2
+discussion-on-interference
 course-recap
 points-choose-distance
