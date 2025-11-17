@@ -2,7 +2,7 @@
 
 ## Interference intro
 
-> Nov 18 [**Slides.**](assets/sliinterference_lecture.pdf)
+> Nov 18 [**Slides.**](assets/slides/interference_intro.pdf)
 
 Today we will introduce the idea of network interference. After class you should be able to:
 

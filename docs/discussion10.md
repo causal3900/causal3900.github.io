@@ -126,7 +126,18 @@ for(i in 1:sim.size){
  
 
 }
+```
 
+```
+## Warning in predict.lm(fit.mod.bandwidth, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases
+## Warning in predict.lm(fit.mod.bandwidth, newdata =
+## data.frame(X = 0)): prediction from rank-deficient fit;
+## attr(*, "non-estim") has doubtful cases
+```
+
+``` r
 data.frame(h = h,
            y_hat = colMeans(rec)[1:4],
            accuracy = colMeans(rec)[5:8])
@@ -134,10 +145,10 @@ data.frame(h = h,
 
 ```
 ##     h    y_hat  accuracy
-## 1 0.5 4.996692 13.825175
-## 2 0.8 4.794644  5.098954
-## 3 1.2 4.187455  3.845312
-## 4 2.0 1.735318 12.771478
+## 1 0.5 4.629777 10.677399
+## 2 0.8 4.594853  4.943018
+## 3 1.2 4.097309  3.609071
+## 4 2.0 1.756800 12.439169
 ```
 
 ``` r

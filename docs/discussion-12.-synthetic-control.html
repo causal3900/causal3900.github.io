@@ -117,7 +117,7 @@ the onset of political terrorism in the 1970s.</p>
 </h3>
 <p>Let’s go ahead and load our packages and data. If you notice that there is quite
 a lot of missing data, don’t worry, that’s how it is meant to be!</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">install</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">package</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va">package</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span>, character.only <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="va">package</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span>, type <span class="op">=</span> <span class="st">"binary"</span><span class="op">)</span></span>
@@ -177,7 +177,7 @@ more than high school (<code>school.post.high</code>).</p></li>
 <li><p><code>invest</code>: 1964–1969 averages for gross total investment divided by total GDP.</p></li>
 </ul>
 <p>Running the following line of code will show you some helpful information in the “Help” box on the bottom right of your R Studio Screen. We call this <em>documentation</em>. It tells you what the outcome variable and predictor variables are, plus descriptions of each variable in the dataset. Please ask us if you have any additional questions about what each variable means.</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">basque</span></span></code></pre></div>
 </div>
 <div id="questions-for-you" class="section level3 unnumbered">
@@ -239,7 +239,7 @@ numbers (<code>regionno</code>).</li>
 We’ve added comments in the code to explain exactly what’s happening in each line.
 We are creating a “prepared” dataset <code>dataprep.out</code> by running our “unprepared” data through the <code>dataprep</code> function.
 This is because the Synth package requires the data to be in a specific format to do synthetic control.</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dataprep.out</span> <span class="op">&lt;-</span> <span class="fu">dataprep</span><span class="op">(</span></span>
 <span>  foo <span class="op">=</span> <span class="va">basque</span>,          <span class="co"># Our analysis data that needs to be prepared</span></span>
 <span>  predictors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>        <span class="co"># 1(a). list the variables that we want to use as predictors</span></span>
@@ -293,7 +293,7 @@ for the GDP of the Basque Country region of Spain. As described in discussion,
 this means that <code>synth()</code> will create weights for each of the other regions
 so that the weighted average of the other regions’ GDP will closely match the
 true GDP of the Basque Country region.</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.out</span> <span class="op">&lt;-</span> <span class="fu">synth</span><span class="op">(</span>data.prep.obj <span class="op">=</span> <span class="va">dataprep.out</span>, method <span class="op">=</span> <span class="st">"BFGS"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## X1, X0, Z1, Z0 all come directly from dataprep object.
@@ -321,14 +321,14 @@ true GDP of the Basque Country region.</p>
 </h3>
 <p>First, we can begin by creating some summary tables from our Synthetic Control
 model.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span> <span class="op">&lt;-</span> <span class="fu">synth.tab</span><span class="op">(</span>dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>, synth.res <span class="op">=</span> <span class="va">synth.out</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>synth.tables</code> variable now contains four tables that will help us evaluate
 our synthetic control. The first table looks at our pre-treatment period and
 compares the predictor values between the Basque Country (denoted <code>Treated</code> in
 the table) and our Synthetic Control. <strong>Note</strong> we want the values in the
 <code>Treated</code> and <code>Synthetic</code> columns to be really close together.</p>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.pred</span></span></code></pre></div>
 <pre><code>##                                          Treated Synthetic
 ## school.illit                              39.888   256.337
@@ -366,7 +366,7 @@ control isn’t as similar as we would like.</p>
 <p>Next, we can look at the weights that got assigned to each of the non-treatment
 regions. We can drop regions that have a weight of 0 since those regions don’t
 contribute to our synthetic control at all!</p>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">[</span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.w</span><span class="op">$</span><span class="va">w.weights</span> <span class="op">!=</span> <span class="fl">0</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>##    w.weights            unit.names unit.numbers
 ## 10     0.851              Cataluna           10
@@ -379,7 +379,7 @@ our synthetic control!</p>
 <p>Finally we can look at the weights that got assigned to each of our predictor
 variables. This can be interpreted as the relative importance of each of our
 predictor variables.</p>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">synth.tables</span><span class="op">$</span><span class="va">tab.v</span></span></code></pre></div>
 <pre><code>##                                         v.weights
 ## school.illit                            0.014    
@@ -412,7 +412,7 @@ trajectories of the outcome variable for the Basque Country and its Synthetic
 Control unit to be quite similar prior to the violent conflict and to diverge
 sharply when the violent conflict occurs.</p>
 <p>Let’s create such a plot and see if it indicates a significant treatment effect.</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">path.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>
@@ -433,7 +433,7 @@ economic output in the Basque Country region.</p>
 of showing two lines for the outcome of the Basque Country region and the
 outcome of the Synthetic Control Unit, we plot a single line that is the
 difference between the two lines in each time period.</p>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">gaps.plot</span><span class="op">(</span></span>
 <span>  synth.res <span class="op">=</span> <span class="va">synth.out</span>,</span>
 <span>  dataprep.res <span class="op">=</span> <span class="va">dataprep.out</span>,</span>

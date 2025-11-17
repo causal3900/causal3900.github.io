@@ -2,7 +2,7 @@
 
 ## Interference intro
 
-> Nov 18 [**Slides.**](assets/sliinterference_lecture.pdf)
+> Nov 18 [**Slides.**](assets/slides/interference_intro.pdf)
 
 Today we will introduce the idea of network interference. After class you should be able to:
 
@@ -12,7 +12,9 @@ Today we will introduce the idea of network interference. After class you should
 
 ## Lab
 
-> Nov 19  [**Discussion**]() 
+> Nov 19
+
+Lab today will be a chance for you to get started on the course project and ask questions with the TAs.
 
 ## Discussion on interference
 
