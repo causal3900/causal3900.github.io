@@ -13,7 +13,7 @@ We'll post due dates here throughout the semester.
 * Problem Set 3: Due Oct 8, Peer review due Oct 16, Quiz Oct 16
 * Problem Set 4: Due Oct 27, Peer review due Nov 4, Quiz Nov 4
 * Problem Set 5: Due Nov 11, Peer review due Nov 18, Quiz Nov 18
-* Problem Set 6 (subject to change): Due Nov 20, Peer review due Dec 2
+* Problem Set 6 (subject to change): Due Nov 25, No peer review; Quiz on Dec 2
 
 ## Project {-}
 * Part 1: Due Oct 20
