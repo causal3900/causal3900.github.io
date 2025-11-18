@@ -1,6 +1,6 @@
 # Problem Set 6. Difference in Differences + Synthetic Control {-}
 
-Relevant material will be covered by **Nov 14**. Problem set is due **Nov 24** ~~Nov 21~~. To complete the problem set, [**download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset6_download.Rmd) and submit the knitted PDF.
+Relevant material will be covered by **Nov 13**. Problem set is due **Nov 25**. To complete the problem set, [**download the .Rmd**](https://github.com/causal3900/causal3900.github.io/blob/main/assets/psets/pset6_download.Rmd) and submit the knitted PDF.
 
 The learning goals of completing this problem set are to engage with conceptual assumptions for difference in difference and synthetic control. There is no coding for you to do in this assignment. 
 
@@ -8,38 +8,33 @@ The learning goals of completing this problem set are to engage with conceptual 
 
 
      
-## 1. (25 points) Difference in Differences {-}
+## 1. (20 points) Difference in Differences {-}
 
 In the figures below, the treated group becomes treated between time 1 and time 2. The control group never becomes treated. Figures are hypothetical scenarios that depict true potential outcomes even if those outcomes would not be observed in an actual study.
 
-<img src="pset6_files/figure-html/unnamed-chunk-2-1.png" width="307.2" /><img src="pset6_files/figure-html/unnamed-chunk-2-2.png" width="307.2" />
+<img src="pset6_files/figure-html/unnamed-chunk-2-1.png" width="307.2" /><img src="pset6_files/figure-html/unnamed-chunk-2-2.png" width="307.2" /><img src="pset6_files/figure-html/unnamed-chunk-2-3.png" width="307.2" />
 
-### 1.1 (5 points) {-}
+### 1.1 (6 points) {-}
 
-In which setting does the parallel trends assumption hold: A, B, neither, or both? Explain your answer.
-
-**Answer.** 
-
-### 1.2 (2 points) {-}
-
-In actual data analysis, can we ever know for certain whether we are in Setting A or Setting B? Why or why not?
+In each of the settings above (A, B, and C), state whether or not the extended parallel trends assumption holds and whether or not the parallel trend assumption holds.  
 
 **Answer.** 
 
-### 1.3 (8 points) {-}
+### 1.2 (4 points) {-}
 
-Draw a plot where the parallel trends assumption holds, but _extended_ parallel trends does not hold. Make sure the following are clearly labeled: control group, treatment group, pre-treatment period, post-treatment period, and counterfactual outcome for the treatment group. Insert an image of your drawing into RMarkdown, like for the previous pset.
-
-**Answer.** 
-
-### 1.4 (10 points) {-}
-
-According to what we talked about in class, what are three benefits to having multiple pre-treatment periods? Pick one of them and explain it in your own words in about two sentences. You must cite a relevant lecture slide to receive credit.
+In actual data analysis, can we ever know for certain whether the extended parallel trends assumption holds? Why or why not? Can we ever know for certain whether the parallel trends assumption holds? Why or why not?
 
 **Answer.** 
 
 
-## 2. (25 points) Synthetic Control {-}
+### 1.3 (10 points) {-}
+
+According to what we talked about in class, what are two benefits to having multiple pre-treatment periods? Pick one of them and explain it in your own words in about two sentences. You must cite a relevant lecture slide to receive credit.
+
+**Answer.** 
+
+
+## 2. (20 points) Synthetic Control {-}
 This example is from [Abadie, Diamond, and Hainmueller (2015)](https://economics.mit.edu/sites/default/files/publications/Comparative%20Politics%20and%20the%20Synthetic%20Control.pdf) which estimates the effect of the 1990 German reunification on West Germany's GDP per capita. Using synthetic control, they construct a synthetic version of West Germany. We show the selected weights and plot the gap between the observed and synthetic West Germany below.
 
 
@@ -94,7 +89,7 @@ Looking at the estimated weights and the gap plots, why might you prefer the syn
 **Answer.** 
 
 
-### 2.2 (7.5 points) Assessing fit {-}
+### 2.2 (5 points) Assessing fit {-}
 Using the same dataset, suppose we wanted to estimate the causal effect for some policy implemented in Portugal in 1990. Looking at the plots below, why might you be skeptical of the synthetic control here? If we decided to accept the synthetic control anyway, does there seem to be a causal effect?
 
 
@@ -104,7 +99,7 @@ Using the same dataset, suppose we wanted to estimate the causal effect for some
 **Answer.** 
 
 
-### 2.3 (7.5 points) Hypothesis testing {-}
+### 2.3 (5 points) Hypothesis testing {-}
 Suppose we used synthetic control for each of the other countries as a placebo test. Below, we show a hypothetical plot for the gap between the observed and synthetic values for each country. The difference between observed and synthetic West Germany is shown in the dark black line and the others are shown in gray. Note this is made up data. However, if this were the real plot you saw, would you be confident that there was a non-zero causal effect for West Germany? Explain why or why not.    
 
 <img src="pset6_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" />
