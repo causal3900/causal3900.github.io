@@ -18,7 +18,7 @@ Lab today will be a chance for you to get started on the course project and ask 
 
 ## Discussion on interference
 
-> Nov 20 [**Slides.**]()
+> Nov 20 [**Slides.**](assets/slides/interference_estmator.pdf)
 
 Today we will discuss two approaches for estimating the global average treatment effect under interference given data from a randomized control trial. After class you should be able to
 

@@ -158,14 +158,6 @@ Use `mutate()` (see [reference page](https://dplyr.tidyverse.org/reference/mutat
 
 > **Sampling distribution in a graph.**
 
-> 
-> ```
-> ## Warning in annotate(geom = "label", x = 0, y = 0.2 *
-> ## dnorm(0), label = "'Middle 95% of Sample-Based
-> ## Estimates'~hat(pi)^a", : Ignoring unknown parameters:
-> ## `label.size`
-> ```
-> 
 > <img src="pset2_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 > **Confidence interval in math.** We get a 95% confidence interval by plugging in the estimates $\hat\pi^a$ and $\widehat{SE}(\hat\pi^a)$ to the limits above. This interval is centered on the estimate $\hat\pi^a$ and has a nice property: if we repeatedly made a confidence interval by this procedure using hypothetical samples from the population, our interval would contain the unknown true parameter $\pi^a$ 95% of the time.
