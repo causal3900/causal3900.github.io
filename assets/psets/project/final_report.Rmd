@@ -35,7 +35,7 @@ output: pdf_document
 
 ## Method and Identification 
 
-##### What method are you using to estimate a causal effect? What causal effect are you estimating (ATE vs LATE vs ATT)? What assumptions are required to identify the causal effect via your chosen method?
+##### What method are you using to estimate a causal effect? What causal effect are you estimating (e.g., ATE vs LATE vs ATT)? What assumptions are required to identify the causal effect via your chosen method?
 
 **Answer**
 
