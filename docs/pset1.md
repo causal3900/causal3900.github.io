@@ -78,7 +78,7 @@ sessionInfo()
 ```
 
 ```
-## R version 4.5.1 (2025-06-13)
+## R version 4.5.2 (2025-10-31)
 ## Platform: x86_64-pc-linux-gnu
 ## Running under: Ubuntu 22.04.5 LTS
 ## 
@@ -108,8 +108,8 @@ sessionInfo()
 ## [10] htmltools_0.5.8.1 rmarkdown_2.29    lifecycle_1.0.4  
 ## [13] xml2_1.3.8        cli_3.6.5         downlit_0.4.4    
 ## [16] vctrs_0.6.5       sass_0.4.10       withr_3.0.2      
-## [19] jquerylib_0.1.4   compiler_4.5.1    rstudioapi_0.17.1
-## [22] tools_4.5.1       pillar_1.10.2     evaluate_1.0.4   
+## [19] jquerylib_0.1.4   compiler_4.5.2    rstudioapi_0.17.1
+## [22] tools_4.5.2       pillar_1.10.2     evaluate_1.0.4   
 ## [25] bslib_0.9.0       yaml_2.3.10       fs_1.6.6         
 ## [28] jsonlite_2.0.0    rlang_1.1.6
 ```
