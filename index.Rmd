@@ -52,14 +52,3 @@ Much of the material for this course will draw directly from previous iterations
 
 To access the course website from Fall 2023 [click here](https://causal3900.github.io/fa23). 
 
-
-## Land acknowledgment {-}
-
-We recognize the university land acknowledgment, as well as an additional emphasis from the [Cornell American Indian and Indigenous Studies Program](https://cals.cornell.edu/american-indian-indigenous-studies).
-
-> Cornell University is located on the traditional homelands of the Gayogo̱hó:nǫɁ (the Cayuga Nation). The Gayogo̱hó:nǫɁ are members of the Haudenosaunee Confederacy, an alliance of six sovereign Nations with a historic and contemporary presence on this land. The Confederacy precedes the establishment of Cornell University, New York state, and the United States of America. We acknowledge the painful history of Gayogo̱hó:nǫɁ dispossession, and honor the ongoing connection of Gayogo̱hó:nǫɁ people, past and present, to these lands and waters.
-
-
-> This land acknowledgment has been reviewed and approved by the traditional Gayogo̱hó:nǫɁ leadership.
-
-> In addition to the Gayogo̱hó:nǫɁ land acknowledgment but separate from it, the AIISP faculty would like to emphasize: Cornell's founding was enabled in the course of a national genocide by the sale of almost one million acres of stolen Indian land under the Morrill Act of 1862. To date the university has neither officially acknowledged its complicity in this theft nor has it offered any form of restitution to the hundreds of Native communities impacted. For additional information, see the [Cornell University and Indigenous Dispossession](https://blogs.cornell.edu/cornelluniversityindigenousdispossession/) website.

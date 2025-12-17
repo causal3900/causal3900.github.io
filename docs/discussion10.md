@@ -95,32 +95,9 @@ abline(v = 0, col = "gray", lwd = 2)
 segments(-h, predict(fit.mod.bandwidth, newdata = data.frame(X = -h)),
          0, predict(fit.mod.bandwidth, newdata = data.frame(X = 0)),col = "blue",
          lwd = 2)
-```
 
-```
-## Warning in predict.lm(fit.mod.bandwidth, newdata =
-## data.frame(X = -h)): prediction from rank-deficient fit;
-## attr(*, "non-estim") has doubtful cases
-```
-
-```
-## Warning in predict.lm(fit.mod.bandwidth, newdata =
-## data.frame(X = 0)): prediction from rank-deficient fit;
-## attr(*, "non-estim") has doubtful cases
-```
-
-``` r
 points(0, 5, pch = 18, col = "orange", cex = 3)
 points(0, predict(fit.mod.bandwidth, newdata = data.frame(X = 0)), col = "blue", pch = 19)
-```
-
-```
-## Warning in predict.lm(fit.mod.bandwidth, newdata =
-## data.frame(X = 0)): prediction from rank-deficient fit;
-## attr(*, "non-estim") has doubtful cases
-```
-
-``` r
 lines(xTrue, yTrue, col = "darkgreen")
 ```
 
@@ -157,10 +134,10 @@ data.frame(h = h,
 
 ```
 ##     h    y_hat  accuracy
-## 1 0.5 4.698986  9.126558
-## 2 0.8 4.565672  4.903535
-## 3 1.2 4.075382  3.863692
-## 4 2.0 1.671481 13.193685
+## 1 0.5 4.881570 10.108632
+## 2 0.8 4.745126  5.105139
+## 3 1.2 4.129013  3.909109
+## 4 2.0 1.777758 12.441379
 ```
 
 ``` r
