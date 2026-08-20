@@ -51,4 +51,3 @@ interference-intro
 lab-2
 discussion-on-interference
 course-recap
-points-choose-distance

@@ -57,7 +57,7 @@ ggplot() + geom_line(aes(x,y)) +
     labs(y="Density")
 ```
 
-<img src="discussion01_files/figure-html/unnamed-chunk-2-1.png" width="384" style="display: block; margin: auto;" />
+<img src="discussion01_files/figure-html/unnamed-chunk-2-1.png" alt="" width="384" style="display: block; margin: auto;" />
 
 ``` r
 sample_seq <- 1:3000
@@ -88,7 +88,7 @@ ggplot(means, aes(y = `Sample Mean`, x = N)) +
   theme_bw()
 ```
 
-<img src="discussion01_files/figure-html/unnamed-chunk-2-2.png" width="384" style="display: block; margin: auto;" />
+<img src="discussion01_files/figure-html/unnamed-chunk-2-2.png" alt="" width="384" style="display: block; margin: auto;" />
 
 
 #### 2. Variance {-}
@@ -119,7 +119,7 @@ ggplot(vars, aes(y = `Sample Variance`, x = N)) +
   theme_bw()
 ```
 
-<img src="discussion01_files/figure-html/unnamed-chunk-3-1.png" width="384" style="display: block; margin: auto;" />
+<img src="discussion01_files/figure-html/unnamed-chunk-3-1.png" alt="" width="384" style="display: block; margin: auto;" />
 
 
 #### 4. Conditional Expectation {-}
@@ -138,7 +138,7 @@ ggplot(vars, aes(y = `Sample Variance`, x = N)) +
 - Visualization in R for $E(X)=25$, $E[X| \text{group 1}] = 20$, $E[X| \text{group 2}] = 30$
 
 
-<img src="discussion01_files/figure-html/unnamed-chunk-4-1.png" width="480" style="display: block; margin: auto;" />
+<img src="discussion01_files/figure-html/unnamed-chunk-4-1.png" alt="" width="480" style="display: block; margin: auto;" />
 
 
 #### 5. Independence {-}
