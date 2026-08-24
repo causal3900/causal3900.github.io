@@ -2,7 +2,7 @@
 
 ## Observing versus intervening
 
-> Aug 26. [**Slides**](assets/slides/1-1_observing_intervening.pdf)
+> Aug 25. [**Slides**](assets/slides/1-1_observing_intervening.pdf)
 After class, install R and Rstudio on your computer (see slide 17 from today's lecture).
 
 Statistical inference is about observing: if I observe a sample from a population, what can I infer about that population? 
@@ -14,15 +14,15 @@ Today we will discuss observing, intervening, and why the difference is so impor
 
 ## Lab: Statistics review
 
-> Aug 27. [**Discussion**](discussion-1.-prob-stats-review), download [**.Rmd file**](assets/discussions/discussion01.Rmd)
+> Aug 26. [**Discussion**](discussion-1.-prob-stats-review), download [**.Rmd file**](assets/discussions/discussion01.Rmd)
 
 In this lab, we will start by reviewing some basic statistical (random variables, expectation, conditional expectation, etc) and programming concepts.  
 
 
 ## Defining causal effects
 
-> Aug 28. [**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)
-After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) and begin Problem Set 1.
+> Aug 27. [**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)
+After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/). 
 
 Today we will define average causal effects in the potential outcomes framework.
 

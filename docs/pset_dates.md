@@ -6,7 +6,7 @@
 We'll post due dates here throughout the semester. 
 
 
-## Homeworks and Quizzes {-}
+## Quizzes {-}
 
 ## Project {-}
 
