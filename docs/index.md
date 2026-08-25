@@ -1,7 +1,7 @@
 --- 
 title: "Causal Inference Course"
 author: "Y. Samuel Wang"
-date: "2026-08-24"
+date: "2026-08-25"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
