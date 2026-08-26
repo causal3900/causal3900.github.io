@@ -8,15 +8,15 @@ output:
 
 # Discussion 1. Prob & Stats Review {-}
 ## STSCI/INFO/ILRST 3900: Causal Inference {-}
-#### August 27, 2025 {-}
+#### August 26, 2026 {-}
 
  
 To execute these simulations locally, [**download the .Rmd here**](assets/discussions/discussion01.Rmd)
 
 ### Announcements {-}
 - Office Hours throughout the week (see Syllabus or website)
-  - Filippo: Thursday 4-5pm in 321A Computing & Information Science Building
-  - Shira: Monday 5-6 pm in 329A Computing and Information Science Building  
+  - Filippo: Thursday 4-5 pm in 325A CIS Building
+  - Shira: Monday 5-6 pm in 325A CIS Building
 
 ### Probability and Statistics Review {-}
 - Expectation
