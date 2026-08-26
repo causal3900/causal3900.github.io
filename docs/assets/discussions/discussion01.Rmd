@@ -4,7 +4,7 @@ output: pdf_document
 
 # Discussion 1. Prob & Stats Review
 ## STSCI/INFO/ILRST 3900: Causal Inference 
-#### August 27, 2025
+#### August 26, 2026
 
 ```{r echo=FALSE}
 library(ggplot2)
