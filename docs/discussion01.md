@@ -15,8 +15,8 @@ To execute these simulations locally, [**download the .Rmd here**](assets/discus
 
 ### Announcements {-}
 - Office Hours throughout the week (see Syllabus or website)
-  - Filippo: Thursday 4-5 pm in CIS Building
-  - Shira: Monday 5-6 pm in CIS Building
+  - Filippo: Thursday 4-5 pm in 325A CIS Building
+  - Shira: Monday 5-6 pm in 325A CIS Building
 
 ### Probability and Statistics Review {-}
 - Expectation
