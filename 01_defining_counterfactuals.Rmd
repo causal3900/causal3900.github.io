@@ -24,7 +24,7 @@ In this lab, we will start by reviewing some basic statistical (random variables
 > Aug 27. [**Slides.**](assets/slides/1-2_defining_causal_effects.pdf)
 After class, read Chapter 1 of [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/). 
 
-Today we will define average causal effects in the potential outcomes framework.
+Today we will define causal effects in the potential outcomes framework.
 
 By the end of class, you will be able to
 
