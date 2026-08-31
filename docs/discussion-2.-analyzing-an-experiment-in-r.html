@@ -5,20 +5,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 2. Analyzing an Experiment in R | Causal Inference Course</title>
-<meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="author" content="Y. Samuel Wang">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 2, 2026  Announcements Office Hours throughout the week (see Syllabus or website) Filippo: Thursday 4-5pm in 325A CIS Building Shira: Monday 5-6...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
 <meta property="og:title" content="Discussion 2. Analyzing an Experiment in R | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 2, 2026  Announcements Office Hours throughout the week (see Syllabus or website) Filippo: Thursday 4-5pm in 325A CIS Building Shira: Monday 5-6...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 2. Analyzing an Experiment in R | Causal Inference Course">
-<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 3, 2025  Announcements HW 1 due Tuesday (September 9) by 5pm Submit a PDF from RMarkdown via Canvas Office Hours throughout the week (see...">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  September 2, 2026  Announcements Office Hours throughout the week (see Syllabus or website) Filippo: Thursday 4-5pm in 325A CIS Building Shira: Monday 5-6...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -63,28 +62,8 @@
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
 <li><a class="active" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
-<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
-<li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
-<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
-<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
-<li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
-<li><a class="" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
-<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
-<li><a class="" href="discussion-11.-difference-in-differences.html">Discussion 11. Difference in Differences</a></li>
-<li><a class="" href="discussion-12.-synthetic-control.html">Discussion 12. Synthetic Control</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
-<li><a class="" href="project-1.html">Project</a></li>
-<li class="book-part">Course information</li>
-<li><a class="" href="who-we-are.html">Who we are</a></li>
-<li><a class="" href="references.html">References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -98,40 +77,34 @@
 <div id="stsciinfoilrst-3900-causal-inference-1" class="section level2 unnumbered">
 <h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-1"><i class="fas fa-link"></i></a>
 </h2>
-<div id="september-3-2025" class="section level4 unnumbered">
-<h4>September 3, 2025<a class="anchor" aria-label="anchor" href="#september-3-2025"><i class="fas fa-link"></i></a>
+<div id="september-2-2026" class="section level4 unnumbered">
+<h4>September 2, 2026<a class="anchor" aria-label="anchor" href="#september-2-2026"><i class="fas fa-link"></i></a>
 </h4>
 </div>
 <div id="announcements-1" class="section level3 unnumbered">
 <h3>Announcements<a class="anchor" aria-label="anchor" href="#announcements-1"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>HW 1 due Tuesday (September 9) by 5pm
-<ul>
-<li>Submit a PDF from RMarkdown via Canvas</li>
-</ul>
-</li>
 <li>Office Hours throughout the week (see Syllabus or website)
 <ul>
-<li>Filippo: Thursday 4-5pm in 321A CIS Building</li>
-<li>Shira: Monday 5-6 pm in 329A CIS Building<br>
-</li>
-<li>Sam: Tuesday 4-5pm, CIS Building</li>
+<li>Filippo: Thursday 4-5pm in 325A CIS Building</li>
+<li>Shira: Monday 5-6 pm in 325A CIS Building</li>
 </ul>
 </li>
+<li>No need to submit, encouraged to complete the file and knit</li>
 </ul>
 </div>
-<div id="get-out-and-vote-experiment" class="section level3 unnumbered">
-<h3>Get out and Vote Experiment<a class="anchor" aria-label="anchor" href="#get-out-and-vote-experiment"><i class="fas fa-link"></i></a>
+<div id="generative-ai-and-math-learning-experiment" class="section level3 unnumbered">
+<h3>Generative AI and Math Learning Experiment<a class="anchor" aria-label="anchor" href="#generative-ai-and-math-learning-experiment"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>Why do people vote?</li>
-<li>One long-standing theory: People vote due to social norms (civic duty)</li>
-<li>Empirical evidence for this theory was extremely thin</li>
+<li>How generative AI affects learning?</li>
+<li>GenAI already shown to improve human productivity</li>
+<li>Is GenAI an effective tutor, or does it become a cognitive crutch?</li>
 <li>
-<strong>Research Question:</strong> to what extent do social norms cause voter turnout?</li>
-<li>Article: <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/social-pressure-and-voter-turnout-evidence-from-a-largescale-field-experiment/11E84AF4C0B7FBD1D20C855972C2C3EB#">“Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment.”</a>in American Political Science Review</li>
-<li>Authors: Alan S. Gerber, Donald P. Green, and Christopher W. Larimer</li>
+<strong>Research Question:</strong> To what extent does access to GenAI (with and without guardrails) affect learning in an educational setting?</li>
+<li>Article: <a href="https://www.pnas.org/doi/pdf/10.1073/pnas.2422633122">“Generative AI without guardrails can harm learning: Evidence from high school mathematics”</a>
+</li>
 <li>We’ll be analyzing their experiment today!</li>
 </ul>
 </div>
@@ -139,27 +112,29 @@
 <h3>Experimental Design<a class="anchor" aria-label="anchor" href="#experimental-design"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>Approximately 80k Michigan households were randomly assigned 1 of 4 mailings encouraging them to vote
+<li>Nearly 1,000 high school students in Turkey were randomly assigned 1 of 3</li>
+<li>High school math students were randomly assigned to one of three treatment arms:
 <ol style="list-style-type: decimal">
-<li>Simply reminded them that voting is a civic duty</li>
-<li>Told that researchers would be studying their turnout based on public records</li>
-<li>Received record of voting turnout <em>within</em> their household</li>
-<li>Received record of voting turnout within their household <em>and</em> their neighbors’ households.</li>
+<li>
+<strong>Control:</strong> Standard practice material with no AI assistance access</li>
+<li>
+<strong>GPT Base:</strong> Access to standard GPT-4</li>
+<li>
+<strong>GPT Tutor:</strong> Access to a customized GPT-4 (GenAI with guardrails)</li>
 </ol>
 </li>
-<li>Third and fourth treatment arms were told that their turnout would be revealed as well</li>
+<li>Following this practice session, all students took an exam without AI access to evaluate learning</li>
 </ul>
 </div>
 <div id="goal-for-today" class="section level3 unnumbered">
 <h3>Goal for Today<a class="anchor" aria-label="anchor" href="#goal-for-today"><i class="fas fa-link"></i></a>
 </h3>
-<strong>Replicate Something Similar to Tables 1 and 2 from the article</strong>
-<div style="text-align: center;">
-<img src="assets/discussions/discussion02_files/tab1.png" width="550">
-</div>
-<div style="text-align: center;">
-<img src="assets/discussions/discussion02_files/tab2.png" width="550">
-</div>
+<p><strong>Replicate Something Similar to Table A.1 (in appendix) and Table 1</strong>
+- Table A.1 demonstrates balance of covariates across treatment arms
+- This ensures treatment assignment is randomized so exchangeability holds
+- Table 1 shows the main results of student performance in the practice and exam problems
+- Estimated the counterfactuals to identify the average causal effect (ACE)
+<span class="math display">\[ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}]\]</span></p>
 </div>
 <div id="resources-for-markdown" class="section level3 unnumbered">
 <h3>Resources for Markdown<a class="anchor" aria-label="anchor" href="#resources-for-markdown"><i class="fas fa-link"></i></a>
@@ -175,7 +150,6 @@
 <a href="https://rmd4sci.njtierney.com/">“RMarkdown for Scientists”</a> by Nicholas Tierney</li>
 <li>If you can’t figure out how to do something, try Googling it first!</li>
 <li>Also feel free to ask a classmate or ask me :)</li>
-<li>For homework sets, don’t forget about Ed Discussion!</li>
 </ul>
 </div>
 <div id="step-1-download-the-.rmd-file-here" class="section level3 unnumbered">
@@ -190,135 +164,150 @@
 <h3>Step 2: Import and Clean the Data<a class="anchor" aria-label="anchor" href="#step-2-import-and-clean-the-data"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="fu">read_dta</span><span class="op">(</span><span class="st">"https://causal3900.github.io/assets/data/social_pressure.dta"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/discussions/discussion02_files/GenAI_Learning.csv"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Quick peek at the dataset using the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">function <code>glimpse</code></a>
 </li>
-<li>Notice that we have information about year of birth <code>yob</code> but not explicitly age</li>
-<li>Notice that the treatments are labeled with the numbers 0 through 4</li>
-</ul>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">gotv</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Rows: 344,084
-## Columns: 16
-## $ sex           &lt;dbl+lbl&gt; 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
-## $ yob           &lt;dbl&gt; 1941, 1947, 1951, 1950, 1982, 1981, …
-## $ g2000         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
-## $ g2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
-## $ g2004         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-## $ p2000         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-## $ p2002         &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
-## $ p2004         &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
-## $ treatment     &lt;dbl+lbl&gt; 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0,…
-## $ cluster       &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-## $ voted         &lt;dbl+lbl&gt; 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
-## $ hh_id         &lt;dbl&gt; 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
-## $ hh_size       &lt;dbl&gt; 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
-## $ numberofnames &lt;dbl&gt; 21, 21, 21, 21, 21, 21, 21, 21, 21, …
-## $ p2004_mean    &lt;dbl&gt; 0.09523810, 0.09523810, 0.04761905, …
-## $ g2004_mean    &lt;dbl&gt; 0.8571429, 0.8571429, 0.8571429, 0.8…</code></pre>
-<ul>
-<li>Calculate the ages of everyone in our dataset in the year 2006</li>
-<li>Use <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutatet()</code></a> to construct an age variable</li>
-<li>You can do arithmetic operations with information from the dataset</li>
-<li>For example: <code>mutate(col_3 = col_1 + col_2)</code>
+<li>Notice the variable <code>Honors</code>
+</li>
+<li>Notice the treatment variables <code>GPTBase</code> and <code>GPTTutor</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>age <span class="op">=</span> <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">genAI_dta</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>Replace the numeric labels of treatment (0-4) with word labels:
+<li><em>…students are randomly assigned to classrooms (with the exception of honors-designated classrooms)…</em></li>
+<li>Exclude honors-designated classrooms from the sample</li>
+<li>For this, you will want to use the function <code>filter</code>
+</li>
+<li>The general syntax is <code>filter(condition)</code>
+</li>
+<li>A condition would be <code>Honors == 0</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>0: “Control”</li>
-<li>1: “Hawthorne” (this is the ‘researchers viewing records via public data’ treatment arm)</li>
-<li>2: “Civic Duty” (this is the ‘voting is your civic duty’ treatment arm)</li>
-<li>3: “Neighbors” (this is the ‘voting turnout revealed to neighbors’ treatment arm)</li>
-<li>4: “Self” (this is the ‘voting turnout revealed to household’ treatment arm)</li>
+<li>Create a single treatment variable with word labels:
+<ul>
+<li>“Control”: If <code>GPTBase == 0</code> and <code>GPTTutor == 0</code>
+</li>
+<li>“GPTBase”: If <code>GPTBase == 1</code> and <code>GPTTutor == 0</code>
+</li>
+<li>“GPTTutor”: If <code>GPTBase == 0</code> and <code>GPTTutor == 1</code>
+</li>
 </ul>
 </li>
 <li>For this, you will want to use the function <code>case_when</code> which is described <a href="https://www.sharpsightlabs.com/blog/case-when-r/">here</a>
 </li>
 <li>The general syntax is <code>case_when(condition ~ output-value)</code>
 </li>
-<li>A condition would be <code>treatement == 0</code> and an output value would be <code>"Control"</code>
+<li>A condition would be <code>(GPTBase == 0) &amp; (GPTTutor == 0)</code> and an output value would be <code>"Control"</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gotv</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
-<ul>
-<li>When you run <code>glimpse(gotv)</code>, you should see something like this</li>
-</ul>
-<div style="text-align: center;">
-<img src="assets/discussions/discussion02_files/glimpse.png" width="550">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 </div>
-</div>
-<div id="step-3-table-1" class="section level3 unnumbered">
-<h3>Step 3: Table 1<a class="anchor" aria-label="anchor" href="#step-3-table-1"><i class="fas fa-link"></i></a>
+<div id="step-3-table-a.1" class="section level3 unnumbered">
+<h3>Step 3: Table A.1<a class="anchor" aria-label="anchor" href="#step-3-table-a.1"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Is the data balanced on covariates?</li>
 <li>We want to check that the treatment groups are balanced on covariates</li>
-<li>For each treatment arm/group, calculate the mean for each of the designated covariates:
-<ul>
-<li>Household size, Nov 2002, Nov 2000, Aug 2004, Aug 2002, Aug 2000, Female, Age (in years)</li>
-</ul>
-</li>
+<li>For each treatment arm/group, calculate the mean for each of the designated covariates in table A.1 (list given below)</li>
 <li>Use <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a> to calculate separate means for each treatment arm</li>
-<li>Use <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a> to computes the mean of each covariate in <code>covariates</code>
+<li>Use <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a> to compute the mean of each covariate in <code>covariates</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"education_parent_college"</span>, <span class="st">"n_household_members"</span>,</span>
+<span>                <span class="st">"n_household_children"</span>, <span class="st">"class_enjoyment"</span>,</span>
+<span>                <span class="st">"class_participation_likelihood"</span>, <span class="st">"math_hw_completion"</span>, <span class="st">"hw_help"</span>,</span>
+<span>                <span class="st">"private_tutorship"</span>,<span class="st">"visit_training_center"</span>,<span class="st">"female"</span>,</span>
+<span>                <span class="st">"n_weekday_study_hours"</span>,<span class="st">"n_weekend_study_hours"</span>,<span class="st">"gpa_prev"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">genAI_balance</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">`Student ID`</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="op">)</span>,\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">genAI_balance</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="op">-</span><span class="va">treatment</span>, names_to <span class="op">=</span> <span class="st">"Description"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">treatment</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Description</span>, <span class="va">GPTTutor</span>, <span class="va">Control</span>, <span class="va">GPTBase</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="step-4-table-1" class="section level3 unnumbered">
+<h3>Step 4: Table 1<a class="anchor" aria-label="anchor" href="#step-4-table-1"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>What are the main results of the experiment?</li>
+<li>Estimate the regression model for the practice performance
+<span class="math display">\[\small{\text{Outcome}_{ics}=\beta_1\text{GPTBase}_c+\beta_2\text{GPTTutor}_c+\beta_3\text{prevGPA}+\theta_s+\delta_g+\alpha_y+\lambda_t+\varepsilon_{ics}}\]</span>
+where <span class="math inline">\(\text{Outcome}_{ics}\)</span> is the normalized grade of student <span class="math inline">\(i\)</span> in classroom <span class="math inline">\(c\)</span> and session <span class="math inline">\(s\)</span> for the practice problems: <code>Part2Tot</code>
+</li>
+<li>For this, you will want to use the function <code>lm</code> which is described <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">here</a>
+</li>
+<li>The general syntax is <code>lm(outcome ~ independent_variables)</code>
 </li>
 </ul>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">covariates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"g2000"</span>, <span class="st">"g2002"</span>, <span class="st">"p2000"</span>, <span class="st">"p2002"</span>, <span class="st">"p2004"</span>, <span class="st">"hh_size"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">reg_practice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">GPTBase</span> <span class="op">+</span> <span class="va">GPTTutor</span> <span class="op">+</span> <span class="va">gpa_prev</span> <span class="op">+</span></span>
+<span>                     <span class="va">teacher</span> <span class="op">+</span> <span class="va">Session</span> <span class="op">+</span> <span class="va">Grader</span> <span class="op">+</span> <span class="va">Year</span>, data <span class="op">=</span> <span class="va">genAI_dta</span><span class="op">)</span></span>
+<span><span class="va">reg_practice</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coefficients</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
+<span>  </span>
 <span></span>
-<span><span class="va">gotv_balance</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_balance</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">reg_exam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">GPTBase</span> <span class="op">+</span> <span class="va">GPTTutor</span> <span class="op">+</span> <span class="va">gpa_prev</span> <span class="op">+</span></span>
+<span>                 <span class="va">teacher</span> <span class="op">+</span> <span class="va">Session</span> <span class="op">+</span> <span class="va">Grader</span> <span class="op">+</span> <span class="va">Year</span>, data <span class="op">=</span> <span class="va">genAI_dta</span><span class="op">)</span></span>
+<span><span class="va">reg_exam</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coefficients</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>Your table should look like this (covariates similar across the groups)
-<div style="text-align: center;">
-<img src="assets/discussions/discussion02_files/mean.png" width="550">
-</div>
-</li>
-</ul>
-</div>
-<div id="step-4-table-2" class="section level3 unnumbered">
-<h3>Step 4: Table 2<a class="anchor" aria-label="anchor" href="#step-4-table-2"><i class="fas fa-link"></i></a>
-</h3>
-<ul>
-<li>What are the results of the experiment?</li>
-<li>For each treatment group, calculate the percent that voted and the total number of individuals in that group</li>
-<li>Use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to calculate separate means for each treatment arm</li>
-<li>Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to to do the following:
-<ul>
-<li>Create a column <code>Percentage_Voting</code>- the percent that voted of each group</li>
-<li>Create a column <code>num_of_individuals</code>- the total number of people in that group</li>
-</ul>
+<li>Estimate potential outcomes under each treatment arm</li>
+<li>First, create three data frames where all students receive the same treatment</li>
+<li>For this, you can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to specify the treatment</li>
+<li>Next, use <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> to estimate the potential outcomes- i.e. fitted values for the new data frames</li>
+<li>Finally, use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> to estimate the ACE
+<span class="math display">\[\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=1} - \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=0}\]</span>
 </li>
 </ul>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gotv_results</span> <span class="op">&lt;-</span> <span class="va">gotv</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">genAI_dta_control</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
+<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">gotv_results</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li>Your table should look like this
-<div style="text-align: center;">
-<img src="assets/discussions/discussion02_files/percent_vote.png" width="550">
+<span><span class="va">genAI_dta_GPTBase</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
+<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="va">genAI_dta_GPTTutor</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
+<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
+<span></span>
+<span><span class="va">y_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
+<span><span class="va">y_Base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
+<span><span class="va">y_Tutor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">ACE_Base</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">ACE_Tutor</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+
 </div>
-</li>
-</ul>
-<style>li {line-height: 1.8;}</style>
 </div>
 </div>
-</div>
+
+
+
   <div class="chapter-nav">
 <div class="prev"><a href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></div>
-<div class="next"><a href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -326,22 +315,22 @@
 <li>
 <a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-1">STSCI/INFO/ILRST 3900: Causal Inference</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#announcements-1">Announcements</a></li>
-<li><a class="nav-link" href="#get-out-and-vote-experiment">Get out and Vote Experiment</a></li>
+<li><a class="nav-link" href="#generative-ai-and-math-learning-experiment">Generative AI and Math Learning Experiment</a></li>
 <li><a class="nav-link" href="#experimental-design">Experimental Design</a></li>
 <li><a class="nav-link" href="#goal-for-today">Goal for Today</a></li>
 <li><a class="nav-link" href="#resources-for-markdown">Resources for Markdown</a></li>
 <li><a class="nav-link" href="#step-1-download-the-.rmd-file-here">Step 1: Download the .Rmd file here</a></li>
 <li><a class="nav-link" href="#step-2-import-and-clean-the-data">Step 2: Import and Clean the Data</a></li>
-<li><a class="nav-link" href="#step-3-table-1">Step 3: Table 1</a></li>
-<li><a class="nav-link" href="#step-4-table-2">Step 4: Table 2</a></li>
+<li><a class="nav-link" href="#step-3-table-a.1">Step 3: Table A.1</a></li>
+<li><a class="nav-link" href="#step-4-table-1">Step 4: Table 1</a></li>
 </ul>
 </li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/88368">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/102449">Ed Discussion </a></li>
           
           
         </ul>
@@ -355,7 +344,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-12-17</p>
+    <p>Last built on 2026-08-31</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -3,110 +3,139 @@ output: pdf_document
 ---
 # Discussion 2. Analyzing an Experiment in R
 
+
 ### Necessary packages
 
-Note: If this errors you probably either don't have `dplyr` or `haven`
-installed.
+Note: If this errors you probably either don't have `dplyr`, `tidyr` or `readr`
+installed. Use `install.packages("package_name")` to install `package_name`
 
 ```{r}
 library(dplyr)
-library(haven)
+library(tidyr)
+library(readr)
 ```
 
 ### Import data
 ```{r}
-gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
+genAI_dta <- read_csv("https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/discussions/discussion02_files/GenAI_Learning.csv")
 ```
 
 
-Run the following code to get a quick peek at the dataset using the function `glimpse`. This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about year of birth `yob` but not explicitly age. Also notice that the treatments are labeled with the numbers 0 through 4.
+Run the following code to get a quick peek at the dataset using the function `glimpse`. This returns info such as the number of rows/columns, the column names, and the type of data in each column. Notice that we have information about honors class `Honors`. Also notice that the treatment variables `GPTBase` and `GPTTutor`.
+
 ```{r}
-glimpse(gotv)
+glimpse(genAI_dta)
 ```
 
 ### Clean data
 
-First, let's construct an age variable describing how old (in number of years)
-each person was in the year 2006. The `yob` variable says which year each person
-was born in. For this, we use the `mutate` function, which you can read about [here](https://dplyr.tidyverse.org/reference/mutate.html). 
+First, let's exclude honors-designated classrooms from the sample. The `Honors` variable says if the student is in an Honors class. For this, we use the `filter` function.
 
-> Given a person's year of birth, how do you calculate their age in the year 2006? Note that you can do arithmetic operations with information from the dataset. For example, if you have two columns `col_1` and `col_2` and you wanted to create a third column called `col_3` that was the sum of these two columns, you could write:
->
-> `mutate(col_3 = col_1 + col_2)`
+- The general syntax is `filter(condition)`
+- A condition would be `Honors == 0`
 
-We have the code started for you below. Fill in the appropriate expression after `age = ` to add a column to `gotv` labeled `age` that contains how old each person was in 2006.
+We have the code started for you below. Fill in the appropriate condition to filter by:
 
 ```{r}
-gotv <- gotv |>
-  mutate(age = )
+genAI_dta <- genAI_dta %>%
+  filter()
 ```
 
-Now, convert the `treatment` variable from it's numeric representation to the
-corresponding labels which are
+Now, create the `treatment` variable from the variables `GPTBase` and `GPTTutor` with the labels: 
+- "Control": If `GPTBase == 0` and `GPTTutor == 0`
+- "GPTBase": If `GPTBase == 1` and `GPTTutor == 0`
+- "GPTTutor": If `GPTBase == 0` and `GPTTutor == 1`
 
-- 0: "Control" 
-- 1: "Hawthorne" (this is the 'researchers viewing records via public data' treatment arm)
-- 2: "Civic Duty" (this is the 'voting is your civic duty' treatment arm)
-- 3: "Neighbors" (this is the 'voting turnout revealed to neighbors' treatment arm)
-- 4: "Self" (this is the 'voting turnout revealed to household' treatment arm)
+For this, you will want to use the function `case_when`. The general syntax is `case_when(condition ~ output-value)`. For example, a condition would be `(GPTBase == 0) & (GPTTutor == 0)` and an output value would be `"Control"`. This would search for every value in the `GPTBase` and `GPTTutor` columns that equal `0` and replace that with the string `"Control"`.
 
 
-> For this, you will want to use the function `case_when`
-> The general syntax is `case_when(condition ~ output-value)`
-> 
-> For example, a condition would be `treatement == 0` and an output value would be `"Control"`. This would search for every value in the `treatment` column that equals `0` and replace that with the string `"Control"`.
+We have started the code for you below. Decide what argument(s) to pass inside the parentheses of `case_when()`.
 
-
-We have started the code for you below. Decide what argument(s) to pass inside the parantheses of `case_when()`.
 ```{r}
-gotv <- gotv |>
+genAI_dta <- genAI_dta %>%
   mutate(treatment = case_when()) 
 ```
 
-Now, when we use `glimpse` we see there is an added `age` variable and that the treatments have word instead of number labels.
-```{r}
-glimpse(gotv)
-```
 
 ### Balance table
 
 Next, we're going to confirm that our control and treatment groups look pretty
-much the same across a set of covariates, i.e. that the two groups are *balanced on covariates*. Specifically this means we're going to calculate the mean value of a set of covariates across each of the treatment/control
-arms, and we expect them to be pretty much equal if our randomization worked. This is related to the idea of exchangeability.
+much the same across a set of covariates, i.e. that the two groups are *balanced on covariates*. Specifically this means we're going to calculate the mean value of a set of covariates across each of the treatment/control arms, and we expect them to be pretty much equal if our randomization worked. This is related to the idea of exchangeability. 
 
-In this exercise, we are going to reproduce a table similar to Table 1 from the paper. We want a table that shows the mean value of the following covariates for each of the five treatment arms: Household size, Nov 2002, Nov 2000, Aug 2004, Aug 2002, Aug 2000, Female, and Age (in years). You should create a table with 5 rows, one for each treatment arm, and 8 columns, one for each covariate of interest. 
+In this exercise, we are going to reproduce a table similar to Table A.1 from the appendix. We want a table that shows the mean value of the covariates given below. Notice that some of these covariates are binary (i.e. 0/1), what would the mean value of those variables stand for? You should create a table with 3 columns, one for each treatment arm, and 13 rows, one for each covariate of interest. 
 
 We have started some code for you below. What you need to do is:
 
-- Pass an argument to `group_by()` so that we calculate seperate means for each treatment arm.
-- Pass an argument to `summarise()` that computes the mean of each covariate in `covariates` for each seperate treatment arm.
+- Pass an argument to `group_by()` so that we calculate separate means for each treatment arm.
+- Pass an argument to `summarise()` that computes the mean of each covariate in `covariates` for each separate treatment arm.
 
 ```{r}
-covariates <- c("sex", "age", "g2000", "g2002", "p2000", "p2002", "p2004", "hh_size")
+covariates <- c("education_parent_college", "n_household_members",
+                "n_household_children", "class_enjoyment",
+                "class_participation_likelihood", "math_hw_completion", "hw_help",
+                "private_tutorship","visit_training_center","female",
+                "n_weekday_study_hours","n_weekend_study_hours","gpa_prev")
 
-gotv_balance <- gotv |>
-  group_by(...) |>
-  summarise(...)
+genAI_balance <- genAI_dta |>
+  distinct(`Student ID`, .keep_all = TRUE) |>
+  group_by() |>
+  summarise(across(all_of(),\(x) mean(x, na.rm = TRUE)))
 
-print(gotv_balance)
+
+genAI_balance |>
+  pivot_longer(-treatment, names_to = "Description", values_to = "value") |>
+  pivot_wider(names_from = treatment, values_from = "value") |>
+  select(Description, GPTTutor, Control, GPTBase) |>
+  print()
+
 ```
 
-Note that your numbers will not match up exactly with Table 1. What you want to notice is that the values in each column are similar across the rows.
+What you want to notice is that the values in each row are similar across the columns.
 
 ### Results
 
-Finally, let's replicate the final results (Table 2). For each treatment group, we calculate the percentage of individuals who got out and voted, as well as the total number of individuals in that group! We started the code for you below. You need to 
+Finally, let's replicate the main results (Table 1) for the practice performance,  (left column). First, we will estimate the regression using the `lm()` function. We have started some code for you below, you need to fill in the outcome variable corresponding to the practice problems (`Part2Tot`) in the formula `lm(outcome ~ independent_variables)`.
 
-- Pass an argument to `group_by()` so that we are working with each treatment arm seperately (this should be the same as before!)
-- Pass two arguments to `summarise()` to do the following:
-  - Create a column titled `Percentage_Voting` that contains the percent of each group that voted
-  - Create a column titled `num_of_individuals` that contains the total number of people in that group
+```{r eval=FALSE}
+reg_practice <- lm( ~ GPTBase + GPTTutor + gpa_prev +
+                     teacher + Session + Grader + Year, data = genAI_dta)
+reg_practice %>%
+  summary() %>%
+  coefficients() %>%
+  head(4)
+
+```
+
+Next, we will estimate the average causal effect (ACE) by estimating potential outcomes for all students in our sample. First, you should create three data frames, where all students receive the same treatment. We started the code for you using the `mutate()` function with the relevant variables. You should fill in the correct values to specify each treatment arm based on the name of the data frame
 
 ```{r}
-gotv_results <- gotv |>
-  group_by(...) |>
-  summarise(...)
+genAI_dta_control <- genAI_dta %>%
+  mutate(GPTBase = ,
+         GPTTutor = )
 
-print(gotv_results)
+genAI_dta_GPTBase <- genAI_dta %>%
+  mutate(GPTBase = ,
+         GPTTutor = )
+
+genAI_dta_GPTTutor <- genAI_dta %>%
+  mutate(GPTBase = ,
+         GPTTutor = )
 ```
+
+Next, estimate the potential outcomes. You can do this by using the estimated regression model `reg_practice` to predict the outcome using the data frames you created above. This way you get the potential outcome for all students under each of the treatment arms. We started the code for you using the `predict()` function with the model. You need to fill in the data frame the prediction should be based on (i.e. under which treatment arm). 
+
+
+```{r}
+y_control <- predict(reg_practice,newdata = , na.action = na.omit)
+y_Base <- predict(reg_practice,newdata = , na.action = na.omit)
+y_Tutor <- predict(reg_practice,newdata = , na.action = na.omit)
+```
+
+Finally to estimate the ACE you will need to fill in the potential outcomes below
+
+```{r}
+(ACE_Base  <- mean() - mean())
+(ACE_Tutor  <- mean() - mean())
+```
+
 

@@ -9,7 +9,12 @@ output: html_document
 
 
 
-
+```{r echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+library(dplyr)
+library(tidyr)
+library(readr)
+```
  
 
 ### Announcements {-}
@@ -59,17 +64,16 @@ $$ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}]$$
 
 ### Step 2: Import and Clean the Data {-}
 
-
-``` r
+```{r}
 genAI_dta <- read_csv("https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/discussions/discussion02_files/GenAI_Learning.csv")
+
 ```
 
 - Quick peek at the dataset using the [function `glimpse`](https://dplyr.tidyverse.org/reference/glimpse.html)
 - Notice the variable `Honors`
 - Notice the treatment variables `GPTBase` and `GPTTutor`
 
-
-``` r
+```{r}
 glimpse(genAI_dta)
 ```
 
@@ -81,8 +85,7 @@ glimpse(genAI_dta)
 - A condition would be `Honors == 0`
 
 
-
-``` r
+```{r}
 genAI_dta <- genAI_dta %>%
   filter()
 ```
@@ -97,8 +100,7 @@ genAI_dta <- genAI_dta %>%
 - The general syntax is `case_when(condition ~ output-value)`
 - A condition would be `(GPTBase == 0) & (GPTTutor == 0)` and an output value would be `"Control"`
 
-
-``` r
+```{r eval=FALSE}
 genAI_dta <- genAI_dta %>%
   mutate(treatment = case_when()) 
 ```
@@ -112,8 +114,7 @@ genAI_dta <- genAI_dta %>%
 - Use [`summarise()`](https://dplyr.tidyverse.org/reference/summarise.html)  to compute the mean of each covariate in `covariates`
 
 
-
-``` r
+```{r eval=FALSE}
 covariates <- c("education_parent_college", "n_household_members",
                 "n_household_children", "class_enjoyment",
                 "class_participation_likelihood", "math_hw_completion", "hw_help",
@@ -131,6 +132,7 @@ genAI_balance |>
   pivot_wider(names_from = treatment, values_from = "value") |>
   select(Description, GPTTutor, Control, GPTBase) |>
   print()
+
 ```
 
 
@@ -142,8 +144,7 @@ $$\small{\text{Outcome}_{ics}=\beta_1\text{GPTBase}_c+\beta_2\text{GPTTutor}_c+\
  - For this, you will want to use the function `lm` which is described [here](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm)
 - The general syntax is `lm(outcome ~ independent_variables)`
 
-
-``` r
+```{r eval=FALSE}
 reg_practice <- lm( ~ GPTBase + GPTTutor + gpa_prev +
                      teacher + Session + Grader + Year, data = genAI_dta)
 reg_practice %>%
@@ -158,6 +159,7 @@ reg_exam %>%
   summary() %>%
   coefficients() %>%
   head(4)
+
 ```
 
 - Estimate potential outcomes under each treatment arm
@@ -167,8 +169,7 @@ reg_exam %>%
 - Finally, use `mean()` to estimate the ACE
 $$\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=1} - \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=0}$$
 
-
-``` r
+```{r}
 genAI_dta_control <- genAI_dta %>%
   mutate(GPTBase = ,
          GPTTutor = )

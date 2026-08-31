@@ -12,9 +12,9 @@ Much of this course will address observational studies with non-randomized treat
 
 ## Lab: Analyze a randomized experiment
 
-> Sep 3. [**Discussion**](discussion-2.-analyzing-an-experiment-in-r)
+> Sep 2. [**Discussion**](discussion-2.-analyzing-an-experiment-in-r)
 
-This lab will use R to analyze data from a randomized experiment in which households were randomized to receive mailers encouraging them to vote, and the researchers examined effects on voter turnout ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)). Download the R Markdown file [**here**](assets/discussions/discussion2.Rmd).
+This lab will use R to analyze data from a randomized experiment estimating the affect of generative AI on acquiring new skills ([Bastani et al. 2025](https://www.pnas.org/doi/pdf/10.1073/pnas.2422633122)). Download the R Markdown file [**here**](assets/discussions/discussion2.Rmd).
 
 ## Exchangeability and conditional randomization
 
