@@ -275,7 +275,7 @@ where <span class="math inline">\(\text{Outcome}_{ics}\)</span> is the normalize
 <li>For this, you can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to specify the treatment</li>
 <li>Next, use <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> to estimate the potential outcomes- i.e. fitted values for the new data frames</li>
 <li>Finally, use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> to estimate the ACE
-<span class="math display">\[\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=1} - \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=0}\]</span>
+<span class="math display">\[\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=1}} - \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=0}}\]</span>
 </li>
 </ul>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">

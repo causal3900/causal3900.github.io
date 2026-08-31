@@ -165,7 +165,7 @@ reg_exam %>%
 - For this, you can use `mutate()` function to specify the treatment
 - Next, use `predict()` to estimate the potential outcomes- i.e. fitted values for the new data frames
 - Finally, use `mean()` to estimate the ACE
-$$\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=1} - \frac{1}{n}\sum_{i=1}^n \hat Y^\text{a=0}$$
+$$\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=1}} - \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=0}}$$
 
 
 ``` r
