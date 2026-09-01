@@ -17,6 +17,7 @@ output: html_document
   - Filippo: Thursday 4-5pm in 325A CIS Building
   - Shira: Monday 5-6 pm in 325A CIS Building
 - No need to submit, encouraged to complete the file and knit
+- In-class assignments will start later in the semester
 
 
 ### Generative AI and Math Learning Experiment {-}
