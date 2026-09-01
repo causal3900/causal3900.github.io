@@ -130,12 +130,15 @@
 <div id="goal-for-today" class="section level3 unnumbered">
 <h3>Goal for Today<a class="anchor" aria-label="anchor" href="#goal-for-today"><i class="fas fa-link"></i></a>
 </h3>
-<p><strong>Replicate Something Similar to Table A.1 (in appendix) and Table 1</strong>
-- Table A.1 demonstrates balance of covariates across treatment arms
-- This ensures treatment assignment is randomized so exchangeability holds
-- Table 1 shows the main results of student performance in the practice and exam problems
-- Estimated the counterfactuals to identify the average causal effect (ACE)
-<span class="math display">\[ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}]\]</span></p>
+<p><strong>Replicate Something Similar to Table A.1 (in appendix) and Table 1</strong></p>
+<ul>
+<li>Table A.1 demonstrates balance of covariates across treatment arms</li>
+<li>This ensures treatment assignment is randomized so exchangeability holds</li>
+<li>Table 1 shows the main results of student performance in the practice and exam problems</li>
+<li>Identify the average Treatment effect (ATE) utilizing randomization
+<span class="math display">\[ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}] = E[Y \mid A=1]-E[Y\mid Y=0]\]</span>
+</li>
+</ul>
 </div>
 <div id="resources-for-markdown" class="section level3 unnumbered">
 <h3>Resources for Markdown<a class="anchor" aria-label="anchor" href="#resources-for-markdown"><i class="fas fa-link"></i></a>
@@ -188,7 +191,7 @@
 </ul>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Create a single treatment variable with word labels:
 <ul>
@@ -209,7 +212,7 @@
 </ul>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div id="step-3-table-a.1" class="section level3 unnumbered">
 <h3>Step 3: Table A.1<a class="anchor" aria-label="anchor" href="#step-3-table-a.1"><i class="fas fa-link"></i></a>
@@ -231,8 +234,8 @@
 <span></span>
 <span><span class="va">genAI_balance</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">`Student ID`</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="op">)</span>,\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="va">genAI_balance</span> <span class="op">|&gt;</span></span>
@@ -246,59 +249,136 @@
 </h3>
 <ul>
 <li>What are the main results of the experiment?</li>
-<li>Estimate the regression model for the practice performance
-<span class="math display">\[\small{\text{Outcome}_{ics}=\beta_1\text{GPTBase}_c+\beta_2\text{GPTTutor}_c+\beta_3\text{prevGPA}+\theta_s+\delta_g+\alpha_y+\lambda_t+\varepsilon_{ics}}\]</span>
-where <span class="math inline">\(\text{Outcome}_{ics}\)</span> is the normalized grade of student <span class="math inline">\(i\)</span> in classroom <span class="math inline">\(c\)</span> and session <span class="math inline">\(s\)</span> for the practice problems: <code>Part2Tot</code>
+<li>For each treatment arm, calculate the average grade of students in the:
+<ul>
+<li>Practice problems (<code>Part2Tot</code>)</li>
+<li>Exam problems (<code>Part3Tot</code>)</li>
+</ul>
 </li>
-<li>For this, you will want to use the function <code>lm</code> which is described <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">here</a>
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to calculate separate means for each treatment arm</li>
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to do the following:
+<ul>
+<li>Create a column <code>Practice_perf</code>- the average grade in step 2 of each group</li>
+<li>Create a column <code>Exam_perf</code>- the average grade in step 3 of each group</li>
+</ul>
 </li>
-<li>The general syntax is <code>lm(outcome ~ independent_variables)</code>
-</li>
+<li>Note that your numbers will not match up exactly with Table 1</li>
 </ul>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">reg_practice</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">GPTBase</span> <span class="op">+</span> <span class="va">GPTTutor</span> <span class="op">+</span> <span class="va">gpa_prev</span> <span class="op">+</span></span>
-<span>                     <span class="va">teacher</span> <span class="op">+</span> <span class="va">Session</span> <span class="op">+</span> <span class="va">Grader</span> <span class="op">+</span> <span class="va">Year</span>, data <span class="op">=</span> <span class="va">genAI_dta</span><span class="op">)</span></span>
-<span><span class="va">reg_practice</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coefficients</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
-<span>  </span>
+<code class="sourceCode R"><span><span class="va">genAI_means</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Practice_perf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
+<span>            Exam_perf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">reg_exam</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">GPTBase</span> <span class="op">+</span> <span class="va">GPTTutor</span> <span class="op">+</span> <span class="va">gpa_prev</span> <span class="op">+</span></span>
-<span>                 <span class="va">teacher</span> <span class="op">+</span> <span class="va">Session</span> <span class="op">+</span> <span class="va">Grader</span> <span class="op">+</span> <span class="va">Year</span>, data <span class="op">=</span> <span class="va">genAI_dta</span><span class="op">)</span></span>
-<span><span class="va">reg_exam</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coefficients</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">genAI_means</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>Estimate potential outcomes under each treatment arm</li>
-<li>First, create three data frames where all students receive the same treatment</li>
-<li>For this, you can use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to specify the treatment</li>
-<li>Next, use <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> to estimate the potential outcomes- i.e. fitted values for the new data frames</li>
-<li>Finally, use <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> to estimate the ACE
-<span class="math display">\[\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=1}} - \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=0}}\]</span>
-</li>
+<li>Use the sample means to estimate the average treatment effect</li>
 </ul>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">genAI_dta_control</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
-<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">ATE_practice</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">genAI_means</span><span class="op">$</span><span class="va">Practice_perf</span><span class="op">[</span><span class="va">genAI_means</span><span class="op">$</span><span class="va">treatment</span><span class="op">!=</span><span class="st">"Control"</span><span class="op">]</span> <span class="op">-</span></span>
+<span>  <span class="va">genAI_means</span><span class="op">$</span><span class="va">Practice_perf</span><span class="op">[</span><span class="va">genAI_means</span><span class="op">$</span><span class="va">treatment</span><span class="op">==</span><span class="st">"Control"</span><span class="op">]</span></span>
 <span></span>
-<span><span class="va">genAI_dta_GPTBase</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
-<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
-<span></span>
-<span><span class="va">genAI_dta_GPTTutor</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>GPTBase <span class="op">=</span> ,</span>
-<span>         GPTTutor <span class="op">=</span> <span class="op">)</span></span>
-<span></span>
-<span><span class="va">y_control</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
-<span><span class="va">y_Base</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
-<span><span class="va">y_Tutor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">reg_practice</span>,newdata <span class="op">=</span> , na.action <span class="op">=</span> <span class="va">na.omit</span><span class="op">)</span></span>
+<span><span class="va">ATE_exam</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">genAI_means</span><span class="op">$</span><span class="va">Exam_perf</span><span class="op">[</span><span class="va">genAI_means</span><span class="op">$</span><span class="va">treatment</span><span class="op">!=</span><span class="st">"Control"</span><span class="op">]</span> <span class="op">-</span></span>
+<span>  <span class="va">genAI_means</span><span class="op">$</span><span class="va">Exam_perf</span><span class="op">[</span><span class="va">genAI_means</span><span class="op">$</span><span class="va">treatment</span><span class="op">==</span><span class="st">"Control"</span><span class="op">]</span></span>
 <span></span>
 <span></span>
-<span><span class="op">(</span><span class="va">ACE_Base</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">(</span><span class="va">ACE_Tutor</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">ATE_practice</span>,<span class="va">ATE_exam</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+</div>
+<div id="example-from-lecture" class="section level2 unnumbered">
+<h2>Example from Lecture<a class="anchor" aria-label="anchor" href="#example-from-lecture"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Given potential outcomes, you chose a diet</li>
+<li>Are <span class="math inline">\((Y^{a=0},Y^{a=1}) \perp\!\!\!\perp A\)</span>?</li>
+<li>Observational setting: no access to potential outcomes, only observed outcome</li>
+</ul>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="28%">
+<col width="35%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(Y_i = \text{Disease } (0)\)</span></th>
+<th align="center"><span class="math inline">\(Y_i = \text{No Disease } (1)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong><span class="math inline">\(A_i = \text{Delicious } (0)\)</span></strong></td>
+<td align="center"><span style="color:red">20</span></td>
+<td align="center"><span style="color:red">54</span></td>
+</tr>
+<tr class="even">
+<td align="left"><strong><span class="math inline">\(A_i = \text{Healthy } (1)\)</span></strong></td>
+<td align="center"><span style="color:red">0</span></td>
+<td align="center"><span style="color:red">64</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="math display">\[\widehat{ATE} = E(Y \mid A = 1) - E(Y \mid A = 0) = \frac{64}{0+64}- \frac{54}{20+54} \approx 0.27\]</span></p>
+<div id="true-ate" class="section level3 unnumbered">
+<h3>True ATE<a class="anchor" aria-label="anchor" href="#true-ate"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>50% of students have <span class="math inline">\(Y_i^{\text{Delicious}} = 1\)</span>, <span class="math inline">\(Y_i^{\text{Healthy}} = 1\)</span>
+</li>
+<li>50% of students have <span class="math inline">\(Y_i^{\text{Delicious}} = 0\)</span>, <span class="math inline">\(Y_i^{\text{Healthy}} = 1\)</span>
+</li>
+<li><span class="math inline">\(Y_i^{\text{Delicious}} \sim Bernoulli(0.5)\)</span></li>
+<li><span class="math inline">\(Y_i^{\text{Healthy}} \sim Bernoulli(1)\)</span></li>
+</ul>
+<p><span class="math display">\[ATE = E(Y^{\text{Healthy}}) - E(Y^{\text{Delicious}}) = 1-0.5 = 0.5\]</span></p>
+</div>
+<div id="assume-a-randomized-trial" class="section level3 unnumbered">
+<h3>Assume a Randomized Trial<a class="anchor" aria-label="anchor" href="#assume-a-randomized-trial"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">138</span></span>
+<span></span>
+<span><span class="va">Y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">Y0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>,<span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1</span>,<span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1231</span><span class="op">)</span></span>
+<span><span class="va">A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">Y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span>test <span class="op">=</span> <span class="op">(</span><span class="va">A</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>, yes <span class="op">=</span> <span class="va">Y1</span>, no <span class="op">=</span> <span class="va">Y0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">A</span>,<span class="va">Y</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##    Y
+## A    0  1
+##   0 37 41
+##   1  0 60</code></pre>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="28%">
+<col width="35%">
+<col width="35%">
+</colgroup>
+<thead><tr class="header">
+<th align="left"></th>
+<th align="center"><span class="math inline">\(Y_i = \text{Disease } (0)\)</span></th>
+<th align="center"><span class="math inline">\(Y_i = \text{No Disease } (1)\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><strong><span class="math inline">\(A_i = \text{Delicious } (0)\)</span></strong></td>
+<td align="center"><span style="color:red">37</span></td>
+<td align="center"><span style="color:red">41</span></td>
+</tr>
+<tr class="even">
+<td align="left"><strong><span class="math inline">\(A_i = \text{Healthy } (1)\)</span></strong></td>
+<td align="center"><span style="color:red">0</span></td>
+<td align="center"><span style="color:red">60</span></td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="math display">\[\widehat{ATE} = E(Y \mid A = 1) - E(Y \mid A = 0) = \frac{60}{0+60}- \frac{41}{41+37} \approx 0.47\]</span></p>
 
 </div>
 </div>
@@ -324,6 +404,12 @@ where <span class="math inline">\(\text{Outcome}_{ics}\)</span> is the normalize
 <li><a class="nav-link" href="#step-2-import-and-clean-the-data">Step 2: Import and Clean the Data</a></li>
 <li><a class="nav-link" href="#step-3-table-a.1">Step 3: Table A.1</a></li>
 <li><a class="nav-link" href="#step-4-table-1">Step 4: Table 1</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#example-from-lecture">Example from Lecture</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#true-ate">True ATE</a></li>
+<li><a class="nav-link" href="#assume-a-randomized-trial">Assume a Randomized Trial</a></li>
 </ul>
 </li>
 </ul>

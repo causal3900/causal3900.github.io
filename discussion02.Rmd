@@ -44,11 +44,12 @@ library(readr)
 
 ### Goal for Today {-}
 __Replicate Something Similar to Table A.1 (in appendix) and Table 1__
+
 - Table A.1 demonstrates balance of covariates across treatment arms
 - This ensures treatment assignment is randomized so exchangeability holds
 - Table 1 shows the main results of student performance in the practice and exam problems
-- Estimated the counterfactuals to identify the average causal effect (ACE) 
-$$ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}]$$
+- Identify the average Treatment effect (ATE) utilizing randomization
+$$ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}] = E[Y \mid A=1]-E[Y\mid Y=0]$$
 
 ### Resources for Markdown {-}
 - Hadley Wickham's R for Data Science ["Chapter 27"](https://r4ds.had.co.nz/r-markdown.html)
@@ -88,7 +89,7 @@ glimpse(genAI_dta)
 
 ```{r}
 genAI_dta <- genAI_dta %>%
-  filter()
+  filter(...)
 ```
 
 
@@ -103,7 +104,7 @@ genAI_dta <- genAI_dta %>%
 
 ```{r eval=FALSE}
 genAI_dta <- genAI_dta %>%
-  mutate(treatment = case_when()) 
+  mutate(treatment = case_when(...)) 
 ```
 
 
@@ -124,8 +125,8 @@ covariates <- c("education_parent_college", "n_household_members",
 
 genAI_balance <- genAI_dta |>
   distinct(`Student ID`, .keep_all = TRUE) |>
-  group_by() |>
-  summarise(across(all_of(),\(x) mean(x, na.rm = TRUE)))
+  group_by(...) |>
+  summarise(across(all_of(...),\(x) mean(x, na.rm = TRUE)))
 
 
 genAI_balance |>
@@ -139,58 +140,88 @@ genAI_balance |>
 
 ### Step 4: Table 1 {-}
 - What are the main results of the experiment?
-- Estimate the regression model for the practice performance
-$$\small{\text{Outcome}_{ics}=\beta_1\text{GPTBase}_c+\beta_2\text{GPTTutor}_c+\beta_3\text{prevGPA}+\theta_s+\delta_g+\alpha_y+\lambda_t+\varepsilon_{ics}}$$
- where $\text{Outcome}_{ics}$ is the normalized grade of student $i$ in classroom $c$ and session $s$ for the practice problems: `Part2Tot`
- - For this, you will want to use the function `lm` which is described [here](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm)
-- The general syntax is `lm(outcome ~ independent_variables)`
+- For each treatment arm, calculate the average grade of students in the:
+    - Practice problems (`Part2Tot`)
+    - Exam problems (`Part3Tot`)
+- Use `group_by()` to calculate separate means for each treatment arm
+- Use `summarise()` to do the following:
+  - Create a column `Practice_perf`- the average grade in step 2 of each group
+  - Create a column `Exam_perf`- the average grade in step 3 of each group
+
+- Note that your numbers will not match up exactly with Table 1
 
 ```{r eval=FALSE}
-reg_practice <- lm( ~ GPTBase + GPTTutor + gpa_prev +
-                     teacher + Session + Grader + Year, data = genAI_dta)
-reg_practice %>%
-  summary() %>%
-  coefficients() %>%
-  head(4)
-  
+genAI_means <- 
+  genAI_dta %>%
+  group_by(...) %>%
+  summarise(Practice_perf = mean(...),
+            Exam_perf = mean(...))
 
-reg_exam <- lm( ~ GPTBase + GPTTutor + gpa_prev +
-                 teacher + Session + Grader + Year, data = genAI_dta)
-reg_exam %>%
-  summary() %>%
-  coefficients() %>%
-  head(4)
-
-```
-
-- Estimate potential outcomes under each treatment arm
-- First, create three data frames where all students receive the same treatment
-- For this, you can use `mutate()` function to specify the treatment
-- Next, use `predict()` to estimate the potential outcomes- i.e. fitted values for the new data frames
-- Finally, use `mean()` to estimate the ACE
-$$\widehat{ACE} = \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=1}} - \frac{1}{n}\sum_{i=1}^n \widehat{Y^\text{a=0}}$$
-
-```{r}
-genAI_dta_control <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-
-genAI_dta_GPTBase <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-
-genAI_dta_GPTTutor <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-
-y_control <- predict(reg_practice,newdata = , na.action = na.omit)
-y_Base <- predict(reg_practice,newdata = , na.action = na.omit)
-y_Tutor <- predict(reg_practice,newdata = , na.action = na.omit)
-
-
-(ACE_Base  <- mean() - mean())
-(ACE_Tutor  <- mean() - mean())
+print(genAI_means)
 ```
 
 
+- Use the sample means to estimate the average treatment effect
+
+```{r eval=FALSE}
+ATE_practice <-
+  genAI_means$Practice_perf[genAI_means$treatment!="Control"] -
+  genAI_means$Practice_perf[genAI_means$treatment=="Control"]
+
+ATE_exam <-
+  genAI_means$Exam_perf[genAI_means$treatment!="Control"] -
+  genAI_means$Exam_perf[genAI_means$treatment=="Control"]
+
+
+print(cbind(ATE_practice,ATE_exam))
+```
+
+
+
+## Example from Lecture {-}
+
+- Given potential outcomes, you chose a diet
+- Are $(Y^{a=0},Y^{a=1}) \perp\!\!\!\perp A$?
+- Observational setting: no access to potential outcomes, only observed outcome
+
+
+| | $Y_i = \text{Disease } (0)$ | $Y_i = \text{No Disease } (1)$ |
+| :--- | :---: | :---: |
+| **$A_i = \text{Delicious } (0)$** | <span style="color:red">20</span> | <span style="color:red">54</span> |
+| **$A_i = \text{Healthy } (1)$** | <span style="color:red">0</span> | <span style="color:red">64</span> |
+
+
+$$\widehat{ATE} = E(Y \mid A = 1) - E(Y \mid A = 0) = \frac{64}{0+64}- \frac{54}{20+54} \approx 0.27$$
+
+### True ATE{-}
+- 50% of students have  $Y_i^{\text{Delicious}} = 1$, $Y_i^{\text{Healthy}} = 1$
+- 50% of students have $Y_i^{\text{Delicious}} = 0$, $Y_i^{\text{Healthy}} = 1$
+- $Y_i^{\text{Delicious}} \sim Bernoulli(0.5)$
+- $Y_i^{\text{Healthy}} \sim Bernoulli(1)$
+
+$$ATE = E(Y^{\text{Healthy}}) - E(Y^{\text{Delicious}}) = 1-0.5 = 0.5$$
+
+### Assume a Randomized Trial{-}
+
+```{r eval= TRUE, echo=TRUE}
+n <- 138
+
+Y1 <- rep(1,n)
+Y0 <- c(rep(0,n/2),
+        rep(1,n/2))
+
+set.seed(1231)
+A <- rbinom(n, 1, 0.5)
+
+Y <- ifelse(test = (A==1), yes = Y1, no = Y0)
+
+print(table(A,Y))
+```
+| | $Y_i = \text{Disease } (0)$ | $Y_i = \text{No Disease } (1)$ |
+| :--- | :---: | :---: |
+| **$A_i = \text{Delicious } (0)$** | <span style="color:red">37</span> | <span style="color:red">41</span> |
+| **$A_i = \text{Healthy } (1)$** | <span style="color:red">0</span> | <span style="color:red">60</span> |
+
+
+$$\widehat{ATE} = E(Y \mid A = 1) - E(Y \mid A = 0) = \frac{60}{0+60}- \frac{41}{41+37} \approx 0.47$$
 

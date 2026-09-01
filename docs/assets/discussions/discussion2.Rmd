@@ -10,6 +10,8 @@ Note: If this errors you probably either don't have `dplyr`, `tidyr` or `readr`
 installed. Use `install.packages("package_name")` to install `package_name`
 
 ```{r}
+knitr::opts_chunk$set(eval = FALSE)
+
 library(dplyr)
 library(tidyr)
 library(readr)
@@ -38,7 +40,7 @@ We have the code started for you below. Fill in the appropriate condition to fil
 
 ```{r}
 genAI_dta <- genAI_dta %>%
-  filter()
+  filter(...)
 ```
 
 Now, create the `treatment` variable from the variables `GPTBase` and `GPTTutor` with the labels: 
@@ -53,7 +55,7 @@ We have started the code for you below. Decide what argument(s) to pass inside t
 
 ```{r}
 genAI_dta <- genAI_dta %>%
-  mutate(treatment = case_when()) 
+  mutate(treatment = case_when(...)) 
 ```
 
 
@@ -78,8 +80,8 @@ covariates <- c("education_parent_college", "n_household_members",
 
 genAI_balance <- genAI_dta |>
   distinct(`Student ID`, .keep_all = TRUE) |>
-  group_by() |>
-  summarise(across(all_of(),\(x) mean(x, na.rm = TRUE)))
+  group_by(...) |>
+  summarise(across(all_of(...),\(x) mean(x, na.rm = TRUE)))
 
 
 genAI_balance |>
@@ -94,48 +96,38 @@ What you want to notice is that the values in each row are similar across the co
 
 ### Results
 
-Finally, let's replicate the main results (Table 1) for the practice performance,  (left column). First, we will estimate the regression using the `lm()` function. We have started some code for you below, you need to fill in the outcome variable corresponding to the practice problems (`Part2Tot`) in the formula `lm(outcome ~ independent_variables)`.
-
-```{r eval=FALSE}
-reg_practice <- lm( ~ GPTBase + GPTTutor + gpa_prev +
-                     teacher + Session + Grader + Year, data = genAI_dta)
-reg_practice %>%
-  summary() %>%
-  coefficients() %>%
-  head(4)
-
-```
-
-Next, we will estimate the average causal effect (ACE) by estimating potential outcomes for all students in our sample. First, you should create three data frames, where all students receive the same treatment. We started the code for you using the `mutate()` function with the relevant variables. You should fill in the correct values to specify each treatment arm based on the name of the data frame
-
-```{r}
-genAI_dta_control <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-
-genAI_dta_GPTBase <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-
-genAI_dta_GPTTutor <- genAI_dta %>%
-  mutate(GPTBase = ,
-         GPTTutor = )
-```
-
-Next, estimate the potential outcomes. You can do this by using the estimated regression model `reg_practice` to predict the outcome using the data frames you created above. This way you get the potential outcome for all students under each of the treatment arms. We started the code for you using the `predict()` function with the model. You need to fill in the data frame the prediction should be based on (i.e. under which treatment arm). 
+Finally, let's replicate the main results (Table 1). For each treatment arm, calculate the average grade of students in the:
+    - Practice problems (`Part2Tot`)
+    - Exam problems (`Part3Tot`)
+We started the code for you below. You need to 
+- Fill in the `group_by()` so that we are working with each treatment arm seperately
+- Fill in two arguments to `mean()` to do the following:
+  - Ensure the column titled `Practice_perf` is the average grade in step 2 of each group (`Part2Tot`)
+  - Ensure the column titled `Exam_perf` is the the average grade in step 3 of each group (`Part3Tot`)
+Note that your numbers will not match up exactly with Table 1
 
 
 ```{r}
-y_control <- predict(reg_practice,newdata = , na.action = na.omit)
-y_Base <- predict(reg_practice,newdata = , na.action = na.omit)
-y_Tutor <- predict(reg_practice,newdata = , na.action = na.omit)
+genAI_means <- 
+  genAI_dta %>%
+  group_by(...) %>%
+  summarise(Practice_perf = mean(...),
+            Exam_perf = mean(...))
+
+print(genAI_means)
 ```
 
-Finally to estimate the ACE you will need to fill in the potential outcomes below
+Next, we will estimate the average treatment effect (ATE). There is nothing to fill in, simply make sure the numbers are roughly as in Table 1 in the paper.
 
 ```{r}
-(ACE_Base  <- mean() - mean())
-(ACE_Tutor  <- mean() - mean())
+ATE_practice <-
+  genAI_means$Practice_perf[genAI_means$treatment!="Control"] -
+  genAI_means$Practice_perf[genAI_means$treatment=="Control"]
+
+ATE_exam <-
+  genAI_means$Exam_perf[genAI_means$treatment!="Control"] -
+  genAI_means$Exam_perf[genAI_means$treatment=="Control"]
+
+
+print(cbind(ATE_practice,ATE_exam))
 ```
-
-
