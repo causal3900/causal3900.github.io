@@ -10,8 +10,6 @@ Note: If this errors you probably either don't have `dplyr`, `tidyr` or `readr`
 installed. Use `install.packages("package_name")` to install `package_name`
 
 ```{r}
-knitr::opts_chunk$set(eval = FALSE)
-
 library(dplyr)
 library(tidyr)
 library(readr)
@@ -100,10 +98,10 @@ Finally, let's replicate the main results (Table 1). For each treatment arm, cal
     - Practice problems (`Part2Tot`)
     - Exam problems (`Part3Tot`)
 We started the code for you below. You need to 
-- Fill in the `group_by()` so that we are working with each treatment arm seperately
+- Fill in the `group_by()` so that we are working with each treatment arm separately
 - Fill in two arguments to `mean()` to do the following:
   - Ensure the column titled `Practice_perf` is the average grade in step 2 of each group (`Part2Tot`)
-  - Ensure the column titled `Exam_perf` is the the average grade in step 3 of each group (`Part3Tot`)
+  - Ensure the column titled `Exam_perf` is the average grade in step 3 of each group (`Part3Tot`)
 Note that your numbers will not match up exactly with Table 1
 
 
