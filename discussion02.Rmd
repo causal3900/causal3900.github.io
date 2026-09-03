@@ -49,7 +49,7 @@ __Replicate Something Similar to Table A.1 (in appendix) and Table 1__
 - This ensures treatment assignment is randomized so exchangeability holds
 - Table 1 shows the main results of student performance in the practice and exam problems
 - Identify the average Treatment effect (ATE) utilizing randomization
-$$ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}] = E[Y \mid A=1]-E[Y\mid Y=0]$$
+$$ACE = E[Y^\text{a=1}]- E[Y^\text{a=0}] = E[Y \mid A=1]-E[Y\mid A=0]$$
 
 ### Resources for Markdown {-}
 - Hadley Wickham's R for Data Science ["Chapter 27"](https://r4ds.had.co.nz/r-markdown.html)
