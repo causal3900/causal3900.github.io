@@ -18,7 +18,7 @@ This lab will use R to analyze data from a randomized experiment estimating the 
 
 ## Exchangeability and conditional randomization
 
-> Sep 4. [**Slides.**](assets/slides/2-2_exchangeability.pdf)
+> Sep 3. [**Slides.**](assets/slides/2-2_exchangeability.pdf)
 After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 2.2 & 2.3.
 
 We continue discussing why experiments are powerful: they are a setting in which a key identification assumption (exchangeability) holds by design. We further discuss why exchangeability is important: it allows us to link causal quantities to observable data. We discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.
