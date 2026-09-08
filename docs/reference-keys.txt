@@ -7,7 +7,7 @@ randomized-experiments
 lab-analyze-a-randomized-experiment
 exchangeability-and-conditional-randomization
 standardization-and-effect-measures
-lab-treatment-effect-heterogeneity-and-exploring-add-health-data
+lab-treatment-effect-heterogeneity-and-asking-causal-questions
 inverse-probability-weighting
 consistency-and-positivity
 exchangeability-in-observational-studies

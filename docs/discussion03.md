@@ -3,43 +3,29 @@ output: html_document
 ---
 <style>li {line-height: 1.8;}</style>
 
-# Discussion 3. Treatment effect heterogneity in an Experiment {-}
+# Discussion 3. Treatment effect heterogeneity in an Experiment {-}
 ## STSCI/INFO/ILRST 3900: Causal Inference {-}
-#### September 10, 2025 {-}
+#### September 9, 2026 {-}
 
+You can download the [**slides.**](assets/discussions/discussion3-causalQ.pdf) for this week's discussion.
 
-You can download the [**slides.**](assets/discussions/discussion3-addHealth.pdf) for this week's discussion.
+### Get out and Vote Experiment {-}
+- Why do people vote?
+- One long-standing theory: People vote due to social norms (civic duty)
+- Empirical evidence for this theory was extremely thin
+- __Research Question:__ to what extent do social norms cause voter turnout?
+- Article: ["Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment."](https://www.cambridge.org/core/journals/american-political-science-review/article/social-pressure-and-voter-turnout-evidence-from-a-largescale-field-experiment/11E84AF4C0B7FBD1D20C855972C2C3EB#)in American Political Science Review
+- Authors: Alan S. Gerber, Donald P. Green, and Christopher W. Larimer
 
-## Get out and Vote Experiment {-}
-
-Last week, we explored an experiment that digs into the mechanisms
-underlying __why people vote__. This exercise is based on: 
-
-Gerber, Alan S., Donald P. Green, and Christopher W. Larimer. ["Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment."](https://www.cambridge.org/core/journals/american-political-science-review/article/social-pressure-and-voter-turnout-evidence-from-a-largescale-field-experiment/11E84AF4C0B7FBD1D20C855972C2C3EB#) American Political Science Review 102.1 (2008): 33-48.
-
-A long-standing theory as to why many people
-vote is that it is driven by social norms (e.g. the understanding that voting
-is their civic duty). This theory, while being a dominant theoretical 
-explanation, had very little empirical backing for a long time. This experiment
-examines this very theory by asking the question:
-__to what extent do social norms cause voter turnout__?
 
 ### Experimental Design {-}
+- Approximately 80k Michigan households were randomly assigned 1 of 4 mailings encouraging them to vote
+  1. Simply reminded them that voting is a civic duty
+  2. Told that researchers would be studying their turnout based on public records
+  3. Received record of voting turnout *within* their household
+  4. Received record of voting turnout within their household *and* their neighbors’ households.
+- Third and fourth treatment arms were told that their turnout would be revealed as well
 
-In order to answer this question, approximately 80,000 Michigan households
-were randomly assigned to treatment and control groups, where the treatment
-group was randomly assigned to one of four possible treatment arms. These
-treatment arms varied in the intensity of social pressure that they conveyed,
-and were defined as follows:
-
-1. The first treatment arm was mailed a letter that simply reminded them that
-voting is a civic duty.
-2. The second treatment arm was mailed a letter telling them that researchers
-would be studying their voting turnout based on public records.
-3. The third treatment arm was mailed a letter stating that their voting turnout 
-would be revealed to all other members of their household.
-4. The fourth treatment arm was mailed a letter stating that their voting turnout
-would be revealed to their household *and* to their neighbors.
 
 ## Analyze Experiment {-}
 
@@ -52,10 +38,37 @@ library(haven)
 library(kableExtra)
 ```
 
+```
+## Warning: package 'kableExtra' was built under R version
+## 4.6.1
+```
+
 ### Import data {-}
 
 ``` r
 gotv <- read_dta("https://causal3900.github.io/assets/data/social_pressure.dta")
+glimpse(gotv)
+```
+
+```
+## Rows: 344,084
+## Columns: 16
+## $ sex           <dbl+lbl> 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0,…
+## $ yob           <dbl> 1941, 1947, 1951, 1950, 1982, 1981, …
+## $ g2000         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2002         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,…
+## $ g2004         <dbl+lbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ p2000         <dbl+lbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ p2002         <dbl+lbl> 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+## $ p2004         <dbl+lbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ treatment     <dbl+lbl> 2, 2, 1, 1, 1, 0, 0, 0, 0, 0, 0,…
+## $ cluster       <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ voted         <dbl+lbl> 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1,…
+## $ hh_id         <dbl> 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, …
+## $ hh_size       <dbl> 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 1, 2, …
+## $ numberofnames <dbl> 21, 21, 21, 21, 21, 21, 21, 21, 21, …
+## $ p2004_mean    <dbl> 0.09523810, 0.09523810, 0.04761905, …
+## $ g2004_mean    <dbl> 0.8571429, 0.8571429, 0.8571429, 0.8…
 ```
 
 ### Clean data {-}
@@ -74,16 +87,15 @@ For this, we use the `case_when` function.
 
 ``` r
 gotv <- gotv |>
+  mutate(age = 2006 - yob)
+
+gotv <- gotv |>
   mutate(treatment = case_when(
     treatment == 0 ~ "Control",
     treatment == 1 ~ "Hawthorne",
     treatment == 2 ~ "Civic Duty",
     treatment == 3 ~ "Neighbors",
     treatment == 4 ~ "Self")) 
-
-
-gotv <- gotv |>
-  mutate(age = 2006 - yob)
 ```
 
 
@@ -97,19 +109,47 @@ gotv_results <- gotv |>
   group_by(treatment) |>
   summarise(Per_Voting = mean(voted), num_of_individuals = n())
 
-print(gotv_results)
+gotv_results |>
+  kbl() |>
+  kable_styling(font_size = 12,full_width = FALSE)
 ```
 
-```
-## # A tibble: 5 × 3
-##   treatment  Per_Voting num_of_individuals
-##   <chr>           <dbl>              <int>
-## 1 Civic Duty      0.315              38218
-## 2 Control         0.297             191243
-## 3 Hawthorne       0.322              38204
-## 4 Neighbors       0.378              38201
-## 5 Self            0.345              38218
-```
+<table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;"> treatment </th>
+   <th style="text-align:right;"> Per_Voting </th>
+   <th style="text-align:right;"> num_of_individuals </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.3145377 </td>
+   <td style="text-align:right;"> 38218 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.2966383 </td>
+   <td style="text-align:right;"> 191243 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.3223746 </td>
+   <td style="text-align:right;"> 38204 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.3779482 </td>
+   <td style="text-align:right;"> 38201 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.3451515 </td>
+   <td style="text-align:right;"> 38218 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ### Conditional Average Causal Effect {-}
@@ -137,35 +177,165 @@ gotv_results_age <- gotv |>
   group_by(treatment) |>
   mutate( Per_in_AgeGroup = Count / sum(Count))
 
-print(gotv_results_age, n = Inf)
+gotv_results_age|>
+  kbl() |>
+  kable_styling(font_size = 12, full_width = FALSE) |>
+  scroll_box(width = "100%", height = "500px",fixed_thead = T)
 ```
 
-```
-## # A tibble: 20 × 5
-## # Groups:   treatment [5]
-##    ageGroup treatment  Per_Voting Count Per_in_AgeGroup
-##    <fct>    <chr>           <dbl> <int>           <dbl>
-##  1 (18,30]  Civic Duty      0.166  4255           0.111
-##  2 (18,30]  Control         0.156 20650           0.108
-##  3 (18,30]  Hawthorne       0.158  4087           0.107
-##  4 (18,30]  Neighbors       0.193  4189           0.110
-##  5 (18,30]  Self            0.175  4139           0.108
-##  6 (30,45]  Civic Duty      0.293  9921           0.260
-##  7 (30,45]  Control         0.268 49917           0.261
-##  8 (30,45]  Hawthorne       0.297 10159           0.266
-##  9 (30,45]  Neighbors       0.356 10026           0.262
-## 10 (30,45]  Self            0.317 10043           0.263
-## 11 (45,60]  Civic Duty      0.320 16086           0.421
-## 12 (45,60]  Control         0.310 80330           0.420
-## 13 (45,60]  Hawthorne       0.338 15926           0.417
-## 14 (45,60]  Neighbors       0.391 15735           0.412
-## 15 (45,60]  Self            0.357 15968           0.418
-## 16 (60,120] Civic Duty      0.410  7956           0.208
-## 17 (60,120] Control         0.378 40346           0.211
-## 18 (60,120] Hawthorne       0.407  8032           0.210
-## 19 (60,120] Neighbors       0.474  8251           0.216
-## 20 (60,120] Self            0.444  8068           0.211
-```
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; "><table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> ageGroup </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> treatment </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Per_Voting </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Count </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Per_in_AgeGroup </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (18,30] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.1661575 </td>
+   <td style="text-align:right;"> 4255 </td>
+   <td style="text-align:right;"> 0.1113350 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (18,30] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.1562712 </td>
+   <td style="text-align:right;"> 20650 </td>
+   <td style="text-align:right;"> 0.1079778 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (18,30] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.1583068 </td>
+   <td style="text-align:right;"> 4087 </td>
+   <td style="text-align:right;"> 0.1069783 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (18,30] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.1933636 </td>
+   <td style="text-align:right;"> 4189 </td>
+   <td style="text-align:right;"> 0.1096568 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (18,30] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.1751631 </td>
+   <td style="text-align:right;"> 4139 </td>
+   <td style="text-align:right;"> 0.1082998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (30,45] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.2933172 </td>
+   <td style="text-align:right;"> 9921 </td>
+   <td style="text-align:right;"> 0.2595897 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (30,45] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.2679248 </td>
+   <td style="text-align:right;"> 49917 </td>
+   <td style="text-align:right;"> 0.2610135 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (30,45] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.2965843 </td>
+   <td style="text-align:right;"> 10159 </td>
+   <td style="text-align:right;"> 0.2659146 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (30,45] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.3561739 </td>
+   <td style="text-align:right;"> 10026 </td>
+   <td style="text-align:right;"> 0.2624539 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (30,45] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.3168376 </td>
+   <td style="text-align:right;"> 10043 </td>
+   <td style="text-align:right;"> 0.2627819 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (45,60] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.3197190 </td>
+   <td style="text-align:right;"> 16086 </td>
+   <td style="text-align:right;"> 0.4209011 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (45,60] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.3095730 </td>
+   <td style="text-align:right;"> 80330 </td>
+   <td style="text-align:right;"> 0.4200415 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (45,60] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.3383147 </td>
+   <td style="text-align:right;"> 15926 </td>
+   <td style="text-align:right;"> 0.4168673 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (45,60] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.3906578 </td>
+   <td style="text-align:right;"> 15735 </td>
+   <td style="text-align:right;"> 0.4119002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (45,60] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.3569639 </td>
+   <td style="text-align:right;"> 15968 </td>
+   <td style="text-align:right;"> 0.4178136 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (60,120] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.4098793 </td>
+   <td style="text-align:right;"> 7956 </td>
+   <td style="text-align:right;"> 0.2081742 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (60,120] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.3782531 </td>
+   <td style="text-align:right;"> 40346 </td>
+   <td style="text-align:right;"> 0.2109672 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (60,120] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.4068725 </td>
+   <td style="text-align:right;"> 8032 </td>
+   <td style="text-align:right;"> 0.2102398 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (60,120] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.4738820 </td>
+   <td style="text-align:right;"> 8251 </td>
+   <td style="text-align:right;"> 0.2159891 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (60,120] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.4442241 </td>
+   <td style="text-align:right;"> 8068 </td>
+   <td style="text-align:right;"> 0.2111047 </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 #### Examine voting by hh size group {-}
@@ -182,30 +352,130 @@ gotv_results_hh <- gotv |>
   group_by(treatment) |>
   mutate( Per_in_hhGroup = Count / sum(Count) ) 
 
-print(gotv_results_hh, n = Inf)
+gotv_results_hh |>
+  kbl() |>
+  kable_styling(font_size = 12, full_width = FALSE) |>
+  scroll_box(width = "100%", height = "500px",fixed_thead = T)
 ```
 
-```
-## # A tibble: 15 × 5
-## # Groups:   treatment [5]
-##    hhGroup treatment  Per_Voting  Count Per_in_hhGroup
-##    <fct>   <chr>           <dbl>  <int>          <dbl>
-##  1 (0,1]   Civic Duty      0.354   5398          0.141
-##  2 (0,1]   Control         0.331  26481          0.138
-##  3 (0,1]   Hawthorne       0.370   5281          0.138
-##  4 (0,1]   Neighbors       0.423   5364          0.140
-##  5 (0,1]   Self            0.400   5310          0.139
-##  6 (1,2]   Civic Duty      0.327  23536          0.616
-##  7 (1,2]   Control         0.303 119022          0.622
-##  8 (1,2]   Hawthorne       0.326  23998          0.628
-##  9 (1,2]   Neighbors       0.391  23738          0.621
-## 10 (1,2]   Self            0.352  23792          0.623
-## 11 (2,10]  Civic Duty      0.261   9284          0.243
-## 12 (2,10]  Control         0.261  45740          0.239
-## 13 (2,10]  Hawthorne       0.285   8925          0.234
-## 14 (2,10]  Neighbors       0.318   9099          0.238
-## 15 (2,10]  Self            0.296   9116          0.239
-```
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; "><table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> hhGroup </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> treatment </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Per_Voting </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Count </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Per_in_hhGroup </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> (0,1] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.3538348 </td>
+   <td style="text-align:right;"> 5398 </td>
+   <td style="text-align:right;"> 0.1412423 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (0,1] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.3306144 </td>
+   <td style="text-align:right;"> 26481 </td>
+   <td style="text-align:right;"> 0.1384678 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (0,1] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.3698163 </td>
+   <td style="text-align:right;"> 5281 </td>
+   <td style="text-align:right;"> 0.1382316 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (0,1] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.4226324 </td>
+   <td style="text-align:right;"> 5364 </td>
+   <td style="text-align:right;"> 0.1404152 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (0,1] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.3998117 </td>
+   <td style="text-align:right;"> 5310 </td>
+   <td style="text-align:right;"> 0.1389398 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (1,2] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.3267335 </td>
+   <td style="text-align:right;"> 23536 </td>
+   <td style="text-align:right;"> 0.6158355 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (1,2] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.3029272 </td>
+   <td style="text-align:right;"> 119022 </td>
+   <td style="text-align:right;"> 0.6223600 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (1,2] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.3257771 </td>
+   <td style="text-align:right;"> 23998 </td>
+   <td style="text-align:right;"> 0.6281541 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (1,2] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.3907659 </td>
+   <td style="text-align:right;"> 23738 </td>
+   <td style="text-align:right;"> 0.6213973 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (1,2] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.3516728 </td>
+   <td style="text-align:right;"> 23792 </td>
+   <td style="text-align:right;"> 0.6225339 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (2,10] </td>
+   <td style="text-align:left;"> Civic Duty </td>
+   <td style="text-align:right;"> 0.2607712 </td>
+   <td style="text-align:right;"> 9284 </td>
+   <td style="text-align:right;"> 0.2429222 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (2,10] </td>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:right;"> 0.2606034 </td>
+   <td style="text-align:right;"> 45740 </td>
+   <td style="text-align:right;"> 0.2391722 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (2,10] </td>
+   <td style="text-align:left;"> Hawthorne </td>
+   <td style="text-align:right;"> 0.2851541 </td>
+   <td style="text-align:right;"> 8925 </td>
+   <td style="text-align:right;"> 0.2336143 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (2,10] </td>
+   <td style="text-align:left;"> Neighbors </td>
+   <td style="text-align:right;"> 0.3181668 </td>
+   <td style="text-align:right;"> 9099 </td>
+   <td style="text-align:right;"> 0.2381875 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> (2,10] </td>
+   <td style="text-align:left;"> Self </td>
+   <td style="text-align:right;"> 0.2962922 </td>
+   <td style="text-align:right;"> 9116 </td>
+   <td style="text-align:right;"> 0.2385263 </td>
+  </tr>
+</tbody>
+</table></div>
 
 
 ### Questions: {-}
@@ -239,7 +509,7 @@ gotv_results_age |>
   arrange(treatment,ageGroup) |>
   kbl() |>
   kable_styling(font_size = 12, full_width = FALSE) |>
-  scroll_box(width = "100%", height = "500px")
+  scroll_box(width = "100%", height = "500px",fixed_thead = T)
 ```
 
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; "><table class="table" style="font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -446,7 +716,7 @@ gotv_results_age |>
 > We say there is treatment effect heterogeneity if the treatment effect varies across sub-population. To check if there's treatment effect heterogeneity across age groups, we look at $E[Y^{a=j}|L=l]-E[Y^{a=0}|L=l]$ for each age group $l$, and treatment $j$.
 > For example, the "Civic Duty" treatment effect for individuals ages 18-30 is
 \begin{align*}
-E\big[Y^{a="Civic Duty"}|L=(18-30]\big]-&E\big[Y^{a="Control"}|L=(18-30]\big]]\\ &= 0.166-0.156\\&=0.001
+E\big[Y^{a=\text{Civic Duty}}|L=(18-30]\big]-&E\big[Y^{a=\text{Control}}|L=(18-30]\big]]\\ &= 0.166-0.156\\&=0.01
 \end{align*}
 
 > These values can be found in the following table, `gotv_results_ageGroup`
@@ -529,27 +799,27 @@ For the age group the ACE looks like:
 > ``` r
 > gotv_results_age |>
 >    filter(treatment=="Civic Duty") |>
->    summarise(sum(Per_in_AgeGroup*Difference_from_Control))
+>    summarise(ACE = sum(Per_in_AgeGroup*Difference_from_Control))
 > ```
 > 
 > ```
 > ## # A tibble: 1 × 1
-> ##   `sum(Per_in_AgeGroup * Difference_from_Control)`
-> ##                                              <dbl>
-> ## 1                                           0.0185
+> ##      ACE
+> ##    <dbl>
+> ## 1 0.0185
 > ```
 To estimate the treatment effect for civic duty if the population was evenly split across the 4 age group, we replace the share of each age group with $0.25$.
 > 
 > ``` r
 > gotv_results_age |>
 >    filter(treatment=="Civic Duty") |>
->    summarise(sum(.25*Difference_from_Control))
+>    summarise(ACE_even = sum(.25*Difference_from_Control))
 > ```
 > 
 > ```
 > ## # A tibble: 1 × 1
-> ##   `sum(0.25 * Difference_from_Control)`
-> ##                                   <dbl>
-> ## 1                                0.0193
+> ##   ACE_even
+> ##      <dbl>
+> ## 1   0.0193
 > ```
 
