@@ -36,7 +36,7 @@ In conditionally randomized experiments, standardization is essential to yield u
 
 ## Lab: Treatment Effect Heterogeneity and Asking Causal Questions
 
-> Sep 9 [**Discussion**](discussion-3.-treatment-effect-heterogneity-in-an-experiment) and [**discussion slides**](assets/discussions/discussion3-causalQ.pdf)
+> Sep 9 [**Discussion**](discussion-3.-treatment-effect-heterogeneity-in-an-experiment) and [**discussion slides**](assets/discussions/discussion3-causalQ.pdf)
 
 This lab will use the randomized experiment ([Gerber, Green, & Larimer 2008](https://doi.org/10.1017/S000305540808009X)) to explore the treatment effect across sub-population, to determine whether there is treatment effect heterogeneity. The slides layout an overview of the course project, explore the [Add Health Codebook Explorer](https://addhealth.cpc.unc.edu/documentation/codebook-explorer), and go through the in-class assignment of asking a causal question.
 
