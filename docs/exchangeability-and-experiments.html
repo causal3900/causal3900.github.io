@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="2.1 Randomized experiments  Sep 1. Slides. After class, read Hernán and Robins 2020 Chapter 2 through the end of 2.1. Much of this course will address observational studies with non-randomized...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -106,15 +106,15 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 </blockquote>
 <p>We continue discussing why experiments are powerful: they are a setting in which a key identification assumption (exchangeability) holds by design. We further discuss why exchangeability is important: it allows us to link causal quantities to observable data. We discuss exchangeability in simple randomized experiments and in experiments that are conditionally randomized so that treatment assignment probabilities are functions of pre-existing characteristics.</p>
 </div>
-<div id="standardization-and-effect-measures" class="section level2" number="2.4">
+<div id="standardization" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.4</span> Standardization and effect measures<a class="anchor" aria-label="anchor" href="#standardization-and-effect-measures"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Standardization<a class="anchor" aria-label="anchor" href="#standardization"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Sep 8. <a href="assets/slides/2-3_standardization_and_gen.pdf"><strong>Slides</strong></a>
 After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapter 2.3 and 4.1-4.3.</p>
 </blockquote>
-<p>Although we can use the ACE to describe the average over the entire population, the treatment effect may vary across sub-populations. This is called treatment effect heterogeneity and is an important consideration when making policy decisions.</p>
+<p>Although we can use the ATE to describe the average over the entire population, the treatment effect may vary across sub-populations. This is called treatment effect heterogeneity and is an important consideration when making policy decisions.</p>
 <p>Stratification allows us to estimate the average causal effect within a subpopulation, or strata, also known as the conditional average treatment effect. Standardization is an important statistical procedure that allows us to estimate the population average treatment effect by taking a weighted average over the subpopulations.</p>
 <p>In conditionally randomized experiments, standardization is essential to yield unbiased estimates of the population average causal effect. This strategy will also be essential in observational studies that we will discuss soon.</p>
 </div>
@@ -132,7 +132,7 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 <span class="header-section-number">2.6</span> Inverse probability weighting<a class="anchor" aria-label="anchor" href="#inverse-probability-weighting"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p>Sep 11. <a href="assets/slides/2-4_ipw_fa25.pdf"><strong>Slides</strong></a>
+<p>Sep 10. <a href="assets/slides/2-4_ipw_fa26.pdf"><strong>Slides</strong></a>
 After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">Hernán and Robins 2020</a> Chapters 3.1 and 3.2.</p>
 </blockquote>
 <p>This class will introduce inverse probability weighting as an approach to estimate average causal effects when conditional exchangeability holds. We will also discuss alternative ways to measure a causal effect. Finally, we will discuss when conditional exchangeability might also hold in observational studies.</p>
@@ -149,7 +149,7 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 <li><a class="nav-link" href="#randomized-experiments"><span class="header-section-number">2.1</span> Randomized experiments</a></li>
 <li><a class="nav-link" href="#lab-analyze-a-randomized-experiment"><span class="header-section-number">2.2</span> Lab: Analyze a randomized experiment</a></li>
 <li><a class="nav-link" href="#exchangeability-and-conditional-randomization"><span class="header-section-number">2.3</span> Exchangeability and conditional randomization</a></li>
-<li><a class="nav-link" href="#standardization-and-effect-measures"><span class="header-section-number">2.4</span> Standardization and effect measures</a></li>
+<li><a class="nav-link" href="#standardization"><span class="header-section-number">2.4</span> Standardization</a></li>
 <li><a class="nav-link" href="#lab-treatment-effect-heterogeneity-and-asking-causal-questions"><span class="header-section-number">2.5</span> Lab: Treatment Effect Heterogeneity and Asking Causal Questions</a></li>
 <li><a class="nav-link" href="#inverse-probability-weighting"><span class="header-section-number">2.6</span> Inverse probability weighting</a></li>
 </ul>
@@ -171,7 +171,7 @@ After class, read <a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inf
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2026-09-08</p>
+    <p>Last built on 2026-09-09</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

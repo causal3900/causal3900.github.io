@@ -6,7 +6,7 @@ exchangeability-and-experiments
 randomized-experiments
 lab-analyze-a-randomized-experiment
 exchangeability-and-conditional-randomization
-standardization-and-effect-measures
+standardization
 lab-treatment-effect-heterogeneity-and-asking-causal-questions
 inverse-probability-weighting
 consistency-and-positivity
