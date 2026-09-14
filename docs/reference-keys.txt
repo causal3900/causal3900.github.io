@@ -11,7 +11,7 @@ lab-treatment-effect-heterogeneity-and-asking-causal-questions
 inverse-probability-weighting
 consistency-and-positivity
 exchangeability-in-observational-studies
-lab-causal-inference-with-interference
+lab-review-for-quiz
 directed-acyclic-graphs
 marginal-independence
 conditional-independence
