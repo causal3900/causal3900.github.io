@@ -14,8 +14,8 @@ exchangeability-in-observational-studies
 lab-review-for-quiz
 directed-acyclic-graphs
 marginal-independence
-conditional-independence
 lab-dags-review
+conditional-independence
 sufficient-adjustment-sets
 statistical-modeling
 why-model

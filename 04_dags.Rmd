@@ -3,7 +3,7 @@
 
 ## Marginal independence
 
-> Sep 18. [**Slides.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
+> Sep 22. [**Slides.**](assets/slides/4-1_dags_marginal.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.1 and 6.2. For historical reference, optionally see [Greenland, Pearl, and Robins 1999](https://journals.lww.com/epidem/Abstract/1999/01000/Causal_Diagrams_for_Epidemiologic_Research.8.aspx).
 
 This class will introduce key ideas about DAGs.
 
@@ -29,9 +29,16 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 </script>
 
 
+## Lab: DAGs Review
+
+> Sep 23.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
+
+In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
+
+
 ## Conditional independence
 
-> Sep 23. [**Slides**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
+> Sep 24. [**Slides**](assets/slides/4-2_dag_conditional.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 6.3 and 6.4, and especially Fine Point 6.1 of which this page is an abbreviation.
 
 Often, we want to condition on some set of variables $\vec{L}$ so that conditional exchangeability holds. 
 
@@ -39,12 +46,6 @@ A path is blocked if any node on the path is blocked. If every node on a path is
 
 1. A non-collider is blocked if is conditioned on, otherwise it is open
 2. A collider is open if it or any of its descendants are conditioned on. Otherwise it is blocked
-
-## Lab: DAGs Review
-
-> Sep 24.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
-
-In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
 
 
 ## Sufficient adjustment sets
