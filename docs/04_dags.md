@@ -29,12 +29,11 @@ DAGs help us know if variables $A$ and $B$ are statistically related
 </script>
 
 
-## Lab: DAGs Review
+## Lab: Exchangeability in DAGs
 
-> Sep 23.   [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
+> Sep 23.   [**Discussion**](discussion-4.-exchangeability-and-class-project)
 
-In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
-
+In this lab, we’ll review and practice exchangeability in DAGs which will include an in-class assignment. We’ll also form groups for the course project.
 
 ## Conditional independence
 
