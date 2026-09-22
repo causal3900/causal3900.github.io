@@ -40,6 +40,6 @@ For each DAG determine whether exchangeability holds:
 
 To divide into groups please:
 
-1. Choose a topic of interest and fill out the Poll Everywhere
+1. Choose a topic of interest and fill out the first Google Form
 2. Find 3-5 students intersetd in same topic
-3. Fill out the Google Form with names and NetIDs of group members
+3. Fill out the second Google Form with names and NetIDs of group members
