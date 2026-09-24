@@ -38,6 +38,11 @@ library(haven)
 library(kableExtra)
 ```
 
+```
+## Warning: package 'kableExtra' was built under R version
+## 4.6.1
+```
+
 ### Import data {-}
 
 ``` r
