@@ -17,6 +17,8 @@ marginal-independence
 lab-exchangeability-in-dags
 conditional-independence
 sufficient-adjustment-sets
+discussion
+types-of-causal-effects
 statistical-modeling
 why-model
 lab-project-discussion
@@ -37,7 +39,7 @@ observational-settings
 regression-discontinuity
 introduction
 lab-regression-discontinuity---bandwidth-and-examples
-discussion
+discussion-1
 difference-in-differences
 introduction-1
 lab
@@ -45,7 +47,7 @@ extensions-of-did
 synthetic-control
 introduction-2
 lab-1
-discussion-1
+discussion-2
 interference
 interference-intro
 lab-2
