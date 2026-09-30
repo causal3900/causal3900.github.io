@@ -66,7 +66,11 @@ In this lab, we’re reviewing some DAG basics such as identifying paths and det
 
 
 
-## Types of causal effects
+## Mediation Analysis
 
-> Sep 31. [**Slides.**]
+> Sep 31. [**Slides.**](assets/slides/4-4_mediation.pdf)
+
+So far, we have asked is there a causal effect. However, we might also be interested in learning: How does the causal effect work? Mediation analysis allows us to reason about specific mechanisms through which a treatment causes an change in the outcome.
+
+
 

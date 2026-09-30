@@ -18,7 +18,7 @@ lab-exchangeability-in-dags
 conditional-independence
 sufficient-adjustment-sets
 lab-dags-review
-types-of-causal-effects
+mediation-analysis
 statistical-modeling
 why-model
 lab-project-discussion
