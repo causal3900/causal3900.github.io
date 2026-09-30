@@ -8,7 +8,7 @@ output: html_document
 #### September 30, 2026 {-}
 
 
-<!-- You can download the [**slides**](assets/discussions/discussion5_dags.pdf) for this week's discussion. -->
+You can download the [**slides**](assets/discussions/discussion5_dags.pdf) for this week's discussion.
 
 
 ### DAGs Review {-}

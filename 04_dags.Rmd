@@ -58,9 +58,12 @@ When marginal exchangeability does not hold, we may be able to condition on some
 
 
 
-## Discussion 
+## Lab: DAGs Review
 
-> Sep 30. [**Slides.**]
+> Sep 30.  [**Discussion**](discussion-5.-directed-acyclic-graphs) and [**discussion slides**](assets/discussions/discussion5_dags.pdf)
+
+In this lab, we’re reviewing some DAG basics such as identifying paths and determining whether a path is open or closed.
+
 
 
 ## Types of causal effects
