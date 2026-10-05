@@ -19,6 +19,7 @@ conditional-independence
 sufficient-adjustment-sets
 lab-dags-review
 mediation-analysis
+mediation-analysis-1
 statistical-modeling
 why-model
 lab-project-discussion
