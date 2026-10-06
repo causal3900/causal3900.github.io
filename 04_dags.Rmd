@@ -73,11 +73,17 @@ In this lab, we’re reviewing some DAG basics such as identifying paths and det
 So far, we have asked is there a causal effect. However, we might also be interested in learning: How does the causal effect work? Mediation analysis allows us to reason about specific mechanisms through which a treatment causes an change in the outcome.
 
 
-## Mediation Analysis
+## Causal Discovery
 
 > Oct 6. [**Slides.**](assets/slides/4-5_causal_discovery.pdf)
 
 So far we have used expert knowledge to specify a causal graph. But in some settings, we may be interested in learning the graph from data. Causal Discovery is a set of methods which aim to do this.
 
+
+## Discussion
+
+> Oct 7 
+
+Review for Quiz
 
 
