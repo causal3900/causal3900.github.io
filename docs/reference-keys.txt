@@ -22,8 +22,7 @@ mediation-analysis
 causal-discovery
 discussion
 statistical-modeling
-why-model
-lab-project-discussion
+starting-to-think-about-data
 parametric-modeling-outcome-modeling
 parametric-modeling-propensity-model
 lab-parametric-g-formula

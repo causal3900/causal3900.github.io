@@ -172,7 +172,7 @@
 <h3>Step 2: Import and Clean the Data<a class="anchor" aria-label="anchor" href="#step-2-import-and-clean-the-data"><i class="fas fa-link"></i></a>
 </h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/discussions/discussion02_files/GenAI_Learning.csv"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/causal3900/causal3900.github.io/refs/heads/main/assets/discussions/discussion02_files/GenAI_Learning.csv"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Quick peek at the dataset using the <a href="https://dplyr.tidyverse.org/reference/glimpse.html">function <code>glimpse</code></a>
 </li>
@@ -182,7 +182,7 @@
 </li>
 </ul>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">genAI_dta</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">genAI_dta</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li><em>…students are randomly assigned to classrooms (with the exception of honors-designated classrooms)…</em></li>
 <li>Exclude honors-designated classrooms from the sample</li>
@@ -194,8 +194,8 @@
 </li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li>Create a single treatment variable with word labels:
 <ul>
@@ -215,8 +215,8 @@
 </li>
 </ul>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">genAI_dta</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>treatment <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case-and-replace-when.html">case_when</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 </div>
 <div id="step-3-table-a.1" class="section level3 unnumbered">
 <h3>Step 3: Table A.1<a class="anchor" aria-label="anchor" href="#step-3-table-a.1"><i class="fas fa-link"></i></a>
@@ -237,15 +237,15 @@
 <span>                <span class="st">"n_weekday_study_hours"</span>,<span class="st">"n_weekend_study_hours"</span>,<span class="st">"gpa_prev"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">genAI_balance</span> <span class="op">&lt;-</span> <span class="va">genAI_dta</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">`Student ID`</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">all_of</span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">`Student ID`</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,\<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="va">genAI_balance</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">pivot_longer</span><span class="op">(</span><span class="op">-</span><span class="va">treatment</span>, names_to <span class="op">=</span> <span class="st">"Description"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">treatment</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">Description</span>, <span class="va">GPTTutor</span>, <span class="va">Control</span>, <span class="va">GPTBase</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="op">-</span><span class="va">treatment</span>, names_to <span class="op">=</span> <span class="st">"Description"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">treatment</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Description</span>, <span class="va">GPTTutor</span>, <span class="va">Control</span>, <span class="va">GPTBase</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="step-4-table-1" class="section level3 unnumbered">
@@ -259,8 +259,8 @@
 <li>Exam problems (<code>Part3Tot</code>)</li>
 </ul>
 </li>
-<li>Use <code>group_by()</code> to calculate separate means for each treatment arm</li>
-<li>Use <code>summarise()</code> to do the following:
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to calculate separate means for each treatment arm</li>
+<li>Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> to do the following:
 <ul>
 <li>Create a column <code>Practice_perf</code>- the average grade in step 2 of each group</li>
 <li>Create a column <code>Exam_perf</code>- the average grade in step 3 of each group</li>
@@ -270,9 +270,9 @@
 </ul>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">genAI_means</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">genAI_dta</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarise</span><span class="op">(</span>Practice_perf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
+<span>  <span class="va">genAI_dta</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>Practice_perf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span>,</span>
 <span>            Exam_perf <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">...</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">genAI_means</span><span class="op">)</span></span></code></pre></div>
@@ -433,7 +433,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2026-10-06</p>
+    <p>Last built on 2026-10-14</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

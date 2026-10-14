@@ -1,8 +1,8 @@
 # Statistical modeling
 
-## Why model?
+## Starting to think about data
 
-> Sep 30. [**Slides.**](assets/slides/WhyModel_fa25.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+> Oct 15. [**Slides.**](assets/slides/WhyModel_fa26.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
 
 To this point, we have not used any statistical models. Instead, we have
 
@@ -11,11 +11,6 @@ To this point, we have not used any statistical models. Instead, we have
 
 Today we will discuss how this strategy breaks down when there are many confounding variables, and thus many subgroups.
 
-
-
-## Lab: Project Discussion
-
-> Oct 1. [**Slides.**](assets/discussions/discussion6-part1.pdf) We will go over [**Part 1**](assets/psets/project/project_part1.pdf) of the course project and brainstorm ideas. To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd), compile to a PDF and submit the PDF on Canvas.
 
 
 ## Parametric Modeling: outcome modeling
