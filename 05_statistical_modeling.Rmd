@@ -2,7 +2,7 @@
 
 ## Starting to think about data
 
-> Oct 15. [**Slides.**](assets/slides/WhyModel_fa26.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
+> Oct 15. [**Slides.**](assets/slides/WhyModel_26.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 11.
 
 To this point, we have not used any statistical models. Instead, we have
 
