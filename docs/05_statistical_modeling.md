@@ -13,9 +13,9 @@ Today we will discuss how this strategy breaks down when there are many confound
 
 
 
-## Parametric Modeling: outcome modeling
+## Statistical modeling
 
-> Oct 2. [**Slides.**](assets/slides/5-3_outcomeModeling.pdf)
+> Oct 20. [**Slides.**](assets/slides/5-2_statistical_modeling.pdf)
 
 Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 12.1--12.5.
 

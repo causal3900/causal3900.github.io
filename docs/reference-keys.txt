@@ -23,7 +23,7 @@ causal-discovery
 discussion
 statistical-modeling
 starting-to-think-about-data
-parametric-modeling-outcome-modeling
+statistical-modeling-1
 parametric-modeling-propensity-model
 lab-parametric-g-formula
 matching
