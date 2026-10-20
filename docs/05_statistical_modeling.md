@@ -24,7 +24,7 @@ Today will introduce how to estimate causal effects by directly modeling the out
 
 ## Lab: Parametric g-formula
 
-> Oct 21. [**Discussion**](discussion-6.-parametric-g-formula) and [**discussion slides**](assets/discussions/discussion6-gformula-.pdf). Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
+> Oct 21. [**Discussion**](discussion-6.-parametric-g-formula) and [**discussion slides**](assets/discussions/discussion6-gformula.pdf). Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
 
 
 
