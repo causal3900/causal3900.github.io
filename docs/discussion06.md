@@ -12,7 +12,7 @@ output: html_document
 
 - Download the data posted on Canvas
 
-- You can download the [**slides**](assets/discussions/discussion6-gformula-.pdf) for this week's discussion.
+- You can download the [**slides**](assets/discussions/discussion6-gformula.pdf) for this week's discussion.
 
 - Download the [**.Rmd**](assets/discussions/discussion6.Rmd) and fill in the blanks, for this you may use LLMs
 
