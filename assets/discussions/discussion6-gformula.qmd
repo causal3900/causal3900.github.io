@@ -22,7 +22,7 @@ library(tidyverse)
 library(randomForest)
 library(kableExtra)
 
-set.seed(3900)
+set.seed(1231)
 d <- readRDS("d.RDS")
 ```
 
@@ -56,34 +56,30 @@ What happens when a subgroup is empty, we have continuous treatment variables or
 
 -  Define the variables:
     - $Y$: 1 if pass, 0 if fail
-    - $A$: number of hours studying
-    - $L_1$: grade in Intro to stat
-    - $L_2$: hours slept the night before 
+    - $A$: 1 if studied more than 7 hours, 0 othwerwise
+    - $L$: grade in Intro to stat
 
 ## Example
 
 ```{r,echo=FALSE}
-set.seed(1231)
 n <- 10
 
-A <- abs(rnorm(n, mean = 6, sd = 3.5))
-L1 <- runif(n, min = 1.3, max = 4.3) 
-L2 <- abs(rnorm(n, mean = 7, sd = 2))
+A <- c(0,1,1,0,0,1,0,0,1,1)
+L <- c(2.100819,1.780319 ,3.558885, 1.886253 ,3.869254, 1.303100, 1.559244, 4.030138,2.032451, 2.670257)
 
-beta_0 <- -10.5 
-beta_1 <- 0.8   
-beta_2 <- 0.5   
-beta_3 <- 0.5   
+beta_0 <- -2
+beta_1 <- 1 
+beta_2 <- 0.9
 
-log_odds <- beta_0 + (beta_1 * A) + (beta_2 * L1) + (beta_3 * L2)
+log_odds <- beta_0 + (beta_1 * A) + (beta_2 * L)
 prob <- 1 / (1 + exp(-log_odds))
+
 
 Y <- rbinom(n, size = 1, prob = prob)
 exam_data <- data.frame(
   Y,
-  A = round(A, 1),
-  intro_grade = round(L1, 2),
-  sleep_hours = round(L2, 1)
+  A = as.numeric(A),
+  intro_grade = round(L, 2)
 )
 
 kbl(exam_data,align = 'c')
@@ -93,52 +89,53 @@ kbl(exam_data,align = 'c')
 
 Learn a logistic regression model with `glm`:
 ```{r}
-model <- glm(Y ~ A + intro_grade + sleep_hours, 
+model <- glm(Y ~ A + intro_grade , 
              data = exam_data, 
              family = binomial(link = "logit"))
 ```
 
 ```{r, echo=FALSE,fig.width= 3.5, fig.height=2.5}
-grid_hours <- seq(min(exam_data$A),max(exam_data$A), length.out = 100)
-pred_grid <- data.frame(
-  A = grid_hours,
-  intro_grade   = mean(exam_data$intro_grade),
-  sleep_hours = mean(exam_data$sleep_hours)
-)
-pred_grid$pred_prob <- predict(model, newdata = pred_grid, type = "response")
+grid_hours <- seq(0.5,4.5, length.out = 100)
+
+pred0 <- data.frame(
+  intro_grade = grid_hours,
+  A = 0)
+
+pred1 <- data.frame(
+  intro_grade = grid_hours,
+  A = 1)
+
+pred_prob0 <- predict(model, newdata = pred0, type = "response")
+pred_prob1 <- predict(model, newdata = pred1, type = "response")
 
 
-ggplot() + geom_point(aes(exam_data$A,exam_data$Y)) + 
-  geom_line(aes(pred_grid$A,pred_grid$pred_prob ),col="blue") +
+ggplot() + geom_point(aes(exam_data$intro_grade,exam_data$Y)) + 
+  geom_line(aes(grid_hours,pred_prob0),col="green4") +
+  geom_line(aes(grid_hours,pred_prob1),col="red") +
   labs(title = "Logistic Regression",
-       subtitle = "Curve shows probabilities predicted by glm",
-       x = "Study Hours",
+       subtitle = "Curves shows probabilities predicted by glm \nfor treated (red) and untreated (green)",
+       x = "Intro to Stat Grade",
        y = "Probability of Passing")
+
 ```
 
 
 ## Example
 
 We will now estimate the potential probability of passing the exam under treatment and no treatment for each individual.
-For this we converted the treatment to a binary variable where $A_i=1$ if individual $i$ studies more than 7 hours
 
 ```{r, echo=FALSE}
 
-model <- glm(Y ~ A + intro_grade + sleep_hours, 
-             data = exam_data %>% mutate(A= A > 7), 
-             family = binomial(link = "logit"))
-
 exam_data <- 
   exam_data %>%
-  mutate(A = A>7,
-         P_yhat1 = predict(model, 
+  mutate(P_yhat1 = predict(model, 
                            newdata = exam_data %>% 
-                           mutate(A=TRUE),type = "response"),
+                           mutate(A=1),type = "response"),
          P_yhat0 = predict(model, 
                            newdata = exam_data %>% 
-                           mutate(A=FALSE),type = "response"))
+                           mutate(A=0),type = "response"))
 
-kbl(exam_data %>% mutate(A=as.numeric(A)),align = 'c',digits = 3)
+kbl(exam_data,align = 'c',digits = 3)
 ```
 
 ## Example
@@ -153,7 +150,104 @@ exam_data %>%
 
 ## Bias Variance trade-off
 
+Assume first a true model where $Y=e^X$
+```{r, echo= FALSE ,fig.width=5, fig.height=4}
+X0 <-seq(-1, 2, by = .01)
+Y0 <- exp(X0)
+plot(X0, Y0, type = "l", lwd = 4, xlab = "X", ylab= "Y")
+```
 
+## Bias Variance trade-off
+
+We sample $n=50$ data points form this true model
+```{r, echo= FALSE ,fig.width= 5, fig.height=4}
+n <- 50
+X <- sort(runif(n,-1, 2))
+X_poly <- poly(X, degree = 10)  
+Y <- exp(X) + rnorm(n, sd = .5)
+lin_mod <- lm(Y~X)
+poly_mod <- lm(Y~X_poly)
+lin_mod_pred <- predict(lin_mod, df = X)
+poly_mod_pred <- predict(poly_mod, df = X_poly)
+plot(X0, Y0, type = "l", lwd = 4, xlab = "X", ylab= "Y")
+points(X, Y, col = "blue", pch = 19)
+```
+
+## Bias Variance trade-off
+Using these 50 data points, we can estimate a linear model, the red line, where the bias is visualized through the dotted vertical lines
+
+```{r, echo= FALSE ,fig.width= 5, fig.height=4}
+plot(X0, Y0, type = "l", lwd = 4, xlab = "X", ylab= "Y")
+points(X, Y, col = "blue", pch = 19)
+points(X, lin_mod_pred, type = "l", col = "red", lwd = 3)
+segments(X, lin_mod_pred, X, exp(X), lty = 2, col = "red")
+```
+
+## Bias Variance trade-off
+Using these 50 data points,  we can estimate a more complex model including polynomial of degree 10, the green line, where the bias is visualized through the dotted vertical lines
+
+```{r, echo= FALSE ,fig.width= 5, fig.height=4}
+plot(X0, Y0, type = "l", lwd = 4, xlab = "X", ylab= "Y")
+points(X, Y, col = "blue", pch = 19)
+points(X, poly_mod_pred, type = "l", col = "green", lwd = 3)
+segments(X, poly_mod_pred, X, exp(X), lty = 2, col = "green")
+```
+
+
+## Bias Variance trade-off
+
+You can see that the linear model (red line) has higher bias than the polynomial (green line). 
+
+```{r, echo= FALSE ,fig.width= 5, fig.height=4}
+plot(X0, Y0, type = "l", lwd = 4, xlab = "X", ylab= "Y")
+points(X, Y, col = "blue", pch = 19)
+points(X, lin_mod_pred, type = "l", col = "red", lwd = 3)
+points(X, poly_mod_pred, type = "l", col = "green", lwd = 3)
+segments(X, lin_mod_pred, X, exp(X), lty = 2, col = "red")
+segments(X, poly_mod_pred, X, exp(X), lty = 2, col = "green")
+```
+
+-  Do we always prefer a more complex model?
+\begin{center} Not necessarily, simple models are easier to interpret and have lower variance\end{center}
+
+## Bias Variance trade-off
+To show the bias variance trade-off we sample $n$ points from the true model, $Y=e^X$, 5000 times to evaluate the models
+
+```{r, echo = FALSE}
+
+n_list <- c(20, 50, 100, 500, 1000)
+sim_size <- 5000
+
+rec <- matrix(0, ncol = 4, nrow = length(n_list))
+
+for(n_ind in 1:length(n_list)){
+  
+  n <- n_list[n_ind]
+  X <- runif(n,-1, 2)
+  X_poly <- poly(X, degree = 10)
+  lin_mod_pred <- poly_mod_pred <- matrix(0, nrow = n, ncol = sim_size)
+  
+  for(i in 1:sim_size){
+    Y <- exp(X) + rnorm(n, sd = .5)
+    lin_mod <- lm(Y~X)
+    poly_mod <- lm(Y~X_poly)
+    lin_mod_pred[, i] <- predict(lin_mod, df = X)
+    poly_mod_pred[, i] <- predict(poly_mod, df = X_poly)
+    
+  }
+
+  rec[n_ind, 1:2] <- c(mean(abs(rowMeans(lin_mod_pred) - exp(X))),
+                       mean(abs(rowMeans(poly_mod_pred) - exp(X))))
+  
+  rec[n_ind, 3:4] <- c(mean(apply(lin_mod_pred, MAR= 1, var)),
+                       mean(apply(poly_mod_pred, MAR= 1, var)))
+  
+}
+
+rec <- cbind(n_list,rec)
+rec %>% as.data.frame() %>%
+  kbl(digits = 4,col.names = c("n","Bias-Linear","Bias-10deg","Var-Linear","Var-10deg"))
+```
 
 
 ## Research question
@@ -240,6 +334,7 @@ average_outcomes_glm <- d %>%
 ## 2. Predict conditional average potential outcomes
 
 Notice how the `predict` function adapts to the model specified, pay attention to its argument and output 
+
 - Non-Parametric model:
 ```{r}
 average_outcomes_rf <- d %>%
