@@ -1,0 +1,308 @@
+---
+title: "Discussion. Parametric g-formula: Outcome modeling"
+author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2025 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
+date: 21 Oct 2026
+format: beamer
+date-format: DD MMM YYYY
+header-includes:
+  \usecolortheme{dove}
+  \setbeamertemplate{footline}[page number]
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = F}
+knitr::opts_chunk$set(echo = T)
+```
+
+
+
+```{r, include = F, eval=TRUE}
+library(tidyverse)
+library(randomForest)
+library(kableExtra)
+
+set.seed(3900)
+d <- readRDS("d.RDS")
+```
+
+## Statistical modeling
+
+Under exchangeability, $$E\left(Y^a\mid\vec{L} = \vec\ell\right) = E\left(Y^a\mid A = a, \vec{L} = \vec\ell\right)$$
+Under consistency, $$E\left(Y^a\mid A = a,\vec{L} = \vec\ell\right) = E\left(Y\mid A = a, \vec{L} = \vec\ell\right)$$
+
+To estimate, we have been taking the subgroup mean $$\hat{E}(Y\mid A = a, \vec{L} = \vec\ell) = \frac{1}{n_{a,\vec\ell}}\sum_{i:A_i=a,\vec{L}_i=\vec\ell} Y_i$$
+
+What happens when a subgroup is empty, we have continuous treatment variables or continuous covariates?
+
+\begin{center}We need a model!\end{center}
+
+## Outcome modeling: Parametric and Non-Parametric g-formula: 
+
+1.  Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+
+2.  For each $i$, predict
+    -   $\{A = 1,\vec{L} = \vec\ell_i\}$, the conditional average outcome under treatment
+    -   $\{A = 0, \vec{L} = \vec\ell_i\}$, the conditional average outcome under control
+    
+3.  Take the difference for each unit
+
+4.  Average over the units
+
+
+## Estimating a Model - Example
+
+- Question: Does studying more that 7 hours increase the probability of passing an exam?
+
+-  Define the variables:
+    - $Y$: 1 if pass, 0 if fail
+    - $A$: number of hours studying
+    - $L_1$: grade in Intro to stat
+    - $L_2$: hours slept the night before 
+
+## Example
+
+```{r,echo=FALSE}
+set.seed(1231)
+n <- 10
+
+A <- abs(rnorm(n, mean = 6, sd = 3.5))
+L1 <- runif(n, min = 1.3, max = 4.3) 
+L2 <- abs(rnorm(n, mean = 7, sd = 2))
+
+beta_0 <- -10.5 
+beta_1 <- 0.8   
+beta_2 <- 0.5   
+beta_3 <- 0.5   
+
+log_odds <- beta_0 + (beta_1 * A) + (beta_2 * L1) + (beta_3 * L2)
+prob <- 1 / (1 + exp(-log_odds))
+
+Y <- rbinom(n, size = 1, prob = prob)
+exam_data <- data.frame(
+  Y,
+  A = round(A, 1),
+  intro_grade = round(L1, 2),
+  sleep_hours = round(L2, 1)
+)
+
+kbl(exam_data,align = 'c')
+```
+
+## Example
+
+Learn a logistic regression model with `glm`:
+```{r}
+model <- glm(Y ~ A + intro_grade + sleep_hours, 
+             data = exam_data, 
+             family = binomial(link = "logit"))
+```
+
+```{r, echo=FALSE,fig.width= 3.5, fig.height=2.5}
+grid_hours <- seq(min(exam_data$A),max(exam_data$A), length.out = 100)
+pred_grid <- data.frame(
+  A = grid_hours,
+  intro_grade   = mean(exam_data$intro_grade),
+  sleep_hours = mean(exam_data$sleep_hours)
+)
+pred_grid$pred_prob <- predict(model, newdata = pred_grid, type = "response")
+
+
+ggplot() + geom_point(aes(exam_data$A,exam_data$Y)) + 
+  geom_line(aes(pred_grid$A,pred_grid$pred_prob ),col="blue") +
+  labs(title = "Logistic Regression",
+       subtitle = "Curve shows probabilities predicted by glm",
+       x = "Study Hours",
+       y = "Probability of Passing")
+```
+
+
+## Example
+
+We will now estimate the potential probability of passing the exam under treatment and no treatment for each individual.
+For this we converted the treatment to a binary variable where $A_i=1$ if individual $i$ studies more than 7 hours
+
+```{r, echo=FALSE}
+
+model <- glm(Y ~ A + intro_grade + sleep_hours, 
+             data = exam_data %>% mutate(A= A > 7), 
+             family = binomial(link = "logit"))
+
+exam_data <- 
+  exam_data %>%
+  mutate(A = A>7,
+         P_yhat1 = predict(model, 
+                           newdata = exam_data %>% 
+                           mutate(A=TRUE),type = "response"),
+         P_yhat0 = predict(model, 
+                           newdata = exam_data %>% 
+                           mutate(A=FALSE),type = "response"))
+
+kbl(exam_data %>% mutate(A=as.numeric(A)),align = 'c',digits = 3)
+```
+
+## Example
+Finally to estimate the average treatment effect we will take the difference for each unit and average over them
+
+```{r}
+exam_data %>%
+  mutate(ATE = P_yhat1 - P_yhat0) %>%
+  select(P_yhat1,P_yhat0,ATE) %>%
+  summarise_all(.funs = mean) %>% kbl(digits = 3)
+```
+
+## Bias Variance trade-off
+
+
+
+
+## Research question
+
+To what degree does finishing college increase the probability of having a spouse who finished college?
+
+**Data.** [National Longitudinal Survey of Youth 1997](https://www.bls.gov/nls/nlsy97.htm)
+
+- Probability sample of U.S. non-institutional civilian youth age 12--16 on Dec 31 1996
+- Surveyed annually 1997--2011, then biennially
+- $n$ = 7,771
+
+
+## G-formula: Data example
+
+Estimate a model based on the true data
+
+```{r, echo=FALSE}
+d |>
+  select(a:race) |>
+  head(10) |>
+  arrange(a)
+```
+
+## Predict values - control
+
+Predict the counterfactuals when everybody is in the control group
+```{r, echo=FALSE}
+d |>
+  select(a:race, -y) |>
+  head(10) |>
+  arrange(a) |>
+  mutate(a = "no_college")
+```
+
+## Predict values - treatment
+
+Predict the counterfactuals when everybody is in the treatment group
+```{r, echo=FALSE}
+d |>
+  select(a:race, -y) |>
+  head(10) |>
+  arrange(a) |>
+  mutate(a = "college")
+```
+
+## 1. Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+
+- Parametric model:
+```{r}
+fit_glm <- glm(y ~ a + sex + race + mom_educ +
+                 dad_educ + log_parent_income + 
+                 log_parent_wealth + 
+                 test_percentile,
+          data = d, family = binomial)
+```
+
+- Non-Parametric model:
+```{r}
+fit_rf <- randomForest(
+  y ~ a + sex + race + mom_educ + dad_educ + 
+    log_parent_income + log_parent_wealth +
+    test_percentile,
+  data = d %>% mutate(a = as.factor(a),
+                      y= as.factor(y)),
+  ntree = 500)
+```
+
+## 2. Predict conditional average potential outcomes
+- Parametric model:
+\footnotesize
+```{r}
+average_outcomes_glm <- d %>%
+  mutate(yhat1 = predict(fit_glm, 
+                         newdata = d %>% 
+                           mutate(a = "college"),
+                         type = "response"),
+         yhat0 = predict(fit_glm, 
+                         newdata = d %>% 
+                           mutate(a = "no_college"),
+                         type = "response"))
+```
+
+## 2. Predict conditional average potential outcomes
+
+Notice how the `predict` function adapts to the model specified, pay attention to its argument and output 
+- Non-Parametric model:
+```{r}
+average_outcomes_rf <- d %>%
+  mutate(yhat1 = predict(fit_rf, 
+                      newdata = d %>% 
+                        mutate(a = factor("college",
+                      levels =c("college","no_college"))),
+                      type="prob")[,"TRUE"],
+         yhat0 = predict(fit_rf, 
+                      newdata = d %>% 
+                        mutate(a = factor("no_college",
+                      levels = c("college","no_college"))),
+                      type="prob")[,"TRUE"])
+```
+
+## 3. Difference to estimate conditional average effects
+
+- Parametric model:
+```{r}
+average_effects_glm <- 
+  average_outcomes_glm %>%
+  mutate(effect = yhat1 - yhat0)
+```
+
+
+- Non-Parametric model:
+```{r}
+average_effects_rf <- 
+  average_outcomes_rf %>%
+  mutate(effect = yhat1 - yhat0)
+```
+
+## 4. Average over units
+- Parametric model:
+\footnotesize
+```{r}
+average_effects_glm %>% select(yhat1, yhat0, effect) %>%
+  summarize_all(.funs = mean) 
+```
+
+- Non-Parametric model:
+\footnotesize
+```{r}
+average_effects_rf %>% select(yhat1, yhat0, effect) %>%
+  summarize_all(.funs = mean)
+```
+
+
+##  G-formula: Parametric vs. Non-Parametric
+
+-  Parametric models have lower variance but probably high bias
+
+-  Non-parametric models have lower bias but higher variance
+
+-  Non-parametric methods usually require more observations
+
+-  Note that each time you run `randomForest` the results might slightly change 
+
+## Recap. Parametric g-formula: Outcome modeling
+
+1.  Learn a model to predict $Y$ given $\{A,\vec{L}\}$
+2.  For each $i$, predict
+    -   $\{A = 1,\vec{L} = \vec\ell_i\}$, the conditional average outcome under treatment
+    -   $\{A = 0, \vec{L} = \vec\ell_i\}$, the conditional average outcome under control
+3.  Take the difference for each unit
+4.  Average over the units

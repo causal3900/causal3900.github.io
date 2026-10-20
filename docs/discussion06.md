@@ -3,23 +3,18 @@ output: html_document
 ---
 <style>li {line-height: 1.8;}</style>
 
-# Discussion 6. Course Project- Part 1 {-}
+# Discussion 6. Parametric g-formula {-}
 ## STSCI/INFO/ILRST 3900: Causal Inference {-}
-#### October 1, 2025 {-}
+#### October 21, 2026 {-}
+    
 
+### Parametric g-formula {-}
 
-### Announcements {-}
-- HW 3 due Wednesday (October 8)
-  - Submit a PDF from RMarkdown via Canvas
-- Office Hours throughout the week (see Syllabus or website)
-  - Filippo: Thursday 4-5pm in 321A CIS Building
-  - Shira: Monday 5-6 pm in 329A CIS Building  
-  - Sam: Tuesday 4-5pm, in 350 CIS Building  
+- Download the data posted on Canvas
 
+- You can download the [**slides**](assets/discussions/discussion6-gformula-.pdf) for this week's discussion.
 
-### Course Project {-}
-You can download the [**slides.**](assets/discussions/discussion6-part1.pdf) for this week's discussion.
+- Download the [**.Rmd**](assets/discussions/discussion6.Rmd) and fill in the blanks, for this you may use LLMs
 
-Take a look at the [Part 1 details](assets/psets/project/project_part1.pdf).
-To complete part 1, download the [**.Rmd**](assets/psets/project/part1.Rmd). Compile to a PDF and submit the PDF on Canvas.
+- Answer the question and hand in the in-class assignment
 

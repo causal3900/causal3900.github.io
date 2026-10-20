@@ -24,8 +24,9 @@ discussion
 statistical-modeling
 starting-to-think-about-data
 statistical-modeling-1
-parametric-modeling-propensity-model
 lab-parametric-g-formula
+parametric-modeling-propensity-model
+lab-parametric-g-formula-1
 matching
 lab-matching-in-r
 discussion-of-matching

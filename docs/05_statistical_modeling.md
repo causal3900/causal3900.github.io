@@ -21,6 +21,13 @@ Reading: After class, read [Hernán and Robins 2020](https://www.hsph.harvard.ed
 
 Today will introduce how to estimate causal effects by directly modeling the outcome based on covariates. In addition, we will discuss the bias vs. variance trade-off and how that applies to causal estimands.
 
+
+## Lab: Parametric g-formula
+
+> Oct 21. [**Discussion**](discussion-6.-parametric-g-formula) and [**discussion slides**](assets/discussions/discussion6-gformula-.pdf). Download the corresponding R Markdown file [**here**](assets/discussions/discussion6.Rmd).
+
+
+
 ## Parametric modeling: Propensity model
 
 > Oct 7. [**Slides.**](assets/slides/5-4_ipw.pdf)
