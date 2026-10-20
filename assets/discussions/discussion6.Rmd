@@ -30,8 +30,8 @@ YOUR TASK: Pass two arguments to `glm` below that fit a regression model using o
 
 ```{r}
 # The following formula represents Y as a function of our treatment (A) and all our confounders
-f <- y ~ a*(sex + race + mom_educ + dad_educ + log_parent_income +
-  log_parent_wealth + test_percentile)
+f <- y ~ a + sex + race + mom_educ + dad_educ + log_parent_income +
+  log_parent_wealth + test_percentile
 
 # Estimate the model 
 fit <- glm(formula = ...,
@@ -84,9 +84,9 @@ glimpse(conditional_average_outcomes)
 Now, we will estimate the causal effect for each individual by taking the
 difference between their potential outcomes, i.e. $Y_i^{a=1} - Y_i^{a=0}$.
 
-YOUR TASK: Fill in what goes after `effect =` so that the data frame `conditional_average_effects` contains a column called `effect` with the causal effect estimated for each individual. Recall that we stored our predicted values of $Y_i^{a=1}$ into the data.frame as column `yhat1` and our predicted values of $Y_i^{a=0}$ as column `yhat0`.
+YOUR TASK: Fill in what goes after `effect =` so that the data frame `conditional_average_effects_glm` contains a column called `effect` with the causal effect estimated for each individual. Recall that we stored our predicted values of $Y_i^{a=1}$ into the data.frame as column `yhat1` and our predicted values of $Y_i^{a=0}$ as column `yhat0`.
 ```{r}
-conditional_average_effects <- conditional_average_outcomes %>%
+conditional_average_effects_glm <- conditional_average_outcomes %>%
   mutate(effect = ...)
 ```
 
@@ -103,7 +103,7 @@ Details about `across` can be found [**here**](https://dplyr.tidyverse.org/refer
 Example of how to use `summarise` with `across` can be found [**here**](https://www.statology.org/dplyr-across/).
 
 ```{r}
-conditional_average_effects_lm %>%
+conditional_average_effects_glm %>%
   select(yhat1, yhat0, effect) %>%
   ...
 ```
@@ -132,10 +132,10 @@ Next, we will use the two copies of our original data `d_all_control` and `d_all
 Note, to ensure the treatment variable is of hte same class as in the original data set we will  
 ```{r}
 d_all_control <- d_all_control %>%
-  mutate(a = factor(a, levels = c("college","no_college")))
+  mutate(a = factor(a, "no_college" = c("college","no_college")))
 
 d_all_treated <- d %>%
-  mutate(a = factor(a, levels = c("college","no_college")))
+  mutate(a = factor(a, "college" = c("college","no_college")))
 ```
 
 YOUR TASK: Determine what to set `object` and `newdata` equal to inside the `predict()` function for the two potential outcomes. Then, determine what to set `yhat1` and `yhat0` to so that `conditional_average_outcomes` contains a column `yhat0` with the predicted values for each person in our data set under the control (no college $a=0$) and a column `yhat1` with the predicted values for each person in our data set under the treatment (college $a=1$).
@@ -157,9 +157,9 @@ glimpse(conditional_average_outcomes)
 Now, we will estimate the causal effect for each individual by taking the
 difference between their potential outcomes, i.e. $Y_i^{a=1} - Y_i^{a=0}$.
 
-YOUR TASK: Fill in what goes after `effect =` so that the data frame `conditional_average_effects` contains a column called `effect` with the causal effect estimated for each individual. Recall that we stored our predicted values of $Y_i^{a=1}$ into the data.frame as column `yhat1` and our predicted values of $Y_i^{a=0}$ as column `yhat0`.
+YOUR TASK: Fill in what goes after `effect =` so that the data frame `conditional_average_effects_rf` contains a column called `effect` with the causal effect estimated for each individual. Recall that we stored our predicted values of $Y_i^{a=1}$ into the data.frame as column `yhat1` and our predicted values of $Y_i^{a=0}$ as column `yhat0`.
 ```{r}
-conditional_average_effects <- conditional_average_outcomes %>%
+conditional_average_effects_rf <- conditional_average_outcomes %>%
   mutate(effect = ...)
 ```
 

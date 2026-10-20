@@ -1,6 +1,6 @@
 ---
 title: "Discussion. Parametric g-formula: Outcome modeling"
-author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2025 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
+author: Cornell STSCI / INFO / ILRST 3900 \break Fall 2026 \break \href{https://causal3900.github.io/}{\textcolor{blue}{causal3900.github.io}}
 date: 21 Oct 2026
 format: beamer
 date-format: DD MMM YYYY
