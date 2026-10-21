@@ -28,29 +28,23 @@ Today will introduce how to estimate causal effects by directly modeling the out
 
 
 
-## Parametric modeling: Propensity model
+## Propensity model and AIPW
 
-> Oct 7. [**Slides.**](assets/slides/5-4_ipw.pdf)
+> Oct 22. [**Slides.**](assets/slides/5-3_propensity_modeling.pdf)
 
-We will review concepts from Oct 2 (since the projector was broken). In addition, we will discuss how to model the probability of treatment, also known as the propensity score. We will also cover the Augmented IPW estimator which is ``doubly robust.''
-
-## Lab: Parametric g-formula
-
-> Oct 8. [**Discussion**](discussion-7.-parametric-g-formula) and [**discussion slides**](assets/discussions/discussion7-gformula-.pdf). Download the corresponding R Markdown file [**here**](assets/discussions/discussion7.Rmd).
-
-After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 13 and 15.1.
+We will discuss how to model the probability of treatment, also known as the propensity score to form an IPW estimator. We will also cover the Augmented IPW estimator which is ``doubly robust.''
 
 
 ## Matching
 
-> Oct 9. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
+> Oct 27. [**Slides.**](assets/slides/5-4_matching_intro.pdf) After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 15.2.
 
 Today will introduce the idea of matching and how it allows us to estimate the average treatment on the treated.
 
 
 ## Lab: Matching in R
 
-> Oct 15. [**Discussion**](discussion-8.-matching) and [**discussion slides**](assets/discussions/matching_lab_slides.pdf)
+> Oct 28. [**Discussion**](discussion-8.-matching) and [**discussion slides**](assets/discussions/matching_lab_slides.pdf)
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
@@ -60,7 +54,7 @@ If you finish the exact matching exercise early, work through this [R Markdown N
 
 ## Discussion of matching
 
-> Oct 16 [**Slides**](assets/slides/5-5_matching_cont.pdf) 
+> Oct 29 [**Slides**](assets/slides/5-5_matching_cont.pdf) 
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
