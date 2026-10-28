@@ -53,7 +53,7 @@ Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for tod
 
 ## Discussion of matching
 
-> Oct 29 [**Slides**](assets/slides/5-5_matching_cont.pdf) 
+> Oct 29 [**Slides**](assets/slides/5-5_matching_cont.pdf) [**Code**](assets/slides/matching_example.Rmd) 
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
