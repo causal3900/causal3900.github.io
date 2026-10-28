@@ -8,7 +8,7 @@ output: html_document
 #### October 28, 2026 {-}
     
     
-- You can download the [**slides**](assets/discussions/Discussion8.pdf) for this week's discussion.
+- You can download the [**slides**](assets/discussions/discussion7_slides.pdf) for this week's discussion.
 
 - Download the [**.Rmd**](assets/discussions/matching_lab.Rmd) and fill in the blanks
 
