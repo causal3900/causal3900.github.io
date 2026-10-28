@@ -1,0 +1,83 @@
+# Matching Lab
+
+## Data and R Libraries
+This exercise and problem set 4 both use the `lalonde` dataset from the following paper:
+
+> Dehejia, R. H. and Wahba, S. 1999. [Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs](https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?). Journal of the American Statistical Association 94(448):1053--1062.
+
+The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("MatchIt")
+data("lalonde") # this step loads the data
+```
+
+To learn about the data, type `?lalonde` in your R console.
+
+
+
+### 2.1.  Using `matchit()` to conduct a matching
+
+For this part, we assume that three variables comprise a sufficient adjustment set: `race`, `married`, and `nodegree`. We use `matchit` with:
+
+- a formula `treat ~ race + married + nodegree`
+- `method = "exact"` to conduct exact matching, which matches two units only if they are identical along `race`, `married`, and `nodegree`
+- `data = lalonde` since we are using the `lalonde` data
+-  `estimand = "ATT"` since we are targeting the average treatment effect on the treated (ATT)
+
+We then use the `summary()` function to see how many control units and how many treatment units were matched. 
+
+```{r}
+exact <- matchit(treat ~ race + married + nodegree + re74, 
+                 data = lalonde, 
+                 method = "exact",  
+                 estimand = "ATT")
+
+summary(exact)
+```
+
+```{r}
+
+#coarsened exact matching
+matched_set <- matchit(treat ~ race + married + nodegree + re74, 
+                 data = lalonde, 
+                 method = "cem",  
+                 estimand = "ATT")
+
+summary(matched_set)
+
+# Mahalanobis
+matched_set <- matchit(treat ~ race + married + nodegree + re74, 
+                 data = lalonde, 
+                 distance = "mahalanobis",  
+                 estimand = "ATT")
+
+summary(matched_set)
+
+
+# Propensity Score
+matched_set <- matchit(treat ~ race + married + nodegree + re74, 
+                 data = lalonde, 
+                 method = "nearest",
+                 distance = "glm",
+                 estimand = "ATT")
+summary(matched_set)
+plot(matched_set, type = "jitter")
+plot(matched_set, type = "density")
+```
+
+
+### 2.2. Effect estimate
+
+Here, we estimate a linear regression model using the match data from 2.1 using the `lm()` function with the formula `re78 ~ treat + race + married + nodegree`. We pass weights that come from the matching. Notice that for this piece, we have passed the matched data `match.data(exact)`. The coefficient in front of the variable `treat` in the linear regression is our estimated effect.
+
+```{r}
+fit <- lm(re78 ~ treat + race + married + nodegree + re74,
+          data = match.data(matched_set),
+          w = weights)
+print(round(coef(fit)["treat"],2))
+```
+
+
