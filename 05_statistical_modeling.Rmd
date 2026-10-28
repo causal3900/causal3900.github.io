@@ -44,13 +44,12 @@ Today will introduce the idea of matching and how it allows us to estimate the a
 
 ## Lab: Matching in R
 
-> Oct 28. [**Discussion**](discussion-8.-matching) and [**discussion slides**](assets/discussions/matching_lab_slides.pdf)
+> Oct 28. [**Discussion**](discussion-7.-matching) and [**discussion slides**](assets/discussions/Discussion8.pdf)
 
 In this lab, we'll go over distance metrics when matching on multiple covariates. We'll also go over examples of using R to do matching to estimate causal effects.
 
 Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for today's lab.
 
-If you finish the exact matching exercise early, work through this [R Markdown Notebook](assets/matching_examples.html) with further examples (download the [.Rmd file here](assets/matching_examples.Rmd)). 
 
 ## Discussion of matching
 

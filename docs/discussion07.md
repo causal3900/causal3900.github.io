@@ -3,27 +3,21 @@ output: html_document
 ---
 <style>li {line-height: 1.8;}</style>
 
-# Discussion 7. Parametric g-formula {-}
+# Discussion 7. Matching {-}
 ## STSCI/INFO/ILRST 3900: Causal Inference {-}
-#### October 8, 2025 {-}
-
-
-### Announcements {-}
-- HW 3 due today (October 8) by 11:59pm
-  - Submit a PDF from RMarkdown via Canvas
-- Peer Review 2 due October 16
-- Project Part 1 due October 20
-- Office Hours throughout the week (see Syllabus or website)
-  - Filippo: Thursday 4-5pm in 321A CIS Building
-  - Shira: Monday 5-6 pm in 329A CIS Building  
-  - Sam: Tuesday 4-5pm, in 350 CIS Building  
+#### October 28, 2026 {-}
     
+    
+- You can download the [**slides**](assets/discussions/Discussion8.pdf) for this week's discussion.
 
-### Parametric g-formula {-}
+- Download the [**.Rmd**](assets/discussions/matching_lab.Rmd) and fill in the blanks
 
-- Follow the steps on [**this file**](assets/discussions/NLSY Data guide.pdf) to download the data!
 
-- You can download the [**slides**](assets/discussions/discussion7-gformula-.pdf) for this week's discussion.
+This exercise use the `lalonde` dataset from the following paper:
 
-- To follow along download the [**.Rmd**](assets/discussions/discussion7.Rmd).
+> Dehejia, R. H. and Wahba, S. 1999. [Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs](https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?). Journal of the American Statistical Association 94(448):1053--1062.
+
+The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. 
+
+- Answer the question and hand in the in-class assignment
 
