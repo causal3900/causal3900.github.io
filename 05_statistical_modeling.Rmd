@@ -57,6 +57,23 @@ Download the [**R Markdown.**](assets/discussions/matching_lab.Rmd) file for tod
 
 We'll wrap up our discussion of matching by introducing propensity score matching and coarsened exact matching. We'll also discuss combining regression with matching methods to estimate causal effects. 
 
+## Review
+
+> Nov 3
+
+Review for Quiz
+
+
+## Lab: IPW and AIPW
+
+> Nov 4. [**Discussion**](discussion-8.-ipw-and-aipw) and [**discussion slides**](assets/discussions/discussion8_slides.pdf).
+
+In this lab, we'll go over IPW and AIPW. We'll also go over examples of using R to do matching to estimate causal effects.
+
+Download the [**R Markdown.**](assets/discussions/ipw_lab.Rmd) file for today's lab.
+
+
+
 ## Worked example of statistical modeling
 
 This section presents math and code for a worked example of statistical

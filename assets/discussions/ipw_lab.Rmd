@@ -1,0 +1,91 @@
+# IPW and AIPW Lab
+
+## 1. Data and R Libraries
+This exercise  use the `lalonde` dataset from the following paper:
+
+> Dehejia, R. H. and Wahba, S. 1999. [Causal Effects in Nonexperimental Studies: Reevaluating the Evaluation of Training Programs](https://www-jstor-org.proxy.library.cornell.edu/stable/2669919?). Journal of the American Statistical Association 94(448):1053--1062.
+
+The paper compares methods for observational causal inference to recover an average causal effect that was already known from a randomized experiment. You do not need to read the paper; we will just use the study's data as an illustration. We'll load the data into R with the first code block.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+data("lalonde") # this step loads the data
+
+A <- lalonde$treat
+Y <- lalonde$re78
+```
+
+To learn about the data, type `?lalonde` in your R console.
+
+## 2. G-Formula (Linear Regression Outcome Model)
+
+First, estimate the ATE using parametric outcome modeling (G-formula) by fitting a linear regression model for $E(Y \mid A, L)$ and compute potential outcomes under treatment ($\hat{Y}^1$) and control ($\hat{Y}^0$) across the entire sample.
+
+Complete the missing code to fit the regression model and predict potential outcomes under both treatment levels for every individual.
+
+```{r}
+# Step 1: Fit outcome model with covariates
+out_model <- lm(re78 ~ treat + race + married + nodegree + re74, data = lalonde)
+
+# Step 2: Create counterfactual datasets
+data_treat <- lalonde %>% mutate(treat = ...)
+data_control <- lalonde %>% mutate(treat = ...)
+
+# Step 3: Predict potential outcomes
+hat_y1 <- predict(out_model, newdata = data_treat)
+hat_y0 <- predict(out_model, newdata = data_control)
+
+# Step 4: Estimate ATE
+ate_gform <- mean(...)- mean(...)
+
+print(ate_gform)
+```
+
+
+## 3. Inverse Probability Weighting (IPW)
+
+Next, we estimate the propensity score $\pi(L) = P(A = 1 \mid L)$ using logistic regression and estimate the ATE with the inverse probability weights.
+
+
+Complete the missing code to fit the propensity score model and derive the IPW estimate.
+
+```{r}
+# Step 1: Fit logistic regression model for propensity score
+ps_model <- glm(treat ~ race + married + nodegree +re74 , 
+                family = binomial(link = "logit"), 
+                data = lalonde)
+
+
+# Step 2: Predict propensity scores (predicted probability of treat = 1)
+ps <- predict(ps_model, type = "response")
+
+
+# Step 3: Estimate ATE using weighted average
+ate_ipw <- mean(A * Y / ...) - mean((1 - A) * Y / (...))
+
+
+print(ate_ipw)
+
+```
+
+
+
+## 4. Augmented Inverse Probability Weighting (AIPW)
+
+Finally, we combine the outcome model (from Section 2) and the propensity score model (from Section 3) using the AIPW estimator, which satisfies the doubly robust property: it remains consistent if either the outcome model OR the propensity score model is correctly specified
+
+Fill in the blanks to calculate the AIPW estimator for the ATE 
+```{r}
+# Step 1: Compute AIPW estimate for y_1
+aipw_y1 <- mean(hat_y1 + (A * Y / ...) - (A / ...) * hat_y1)
+
+# Step 2: Compute AIPW estimate for y_0
+aipw_y0 <- mean(hat_y0 + ((1 - A) * Y / (...)) - ((1-A) / (...)) * hat_y0)
+
+# Step 3: Compute AIPW ATE
+ate_aipw <- aipw_y1 - aipw_y0
+
+print(ate_aipw)
+
+```
