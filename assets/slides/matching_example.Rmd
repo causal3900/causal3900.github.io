@@ -39,7 +39,7 @@ summary(exact)
 ```
 
 ```{r}
-
+?matchit
 #coarsened exact matching
 matched_set <- matchit(treat ~ race + married + nodegree + re74, 
                  data = lalonde, 
