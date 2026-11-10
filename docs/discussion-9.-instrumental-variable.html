@@ -5,18 +5,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Discussion 9. Instrumental Variable | Causal Inference Course</title>
-<meta name="author" content="Sam Wang and Christina Yu">
-<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 22, 2025 You can download the slides for this week’s discussion and the .Rmd. In this lab we will be examining the following question: does...">
-<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta name="author" content="Y. Samuel Wang">
+<meta name="description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 11, 2026 You can download the slides for this week’s discussion Read the paper “Social Pressure and Voter Turnout: Evidence from a Large-scale...">
+<meta name="generator" content="bookdown 0.48 with bs4_book()">
 <meta property="og:title" content="Discussion 9. Instrumental Variable | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 22, 2025 You can download the slides for this week’s discussion and the .Rmd. In this lab we will be examining the following question: does...">
+<meta property="og:description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 11, 2026 You can download the slides for this week’s discussion Read the paper “Social Pressure and Voter Turnout: Evidence from a Large-scale...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Discussion 9. Instrumental Variable | Causal Inference Course">
-<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  October 22, 2025 You can download the slides for this week’s discussion and the .Rmd. In this lab we will be examining the following question: does...">
+<meta name="twitter:description" content="STSCI/INFO/ILRST 3900: Causal Inference  November 11, 2026 You can download the slides for this week’s discussion Read the paper “Social Pressure and Voter Turnout: Evidence from a Large-scale...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.9.0/transition.js"></script><script src="libs/bs3compat-0.9.0/tabs.js"></script><script src="libs/bs3compat-0.9.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -63,28 +63,15 @@
 <li class="book-part">Discussions</li>
 <li><a class="" href="discussion-1.-prob-stats-review.html">Discussion 1. Prob &amp; Stats Review</a></li>
 <li><a class="" href="discussion-2.-analyzing-an-experiment-in-r.html">Discussion 2. Analyzing an Experiment in R</a></li>
-<li><a class="" href="discussion-3.-treatment-effect-heterogneity-in-an-experiment.html">Discussion 3. Treatment effect heterogneity in an Experiment</a></li>
-<li><a class="" href="discussion-4.-interference-and-stat-review.html">Discussion 4. Interference and Stat Review</a></li>
+<li><a class="" href="discussion-3.-treatment-effect-heterogeneity-in-an-experiment.html">Discussion 3. Treatment effect heterogeneity in an Experiment</a></li>
+<li><a class="" href="discussion-4.-exchangeability-and-class-project.html">Discussion 4. Exchangeability and Class Project</a></li>
 <li><a class="" href="discussion-5.-directed-acyclic-graphs.html">Discussion 5. Directed Acyclic Graphs</a></li>
-<li><a class="" href="discussion-6.-course-project--part-1.html">Discussion 6. Course Project- Part 1</a></li>
-<li><a class="" href="discussion-7.-parametric-g-formula.html">Discussion 7. Parametric g-formula</a></li>
-<li><a class="" href="discussion-8.-matching.html">Discussion 8. Matching</a></li>
+<li><a class="" href="discussion-6.-parametric-g-formula.html">Discussion 6. Parametric g-formula</a></li>
+<li><a class="" href="discussion-7.-matching.html">Discussion 7. Matching</a></li>
+<li><a class="" href="discussion-8.-ipw-and-aipw.html">Discussion 8. IPW and AIPW</a></li>
 <li><a class="active" href="discussion-9.-instrumental-variable.html">Discussion 9. Instrumental Variable</a></li>
-<li><a class="" href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></li>
-<li><a class="" href="discussion-11.-difference-in-differences.html">Discussion 11. Difference in Differences</a></li>
-<li><a class="" href="discussion-12.-synthetic-control.html">Discussion 12. Synthetic Control</a></li>
 <li class="book-part">Assignments</li>
 <li><a class="" href="due-dates.html">Due dates</a></li>
-<li><a class="" href="problem-set-1.-definitions.html">Problem Set 1. Definitions</a></li>
-<li><a class="" href="problem-set-2.-experiments.html">Problem Set 2. Experiments</a></li>
-<li><a class="" href="problem-set-3.-dags..html">Problem Set 3. DAGs.</a></li>
-<li><a class="" href="problem-set-4.-statistical-modeling.html">Problem Set 4. Statistical Modeling</a></li>
-<li><a class="" href="problem-set-5.-iv-rd.html">Problem Set 5. IV + RD</a></li>
-<li><a class="" href="problem-set-6.-difference-in-differences-synthetic-control.html">Problem Set 6. Difference in Differences + Synthetic Control</a></li>
-<li><a class="" href="project-1.html">Project</a></li>
-<li class="book-part">Course information</li>
-<li><a class="" href="who-we-are.html">Who we are</a></li>
-<li><a class="" href="references.html">References</a></li>
 </ul>
 
         <div class="book-extra">
@@ -98,138 +85,145 @@
 <div id="stsciinfoilrst-3900-causal-inference-8" class="section level2 unnumbered">
 <h2>STSCI/INFO/ILRST 3900: Causal Inference<a class="anchor" aria-label="anchor" href="#stsciinfoilrst-3900-causal-inference-8"><i class="fas fa-link"></i></a>
 </h2>
-<div id="october-22-2025" class="section level4 unnumbered">
-<h4>October 22, 2025<a class="anchor" aria-label="anchor" href="#october-22-2025"><i class="fas fa-link"></i></a>
+<div id="november-11-2026" class="section level4 unnumbered">
+<h4>November 11, 2026<a class="anchor" aria-label="anchor" href="#november-11-2026"><i class="fas fa-link"></i></a>
 </h4>
-<p>You can download the <a href="assets/discussions/discussion9-instrumental-variables.pdf"><strong>slides</strong></a> for this week’s discussion and the <a href="assets/discussions/discussion9.Rmd"><strong>.Rmd</strong></a>.</p>
-<p>In this lab we will be examining the following question: does participating in a 401(k) increase an individual’s net wealth? One difficulty in answering this question is that whether or not people participate in a 401(k) is probably not random. However, whether or not somebody is eligible to participate in a 401(k) is arguably random. Additionally, the only way that 401(k) eligibility affects an individual’s net wealth is by affecting whether or not they participate in the 401(k). Given this setup, we can use Instrumental Variables to estimate the Local Average Treatment Effect (average treatment effect on the compliers) of participating in a 401(k).</p>
+<ul>
+<li><p>You can download the <a href="assets/discussions/discussion9-slides.pdf"><strong>slides</strong></a> for this week’s discussion</p></li>
+<li><p>Read the paper <a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369">“Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment.”</a> in American economic review, by Daron Acemoglu, Simon Johnson, and James A. Robinson.</p></li>
+<li><p>Download the <a href="assets/discussions/discussion9.Rmd"><strong>.Rmd</strong></a></p></li>
+<li><p>Answer the questions and hand in the in-class assignment</p></li>
+</ul>
 </div>
 </div>
-<div id="load-the-data" class="section level2 unnumbered">
-<h2>Load the data<a class="anchor" aria-label="anchor" href="#load-the-data"><i class="fas fa-link"></i></a>
+<div id="how-are-institutions-and-economic-development-related" class="section level2 unnumbered">
+<h2>How are institutions and economic development related?<a class="anchor" aria-label="anchor" href="#how-are-institutions-and-economic-development-related"><i class="fas fa-link"></i></a>
 </h2>
-<p>Let’s begin by loading the data, which will be called <code>pension</code>. If</p>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">hdm</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">pension</span><span class="op">)</span></span>
-<span><span class="co"># Shuffle data around</span></span>
-<span><span class="va">pension</span> <span class="op">&lt;-</span> <span class="va">pension</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">pension</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">pension</span><span class="op">)</span><span class="op">)</span>, <span class="op">]</span></span></code></pre></div>
-</div>
-<div id="set-the-data-up-for-our-analysis" class="section level2 unnumbered">
-<h2>Set the data up for our analysis<a class="anchor" aria-label="anchor" href="#set-the-data-up-for-our-analysis"><i class="fas fa-link"></i></a>
-</h2>
-<p>In the data, our variables of interest are the following:
-<code>net_tfa</code>: This is our outcome variable showing an individual’s net wealth.
-<code>p401</code>: This is our treatment variable showing whether or not an individual participated in a 401(k).
-<code>e401</code>: This is our instrument showing whether or not an individual was eligible to participate in a 401(k).
-<code>age</code>, <code>inc</code>, <code>fsize</code>, <code>educ</code>, <code>db</code>, <code>marr</code>, <code>twoearn</code>, <code>pira</code>, <code>hown</code>: These are
-potential confounders, but we will ignore them for right now. Remember we are assuming our instrument is randomly assigned.</p>
-</div>
-<div id="how-are-401k-eligibility-and-participation-related" class="section level2 unnumbered">
-<h2>How are 401(k) eligibility and participation related<a class="anchor" aria-label="anchor" href="#how-are-401k-eligibility-and-participation-related"><i class="fas fa-link"></i></a>
-</h2>
-<p>We want to see how 401(k) eligibility and participation are related to build our intuition for this exercise. In particular it’ll be helpful to see how many people that are eligible to participate in a 401(k) actually do so.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pension</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"e401"</span>, <span class="st">"p401"</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<pre><code>##     p401
-## e401    0    1
-##    0 6233    0
-##    1 1088 2594</code></pre>
-</div>
-<div id="estimate-the-local-average-treatment-effect" class="section level2 unnumbered">
-<h2>Estimate the Local Average Treatment Effect<a class="anchor" aria-label="anchor" href="#estimate-the-local-average-treatment-effect"><i class="fas fa-link"></i></a>
-</h2>
-<p>Finally, we will estimate the Local Average Treatment Effect (average treatment effect on the compliers) of participating in a 401(k) using the Wald Estimator and two-stage least squares.</p>
-<div id="wald-estimator" class="section level3 unnumbered">
-<h3>Wald Estimator<a class="anchor" aria-label="anchor" href="#wald-estimator"><i class="fas fa-link"></i></a>
+<p>In this lab we will be examining the following question: what is the effect of institutions on economic performance? We will use data from <a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369">“Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment.”</a>.</p>
+<div id="load-the-data" class="section level3 unnumbered">
+<h3>Load the data<a class="anchor" aria-label="anchor" href="#load-the-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>The estimator we discussed in class is also called the Wald estimator. This happens to be the same person, <a href="https://en.wikipedia.org/wiki/Abraham_Wald">Abraham Wald</a>, whose work is the inspiration of the <a href="https://knowyourmeme.com/memes/survivorship-bias-plane">survivorship bias airplane meme</a>] It proceeds by (1) estimating the effect of the instrument on the outcome, (2) estimating the effect of the instrument on the treatment, and (3) dividing (1) / (2).
-<span class="math display">\[\begin{aligned}
-\hat{E}(Y^{a=1}-Y^{a=0}) &amp;= \frac{\hat{E}(Y^{z=1}-Y^{z=0})}{\hat{E}(A^{z=1}-A^{z=0})}\\
-&amp;= \frac{\hat{E}(Y\mid Z = 1) - \hat{E}(Y\mid Z = 0)}{\hat{E}(A\mid Z = 1) - \hat{E}(A\mid Z = 0)}
-\end{aligned}\]</span></p>
-<p>First let’s calculate the effect of the instrument on the outcome:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="discussion-9.-instrumental-variable.html#cb78-1" tabindex="-1"></a>mean_outcome_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
-<span id="cb78-2"><a href="discussion-9.-instrumental-variable.html#cb78-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
-<span id="cb78-3"><a href="discussion-9.-instrumental-variable.html#cb78-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">net_tfa =</span> <span class="fu">mean</span>(...put your outcome variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb78-4"><a href="discussion-9.-instrumental-variable.html#cb78-4" tabindex="-1"></a></span>
-<span id="cb78-5"><a href="discussion-9.-instrumental-variable.html#cb78-5" tabindex="-1"></a>instrument_on_outcome <span class="ot">&lt;-</span> (</span>
-<span id="cb78-6"><a href="discussion-9.-instrumental-variable.html#cb78-6" tabindex="-1"></a>  mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">2</span>] <span class="sc">-</span> mean_outcome_by_instrument<span class="sc">$</span>net_tfa[<span class="dv">1</span>]</span>
-<span id="cb78-7"><a href="discussion-9.-instrumental-variable.html#cb78-7" tabindex="-1"></a>)</span></code></pre></div>
-<p>Now, calculate the effect of the instrument on the treatment:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="discussion-9.-instrumental-variable.html#cb79-1" tabindex="-1"></a>mean_treatment_by_instrument <span class="ot">&lt;-</span> pension <span class="sc">|&gt;</span></span>
-<span id="cb79-2"><a href="discussion-9.-instrumental-variable.html#cb79-2" tabindex="-1"></a>  <span class="fu">group_by</span>( ... put the instrument here ...) <span class="sc">|&gt;</span></span>
-<span id="cb79-3"><a href="discussion-9.-instrumental-variable.html#cb79-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">p401 =</span> <span class="fu">mean</span>(...put your treatment variable here...), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
-<span id="cb79-4"><a href="discussion-9.-instrumental-variable.html#cb79-4" tabindex="-1"></a></span>
-<span id="cb79-5"><a href="discussion-9.-instrumental-variable.html#cb79-5" tabindex="-1"></a>instrument_on_treatment <span class="ot">&lt;-</span> (</span>
-<span id="cb79-6"><a href="discussion-9.-instrumental-variable.html#cb79-6" tabindex="-1"></a>  mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">2</span>] <span class="sc">-</span> mean_treatment_by_instrument<span class="sc">$</span>p401[<span class="dv">1</span>]</span>
-<span id="cb79-7"><a href="discussion-9.-instrumental-variable.html#cb79-7" tabindex="-1"></a>)</span></code></pre></div>
-<p>Calculate the LATE by dividing these two:</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">wald_late</span> <span class="op">&lt;-</span> <span class="va">instrument_on_outcome</span><span class="op">/</span><span class="va">instrument_on_treatment</span></span>
+<p>Let’s begin by loading the data. For this we will use a package called <code>ivdoctr</code>, which you might need to install using <code>install.packages(ivdoctr)</code>. Then load the data which is called <code>colonial</code>.</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">ivdoctr</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">colonial</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">wald_late</span></span></code></pre></div>
+<span><span class="co"># Take a look at the data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">colonial</span><span class="op">)</span></span></code></pre></div>
+<pre><code>##    shortnam africa  lat_abst rich4   avexpr logpgp95
+##      &lt;char&gt;  &lt;num&gt;     &lt;num&gt; &lt;num&gt;    &lt;num&gt;    &lt;num&gt;
+## 1:      AGO      1 0.1366667     0 5.363636 7.770645
+## 2:      ARG      0 0.3777778     0 6.386364 9.133459
+## 3:      AUS      0 0.3000000     1 9.318182 9.897972
+## 4:      BFA      1 0.1444445     0 4.454545 6.845880
+## 5:      BGD      0 0.2666667     0 5.136364 6.877296
+## 6:      BHS      0 0.2683333     0 7.500000 9.285448
+##      logem4  asia   loghjypl
+##       &lt;num&gt; &lt;num&gt;      &lt;num&gt;
+## 1: 5.634789     0 -3.4112477
+## 2: 4.232656     0 -0.8722738
+## 3: 2.145931     0 -0.1707883
+## 4: 5.634789     0 -3.5404594
+## 5: 4.268438     1 -2.0635681
+## 6: 4.442651     0         NA</code></pre>
+<p>In the data, our variables of interest are the following:</p>
+<ul>
+<li>
+<code>logpgp95</code>: Log GDP per capita in 1995 (outcome variable)</li>
+<li>
+<code>avexpr</code>: Average protection against the risk of expropriation (measure of institutional quality)</li>
+<li>
+<code>logem4</code>: Log European settler mortality (instrumental variable)</li>
+</ul>
 </div>
-<div id="two-stage-least-squeares" class="section level3 unnumbered">
-<h3>Two stage least squeares<a class="anchor" aria-label="anchor" href="#two-stage-least-squeares"><i class="fas fa-link"></i></a>
+<div id="estimate-the-causal-effect-of-institutions" class="section level3 unnumbered">
+<h3>Estimate the causal effect of institutions<a class="anchor" aria-label="anchor" href="#estimate-the-causal-effect-of-institutions"><i class="fas fa-link"></i></a>
 </h3>
-<p>We can also estimate the LATE with a procedure called two stage least squares. To do that we will use the <code>ivreg</code>
-function from the AER package. When the treatment and instrument are both binary, this should give the exact same answer as the Wald estimator above. However, when the treatment or instrument are continuous, the Wald estimator may not work and two stage least squares can be used instead. To see the help file for this function, run <code>?ivreg</code> in your console and take a look at the documentation.</p>
-<p>You will have to create a formula that tells <code>ivreg</code> what your outcome variable, treatment variable, and instrument variable are. <strong>NOTE</strong>: This formula should look something like <code>outcome ~ treatment | instrument</code>.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="discussion-9.-instrumental-variable.html#cb81-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"AER"</span>)</span>
-<span id="cb81-2"><a href="discussion-9.-instrumental-variable.html#cb81-2" tabindex="-1"></a>iv_formula <span class="ot">&lt;-</span> ...make your formula here...</span>
-<span id="cb81-3"><a href="discussion-9.-instrumental-variable.html#cb81-3" tabindex="-1"></a>iv_model <span class="ot">&lt;-</span> <span class="fu">ivreg</span>(<span class="at">formula =</span> iv_formula, <span class="at">data =</span> pension)</span>
-<span id="cb81-4"><a href="discussion-9.-instrumental-variable.html#cb81-4" tabindex="-1"></a></span>
-<span id="cb81-5"><a href="discussion-9.-instrumental-variable.html#cb81-5" tabindex="-1"></a><span class="co"># Print the model</span></span>
-<span id="cb81-6"><a href="discussion-9.-instrumental-variable.html#cb81-6" tabindex="-1"></a>iv_model</span></code></pre></div>
-<p>The Local Average Treatment Effect is the <code>p401</code> coefficient that is in the printed summary above!</p>
+<p>We will estimate the causal effect of institutional quality (<code>avexpr</code>) on economic development (<code>logpgp95</code>) using the instrumental variable, European settler mortality (<code>logem4</code>).</p>
+<div id="manually-implementing-two-stage-least-squares" class="section level4 unnumbered">
+<h4>Manually implementing Two-Stage Least Squares<a class="anchor" aria-label="anchor" href="#manually-implementing-two-stage-least-squares"><i class="fas fa-link"></i></a>
+</h4>
+<p>Follow the steps of two-stage least square on the slides:</p>
+<p><strong>First stage:</strong></p>
+<p>In the first stage, we use the IV to predict the treatment by regressing institutional quality (<code>avexpr</code>) on our instrument (<code>logem4</code>)</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">first_stage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">avexpr</span> <span class="op">~</span> <span class="va">logem4</span>, data <span class="op">=</span> <span class="va">colonial</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Obtain predicted institutional quality</span></span>
+<span><span class="va">avexpr_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">first_stage</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Second stage:</strong></p>
+<p>In the second stage, we regress the outcome on the predicted treatment from stage 1, i.e. regress economic development (<code>logpgp95</code>) on the predicted institutional quality (<code>avexpr_hat</code>).</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">second_stage</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">logpgp95</span> <span class="op">~</span> <span class="va">avexpr_hat</span>, data <span class="op">=</span> <span class="va">colonial</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">second_stage</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = logpgp95 ~ avexpr_hat, data = colonial)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.7545 -0.5386  0.1412  0.4607  1.4059 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   1.9097     0.8233   2.320   0.0237 *  
+## avexpr_hat    0.9443     0.1255   7.523 2.66e-10 ***
+## ---
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.7604 on 62 degrees of freedom
+## Multiple R-squared:  0.4772, Adjusted R-squared:  0.4688 
+## F-statistic:  56.6 on 1 and 62 DF,  p-value: 2.659e-10</code></pre>
+<p>The coefficient on <code>avexpr_hat</code> is our manually calculated 2SLS estimate.</p>
 </div>
-</div>
-<div id="calculate-robust-standard-errors-and-create-95-conf.-interval" class="section level2 unnumbered">
-<h2>Calculate robust standard errors and create 95% conf. interval<a class="anchor" aria-label="anchor" href="#calculate-robust-standard-errors-and-create-95-conf.-interval"><i class="fas fa-link"></i></a>
-</h2>
-<p>Of course, since we want to understand how much uncertainty is in our estimates, we will calculate the standard errors for our estimate. <strong>NOTE</strong> The <code>vcov. = vcovHC</code> argument below is telling R to calculate robust standard errors, which we typically want to do in our statistical analyses.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="discussion-9.-instrumental-variable.html#cb82-1" tabindex="-1"></a>standard_err <span class="ot">&lt;-</span> <span class="fu">summary</span>(...put the necessary variable here..., <span class="at">vcov. =</span> vcovHC)</span>
-<span id="cb82-2"><a href="discussion-9.-instrumental-variable.html#cb82-2" tabindex="-1"></a>late <span class="ot">&lt;-</span> <span class="fu">coef</span>(standard_err)[<span class="st">"p401"</span>, <span class="fu">c</span>(<span class="st">"Estimate"</span>, <span class="st">"Std. Error"</span>)]</span>
-<span id="cb82-3"><a href="discussion-9.-instrumental-variable.html#cb82-3" tabindex="-1"></a><span class="co"># 95% conf. int.</span></span>
-<span id="cb82-4"><a href="discussion-9.-instrumental-variable.html#cb82-4" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb82-5"><a href="discussion-9.-instrumental-variable.html#cb82-5" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]],</span>
-<span id="cb82-6"><a href="discussion-9.-instrumental-variable.html#cb82-6" tabindex="-1"></a>  late[[<span class="st">"Estimate"</span>]] <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.975</span>)<span class="sc">*</span>late[[<span class="st">"Std. Error"</span>]]</span>
-<span id="cb82-7"><a href="discussion-9.-instrumental-variable.html#cb82-7" tabindex="-1"></a>)</span>
-<span id="cb82-8"><a href="discussion-9.-instrumental-variable.html#cb82-8" tabindex="-1"></a></span>
-<span id="cb82-9"><a href="discussion-9.-instrumental-variable.html#cb82-9" tabindex="-1"></a><span class="co"># Print the results and confidence interval</span></span>
-<span id="cb82-10"><a href="discussion-9.-instrumental-variable.html#cb82-10" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"LATE (Lower bound, Upper bound):</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb82-11"><a href="discussion-9.-instrumental-variable.html#cb82-11" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\r</span><span class="st">"</span>, <span class="fu">round</span>(late[[<span class="st">"Estimate"</span>]], <span class="dv">3</span>)),</span>
-<span id="cb82-12"><a href="discussion-9.-instrumental-variable.html#cb82-12" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">"("</span>, <span class="fu">round</span>(ci[[<span class="dv">1</span>]], <span class="dv">3</span>), <span class="st">","</span>),</span>
-<span id="cb82-13"><a href="discussion-9.-instrumental-variable.html#cb82-13" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="fu">round</span>(ci[[<span class="dv">2</span>]], <span class="dv">3</span>), <span class="st">")</span><span class="sc">\n</span><span class="st">"</span>))</span></code></pre></div>
+<div id="two-stage-least-squares-2sls-using-ivreg" class="section level4 unnumbered">
+<h4>Two-Stage Least Squares (2SLS) using <code>ivreg()</code><a class="anchor" aria-label="anchor" href="#two-stage-least-squares-2sls-using-ivreg"><i class="fas fa-link"></i></a>
+</h4>
+<p>We can estimate the causal effect using the <code><a href="https://rdrr.io/pkg/AER/man/ivreg.html">ivreg()</a></code> function from the <code>AER</code> package. You will need to create a formula specifying the outcome variable, endogenous explanatory variable, and instrument. The formula has the following structure: <code>outcome ~ endogenous_variable | instrument</code></p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">AER</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">iv_formula</span> <span class="op">&lt;-</span> <span class="va">...</span> <span class="op">~</span> <span class="va">...</span> <span class="op">|</span> <span class="va">...</span></span>
+<span></span>
+<span><span class="va">iv_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/AER/man/ivreg.html">ivreg</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">iv_formula</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">colonial</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">iv_model</span><span class="op">)</span></span></code></pre></div>
+<p>The coefficient on <code>avexpr</code> is the IV estimate of the causal effect of institutional quality on economic development.</p>
+<p>The IV estimate obtained using <code><a href="https://rdrr.io/pkg/AER/man/ivreg.html">ivreg()</a></code> should be identical to the coefficient obtained from the manual two-stage procedure.</p>
+<p>Note: The conventional standard errors reported by the second-stage OLS regression are not the correct 2SLS standard errors. The <code><a href="https://rdrr.io/pkg/AER/man/ivreg.html">ivreg()</a></code> function calculates the appropriate IV standard errors.</p>
 
-<style>li {line-height: 1.8;}</style>
 </div>
 </div>
+</div>
+</div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="discussion-8.-matching.html">Discussion 8. Matching</a></div>
-<div class="next"><a href="discussion-10.-regression-discontinuity.html">Discussion 10. Regression discontinuity</a></div>
+<div class="prev"><a href="discussion-8.-ipw-and-aipw.html">Discussion 8. IPW and AIPW</a></div>
+<div class="next"><a href="due-dates.html">Due dates</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#discussion-9.-instrumental-variable">Discussion 9. Instrumental Variable</a></li>
 <li><a class="nav-link" href="#stsciinfoilrst-3900-causal-inference-8">STSCI/INFO/ILRST 3900: Causal Inference</a></li>
-<li><a class="nav-link" href="#load-the-data">Load the data</a></li>
-<li><a class="nav-link" href="#set-the-data-up-for-our-analysis">Set the data up for our analysis</a></li>
-<li><a class="nav-link" href="#how-are-401k-eligibility-and-participation-related">How are 401(k) eligibility and participation related</a></li>
 <li>
-<a class="nav-link" href="#estimate-the-local-average-treatment-effect">Estimate the Local Average Treatment Effect</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#wald-estimator">Wald Estimator</a></li>
-<li><a class="nav-link" href="#two-stage-least-squeares">Two stage least squeares</a></li>
+<a class="nav-link" href="#how-are-institutions-and-economic-development-related">How are institutions and economic development related?</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#load-the-data">Load the data</a></li>
+<li><a class="nav-link" href="#estimate-the-causal-effect-of-institutions">Estimate the causal effect of institutions</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#calculate-robust-standard-errors-and-create-95-conf.-interval">Calculate robust standard errors and create 95% conf. interval</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
 <li><a id="syllabus" href="assets/Syllabus_Causal_Inference_3900.pdf">Syllabus </a></li>
-          <li><a id="canvas" href="https://canvas.cornell.edu/courses/80503">Canvas </a></li>
-          <li><a id="ed" href="https://edstem.org/us/courses/83363">Ed Discussion </a></li>
+          <li><a id="canvas" href="https://canvas.cornell.edu/courses/88368">Canvas </a></li>
+          <li><a id="ed" href="https://edstem.org/us/courses/102449">Ed Discussion </a></li>
           
           
         </ul>
@@ -243,7 +237,7 @@ function from the AER package. When the treatment and instrument are both binary
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2025-12-17</p>
+    <p>Last built on 2026-11-10</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
