@@ -10,7 +10,7 @@ output: html_document
   
 - You can download the [**slides**](assets/discussions/discussion9-slides.pdf) for this week's discussion
 
-- Read the paper ["Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment."](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369) in American economic review, by Daron Acemoglu, Simon Johnson, and James A. Robinson.
+- Read the paper ["The Colonial Origins of Comparative Development: An Empirical Investigation."](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369) in American economic review, by Daron Acemoglu, Simon Johnson, and James A. Robinson.
 
 - Download the [**.Rmd**](assets/discussions/discussion9.Rmd)
 
@@ -20,7 +20,7 @@ output: html_document
 ## How are institutions and economic development related? {-}
 
 
-In this lab we will be examining the following question: what is the effect of institutions on economic performance? We will use data from ["Social Pressure and Voter Turnout: Evidence from a Large-scale Field Experiment."](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369). 
+In this lab we will be examining the following question: what is the effect of institutions on economic performance? We will use data from ["The Colonial Origins of Comparative Development: An Empirical Investigation."](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.91.5.1369). 
 
 
 ### Load the data{-}
