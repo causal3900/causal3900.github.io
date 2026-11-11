@@ -30,6 +30,6 @@ R Markdown file [**here**](assets/discussions/discussion9.Rmd)
 
 ## Observational settings
 
-> Nov 12 [**Slides.**]() After class, read [Hernán and Robins 2020](https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/) Chapter 16.
+> Nov 12 [**Slides.**](assets/slides/6-2_iv_obs.pdf) 
 
 On Thursday, we move on to IV analysis in observational settings. Here we focus on the casual assumptions required for IV. These assumptions often hold by design in experiments with non-compliance. In observational settings, they can be more doubtful.
