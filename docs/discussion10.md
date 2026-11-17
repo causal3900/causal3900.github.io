@@ -5,7 +5,7 @@ output: html_document
 
 # Discussion 10. Difference in Differences {-}
 ## STSCI/INFO/ILRST 3900: Causal Inference {-}
-#### November 18, 2025 {-}
+#### November 18, 2026 {-}
 
 You can download the [**slides**](assets/discussions/DIDdiscussion_slides.pdf) for this week's discussion and the [**.Rmd**](assets/discussions/DID-discussion.Rmd).
 
