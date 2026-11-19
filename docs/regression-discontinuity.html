@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>8 Regression discontinuity | Causal Inference Course</title>
+<title>9 Regression discontinuity | Causal Inference Course</title>
 <meta name="author" content="Y. Samuel Wang">
-<meta name="description" content="8.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
-<meta name="generator" content="bookdown 0.48 with bs4_book()">
-<meta property="og:title" content="8 Regression discontinuity | Causal Inference Course">
+<meta name="description" content="9.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
+<meta name="generator" content="bookdown 0.47 with bs4_book()">
+<meta property="og:title" content="9 Regression discontinuity | Causal Inference Course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="8.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
+<meta property="og:description" content="9.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="8 Regression discontinuity | Causal Inference Course">
-<meta name="twitter:description" content="8.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
+<meta name="twitter:title" content="9 Regression discontinuity | Causal Inference Course">
+<meta name="twitter:description" content="9.1 Introduction  Oct 28. Slides. After class, read Huntington Klein 2021 Chapter 20, sections 20.1 and 20.3.4. In some settings, a treatment is assigned based solely off the value of a continuous...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.12.0/transition.js"></script><script src="libs/bs3compat-0.12.0/tabs.js"></script><script src="libs/bs3compat-0.12.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -56,8 +56,8 @@
 <li class="book-part">Identification without exchangeability</li>
 <li><a class="" href="instrumental-variables.html"><span class="header-section-number">6</span> Instrumental variables</a></li>
 <li><a class="" href="difference-in-differences.html"><span class="header-section-number">7</span> Difference in differences</a></li>
-<li><a class="active" href="regression-discontinuity.html"><span class="header-section-number">8</span> Regression discontinuity</a></li>
-<li><a class="" href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></li>
+<li><a class="" href="synthetic-control.html"><span class="header-section-number">8</span> Synthetic control</a></li>
+<li><a class="active" href="regression-discontinuity.html"><span class="header-section-number">9</span> Regression discontinuity</a></li>
 <li><a class="" href="interference.html"><span class="header-section-number">10</span> Interference</a></li>
 <li><a class="" href="course-recap.html"><span class="header-section-number">11</span> Course recap</a></li>
 <li class="book-part">Discussions</li>
@@ -80,22 +80,22 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regression-discontinuity" class="section level1" number="8">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="regression-discontinuity" class="section level1" number="9">
 <h1>
-<span class="header-section-number">8</span> Regression discontinuity<a class="anchor" aria-label="anchor" href="#regression-discontinuity"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9</span> Regression discontinuity<a class="anchor" aria-label="anchor" href="#regression-discontinuity"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introduction-1" class="section level2" number="8.1">
+<div id="introduction-2" class="section level2" number="9.1">
 <h2>
-<span class="header-section-number">8.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-2"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 28. <a href="assets/slides/rdd_intro.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.1 and 20.3.4.</p>
 </blockquote>
 <p>In some settings, a treatment is assigned based solely off the value of a continuous variable. In these situations, we can identify a local ATE without many additional assumptions. Today will introduce how this works using regression discontinuity designs.</p>
 </div>
-<div id="lab-regression-discontinuity---bandwidth-and-examples" class="section level2" number="8.2">
+<div id="lab-regression-discontinuity---bandwidth-and-examples" class="section level2" number="9.2">
 <h2>
-<span class="header-section-number">8.2</span> Lab: Regression Discontinuity - Bandwidth and Examples<a class="anchor" aria-label="anchor" href="#lab-regression-discontinuity---bandwidth-and-examples"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.2</span> Lab: Regression Discontinuity - Bandwidth and Examples<a class="anchor" aria-label="anchor" href="#lab-regression-discontinuity---bandwidth-and-examples"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 29 <a href="discussion-10.-regression-discontinuity"><strong>Discussion</strong></a> and <a href="assets/discussions/discussion10_rdd.pdf"><strong>discussion slides</strong></a> Download the
@@ -103,9 +103,9 @@ R Markdown file <a href="assets/discussions/discussion10.Rmd"><strong>here</stro
 </blockquote>
 <p>We’ll discuss a bandwidth selection and triangular weighting. We’ll also apply regression discontinuity to a concrete example and give you a chance to try it out for yourself.</p>
 </div>
-<div id="discussion-1" class="section level2" number="8.3">
+<div id="discussion-1" class="section level2" number="9.3">
 <h2>
-<span class="header-section-number">8.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">9.3</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion-1"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>Oct 30. <a href="assets/slides/rdd_extensions.pdf"><strong>Slides.</strong></a> After class, read <a href="https://theeffectbook.net/ch-RegressionDiscontinuity.html">Huntington Klein 2021</a> Chapter 20, sections 20.2.2. through 20.2.4. <a href="assets/data/fuzzy_example.R"><strong>R Code Example: Fuzzy RDD</strong></a></p>
@@ -115,15 +115,15 @@ R Markdown file <a href="assets/discussions/discussion10.Rmd"><strong>here</stro
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="difference-in-differences.html"><span class="header-section-number">7</span> Difference in differences</a></div>
-<div class="next"><a href="synthetic-control.html"><span class="header-section-number">9</span> Synthetic control</a></div>
+<div class="prev"><a href="synthetic-control.html"><span class="header-section-number">8</span> Synthetic control</a></div>
+<div class="next"><a href="interference.html"><span class="header-section-number">10</span> Interference</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#regression-discontinuity"><span class="header-section-number">8</span> Regression discontinuity</a></li>
-<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">8.1</span> Introduction</a></li>
-<li><a class="nav-link" href="#lab-regression-discontinuity---bandwidth-and-examples"><span class="header-section-number">8.2</span> Lab: Regression Discontinuity - Bandwidth and Examples</a></li>
-<li><a class="nav-link" href="#discussion-1"><span class="header-section-number">8.3</span> Discussion</a></li>
+<li><a class="nav-link" href="#regression-discontinuity"><span class="header-section-number">9</span> Regression discontinuity</a></li>
+<li><a class="nav-link" href="#introduction-2"><span class="header-section-number">9.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#lab-regression-discontinuity---bandwidth-and-examples"><span class="header-section-number">9.2</span> Lab: Regression Discontinuity - Bandwidth and Examples</a></li>
+<li><a class="nav-link" href="#discussion-1"><span class="header-section-number">9.3</span> Discussion</a></li>
 </ul>
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -143,7 +143,7 @@ R Markdown file <a href="assets/discussions/discussion10.Rmd"><strong>here</stro
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>Last built on 2026-11-17</p>
+    <p>Last built on 2026-11-19</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
